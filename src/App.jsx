@@ -46,6 +46,13 @@ import {
   MindMapCanvas,
   mindMapToCanvasNodes,
 } from "./components/MindMapCanvas";
+import {
+  ARCHITECT_MODES,
+  CORNELL_MIN_ATTEMPT_LENGTH,
+  invokeArchitect,
+  normalizeArchitectMindMap,
+  validateCornellAttempt,
+} from "./lib/architect-client";
 
 const NAV_ITEMS = [
   { id: "hoje", label: "Hoje", icon: Compass },
@@ -54,6 +61,7 @@ const NAV_ITEMS = [
   { id: "treinar", label: "Treinar C/E", icon: Target },
   { id: "flashcards", label: "Flashcards", icon: Layers },
   { id: "mapas", label: "Mapas", icon: Brain },
+  { id: "arquiteto", label: "Arquiteto", icon: Sparkles },
 ];
 
 export default function App() {
@@ -63,6 +71,7 @@ export default function App() {
   const [sessionElapsed, setSessionElapsed] = useState(0);
   const [sessionPaused, setSessionPaused] = useState(false);
   const [mapReturnTo, setMapReturnTo] = useState(null);
+  const [customMaps, setCustomMaps] = useState([]);
   const [tutorOpen, setTutorOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [rawData, setRawData] = useState(DEMO_STUDY_DATA);
@@ -328,13 +337,36 @@ export default function App() {
 
         {!loading && activeTab === "mapas" ? (
           <MindMapsView
-            mindMaps={metrics.mindMaps}
+            mindMaps={[...customMaps, ...metrics.mindMaps]}
             returnTo={mapReturnTo}
             onReturn={() => {
               if (mapReturnTo?.tab) setActiveTab(mapReturnTo.tab);
               setMapReturnTo(null);
             }}
             onReview={() => setActiveTab("flashcards")}
+            onEvocar={(node, tentativa) =>
+              invokeArchitect({
+                task: "evocar-corrigir",
+                payload: {
+                  rotulo: node.label,
+                  explicacao: node.summary,
+                  tentativa,
+                },
+                user,
+                isDemo: isDemo || !user,
+              })
+            }
+          />
+        ) : null}
+
+        {!loading && activeTab === "arquiteto" ? (
+          <ArchitectView
+            user={user}
+            isDemo={isDemo || !user}
+            onOpenMap={(newMap) => {
+              if (newMap) setCustomMaps((prev) => [newMap, ...prev]);
+              setActiveTab("mapas");
+            }}
           />
         ) : null}
       </main>
@@ -1314,7 +1346,7 @@ function FlashcardsView({
   );
 }
 
-function MindMapsView({ mindMaps, returnTo, onReturn, onReview }) {
+function MindMapsView({ mindMaps, returnTo, onReturn, onReview, onEvocar }) {
   const [selectedMapIdx, setSelectedMapIdx] = useState(0);
   const currentMap = mindMaps[selectedMapIdx] || null;
   const nodes = useMemo(() => mindMapToCanvasNodes(currentMap), [currentMap]);
@@ -1374,21 +1406,292 @@ function MindMapsView({ mindMaps, returnTo, onReturn, onReview }) {
           returnTo={returnTo?.label}
           onReturn={onReturn}
           onReview={onReview}
+          onEvocar={onEvocar}
         />
       </div>
     </div>
   );
 }
 
+function ArchitectView({ user, isDemo, onOpenMap }) {
+  const [tool, setTool] = useState("feynman");
+  const [topic, setTopic] = useState("Processo Legislativo — Medidas Provisórias");
+  const [feynmanText, setFeynmanText] = useState("");
+  const [cornellAttempt, setCornellAttempt] = useState("");
+  const [cornellNotes, setCornellNotes] = useState("");
+  const [ganSource, setGanSource] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [output, setOutput] = useState(null);
+  const [error, setError] = useState("");
+
+  const attemptCheck = validateCornellAttempt(cornellAttempt);
+
+  async function runFeynman() {
+    setError("");
+    setBusy(true);
+    try {
+      const res = await invokeArchitect({
+        task: "feynman-evaluate",
+        payload: { topic, explanation: feynmanText },
+        user,
+        isDemo,
+      });
+      setOutput({ type: "feynman", data: res.result || res, demo: res.demo });
+    } catch (err) {
+      setError(err?.message || "Erro ao avaliar Feynman.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function runCornell(toMap = false) {
+    setError("");
+    if (!attemptCheck.ok) {
+      setError(`Escreva sua tentativa de memória antes de consultar a fonte (faltam ${attemptCheck.remaining} caracteres).`);
+      return;
+    }
+    setBusy(true);
+    try {
+      if (toMap) {
+        const res = await invokeArchitect({
+          task: "cornell-to-mindmap",
+          payload: { title: topic, notes: `${cornellAttempt}\n\n${cornellNotes}`.trim() },
+          user,
+          isDemo,
+        });
+        const map = normalizeArchitectMindMap(res.result || res, topic);
+        setOutput({ type: "map", data: map, demo: res.demo });
+      } else {
+        const res = await invokeArchitect({
+          task: "summarize-cornell",
+          payload: { topic, attempt: cornellAttempt, rawNotes: cornellNotes },
+          user,
+          isDemo,
+        });
+        setOutput({ type: "cornell", data: res.result || res, demo: res.demo });
+      }
+    } catch (err) {
+      setError(err?.message || "Erro no módulo Cornell.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function runGan(kind) {
+    setError("");
+    setBusy(true);
+    try {
+      const task = kind === "questions" ? "mindmap-gan-questions" : "generate-flashcards";
+      const payload =
+        kind === "questions"
+          ? { topicTitle: topic, sourceText: ganSource, count: 3 }
+          : { topic, text: ganSource, count: 4 };
+      const res = await invokeArchitect({ task, payload, user, isDemo });
+      setOutput({ type: kind, data: res.result || res, demo: res.demo });
+    } catch (err) {
+      setError(err?.message || "Erro no gerador GAN.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+      <Panel variant="ornate" style={{ padding: 22, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <span className="qb-overline">Arquiteto Cognitivo · OmniStudy</span>
+          <h1 style={{ margin: "4px 0 0", fontFamily: "var(--font-heading)", fontSize: 26 }}>
+            Funções Cognitivas de Recuperação Ativa
+          </h1>
+        </div>
+        <div className="qb-seg" role="tablist" aria-label="Ferramentas do Arquiteto">
+          {[
+            { id: "feynman", label: "Feynman" },
+            { id: "cornell", label: "Cornell → Mapa" },
+            { id: "gan", label: "Gerador GAN" },
+          ].map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={tool === t.id}
+              className="qb-seg__opt"
+              onClick={() => {
+                setTool(t.id);
+                setError("");
+              }}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </Panel>
+
+      <Panel style={{ padding: 22, display: "flex", flexDirection: "column", gap: 14 }}>
+        <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span className="qb-overline">Tópico do edital</span>
+          <input className="qb-input" value={topic} onChange={(e) => setTopic(e.target.value)} />
+        </label>
+
+        {tool === "feynman" ? (
+          <>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span className="qb-overline">Explique de memória como se ensinasse</span>
+              <textarea
+                className="qb-input"
+                rows={4}
+                placeholder="Escreva sua explicação sem consultar o material..."
+                value={feynmanText}
+                onChange={(e) => setFeynmanText(e.target.value)}
+              />
+            </label>
+            <div>
+              <Button variant="primary" icon={Sparkles} loading={busy} disabled={feynmanText.trim().length < 5} onClick={runFeynman}>
+                Avaliar explicação (Feynman)
+              </Button>
+            </div>
+          </>
+        ) : null}
+
+        {tool === "cornell" ? (
+          <>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span className="qb-overline">
+                1. Tentativa de memória obrigatória ({attemptCheck.length}/{CORNELL_MIN_ATTEMPT_LENGTH} caracteres)
+              </span>
+              <textarea
+                className="qb-input"
+                rows={4}
+                placeholder="Antes de abrir a aula, escreva tudo o que você lembra sobre o tópico..."
+                value={cornellAttempt}
+                onChange={(e) => setCornellAttempt(e.target.value)}
+              />
+            </label>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span className="qb-overline">2. Notas de apoio / trechos da aula (opcional)</span>
+              <textarea
+                className="qb-input"
+                rows={3}
+                placeholder="Cole trechos ou observações complementares..."
+                value={cornellNotes}
+                onChange={(e) => setCornellNotes(e.target.value)}
+              />
+            </label>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <Button variant="secondary" loading={busy} disabled={!attemptCheck.ok} onClick={() => runCornell(false)}>
+                Estruturar Notas Cornell
+              </Button>
+              <Button variant="primary" icon={Brain} loading={busy} disabled={!attemptCheck.ok} onClick={() => runCornell(true)}>
+                Gerar Mapa Mental Visual
+              </Button>
+            </div>
+          </>
+        ) : null}
+
+        {tool === "gan" ? (
+          <>
+            <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span className="qb-overline">Base conceitual (mapa ou texto do tópico)</span>
+              <textarea
+                className="qb-input"
+                rows={4}
+                placeholder="Cole o resumo ou os pontos-chave para gerar itens Cebraspe ou flashcards GAN..."
+                value={ganSource}
+                onChange={(e) => setGanSource(e.target.value)}
+              />
+            </label>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <Button variant="primary" icon={Target} loading={busy} onClick={() => runGan("questions")}>
+                Gerar Questões C/E (GAN)
+              </Button>
+              <Button variant="secondary" icon={Layers} loading={busy} onClick={() => runGan("flashcards")}>
+                Gerar Flashcards (GAN)
+              </Button>
+            </div>
+          </>
+        ) : null}
+
+        {error ? <p style={{ margin: 0, color: "var(--state-incorrect)", fontSize: 14 }}>{error}</p> : null}
+      </Panel>
+
+      {output ? (
+        <Panel variant="sunken" style={{ padding: 22, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+            <span className="qb-overline">Resultado do Arquiteto</span>
+            {output.demo ? <Badge tone="attention">Modo Demonstração</Badge> : <Badge tone="correct">Base44 IA</Badge>}
+          </div>
+
+          {output.type === "feynman" ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14, color: "var(--text-secondary)" }}>
+              <strong style={{ fontSize: 18, color: "var(--qb-gold)" }}>Nota cognitiva: {output.data?.score ?? "—"}/100</strong>
+              {output.data?.simplifiedSummary ? <p style={{ margin: 0 }}>{output.data.simplifiedSummary}</p> : null}
+              {Array.isArray(output.data?.gaps) && output.data.gaps.length ? (
+                <div><strong>Lacunas:</strong> {output.data.gaps.join(" · ")}</div>
+              ) : null}
+            </div>
+          ) : null}
+
+          {output.type === "cornell" ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14, color: "var(--text-secondary)" }}>
+              {Array.isArray(output.data?.cues) ? <div><strong>Pistas:</strong> {output.data.cues.join(" · ")}</div> : null}
+              {output.data?.summary ? <div><strong>Síntese:</strong> {output.data.summary}</div> : null}
+              {Array.isArray(output.data?.gapsFromAttempt) ? <div><strong>Lacunas da evocação:</strong> {output.data.gapsFromAttempt.join(" · ")}</div> : null}
+            </div>
+          ) : null}
+
+          {output.type === "map" ? (
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+              <span style={{ color: "var(--text-secondary)" }}>
+                Mapa <strong>{output.data.title}</strong> estruturado com {output.data.branches.length} ramos principais.
+              </span>
+              <Button variant="primary" size="sm" onClick={() => onOpenMap?.(output.data)}>
+                Abrir no Mapa Mental
+              </Button>
+            </div>
+          ) : null}
+
+          {output.type === "questions" ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {(output.data?.questions || []).map((q, i) => (
+                <div key={i} style={{ padding: 12, borderRadius: 10, background: "var(--surface)", border: "var(--border-hairline)" }}>
+                  <div style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+                    <Badge tone={q.gabarito === "C" ? "correct" : "incorrect"}>Gabarito: {q.gabarito}</Badge>
+                    {q.mecanismo ? <Badge tone="gold">{q.mecanismo}</Badge> : null}
+                    <Badge tone="neutral">{q.origem || "inédito Arquiteto"}</Badge>
+                  </div>
+                  <p style={{ margin: "0 0 6px", color: "var(--qb-ivory)" }}>{q.enunciado}</p>
+                  <p style={{ margin: 0, fontSize: 13, color: "var(--text-secondary)" }}>{q.comentario}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          {output.type === "flashcards" ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {(output.data?.cards || []).map((c, i) => (
+                <div key={i} style={{ padding: 12, borderRadius: 10, background: "var(--surface)", border: "var(--border-hairline)" }}>
+                  <div style={{ fontWeight: 600, color: "var(--qb-ivory)", marginBottom: 4 }}>{c.front}</div>
+                  <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{c.back}</div>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </Panel>
+      ) : null}
+    </div>
+  );
+}
+
 function TutorDrawer({ open, onClose, user, context }) {
   const [input, setInput] = useState("");
+  const [mode, setMode] = useState("socratic");
   const [busy, setBusy] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       text: user
-        ? "Tutor IA conectado à Base44. Pergunte sobre qualquer tópico do edital ou pegadinha."
-        : "Modo Demonstração: faça login na Base44 para consultar o Tutor IA em tempo real.",
+        ? "Arquiteto Cognitivo conectado à Base44. Escolha o modo (Socrático, Banca Cebraspe, Simples ou Desafio) e pergunte."
+        : "Modo Demonstração: faça login na Base44 para consultar o Arquiteto Cognitivo em tempo real.",
     },
   ]);
 
@@ -1406,7 +1709,7 @@ function TutorDrawer({ open, onClose, user, context }) {
         ...prev,
         {
           role: "assistant",
-          text: "[Demonstração] Entre na sua conta Base44 para ativar a função `study-tutor` com IA real.",
+          text: "[Demonstração] Entre na sua conta Base44 para ativar o Arquiteto Cognitivo (`study-architect`) com IA real.",
         },
       ]);
       return;
@@ -1414,15 +1717,20 @@ function TutorDrawer({ open, onClose, user, context }) {
 
     setBusy(true);
     try {
-      const res = await base44.functions.invoke("study-tutor", { question: q, context });
+      const res = await invokeArchitect({
+        task: "tutor-chat",
+        payload: { mode, question: q, context },
+        user,
+        isDemo: false,
+      });
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", text: res.data?.answer || "Sem resposta." },
+        { role: "assistant", text: res.answer || "Sem resposta." },
       ]);
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", text: err?.response?.data?.error || err?.message || "Erro ao consultar Tutor IA." },
+        { role: "assistant", text: err?.response?.data?.error || err?.message || "Erro ao consultar Arquiteto IA." },
       ]);
     } finally {
       setBusy(false);
@@ -1475,6 +1783,21 @@ function TutorDrawer({ open, onClose, user, context }) {
           <Button variant="ghost" size="sm" icon={X} onClick={onClose}>
             Fechar
           </Button>
+        </div>
+
+        <div style={{ padding: "10px 18px", borderBottom: "var(--border-hairline)", display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {ARCHITECT_MODES.map((m) => (
+            <button
+              key={m.id}
+              type="button"
+              className="qb-seg__opt"
+              aria-pressed={mode === m.id}
+              style={{ padding: "4px 10px", fontSize: 12 }}
+              onClick={() => setMode(m.id)}
+            >
+              {m.label}
+            </button>
+          ))}
         </div>
 
         <div style={{ flex: 1, overflowY: "auto", padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
