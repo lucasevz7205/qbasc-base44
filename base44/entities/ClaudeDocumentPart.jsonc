@@ -1,6 +1,6 @@
 {
-  "type": "object",
   "name": "ClaudeDocumentPart",
+  "type": "object",
   "properties": {
     "collection": {
       "type": "string"
@@ -22,12 +22,12 @@
     "payload_chunk"
   ],
   "rls": {
-    "create": {
+    "read": {
       "user_condition": {
         "role": "admin"
       }
     },
-    "read": {
+    "create": {
       "user_condition": {
         "role": "admin"
       }
