@@ -26,10 +26,14 @@ import {
   Badge,
   BrandHeader,
   Button,
+  CognitiveAlertBanner,
+  FeedbackDrawer,
   HeroAscension,
   Panel,
   ProgressBar,
   RadialNavigation,
+  StudySessionHeader,
+  WelcomeScreen,
 } from "./components/DesignSystem";
 import {
   computeDashboardMetrics,
@@ -54,6 +58,11 @@ const NAV_ITEMS = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("hoje");
+  const [enteredApp, setEnteredApp] = useState(false);
+  const [focusMode, setFocusMode] = useState(false);
+  const [sessionElapsed, setSessionElapsed] = useState(0);
+  const [sessionPaused, setSessionPaused] = useState(false);
+  const [mapReturnTo, setMapReturnTo] = useState(null);
   const [tutorOpen, setTutorOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [rawData, setRawData] = useState(DEMO_STUDY_DATA);
@@ -61,6 +70,16 @@ export default function App() {
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    if (!enteredApp && !user) return undefined;
+    if (activeTab !== "treinar" && activeTab !== "flashcards") return undefined;
+    if (sessionPaused) return undefined;
+    const id = window.setInterval(() => {
+      setSessionElapsed((t) => t + 1);
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [enteredApp, user, activeTab, sessionPaused]);
 
   useEffect(() => {
     let alive = true;
@@ -137,13 +156,28 @@ export default function App() {
     });
   }
 
+  if (!loading && !user && !enteredApp) {
+    return (
+      <WelcomeScreen
+        onLogin={() => base44.auth.redirectToLogin?.()}
+        onEnterDemo={() => setEnteredApp(true)}
+      />
+    );
+  }
+
+  const hideChromeForFocus = focusMode && (activeTab === "treinar" || activeTab === "flashcards");
+
   return (
     <div>
-      <BrandHeader
-        navItems={NAV_ITEMS}
-        activeNav={activeTab}
-        onSelectNav={setActiveTab}
-        isDemo={isDemo}
+      {!hideChromeForFocus ? (
+        <BrandHeader
+          navItems={NAV_ITEMS}
+          activeNav={activeTab}
+          onSelectNav={(tab) => {
+            setFocusMode(false);
+            setActiveTab(tab);
+          }}
+          isDemo={isDemo}
         rightSlot={
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
             <Button
@@ -176,6 +210,7 @@ export default function App() {
           </div>
         }
       />
+      ) : null}
 
       <main className="qb-main-container">
         <input
@@ -185,7 +220,7 @@ export default function App() {
           style={{ display: "none" }}
           onChange={handleImportJson}
         />
-        {(statusMessage || isDemo) ? (
+        {(statusMessage || isDemo) && !hideChromeForFocus ? (
           <Panel
             variant="sunken"
             style={{
@@ -246,17 +281,61 @@ export default function App() {
             questoes={rawData.questoes}
             respostas={rawData.respostas}
             isDemo={isDemo || !user}
+            elapsed={sessionElapsed}
+            paused={sessionPaused}
+            focusMode={focusMode}
+            onTogglePause={() => setSessionPaused((p) => !p)}
+            onToggleFocus={() => setFocusMode((f) => !f)}
+            onBack={() => {
+              setFocusMode(false);
+              setActiveTab("hoje");
+            }}
+            onOpenConcept={(qid) => {
+              setFocusMode(false);
+              setMapReturnTo({ label: `questão ${qid}`, tab: "treinar" });
+              setActiveTab("mapas");
+            }}
+            onGoFlashcards={() => {
+              setFocusMode(false);
+              setActiveTab("flashcards");
+            }}
             onAnswerRecorded={handleAnswerRecorded}
             onOpenTutor={() => setTutorOpen(true)}
           />
         ) : null}
 
         {!loading && activeTab === "flashcards" ? (
-          <FlashcardsView flashcards={metrics.flashcards} />
+          <FlashcardsView
+            flashcards={metrics.flashcards}
+            isDemo={isDemo || !user}
+            user={user}
+            elapsed={sessionElapsed}
+            paused={sessionPaused}
+            focusMode={focusMode}
+            onTogglePause={() => setSessionPaused((p) => !p)}
+            onToggleFocus={() => setFocusMode((f) => !f)}
+            onBack={() => {
+              setFocusMode(false);
+              setActiveTab("hoje");
+            }}
+            onOpenOrigin={() => {
+              setFocusMode(false);
+              setMapReturnTo({ label: "revisão de flashcards", tab: "flashcards" });
+              setActiveTab("mapas");
+            }}
+          />
         ) : null}
 
         {!loading && activeTab === "mapas" ? (
-          <MindMapsView mindMaps={metrics.mindMaps} />
+          <MindMapsView
+            mindMaps={metrics.mindMaps}
+            returnTo={mapReturnTo}
+            onReturn={() => {
+              if (mapReturnTo?.tab) setActiveTab(mapReturnTo.tab);
+              setMapReturnTo(null);
+            }}
+            onReview={() => setActiveTab("flashcards")}
+          />
         ) : null}
       </main>
 
@@ -623,7 +702,21 @@ function RetentionView({ metrics }) {
   );
 }
 
-function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTutor }) {
+function TreinarView({
+  questoes,
+  respostas,
+  isDemo,
+  elapsed = 0,
+  paused = false,
+  focusMode = false,
+  onTogglePause,
+  onToggleFocus,
+  onBack,
+  onOpenConcept,
+  onGoFlashcards,
+  onAnswerRecorded,
+  onOpenTutor,
+}) {
   const respMap = useMemo(
     () => new Map(respostas.map((r) => [r.qid || r.id, r])),
     [respostas]
@@ -636,6 +729,9 @@ function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTuto
   const [choice, setChoice] = useState(null);
   const [confidence, setConfidence] = useState(null);
   const [submitted, setSubmitted] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [sessionErrors, setSessionErrors] = useState([]);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const current = queue[idx] || null;
@@ -654,6 +750,11 @@ function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTuto
         isDemo,
       });
       setSubmitted(result);
+      setDrawerOpen(true);
+      if (!result.acertou && !result.isBlank) {
+        setSessionErrors((prev) => [...prev, current]);
+        setBannerDismissed(false);
+      }
       onAnswerRecorded?.(current.id, result.record);
     } finally {
       setSaving(false);
@@ -666,8 +767,36 @@ function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTuto
       setChoice(null);
       setConfidence(null);
       setSubmitted(null);
+      setDrawerOpen(false);
     }
   }
+
+  useEffect(() => {
+    function onKey(e) {
+      if (!current) return;
+      const tag = e.target?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      const k = e.key.toLowerCase();
+      if (!submitted) {
+        if (k === "c") setChoice("C");
+        else if (k === "e") setChoice("E");
+        else if (k === "b") {
+          setChoice("B");
+          setConfidence(null);
+        } else if ((k === "1" || k === "2" || k === "3") && choice !== "B") {
+          setConfidence(Number(k));
+        } else if (e.key === "Enter" && choice && (choice === "B" || confidence)) {
+          e.preventDefault();
+          handleConfirm();
+        }
+      } else if (e.key === "Enter" && idx + 1 < queue.length) {
+        e.preventDefault();
+        nextQuestion();
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   if (!current) {
     return (
@@ -681,6 +810,39 @@ function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTuto
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+      <StudySessionHeader
+        subject={current.cap || "Treino C/E"}
+        topic={current.tema || current.topico || "Questões padrão Cebraspe"}
+        current={idx + 1}
+        total={queue.length}
+        unit="Questão"
+        elapsed={elapsed}
+        paused={paused}
+        focusMode={focusMode}
+        onTogglePause={onTogglePause}
+        onToggleFocus={onToggleFocus}
+        onBack={onBack}
+      />
+
+      {!focusMode && sessionErrors.length > 0 && !bannerDismissed ? (
+        <CognitiveAlertBanner
+          tone="attention"
+          title={`${sessionErrors.length} ${sessionErrors.length > 1 ? "erros" : "erro"} nesta sessão`}
+          onDismiss={() => setBannerDismissed(true)}
+          actions={
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => onOpenConcept?.(sessionErrors[sessionErrors.length - 1].id)}
+            >
+              Revisar conceito no mapa
+            </Button>
+          }
+        >
+          Último erro registrado em {sessionErrors[sessionErrors.length - 1].cap || "tópico atual"}. Confira a origem do erro antes de avançar.
+        </CognitiveAlertBanner>
+      ) : null}
+
       <Panel variant="ornate" style={{ padding: 26 }}>
         <div
           style={{
@@ -873,18 +1035,139 @@ function TreinarView({ questoes, respostas, isDemo, onAnswerRecorded, onOpenTuto
               <strong>Vacina:</strong> {current.vacina}
             </p>
           ) : null}
+
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
+            <Button variant="secondary" size="sm" onClick={() => setDrawerOpen(true)}>
+              Abrir gaveta de correção
+            </Button>
+            {onOpenConcept ? (
+              <Button variant="ghost" size="sm" onClick={() => onOpenConcept(current.id)}>
+                Ver conceito no mapa
+              </Button>
+            ) : null}
+          </div>
         </Panel>
       ) : null}
+
+      <div style={{ textAlign: "center", font: "400 12px/1 var(--font-mono)", color: "var(--text-muted)" }}>
+        Atalhos: C / E / B para marcar · 1 / 2 / 3 para confiança · Enter para confirmar ou avançar
+      </div>
+
+      <FeedbackDrawer
+        open={Boolean(submitted && drawerOpen)}
+        onClose={() => setDrawerOpen(false)}
+        result={submitted ? (submitted.acertou ? "correct" : submitted.isBlank ? "blank" : "incorrect") : null}
+        answerKey={current.gabarito}
+        explanation={current.comentario}
+        legalBasis={current.fonte}
+        trap={
+          current.mecanismo || current.vacina
+            ? {
+                name: current.mecanismo ? `Mecanismo ${current.mecanismo}` : "Alerta de banca",
+                description: current.vacina || current.evidencia || "",
+              }
+            : null
+        }
+        concept={{ path: [current.cap || "Edital", current.tema || current.topico || `Item ${current.id}`] }}
+        onOpenConcept={() => {
+          setDrawerOpen(false);
+          onOpenConcept?.(current.id);
+        }}
+        onFlashcards={() => {
+          setDrawerOpen(false);
+          onGoFlashcards?.();
+        }}
+      />
     </div>
   );
 }
 
-function FlashcardsView({ flashcards }) {
+const FLASH_RATES = [
+  { key: "errei", label: "Errei", interval: "< 1 min" },
+  { key: "dificil", label: "Difícil", interval: "10 min" },
+  { key: "bom", label: "Bom", interval: "1 d" },
+  { key: "facil", label: "Fácil", interval: "4 d" },
+];
+
+function FlashcardsView({
+  flashcards,
+  isDemo,
+  user,
+  elapsed = 0,
+  paused = false,
+  focusMode = false,
+  onTogglePause,
+  onToggleFocus,
+  onBack,
+  onOpenOrigin,
+}) {
   const [idx, setIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [evocacao, setEvocacao] = useState("");
+  const [ratings, setRatings] = useState([]);
+  const [aiGrade, setAiGrade] = useState("");
+  const [grading, setGrading] = useState(false);
 
   const card = flashcards[idx] || null;
+
+  function go(delta) {
+    if (!flashcards.length) return;
+    setIdx((idx + delta + flashcards.length) % flashcards.length);
+    setFlipped(false);
+    setEvocacao("");
+    setAiGrade("");
+  }
+
+  function handleRate(rateKey) {
+    setRatings((prev) => [...prev, { id: card?.id || idx, rate: rateKey }]);
+    go(1);
+  }
+
+  async function correctFlashcardWithAI() {
+    if (!card || !evocacao.trim()) return;
+    setGrading(true);
+    try {
+      if (user && !isDemo) {
+        const res = await base44.functions.invoke("study-tutor", {
+          mode: "grade_flashcard",
+          front: card.front,
+          back: card.back,
+          userAnswer: evocacao.trim(),
+        });
+        setAiGrade(res?.data?.feedback || res?.feedback || "Correção concluída.");
+      } else {
+        const refWords = String(card.back || "")
+          .toLowerCase()
+          .split(/\W+/)
+          .filter((w) => w.length > 3);
+        const userWords = new Set(evocacao.toLowerCase().split(/\W+/));
+        const hits = refWords.filter((w) => userWords.has(w)).length;
+        const pct = refWords.length ? Math.round((hits / refWords.length) * 100) : 0;
+        setAiGrade(
+          `Modo Demonstração (sem IA conectada): coincidência lexical de ${pct}% com os termos-chave do verso. Compare com o gabarito ao virar o cartão.`
+        );
+      }
+    } catch (err) {
+      setAiGrade(err?.message || "Não foi possível avaliar a resposta agora.");
+    } finally {
+      setGrading(false);
+    }
+  }
+
+  useEffect(() => {
+    function onKey(e) {
+      if (!card) return;
+      const tag = e.target?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.key === " ") {
+        e.preventDefault();
+        setFlipped((f) => !f);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
   if (!card) {
     return (
       <Panel style={{ padding: 32, textAlign: "center" }}>
@@ -895,18 +1178,26 @@ function FlashcardsView({ flashcards }) {
     );
   }
 
-  function go(delta) {
-    setIdx((idx + delta + flashcards.length) % flashcards.length);
-    setFlipped(false);
-    setEvocacao("");
-  }
-
   return (
-    <div style={{ maxWidth: 760, margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
+    <div style={{ maxWidth: 780, margin: "0 auto", display: "flex", flexDirection: "column", gap: 18 }}>
+      <StudySessionHeader
+        subject="Flashcards · Revisão Ativa"
+        topic={card.topicId || "Caderno de revisão"}
+        current={idx + 1}
+        total={flashcards.length}
+        unit="Cartão"
+        elapsed={elapsed}
+        paused={paused}
+        focusMode={focusMode}
+        onTogglePause={onTogglePause}
+        onToggleFocus={onToggleFocus}
+        onBack={onBack}
+      />
+
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
-        <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: 22 }}>
-          Flashcards ({idx + 1} / {flashcards.length})
-        </h2>
+        <span style={{ font: "400 13px/1 var(--font-mono)", color: "var(--text-muted)" }}>
+          {ratings.length} avaliados nesta sessão
+        </span>
         <div style={{ display: "flex", gap: 8 }}>
           <Button variant="secondary" size="sm" icon={ChevronLeft} onClick={() => go(-1)}>
             Anterior
@@ -917,8 +1208,8 @@ function FlashcardsView({ flashcards }) {
         </div>
       </div>
 
-      <div className="qb-flash" style={{ minHeight: 250 }}>
-        <div className={`qb-flash__inner ${flipped ? "is-flipped" : ""}`} style={{ minHeight: 250 }}>
+      <div className="qb-flash" style={{ minHeight: 270 }}>
+        <div className={`qb-flash__inner ${flipped ? "is-flipped" : ""}`} style={{ minHeight: 270 }}>
           <Panel
             variant="ornate"
             className="qb-flash__face"
@@ -926,7 +1217,10 @@ function FlashcardsView({ flashcards }) {
           >
             <Badge tone="gold">{card.topicId}</Badge>
             <p style={{ fontSize: 20, lineHeight: 1.5, margin: "16px 0" }}>{card.front}</p>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ font: "400 12px/1 var(--font-mono)", color: "var(--text-muted)" }}>
+                Espaço · virar cartão
+              </span>
               <Button variant="secondary" icon={RotateCcw} onClick={() => setFlipped(true)}>
                 Virar cartão
               </Button>
@@ -939,20 +1233,40 @@ function FlashcardsView({ flashcards }) {
           >
             <Badge tone="correct">Verso / Gabarito</Badge>
             <p style={{ fontSize: 18, lineHeight: 1.6, margin: "16px 0" }}>{card.back}</p>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
+              {onOpenOrigin ? (
+                <button type="button" className="qb-linkbtn" onClick={onOpenOrigin}>
+                  Origem no mapa: {card.topicId}
+                </button>
+              ) : <span />}
               <Button variant="ghost" icon={RotateCcw} onClick={() => setFlipped(false)}>
                 Ver frente
-              </Button>
-              <Button variant="primary" icon={ChevronRight} onClick={() => go(1)}>
-                Próximo
               </Button>
             </div>
           </Panel>
         </div>
       </div>
 
-      <Panel style={{ padding: 20 }}>
-        <label htmlFor="v2-flash-evoc" className="qb-overline" style={{ display: "block", marginBottom: 8 }}>
+      {flipped ? (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div role="group" aria-label="Autoavaliação espaçada" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {FLASH_RATES.map((r) => (
+              <button key={r.key} type="button" className="qb-rate" onClick={() => handleRate(r.key)}>
+                {r.label}
+                <small>{r.interval}</small>
+              </button>
+            ))}
+          </div>
+          {isDemo ? (
+            <span style={{ font: "400 12px/1.4 var(--font-body)", color: "var(--text-muted)", textAlign: "center" }}>
+              Intervalos ilustrativos — modo demonstração, sem agendamento real.
+            </span>
+          ) : null}
+        </div>
+      ) : null}
+
+      <Panel style={{ padding: 20, display: "flex", flexDirection: "column", gap: 10 }}>
+        <label htmlFor="v2-flash-evoc" className="qb-overline" style={{ display: "block" }}>
           Escreva sua resposta antes de virar
         </label>
         <textarea
@@ -963,12 +1277,44 @@ function FlashcardsView({ flashcards }) {
           value={evocacao}
           onChange={(e) => setEvocacao(e.target.value)}
         />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <Button
+            variant="secondary"
+            size="sm"
+            icon={Sparkles}
+            loading={grading}
+            disabled={!evocacao.trim()}
+            onClick={correctFlashcardWithAI}
+          >
+            Corrigir resposta com IA
+          </Button>
+          {!flipped ? (
+            <Button variant="ghost" size="sm" onClick={() => setFlipped(true)}>
+              Mostrar verso
+            </Button>
+          ) : null}
+        </div>
+        {aiGrade ? (
+          <div
+            style={{
+              padding: 12,
+              borderRadius: 10,
+              background: "var(--surface-sunken)",
+              border: "var(--border-hairline)",
+              fontSize: 14,
+              color: "var(--text-secondary)",
+              lineHeight: 1.55,
+            }}
+          >
+            {aiGrade}
+          </div>
+        ) : null}
       </Panel>
     </div>
   );
 }
 
-function MindMapsView({ mindMaps }) {
+function MindMapsView({ mindMaps, returnTo, onReturn, onReview }) {
   const [selectedMapIdx, setSelectedMapIdx] = useState(0);
   const currentMap = mindMaps[selectedMapIdx] || null;
   const nodes = useMemo(() => mindMapToCanvasNodes(currentMap), [currentMap]);
@@ -1023,7 +1369,12 @@ function MindMapsView({ mindMaps }) {
           onSelect={setSelectedId}
           height={540}
         />
-        <ConceptPanel node={selectedNode} />
+        <ConceptPanel
+          node={selectedNode}
+          returnTo={returnTo?.label}
+          onReturn={onReturn}
+          onReview={onReview}
+        />
       </div>
     </div>
   );
