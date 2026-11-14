@@ -3,9 +3,10 @@ import { createFileRoute } from '@tanstack/react-router';
 import { AppShell } from '@/components/qb/AppShell';
 import { WelcomeView } from '@/components/qb/screens/WelcomeView';
 import { DashboardView } from '@/components/qb/screens/DashboardView';
-import { Panel } from '@/components/qb/core/Panel';
-import { Button } from '@/components/qb/core/Button';
-import { Badge } from '@/components/qb/core/Badge';
+import { QuestionSessionView } from '@/components/qb/screens/QuestionSessionView';
+import { MindMapView } from '@/components/qb/screens/MindMapView';
+import { FlashcardSessionView } from '@/components/qb/screens/FlashcardSessionView';
+import { TutorView } from '@/components/qb/screens/TutorView';
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -17,55 +18,84 @@ export const Route = createFileRoute('/')({
       },
     ],
   }),
-  component: QuebrandoABancaHome,
+  component: QuebrandoABancaApp,
 });
 
-const VIEW_LABELS = {
-  questions: 'Sessão de Questões (CEBRASPE Certo/Errado)',
-  map: 'Mapa Mental Interativo + Painel de Conceito',
-  flashcards: 'Sessão de Flashcards e Revisão Espaçada',
-  tutor: 'Tutor Estratégico (Demonstração)',
-};
-
-function QuebrandoABancaHome() {
+function QuebrandoABancaApp() {
   const [view, setView] = React.useState('dashboard');
-  const [progress] = React.useState({ answered: 0, cards: 0 });
+  const [session, setSession] = React.useState({
+    idx: 0,
+    answers: {},
+    drawer: false,
+    focus: false,
+    bannerDismissed: false,
+  });
+  const [cards, setCards] = React.useState({
+    idx: 0,
+    flipped: false,
+    ratings: [],
+  });
+  const [mapSel, setMapSel] = React.useState('em');
+  const [returnTo, setReturnTo] = React.useState(null);
+  const [elapsed, setElapsed] = React.useState(0);
+  const [paused, setPaused] = React.useState(false);
 
-  const go = (nextView) => {
-    setView(nextView);
-    if (typeof window !== 'undefined') {
-      window.scrollTo(0, 0);
+  React.useEffect(() => {
+    const urlView = new URLSearchParams(window.location.search).get('view');
+    if (urlView) setView(urlView);
+  }, []);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view]);
+
+  React.useEffect(() => {
+    if (!['questions', 'flashcards'].includes(view) || paused) return;
+    const t = setInterval(() => setElapsed((e) => e + 1), 1000);
+    return () => clearInterval(t);
+  }, [view, paused]);
+
+  const go = (nextView, opts = {}) => {
+    if (nextView === 'map') {
+      if (opts.node) setMapSel(opts.node);
+      setReturnTo(opts.returnTo || null);
     }
+    setView(nextView);
   };
+
+  const progress = {
+    answered: Object.values(session.answers).filter((a) => a.revealed).length,
+    cards: cards.ratings.length,
+  };
+  const timer = { elapsed, paused, onTogglePause: () => setPaused((p) => !p) };
 
   if (view === 'welcome') {
     return <WelcomeView onEnter={() => go('dashboard')} />;
   }
+  if (view === 'questions') {
+    return <QuestionSessionView session={session} setSession={setSession} go={go} {...timer} />;
+  }
+  if (view === 'flashcards') {
+    return <FlashcardSessionView cards={cards} setCards={setCards} go={go} {...timer} />;
+  }
 
   return (
     <AppShell active={view} onNavigate={go} onProfile={() => go('welcome')} wide={view === 'map'}>
-      {view === 'dashboard' ? (
-        <DashboardView go={go} progress={progress} />
-      ) : (
-        <Panel padding={32} style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 640, margin: '32px auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-            <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>PRÓXIMA ETAPA DO DESIGN SYSTEM</span>
-            <Badge tone="gold" icon="sparkles">Parte 2</Badge>
-          </div>
-          <h1 style={{ font: 'var(--type-h1)' }}>{VIEW_LABELS[view] || view}</h1>
-          <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>
-            A Parte 1 (Tokens, Fontes, Assets Oficiais, Cabeçalho, Navegação Radial, Boas-vindas e Dashboard) já está ativa. Confirme no chat para implementarmos esta tela na Parte 2 seguindo fielmente o Claude Design.
-          </p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
-            <Button icon="arrow-left" onClick={() => go('dashboard')}>
-              Voltar ao Início
-            </Button>
-            <Button variant="secondary" onClick={() => go('welcome')}>
-              Ver tela de Boas-vindas
-            </Button>
-          </div>
-        </Panel>
+      {view === 'dashboard' && <DashboardView go={go} progress={progress} />}
+      {view === 'map' && (
+        <MindMapView
+          selected={mapSel}
+          setSelected={setMapSel}
+          returnTo={returnTo}
+          onReturn={() => {
+            const r = returnTo;
+            setReturnTo(null);
+            if (r?.view) go(r.view);
+          }}
+          go={go}
+        />
       )}
+      {view === 'tutor' && <TutorView session={session} go={go} />}
     </AppShell>
   );
 }
