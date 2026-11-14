@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "name": "ClaudeDocument",
+  "properties": {
+    "collection": {
+      "type": "string"
+    },
+    "legacy_id": {
+      "type": "string"
+    },
+    "payload_json": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "collection",
+    "legacy_id",
+    "payload_json",
+    "source"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": false
+  }
+}
