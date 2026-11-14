@@ -448,9 +448,30 @@ export function MindMapCanvas({ nodes = [], selectedId, onSelect, height = 540 }
   );
 }
 
-export function ConceptPanel({ node, returnTo, onReturn, onReview }) {
+export function ConceptPanel({ node, returnTo, onReturn, onReview, onEvocar }) {
+  const [recallText, setRecallText] = React.useState("");
+  const [recallResult, setRecallResult] = React.useState(null);
+  const [recalling, setRecalling] = React.useState(false);
+
+  React.useEffect(() => {
+    setRecallText("");
+    setRecallResult(null);
+  }, [node?.id]);
+
   if (!node) return null;
   const m = node.mastery && MASTERY[node.mastery];
+
+  async function handleEvocar() {
+    if (!onEvocar || recallText.trim().length < 3) return;
+    setRecalling(true);
+    try {
+      const res = await onEvocar(node, recallText.trim());
+      setRecallResult(res?.result || res || null);
+    } finally {
+      setRecalling(false);
+    }
+  }
+
   return (
     <Panel variant="ornate" style={{ padding: 24, display: "flex", flexDirection: "column", gap: 16 }}>
       {returnTo && onReturn ? (
@@ -474,6 +495,44 @@ export function ConceptPanel({ node, returnTo, onReturn, onReview }) {
       {m ? (
         <div>
           <Badge tone={node.mastery === "progress" ? "attention" : node.mastery}>{m[2]}</Badge>
+        </div>
+      ) : null}
+      {onEvocar ? (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 14, borderRadius: 12, background: "var(--surface-sunken)", border: "var(--border-hairline)" }}>
+          <div className="qb-overline" style={{ color: "var(--qb-gold)" }}>
+            Evocar antes de ler
+          </div>
+          <textarea
+            className="qb-input"
+            rows={2}
+            placeholder="Escreva de memória o que sabe sobre este nó antes de conferir..."
+            value={recallText}
+            onChange={(e) => setRecallText(e.target.value)}
+          />
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              variant="secondary"
+              size="sm"
+              loading={recalling}
+              disabled={recallText.trim().length < 3}
+              onClick={handleEvocar}
+            >
+              Corrigir evocação
+            </Button>
+          </div>
+          {recallResult ? (
+            <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5, display: "flex", flexDirection: "column", gap: 4 }}>
+              <strong style={{ color: "var(--qb-gold)" }}>
+                Veredito: {String(recallResult.veredito || "avaliado")}
+              </strong>
+              {Array.isArray(recallResult.errosExatos) && recallResult.errosExatos.length ? (
+                <div>Erros/alertas: {recallResult.errosExatos.join(" · ")}</div>
+              ) : null}
+              {Array.isArray(recallResult.faltou) && recallResult.faltou.length ? (
+                <div>Faltou: {recallResult.faltou.join(" · ")}</div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       ) : null}
       <div>
