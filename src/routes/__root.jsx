@@ -12,8 +12,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Base44 App" },
-      { name: "description", content: "A full-stack Base44 app built with TanStack Start." },
+      { title: "Quebrando a Banca — A Ascensão" },
+      { name: "description", content: "Conhecimento · Estratégia · Disciplina · Conquista" },
     ],
     // No icon link: the platform adds the app's logo when serving.
     links: [
@@ -38,7 +38,7 @@ function RootComponent() {
 // The document. There is no index.html: the server renders <html> from here.
 function RootDocument({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
