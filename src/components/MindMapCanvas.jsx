@@ -1,10 +1,12 @@
 import React from "react";
 import {
+  ArrowLeft,
   ChevronDown,
   ChevronRight,
   CircleCheck,
   CircleDashed,
   CircleX,
+  Layers,
   List,
   LoaderCircle,
   LocateFixed,
@@ -13,7 +15,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from "lucide-react";
-import { Badge, Panel } from "./DesignSystem";
+import { Badge, Button, Panel } from "./DesignSystem";
 
 const MASTERY = {
   correct: [CircleCheck, "var(--state-correct)", "Domínio demonstrado"],
@@ -446,11 +448,18 @@ export function MindMapCanvas({ nodes = [], selectedId, onSelect, height = 540 }
   );
 }
 
-export function ConceptPanel({ node }) {
+export function ConceptPanel({ node, returnTo, onReturn, onReview }) {
   if (!node) return null;
   const m = node.mastery && MASTERY[node.mastery];
   return (
     <Panel variant="ornate" style={{ padding: 24, display: "flex", flexDirection: "column", gap: 16 }}>
+      {returnTo && onReturn ? (
+        <div>
+          <Button variant="secondary" size="sm" icon={ArrowLeft} onClick={onReturn}>
+            Voltar à {returnTo}
+          </Button>
+        </div>
+      ) : null}
       <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 4, fontSize: 13, color: "var(--text-muted)" }}>
         {(node.path || []).map((p, i) => (
           <React.Fragment key={i}>
@@ -475,6 +484,13 @@ export function ConceptPanel({ node }) {
           {node.summary || "Selecione um nó do mapa para visualizar a explicação detalhada."}
         </p>
       </div>
+      {onReview ? (
+        <div style={{ marginTop: "auto", paddingTop: 12, borderTop: "var(--border-hairline)" }}>
+          <Button variant="ghost" size="sm" icon={Layers} onClick={onReview}>
+            Revisar flashcards relacionados
+          </Button>
+        </div>
+      ) : null}
     </Panel>
   );
 }
