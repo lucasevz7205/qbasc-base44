@@ -1,6 +1,6 @@
 {
-  "type": "object",
   "name": "ClaudeDocument",
+  "type": "object",
   "properties": {
     "collection": {
       "type": "string"
@@ -22,12 +22,12 @@
     "source"
   ],
   "rls": {
-    "create": {
+    "read": {
       "user_condition": {
         "role": "admin"
       }
     },
-    "read": {
+    "create": {
       "user_condition": {
         "role": "admin"
       }
