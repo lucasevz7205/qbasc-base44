@@ -49,6 +49,7 @@ export default function BrandHeader({
   const narrow = w < 760;
   const iconNav = !narrow && w < 1100;
   const showArt = w >= 900;
+  const [menuOpen, setMenuOpen] = React.useState(false);
   const shell = {
     position: 'relative',
     display: 'flex',
@@ -123,7 +124,7 @@ export default function BrandHeader({
         <IconButton icon="search" label="Buscar" onClick={onSearch} />
         <IconButton icon="bell" label="Notificações" count={notifications} onClick={onNotifications} />
         {!narrow && <IconButton icon="chart-column" label="Desempenho" onClick={onStats} />}
-        {narrow && items.length > 0 && <IconButton icon="menu" label="Menu" />}
+        {narrow && items.length > 0 && <IconButton icon={menuOpen ? 'x' : 'menu'} label="Menu" pressed={menuOpen} onClick={() => setMenuOpen((o) => !o)} />}
         <button onClick={onProfile} aria-label={user ? `Perfil de ${user.name}` : 'Perfil'} className="qb-iconbtn qb-iconbtn--round" style={{ marginLeft: 4 }}>
           {user && user.initials ? (
             <span
@@ -147,6 +148,34 @@ export default function BrandHeader({
           )}
         </button>
       </div>
+      {narrow && menuOpen && items.length > 0 && (
+        <nav
+          aria-label="Menu principal"
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 6,
+            padding: '10px 16px',
+            borderTop: '1px solid var(--divider)',
+            width: '100%',
+          }}
+        >
+          {items.map((it) => (
+            <button
+              key={it.id}
+              className="qb-navlink"
+              aria-current={it.id === activeId ? 'page' : undefined}
+              onClick={() => {
+                setMenuOpen(false);
+                onNavigate && onNavigate(it.id);
+              }}
+            >
+              {it.icon && <Icon name={it.icon} size={18} />}
+              {it.label}
+            </button>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }

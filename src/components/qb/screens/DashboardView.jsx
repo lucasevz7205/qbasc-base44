@@ -74,7 +74,7 @@ export default function DashboardView({ go, progress = { answered: 0, cards: 0 }
               { id: 'map', label: 'Mapas mentais', icon: 'network', meta: '2 nós com erro' },
               { id: 'flashcards', label: 'Flashcards', icon: 'layers', meta: `${5 - (progress.cards || 0)} pendentes` },
               { id: 'tutor', label: 'Tutor', icon: 'message-circle', meta: 'Demonstração' },
-              { id: 'dashboard', label: 'Revisão', icon: 'history', meta: '12 itens' },
+              { id: 'flashcards', label: 'Revisão', icon: 'history', meta: '12 itens' },
             ]}
           />
         </Panel>
