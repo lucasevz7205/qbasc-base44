@@ -18,7 +18,7 @@ export const NAV = (late = 0) => [
 ];
 
 export const TOOLS = [
-  { id: 'pomodoro', label: 'Pomodoro e Áudio Alfa', icon: 'timer' },
+  { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
   { id: 'cards', label: 'Scanner de material', icon: 'scan-line' },
   { id: 'keys', label: 'Atalhos de teclado', icon: 'monitor' },
