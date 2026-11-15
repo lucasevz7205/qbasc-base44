@@ -9,7 +9,7 @@ import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { studyDate } from '@/lib/qb-real-model';
 import { flashcardOptions } from '@/lib/study-session-rules';
-import { FLASHCARD_FILTERS, filterFlashcardDeck } from '@/lib/flashcard-review';
+import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 
 export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go, backTo }) {
@@ -46,7 +46,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
     try{
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:QB_PLAN.addDays(QB_PLAN.today,interval),ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval}]});
       setSuggestion(null);
-      setCards(c=>({...c,idx:c.idx+1,flipped:false,ratings:[...c.ratings,r]}));
+      setCards(c => advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat));
     }catch{setError('Falha ao salvar avaliação. Vire o cartão e tente novamente.');}
     finally{lock.current=false;setSaving(false);}
   };
@@ -70,13 +70,14 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
           {mode !== 'all' && <p style={{ color: 'var(--text-muted)', margin: '8px 0 0' }}>{FLASHCARD_FILTERS.find(f => f.id === mode)?.hint}</p>}
         </div>
         {error&&<p role="alert">{error}</p>}
+        {!done && ratings.at(-1) === 'errei' && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei voltou ao fim da fila.</p>}
         {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={()=>go('edital')}>Voltar ao edital</Button>}</Panel> : done ? (
           <Panel variant="ornate" padding={32} style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
             <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(D.reviews).length/200,1)} size={110} rule="Rumo a 200 flashcards revisados" />
             <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Revisão concluída</span>
-              <h1 style={{ font: 'var(--type-h1)' }}>{ratings.length} cartões revisados</h1>
-              <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcados como “Errei” e agendados para nova revisão.</p>
+              <h1 style={{ font: 'var(--type-h1)' }}>{deck.length} {deck.length === 1 ? 'cartão revisado' : 'cartões revisados'}</h1>
+              <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcações “Errei” geraram repetições nesta sessão.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
                 <Button icon="house" onClick={() => go('dashboard')}>Voltar ao início</Button>
                 <Button variant="secondary" icon="rotate-ccw" onClick={() => pickFilter(mode)}>Revisar de novo</Button>
@@ -85,7 +86,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
           </Panel>
         ) : (
           <>
-            <Flashcard key={mode + ':' + card.id} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
+            <Flashcard key={mode + ':' + card.id + ':' + ratings.length} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
               back={<><div style={{ color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}><ChatMarkdown text={card.back} /></div><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
