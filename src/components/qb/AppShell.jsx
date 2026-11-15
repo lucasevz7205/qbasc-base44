@@ -37,7 +37,7 @@ function Backdrop({ bg }) {
 export default function AppShell({ ui, setUi, view, quick, go, children, wide }) {
   const { QB_DATA, QB_PLAN, refresh, logout } = useRealStudy();
   const compact = !!ui.focus;
-  const scene = ui.bg === 'dynamic' && !ui.focus;
+  const scene = ui.bg === 'dynamic' && !ui.focus && view !== 'performance';
   const isWide = wide ?? (view === 'study' || view === 'plan' || view === 'train');
   return (
     <div data-qb-theme={ui.theme} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', isolation: 'isolate' }}>
