@@ -3,6 +3,7 @@ import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary";
 import { NotFound } from "@/components/NotFound";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/AuthContext";
+import { RealStudyGate } from "@/lib/qb-real-data";
 import { QBStudyProvider } from "@/lib/QBStudyContext";
 import { Base44Scripts } from "base44:document";
 import appCss from "@/index.css?url";
@@ -30,9 +31,11 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <AuthProvider>
+      <RealStudyGate>
       <QBStudyProvider>
         <Outlet />
       </QBStudyProvider>
+      </RealStudyGate>
       <Toaster />
     </AuthProvider>
   );
