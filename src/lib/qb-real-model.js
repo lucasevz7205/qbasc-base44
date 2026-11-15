@@ -56,6 +56,7 @@ export function adaptStudy(records, user, now = new Date()) {
   const answers = Object.fromEntries(source('respostas').map(r=>[r.qid??r.id,r]));
   const rawQuestions = Object.fromEntries(source('questoes').map(q=>[q.id,q]));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
+  const questionNodeLinks = new Map();
   for(const d of source('revisao')){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
     const topic=topics[topicId];
@@ -73,6 +74,11 @@ export function adaptStudy(records, user, now = new Date()) {
         const label=str(v.t??v.label??v.titulo??v.rotulo)||title;
         nodes.push({id,parent,label});
         concepts[id] = nodeConcept(v, d.fontes);
+        for (const qid of new Set([...arr(v.questaoIds), ...arr(v.x?.questaoIds)])) {
+          if (typeof qid !== 'string') continue;
+          if (!questionNodeLinks.has(qid)) questionNodeLinks.set(qid, []);
+          questionNodeLinks.get(qid).push({ id, topicId });
+        }
         if(v.id)(aliases[topicId]??={})[v.id]=id;
         arr(v.ramos??v.children??v.nos??v.filhos??v.sub??v.f).forEach((n,i)=>add(n,id,path+'.'+i));
       };
@@ -134,7 +140,10 @@ export function adaptStudy(records, user, now = new Date()) {
       }
     }
     const rawNodeRef = q.mapaNoId??q.no??q.node??q.mapaNo;
-    const resolvedNode = mapNodes.some(n=>n.id===rawNodeRef) ? rawNodeRef : (aliases[topic?.id]?.[rawNodeRef]||roots[topic?.id]);
+    const exactNode = mapNodes.some(n=>n.id===rawNodeRef) ? rawNodeRef : aliases[topic?.id]?.[rawNodeRef];
+    const referencedNodes = questionNodeLinks.get(q.id)?.filter(link => link.topicId === topic?.id) || [];
+    const uniqueReferences = [...new Set(referencedNodes.map(link => link.id))];
+    const resolvedNode = exactNode || (uniqueReferences.length === 1 ? uniqueReferences[0] : roots[topic?.id]);
     const trap = q.trap || (q.mecanismo ? { name: `${q.mecanismo}${q.mecanismoNome ? ' — ' + q.mecanismoNome : ''}`, description: [str(q.correcaoMinima||q.vacina), str(q.criticaAdversaria)].filter(Boolean).join(' · ') || 'Mecanismo CEBRASPE auditado pela GAN.' } : undefined);
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
     questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
