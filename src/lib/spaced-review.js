@@ -46,7 +46,7 @@ export function flashcardLevel(review) {
 }
 
 export function flashcardWasRated(review) {
-  return Boolean(review?.ult || history(review).length);
+  return Boolean(review?.ult || reviewDay(review?.prox) || history(review).length);
 }
 
 export function flashcardIsDue(review, today) {

@@ -9,6 +9,7 @@ import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { studyDate } from '@/lib/qb-real-model';
+import { flashcardWasRated, reviewDay } from '@/lib/spaced-review';
 import { flashcardOptions } from '@/lib/study-session-rules';
 import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
@@ -23,7 +24,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
   const deck = cards.queue ? cards.queue.map(id => byId.get(id)).filter(Boolean) : fullDeck;
   const { idx, flipped, ratings } = cards;
   const done = idx >= deck.length;
-  useStudyActivity('flashcards', done ? null : cards.topicId || 'deck');
+  useStudyActivity('flashcards', done ? null : cards.sessionId || cards.topicId || 'deck');
   const recordCompletion = useStudyCompletion('flashcards');
   const card = deck[Math.min(idx, deck.length - 1)];
   const topicId = cards.topicId || card?.topicId;
@@ -44,19 +45,19 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
     setCards(c => ({ ...c, idx: 0, flipped: false, ratings: [], filter, queue }));
   };
   const previousReview = card ? D.reviews[card.id] || {} : {};
-  const options = flashcardOptions(previousReview.nivel);
+  const options = flashcardOptions(previousReview, reviewDay(new Date()));
   const intervals = Object.fromEntries(Object.entries(options).map(([rating, option]) => [rating, option.label]));
   const rate=async r=>{
     const option = options[r];
     if(!card||!option||lock.current)return;
     lock.current=true;setSaving(true);setError('');
     const prev = previousReview, at = new Date().toISOString();
-    const { level: nextLevel, days: interval } = option;
+    const { level: nextLevel, days: interval, date } = option;
     try{
-      await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:QB_PLAN.addDays(QB_PLAN.today,interval),ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval}]});
+      await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:date,ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval,rev:flashcardWasRated(prev)}]});
       recordCompletion();
       setSuggestion(null);
-      setCards(c => advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat));
+      setCards(c => c.sessionId === cards.sessionId ? advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat) : c);
     }catch{setError('Falha ao salvar avaliação. Vire o cartão e tente novamente.');}
     finally{lock.current=false;setSaving(false);}
   };
@@ -70,7 +71,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
       </BrandHeader>
       <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <div>
+        {!cards.scheduledReview && <div>
           <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>
             {FLASHCARD_FILTERS.map(({ id, label }) => (
               <button key={id} type="button" className="qb-seg__opt" aria-pressed={mode === id} disabled={saving}
@@ -78,10 +79,10 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
             ))}
           </div>
           {mode !== 'all' && <p style={{ color: 'var(--text-muted)', margin: '8px 0 0' }}>{FLASHCARD_FILTERS.find(f => f.id === mode)?.hint}</p>}
-        </div>
+        </div>}
         {error&&<p role="alert">{error}</p>}
-        {!done && ratings.at(-1) === 'errei' && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei voltou ao fim da fila.</p>}
-        {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={()=>go('edital')}>Voltar ao edital</Button>}</Panel> : done ? (
+        {!done && ratings.at(-1) === 'errei' && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei voltou ao fim da fila e ficou marcado para amanhã.</p>}
+        {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{cards.scheduledReview ? <Button onClick={() => go('train')}>Voltar a Treinar</Button> : fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={()=>go('edital')}>Voltar ao edital</Button>}</Panel> : done ? (
           <Panel variant="ornate" padding={32} style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
             <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(D.reviews).length/200,1)} size={110} rule="Rumo a 200 flashcards revisados" />
             <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -89,8 +90,10 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
               <h1 style={{ font: 'var(--type-h1)' }}>{deck.length} {deck.length === 1 ? 'cartão revisado' : 'cartões revisados'}</h1>
               <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcações “Errei” geraram repetições nesta sessão.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
-                <Button icon="house" onClick={() => go('dashboard')}>Voltar ao início</Button>
-                <Button variant="secondary" icon="rotate-ccw" onClick={() => pickFilter(mode)}>Revisar de novo</Button>
+                {cards.scheduledReview ? <Button icon="target" onClick={() => go('train')}>Voltar a Treinar</Button> : <>
+                  <Button icon="house" onClick={() => go('dashboard')}>Voltar ao início</Button>
+                  <Button variant="secondary" icon="rotate-ccw" onClick={() => pickFilter(mode)}>Revisar de novo</Button>
+                </>}
               </div>
             </div>
           </Panel>

@@ -62,12 +62,15 @@ const PATH_TO_VIEW = {
 const QBStudyContext = React.createContext(null);
 
 function startQuestionRound(bank, selection = {}) {
+  const picked = pickQuestionRound(bank, selection);
+  const byId = selection.scheduledReview ? new Map(picked.map(q => [q.id, q])) : null;
+  const ordered = byId ? (selection.questionIds || []).map(id => byId.get(id)).filter(Boolean) : picked;
   return {
     idx: 0,
     answers: {},
     focus: false,
     selection,
-    questionIds: distinctRoundQuestions(pickQuestionRound(bank, selection)).map(q => q.id),
+    questionIds: distinctRoundQuestions(ordered).map(q => q.id),
     customQuestions: null,
     ganBatch: null,
     startedAt: new Date().toISOString(),
@@ -332,12 +335,15 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const { subjectId, topicId, nodeId, filter, questionIds } = arg || {};
-          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds }));
+          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
-        setCards({ idx: 0, flipped: false, ratings: [], topicId: arg?.topicId });
+        setCards({
+          idx: 0, flipped: false, ratings: [], topicId: arg?.topicId, sessionId: crypto.randomUUID(),
+          ...(arg?.scheduledReview ? { scheduledReview: true, queue: [...new Set(arg.cardIds || [])] } : {}),
+        });
       }
       if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
         resetStudyMapSelection();

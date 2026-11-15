@@ -18,7 +18,7 @@ import { mechanismOptionList } from '@/lib/cebraspe-v1-taxonomy';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
-function SessionSummary({ answers, go, qs, ganBatch }) {
+function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
   const [showItems, setShowItems] = React.useState(false);
   const answered = qs.filter(q => answers[q.id]?.revealed);
   const right = answered.filter(q => answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
@@ -77,9 +77,9 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
             Voltar ao nó no mapa mental
           </Button>
         )}
-        <Button variant={ganBatch?.originNodeId ? 'secondary' : 'primary'} iconRight="arrow-right" onClick={() => go('flashcards', { topicId: ganBatch?.topicId })}>
+        {!scheduledReview && <Button variant={ganBatch?.originNodeId ? 'secondary' : 'primary'} iconRight="arrow-right" onClick={() => go('flashcards', { topicId: ganBatch?.topicId })}>
           Seguir para flashcards
-        </Button>
+        </Button>}
         <Button variant="secondary" icon="chart-column" onClick={() => go('performance', 'diaria')}>Ver desempenho diário</Button>
         <Button variant="secondary" icon="target" onClick={() => go('train')}>Voltar a Treinar</Button>
       </div>
@@ -98,6 +98,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   }, [session.questionIds, session.customQuestions, QB_DATA.questions]);
 
   const { idx, answers, focus, ganBatch } = session;
+  const scheduledReview = !!session.selection?.scheduledReview;
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
   React.useEffect(() => {
     setGanBannerDismissed(false);
@@ -148,6 +149,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         confidence: numericConf,
       }).record;
       const attempt = { ...record.hist.at(-1), sessionId: session.sessionId, gabarito: q.key };
+      if (scheduledReview) attempt.rev = true;
       if (markedMechanism) attempt.mecanismoIdentificado = markedMechanism.value;
       if (st.clue?.trim()) attempt.trechoIdentificado = st.clue.trim();
       record.hist = [...(Array.isArray(previous?.hist) ? previous.hist : []), attempt];
@@ -155,7 +157,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
       recordCompletion();
-      setAns({ revealed: true, answer: st.answer, confidence: st.confidence, keyAtAnswer: q.key, attemptAt: record.atualizadoEm });
+      setAns({ revealed: true, answer: st.answer, confidence: st.confidence, keyAtAnswer: q.key, attemptAt: record.atualizadoEm, nextReviewDate: record.proxRevisao });
     } catch {
       setError('Não foi possível salvar a resposta. Tente novamente.');
     } finally {
@@ -193,7 +195,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           await save('rodadas', 'qbasc-' + (session.sessionId || items[0].qid + '-' + Date.now()), {
             inicio: session.startedAt || new Date().toISOString(),
             fim: new Date().toISOString(),
-            modo: ganBatch ? 'gan-mapa-qbasc' : 'treino-qbasc',
+            modo: scheduledReview ? 'revisao-qbasc' : ganBatch ? 'gan-mapa-qbasc' : 'treino-qbasc',
             itens: items,
             total: items.length,
             certos,
@@ -252,7 +254,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!focus && (
         <BrandHeader variant="compact" floating={false} onExit={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}>
-          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : 'Sessão de questões'}</span>
+          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : 'Sessão de questões'}</span>
           <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{q?.chapter || 'Treinar'}</span>
         </BrandHeader>
       )}
@@ -269,7 +271,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {error && <p role="alert">{error}</p>}
-          {!ganBatch && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
+          {!ganBatch && !scheduledReview && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
             <QuestionFilters value={session.selection?.filter} disabled={loading} onChange={filter => {
               setError('');
               go('questions', { ...session.selection, filter });
@@ -281,7 +283,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
               <Button onClick={() => go('train')}>Voltar a Treinar</Button>
             </Panel>
           ) : done ? (
-            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} />
+            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} scheduledReview={scheduledReview} />
           ) : excluded ? (
             <Panel>
               <p>Esta questão foi excluída do banco ativo.</p>
@@ -384,6 +386,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 }}
                 conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
               />
+              {showCorrection && st.nextReviewDate && <Badge tone="neutral" icon="calendar-days">Próxima revisão · {st.nextReviewDate.split('-').reverse().join('/')}</Badge>}
               {st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
                 <EditorialCurator key={q.id} kind="question" item={q} topicLabel={q.chapter || q.topicId || q.subject} />
               )}

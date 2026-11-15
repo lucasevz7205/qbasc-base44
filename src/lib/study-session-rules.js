@@ -1,5 +1,6 @@
+import { REVIEW_INTERVALS, flashcardLevel, scheduleReview } from './spaced-review.js';
+
 const QUESTION_ROUND_LIMIT = 20;
-const FLASHCARD_INTERVALS = [1, 3, 7, 15, 30];
 const RATINGS = ['errei', 'dificil', 'bom', 'facil'];
 
 export const QUESTION_FILTERS = [
@@ -98,14 +99,13 @@ export function nextQuestionIndex(questions, from, excludedIds, deletingId) {
   return index;
 }
 
-export function flashcardOptions(previousLevel) {
-  const lastLevel = FLASHCARD_INTERVALS.length - 1;
-  const current = Math.min(lastLevel, Math.max(0, Math.trunc(Number(previousLevel) || 0)));
+export function flashcardOptions(previousReview, today) {
+  const current = flashcardLevel(previousReview);
   return Object.fromEntries(RATINGS.map(rating => {
+    const repeat = rating === 'errei';
     const step = rating === 'facil' ? 2 : rating === 'bom' ? 1 : 0;
-    if (rating === 'errei') return [rating, { level: 0, days: 0, label: 'Nesta sessão', repeat: true }];
-    const level = Math.min(lastLevel, current + step);
-    const days = FLASHCARD_INTERVALS[level];
-    return [rating, { level, days, label: days === 1 ? '1 dia' : days + ' dias' }];
+    const level = repeat ? 0 : Math.min(REVIEW_INTERVALS.length - 1, current + step);
+    const { days, date } = scheduleReview(today, REVIEW_INTERVALS[level]);
+    return [rating, { level, days, date, label: repeat ? 'Nesta sessão e amanhã' : days === 1 ? '1 dia' : days + ' dias', repeat }];
   }));
 }

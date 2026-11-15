@@ -9,6 +9,7 @@ import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import AcervoPegadinhasV1 from '@/components/qb/study/AcervoPegadinhasV1';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { scheduledReviewQueues } from '@/lib/spaced-review';
 import { questionTrainingProgress } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
@@ -49,7 +50,7 @@ export function MissingLink({ missing, onBack, go }) {
 }
 
 export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp, sel: selProp, setSel: setSelProp }) {
-  const { QB_EDITAL, QB_PLAN, QB_DATA } = useRealStudy();
+  const { QB_EDITAL, QB_PLAN, QB_DATA, records } = useRealStudy();
   const ctx = useQBStudy();
   const E = QB_EDITAL;
   const sel = selProp || ctx.trainSel;
@@ -75,10 +76,19 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const subject = E.subjects.find(item => item.id === sel.subjectId);
   const topic = subject?.topics.find(item => item.id === sel.topicId);
   const stats = questionTrainingProgress(QB_DATA.questionBank, { subjectId: subject?.id, topicId: topic?.id });
+  const reviews = scheduledReviewQueues({
+    questions: QB_DATA.questionBank, flashcards: QB_DATA.flashcards, reviews: QB_DATA.reviews, rounds: records.rodadas,
+    today: QB_PLAN.today, subjectId: subject?.id, topicId: topic?.id,
+    cardTopicIds: subject ? new Set(subject.topics.map(item => item.id)) : null,
+  });
+  const scopeLabel = topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : subject?.name || 'Todas as matérias';
   const correct = stats.valid - stats.errors;
   const accuracy = stats.valid ? correct / stats.valid : null;
 
   const linkInfo = (subjectId, topicId, action) => {
+    if (action === 'review' && topicId === topic?.id && (reviews.questions.due || reviews.flashcards.due)) {
+      return { available: true, note: reviews.questions.due + ' questões · ' + reviews.flashcards.due + ' flashcards a revisar' };
+    }
     const r = resolveIntent({ action, subjectId, topicId });
     return {
       available: r.ok,
@@ -94,6 +104,26 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
         title="Treinar"
         description="Escolha a matéria e o assunto no anel; cada assunto abre quatro ações com o contexto preservado."
       />
+      <div id="qb-scheduled-review" style={{ scrollMarginTop: 100 }}>
+        <Panel variant="ornate" style={{ display: 'grid', gap: 14 }}>
+          <div>
+            <h2 style={{ font: 'var(--type-h2)' }}>Revisão espaçada</h2>
+            <span style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>{scopeLabel}</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 245px), 1fr))', gap: 12 }}>
+            {[
+              ['Questões', 'target', reviews.questions, () => go('questions', { filter: 'all', questionIds: reviews.questions.ids, scheduledReview: true })],
+              ['Flashcards', 'layers', reviews.flashcards, () => go('flashcards', { topicId: topic?.id, cardIds: reviews.flashcards.ids, scheduledReview: true })],
+            ].map(([label, icon, queue, start]) => (
+              <Panel key={label} variant="sunken" padding={12} style={{ display: 'grid', gap: 8 }}>
+                <strong style={{ font: 'var(--type-label)' }}>{label} · {queue.ids.length} para revisar</strong>
+                {queue.postponed > 0 && <small style={{ color: 'var(--text-muted)' }}>{queue.postponed} aguardando vaga no limite diário</small>}
+                <Button size="sm" variant="secondary" icon={icon} disabled={!queue.ids.length} onClick={start}>Revisar {label.toLowerCase()}</Button>
+              </Panel>
+            ))}
+          </div>
+        </Panel>
+      </div>
       <QuestionFilters value={filter} onChange={setFilter} />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' }}>
         <Panel variant="ornate" style={{ flex: '1 1 600px', minWidth: 0 }}>
@@ -103,7 +133,11 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             onChange={setSel}
             pending={pendingByTopic}
             linkInfo={linkInfo}
-            onAction={i => dispatch(i.action === 'train' ? { ...i, filter } : i, 'train')}
+            onAction={i => {
+              if (i.action === 'review' && (reviews.questions.due || reviews.flashcards.due)) {
+                document.getElementById('qb-scheduled-review')?.scrollIntoView({ block: 'start' });
+              } else dispatch(i.action === 'train' ? { ...i, filter } : i, 'train');
+            }}
           />
         </Panel>
         <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>

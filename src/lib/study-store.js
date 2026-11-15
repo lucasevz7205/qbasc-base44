@@ -1,6 +1,7 @@
 import { base44 } from "../api/base44Client.js";
+import { REVIEW_INTERVALS, reviewDay, scheduleReview } from "./spaced-review.js";
 
-export const SRS_INTERVALS = [1, 3, 7, 15, 30];
+export const SRS_INTERVALS = REVIEW_INTERVALS;
 export const RETENTION_DAYS = 7;
 
 export function todayKey(now = new Date()) {
@@ -96,7 +97,7 @@ export function buildAnswerRecord({
   const acertou = !isBlank && L === question.gabarito;
   const conf = isBlank ? null : confidence || null;
   const nowIso = now.toISOString();
-  const d = todayKey(now);
+  const d = reviewDay(now);
 
   const r = {
     ...prev,
@@ -121,13 +122,13 @@ export function buildAnswerRecord({
     acertou &&
     conf !== 1 &&
     !prev.retidoEm &&
-    diffDays(String(r.primeiraEm).slice(0, 10), d) >= RETENTION_DAYS
+    diffDays(reviewDay(r.primeiraEm) || d, d) >= RETENTION_DAYS
   ) {
     r.retidoEm = nowIso;
   }
 
   const nPrev = prev.tentativas
-    ? Math.min(Math.max(Number(prev.nivel) || 0, 0), SRS_INTERVALS.length - 1)
+    ? Math.min(Math.max(prev.nivel == null ? (prev.noCaderno ? 0 : 1) : Math.trunc(Number(prev.nivel) || 0), 0), SRS_INTERVALS.length - 1)
     : 0;
 
   if (acertou && conf === 1) {
@@ -163,7 +164,7 @@ export function buildAnswerRecord({
     r.nivel = 0;
   }
 
-  r.proxRevisao = addDays(d, SRS_INTERVALS[r.nivel]);
+  r.proxRevisao = scheduleReview(d, SRS_INTERVALS[r.nivel]).date;
   r.calib =
     isBlank || !conf
       ? null
