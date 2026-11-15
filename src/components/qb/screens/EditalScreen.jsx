@@ -41,7 +41,8 @@ export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect 
     if (a === 'study' && evoke) return openArchitect && openArchitect({ subjectId: s.id, topicId: t.id, origin: 'Evocar antes de ler · ' + s.short + ' ' + t.num }, 'cornell');
     if (a === 'questions') return go('questions',{topicId:t.id});
     if (a === 'flashcards') return go('flashcards',{topicId:t.id});
-    go('map',{topicId:t.id});
+    if(a==='map'&&t.resources?.maps.length) return go('map',{topicId:t.id});
+    go('study',{topicId:t.id});
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
