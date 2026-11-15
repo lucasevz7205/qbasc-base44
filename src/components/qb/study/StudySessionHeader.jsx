@@ -1,13 +1,7 @@
 import React from 'react';
-import { Icon } from '@/components/qb/core/Icon';
+import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { IconButton } from '@/components/qb/core/IconButton';
 import { ProgressBar } from '@/components/qb/core/ProgressBar';
-
-function fmt(s) {
-  const m = Math.floor(s / 60);
-  const r = s % 60;
-  return `${String(m).padStart(2, '0')}:${String(r).padStart(2, '0')}`;
-}
 
 export default function StudySessionHeader({
   subject,
@@ -15,12 +9,9 @@ export default function StudySessionHeader({
   current = 0,
   total = 0,
   unit = 'Questão',
-  elapsed = 0,
   focusMode = false,
   onToggleFocus,
   onBack,
-  paused = false,
-  onTogglePause,
   style,
 }) {
   return (
@@ -48,26 +39,7 @@ export default function StudySessionHeader({
       </div>
       {total > 0 && <ProgressBar value={current / total} label={unit} valueText={`${current} de ${total}`} style={{ flex: '1 1 150px', maxWidth: 320 }} />}
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-        <span
-          role="timer"
-          aria-label={`Tempo de sessão ${fmt(elapsed)}`}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            height: 36,
-            padding: '0 12px',
-            borderRadius: 10,
-            background: 'var(--surface-sunken)',
-            border: 'var(--border-hairline)',
-            font: '500 14px/1 var(--font-mono)',
-            color: paused ? 'var(--text-muted)' : 'var(--text-primary)',
-          }}
-        >
-          <Icon name="timer" size={16} color="var(--qb-gold)" />
-          {fmt(elapsed)}
-        </span>
-        {onTogglePause && <IconButton icon={paused ? 'play' : 'pause'} label={paused ? 'Retomar' : 'Pausar'} onClick={onTogglePause} />}
+        <StudyClockControls />
         {onToggleFocus && <IconButton icon="focus" label="Modo foco" pressed={focusMode} onClick={onToggleFocus} />}
       </div>
     </div>
