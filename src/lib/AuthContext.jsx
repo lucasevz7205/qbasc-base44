@@ -1,7 +1,23 @@
 import { queryOptions, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { base44 } from "@/api/base44Client";
-import { currentUrl } from "@/lib/authReturnTo";
+import { currentPath } from "@/lib/authReturnTo";
+
+const SESSION_TIMEOUT_MS = 12000;
+
+async function verifySession() {
+  let timer;
+  try {
+    return await Promise.race([
+      base44.auth.me(),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error("A verificação da conta demorou demais.")), SESSION_TIMEOUT_MS);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 /**
  * The visitor, resolved once per page load and cached in the router's QueryClient:
@@ -17,16 +33,18 @@ export const authQuery = queryOptions({
     // No token means no session; /me could only answer 401.
     if (!base44.auth.hasToken()) return { user: null, error: null };
     try {
-      return { user: await base44.auth.me(), error: null };
+      return { user: await verifySession(), error: null };
     } catch (err) {
       if (err?.data?.extra_data?.reason === "user_not_registered") {
         return { user: null, error: { type: "user_not_registered", message: "Not registered" } };
       }
-      if (err?.status === 401 || err?.status === 403) return { user: null, error: null };
+      const status = err?.status ?? err?.response?.status;
+      if (status === 401 || status === 403) return { user: null, error: null };
       throw err;
     }
   },
   staleTime: Infinity,
+  networkMode: "always",
   retry: false,
 });
 
@@ -39,25 +57,27 @@ const AuthContext = createContext(null);
  */
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
-  const { data, error, isPending } = useQuery({ ...authQuery, enabled: typeof window !== 'undefined' });
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  const { data, error, isPending } = useQuery({ ...authQuery, enabled: ready });
 
   const value = useMemo(
     () => ({
       user: data?.user ?? null,
       isAuthenticated: !!data?.user,
-      isLoadingAuth: isPending,
+      isLoadingAuth: !ready || isPending,
       authError: data?.error ?? (error ? { type: "unknown", message: error.message ?? "Failed to load session" } : null),
       refresh: () => queryClient.fetchQuery({ ...authQuery, staleTime: 0 }),
       logout: () => {
         queryClient.setQueryData(authQuery.queryKey, { user: null, error: null });
         base44.auth.logout(window.location.origin);
       },
-      // Full-page sign-in: /login with the current page as the way back. A hard
-      // navigation on purpose — on an app served behind the platform login the
-      // platform answers /login itself; an app with its own auth pages serves its /login route.
-      navigateToLogin: () => base44.auth.redirectToLogin(currentUrl()),
+      navigateToLogin: () => {
+        const params = new URLSearchParams({ returnTo: currentPath() });
+        window.location.assign("/login?" + params.toString());
+      },
     }),
-    [data, error, isPending, queryClient],
+    [data, error, isPending, queryClient, ready],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
