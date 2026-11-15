@@ -9,9 +9,12 @@
 //
 // An auth page is never a destination: coming back to /reset-password?token=…
 // would carry a live one-time credential through the login round-trip (and,
-// via Google, into the provider's OAuth state), and the other three would just
-// loop. `/oauth/consent` is a legitimate destination and is not in this set.
-const AUTH_PAGES = new Set(["/login", "/register", "/forgot-password", "/reset-password"]);
+// via Google, into the provider's OAuth state). Other auth pages could loop. `/oauth/consent` is a legitimate destination and is not in this set.
+const AUTH_PAGES = new Set(["/login", "/register", "/forgot-password", "/reset-password", "/mfa"]);
+
+export function isAuthPage(pathname) {
+  return AUTH_PAGES.has(pathname.replace(/\/+$/, "") || "/");
+}
 
 export function safeReturnTo(search) {
   if (typeof window === "undefined") return "/";
@@ -29,7 +32,7 @@ export function sanitizeReturnTo(raw) {
     for (const p of ["access_token", "clear_access_token", "app_id", "app_base_url", "functions_version", "from_url", "returnTo"]) {
       url.searchParams.delete(p);
     }
-    if (AUTH_PAGES.has(url.pathname.replace(/\/+$/, "") || "/")) return "/";
+    if (isAuthPage(url.pathname)) return "/";
     const path = url.pathname + url.search;
     if (!path.startsWith("/") || path.startsWith("//") || path.includes("\\")) return "/";
     return path;
