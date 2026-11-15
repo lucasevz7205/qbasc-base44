@@ -8,6 +8,7 @@ function launcherSize(node) { return { width: node?.offsetWidth || 190, height: 
 export default function ArchitectLauncher({ onOpen, hidden }) {
   const containerRef = React.useRef(null);
   const dragRef = React.useRef(null);
+  const suppressToggleClick = React.useRef(false);
   const [position, setPosition] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
   const controlsId = React.useId();
@@ -48,24 +49,27 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
   };
 
   const startDrag = e => {
-    if (e.button !== 0 && e.pointerType === 'mouse') return;
-    e.preventDefault();
+    if (dragRef.current || (e.button !== 0 && e.pointerType === 'mouse')) return;
+    suppressToggleClick.current = false;
     const rect = containerRef.current.getBoundingClientRect();
-    dragRef.current = { pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, x: rect.left, y: rect.top };
+    dragRef.current = { pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, x: rect.left, y: rect.top, last: null };
     e.currentTarget.setPointerCapture?.(e.pointerId);
   };
   const duringDrag = e => {
     const drag = dragRef.current;
     if (!drag || e.pointerId !== drag.pointerId) return;
-    e.preventDefault();
-    move({ x: drag.x + e.clientX - drag.startX, y: drag.y + e.clientY - drag.startY });
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    if (!drag.last && Math.hypot(dx, dy) < 6) return;
+    drag.last = move({ x: drag.x + dx, y: drag.y + dy });
   };
   const endDrag = e => {
     const drag = dragRef.current;
     if (!drag || e.pointerId !== drag.pointerId) return;
-    const next = move({ x: drag.x + e.clientX - drag.startX, y: drag.y + e.clientY - drag.startY });
+    if (e.type === 'pointerup') duringDrag(e);
     dragRef.current = null;
-    persist(next);
+    suppressToggleClick.current = !!drag.last || e.type !== 'pointerup';
+    if (drag.last) persist(drag.last);
   };
   const keyboardMove = e => {
     if (e.key === 'Home') {
@@ -108,7 +112,14 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
       <button type="button" className="qb-iconbtn qb-architect-launcher__toggle"
         aria-expanded={expanded} aria-controls={controlsId}
         aria-label={expanded ? 'Recolher atalho do Arquiteto' : 'Expandir atalho do Arquiteto'}
-        onClick={() => setExpanded(value => !value)}>
+        title="Toque para expandir ou recolher. Arraste para mover."
+        onPointerDown={startDrag} onPointerMove={duringDrag} onPointerUp={endDrag}
+        onPointerCancel={endDrag} onLostPointerCapture={endDrag} onKeyDown={keyboardMove}
+        style={{ touchAction: 'none', cursor: 'grab' }}
+        onClick={event => {
+          if (event.detail !== 0 && suppressToggleClick.current) return;
+          setExpanded(value => !value);
+        }}>
         <Icon name={expanded ? 'chevron-left' : 'sparkles'} size={20} />
       </button>
     </div>
