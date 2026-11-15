@@ -76,6 +76,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
         <Button variant={ganBatch?.originNodeId ? 'secondary' : 'primary'} iconRight="arrow-right" onClick={() => go('flashcards', { topicId: ganBatch?.topicId })}>
           Seguir para flashcards
         </Button>
+        <Button variant="secondary" icon="chart-column" onClick={() => go('performance', 'diaria')}>Ver desempenho diário</Button>
         <Button variant="secondary" icon="house" onClick={() => go('dashboard')}>
           Voltar ao início
         </Button>

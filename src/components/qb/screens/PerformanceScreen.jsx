@@ -13,25 +13,81 @@ import { Icon } from '@/components/qb/core/Icon';
 import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
 
+function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
+  const [open, setOpen] = React.useState(false);
+  const [onlyErrors, setOnlyErrors] = React.useState(false);
+  const grouped = new Map();
+  for (const { qid, result } of responses) {
+    const counts = grouped.get(qid) || { correct: 0, wrong: 0, blank: 0 };
+    counts[result]++;
+    grouped.set(qid, counts);
+  }
+  const byId = new Map(data.questions.map(q => [q.id, q]));
+  const editalTopics = new Set(edital.subjects.flatMap(subject => subject.topics.map(topic => topic.id)));
+  const maps = new Map(data.mindMaps.map(map => [map.topicId, map]));
+  const rows = [...grouped].filter(([, counts]) => !onlyErrors || counts.wrong);
+  return (
+    <Panel variant="ornate" style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        <h2 style={{ font: 'var(--type-h2)', margin: 0 }}>Questões do dia</h2>
+        <Button size="sm" variant="secondary" icon={open ? 'chevron-up' : 'chevron-down'} aria-expanded={open} onClick={() => setOpen(value => !value)}>
+          {open ? 'Recolher questões' : 'Ver questões'} · {grouped.size}
+        </Button>
+      </div>
+      {open && <>
+        <label className="qb-check"><input type="checkbox" checked={onlyErrors} onChange={event => setOnlyErrors(event.target.checked)} />Somente questões com erro</label>
+        {!rows.length && <EmptyState compact title="Nenhuma questão com erro nesta data" />}
+        {!!rows.length && <ul style={{ display: 'grid', gap: 10, margin: 0, listStyle: 'none', padding: 0 }}>
+          {rows.map(([id, counts]) => {
+            const q = byId.get(id);
+            const map = maps.get(q?.topicId);
+            const node = map?.nodes.some(node => node.id === q.node) ? q.node : null;
+            return (
+              <li key={id} style={{ display: 'grid', gap: 8, padding: '12px 0', borderTop: '1px solid var(--divider)', minWidth: 0 }}>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                  <strong>{q?.code || id}</strong>
+                  {q?.chapter && <span style={{ color: 'var(--text-muted)' }}>{q.chapter}</span>}
+                  {counts.correct > 0 && <Badge tone="correct">{counts.correct} {counts.correct === 1 ? 'acerto' : 'acertos'}</Badge>}
+                  {counts.wrong > 0 && <Badge tone="incorrect">{counts.wrong} {counts.wrong === 1 ? 'erro' : 'erros'}</Badge>}
+                  {counts.blank > 0 && <Badge tone="neutral">{counts.blank} em branco</Badge>}
+                </div>
+                {q?.statement && <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={q.statement}>{q.statement}</div>}
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {activeIds.has(id) && <Button size="sm" variant="secondary" icon="target" onClick={() => go('questions', { questionIds: [id], filter: 'all' })}>Refazer questão</Button>}
+                  {map && <Button size="sm" variant="ghost" icon="network" onClick={() => go('map', { topicId: q.topicId, node, returnTo: { view: 'performance', label: 'Desempenho' } })}>{node ? 'Abrir nó no mapa' : 'Abrir mapa do tópico'}</Button>}
+                  {editalTopics.has(q?.topicId) && <Button size="sm" variant="ghost" icon="scroll-text" onClick={() => go('edital', { topicId: q.topicId })}>Ver tópico no edital</Button>}
+                </div>
+              </li>
+            );
+          })}
+        </ul>}
+      </>}
+    </Panel>
+  );
+}
+
 function Daily({ go }) {
-  const { QB_EDITAL, QB_PLAN, QB_PERF } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, QB_PLAN, QB_PERF } = useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, P = QB_PLAN;
   const [date, setDate] = React.useState(P.today);
-  const idx = PF.days.findIndex(d => d.date === date);
-  const d = M.dayStats(PF.days[idx >= 0 ? idx : PF.days.length - 1]);
+  const selectedDay = PF.days.find(d => d.date === date);
+  const d = M.dayStats(selectedDay || { date, n: 0, correct: 0, wrong: 0, blank: 0 });
+  const activeIds = new Set(QB_DATA.questionBank.map(q => q.id));
+  const responses = PF.attemptsByDay[date] || [];
+  const wrongIds = [...new Set(responses.filter(item => item.result === 'wrong' && activeIds.has(item.qid)).map(item => item.qid))];
   const tasks = Object.values(P.weeks).flat().filter(t => t.date === date);
-  const series = PF.days.slice(0, (idx >= 0 ? idx : PF.days.length - 1) + 1).slice(-14).map(x => { const s = M.dayStats(x); return { x: M.fmtDate(x.date), y: s.valid ? s.accuracy : null, n: s.valid }; });
+  const series = PF.days.filter(day => day.date <= date).slice(-14).map(x => { const s = M.dayStats(x); return { x: M.fmtDate(x.date), y: s.valid ? s.accuracy : null, n: s.valid }; });
   const tiers = QB_EDITAL.subjects.flatMap(s => s.topics).filter(t => t.correct + t.wrong >= 10 && t.correct / (t.correct + t.wrong) < 0.6).length;
-  const prev = PF.days.slice(0, idx >= 0 ? idx : PF.days.length - 1).filter(x => x.correct + x.wrong).slice(-1)[0];
+  const prev = PF.days.findLast(day => day.date < date && day.correct + day.wrong);
   const delta = prev && d.valid ? Math.round(d.accuracy - M.dayStats(prev).accuracy) : null;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <label style={{ display: 'flex', alignItems: 'center', gap: 8, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Data<input type="date" className="qb-input" style={{ width: 170, colorScheme: 'dark' }} min={PF.days[0].date} max={P.today} value={date} onChange={e => e.target.value && setDate(e.target.value)} /></label>
         <Button size="sm" variant="secondary" disabled={date === P.today} onClick={() => setDate(P.today)}>Hoje</Button>
-        <Badge tone="neutral" icon="info">Somente rodadas de treino</Badge>
+        <Badge tone="neutral" icon="info">Respostas confirmadas de treino</Badge>
       </div>
-      {!d.n ? <EmptyState title={'Sem respostas em ' + M.fmtDate(date)} description="Nenhuma rodada de treino registrada neste dia." /> : (
+      {!d.n ? <EmptyState title={'Sem respostas em ' + M.fmtDate(date)} description="Nenhuma resposta de treino registrada neste dia." /> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
           <StatCard label="Itens julgados" value={d.n} detail={d.correct + ' certos · ' + d.wrong + ' errados · ' + d.blank + ' em branco'} warning={d.valid < 10 ? 'Amostra pequena' : null} />
           <StatCard label="Taxa de acerto" tone="correct" value={M.pct(d.accuracy)} detail={d.correct + ' de ' + d.valid + ' respostas válidas (brancos fora)'} trend={delta != null ? { delta, label: (delta > 0 ? '+' : '') + delta + ' p.p. vs. dia anterior' } : null} />
@@ -41,6 +97,7 @@ function Daily({ go }) {
           <StatCard label="Flashcards avaliados" value={PF.cardsByDay[date] || 0} detail={'Avaliações registradas na data'} />
         </div>
       )}
+      {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} />}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16, alignItems: 'start' }}>
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Evolução da precisão · até {M.fmtDate(date)}</span>
@@ -49,12 +106,12 @@ function Daily({ go }) {
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Prioridades</span>
           {[[tasks.filter(t => t.status !== 'done').length + ' tarefas do dia pendentes', 'Reagende o que não couber, sem perder revisões automáticas.', 'Reorganizar planejamento', () => go('plan', 'semana')],
-            [d.wrong + ' itens errados no dia', 'Revise pela origem do erro antes de nova rodada.', 'Treinar erros', () => go('train')],
+            [d.wrong + ' itens errados no dia', 'Revise pela origem do erro antes de nova rodada.', 'Treinar erros', wrongIds.length ? () => go('questions', { questionIds: wrongIds, filter: 'all' }) : null],
             [tiers + ' tópicos abaixo de 60%', 'Com pelo menos 10 respostas válidas cada.', 'Ver mapa de calor', () => go('edital', 'calor')]].map(([t, s, a, fn], i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '28px minmax(0,1fr) auto', gap: 10, alignItems: 'center', paddingBottom: 10, borderBottom: '1px solid var(--divider)' }}>
               <span style={{ font: '600 13px/1 var(--font-mono)', color: 'var(--qb-gold)' }}>0{i + 1}</span>
               <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}><span style={{ font: '600 14px/1.3 var(--font-body)', color: 'var(--text-primary)' }}>{t}</span><span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>{s}</span></span>
-              <Button size="sm" variant="secondary" onClick={fn}>{a}</Button>
+              <Button size="sm" variant="secondary" disabled={!fn} onClick={fn}>{a}</Button>
             </div>
           ))}
         </Panel>

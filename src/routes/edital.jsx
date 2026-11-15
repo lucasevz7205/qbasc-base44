@@ -15,7 +15,7 @@ export const Route = createFileRoute('/edital')({
 });
 
 function EditalRoute() {
-  const topicFocus = useLocation({ select: location => location.hash });
+  const topicFocus = useLocation({ select: location => location.hash.replace(/^#/, '') });
   const { ui, setUi, subs, setSub, go, openArchitect, toast } = useQBStudy();
   return (
     <AppShell ui={ui} setUi={setUi} view="edital" go={go}>
