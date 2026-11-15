@@ -41,6 +41,44 @@ export function applyEditorialOverlays(questions, cards, entries) {
   };
 }
 
+/**
+ * Converte resposta do Gemini em proposta editável. Sem fallback inventado.
+ */
+export function parseEditorialSuggestion(reply, kind) {
+  const text = String(reply || "").trim();
+  const raw = text.replace(/^\x60{3}(?:json)?\s*/i, "").replace(/\s*\x60{3}$/, "");
+  const from = raw.indexOf("{"), to = raw.lastIndexOf("}");
+  if (from < 0 || to <= from) throw new Error("A IA não retornou uma proposta JSON verificável.");
+  let obj;
+  try { obj = JSON.parse(raw.slice(from, to + 1)); }
+  catch { throw new Error("A proposta da IA não está em JSON válido. Nenhum conteúdo foi alterado."); }
+  const entry = obj.replacement || obj.reformulada || {};
+  const proposal = {
+    parecer: String(obj.parecer || "").trim().slice(0, 1500),
+    needsHumanReview: obj.needsHumanReview !== false,
+    replacement: kind === "question"
+      ? {
+          statement: String(entry.statement || entry.enunciado || "").trim().slice(0, 4000),
+          key: String(entry.key || entry.gabarito || "").trim().toUpperCase().replace(/^CERTO$/, "C").replace(/^ERRADO$/, "E"),
+          explanation: String(entry.explanation || entry.comentario || "").trim().slice(0, 6500),
+          basis: String(entry.basis || entry.ref || "").trim().slice(0, 2000),
+        }
+      : {
+          front: String(entry.front || entry.q || "").trim().slice(0, 2600),
+          back: String(entry.back || (Array.isArray(entry.a) ? entry.a.join("\n") : entry.a) || "").trim().slice(0, 6000),
+          basis: String(entry.basis || entry.src || "").trim().slice(0, 2000),
+        },
+  };
+  if (!proposal.parecer) throw new Error("A IA não forneceu um parecer verificável.");
+  if (kind === "question" && (!proposal.replacement.statement || !["C", "E"].includes(proposal.replacement.key) || !proposal.replacement.explanation)) {
+    throw new Error("A IA não forneceu enunciado, gabarito e explicação válidos.");
+  }
+  if (kind === "flashcard" && (!proposal.replacement.front || !proposal.replacement.back)) {
+    throw new Error("A IA não forneceu frente e verso válidos.");
+  }
+  return proposal;
+}
+
 export function makeEditorialEntry({ kind, content, proposal, previous, issue, note, now = new Date() }) {
   const targetId = String(content?.id || "");
   const baseId = editorialId(kind, targetId);
