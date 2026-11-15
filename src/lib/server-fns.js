@@ -5,6 +5,7 @@ import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
+import { parseCornellGemini } from "@/lib/cornell-gemini";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -288,33 +289,27 @@ const CornellInputSchema = z.object({
 });
 
 export const generateCornellCues = createServerFn({ method: "POST" })
+  .middleware([requireUser])
   .validator(CornellInputSchema)
   .handler(async ({ data, context }) => {
-    const base44 = context.getBase44();
+    if (context.user?.role !== "admin") throw new Error("Acesso ao caderno Cornell reservado à conta administradora.");
     const prompt = [
       "Você é 'O Arquiteto', especialista no método Cornell de anotações para concursos de alto nível (Câmara dos Deputados · CEBRASPE).",
       `Com base nas anotações do estudante sobre "${data.topicLabel}", gere:`,
-      "1) cues: de 4 a 6 perguntas curtas de evocação ativa (pistas para a coluna da esquerda do Caderno Cornell) que testem os conceitos-chave, prazos, quóruns, competências e exceções presentes nas notas.",
-      "2) summary: uma síntese de 2 a 3 frases condensando a regra central das notas para o rodapé do Caderno Cornell.",
+      "1) cues: de 4 a 6 perguntas curtas de evocação ativa (pistas para a coluna da esquerda do Caderno Cornell) sobre conceitos efetivamente escritos nas notas.",
+      "2) summary: uma síntese de 2 a 3 frases condensando a ideia central das notas para o rodapé do Caderno Cornell.",
+      "Não invente normas, prazos, quóruns, competências, fontes ou referências que não apareçam explicitamente nas notas. Não consulte outras fontes.",
+      "Responda SOMENTE um JSON válido no formato: {\"cues\":[\"pergunta 1\",\"pergunta 2\"],\"summary\":\"síntese\"}.",
       `Anotações do estudante:\n"""\n${data.notes}\n"""`,
     ].join("\n\n");
 
-    const res = await base44.asServiceRole.integrations.Core.InvokeLLM({
+    // Gemini externo, mediante ação explícita. Não há fallback para créditos Base44.
+    const result = await invokeGeminiTutor({
+      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
+      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
       prompt,
-      response_json_schema: {
-        type: "object",
-        properties: {
-          cues: { type: "array", items: { type: "string" } },
-          summary: { type: "string" },
-        },
-        required: ["cues", "summary"],
-      },
     });
-
-    return {
-      cues: Array.isArray(res?.cues) ? res.cues : [],
-      summary: String(res?.summary || ""),
-    };
+    return parseCornellGemini(result.reply);
   });
 
 const ExtractMaterialSchema = z.object({
