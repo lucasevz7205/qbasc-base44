@@ -4,9 +4,12 @@ import { Tabs } from '@/components/qb/navigation/Tabs';
 import { Panel } from '@/components/qb/core/Panel';
 import { Button } from '@/components/qb/core/Button';
 import { Badge } from '@/components/qb/core/Badge';
-import { StatCard } from '@/components/qb/data/StatCard';
-import { LineChart } from '@/components/qb/data/LineChart';
-import { BarChart } from '@/components/qb/data/BarChart';
+import { PerformanceMetricCard } from '@/components/qb/performance/PerformanceMetricCard';
+import { PerformanceTrendChart } from '@/components/qb/performance/PerformanceTrendChart';
+import { PerformancePriorityPanel } from '@/components/qb/performance/PerformancePriorityPanel';
+import { PerformancePeriodSelector } from '@/components/qb/performance/PerformancePeriodSelector';
+import { SubjectPerformanceExplorer } from '@/components/qb/performance/SubjectPerformanceExplorer';
+import '@/components/qb/performance/performance.css';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { SelectField } from '@/components/qb/data/SelectField';
 import { Icon } from '@/components/qb/core/Icon';
@@ -72,40 +75,15 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Q
 function DailySubjectBreakdown({ date, scopeLabel = date ? QB_METRICS.fmtDate(date) : '', responses, questions, subjects, total, go }) {
   const groups = groupResponsesByTopic(responses, questions, subjects);
   const unlinked = total - groups.reduce((sum, group) => sum + group.correct + group.wrong + group.blank, 0);
-  const accuracy = row => QB_METRICS.pct(QB_METRICS.dayStats(row).accuracy);
-  return (
-    <Panel style={{ display: 'grid', gap: 12 }}>
-      <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: 10 }}>
-        <h2 style={{ font: 'var(--type-h2)' }}>Desempenho por matéria e assunto</h2>
-        <span style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>Respostas de {scopeLabel}</span>
-      </div>
-      {!groups.length && <EmptyState compact title="Sem respostas vinculadas a matérias e assuntos neste recorte" />}
-      {groups.map(group => (
-        <details key={group.id} className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', minWidth: 0 }}>
-          <summary style={{ cursor: 'pointer', font: 'var(--type-label)' }}>
-            <strong>{group.name}</strong>
-            <span style={{ marginInlineStart: 10, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
-              {accuracy(group)} · {group.correct} acertos · {group.wrong} erros{group.blank ? ' · ' + group.blank + ' em branco' : ''}
-            </span>
-          </summary>
-          <div style={{ overflowX: 'auto', marginTop: 8 }}>
-            <table className="qb-table" aria-label={'Assuntos de ' + group.name}>
-              <thead><tr><th>Assunto</th><th className="num">Acertos</th><th className="num">Erros</th><th className="num">Brancos</th><th className="num">Taxa de acerto</th><th>Remissão</th></tr></thead>
-              <tbody>{group.topics.map(topic => (
-                <tr key={topic.id}>
-                  <th scope="row" style={{ textTransform: 'none', letterSpacing: 'normal', font: 'var(--type-label)' }}>{[topic.num, topic.title].filter(Boolean).join(' · ')}</th>
-                  <td className="num">{topic.correct}</td><td className="num">{topic.wrong}</td><td className="num">{topic.blank}</td>
-                  <td className="num">{accuracy(topic)}</td>
-                  <td><Button size="sm" variant="ghost" icon="scroll-text" onClick={() => go('edital', { topicId: topic.id })}>Ver tópico</Button></td>
-                </tr>
-              ))}</tbody>
-            </table>
-          </div>
-        </details>
-      ))}
-      {unlinked > 0 && <small style={{ color: 'var(--text-muted)' }}>{unlinked} {unlinked === 1 ? 'resposta sem vínculo com um assunto do edital' : 'respostas sem vínculo com assuntos do edital'}.</small>}
-    </Panel>
-  );
+  const nodes = groups.map(group => ({ ...group, level: 'subject', subjectId: group.id,
+    children: group.topics.map(topic => ({ ...topic, level: 'topic', name: topic.title || topic.num, code: topic.num, subjectId: group.id, topicId: topic.id, actions: ['edital'] })),
+  }));
+  return <section>
+    <SubjectPerformanceExplorer nodes={nodes} description={'Respostas de treino de ' + scopeLabel}
+      emptyTitle="Sem respostas vinculadas a matérias e assuntos"
+      onAction={({ topicId }) => go('edital', { topicId })} />
+    {unlinked > 0 && <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>{unlinked} {unlinked === 1 ? 'resposta sem assunto vinculado' : 'respostas sem assunto vinculado'}.</p>}
+  </section>;
 }
 
 function Daily({ go }) {
@@ -122,51 +100,53 @@ function Daily({ go }) {
   const activeIds = new Set(QB_DATA.questionBank.map(q => q.id));
   const wrongIds = [...new Set(responses.filter(item => item.result === 'wrong' && activeIds.has(item.qid)).map(item => item.qid))];
   const tasks = Object.values(P.weeks).flat().filter(t => t.date === date);
-  const series = PF.days.filter(day => day.date <= date).slice(-14).map(x => { const s = M.dayStats(scoped(x)); return { x: M.fmtDate(x.date), y: s.accuracy, n: s.valid, vol: s.n }; });
-  const tiers = QB_EDITAL.subjects.flatMap(s => s.topics).filter(t => t.correct + t.wrong >= 10 && t.correct / (t.correct + t.wrong) < 0.6).length;
+  const series = PF.days.filter(day => day.date <= date).slice(-14).map(x => { const s = M.dayStats(scoped(x)); return { ...s, label: M.fmtDate(x.date), x: M.fmtDate(x.date), y: s.accuracy, n: s.valid, vol: s.n }; });
+  const tiers = QB_EDITAL.subjects.flatMap(s => s.topics).filter(t => t.correct + t.wrong >= 20 && t.correct / (t.correct + t.wrong) < 0.6).length;
   const prev = PF.days.map(scoped).findLast(day => day.date < date && day.correct + day.wrong);
   const delta = prev && d.valid ? Math.round(d.accuracy - M.dayStats(prev).accuracy) : null;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Data<input type="date" className="qb-input" style={{ width: 170, colorScheme: 'dark' }} min={PF.days[0]?.date} max={P.today} value={date} onChange={e => e.target.value && setDate(e.target.value)} /></label>
-        <Button size="sm" variant="secondary" disabled={date === P.today} onClick={() => setDate(P.today)}>Hoje</Button>
-        <Badge tone="neutral" icon="info">Respostas confirmadas de treino</Badge>
+      <Panel className="qb-performance-v4-filters" padding={14}>
+        <PerformancePeriodSelector mode="day" value={{ date }} min={PF.days[0]?.date} max={P.today} today={P.today} onChange={value => setDate(value.date)} />
         {scopeFilters(QB_EDITAL.subjects, subjectId, topicId, setSubjectId, setTopicId)}
-      </div>
-      {!d.n ? <EmptyState title={'Sem respostas em ' + M.fmtDate(date)} description="Nenhuma resposta de treino registrada neste dia." /> : (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <StatCard label="Itens julgados" value={d.n} detail={d.correct + ' certos · ' + d.wrong + ' errados · ' + d.blank + ' em branco'} warning={d.valid < 10 ? 'Amostra pequena' : null} />
-          <StatCard label="Taxa de acerto" tone="correct" value={M.pct(d.accuracy)} detail={d.correct + ' de ' + d.valid + ' respostas válidas (brancos fora)'} trend={delta != null ? { delta, label: (delta > 0 ? '+' : '') + delta + ' p.p. vs. último dia com respostas' } : null} />
-          <StatCard label="Nota líquida" tone="gold" value={(d.net > 0 ? '+' : '') + d.net} detail="Regra: +1 certo · −1 errado · 0 branco" />
-          <StatCard label="Certeza calibrada" value="—" detail="Comparação entre confiança declarada e acerto observado." warning="Definição da métrica pendente" note="A fórmula não está nos arquivos do projeto; não é estimada aqui." />
-          <StatCard label="Tarefas concluídas" value={tasks.filter(t => t.status === 'done').length + '/' + tasks.length} detail="Planejamento do dia · todas as matérias" onClick={() => go('plan', 'hoje')} />
-          <StatCard label="Flashcards avaliados" value={PF.cardsByDay[date] || 0} detail="Avaliações na data · todas as matérias" />
-        </div>
-      )}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16, alignItems: 'start' }}>
-        <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Evolução da precisão · até {M.fmtDate(date)}</span>
-          <LineChart data={series} label="Taxa de acerto diária" height={230} />
-          <TrendData points={series} />
-        </Panel>
-        <Panel style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Prioridades</span>
-          {[[tasks.filter(t => t.status !== 'done').length + ' tarefas do dia pendentes', 'Reagende o que não couber, sem perder revisões automáticas.', 'Reorganizar planejamento', () => go('plan', 'semana')],
-            [d.wrong + ' itens errados no dia', 'Revise pela origem do erro antes de nova rodada.', 'Treinar erros', wrongIds.length ? () => go('questions', { questionIds: wrongIds, filter: 'all' }) : null],
-            [tiers + ' tópicos abaixo de 60%', 'Com pelo menos 10 respostas válidas cada.', 'Ver mapa de calor', () => go('edital', 'calor')]].filter((_, i) => [tasks.some(t => t.status !== 'done'), d.wrong > 0, tiers > 0][i]).map(([t, s, a, fn], i) => (
-            <div key={t} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center', paddingBottom: 10, borderBottom: '1px solid var(--divider)' }}>
-              <span style={{ font: '600 13px/1 var(--font-mono)', color: 'var(--qb-gold)' }}>0{i + 1}</span>
-              <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}><span style={{ font: '600 14px/1.3 var(--font-body)', color: 'var(--text-primary)' }}>{t}</span><span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>{s}</span></span>
-              <Button size="sm" variant="secondary" disabled={!fn} onClick={fn}>{a}</Button>
-            </div>
-          ))}
-        </Panel>
+      </Panel>
+      <PerformanceMetrics stats={d} tasks={tasks} cards={PF.cardsByDay[date] || 0} go={go}
+        comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. ' + M.fmtDate(prev.date) } : null} />
+      <div className="qb-performance-v4-panes">
+        <PerformanceTrendChart style={{ flex: '3 1 480px' }} subtitle={'Treino até ' + M.fmtDate(date)} data={series} />
+        <PerformancePriorityPanel style={{ flex: '2 1 320px' }} basis={'Dia ' + M.fmtDate(date)} items={[
+          ...(wrongIds.length ? [{ id: 'errors', kind: 'Erros do dia', tone: 'incorrect', title: d.wrong + ' erros no recorte', reason: 'Reveja a origem dos erros nas questões registradas.', action: { label: 'Treinar erros', run: () => go('questions', { questionIds: wrongIds, filter: 'all' }) } }] : []),
+          ...(tasks.some(t => t.status !== 'done') ? [{ id: 'plan', kind: 'Planejamento', tone: 'attention', title: 'Tarefas por concluir', reason: 'Confira as tarefas planejadas para esta data.', action: { label: 'Abrir planejamento', run: () => go('plan', 'semana') } }] : []),
+          ...(tiers && subjectId === 'all' ? [{ id: 'heat', kind: 'Baixa precisão', tone: 'attention', title: tiers + ' tópicos abaixo de 60%', reason: 'Cada tópico tem pelo menos 20 respostas válidas no acumulado.', action: { label: 'Mapa de calor', run: () => go('edital', 'calor') } }] : []),
+        ]} onAction={item => item.action.run()} />
       </div>
       <DailySubjectBreakdown date={date} total={d.n} responses={responses} questions={QB_DATA.questions} subjects={QB_EDITAL.subjects} go={go} />
       {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} />}
     </div>
   );
+}
+
+const formatDelta = delta => (delta > 0 ? '+' : '') + delta;
+
+function PerformanceMetrics({ stats, tasks, cards, go, comparison }) {
+  const { n, correct, wrong, blank, valid, accuracy, net } = stats;
+  const done = tasks.filter(task => task.status === 'done').length;
+  return <div className="qb-performance-v4-grid">
+    <PerformanceMetricCard label="Itens julgados" icon="list-checks" value={n} state={n ? 'ok' : 'empty'}
+      formula="Acertos + erros + brancos" warning={n > 0 && valid < 10 ? 'Amostra pequena' : null}
+      breakdown={[{ label: 'acertos', value: correct, tone: 'correct' }, { label: 'erros', value: wrong, tone: 'incorrect' }, { label: 'em branco', value: blank }]} />
+    <PerformanceMetricCard label="Taxa de acerto" icon="target" tone="correct" state={valid ? 'ok' : 'empty'}
+      stateText="Sem respostas válidas" value={QB_METRICS.pct(accuracy)} detail={correct + ' de ' + valid + ' válidas'} comparison={comparison}
+      formula="Acertos ÷ (acertos + erros)" method="Respostas em branco entram no volume, mas ficam fora da taxa de acerto." />
+    <PerformanceMetricCard label="Nota líquida" icon="scale" tone="gold" state={n ? 'ok' : 'empty'} value={formatDelta(net)}
+      formula="+1 acerto · −1 erro · 0 branco" />
+    <PerformanceMetricCard label="Calibração da confiança" icon="circle-help" state="pending"
+      formula="Aguardando fórmula formal e registros compatíveis." />
+    <PerformanceMetricCard label="Tarefas concluídas" icon="calendar" state={tasks.length ? 'ok' : 'empty'} stateText="Sem tarefas planejadas"
+      value={done} unit={'de ' + tasks.length} formula="Planejamento do período · todas as matérias" action={{ label: 'Abrir planejamento', onClick: () => go('plan', 'semana') }} />
+    <PerformanceMetricCard label="Flashcards avaliados" icon="layers" state={cards ? 'ok' : 'empty'} stateText="Sem avaliações registradas"
+      value={cards} formula="Avaliações no período · todas as matérias" />
+  </div>;
 }
 
 function scopeFilters(subjects, subjectId, topicId, setSubjectId, setTopicId) {
@@ -191,29 +171,16 @@ function performanceScope(questions, subjects, subjectId, topicId) {
   return rows => allowed ? rows.filter(row => allowed.has(row.qid)) : rows;
 }
 
-function TrendData({ points }) {
-  return <details>
-    <summary style={{ cursor: 'pointer', paddingBlock: 10 }}>Dados do gráfico</summary>
-    <div style={{ overflowX: 'auto' }}>
-      <table className="qb-table" aria-label="Dados da evolução">
-        <thead><tr><th>Período</th><th>Precisão</th><th>Válidas</th><th>Itens</th></tr></thead>
-        <tbody>{points.map(point => <tr key={point.x}><th scope="row">{point.x}</th><td>{QB_METRICS.pct(point.y)}</td><td>{point.n}</td><td>{point.vol}</td></tr>)}</tbody>
-      </table>
-    </div>
-  </details>;
-}
-
 function Historic({ go }) {
   const { QB_PERF: PF, QB_EDITAL: E, QB_SIM: S, QB_PLAN: P, QB_DATA: D } = useRealStudy();
   const M = QB_METRICS;
-  const [period, setPeriod] = React.useState('14');
   const [from, setFrom] = React.useState(() => P.addDays(P.today, -13));
   const [to, setTo] = React.useState(P.today);
   const [group, setGroup] = React.useState('dia');
   const [subjectId, setSubjectId] = React.useState('all');
   const [topicId, setTopicId] = React.useState('all');
-  const end = period === 'custom' ? to : P.today;
-  const start = period === 'custom' ? from : P.addDays(end, 1 - Number(period));
+  const end = to;
+  const start = from;
   const duration = Math.round((Date.parse(end) - Date.parse(start)) / 86400000) + 1;
   const validRange = duration >= 1 && duration <= 90 && end <= P.today;
   const filter = performanceScope(D.questions, E.subjects, subjectId, topicId);
@@ -239,47 +206,62 @@ function Historic({ go }) {
     if (!buckets.has(key)) buckets.set(key, []);
     buckets.get(key).push(day);
   });
-  const points = [...buckets.values()].map(rows => {
+  const toPoint = rows => {
     const first = M.fmtDate(rows[0].date), last = M.fmtDate(rows.at(-1).date);
-    const stats = sum(rows);
-    return { x: first === last ? first : first + '–' + last, y: stats.accuracy, n: stats.valid, vol: stats.n };
+    return { ...sum(rows), label: first === last ? first : first + '–' + last };
+  };
+  const points = [...buckets.values()].map(toPoint);
+  let previousIndex = 0;
+  const previousPoints = [...buckets.values()].map(rows => {
+    const point = toPoint(previous.slice(previousIndex, previousIndex + rows.length));
+    previousIndex += rows.length;
+    return point;
   });
+  const tasks = Object.values(P.weeks).flat().filter(task => task.date >= start && task.date <= end);
+  const cards = days.reduce((count, day) => count + (PF.cardsByDay[day.date] || 0), 0);
+  const wrongIds = [...new Set(responses.filter(row => row.result === 'wrong' && activeIds.has(row.qid)).map(row => row.qid))];
   const sim = S.history.filter(h => h.correct != null).reduce((a, h) => ({ c: a.c + h.correct, v: a.v + h.correct + h.wrong }), { c: 0, v: 0 });
   const delta = current.valid && prior.valid ? Math.round(current.accuracy - prior.accuracy) : null;
   return (
     <div style={{ display: 'grid', gap: 16, minWidth: 0 }}>
-      <Panel padding={12} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,170px),1fr))', gap: 10 }}>
-        <SelectField label="Período" value={period} onChange={setPeriod} options={[{ value: '7', label: 'Últimos 7 dias' }, { value: '14', label: 'Últimos 14 dias' }, { value: '30', label: 'Últimos 30 dias' }, { value: 'custom', label: 'Personalizado' }]} />
-        {period === 'custom' && <>
-          <label>De<input type="date" className="qb-input" value={from} max={to || P.today} onChange={event => setFrom(event.target.value)} /></label>
-          <label>Até<input type="date" className="qb-input" value={to} min={from} max={P.today} onChange={event => setTo(event.target.value)} /></label>
-        </>}
-        <SelectField label="Agrupar por" value={group} onChange={setGroup} options={[{ value: 'dia', label: 'Dia' }, { value: 'semana', label: 'Blocos de 7 dias' }, { value: 'mes', label: 'Mês' }]} />
+      <Panel padding={14} className="qb-performance-v4-filters">
+        <PerformancePeriodSelector mode="range" value={{ from: start, to: end }} max={P.today}
+          presets={[7, 14, 30].map(n => ({ id: n, label: n + ' dias', from: P.addDays(P.today, 1 - n), to: P.today }))}
+          onChange={range => { setFrom(range.from); setTo(range.to); }} />
         {scopeFilters(E.subjects, subjectId, topicId, setSubjectId, setTopicId)}
       </Panel>
       {!validRange ? <EmptyState compact title="Intervalo inválido" description="Selecione de 1 a 90 dias, até a data de hoje." /> : <>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,190px),1fr))', gap: 10 }}>
-          <StatCard compact label="Itens julgados" value={current.n} detail={current.correct + ' certos · ' + current.wrong + ' errados · ' + current.blank + ' em branco'} />
-          <StatCard compact label="Taxa de acertos" tone="correct" value={M.pct(current.accuracy)} detail={current.valid ? current.correct + ' de ' + current.valid + ' válidas' : 'Sem respostas válidas'} />
-          <StatCard compact label="Nota líquida" tone="gold" value={current.net} detail="+1 por acerto · −1 por erro · 0 por branco" />
+        <PerformanceMetrics stats={current} tasks={tasks} cards={cards} go={go}
+          comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. período anterior' } : null} />
+        <div className="qb-performance-v4-panes">
+          <PerformanceTrendChart style={{ flex: '3 1 480px' }} data={points} previous={prior.valid ? previousPoints : null}
+            subtitle={M.fmtDate(start) + ' a ' + M.fmtDate(end) + ' · taxa de acerto do treino'}
+            previousNote="Sem respostas válidas no período anterior."
+            granularity={group} onGranularity={setGroup}
+            granularities={[{ id: 'dia', label: 'Dia' }, { id: 'semana', label: '7 dias' }, { id: 'mes', label: 'Mês' }]} />
+          <PerformancePriorityPanel style={{ flex: '2 1 320px' }} items={wrongIds.length ? [
+            { id: 'errors', kind: 'Erros do período', tone: 'incorrect', title: wrongIds.length + ' questões com erro', reason: 'Questões com erro registradas neste recorte e disponíveis para treino.', action: { label: 'Treinar erros' } },
+          ] : []} onAction={() => go('questions', { questionIds: wrongIds, filter: 'all' })} />
         </div>
-        {delta !== null && <Panel padding={12}>
-          <h2 style={{ font: 'var(--type-h2)' }}>Precisão entre períodos</h2>
-          <p>Atual ({M.fmtDate(start)} a {M.fmtDate(end)}) · {M.pct(current.accuracy)} · {current.valid} válidas</p>
-          <p>Anterior ({M.fmtDate(previous[0].date)} a {M.fmtDate(previous.at(-1).date)}) · {M.pct(prior.accuracy)} · {prior.valid} válidas</p>
-          <p>Diferença de {delta > 0 ? '+' : ''}{delta} p.p.</p>
-        </Panel>}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16 }}>
-          <Panel style={{ minWidth: 0 }}><span className="qb-overline">Taxa de acertos · treino</span><LineChart data={points} label="Taxa de acertos por período" /><TrendData points={points} /></Panel>
-          <Panel style={{ minWidth: 0 }}><span className="qb-overline">Volume de itens julgados</span><div role="region" aria-label="Gráfico de volume" tabIndex={0} style={{ overflowX: 'auto' }}><BarChart style={{ minWidth: points.length * 40 }} color="var(--viz-2)" data={points.map(point => ({ label: point.x, value: point.vol || null }))} label="Volume por período" /></div></Panel>
+        <div className="qb-performance-v4-panes">
+          <Panel padding={14} style={{ flex: '3 1 480px', minWidth: 0 }}>
+            <h2 className="qb-overline">Período atual × anterior</h2>
+            {!prior.valid ? <EmptyState compact title="Sem período anterior comparável" /> :
+              <div style={{ overflowX: 'auto' }}><table className="qb-table">
+                <thead><tr><th>Indicador</th><th>Anterior</th><th>Atual</th></tr></thead>
+                <tbody>{[['Itens julgados', prior.n, current.n], ['Respostas válidas', prior.valid, current.valid], ['Taxa de acerto', M.pct(prior.accuracy), M.pct(current.accuracy)], ['Nota líquida', formatDelta(prior.net), formatDelta(current.net)]].map(([label, before, now]) =>
+                  <tr key={label}><th scope="row">{label}</th><td>{before}</td><td>{now}</td></tr>)}</tbody>
+              </table></div>}
+          </Panel>
+          <div style={{ flex: '2 1 320px', display: 'grid', gap: 10, minWidth: 0 }}>
+            <span className="qb-overline">Séries separadas · acumulado</span>
+            <PerformanceMetricCard compact label="Revisões" icon="repeat" value={M.pct(M.dayStats(PF.review).accuracy)} />
+            <PerformanceMetricCard compact label="Simulados" icon="graduation-cap" value={M.pct(sim.v ? sim.c / sim.v * 100 : null)} />
+          </div>
         </div>
         <DailySubjectBreakdown scopeLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end)} total={current.n} responses={responses} questions={D.questions} subjects={E.subjects} go={go} />
         {!!responses.length && <DailyQuestionLinks responses={responses} data={D} edital={E} activeIds={activeIds} go={go} title="Questões do período" />}
       </>}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,190px),1fr))', gap: 10 }}>
-        <StatCard compact label="Revisões (acumulado)" value={M.pct(M.dayStats(PF.review).accuracy)} detail="Contadas à parte" />
-        <StatCard compact label="Simulados (acumulado)" value={M.pct(sim.v ? sim.c / sim.v * 100 : null)} detail="Contados à parte" />
-      </div>
     </div>
   );
 }
@@ -298,8 +280,10 @@ const METHOD = [
 export default function PerformanceScreen({ tab = 'diaria', setTab, go }) {
   return (
     <div className="qb-performance" style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
-      <PageHeader overline="Desempenho" title="Desempenho" description="Números calculados a partir das respostas registradas. Nenhum indicador é um diagnóstico."
+      <div className="qb-performance-v4-hero">
+      <PageHeader overline="Análise do estudo" title="Desempenho" description={tab === 'metodo' ? 'Fórmulas e regras de cálculo de cada indicador.' : 'Respostas de treino registradas no período analisado.'}
         actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
+      </div>
       {tab === 'diaria' && <Daily go={go} />}
       {tab === 'historica' && <Historic go={go} />}
       {tab === 'metodo' && (
