@@ -10,7 +10,7 @@
 // An auth page is never a destination: coming back to /reset-password?token=…
 // would carry a live one-time credential through the login round-trip (and,
 // via Google, into the provider's OAuth state). Other auth pages could loop. `/oauth/consent` is a legitimate destination and is not in this set.
-const AUTH_PAGES = new Set(["/login", "/register", "/forgot-password", "/reset-password", "/mfa"]);
+const AUTH_PAGES = new Set(["/boas-vindas", "/login", "/register", "/forgot-password", "/reset-password", "/mfa"]);
 
 export function isAuthPage(pathname) {
   return AUTH_PAGES.has(pathname.replace(/\/+$/, "") || "/");
