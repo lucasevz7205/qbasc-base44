@@ -17,6 +17,7 @@ import { groupResponsesByTopic } from '@/lib/daily-question-performance';
 function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Questões do dia' }) {
   const [open, setOpen] = React.useState(false);
   const [onlyErrors, setOnlyErrors] = React.useState(false);
+  const [shown, setShown] = React.useState(30);
   const grouped = new Map();
   for (const { qid, result } of responses) {
     const counts = grouped.get(qid) || { correct: 0, wrong: 0, blank: 0 };
@@ -36,10 +37,10 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Q
         </Button>
       </div>
       {open && <>
-        <label className="qb-check"><input type="checkbox" checked={onlyErrors} onChange={event => setOnlyErrors(event.target.checked)} />Somente questões com erro</label>
+        <label className="qb-check"><input type="checkbox" checked={onlyErrors} onChange={event => { setOnlyErrors(event.target.checked); setShown(30); }} />Somente questões com erro</label>
         {!rows.length && <EmptyState compact title="Nenhuma questão com erro neste recorte" />}
         {!!rows.length && <ul style={{ display: 'grid', gap: 10, margin: 0, listStyle: 'none', padding: 0 }}>
-          {rows.map(([id, counts]) => {
+          {rows.slice(0, shown).map(([id, counts]) => {
             const q = byId.get(id);
             const map = maps.get(q?.topicId);
             const node = map?.nodes.some(node => node.id === q.node) ? q.node : null;
@@ -62,6 +63,7 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Q
             );
           })}
         </ul>}
+        {shown < rows.length && <Button size="sm" variant="secondary" onClick={() => setShown(value => value + 30)}>Mostrar mais questões</Button>}
       </>}
     </Panel>
   );
@@ -269,7 +271,7 @@ function Historic({ go }) {
         </Panel>}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16 }}>
           <Panel style={{ minWidth: 0 }}><span className="qb-overline">Taxa de acertos · treino</span><LineChart data={points} label="Taxa de acertos por período" /><TrendData points={points} /></Panel>
-          <Panel style={{ minWidth: 0 }}><span className="qb-overline">Volume de itens julgados</span><BarChart color="var(--viz-2)" data={points.map(point => ({ label: point.x, value: point.vol || null }))} label="Volume por período" /></Panel>
+          <Panel style={{ minWidth: 0 }}><span className="qb-overline">Volume de itens julgados</span><div role="region" aria-label="Gráfico de volume" tabIndex={0} style={{ overflowX: 'auto' }}><BarChart style={{ minWidth: points.length * 40 }} color="var(--viz-2)" data={points.map(point => ({ label: point.x, value: point.vol || null }))} label="Volume por período" /></div></Panel>
         </div>
         <DailySubjectBreakdown scopeLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end)} total={current.n} responses={responses} questions={D.questions} subjects={E.subjects} go={go} />
         {!!responses.length && <DailyQuestionLinks responses={responses} data={D} edital={E} activeIds={activeIds} go={go} title="Questões do período" />}
