@@ -1,4 +1,5 @@
 import { BrandLogo } from "@/components/qb/brand/BrandLogo";
+import "./ascension-auth.css";
 
 // Full-screen card shared by the auth pages; it sets its own color tokens so it stays readable under any theme.
 export function AuthLayout({ icon: Icon, title, subtitle, footer, children, ascension = false }) {
