@@ -1,36 +1,8 @@
 import { base44 } from "@/api/base44Client";
 
 /** Browser-safe Cornell persistence. All queries are scoped to the authenticated account and topic ID. */
-export const CORNELL_DRAFT_PREFIX = "qb-cornell-v2::";
-export const LEGACY_CORNELL_PREFIX = "qb-cornell::";
-export const CORNELL_HISTORY_INTERVAL_MS = 15 * 60 * 1000;
-
-export const emptyCornell = () => ({ notes: "", cues: "", summary: "" });
-export const cleanCornell = source => ({
-  notes: typeof source?.notes === "string" ? source.notes : "",
-  cues: typeof source?.cues === "string" ? source.cues : "",
-  summary: typeof source?.summary === "string" ? source.summary : "",
-});
-export const cornellSignature = data => JSON.stringify(cleanCornell(data));
-export const hasCornellContent = data => Object.values(cleanCornell(data)).some(s => s.trim().length > 0);
-
-export function cornellDraftKey(ownerId, topicId) {
-  if (!ownerId || !topicId) throw new Error("Conta ou tópico ausente.");
-  return CORNELL_DRAFT_PREFIX + encodeURIComponent(String(ownerId)) + "::" + encodeURIComponent(String(topicId));
-}
-
-/** Cloud wins on conflict; old local text stays recoverable and is never deleted. */
-export function reconcileCornell(remote, browserDraft, legacyDraft) {
-  const cloud = remote ? cleanCornell(remote) : null;
-  const browser = hasCornellContent(browserDraft) ? cleanCornell(browserDraft) : null;
-  const legacy = hasCornellContent(legacyDraft) ? cleanCornell(legacyDraft) : null;
-  if (cloud) {
-    const recovery = [browser, legacy].find(local => cornellSignature(local) !== cornellSignature(cloud));
-    return { data: cloud, recovery: recovery || null, importFromBrowser: false, source: "cloud" };
-  }
-  const local = browser || legacy || emptyCornell();
-  return { data: local, recovery: null, importFromBrowser: !!(browser || legacy), source: browser ? "browser" : legacy ? "legacy" : "new" };
-}
+import { cleanCornell, cornellSignature } from "./cornell-logic.js";
+export { CORNELL_DRAFT_PREFIX, LEGACY_CORNELL_PREFIX, CORNELL_HISTORY_INTERVAL_MS, emptyCornell, cleanCornell, cornellSignature, hasCornellContent, cornellDraftKey, reconcileCornell, shouldCreateCornellVersion } from "./cornell-logic.js";
 
 const matching = (rows, label) => {
   if (rows.length > 1) throw new Error("Há mais de um " + label + " para este usuário e assunto. Nada foi sobrescrito.");
@@ -68,6 +40,3 @@ export async function listCornellVersions(ownerId, topicId) {
   return rows.sort((a, b) => String(b.saved_at).localeCompare(String(a.saved_at))).slice(0, 15);
 }
 
-export function shouldCreateCornellVersion(lastTime, now = Date.now()) {
-  return !lastTime || now - new Date(lastTime).getTime() >= CORNELL_HISTORY_INTERVAL_MS;
-}
