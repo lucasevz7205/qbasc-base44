@@ -329,7 +329,7 @@ export function QBStudyProvider({ children }) {
       }
       if (nextView === 'questions' && !arg?.resume) {
         if (arg?.ganBatch && Array.isArray(arg.ganBatch.questions)) {
-          const approvedQuestions = arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada');
+          const approvedQuestions = arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada' && !QB_DATA.excludedQuestionIds.has(q.id));
           const customQuestions = Object.fromEntries(approvedQuestions.map(q => [q.id, q]));
           setSession({
             idx: 0,

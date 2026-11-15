@@ -55,6 +55,7 @@ export function adaptStudy(records, user, now = new Date()) {
   const pointLists = Object.fromEntries(source('pontos').map(p=>[p.topico||p.id,arr(p.itens)]));
   const answers = Object.fromEntries(source('respostas').map(r=>[r.qid??r.id,r]));
   const rawQuestions = Object.fromEntries(source('questoes').map(q=>[q.id,q]));
+  const excludedQuestionIds = new Set(source('questoes_excluidas').map(q=>q.id));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   const questionNodeLinks = new Map();
   for(const d of source('revisao')){
@@ -123,7 +124,7 @@ export function adaptStudy(records, user, now = new Date()) {
 
     if(!['C','E'].includes(keyOf(q.gabarito))||!q.enunciado||q.statusConfronto==='divergencia_bloqueada')continue;
     if(topic){
-      topic.resources.questions++;
+      if(!excludedQuestionIds.has(q.id)) topic.resources.questions++;
       const isTracked = !q.foraNivel&&!/^SIM/i.test(String(q.cap||''));
       if(isTracked)questionTotals[topic.id]=(questionTotals[topic.id]||0)+1;
       if(r&&isTracked){
@@ -150,6 +151,7 @@ export function adaptStudy(records, user, now = new Date()) {
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));
+  const activeQuestions = curated.questions.filter(q=>!excludedQuestionIds.has(q.id));
   const statusRank={'not-started':0,studying:1,reviewing:2,mastered:3};
   for(const t of Object.values(topics)){
     const b=t.resources, p=progress[t.id], tutory=p.tutory;
@@ -197,9 +199,9 @@ export function adaptStudy(records, user, now = new Date()) {
     if(!Array.isArray(entry))return null;
     const [sigla, label, planned]=entry; const n=planned??label;
     const id=String(sigla??'').toLowerCase();
-    return {id,name:subjects[id]?.name||(typeof label==='string'?label:sigla),planned:num(n),available:curated.questions.filter(q=>q.subjectId===id).length};
+    return {id,name:subjects[id]?.name||(typeof label==='string'?label:sigla),planned:num(n),available:activeQuestions.filter(q=>q.subjectId===id).length};
   }).filter(Boolean)}));
-  const examItems=examBlocks.flatMap(b=>b.subjects.flatMap(s=>curated.questions.filter(q=>q.subjectId===s.id).slice(0,s.planned).map(q=>({id:q.id,s:s.name,key:q.key,text:q.statement}))));
+  const examItems=examBlocks.flatMap(b=>b.subjects.flatMap(s=>activeQuestions.filter(q=>q.subjectId===s.id).slice(0,s.planned).map(q=>({id:q.id,s:s.name,key:q.key,text:q.statement}))));
   const history=source('simulados').map(s=>{
     const items=arr(s.itens), result=zero();
     if(s.tipo==='obj')for(const i of items){
@@ -214,6 +216,6 @@ export function adaptStudy(records, user, now = new Date()) {
   const next=tasks.find(t=>t.type==='simulado'&&t.date>=today&&t.status!=='done');
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
-  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:curated.questions,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
+  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:activeQuestions,excludedQuestionIds,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
   return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }

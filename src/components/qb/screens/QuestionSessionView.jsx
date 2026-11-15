@@ -4,6 +4,7 @@ import { StudySessionHeader } from '@/components/qb/study/StudySessionHeader';
 import EditorialCurator from '@/components/qb/study/EditorialCurator';
 import { QuestionCard } from '@/components/qb/questions/QuestionCard';
 import { AnswerActionBar } from '@/components/qb/questions/AnswerActionBar';
+import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { FeedbackDrawer } from '@/components/qb/questions/FeedbackDrawer';
 import { CognitiveAlertBanner } from '@/components/qb/study/CognitiveAlertBanner';
 import { Panel } from '@/components/qb/core/Panel';
@@ -86,11 +87,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const { QB_DATA, save } = useRealStudy();
   const qs = React.useMemo(() => {
     if (!session.questionIds?.length) return [];
-    const bank = new Map(QB_DATA.questionBank.map(q => [q.id, q]));
+    const bank = new Map(QB_DATA.questions.map(q => [q.id, q]));
     return session.questionIds
       .map(id => session.customQuestions?.[id] || bank.get(id))
       .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada');
-  }, [session.questionIds, session.customQuestions, QB_DATA.questionBank]);
+  }, [session.questionIds, session.customQuestions, QB_DATA.questions]);
 
   const { idx, answers, drawer, focus, bannerDismissed, ganBatch } = session;
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
@@ -99,13 +100,16 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   }, [session.sessionId]);
 
   const done = idx >= qs.length;
-  useStudyActivity('questions', done ? null : session.sessionId || 'round');
-  const recordCompletion = useStudyCompletion('questions');
   const q = qs[idx];
+  const excluded = q && QB_DATA.excludedQuestionIds.has(q.id);
+  useStudyActivity('questions', !q || excluded ? null : session.sessionId || 'round');
+  const recordCompletion = useStudyCompletion('questions');
   const st = answers[q?.id] || {};
   const keyAtAnswer = st.revealed ? (st.keyAtAnswer || q?.key) : q?.key;
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
+  const [deleteTarget, setDeleteTarget] = React.useState(null);
+  const deletingCurrent = !!q && deleteTarget?.id === q.id;
   const lock = React.useRef(false);
   const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
   const setAns = p => setSession(s => {
@@ -117,7 +121,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   };
 
   const confirm = async () => {
-    if (!q || !st.answer || st.revealed || lock.current) return;
+    if (!q || excluded || !st.answer || st.revealed || lock.current) return;
     lock.current = true;
     setLoading(true);
     setError('');
@@ -177,12 +181,30 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     patch({ idx: idx + 1, drawer: false });
   };
 
+  const excludeQuestion = async () => {
+    if (!deletingCurrent || lock.current) return;
+    lock.current = true;
+    setLoading(true);
+    setError('');
+    try {
+      await save('questoes_excluidas', q.id, { excluidaEm: new Date().toISOString() });
+      setDeleteTarget(null);
+    } catch {
+      setError('Não foi possível excluir a questão. Tente novamente.');
+      return;
+    } finally {
+      lock.current = false;
+      setLoading(false);
+    }
+    await next();
+  };
+
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
   const wrong = qs.filter(x => answers[x.id] && answers[x.id].revealed && answers[x.id].answer !== (answers[x.id].keyAtAnswer || x.key));
 
   React.useEffect(() => {
     const onKey = e => {
-      if (done || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], input, textarea, select, button, a, summary')) return;
+      if (done || excluded || deletingCurrent || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], input, textarea, select, button, a, summary')) return;
       const k = e.key.toLowerCase();
       if (k === 'c' || k === 'e') chooseAnswer({ answer: k.toUpperCase() });
       if (e.key === 'Enter') {
@@ -227,6 +249,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
             </Panel>
           ) : done ? (
             <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs} ganBatch={ganBatch} />
+          ) : excluded ? (
+            <Panel>
+              <p>Esta questão foi excluída do banco ativo.</p>
+              <Button disabled={loading} onClick={next}>{idx + 1 === qs.length ? 'Concluir rodada' : 'Continuar'}</Button>
+            </Panel>
           ) : (
             <>
               {!focus && ganBatch && !ganBannerDismissed && (
@@ -296,13 +323,19 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
                 conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
               />
+              <div>
+                <Button variant="ghost" size="sm" icon="trash-2" disabled={loading} onClick={() => {
+                  setError('');
+                  setDeleteTarget({ id: q.id, code: q.code || q.id });
+                }}>Excluir questão</Button>
+              </div>
               {st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
                 <EditorialCurator key={q.id} kind="question" item={q} topicLabel={q.chapter || q.topicId || q.subject} />
               )}
             </>
           )}
         </main>
-        {!done && (
+        {!done && !excluded && (
           <FeedbackDrawer
             open={drawer && st.revealed}
             onClose={() => patch({ drawer: false })}
@@ -327,7 +360,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           />
         )}
       </div>
-      {!done && (
+      {!done && !excluded && (
         <AnswerActionBar
           sticky
           state={st.revealed ? 'answered' : loading ? 'loading' : st.answer ? 'ready' : 'idle'}
@@ -339,6 +372,17 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           onOpenFeedback={() => patch({ drawer: true })}
         />
       )}
+      <ConfirmDialog
+        open={deletingCurrent}
+        tone="danger"
+        title={`Excluir questão ${deleteTarget?.code || ''}?`}
+        description="A questão sai dos novos treinos e simulados. As respostas e as rodadas já registradas ficam no histórico."
+        confirmLabel={loading ? 'Excluindo…' : 'Excluir questão'}
+        onConfirm={excludeQuestion}
+        onCancel={() => { if (!lock.current) setDeleteTarget(null); }}
+      >
+        {error && <p role="alert">{error}</p>}
+      </ConfirmDialog>
     </div>
   );
 }

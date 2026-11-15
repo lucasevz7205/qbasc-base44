@@ -66,10 +66,10 @@ export default function MindMapView({
     nodes: chosen.nodes,
     rootId: chosen.id,
     topicId: chosen.topicId,
-    questions: D.questionBank,
+    questions: D.questions,
     flashcards: D.flashcards,
     reviews: D.reviews,
-  }) : new Map(), [chosen, D.questionBank, D.flashcards, D.reviews]);
+  }) : new Map(), [chosen, D.questions, D.flashcards, D.reviews]);
   const nodes = React.useMemo(() => (chosen?.nodes || []).map(item => {
     const stats = performance.get(item.id);
     return { ...item, mastery: stats?.status, performance: stats };
