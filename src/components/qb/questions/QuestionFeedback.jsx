@@ -106,9 +106,18 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
           <fieldset disabled={reflection.disabled} style={{ display: 'grid', gap: 10, margin: 0, padding: 0, border: 0, minWidth: 0 }}>
             <legend style={{ marginBottom: 8 }}>De onde veio o erro?</legend>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {Object.entries(ERROR_ORIGINS).map(([id, label]) => (
-                <button key={id} type="button" className="qb-seg__opt" aria-pressed={reflection.origin === id} onClick={() => reflection.onChange({ errorOrigin: id })}>{label}</button>
-              ))}
+              {Object.entries(ERROR_ORIGINS).map(([id, label], index) => (
+                <label key={id} className="qb-btn qb-btn--secondary qb-btn--sm"
+                  style={{ gap: 8, minHeight: 42, whiteSpace: 'normal', cursor: 'pointer',
+                    borderColor: reflection.origin === id ? 'var(--qb-gold)' : undefined,
+                    background: reflection.origin === id ? 'var(--surface-hover)' : undefined }}>
+                  <input type="radio" name={noteId + '-origin'} value={id} checked={reflection.origin === id}
+                    ref={index === 0 ? reflection.originRef : undefined}
+                    onChange={() => reflection.onChange({ errorOrigin: id })}
+                    style={{ accentColor: 'var(--qb-gold)', scrollMarginBlock: '12px 116px' }} />
+                  {label}
+                </label>
+              ))
             </div>
             <label htmlFor={noteId}>Por que você errou e qual é a regra correta?</label>
             <textarea id={noteId} ref={reflection.inputRef} className="qb-input" rows={3} value={reflection.text} onChange={event => reflection.onChange({ errorJustification: event.target.value })}
