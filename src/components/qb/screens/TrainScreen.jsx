@@ -58,6 +58,19 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const dispatch = dispatchProp || ctx.dispatch;
   const { pendingByTopic, resolveIntent, missing, clearMissing } = ctx;
   const [filter, setFilter] = React.useState('all');
+  const reviewRef = React.useRef(null);
+  const labRef = React.useRef(null);
+  const radialRef = React.useRef(null);
+  const openAndScroll = ref => {
+    const target = ref.current;
+    if (!target) return;
+    if (target.tagName === 'DETAILS') target.open = true;
+    target.scrollIntoView({ block: 'start' });
+  };
+  const selectTopic = (subjectId, topicId) => {
+    setSel({ subjectId, topicId });
+    openAndScroll(radialRef);
+  };
 
   if (missing && missing.back === 'train') {
     return <MissingLink missing={missing} go={go} onBack={clearMissing} />;
@@ -104,12 +117,9 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
         title="Treinar"
         description="Escolha a matéria e o assunto no anel; cada assunto abre quatro ações com o contexto preservado."
       />
-      <div id="qb-scheduled-review" style={{ scrollMarginTop: 100 }}>
-        <Panel variant="ornate" style={{ display: 'grid', gap: 14 }}>
-          <div>
-            <h2 style={{ font: 'var(--type-h2)' }}>Revisão espaçada</h2>
-            <span style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>{scopeLabel}</span>
-          </div>
+      <details ref={reviewRef} id="qb-scheduled-review" className="qb-panel qb-train-fold">
+        <summary>Revisão espaçada <small>{reviews.questions.ids.length + reviews.flashcards.ids.length} disponíveis · {scopeLabel}</small></summary>
+        <div className="qb-train-fold__body">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 245px), 1fr))', gap: 12 }}>
             {[
               ['Questões', 'target', reviews.questions, () => go('questions', { filter: 'all', questionIds: reviews.questions.ids, scheduledReview: true })],
@@ -122,11 +132,14 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
               </Panel>
             ))}
           </div>
-        </Panel>
-      </div>
-      <QuestionFilters value={filter} onChange={setFilter} />
+        </div>
+      </details>
+      <details className="qb-panel qb-train-fold">
+        <summary>Filtros da rodada</summary>
+        <div className="qb-train-fold__body"><QuestionFilters value={filter} onChange={setFilter} /></div>
+      </details>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' }}>
-        <Panel variant="ornate" style={{ flex: '1 1 600px', minWidth: 0 }}>
+        <div ref={radialRef} className="qb-panel qb-panel--ornate" style={{ flex: '1 1 600px', minWidth: 0, padding: 'clamp(12px, 3vw, 24px)', scrollMarginTop: 100 }}>
           <TrainingRadial
             subjects={E.subjects}
             value={sel}
@@ -135,15 +148,15 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             linkInfo={linkInfo}
             onAction={i => {
               if (i.action === 'review' && (reviews.questions.due || reviews.flashcards.due)) {
-                document.getElementById('qb-scheduled-review')?.scrollIntoView({ block: 'start' });
+                openAndScroll(reviewRef);
               } else dispatch(i.action === 'train' ? { ...i, filter } : i, 'train');
             }}
           />
-        </Panel>
+        </div>
         <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <Panel variant="ornate" style={{ display: 'grid', gap: 14 }}>
-            <h2 style={{ font: 'var(--type-h2)', margin: 0 }}>Progresso das questões</h2>
-            <span style={{ color: 'var(--text-secondary)' }}>{topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : subject?.name || 'Todas as matérias'}</span>
+          <details className="qb-panel qb-train-fold">
+            <summary>Progresso das questões <small>{scopeLabel}</small></summary>
+            <div className="qb-train-fold__body">
             <ProgressBar tone="gold" size="lg" label="Questões concluídas"
               value={stats.total ? stats.completed / stats.total : 0}
               valueText={`${stats.completed} de ${stats.total}`} />
@@ -158,9 +171,11 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
                 <span style={{ color: 'var(--text-muted)' }}>{stats.valid} respostas válidas</span>
               </div>
             )}
-          </Panel>
-          <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <span className="qb-overline">Revisões e pendências</span>
+            </div>
+          </details>
+          <details className="qb-panel qb-train-fold">
+            <summary>Pendências do planejamento <small>{late.length} atrasadas</small></summary>
+            <div className="qb-train-fold__body">
             <span style={{ font: '600 32px/1 var(--font-body)', color: 'var(--text-primary)' }}>{late.length}</span>
             <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
               atividades atrasadas no planejamento ({late.filter(t => t.auto).length} revisões automáticas).
@@ -168,9 +183,11 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             <Button variant="secondary" icon="calendar-days" onClick={() => go('plan', 'hoje')}>
               Ver no planejamento
             </Button>
-          </Panel>
-          <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <span className="qb-overline">Armadilhas da banca</span>
+            </div>
+          </details>
+          <details className="qb-panel qb-train-fold">
+            <summary>Armadilhas da banca</summary>
+            <div className="qb-train-fold__body">
             <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
               Treine padrões frequentes de pegadinha com O Arquiteto no modo Banca CEBRASPE.
             </span>
@@ -181,48 +198,60 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             >
               Abrir O Arquiteto
             </Button>
-            <a className="qb-btn qb-btn--secondary" href="#qb-pegadinhas-lab"
-              style={{ display: 'inline-flex', minHeight: 44, alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
-              Explorar os 14 mecanismos
-            </a>
-          </Panel>
+            <Button variant="secondary" onClick={() => openAndScroll(labRef)}>Explorar os 14 mecanismos</Button>
+            </div>
+          </details>
         </div>
       </div>
-      <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
-          <h2 style={{ font: 'var(--type-h2)' }}>Assuntos com menor taxa de acertos</h2>
-          <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
-            Somente assuntos com pelo menos 10 respostas válidas.
-          </span>
+      <details className="qb-panel qb-train-fold">
+        <summary>Matérias e assuntos <small>{E.subjects.length} matérias</small></summary>
+        <div className="qb-train-fold__body">
+          {E.subjects.map(matter => (
+            <details key={matter.id} className="qb-train-fold qb-train-fold--nested">
+              <summary>{matter.name} <small>{matter.topics.length} assuntos</small></summary>
+              <div className="qb-train-fold__body">
+                {matter.topics.map(item => (
+                  <details key={item.id} className="qb-train-fold qb-train-fold--nested">
+                    <summary>{[item.num, item.title].filter(Boolean).join(' · ') || item.id}</summary>
+                    <div className="qb-train-fold__body">
+                      <Button size="sm" variant="secondary" icon="locate-fixed" onClick={() => selectTopic(matter.id, item.id)}>Ver ações do assunto</Button>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </details>
+          ))}
         </div>
-        {weak.map(({ s, t, acc, n }) => (
-          <div key={t.id} style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', padding: '10px 4px', borderBottom: '1px solid var(--divider)' }}>
-            <span style={{ flex: '1 1 240px', display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
-              <span style={{ font: '500 14px/1.3 var(--font-body)', color: 'var(--text-primary)' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--qb-gold)', marginRight: 8 }}>{s.short} {t.num}</span>
-                {t.title || 'Título não disponível'}
-              </span>
-              <span style={{ font: '400 12px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>{s.name}</span>
-            </span>
-            <span style={{ font: '500 13px/1.2 var(--font-mono)', color: acc < 60 ? 'var(--state-incorrect)' : 'var(--text-secondary)' }}>
-              {Math.round(acc)}% · {t.correct}/{n}
-            </span>
-            <Button
-              size="sm"
-              variant="secondary"
-              icon="locate-fixed"
-              onClick={() => {
-                setSel({ subjectId: s.id, topicId: t.id });
-                window.scrollTo(0, 0);
-              }}
-            >
-              Ver ações
-            </Button>
-          </div>
-        ))}
-      </Panel>
-      <PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} />
-      <AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} />
+      </details>
+      <details className="qb-panel qb-train-fold">
+        <summary>Assuntos com menor taxa de acertos <small>{weak.length} assuntos</small></summary>
+        <div className="qb-train-fold__body">
+          <small>Somente assuntos com pelo menos 10 respostas válidas.</small>
+          {Array.from(new Set(weak.map(row => row.s.id))).map(id => (
+            <details key={id} className="qb-train-fold qb-train-fold--nested">
+              <summary>{weak.find(row => row.s.id === id).s.name}</summary>
+              <div className="qb-train-fold__body">
+                {weak.filter(row => row.s.id === id).map(({ s, t, acc, n }) => (
+                  <details key={t.id} className="qb-train-fold qb-train-fold--nested">
+                    <summary>{[t.num, t.title].filter(Boolean).join(' · ') || t.id} <small>{Math.round(acc)}% · {t.correct}/{n}</small></summary>
+                    <div className="qb-train-fold__body">
+                      <Button size="sm" variant="secondary" icon="locate-fixed" onClick={() => selectTopic(s.id, t.id)}>Ver ações do assunto</Button>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </details>
+          ))}
+        </div>
+      </details>
+      <details ref={labRef} className="qb-panel qb-train-fold">
+        <summary>Laboratório de mecanismos e pegadinhas</summary>
+        <div className="qb-train-fold__body"><PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
+      </details>
+      <details className="qb-panel qb-train-fold">
+        <summary>Acervo de pegadinhas</summary>
+        <div className="qb-train-fold__body"><AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
+      </details>
     </div>
   );
 }
