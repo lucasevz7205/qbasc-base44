@@ -63,8 +63,12 @@ export function adaptStudy(records, user, now = new Date()) {
     const topic=topics[q.topico??q.topicId] || capTopic[chapterKey(q.cap)];
     const r=answers[q.id];
     if(topic&&r){topic.correct+=num(r.acertos);topic.wrong+=num(r.erros);topic.blank+=num(r.brancos);}
-    if(!['C','E'].includes(keyOf(q.gabarito))||!q.enunciado)continue;
-    questionBank.push({id:q.id,code:q.id,year:q.ano,tags:[q.tema||q.capNome].filter(Boolean),key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:aliases[topic?.id]?.[q.mapaNoId??q.no??q.node??q.mapaNo]||roots[topic?.id],response:r,raw:q});
+    if(!['C','E'].includes(keyOf(q.gabarito))||!q.enunciado||q.statusConfronto==='divergencia_bloqueada')continue;
+    const rawNodeRef = q.mapaNoId??q.no??q.node??q.mapaNo;
+    const resolvedNode = mapNodes.some(n=>n.id===rawNodeRef) ? rawNodeRef : (aliases[topic?.id]?.[rawNodeRef]||roots[topic?.id]);
+    const trap = q.trap || (q.mecanismo ? { name: `${q.mecanismo}${q.mecanismoNome ? ' — ' + q.mecanismoNome : ''}`, description: [str(q.correcaoMinima||q.vacina), str(q.criticaAdversaria)].filter(Boolean).join(' · ') || 'Mecanismo CEBRASPE auditado pela GAN.' } : undefined);
+    const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
+    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
   }
   const reviews=Object.fromEntries(source('cartoes_aval').map(r=>[r.id,r]));
   const weeks={ '-1':[],0:[],1:[]}, weekday=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];

@@ -21,6 +21,10 @@ export default function ConceptPanel({
   onNavigate,
   onReview,
   reviewCount,
+  onGenerateGan,
+  ganLoading = false,
+  ganError = '',
+  ganBlockedReport = null,
   returnTo,
   onReturn,
   onClose,
@@ -96,24 +100,54 @@ export default function ConceptPanel({
             </div>
           </section>
         )}
-        {onReview && (
+        {(onReview || onGenerateGan) && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <H>Revisão ativa</H>
-            <Button variant="secondary" icon="layers" onClick={onReview} fullWidth>
-              {reviewCount ? `Revisar ${reviewCount} flashcards deste conceito` : 'Revisar este conceito'}
-            </Button>
+            {onGenerateGan && (
+              <Button variant="primary" icon="sparkles" loading={ganLoading} disabled={ganLoading} onClick={onGenerateGan} fullWidth>
+                {ganLoading ? 'Confronto GAN (Gerador × Discriminador Cego)…' : 'Gerar questões GAN deste nó'}
+              </Button>
+            )}
+            {ganError && (
+              <div role="alert" style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--state-incorrect-bg)', border: '1px solid rgba(238,138,124,.4)', font: '400 13px/1.45 var(--font-body)', color: 'var(--state-incorrect)' }}>
+                {ganError}
+              </div>
+            )}
+            {ganBlockedReport && Array.isArray(ganBlockedReport.bloqueadas) && ganBlockedReport.bloqueadas.length > 0 && (
+              <div style={{ padding: 12, borderRadius: 12, background: 'var(--surface-sunken)', border: '1px solid var(--divider)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                  <Badge tone="incorrect">Não aprovadas · {ganBlockedReport.bloqueadas.length}</Badge>
+                  <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>
+                    Bloqueadas pelo Discriminador Cego
+                  </span>
+                </div>
+                {ganBlockedReport.bloqueadas.map((b) => (
+                  <div key={b.id} style={{ font: '400 12px/1.45 var(--font-body)', color: 'var(--text-secondary)', borderTop: '1px solid var(--divider)', paddingTop: 6 }}>
+                    <strong style={{ color: 'var(--text-primary)' }}>{b.code} ({b.mecanismo})</strong> — Gerador: {b.gabaritoGerador} × Discriminador Cego: {b.gabaritoDiscriminador}. {b.criticaAdversaria}
+                  </div>
+                ))}
+              </div>
+            )}
+            {onReview && (
+              <Button variant="secondary" icon="layers" onClick={onReview} fullWidth>
+                {reviewCount ? `Revisar ${reviewCount} flashcards deste conceito` : 'Revisar este conceito'}
+              </Button>
+            )}
           </section>
         )}
         {sources.length > 0 && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <H>Fontes</H>
             <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {sources.map((s, i) => (
-                <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', font: '400 13px/1.45 var(--font-mono)', color: 'var(--text-muted)' }}>
-                  <Icon name="file-text" size={14} style={{ marginTop: 2 }} />
-                  {s}
-                </li>
-              ))}
+              {sources.map((s, i) => {
+                const label = typeof s === 'object' && s !== null ? s.label : s;
+                return (
+                  <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', font: '400 13px/1.45 var(--font-mono)', color: 'var(--text-muted)' }}>
+                    <Icon name="file-text" size={14} style={{ marginTop: 2 }} />
+                    {label}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         )}

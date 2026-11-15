@@ -139,8 +139,25 @@ export function QBStudyProvider({ children }) {
         return;
       }
       if (nextView==='questions' && !arg?.resume) {
-        const picked=QB_DATA.questionBank.filter(q=>(!arg?.topicId||q.topicId===arg.topicId)&&(!arg?.subjectId||q.subjectId===arg.subjectId)).sort((a,b)=>Number(!!a.response)-Number(!!b.response)).slice(0,20);
-        setSession({idx:0,answers:{},drawer:false,focus:false,bannerDismissed:false,questionIds:picked.map(q=>q.id),startedAt:new Date().toISOString(),sessionId:crypto.randomUUID()});
+        if (arg?.ganBatch && Array.isArray(arg.ganBatch.questions)) {
+          const approvedQuestions = arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada');
+          const customQuestions = Object.fromEntries(approvedQuestions.map(q => [q.id, q]));
+          setSession({
+            idx: 0,
+            answers: {},
+            drawer: false,
+            focus: false,
+            bannerDismissed: false,
+            questionIds: approvedQuestions.map(q => q.id),
+            customQuestions,
+            ganBatch: arg.ganBatch,
+            startedAt: new Date().toISOString(),
+            sessionId: crypto.randomUUID(),
+          });
+        } else {
+          const picked=QB_DATA.questionBank.filter(q=>(!arg?.topicId||q.topicId===arg.topicId)&&(!arg?.subjectId||q.subjectId===arg.subjectId)).sort((a,b)=>Number(!!a.response)-Number(!!b.response)).slice(0,20);
+          setSession({idx:0,answers:{},drawer:false,focus:false,bannerDismissed:false,questionIds:picked.map(q=>q.id),customQuestions:null,ganBatch:null,startedAt:new Date().toISOString(),sessionId:crypto.randomUUID()});
+        }
         setElapsed(0);setPaused(false);
       }
       if(nextView==='flashcards'&&!arg?.resume){setCards({idx:0,flipped:false,ratings:[],topicId:arg?.topicId});setElapsed(0);setPaused(false);}
@@ -171,7 +188,8 @@ export function QBStudyProvider({ children }) {
     [mapSel, returnTo, go],
   );
 
-  const q = QB_DATA.questions.find(x => x.id===session.questionIds?.[session.idx]);
+  const currentQId = session.questionIds?.[session.idx];
+  const q = (currentQId && session.customQuestions?.[currentQId]) || QB_DATA.questions.find(x => x.id === currentQId);
   const layerUi =
     activeView === 'questions' && q && !ui.ctx
       ? { ...ui, ctx: { subjectId: q.subjectId, topicId: q.topicId, origin: 'questão ' + q.code } }
