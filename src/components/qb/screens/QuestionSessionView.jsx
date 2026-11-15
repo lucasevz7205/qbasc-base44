@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrandHeader } from '@/components/qb/navigation/BrandHeader';
 import { StudySessionHeader } from '@/components/qb/study/StudySessionHeader';
+import EditorialCurator from '@/components/qb/study/EditorialCurator';
 import { QuestionCard } from '@/components/qb/questions/QuestionCard';
 import { AnswerActionBar } from '@/components/qb/questions/AnswerActionBar';
 import { FeedbackDrawer } from '@/components/qb/questions/FeedbackDrawer';
@@ -13,7 +14,7 @@ import { useRealStudy } from '@/lib/qb-real-data';
 import { pickQuestionRound } from '@/lib/study-session-rules';
 
 function SessionSummary({ answers, go, qs, ganBatch }) {
-  const right = qs.filter(q => answers[q.id] && answers[q.id].answer === q.key).length;
+  const right = qs.filter(q => answers[q.id] && answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
   const blocked = ganBatch?.blocked || [];
   return (
     <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 18 }} padding={32}>
@@ -32,7 +33,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
       <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
         {qs.map(q => {
           const a = answers[q.id];
-          const ok = a && a.answer === q.key;
+          const ok = a && a.answer === (a.keyAtAnswer || q.key);
           return (
             <li key={q.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: '1px solid var(--divider)' }}>
               <span style={{ font: '500 13px/1 var(--font-mono)', color: 'var(--text-muted)', width: 64 }}>{q.code}</span>
@@ -95,6 +96,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
   const done = idx >= qs.length;
   const q = qs[Math.min(idx, Math.max(qs.length - 1, 0))];
   const st = answers[q?.id] || {};
+  const keyAtAnswer = st.revealed ? (st.keyAtAnswer || q?.key) : q?.key;
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
   const lock = React.useRef(false);
@@ -109,7 +111,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
     try {
       const confMap = { baixa: 1, media: 2, alta: 3 };
       const numericConf = confMap[st.confidence] || Number(st.confidence) || null;
-      const rawQuestion = q.raw || { id: q.id, gabarito: q.key, cap: q.topicId || '' };
+      const rawQuestion = { ...(q.raw || { id: q.id, cap: q.topicId || '' }), gabarito: q.key };
       const record = buildAnswerRecord({
         question: rawQuestion,
         prev: q.response,
@@ -117,8 +119,10 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
         confidence: numericConf,
       }).record;
       if (q.response?.hist) record.hist = [...q.response.hist, ...record.hist.slice(-1)];
+      record.gabaritoUsado = q.key;
+      if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
-      setAns({ revealed: true });
+      setAns({ revealed: true, keyAtAnswer: q.key });
       patch({ drawer: true });
     } catch {
       setError('Não foi possível salvar a resposta. Tente novamente.');
@@ -131,7 +135,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
   const next = async () => {
     if (lock.current || done) return;
     if (idx + 1 === qs.length) {
-      const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: x.key }));
+      const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key }));
       if (items.length) {
         lock.current = true;
         setLoading(true);
@@ -161,11 +165,11 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
   };
 
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
-  const wrong = qs.filter(x => answers[x.id] && answers[x.id].revealed && answers[x.id].answer !== x.key);
+  const wrong = qs.filter(x => answers[x.id] && answers[x.id].revealed && answers[x.id].answer !== (answers[x.id].keyAtAnswer || x.key));
 
   React.useEffect(() => {
     const onKey = e => {
-      if (done || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (done || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial]') || ['INPUT','TEXTAREA','SELECT','BUTTON'].includes(e.target.tagName)) return;
       const k = e.key.toLowerCase();
       if (!st.revealed && (k === 'c' || k === 'e')) setAns({ answer: k.toUpperCase() });
       if (e.key === 'Enter') {
@@ -264,15 +268,19 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
                 exam={QB_DATA.exam}
                 tags={q.tags}
                 statement={q.statement}
+                editorial={q.editorial}
                 answer={st.answer || null}
                 onAnswer={a => setAns({ answer: a })}
                 confidence={st.confidence || null}
                 onConfidence={c => setAns({ confidence: c })}
-                answerKey={st.revealed ? q.key : null}
+                answerKey={st.revealed ? keyAtAnswer : null}
                 bookmarked={!!st.bookmarked}
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
                 conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
               />
+              {st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
+                <EditorialCurator key={q.id} kind="question" item={q} topicLabel={q.chapter || q.topicId || q.subject} />
+              )}
             </>
           )}
         </main>
@@ -280,8 +288,8 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
           <FeedbackDrawer
             open={drawer && st.revealed}
             onClose={() => patch({ drawer: false })}
-            result={st.answer === q.key ? 'correct' : 'incorrect'}
-            answerKey={q.key}
+            result={st.answer === keyAtAnswer ? 'correct' : 'incorrect'}
+            answerKey={keyAtAnswer}
             explanation={q.explanation}
             legalBasis={q.basis}
             trap={q.trap}
