@@ -40,7 +40,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   React.useEffect(() => {
     let mounted = true;
     statusFnRef.current().then(status => { if (mounted) setIntegrationStatus(status); })
-      .catch(() => { if (mounted) setIntegrationStatus({ geminiConfigured: false }); });
+      .catch(() => { if (mounted) setIntegrationStatus({ checkError: true }); });
     return () => { mounted = false; };
   }, []);
 
@@ -158,7 +158,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
             <button className="qb-seg__opt" aria-pressed={provider === 'base44'} onClick={() => setProvider('base44')} disabled={busy}>Base44 · créditos</button>
           </div>
           <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
-            {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
+            {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.checkError ? 'Não foi possível verificar a chave' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
