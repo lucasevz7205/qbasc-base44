@@ -283,10 +283,6 @@ export default function MindMapCanvas({
     const p = pos[id];
     if (p) setPan({ x: -p.x * zoom - off.x, y: -p.y * zoom - off.y });
   };
-  const reset = () => {
-    setUserZoom(1);
-    setPan({ x: 0, y: 0 });
-  };
 
   const adjustZoom = (delta) => {
     setUserZoom((prev) => {
