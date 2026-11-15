@@ -205,7 +205,7 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
                 {isQuestion && (
                   <Button variant="secondary" icon="save" disabled={!approval || saving || generating || !item.raw}
                     onClick={() => setConfirmOverwrite(true)}>
-                    Salvar sobre a questão anterior
+                    Salvar em cima da anterior
                   </Button>
                 )}
                 <Button variant="secondary" icon="x" disabled={saving} onClick={() => { setProposal(null); setApproval(false); }}>
