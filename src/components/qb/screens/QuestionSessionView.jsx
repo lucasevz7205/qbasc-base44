@@ -107,8 +107,14 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
   const lock = React.useRef(false);
-  const patch = p => setSession(s => ({ ...s, ...p }));
-  const setAns = p => setSession(s => ({ ...s, answers: { ...s.answers, [q.id]: { ...(s.answers[q.id] || {}), ...p } } }));
+  const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
+  const setAns = p => setSession(s => {
+    if (s.sessionId !== session.sessionId || s.idx !== idx) return s;
+    return { ...s, answers: { ...s.answers, [q.id]: { ...s.answers[q.id], ...p } } };
+  });
+  const chooseAnswer = p => {
+    if (!lock.current && !st.revealed) setAns(p);
+  };
 
   const confirm = async () => {
     if (!q || !st.answer || st.revealed || lock.current) return;
@@ -125,12 +131,12 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         marked: st.answer,
         confidence: numericConf,
       }).record;
-      if (q.response?.hist) record.hist = [...q.response.hist, ...record.hist.slice(-1)];
+      if (Array.isArray(q.response?.hist)) record.hist = [...q.response.hist, ...record.hist.slice(-1)];
       record.gabaritoUsado = q.key;
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
       recordCompletion();
-      setAns({ revealed: true, keyAtAnswer: q.key });
+      setAns({ revealed: true, answer: st.answer, confidence: st.confidence, keyAtAnswer: q.key });
     } catch {
       setError('Não foi possível salvar a resposta. Tente novamente.');
     } finally {
@@ -178,7 +184,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     const onKey = e => {
       if (done || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], input, textarea, select, button, a, summary')) return;
       const k = e.key.toLowerCase();
-      if (!st.revealed && (k === 'c' || k === 'e')) setAns({ answer: k.toUpperCase() });
+      if (k === 'c' || k === 'e') chooseAnswer({ answer: k.toUpperCase() });
       if (e.key === 'Enter') {
         e.preventDefault();
         st.revealed ? next() : confirm();
@@ -282,9 +288,9 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 statement={q.statement}
                 editorial={q.editorial}
                 answer={st.answer || null}
-                onAnswer={a => setAns({ answer: a })}
+                onAnswer={a => chooseAnswer({ answer: a })}
                 confidence={st.confidence || null}
-                onConfidence={c => setAns({ confidence: c })}
+                onConfidence={c => chooseAnswer({ confidence: c })}
                 answerKey={st.revealed ? keyAtAnswer : null}
                 bookmarked={!!st.bookmarked}
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
