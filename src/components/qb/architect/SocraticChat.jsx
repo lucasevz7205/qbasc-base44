@@ -1,6 +1,7 @@
 import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { Icon } from '@/components/qb/core/Icon';
+import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 import { Button } from '@/components/qb/core/Button';
 import { SelectField } from '@/components/qb/data/SelectField';
 import { EmptyState } from '@/components/qb/data/EmptyState';
@@ -173,8 +174,8 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--qb-navy-hover)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
           : m.role === 'error'
             ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
-            : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4, whiteSpace: 'pre-wrap' }}>
-                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {(MODES.find(x => x[0] === m.mode) || MODES[0])[1]} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><p>{m.text}</p>
+            : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
+                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {(MODES.find(x => x[0] === m.mode) || MODES[0])[1]} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
               </div>)}
         {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
       </div>
