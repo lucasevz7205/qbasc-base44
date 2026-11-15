@@ -2,12 +2,15 @@ import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 
-const RATES = [
-  ['errei', 'Errei'],
-  ['dificil', 'Difícil'],
-  ['bom', 'Bom'],
-  ['facil', 'Fácil'],
-];
+import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
+import { FLASHCARD_RATINGS } from '@/lib/flashcard-review';
+
+const tones = {
+  incorrect: ['var(--state-incorrect)', 'var(--state-incorrect-bg)'],
+  attention: ['var(--state-attention)', 'var(--state-attention-bg)'],
+  correct: ['var(--state-correct)', 'var(--state-correct-bg)'],
+  gold: ['var(--qb-gold)', 'var(--state-no-evidence-bg)'],
+};
 
 export default function Flashcard({
   front,
@@ -18,6 +21,8 @@ export default function Flashcard({
   flipped: flippedProp,
   onFlip,
   onRate,
+  suggestedRating,
+  ratingDisabled = false,
   correction,
   intervals = { errei: '< 1 min', dificil: '10 min', bom: '1 d', facil: '4 d' },
   demo = true,
@@ -44,7 +49,9 @@ export default function Flashcard({
           <section className="qb-flash__face" style={face} aria-hidden={flipped}>
             <Head label="Frente" />
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-              <p style={{ font: '400 clamp(20px,2.4vw,26px)/1.4 var(--font-heading)', color: 'var(--text-primary)', maxWidth: '30ch' }}>{front}</p>
+              <div style={{ font: '400 clamp(20px,2.4vw,26px)/1.4 var(--font-heading)', color: 'var(--text-primary)', maxWidth: '30ch' }}>
+                {typeof front === 'string' ? <ChatMarkdown text={front} /> : front}
+              </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Button variant="secondary" icon="repeat" onClick={flip} tabIndex={flipped ? -1 : 0}>
@@ -55,7 +62,7 @@ export default function Flashcard({
           <section className="qb-flash__face qb-flash__face--back" style={face} aria-hidden={!flipped}>
             <Head label="Verso" />
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', overflowY: 'auto' }}>
-              <div style={{ font: '400 17px/1.65 var(--font-body)', color: 'var(--text-secondary)', maxWidth: 'var(--measure)', margin: '0 auto' }}>{back}</div>
+              <div style={{ font: '400 17px/1.65 var(--font-body)', color: 'var(--text-secondary)', maxWidth: 'var(--measure)', margin: '0 auto' }}>{typeof back === 'string' ? <ChatMarkdown text={back} /> : back}</div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
               {origin ? (
@@ -74,20 +81,26 @@ export default function Flashcard({
           </section>
         </div>
       </div>
-      {correction || null}
       {flipped && onRate && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div role="group" aria-label="Autoavaliação" style={{ display: 'flex', gap: 8 }}>
-            {RATES.map(([k, l]) => (
-              <button key={k} className="qb-rate" onClick={() => onRate(k)}>
-                {l}
-                <small>{intervals[k]}</small>
-              </button>
-            ))}
+          <div role="group" aria-label="Autoavaliação" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {FLASHCARD_RATINGS.map(({ id, label, tone }) => {
+              const [color, background] = tones[tone];
+              const suggested = suggestedRating === id;
+              return (
+                <button key={id} type="button" className="qb-rate" disabled={ratingDisabled} onClick={() => onRate(id)}
+                  style={{ color, background, borderColor: color, minWidth: 92, boxShadow: suggested ? 'inset 0 0 0 1px currentColor' : undefined }}>
+                  {label}
+                  <small>{intervals[id]}</small>
+                  {suggested && <small style={{ color }}>Sugestão do Arquiteto</small>}
+                </button>
+              );
+            })}
           </div>
           {demo && <span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)', textAlign: 'center' }}>Intervalos ilustrativos — modo demonstração, sem agendamento real.</span>}
         </div>
       )}
+      {correction || null}
     </div>
   );
 }
