@@ -13,6 +13,7 @@ import { extractFlashcardSuggestion, FLASHCARD_RATINGS } from "@/lib/flashcard-r
  */
 export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) {
   const correct = useServerFn(correctFlashcardWithArchitect);
+  const [expanded, setExpanded] = React.useState(false);
   const [attempt, setAttempt] = React.useState("");
   const [feedback, setFeedback] = React.useState("");
   const [pending, setPending] = React.useState(false);
@@ -60,9 +61,12 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
 
   return (
     <section aria-label="Correção com O Arquiteto" className="qb-panel qb-panel--sunken"
-      style={{ padding: "clamp(16px,2.5vw,24px)", display: "grid", gap: 12,
+      style={{ padding: expanded ? "clamp(16px,2.5vw,24px)" : "8px 14px", display: "grid", gap: 12,
         border: "1px solid rgba(208,179,134,.36)", borderRadius: "var(--radius-lg,16px)" }}>
-      <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+      <button type="button" aria-expanded={expanded} aria-label={expanded ? "Recolher correção ativa" : "Expandir correção ativa"}
+        onClick={() => setExpanded(v => !v)}
+        style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", width: "100%", minHeight: 44,
+          textAlign: "left", border: 0, color: "var(--text-primary)", background: "transparent", cursor: "pointer", padding: "8px 2px" }}>
         <Icon name="sparkles" size={20} color="var(--qb-gold)" />
         <div style={{ flex: 1, minWidth: 160 }}>
           <h2 style={{ margin: 0, font: "var(--type-h3)", color: "var(--text-primary)" }}>O Arquiteto · Correção ativa</h2>
@@ -70,7 +74,9 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
             Responda de memória. O tutor compara com o verso e a fonte deste cartão.
           </p>
         </div>
-      </div>
+        <Icon name={expanded ? "chevron-up" : "chevron-down"} size={19} color="var(--qb-gold)" />
+      </button>
+      {expanded && <>
       <form onSubmit={submit} style={{ display: "grid", gap: 10 }}>
         <label htmlFor="qb-flash-attempt" style={{ font: "600 14px/1.5 var(--font-body)", color: "var(--text-secondary)" }}>
           Sua resposta, antes de consultar o verso
@@ -111,6 +117,7 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
           </small>
         </div>
       )}
+      </>}
     </section>
   );
 }
