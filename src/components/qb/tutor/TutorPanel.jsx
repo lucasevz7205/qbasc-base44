@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { IconButton } from '@/components/qb/core/IconButton';
+import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 
 function Bubble({ m, onRef }) {
   const tutor = m.role === 'tutor';
@@ -8,7 +9,7 @@ function Bubble({ m, onRef }) {
     <div style={{ display: 'flex', gap: 10, justifyContent: tutor ? 'flex-start' : 'flex-end' }}>
       {tutor && <span aria-hidden="true" style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, border: '1px solid rgba(208,179,134,.6)', background: 'var(--qb-navy-deep)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span className="qb-img qb-mark-q-sword" style={{ width: 20, height: 22, backgroundSize: 'contain' }} /></span>}
       <div style={{ maxWidth: '78%', display: 'flex', flexDirection: 'column', gap: 8, padding: '12px 14px', borderRadius: tutor ? '4px 14px 14px 14px' : '14px 4px 14px 14px', background: tutor ? 'var(--surface)' : 'var(--qb-navy-hover)', border: tutor ? 'var(--border-hairline)' : '1px solid rgba(208,179,134,.5)', font: '400 15px/1.6 var(--font-body)', color: 'var(--text-primary)' }}>
-        <div>{m.text}</div>
+        {tutor ? <ChatMarkdown text={m.text} /> : <div style={{ whiteSpace: 'pre-wrap' }}>{m.text}</div>}
         {m.refs && m.refs.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {m.refs.map(r => <button key={r.id} className="qb-chip" style={{ minHeight: 28, fontSize: 12 }} onClick={() => onRef && onRef(r.id)}><Icon name={r.kind === 'question' ? 'list-checks' : 'network'} size={13} />{r.label}</button>)}
