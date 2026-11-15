@@ -1,7 +1,11 @@
 import React from 'react';
+import { useServerFn } from '@tanstack/react-start';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 import { ERROR_ORIGINS } from '@/lib/question-feedback';
+import { Badge } from '@/components/qb/core/Badge';
+import { assessQuestionMechanism } from '@/lib/architect-mechanism';
+import { recordedMechanism } from '@/lib/mechanism-comparison';
 
 function Section({ title, icon, children }) {
   return (
@@ -15,8 +19,36 @@ function Section({ title, icon, children }) {
   );
 }
 
-export function QuestionFeedback({ explanation, legalBasis, trap, identifiedMechanism, identifiedClue, reflection, onFlashcards }) {
+export function QuestionFeedback({ statement, answerKey, generatorName, generatorReference, explanation, legalBasis, trap, identifiedMechanism, identifiedClue, reflection, onFlashcards }) {
   const noteId = React.useId();
+  const assess = useServerFn(assessQuestionMechanism);
+  const [assessment, setAssessment] = React.useState(null);
+  const [pending, setPending] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const requestLock = React.useRef(false);
+  const reference = recordedMechanism(trap, answerKey, generatorName);
+  const comparison = reference || assessment;
+  const aligned = comparison?.code && identifiedMechanism && comparison.code === identifiedMechanism.value;
+
+  const evaluate = async () => {
+    if (requestLock.current) return;
+    requestLock.current = true;
+    setPending(true);
+    setError('');
+    try {
+      setAssessment(await assess({ data: {
+        statement: statement.slice(0, 8000),
+        key: answerKey,
+        explanation: (explanation || '').slice(0, 6500),
+        basis: (legalBasis || '').slice(0, 2000),
+      } }));
+    } catch (err) {
+      setError(err?.message || 'O Arquiteto não conseguiu avaliar a questão. Tente novamente.');
+    } finally {
+      requestLock.current = false;
+      setPending(false);
+    }
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -26,22 +58,28 @@ export function QuestionFeedback({ explanation, legalBasis, trap, identifiedMech
         </p>}
         {legalBasis && <span style={{ font: '500 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{legalBasis}</span>}
       </Section>
-      {(trap || reflection || identifiedMechanism || identifiedClue) && (
-        <Section title="Mecanismo de pegadinha da banca" icon="shield-alert">
+      <Section title="Mecanismo de pegadinha da banca" icon="shield-alert">
           {trap ? (
             <div style={{ display: 'grid', gap: 6, overflowWrap: 'anywhere' }}>
-              <strong>{trap.name}</strong>
+              <strong>{generatorReference ? 'Registro do gerador' : 'Classificação registrada'} · {trap.name}</strong>
               {trap.description && <span>{trap.description}</span>}
               {trap.evidence && trap.evidence !== trap.description && <span><strong>Trecho decisivo</strong> · {trap.evidence}</span>}
               {trap.vaccine && trap.vaccine !== trap.description && !explanation?.includes(trap.vaccine) && <span><strong>Como evitar</strong> · {trap.vaccine}</span>}
             </div>
           ) : <span style={{ color: 'var(--text-muted)' }}>Esta questão ainda não tem um mecanismo registrado.</span>}
-          {identifiedMechanism && <span><strong>Você identificou</strong> · {identifiedMechanism.label}
-            {trap?.code && (identifiedMechanism.value === trap.code ? ' · corresponde ao mecanismo registrado' : ' · difere do mecanismo registrado')}
-          </span>}
+          {identifiedMechanism && <span><strong>Você identificou</strong> · {identifiedMechanism.label}</span>}
           {identifiedClue && <span style={{ overflowWrap: 'anywhere' }}><strong>Trecho que você destacou</strong> · {identifiedClue}</span>}
+          {assessment && <div role="status" style={{ display: 'grid', gap: 4 }}>
+            <strong>O Arquiteto · {assessment.code ? assessment.code + ' · ' + assessment.label : 'Avaliação inconclusiva'}</strong>
+            <span style={{ overflowWrap: 'anywhere' }}>{assessment.reason}</span>
+          </div>}
+          {comparison?.code && identifiedMechanism && <div><Badge tone={aligned ? 'correct' : 'attention'}>{aligned ? 'Alinhado' : 'Divergente'} {reference ? (generatorReference ? 'com o gerador' : 'com o registro') : 'com O Arquiteto'}</Badge></div>}
+          {!reference && trap && <small style={{ color: 'var(--text-muted)' }}>O registro antigo precisa de uma avaliação na taxonomia atual para permitir comparação.</small>}
+          {!reference && !assessment && statement && <div>
+            <Button size="sm" variant="secondary" icon="sparkles" onClick={evaluate} loading={pending} disabled={pending}>Comparar com O Arquiteto</Button>
+          </div>}
+          {error && <span role="alert">{error}</span>}
         </Section>
-      )}
       {reflection && (
         <Section title="Justificativa do erro" icon="notebook-pen">
           <fieldset disabled={reflection.disabled} style={{ display: 'grid', gap: 10, margin: 0, padding: 0, border: 0, minWidth: 0 }}>

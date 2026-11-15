@@ -11,10 +11,10 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
-import { mechanismOptions, questionTrap, recordErrorReflection } from '@/lib/question-feedback';
+import { questionTrap, recordErrorReflection } from '@/lib/question-feedback';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { nextQuestionIndex } from '@/lib/study-session-rules';
-import { SelectField } from '@/components/qb/data/SelectField';
+import { mechanismOptionList } from '@/lib/cebraspe-v1-taxonomy';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
@@ -126,8 +126,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     if (lock.current || st.revealed) return;
     setAns(p.answer && p.answer !== st.answer ? { ...p, mechanism: '', clue: '' } : p);
   };
-  const ganMechanisms = !!ganBatch || /^GAN\b/i.test(q?.origin || '');
-  const options = mechanismOptions(st.answer, ganMechanisms);
+  const options = mechanismOptionList(st.answer).sort((a, b) => Number(a.value.slice(1)) - Number(b.value.slice(1)));
   const markedMechanism = options.find(option => option.value === st.mechanism);
 
   const confirm = async () => {
@@ -342,9 +341,16 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 onAnswer={a => chooseAnswer({ answer: a })}
                 answerDetails={
                   <fieldset disabled={loading} style={{ display: 'grid', gap: 10, minWidth: 0, border: 0, margin: 0, padding: 0 }}>
-                    <SelectField label="Identificar mecanismo da banca" value={st.mechanism || ''}
-                      options={[{ value: '', label: 'Selecione um mecanismo (opcional)' }, ...options]}
-                      onChange={mechanism => chooseAnswer({ mechanism })} />
+                    <legend className="qb-overline" style={{ marginBottom: 10 }}>Identificar mecanismo da banca (opcional)</legend>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 205px), 1fr))', gap: 10 }}>
+                      {options.map(option => (
+                        <Button key={option.value} type="button" variant={st.mechanism === option.value ? 'primary' : 'secondary'}
+                          aria-pressed={st.mechanism === option.value} onClick={() => chooseAnswer({ mechanism: st.mechanism === option.value ? '' : option.value })}
+                          style={{ minHeight: 48, justifyContent: 'flex-start', padding: '9px 12px', textAlign: 'left', whiteSpace: 'normal' }}>
+                          {option.label}
+                        </Button>
+                      ))}
+                    </div>
                     <label style={{ display: 'grid', gap: 6 }}>
                       <span className="qb-overline">Trecho que chamou sua atenção (opcional)</span>
                       <input className="qb-input" value={st.clue || ''} maxLength={240} onChange={event => chooseAnswer({ clue: event.target.value })} />
@@ -357,6 +363,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 correctionRef={correctionRef}
                 feedback={showCorrection && (
                   <QuestionFeedback
+                    key={q.id + ':' + (q.editorial?.version || q.raw?.editorialVersion || '')}
+                    statement={q.statement}
+                    answerKey={keyAtAnswer}
+                    generatorName={(ganBatch || /^GAN\b/i.test(q.origin || '')) ? q.raw?.mecanismoNome : undefined}
+                    generatorReference={!!ganBatch || /^GAN\b/i.test(q.origin || '')}
                     explanation={q.explanation}
                     legalBasis={q.basis}
                     trap={ganBatch && q.raw ? questionTrap(q.raw) : q.trap}

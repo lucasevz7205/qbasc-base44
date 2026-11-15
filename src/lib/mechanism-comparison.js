@@ -4,7 +4,7 @@ export function recordedMechanism(trap, key, generatorName) {
   if (!mechanismForKey(trap?.code, key)) return null;
   const mechanism = mechanismDetail(trap.code);
   // Older GAN items used different definitions for some of the same codes.
-  if (generatorName && generatorName.trim() !== mechanism.n) return null;
+  if (typeof generatorName === 'string' && generatorName.trim() && generatorName.trim() !== mechanism.n) return null;
   return { code: mechanism.code, label: mechanism.n };
 }
 
