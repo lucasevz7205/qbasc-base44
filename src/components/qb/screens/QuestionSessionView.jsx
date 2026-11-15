@@ -11,6 +11,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
+import { questionTrap, recordErrorReflection } from '@/lib/question-feedback';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
@@ -111,6 +112,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const [deleteTarget, setDeleteTarget] = React.useState(null);
   const deletingCurrent = !!q && deleteTarget?.id === q.id;
   const lock = React.useRef(false);
+  const reflectionInput = React.useRef(null);
+  const needsReflection = st.revealed && st.answer !== keyAtAnswer && !excluded;
   const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
   const setAns = p => setSession(s => {
     if (s.sessionId !== session.sessionId || s.idx !== idx) return s;
@@ -129,18 +132,19 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       const confMap = { baixa: 1, media: 2, alta: 3 };
       const numericConf = confMap[st.confidence] || Number(st.confidence) || null;
       const rawQuestion = { ...(q.raw || { id: q.id, cap: q.topicId || '' }), gabarito: q.key };
+      const previous = QB_DATA.answers[q.id] || q.response;
       const record = buildAnswerRecord({
         question: rawQuestion,
-        prev: q.response,
+        prev: previous,
         marked: st.answer,
         confidence: numericConf,
       }).record;
-      if (Array.isArray(q.response?.hist)) record.hist = [...q.response.hist, ...record.hist.slice(-1)];
+      if (Array.isArray(previous?.hist)) record.hist = [...previous.hist, ...record.hist.slice(-1)];
       record.gabaritoUsado = q.key;
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
       recordCompletion();
-      setAns({ revealed: true, answer: st.answer, confidence: st.confidence, keyAtAnswer: q.key });
+      setAns({ revealed: true, answer: st.answer, confidence: st.confidence, keyAtAnswer: q.key, attemptAt: record.atualizadoEm });
     } catch {
       setError('Não foi possível salvar a resposta. Tente novamente.');
     } finally {
@@ -149,8 +153,30 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     }
   };
 
-  const next = async () => {
+  const advance = async ({ skipReflection = false } = {}) => {
     if (lock.current || done) return;
+    const saveReflection = needsReflection && !skipReflection;
+    if (saveReflection && (!st.errorOrigin || !st.errorJustification?.trim())) {
+      reflectionInput.current?.focus();
+      return;
+    }
+    lock.current = true;
+    setLoading(true);
+    setError('');
+    try {
+      if (saveReflection) {
+        const response = QB_DATA.answers[q.id];
+        if (!response) throw new Error('Resposta indisponível');
+        const reflected = recordErrorReflection(response, { text: st.errorJustification, origin: st.errorOrigin, marked: st.answer, attemptAt: st.attemptAt });
+        if (reflected !== response) await save('respostas', q.id, reflected);
+      }
+    } catch {
+      setError('Não foi possível salvar a justificativa. Tente novamente.');
+      return;
+    } finally {
+      lock.current = false;
+      setLoading(false);
+    }
     if (idx + 1 === qs.length) {
       const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key }));
       if (items.length) {
@@ -180,6 +206,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     }
     patch({ idx: idx + 1 });
   };
+  const next = () => advance();
 
   const excludeQuestion = async () => {
     if (!deletingCurrent || lock.current) return;
@@ -196,7 +223,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       lock.current = false;
       setLoading(false);
     }
-    await next();
+    await advance({ skipReflection: true });
   };
 
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
@@ -308,10 +335,16 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 correctionRef={correctionRef}
                 feedback={showCorrection && (
                   <QuestionFeedback
-                    result={st.answer === keyAtAnswer ? 'correct' : 'incorrect'}
                     explanation={q.explanation}
                     legalBasis={q.basis}
-                    trap={q.trap}
+                    trap={q.trap || (q.raw && questionTrap(q.raw))}
+                    reflection={needsReflection ? {
+                      origin: st.errorOrigin,
+                      text: st.errorJustification || '',
+                      disabled: loading,
+                      inputRef: reflectionInput,
+                      onChange: setAns,
+                    } : null}
                     onFlashcards={q.topicId ? () => go('flashcards', { topicId: q.topicId }) : undefined}
                   />
                 )}
@@ -338,6 +371,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           state={st.revealed ? 'answered' : loading ? 'loading' : st.answer ? 'ready' : 'idle'}
           onConfirm={confirm}
           onNext={next}
+          nextDisabled={loading}
           onSkip={next}
           onReview={() => setAns({ bookmarked: !st.bookmarked })}
           reviewMarked={!!st.bookmarked}

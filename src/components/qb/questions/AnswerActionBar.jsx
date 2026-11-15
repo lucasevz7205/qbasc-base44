@@ -6,6 +6,7 @@ export default function AnswerActionBar({
   allowSkip = true,
   onConfirm,
   onNext,
+  nextDisabled = false,
   onSkip,
   onReview,
   onOpenFeedback,
@@ -52,7 +53,7 @@ export default function AnswerActionBar({
         </Button>
       )}
       {answered ? (
-        <Button iconRight="arrow-right" onClick={onNext}>
+        <Button iconRight="arrow-right" disabled={nextDisabled} onClick={onNext}>
           Próxima questão
         </Button>
       ) : (

@@ -7,7 +7,7 @@ import { adaptStudy } from '@/lib/qb-real-model';
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
-const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas'];
+const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise'];
 async function loadRealData() {
   const results = {};
   for (let i=0;i<collections.length;i+=3) {

@@ -1,4 +1,5 @@
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
+import { questionTrap } from '@/lib/question-feedback';
 
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
@@ -116,6 +117,8 @@ export function adaptStudy(records, user, now = new Date()) {
     const history=arr(r.hist), first=day(r.primeiraEm||history[0]?.em);
     return Boolean(first&&history.some(e=>e.ok&&e.c!==1&&day(e.em)>=shift(first,7)));
   };
+  const legacyAnalysis = source('analise').find(row => row.id === 'CONTROLE');
+  const mechanisms = new Map(arr(legacyAnalysis?.itens).filter(item=>typeof item?.item==='string' && item.mecanismo).map(item=>[item.item,item]));
   const questionBank=[];
   const questionTotals=Object.create(null);
   for(const q of Object.values(rawQuestions)){
@@ -145,9 +148,9 @@ export function adaptStudy(records, user, now = new Date()) {
     const referencedNodes = questionNodeLinks.get(q.id)?.filter(link => link.topicId === topic?.id) || [];
     const uniqueReferences = [...new Set(referencedNodes.map(link => link.id))];
     const resolvedNode = exactNode || (uniqueReferences.length === 1 ? uniqueReferences[0] : roots[topic?.id]);
-    const trap = q.trap || (q.mecanismo ? { name: `${q.mecanismo}${q.mecanismoNome ? ' — ' + q.mecanismoNome : ''}`, description: [str(q.correcaoMinima||q.vacina), str(q.criticaAdversaria)].filter(Boolean).join(' · ') || 'Mecanismo CEBRASPE auditado pela GAN.' } : undefined);
+    const trap = questionTrap(q, mechanisms.get(q.id));
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
-    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
+    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));
