@@ -5,14 +5,14 @@ import { SocraticChat } from '@/components/qb/architect/SocraticChat';
 import { FeynmanLab } from '@/components/qb/architect/FeynmanLab';
 import { CornellNotebook } from '@/components/qb/architect/CornellNotebook';
 import { ScannerFlashcards } from '@/components/qb/architect/ScannerFlashcards';
-import { PomodoroAudio } from '@/components/qb/architect/PomodoroAudio';
+import StudyClock from '@/components/qb/study/StudyClock';
 
 const TOOLS = [
   { id: 'socratico', label: 'Tutor Socrático', icon: 'message-circle' },
   { id: 'feynman', label: 'Laboratório Feynman', icon: 'lightbulb' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
   { id: 'cards', label: 'Flashcards 3D e Scanner', icon: 'layers' },
-  { id: 'pomodoro', label: 'Pomodoro e Áudio Alfa', icon: 'timer' },
+  { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
 ];
 
 const COMPACT_TOOLS = [
@@ -20,7 +20,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[1], label: 'Feynman' },
   { ...TOOLS[2], label: 'Cornell' },
   { ...TOOLS[3], label: 'Flashcards' },
-  { ...TOOLS[4], label: 'Pomodoro' },
+  { ...TOOLS[4], label: 'Sessão' },
 ];
 
 export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], style }) {
@@ -67,7 +67,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
         {tool === 'cornell' && <CornellNotebook topicLabel={tLabel} />}
         {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} deck={deck} />}
-        {tool === 'pomodoro' && <PomodoroAudio />}
+        {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>
   );
