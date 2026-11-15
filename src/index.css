@@ -623,7 +623,9 @@ button { font: inherit; color: inherit; }
 .qb-table tr.is-group td{color:var(--qb-gold);font:600 13px/1.2 var(--font-body);background:rgba(208,179,134,.05)}
 
 /* Arquiteto */
-.qb-arch-msg{max-width:80%;padding:14px 16px;border-radius:16px;font:400 15px/1.6 var(--font-body)}
+.qb-arch-msg{max-width:80%;padding:14px 16px;border-radius:16px;font:400 15px/1.6 var(--font-body);overflow-wrap:anywhere}
+.qb-architect-dock-tools .qb-tabs{flex-wrap:wrap}
+.qb-architect-dock-tools .qb-tab{min-height:34px;padding:0 8px;gap:5px;font-size:12px}
 .qb-arch-msg p{margin:0 0 8px}.qb-arch-msg p:last-child{margin:0}
 .qb-dropzone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:160px;padding:24px;border-radius:16px;border:1px dashed rgba(208,179,134,.55);background:var(--surface-sunken);color:var(--text-muted);text-align:center;cursor:pointer}
 .qb-dropzone:hover{border-color:var(--qb-gold);color:var(--qb-ivory)}
