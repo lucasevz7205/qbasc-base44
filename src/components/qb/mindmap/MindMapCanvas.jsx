@@ -9,6 +9,21 @@ const MASTERY = {
   progress: ['loader-circle', 'var(--state-progress)', 'Em estudo'],
 };
 
+function NodeRates({ performance }) {
+  if (!performance) return null;
+  const entries = [['Q', 'Questões', performance.questions], ['FC', 'Flashcards', performance.flashcards]];
+  const shown = entries.filter(([, , value]) => value.rate !== null);
+  if (!shown.length) return null;
+  return (
+    <span style={{ display: 'flex', flexWrap: 'wrap', gap: 6, font: '600 11px/1.2 var(--font-mono)' }}>
+      {shown.map(([short, label, stats]) => (
+        <span key={short} title={label + ' · ' + stats.correct + '/' + stats.total} aria-label={label + ': ' + Math.round(stats.rate) + '%'}
+          style={{ color: MASTERY[stats.status][1], whiteSpace: 'nowrap' }}>{short} {Math.round(stats.rate)}%</span>
+      ))}
+    </span>
+  );
+}
+
 const BASE_RADII = [0, 300, 600, 900, 1200];
 
 function buildTree(nodes) {
@@ -364,6 +379,7 @@ export default function MindMapCanvas({
             >
               {m && <Icon name={m[0]} size={15} color={m[1]} label={m[2]} />}
               {n.label}
+              <NodeRates performance={n.performance} />
             </button>
           </div>
           {open && k.length > 0 && (
@@ -450,7 +466,7 @@ export default function MindMapCanvas({
         <IconButton variant="solid" size="sm" icon="locate-fixed" label="Centralizar no nó selecionado" onClick={() => centerOn(selectedId || tree.root)} />
       </div>
       <div style={{ position: 'absolute', bottom: 14, left: 16, display: 'flex', gap: 14, flexWrap: 'wrap', zIndex: 2, font: '400 12px/1 var(--font-body)', color: 'var(--text-muted)' }}>
-        {['correct', 'incorrect', 'no-evidence'].map((k) => (
+        {['correct', 'incorrect', 'progress', 'no-evidence'].map((k) => (
           <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
             <Icon name={MASTERY[k][0]} size={14} color={MASTERY[k][1]} />
             {MASTERY[k][2]}
@@ -515,7 +531,10 @@ export default function MindMapCanvas({
               onClick={() => click(n)}
             >
               {m && <Icon name={m[0]} size={15} color={m[1]} label={m[2]} />}
-              <span style={{ whiteSpace: n.label.length > 26 ? 'normal' : 'nowrap' }}>{n.label}</span>
+              <span style={{ display: 'grid', gap: 4 }}>
+                <span style={{ whiteSpace: n.label.length > 26 ? 'normal' : 'nowrap' }}>{n.label}</span>
+                <NodeRates performance={n.performance} />
+              </span>
               {hidden > 0 && (
                 <span
                   style={{
