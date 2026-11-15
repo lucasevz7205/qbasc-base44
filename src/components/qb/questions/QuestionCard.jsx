@@ -15,6 +15,7 @@ export default function QuestionCard({
   year,
   exam,
   tags = [],
+  editorial,
   statement,
   context,
   answer = null,
@@ -74,6 +75,7 @@ export default function QuestionCard({
         <Badge tone="gold" icon={null}>
           {[board, year].filter(Boolean).join(' · ')}
         </Badge>
+        {editorial && <Badge tone="attention" icon={null}>Reformulada · não é item original</Badge>}
         {tags.map((t) => (
           <Badge key={t} tone="neutral" icon={null}>
             {t}
