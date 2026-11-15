@@ -17,7 +17,7 @@ const QUICK_PROMPTS = {
   analogia: 'Me explique este tópico usando uma analogia estilo Feynman e aponte onde a analogia tem limite técnico.',
 };
 
-export default function SocraticChat({ subjects = [], subjectId, topicId, onContextChange, origin, style }) {
+export default function SocraticChat({ subjects = [], subjectId, topicId, onContextChange, origin, compact = false, style }) {
   const askTutor = useServerFn(askArchitectTutor);
   const getProviderStatus = useServerFn(getArchitectProviderStatus);
   const statusFnRef = React.useRef(getProviderStatus);
@@ -25,6 +25,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   const topic = subj && (subj.topics.find(t => t.id === topicId) || subj.topics[0]);
   const key = topic ? topic.id : 'none';
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
+  const [settingsOpen, setSettingsOpen] = React.useState(false);
   const [hist, setHist] = React.useState({});
   const [mode, setMode] = React.useState('socratico');
   const [provider, setProvider] = React.useState('gemini');
@@ -145,8 +146,9 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minHeight: 0, ...style }}>
-      <div className="qb-panel qb-panel--sunken" style={{ padding: 14, display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: compact ? 8 : 14, minHeight: 0, ...style }}>
+      {compact && <button type="button" className="qb-chip" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(value => !value)} style={{ alignSelf: 'flex-start' }}><Icon name={settingsOpen ? 'chevron-up' : 'chevron-down'} size={14} />Configurar conversa</button>}
+      <div className="qb-panel qb-panel--sunken" style={{ padding: 14, display: compact && !settingsOpen ? 'none' : 'flex', flexDirection: 'column', gap: 12 }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'end' }}>
           <div style={{ flex: '1 1 410px', minWidth: 0, pointerEvents: busy ? 'none' : undefined }} aria-busy={busy}>
             <StudyTopicPicker
@@ -175,8 +177,8 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
         </div>
       </div>
-      <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa" style={{ flex: 1, minHeight: 220, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, padding: 4 }}>
-        {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description="Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo." />}
+      <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa" style={{ flex: 1, minHeight: compact ? 100 : 220, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, padding: 4 }}>
+        {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description={compact ? "Digite sua dúvida ou escolha uma ação abaixo." : "Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo."} />}
         {msgs.map((m, i) => m.role === 'user'
           ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--qb-navy-hover)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
           : m.role === 'error'
@@ -202,7 +204,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
         ))}
       </div>
       <form onSubmit={e => { e.preventDefault(); send(); }} style={{ display: 'flex', gap: 8 }}>
-        <input className="qb-input" value={text} onChange={e => setText(e.target.value)} placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'} aria-label="Mensagem ao Arquiteto" />
+        <input className="qb-input" value={text} onChange={e => setText(e.target.value)} placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'} aria-label="Mensagem ao Arquiteto" style={{ minWidth: 0 }} />
         <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
       </form>
       <ConfirmDialog open={ask} tone="danger" title="Limpar o histórico deste tópico?" description={'Remove as ' + msgs.length + ' mensagens de ' + tLabel + '. Conversas de outros tópicos são mantidas.'} confirmLabel="Limpar histórico" onCancel={() => setAsk(false)} onConfirm={() => { setHist(h => ({ ...h, [key]: [] })); setAsk(false); }} />
