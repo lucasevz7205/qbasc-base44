@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProgressBar({ value = 0, label, valueText, tone = 'progress', size = 'md', showValue = true, style }) {
   const pct = Math.max(0, Math.min(1, value)) * 100;
-  const fill = tone === 'correct' ? 'var(--state-correct)' : tone === 'gold' ? 'var(--qb-gold)' : 'var(--state-progress)';
+  const fill = tone === 'correct' ? 'var(--state-correct)' : tone === 'gold' ? 'var(--qb-gold)' : tone === 'incorrect' ? 'var(--state-incorrect)' : 'var(--state-progress)';
   const h = size === 'sm' ? 4 : size === 'lg' ? 10 : 6;
   const text = valueText || `${Math.round(pct)}%`;
   return (

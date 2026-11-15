@@ -40,6 +40,43 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
   return matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response))).slice(0, QUESTION_ROUND_LIMIT);
 }
 
+export function questionTrainingProgress(bank, { subjectId, topicId } = {}) {
+  const questions = pickQuestionRound(bank, { subjectId, topicId, filter: 'all' });
+  const seen = new Set();
+  let completed = 0;
+  let errors = 0;
+  let valid = 0;
+  for (const q of questions) {
+    if (seen.has(q.id)) continue;
+    seen.add(q.id);
+    const response = q.response;
+    if (!response) continue;
+    const history = Array.isArray(response.hist) ? response.hist : [];
+    const graded = history.filter(item => /^(C|E)$/i.test(item?.m) && typeof item.ok === 'boolean');
+    let correct = Math.max(0, Number(response.acertos) || 0) || graded.filter(item => item.ok).length;
+    let wrong = Math.max(0, Number(response.erros) || 0) || graded.filter(item => !item.ok).length;
+    if (!correct && !wrong && /^(C|E)$/i.test(response.ultimaMarcada || '')) {
+      const key = String(response.gabaritoUsado || q.raw?.gabarito || q.key || '').trim().toUpperCase();
+      if (key === 'C' || key === 'E') {
+        if (response.ultimaMarcada.toUpperCase() === key) correct = 1;
+        else wrong = 1;
+      }
+    }
+    if (correct + wrong) completed++;
+    errors += wrong;
+    valid += correct + wrong;
+  }
+  return { total: seen.size, completed, errors, valid };
+}
+
+export function questionRoundProgress(questions, index, answers, excludedIds) {
+  const counted = questions.filter(q => answers[q.id]?.revealed || !excludedIds.has(q.id));
+  const completed = counted.filter(q => answers[q.id]?.revealed).length;
+  const current = questions[index];
+  const position = current ? counted.indexOf(current) + 1 : counted.length;
+  return { total: counted.length, completed, position };
+}
+
 export function nextQuestionIndex(questions, from, excludedIds, deletingId) {
   let index = from;
   while (index < questions.length && (questions[index].id === deletingId || excludedIds.has(questions[index].id))) {

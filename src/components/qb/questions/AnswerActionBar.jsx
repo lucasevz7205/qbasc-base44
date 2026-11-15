@@ -7,6 +7,7 @@ export default function AnswerActionBar({
   onConfirm,
   onNext,
   nextDisabled = false,
+  lastQuestion = false,
   onSkip,
   onReview,
   reviewMarked = false,
@@ -36,19 +37,19 @@ export default function AnswerActionBar({
         </Button>
       )}
       {allowSkip && !answered && onSkip && (
-        <Button variant="ghost" size="sm" icon="skip-forward" onClick={onSkip}>
+        <Button variant="ghost" size="sm" icon="skip-forward" disabled={nextDisabled} onClick={onSkip}>
           Pular
         </Button>
       )}
       <span style={{ flex: 1 }} />
       {showHints && (
         <span aria-hidden="true" style={{ font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' }}>
-          {answered ? 'Enter · próxima' : 'C / E · responder   Enter · confirmar'}
+          {answered ? (lastQuestion ? 'Enter · concluir' : 'Enter · próxima') : 'C / E · responder   Enter · confirmar'}
         </span>
       )}
       {answered ? (
         <Button iconRight="arrow-right" disabled={nextDisabled} onClick={onNext}>
-          Próxima questão
+          {lastQuestion ? 'Concluir rodada' : 'Próxima questão'}
         </Button>
       ) : (
         <Button iconRight="check" onClick={onConfirm} disabled={state === 'idle'} loading={state === 'loading'}>

@@ -13,21 +13,23 @@ import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
 import { questionTrap, recordErrorReflection } from '@/lib/question-feedback';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { nextQuestionIndex } from '@/lib/study-session-rules';
+import { nextQuestionIndex, questionRoundProgress } from '@/lib/study-session-rules';
 import { mechanismOptionList } from '@/lib/cebraspe-v1-taxonomy';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
 function SessionSummary({ answers, go, qs, ganBatch }) {
   const [showItems, setShowItems] = React.useState(false);
-  const right = qs.filter(q => answers[q.id]?.revealed && answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
+  const answered = qs.filter(q => answers[q.id]?.revealed);
+  const right = answered.filter(q => answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
   const blocked = ganBatch?.blocked || [];
   return (
     <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 18 }} padding={32}>
       <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>
         {ganBatch ? `Confronto GAN concluído · ${ganBatch.originNodeLabel}` : 'Sessão concluída'}
       </span>
-      <h1 style={{ font: 'var(--type-h1)' }}>{right} de {qs.length} acertos</h1>
+      <h1 style={{ font: 'var(--type-h1)' }}>{right} de {answered.length} respostas corretas</h1>
+      <p style={{ color: 'var(--text-secondary)', margin: 0 }}>{answered.length} confirmadas · {qs.length - answered.length} puladas</p>
       {ganBatch?.summary && (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <Badge tone="gold">Score médio GAN: {ganBatch.summary.mediaScoreGan}%</Badge>
@@ -36,7 +38,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
           {blocked.length > 0 && <Badge tone="incorrect">Bloqueadas por divergência: {blocked.length}</Badge>}
         </div>
       )}
-      <div><Button variant="secondary" size="sm" aria-expanded={showItems} onClick={() => setShowItems(open => !open)}>{showItems ? 'Recolher questões da rodada' : 'Ver questões da rodada'}</Button></div>
+      <div><Button variant="secondary" size="sm" aria-expanded={showItems} onClick={() => setShowItems(open => !open)}>{showItems ? 'Recolher resultados' : 'Ver resultados por questão'}</Button></div>
       {showItems && <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
         {qs.map(q => {
           const a = answers[q.id]?.revealed ? answers[q.id] : null;
@@ -44,7 +46,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
           return (
             <li key={q.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: '1px solid var(--divider)' }}>
               <span style={{ font: '500 13px/1 var(--font-mono)', color: 'var(--text-muted)', width: 64 }}>{q.code}</span>
-              <span style={{ flex: 1, font: '400 14px/1.4 var(--font-body)', color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{q.statement}</span>
+              <span style={{ flex: 1, font: '400 14px/1.4 var(--font-body)', color: 'var(--text-secondary)' }}>{q.chapter || q.subject || ''}</span>
               <Badge tone={!a ? 'no-evidence' : ok ? 'correct' : 'incorrect'}>{!a ? 'Pulada' : ok ? 'Acertou' : 'Errou'}</Badge>
             </li>
           );
@@ -79,9 +81,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
           Seguir para flashcards
         </Button>
         <Button variant="secondary" icon="chart-column" onClick={() => go('performance', 'diaria')}>Ver desempenho diário</Button>
-        <Button variant="secondary" icon="house" onClick={() => go('dashboard')}>
-          Voltar ao início
-        </Button>
+        <Button variant="secondary" icon="target" onClick={() => go('train')}>Voltar a Treinar</Button>
       </div>
     </Panel>
   );
@@ -103,7 +103,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     setGanBannerDismissed(false);
   }, [session.sessionId]);
 
-  const done = idx >= qs.length;
+  const done = session.finished || idx >= qs.length;
+  const roundProgress = questionRoundProgress(qs, idx, answers, QB_DATA.excludedQuestionIds);
   const q = qs[idx];
   const excluded = q && QB_DATA.excludedQuestionIds.has(q.id);
   useStudyActivity('questions', !q || excluded ? null : session.sessionId || 'round');
@@ -116,6 +117,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const deletingCurrent = !!q && deleteTarget?.id === q.id;
   const lock = React.useRef(false);
   const reflectionInput = React.useRef(null);
+  const reflectionOrigin = React.useRef(null);
   const needsReflection = st.revealed && st.answer !== keyAtAnswer && !excluded;
   const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
   const setAns = p => setSession(s => {
@@ -167,12 +169,13 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     const nextIdx = nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds, deletingId);
     const saveReflection = needsReflection && !deletingId;
     if (saveReflection && (!st.errorOrigin || !st.errorJustification?.trim())) {
-      reflectionInput.current?.focus();
+      (st.errorOrigin ? reflectionInput : reflectionOrigin).current?.focus();
       return;
     }
     lock.current = true;
     setLoading(true);
     setError('');
+    let failure = 'Não foi possível salvar a justificativa. Tente novamente.';
     try {
       if (saveReflection) {
         const response = QB_DATA.answers[q.id];
@@ -180,19 +183,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         const reflected = recordErrorReflection(response, { text: st.errorJustification, origin: st.errorOrigin, marked: st.answer, attemptAt: st.attemptAt });
         if (reflected !== response) await save('respostas', q.id, reflected);
       }
-    } catch {
-      setError('Não foi possível salvar a justificativa. Tente novamente.');
-      return;
-    } finally {
-      lock.current = false;
-      setLoading(false);
-    }
-    if (nextIdx === qs.length) {
-      const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key, em: answers[x.id].attemptAt }));
-      if (items.length) {
-        lock.current = true;
-        setLoading(true);
-        try {
+      const finished = nextIdx >= qs.length;
+      if (finished) {
+        failure = 'Não foi possível salvar a rodada. Tente concluir novamente.';
+        const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key, em: answers[x.id].attemptAt }));
+        if (items.length) {
           const certos = items.filter(x => x.marcada === x.gabarito).length;
           const brancos = items.filter(x => x.marcada === 'B').length;
           await save('rodadas', 'qbasc-' + (session.sessionId || items[0].qid + '-' + Date.now()), {
@@ -205,16 +200,15 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
             brancos,
             errados: items.length - certos - brancos,
           });
-        } catch {
-          setError('Não foi possível salvar a rodada. Tente novamente.');
-          return;
-        } finally {
-          lock.current = false;
-          setLoading(false);
         }
       }
+      patch({ idx: nextIdx, finished });
+    } catch {
+      setError(failure);
+    } finally {
+      lock.current = false;
+      setLoading(false);
     }
-    patch({ idx: nextIdx });
   };
   const next = () => advance();
 
@@ -269,8 +263,9 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       <StudySessionHeader
         subject={q?.subject || 'Questões'}
         topic={q?.chapter || ''}
-        current={Math.min(idx + 1, qs.length)}
-        total={qs.length}
+        current={done ? 0 : roundProgress.position}
+        total={roundProgress.total}
+        completed={roundProgress.completed}
         focusMode={focus}
         onToggleFocus={() => patch({ focus: !focus })}
         onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}
@@ -278,7 +273,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {error && <p role="alert">{error}</p>}
-          {!ganBatch && (done || (idx === 0 && !st.revealed)) && session.questionIds && (
+          {!ganBatch && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
             <QuestionFilters value={session.selection?.filter} disabled={loading} onChange={filter => {
               setError('');
               go('questions', { ...session.selection, filter });
@@ -378,6 +373,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                       text: st.errorJustification || '',
                       disabled: loading,
                       inputRef: reflectionInput,
+                      originRef: reflectionOrigin,
                       onChange: setAns,
                     } : null}
                     onFlashcards={q.topicId ? () => go('flashcards', { topicId: q.topicId }) : undefined}
@@ -406,6 +402,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           onConfirm={confirm}
           onNext={next}
           nextDisabled={loading}
+          lastQuestion={nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds) === qs.length}
           onSkip={next}
           onReview={() => setAns({ bookmarked: !st.bookmarked })}
           reviewMarked={!!st.bookmarked}

@@ -8,6 +8,7 @@ export default function StudySessionHeader({
   topic,
   current = 0,
   total = 0,
+  completed,
   unit = 'Questão',
   focusMode = false,
   onToggleFocus,
@@ -37,7 +38,10 @@ export default function StudySessionHeader({
           {topic}
         </span>
       </div>
-      {total > 0 && <ProgressBar value={current / total} label={unit} valueText={`${current} de ${total}`} style={{ flex: '1 1 150px', maxWidth: 320 }} />}
+      {total > 0 && <ProgressBar value={(completed ?? current) / total}
+        label={completed == null ? unit : current > 0 && current <= total ? `${unit} ${current} de ${total}` : 'Questões da rodada'}
+        valueText={completed == null ? `${current} de ${total}` : `${completed}/${total} confirmadas`}
+        style={{ flex: '1 1 190px', maxWidth: 320 }} />}
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
         <StudyClockControls />
         {onToggleFocus && <IconButton icon="focus" label="Modo foco" pressed={focusMode} onClick={onToggleFocus} />}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader } from '@/components/qb/navigation/PageHeader';
+import { ProgressBar } from '@/components/qb/core/ProgressBar';
 import { Panel } from '@/components/qb/core/Panel';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
@@ -7,7 +8,7 @@ import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { pickQuestionRound } from '@/lib/study-session-rules';
+import { questionTrainingProgress } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
 export function MissingLink({ missing, onBack, go }) {
@@ -70,9 +71,9 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
     .sort((a, b) => a.acc - b.acc)
     .slice(0, 6);
 
-  const suggested = weak.find(({ s, t }) => pickQuestionRound(QB_DATA.questionBank, { subjectId: s.id, topicId: t.id, filter }).length);
-  const roundSize = pickQuestionRound(QB_DATA.questionBank, { subjectId: suggested?.s.id, topicId: suggested?.t.id, filter }).length;
-  const roundLabel = roundSize === 1 ? '1 item' : roundSize + ' itens';
+  const subject = E.subjects.find(item => item.id === sel.subjectId);
+  const topic = subject?.topics.find(item => item.id === sel.topicId);
+  const stats = questionTrainingProgress(QB_DATA.questionBank, { subjectId: subject?.id, topicId: topic?.id });
 
   const linkInfo = (subjectId, topicId, action) => {
     const r = resolveIntent({ action, subjectId, topicId });
@@ -103,25 +104,16 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           />
         </Panel>
         <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Rodada sugerida</span>
-            <h2 style={{ font: 'var(--type-h2)' }}>
-              {suggested ? `${suggested.s.short} ${suggested.t.num} · ${roundLabel}` : roundSize ? 'Rodada de questões · ' + roundLabel : 'Sem questões disponíveis'}
-            </h2>
-            <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
-              {suggested ? `${suggested.t.title} (${suggested.s.name}).` : 'Questões do seu banco de estudo.'}
-            </span>
-            <Button
-              iconRight="arrow-right"
-              disabled={!roundSize}
-              onClick={() =>
-                suggested
-                  ? dispatch({ action: 'train', subjectId: suggested.s.id, topicId: suggested.t.id, filter }, 'train')
-                  : go('questions', { filter })
-              }
-            >
-              Iniciar rodada
-            </Button>
+          <Panel variant="ornate" style={{ display: 'grid', gap: 14 }}>
+            <h2 style={{ font: 'var(--type-h2)', margin: 0 }}>Progresso das questões</h2>
+            <span style={{ color: 'var(--text-secondary)' }}>{topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : subject?.name || 'Todas as matérias'}</span>
+            <ProgressBar tone="gold" size="lg" label="Questões concluídas"
+              value={stats.total ? stats.completed / stats.total : 0}
+              valueText={`${stats.completed} de ${stats.total}`} />
+            <ProgressBar tone="incorrect" size="lg" label="Taxa de erro"
+              value={stats.valid ? stats.errors / stats.valid : 0}
+              valueText={stats.valid ? `${Math.round(100 * stats.errors / stats.valid)}%` : 'Sem respostas válidas'} />
+            {stats.valid > 0 && <small style={{ color: 'var(--text-muted)' }}>{stats.errors} erros em {stats.valid} respostas válidas. Questões concluídas são contadas uma vez.</small>}
           </Panel>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <span className="qb-overline">Revisões e pendências</span>
@@ -141,7 +133,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             <Button
               variant="secondary"
               icon="sparkles"
-              onClick={() => openArchitect && openArchitect({ subjectId: suggested?.s.id || 'dc', topicId: suggested?.t.id, origin: 'Treinar · armadilhas' })}
+              onClick={() => openArchitect && openArchitect({ subjectId: subject?.id || 'dc', topicId: topic?.id, origin: 'Treinar · armadilhas' })}
             >
               Abrir O Arquiteto
             </Button>
