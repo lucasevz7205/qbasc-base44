@@ -16,7 +16,11 @@ async function post(suffix, body, token) {
     body: JSON.stringify(body),
   });
   const result = await response.json();
-  if (!response.ok) throw new Error(result.error?.message || result.detail || "Unable to sign in");
+  if (!response.ok) {
+    const error = new Error(result.error?.message || result.detail || "Unable to sign in");
+    error.status = response.status;
+    throw error;
+  }
   return result;
 }
 
