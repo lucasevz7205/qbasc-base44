@@ -95,6 +95,7 @@ export function QBStudyProvider({ children }) {
     ratings: [],
   });
   const [studyTopicId, setStudyTopicId] = React.useState(defaultMapTopic);
+  const [studyRadialOpen, setStudyRadialOpen] = React.useState(true);
   const [mapSel, setMapSel] = React.useState(null);
   const [recentTopics, setRecentTopics] = React.useState([]);
   const [trainSel, setTrainSel] = React.useState({ subjectId: null, topicId: null });
@@ -269,6 +270,7 @@ export function QBStudyProvider({ children }) {
   const pickMapTopic = React.useCallback(
     id => {
       setStudyTopicId(id);
+      setStudyRadialOpen(false);
       const m = QB_DATA.mindMaps.find(x => x.topicId === id);
       setMapSel(m ? m.id : null);
       setRecentTopics(r => [id, ...r.filter(x => x !== id)].slice(0, 4));
@@ -281,6 +283,7 @@ export function QBStudyProvider({ children }) {
       setMissing(null);
       if (nextView === 'study' && arg?.topicId) {
         setStudyTopicId(arg.topicId);
+        setStudyRadialOpen(false);
         const m = QB_DATA.mindMaps.find(x => x.topicId === arg.topicId);
         setMapSel(m ? m.id : null);
         setRecentTopics(r => [arg.topicId, ...r.filter(x => x !== arg.topicId)].slice(0, 4));
@@ -293,6 +296,7 @@ export function QBStudyProvider({ children }) {
         const foundByNode = o.node ? QB_DATA.mindMaps.find(m => m.id === o.node || m.nodes.some(n => n.id === o.node)) : null;
         const nextTopic = o.topicId || foundByNode?.topicId || studyTopicId || defaultMapTopic;
         setStudyTopicId(nextTopic);
+        setStudyRadialOpen(!(o.topicId || o.node));
         if (nextTopic) setRecentTopics(r => [nextTopic, ...r.filter(x => x !== nextTopic)].slice(0, 4));
         setMapSel(o.node || null);
         setReturnTo(o.returnTo || null);
@@ -419,6 +423,8 @@ export function QBStudyProvider({ children }) {
       topicId: studyTopicId || defaultMapTopic,
       studyTopicId: studyTopicId || defaultMapTopic,
       onTopic: pickMapTopic,
+      radialOpen: studyRadialOpen,
+      setRadialOpen: setStudyRadialOpen,
       recents: recentTopics,
       mapCounts,
       pendingReviews: pendingReviewTopics,
@@ -436,6 +442,7 @@ export function QBStudyProvider({ children }) {
       studyTopicId,
       defaultMapTopic,
       pickMapTopic,
+      studyRadialOpen,
       recentTopics,
       mapCounts,
       pendingReviewTopics,
