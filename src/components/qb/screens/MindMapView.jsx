@@ -36,32 +36,27 @@ export default function MindMapView({
   const [mapMaximized, setMapMaximized] = React.useState(false);
   const [showPanelInMax, setShowPanelInMax] = React.useState(true);
 
-  const allSubjects = E.subjects?.length ? E.subjects : D.studySubjects || [];
+  const allSubjects = D.studySubjects?.length ? D.studySubjects : E.subjects || [];
   const foundMapByNode =
     selected && selected !== '__no_map__'
       ? D.mindMaps.find(m => m.id === selected || m.nodes.some(n => n.id === selected))
       : null;
 
-  const topicId =
-    topicIdProp ||
-    studyTopicId ||
-    foundMapByNode?.topicId ||
-    D.mindMaps[0]?.topicId ||
-    allSubjects[0]?.topics[0]?.id;
+  const topicId = topicIdProp || studyTopicId || foundMapByNode?.topicId;
 
   const subj =
     allSubjects.find(s => s.topics.some(t => t.id === topicId)) ||
     D.studySubjects?.find(s => s.topics.some(t => t.id === topicId));
   const topic = subj && subj.topics.find(t => t.id === topicId);
 
-  const [localRadialOpen, setLocalRadialOpen] = React.useState(false);
+  const [localRadialOpen, setLocalRadialOpen] = React.useState(!topicId);
   const isRadialOpen = radialOpenProp !== undefined ? radialOpenProp : localRadialOpen;
   const setRadialOpen = setRadialOpenProp || setLocalRadialOpen;
 
-  const [radialSel, setRadialSel] = React.useState(() => ({
-    subjectId: subj?.id || null,
-    topicId: null,
-  }));
+  const [radialSel, setRadialSel] = React.useState({ subjectId: null, topicId: null });
+  React.useEffect(() => {
+    if (isRadialOpen || !topicId) setRadialSel({ subjectId: null, topicId: null });
+  }, [isRadialOpen, topicId]);
 
   // Lookup map strictly for the chosen topicId (v3: never silently fall back to another topic's map)
   const chosen = D.mindMaps.find(m => m.topicId === topicId) || null;
@@ -109,7 +104,7 @@ export default function MindMapView({
   };
 
   const openRadialSelector = () => {
-    setRadialSel({ subjectId: subj?.id || null, topicId: null });
+    setRadialSel({ subjectId: null, topicId: null });
     setRadialOpen(true);
   };
 
@@ -127,12 +122,13 @@ export default function MindMapView({
       />
       <Button
         variant={isRadialOpen ? 'primary' : 'secondary'}
+        disabled={isRadialOpen && !chosen}
         icon="locate-fixed"
         onClick={() => (isRadialOpen ? setRadialOpen(false) : openRadialSelector())}
         title="Selecionar matéria e assunto pelo Menu Radial"
         style={{ minHeight: 52 }}
       >
-        {isRadialOpen ? 'Ver mapa atual' : 'Menu radial'}
+        {isRadialOpen && chosen ? 'Ver mapa atual' : 'Menu radial'}
       </Button>
     </div>
   );
@@ -146,8 +142,8 @@ export default function MindMapView({
   const head = (
     <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flex: '1 1 280px' }}>
-        <span className="qb-overline">{subj ? subj.name : 'Assunto não encontrado'} · Mapa mental</span>
-        <h1 style={{ font: 'var(--type-h1)' }}>
+        <span className="qb-overline">{subj ? subj.name + ' · Mapa mental' : 'Estudo'}</span>
+        <h1 style={{ font: 'var(--type-h1)', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>
           {chosen ? chosen.title : topic ? `${subj.short} ${topic.num}${topic.title ? ' · ' + topic.title : ''}` : 'Mapa mental'}
         </h1>
       </div>
@@ -180,7 +176,7 @@ export default function MindMapView({
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div>
               <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Seleção anterior · Menu Radial</span>
-              <h2 style={{ font: 'var(--type-h2)' }}>Escolha a matéria e entre no assunto</h2>
+              <h2 style={{ font: 'var(--type-h2)', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>Escolha a matéria e entre no assunto</h2>
             </div>
             {chosen && (
               <Button variant="secondary" size="sm" icon="network" onClick={() => setRadialOpen(false)}>
