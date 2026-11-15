@@ -48,10 +48,10 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
   const options = flashcardOptions(previousReview, reviewDay(new Date()));
   const intervals = Object.fromEntries(Object.entries(options).map(([rating, option]) => [rating, option.label]));
   const rate=async r=>{
-    const option = options[r];
-    if(!card||!option||lock.current)return;
-    lock.current=true;setSaving(true);setError('');
+    if (!card || !options[r] || lock.current) return;
     const prev = previousReview, at = new Date().toISOString();
+    const option = flashcardOptions(prev, reviewDay(at))[r];
+    lock.current=true;setSaving(true);setError('');
     const { level: nextLevel, days: interval, date } = option;
     try{
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:date,ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval,rev:flashcardWasRated(prev)}]});

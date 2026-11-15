@@ -73,7 +73,7 @@ export function scheduledReviewQueues({ questions, flashcards, reviews, rounds =
   const reviewedQuestions = new Set();
   for (const round of rounds) {
     if (!/^revisao(?:-|$)/i.test(round.modo || '') || reviewDay(round.inicio ?? round.fim) !== today) continue;
-    for (const item of round.itens || []) if (item.qid) reviewedQuestions.add(item.qid);
+    for (const item of Array.isArray(round.itens) ? round.itens : []) if (item?.qid) reviewedQuestions.add(item.qid);
   }
 
   const questionRows = [];
@@ -101,5 +101,5 @@ export function scheduledReviewQueues({ questions, flashcards, reviews, rounds =
     const eligible = rows.slice(0, Math.max(0, DAILY_REVIEW_LIMIT - alreadyDone));
     return { ids: interleave(eligible), due: rows.length, postponed: rows.length - eligible.length };
   };
-  return { questions: pick(questionRows, reviewedQuestions.size), flashcards: pick(cardRows, reviewedCards) };
+  return { questions: pick(questionRows.filter(row => !reviewedQuestions.has(row.id)), reviewedQuestions.size), flashcards: pick(cardRows, reviewedCards) };
 }

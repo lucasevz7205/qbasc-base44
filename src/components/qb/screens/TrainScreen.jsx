@@ -9,7 +9,7 @@ import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import AcervoPegadinhasV1 from '@/components/qb/study/AcervoPegadinhasV1';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { scheduledReviewQueues } from '@/lib/spaced-review';
+import { reviewDay, scheduledReviewQueues } from '@/lib/spaced-review';
 import { questionTrainingProgress } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
@@ -78,7 +78,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const stats = questionTrainingProgress(QB_DATA.questionBank, { subjectId: subject?.id, topicId: topic?.id });
   const reviews = scheduledReviewQueues({
     questions: QB_DATA.questionBank, flashcards: QB_DATA.flashcards, reviews: QB_DATA.reviews, rounds: records.rodadas,
-    today: QB_PLAN.today, subjectId: subject?.id, topicId: topic?.id,
+    today: reviewDay(new Date()), subjectId: subject?.id, topicId: topic?.id,
     cardTopicIds: subject ? new Set(subject.topics.map(item => item.id)) : null,
   });
   const scopeLabel = topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : subject?.name || 'Todas as matérias';
