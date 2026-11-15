@@ -73,7 +73,7 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
                 tools={TOOLS}
                 onTool={id =>
                   id === 'keys'
-                    ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Enter confirmar · Espaço virar cartão · Esc fechar O Arquiteto' } })
+                    ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Enter confirmar · Esc fechar O Arquiteto' } })
                     : setUi({ studio: { open: true, tool: id } })
                 }
                 collapsed={ui.collapsed}
