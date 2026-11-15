@@ -291,7 +291,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
               <Button onClick={() => go('train')}>Voltar a Treinar</Button>
             </Panel>
           ) : done ? (
-            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs} ganBatch={ganBatch} />
+            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} />
           ) : excluded ? (
             <Panel>
               <p>Esta questão foi excluída do banco ativo.</p>
@@ -335,7 +335,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 code={q.code}
                 year={q.year}
                 exam={QB_DATA.exam}
-                tags={q.tags}
+                tags={st.revealed ? q.tags : q.tags?.filter(tag => !/^(?:F(?:10|[1-9])|V[1-4])(?:$|[\s·:–—-])/i.test(tag))}
                 statement={q.statement}
                 editorial={q.editorial}
                 answer={st.answer || null}
