@@ -20,7 +20,7 @@ export const CEBRASPE_V1_TAXONOMY = Object.freeze({
   V2:{n:'Incompleto não é errado',o:'Cita só parte da regra, sem dizer que é a única.',s:'um requisito, um exemplo',v:'Incompleto é certo, salvo se disser “apenas”.'},
   V3:{n:'Alcance verdadeiro',o:'Usa “sempre”, “nunca” ou “apenas” onde a regra é mesmo absoluta.',s:'palavra absoluta em regra absoluta',v:'Conheça as poucas regras realmente absolutas.'},
   V4:{n:'Exceção real',o:'Cobra uma exceção verdadeira que soa estranha.',s:'caso surpreendente, mas previsto',v:'Lembre as exceções que a banca adora.'}
-};);
+});
 export const CEBRASPE_V1_MNEMONICS = Object.freeze({
   F1:{lema:'Todo? Ache a exceção.',pergunta:'A regra realmente vale em TODOS os casos?',armadilha:'Uma palavra absoluta amplia uma regra que tem limite.',acao:'Sublinhe “sempre”, “nunca” e “todos”; procure a ressalva na fonte.'},
   F2:{lema:'Só isso? Ache outro caso.',pergunta:'A fonte também permite outra hipótese?',armadilha:'A expressão “apenas” corta possibilidades que a regra permite.',acao:'Transforme “somente” em pergunta: existe mais uma hipótese válida?'},
@@ -36,7 +36,7 @@ export const CEBRASPE_V1_MNEMONICS = Object.freeze({
   V2:{lema:'Dizer “um” não exclui “outros”.',pergunta:'O item afirma um exemplo ou diz que é o único?',armadilha:'Uma informação incompleta pode ser verdadeira.',acao:'Só trate como exclusão quando aparecer “apenas”, “único” ou equivalente.'},
   V3:{lema:'Nem todo “sempre” é falso.',pergunta:'Há alguma exceção real a essa regra absoluta?',armadilha:'A palavra absoluta assusta, mesmo quando a regra é absoluta.',acao:'Confirme o alcance na fonte; não marque E só por aparecer “nunca”.'},
   V4:{lema:'Estranho pode ser exceção certa.',pergunta:'Essa hipótese incomum está prevista na fonte?',armadilha:'Uma exceção verdadeira contraria a intuição.',acao:'Lembre a hipótese expressa antes de descartar o item.'}
-};);
+});
 export const CEBRASPE_V1_STRATEGY = Object.freeze({
   "F1": {
     "maxima": "Quem ignora as diferenças do terreno perde antes de avançar.",
