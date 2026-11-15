@@ -139,7 +139,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         marked: st.answer,
         confidence: numericConf,
       }).record;
-      if (Array.isArray(previous?.hist)) record.hist = [...previous.hist, ...record.hist.slice(-1)];
+      const attempt = { ...record.hist.at(-1), sessionId: session.sessionId, gabarito: q.key };
+      record.hist = [...(Array.isArray(previous?.hist) ? previous.hist : []), attempt];
       record.gabaritoUsado = q.key;
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
@@ -178,7 +179,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       setLoading(false);
     }
     if (idx + 1 === qs.length) {
-      const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key }));
+      const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key, em: answers[x.id].attemptAt }));
       if (items.length) {
         lock.current = true;
         setLoading(true);

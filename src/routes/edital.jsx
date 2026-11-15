@@ -1,5 +1,5 @@
 import React from 'react';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useLocation } from '@tanstack/react-router';
 import { AppShell } from '@/components/qb/AppShell';
 import { EditalScreen } from '@/components/qb/screens/EditalScreen';
 import { useQBStudy } from '@/lib/QBStudyContext';
@@ -15,10 +15,11 @@ export const Route = createFileRoute('/edital')({
 });
 
 function EditalRoute() {
+  const topicFocus = useLocation({ select: location => location.hash });
   const { ui, setUi, subs, setSub, go, openArchitect, toast } = useQBStudy();
   return (
     <AppShell ui={ui} setUi={setUi} view="edital" go={go}>
-      <EditalScreen tab={subs.edital} setTab={setSub('edital')} go={go} openArchitect={openArchitect} toast={toast} />
+      <EditalScreen topicFocus={topicFocus} tab={subs.edital} setTab={setSub('edital')} go={go} openArchitect={openArchitect} toast={toast} />
     </AppShell>
   );
 }

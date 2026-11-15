@@ -24,8 +24,10 @@ function lastAnswerOutcome(question) {
   return (originalKey === 'C' || originalKey === 'E') && marked !== originalKey ? 'wrong' : 'answered';
 }
 
-export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter } = {}) {
+export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds } = {}) {
+  const selected = questionIds ? new Set(questionIds) : null;
   const matching = bank.filter(question =>
+    (!selected || selected.has(question.id)) &&
     question.statusConfronto !== 'divergencia_bloqueada' &&
     (!topicId || question.topicId === topicId) &&
     (!subjectId || question.subjectId === subjectId) &&

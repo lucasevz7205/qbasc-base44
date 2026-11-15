@@ -17,24 +17,33 @@ import { useRealStudy } from '@/lib/qb-real-data';
 
 const STATUS = [['all', 'Todos os status'], ['not-started', 'Não iniciado'], ['studying', 'Em estudo'], ['reviewing', 'Revisando'], ['mastered', 'Dominado']];
 
-export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect }) {
+export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect, topicFocus }) {
   const { QB_EDITAL } = useRealStudy();
   const E = QB_EDITAL, M = QB_METRICS;
   const [q, setQ] = React.useState('');
   const [subj, setSubj] = React.useState('all');
   const [status, setStatus] = React.useState('all');
   const [evoke, setEvoke] = React.useState(false);
-  const [open, setOpen] = React.useState(['da']);
-  const [hl, setHl] = React.useState(null);
+  const focusedSubject = E.subjects.find(s => s.topics.some(t => t.id === topicFocus));
+  const [open, setOpen] = React.useState(() => focusedSubject ? [focusedSubject.id] : ['da']);
+  const [hl, setHl] = React.useState(() => focusedSubject ? topicFocus : null);
   const tot = M.totals(E.subjects);
   const ql = q.trim().toLowerCase();
   const filtered = E.subjects.filter(s => subj === 'all' || s.id === subj).map(s => ({ ...s, topics: s.topics.filter(t => (status === 'all' || t.status === status) && (!ql || t.num.toLowerCase().startsWith(ql) || (t.title || '').toLowerCase().includes(ql) || s.name.toLowerCase().includes(ql))) })).filter(s => s.topics.length);
   React.useEffect(() => {
     if (!hl || tab !== 'lista') return;
-    const t = setTimeout(() => { const el = document.querySelector('[data-topic-id="' + hl + '"]'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 180, behavior: 'smooth' }); }, 60);
+    const t = setTimeout(() => { const el = document.querySelector('[data-topic-id="' + CSS.escape(hl) + '"]'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 180, behavior: 'smooth' }); }, 60);
     return () => clearTimeout(t);
   }, [hl, tab]);
   const reveal = (sid, tid) => { setSubj('all'); setStatus('all'); setQ(''); setOpen(o => o.includes(sid) ? o : [...o, sid]); setHl(tid); setTab && setTab('lista'); };
+  React.useEffect(() => {
+    if (!focusedSubject) return;
+    setSubj('all');
+    setStatus('all');
+    setQ('');
+    setOpen(current => current.includes(focusedSubject.id) ? current : [...current, focusedSubject.id]);
+    setHl(topicFocus);
+  }, [topicFocus, focusedSubject]);
   const onAction = (a, t) => {
     const s = E.subjects.find(x => x.topics.includes(t) || x.topics.some(y => y.id === t.id));
     if (a === 'architect') return openArchitect && openArchitect({ subjectId: s.id, topicId: t.id, origin: 'edital ' + s.short + ' ' + t.num });

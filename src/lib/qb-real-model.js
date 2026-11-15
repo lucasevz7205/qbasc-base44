@@ -1,5 +1,6 @@
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { questionTrap } from '@/lib/question-feedback';
+import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
 
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
@@ -182,16 +183,11 @@ export function adaptStudy(records, user, now = new Date()) {
     return {id:x.id,date,subjectId,subject:x.materia,title:x.titulo,type:x.tipo||'estudo',minutes:num(x.minutos)||Math.round(num(x.segundos)/60),status:done?'done':date<today?'late':'pending',auto:!!x.automatica||!!x.auto||x.origem==='automatico',raw:x};
   }).sort((a,b)=>a.date.localeCompare(b.date));
   for(const o of [-1,0,1]) weeks[o]=tasks.filter(x=>x.date>=weekStart(o)&&x.date<=shift(weekStart(o),6));
-  const dates={}, cardsByDay={}, roundsByDay={};
-  const stat = d => dates[d] ??= {date:d,n:0,...zero()};
-  const review=zero();
-  for(const r of source('rodadas')){
-    const date=day(r.fim??r.inicio);if(!date)continue;
-    const d=stat(date), totals={correct:num(r.certos),wrong:num(r.errados),blank:num(r.brancos)};
-    d.correct+=totals.correct;d.wrong+=totals.wrong;d.blank+=totals.blank;d.n+=totals.correct+totals.wrong+totals.blank;
-    roundsByDay[date]=(roundsByDay[date]??0)+1;
-    if(/revis|caderno|recuper/i.test(r.modo||''))for(const k of Object.keys(review))review[k]+=totals[k];
-  }
+  const { days: dates, attemptsByDay, roundsByDay, review } = dailyQuestionPerformance({
+    answers, questions: rawQuestions, rounds: source('rodadas'), day,
+  });
+  const cardsByDay = {};
+  const stat = date => dates[date] ??= {date,n:0,...zero()};
   for(const c of Object.values(reviews))for(const h of arr(c.hist)){
     const date=day(h.em);if(date)cardsByDay[date]=(cardsByDay[date]??0)+1;
   }
@@ -222,5 +218,5 @@ export function adaptStudy(records, user, now = new Date()) {
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
   const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:activeQuestions,excludedQuestionIds,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
-  return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
+  return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{attemptsByDay,days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }

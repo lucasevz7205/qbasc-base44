@@ -338,8 +338,8 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const { subjectId, topicId, nodeId, filter } = arg || {};
-          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter }));
+          const { subjectId, topicId, nodeId, filter, questionIds } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
@@ -348,6 +348,11 @@ export function QBStudyProvider({ children }) {
       if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
         resetStudyMapSelection();
         setSubs(s => ({ ...s, study: 'mapa' }));
+      }
+      if (nextView === 'edital' && arg?.topicId) {
+        setSubs(s => ({ ...s, edital: 'lista' }));
+        navigate({ to: '/edital', hash: arg.topicId, hashScrollIntoView: false });
+        return;
       }
       if (typeof arg === 'string' && SUBS[nextView]) {
         setSubs(s => ({ ...s, [nextView]: arg }));
