@@ -451,7 +451,6 @@ export default function MindMapCanvas({
           label={isMaximized ? 'Restaurar tamanho da área de estudo (Esc)' : 'Ampliar área de estudo em tela cheia'}
           onClick={toggleMaximize}
         />
-        <IconButton variant="solid" size="sm" icon="rotate-ccw" label="Reenquadrar e restaurar zoom (100%)" onClick={reset} />
         <IconButton variant="solid" size="sm" icon="locate-fixed" label="Centralizar no nó selecionado" onClick={() => centerOn(selectedId || tree.root)} />
       </div>
       <div style={{ position: 'absolute', bottom: 14, left: 16, display: 'flex', gap: 14, flexWrap: 'wrap', zIndex: 2, font: '400 12px/1 var(--font-body)', color: 'var(--text-muted)' }}>
