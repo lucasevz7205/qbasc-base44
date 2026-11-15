@@ -17,13 +17,6 @@ export const Route = createFileRoute('/')({
 function HomeRoute() {
   const { ui, setUi, go, openArchitect } = useQBStudy();
 
-  React.useEffect(() => {
-    const urlView = new URLSearchParams(window.location.search).get('view');
-    if (urlView && urlView !== 'dashboard') {
-      go(urlView);
-    }
-  }, [go]);
-
   return (
     <AppShell ui={ui} setUi={setUi} view="dashboard" go={go}>
       <DashboardView go={go} openArchitect={() => openArchitect()} />

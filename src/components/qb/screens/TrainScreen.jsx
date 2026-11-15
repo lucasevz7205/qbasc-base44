@@ -75,6 +75,8 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const subject = E.subjects.find(item => item.id === sel.subjectId);
   const topic = subject?.topics.find(item => item.id === sel.topicId);
   const stats = questionTrainingProgress(QB_DATA.questionBank, { subjectId: subject?.id, topicId: topic?.id });
+  const correct = stats.valid - stats.errors;
+  const accuracy = stats.valid ? correct / stats.valid : null;
 
   const linkInfo = (subjectId, topicId, action) => {
     const r = resolveIntent({ action, subjectId, topicId });
@@ -111,10 +113,17 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             <ProgressBar tone="gold" size="lg" label="Questões concluídas"
               value={stats.total ? stats.completed / stats.total : 0}
               valueText={`${stats.completed} de ${stats.total}`} />
-            <ProgressBar tone="incorrect" size="lg" label="Taxa de erro"
-              value={stats.valid ? stats.errors / stats.valid : 0}
-              valueText={stats.valid ? `${Math.round(100 * stats.errors / stats.valid)}%` : 'Sem respostas válidas'} />
-            {stats.valid > 0 && <small style={{ color: 'var(--text-muted)' }}>{stats.errors} erros em {stats.valid} respostas válidas. Questões concluídas são contadas uma vez.</small>}
+            <ProgressBar tone="correct" size="lg" label="Taxa de acertos"
+              trackTone={accuracy === null ? undefined : 'incorrect'}
+              value={accuracy ?? 0}
+              valueText={accuracy === null ? 'Sem respostas válidas' : `${Math.round(100 * accuracy)}%`} />
+            {stats.valid > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px', font: 'var(--type-caption)' }}>
+                <span style={{ color: 'var(--state-correct)' }}>{correct} {correct === 1 ? 'acerto' : 'acertos'}</span>
+                <span style={{ color: 'var(--state-incorrect)' }}>{stats.errors} {stats.errors === 1 ? 'erro' : 'erros'}</span>
+                <span style={{ color: 'var(--text-muted)' }}>{stats.valid} respostas válidas</span>
+              </div>
+            )}
           </Panel>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <span className="qb-overline">Revisões e pendências</span>

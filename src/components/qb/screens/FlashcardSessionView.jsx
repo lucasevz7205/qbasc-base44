@@ -68,7 +68,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
         <span className="qb-overline">Revisão espaçada</span>
         <span style={{ font: '600 20px/1.25 var(--font-serif)', color: 'var(--text-primary)', overflowWrap: 'anywhere' }}>{topicLabel}</span>
       </BrandHeader>
-      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} style={{ '--font-heading': 'var(--font-serif)' }} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={() => go(backTo || 'dashboard')} />
+      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div>
           <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>

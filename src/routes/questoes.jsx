@@ -1,5 +1,5 @@
 import React from 'react';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { QuestionSessionView } from '@/components/qb/screens/QuestionSessionView';
 import { useQBStudy } from '@/lib/QBStudyContext';
 
@@ -15,5 +15,11 @@ export const Route = createFileRoute('/questoes')({
 
 function QuestoesRoute() {
   const { session, setSession, go, backTo } = useQBStudy();
+  const navigate = useNavigate();
+  const hasRound = Array.isArray(session.questionIds);
+  React.useEffect(() => {
+    if (!hasRound) void navigate({ to: '/', replace: true });
+  }, [hasRound, navigate]);
+  if (!hasRound) return null;
   return <QuestionSessionView session={session} setSession={setSession} go={go} backTo={backTo} />;
 }

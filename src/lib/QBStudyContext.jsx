@@ -114,12 +114,6 @@ export function QBStudyProvider({ children }) {
   const activeView = PATH_TO_VIEW[location.pathname] || 'dashboard';
 
   React.useEffect(() => {
-    if (activeView !== 'questions' || session.questionIds !== undefined) return;
-    const round = startQuestionRound(QB_DATA.questionBank);
-    setSession(previous => previous.questionIds === undefined ? round : previous);
-  }, [activeView, session.questionIds, QB_DATA.questionBank]);
-
-  React.useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(KEY)) || {};
       if (saved.subs) setSubs(s => ({ ...s, ...saved.subs }));

@@ -6,6 +6,11 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['var(--font-body)'],
+  			serif: ['var(--font-serif)'],
+  			mono: ['var(--font-mono)'],
+  		},
   		opacity: Object.fromEntries(Array.from({ length: 101 }, (_, i) => [i, `${i / 100}`])),
   		borderRadius: {
   			lg: 'var(--radius)',

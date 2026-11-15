@@ -214,7 +214,7 @@
   /* Typography */
   --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-heading: Georgia, 'Cormorant Garamond', serif;
+  --font-heading: var(--font-serif);
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -296,6 +296,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 h1, h2, h3, h4, p { margin: 0; text-wrap: pretty; }
+h1, h2 { font-family: var(--font-heading); }
+code, kbd, pre, samp { font-family: var(--font-mono); }
 a {
   color: var(--qb-gold);
   text-decoration: underline;
@@ -314,7 +316,7 @@ a:hover {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
-button { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 
 @keyframes qb-spin { to { transform: rotate(360deg); } }
 @keyframes qb-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProgressBar({ value = 0, label, valueText, tone = 'progress', size = 'md', showValue = true, style }) {
+export default function ProgressBar({ value = 0, label, valueText, tone = 'progress', trackTone, size = 'md', showValue = true, style }) {
   const pct = Math.max(0, Math.min(1, value)) * 100;
   const fill = tone === 'correct' ? 'var(--state-correct)' : tone === 'gold' ? 'var(--qb-gold)' : tone === 'incorrect' ? 'var(--state-incorrect)' : 'var(--state-progress)';
   const h = size === 'sm' ? 4 : size === 'lg' ? 10 : 6;
@@ -20,7 +20,7 @@ export default function ProgressBar({ value = 0, label, valueText, tone = 'progr
         aria-valuenow={Math.round(pct)}
         aria-valuetext={text}
         aria-label={label}
-        style={{ height: h, borderRadius: 999, background: 'var(--state-progress-track)', overflow: 'hidden' }}
+        style={{ height: h, borderRadius: 999, background: trackTone === 'incorrect' ? 'var(--state-incorrect)' : 'var(--state-progress-track)', overflow: 'hidden' }}
       >
         <div style={{ width: `${pct}%`, height: '100%', borderRadius: 999, background: fill, transition: 'width var(--dur-slow) var(--ease-standard)' }} />
       </div>
