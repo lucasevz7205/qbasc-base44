@@ -350,14 +350,13 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 )}
                 bookmarked={!!st.bookmarked}
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
-                conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
-              />
-              <div>
-                <Button variant="ghost" size="sm" icon="trash-2" disabled={loading} onClick={() => {
+                deleteDisabled={loading}
+                onDelete={() => {
                   setError('');
                   setDeleteTarget({ id: q.id, code: q.code || q.id });
-                }}>Excluir questão</Button>
-              </div>
+                }}
+                conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
+              />
               {st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
                 <EditorialCurator key={q.id} kind="question" item={q} topicLabel={q.chapter || q.topicId || q.subject} />
               )}

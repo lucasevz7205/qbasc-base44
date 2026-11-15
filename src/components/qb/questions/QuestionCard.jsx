@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { IconButton } from '@/components/qb/core/IconButton';
 import { Badge } from '@/components/qb/core/Badge';
+import { Button } from '@/components/qb/core/Button';
 
 const CONF = [
   ['baixa', 'Baixa'],
@@ -29,6 +30,8 @@ export default function QuestionCard({
   conceptLink,
   bookmarked = false,
   onBookmark,
+  onDelete,
+  deleteDisabled = false,
   style,
 }) {
   const revealed = answerKey != null;
@@ -85,6 +88,7 @@ export default function QuestionCard({
         ))}
         <span style={{ flex: 1 }} />
         {onBookmark && <IconButton icon="bookmark" label={bookmarked ? 'Remover da revisão' : 'Marcar para revisão'} pressed={bookmarked} size="sm" onClick={onBookmark} />}
+        {onDelete && <Button variant="ghost" size="sm" icon="trash-2" disabled={deleteDisabled} onClick={onDelete}>Excluir questão</Button>}
       </header>
       {exam && <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)', marginTop: -10 }}>{exam}</span>}
       {context && (

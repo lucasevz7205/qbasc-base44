@@ -137,7 +137,9 @@ export function adaptStudy(records, user, now = new Date()) {
         if(num(r.tentativas)||num(r.acertos)||num(r.erros)||num(r.brancos)){
           const p=progress[topic.id];
           p.answered++;
-          if(keyOf(r.ultimaMarcada)===keyOf(r.gabaritoUsado || q.gabarito))p.latestCorrect++;
+          // Conserve a avaliação histórica mesmo quando a chave da questão é corrigida depois.
+          const lastAttempt = arr(r.hist).at(-1);
+          if(typeof lastAttempt?.ok === 'boolean' ? lastAttempt.ok : keyOf(r.ultimaMarcada)===keyOf(r.gabaritoUsado || q.gabarito))p.latestCorrect++;
           if(r.noCaderno)p.errorsNotebook++;
           if(isRetained(r))p.retained++;
         }
@@ -150,7 +152,7 @@ export function adaptStudy(records, user, now = new Date()) {
     const resolvedNode = exactNode || (uniqueReferences.length === 1 ? uniqueReferences[0] : roots[topic?.id]);
     const trap = questionTrap(q, mechanisms.get(q.id));
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
-    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
+    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));
