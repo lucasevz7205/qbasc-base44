@@ -10,9 +10,11 @@ import { BarChart } from '@/components/qb/data/BarChart';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { SelectField } from '@/components/qb/data/SelectField';
 import { Icon } from '@/components/qb/core/Icon';
-import { QB_EDITAL, QB_PLAN, QB_PERF, QB_SIM, QB_METRICS } from '@/lib/qb-data';
+import { QB_METRICS } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 function Daily({ go }) {
+  const { QB_EDITAL, QB_PLAN, QB_PERF } = useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, P = QB_PLAN;
   const [date, setDate] = React.useState(P.today);
   const idx = PF.days.findIndex(d => d.date === date);
@@ -27,7 +29,7 @@ function Daily({ go }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <label style={{ display: 'flex', alignItems: 'center', gap: 8, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Data<input type="date" className="qb-input" style={{ width: 170, colorScheme: 'dark' }} min={PF.days[0].date} max={P.today} value={date} onChange={e => e.target.value && setDate(e.target.value)} /></label>
         <Button size="sm" variant="secondary" disabled={date === P.today} onClick={() => setDate(P.today)}>Hoje</Button>
-        <Badge tone="neutral" icon="info">Somente rodadas de treino · dados demonstrativos</Badge>
+        <Badge tone="neutral" icon="info">Somente rodadas de treino</Badge>
       </div>
       {!d.n ? <EmptyState title={'Sem respostas em ' + M.fmtDate(date)} description="Nenhuma rodada de treino registrada neste dia." /> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
@@ -36,7 +38,7 @@ function Daily({ go }) {
           <StatCard label="Nota líquida" tone="gold" value={(d.net > 0 ? '+' : '') + d.net} detail="Regra: +1 certo · −1 errado · 0 branco" />
           <StatCard label="Certeza calibrada" value="—" detail="Comparação entre confiança declarada e acerto observado." warning="Definição da métrica pendente" note="A fórmula não está nos arquivos do projeto; não é estimada aqui." />
           <StatCard label="Tarefas concluídas" value={tasks.filter(t => t.status === 'done').length + '/' + tasks.length} detail="Do planejamento do dia" onClick={() => go('plan', 'hoje')} />
-          <StatCard label="Flashcards avaliados" value={date === P.today ? PF.today.flashcards : '—'} detail={date === P.today ? 'Avaliações registradas hoje' : 'Sem registro neste dia (demo)'} />
+          <StatCard label="Flashcards avaliados" value={PF.cardsByDay[date] || 0} detail={'Avaliações registradas na data'} />
         </div>
       )}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16, alignItems: 'start' }}>
@@ -62,6 +64,7 @@ function Daily({ go }) {
 }
 
 function Historic() {
+  const {QB_PERF,QB_EDITAL,QB_SIM}=useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, E = QB_EDITAL, S = QB_SIM;
   const [period, setPeriod] = React.useState('14');
   const [group, setGroup] = React.useState('dia');
@@ -81,10 +84,10 @@ function Historic() {
       </Panel>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 10 }}>
         <StatCard compact label="Treino no período" tone="correct" value={M.pct(tr.v ? tr.c / tr.v * 100 : null)} detail={tr.c + '/' + tr.v + ' válidas · ' + tr.n + ' itens'} />
-        <StatCard compact label="Revisões" value={M.pct(PF.review.correct / (PF.review.correct + PF.review.wrong) * 100)} detail={PF.review.correct + '/' + (PF.review.correct + PF.review.wrong) + ' · contadas à parte'} />
-        <StatCard compact label="Simulados (histórico)" value={M.pct(sim.c / sim.v * 100)} detail={sim.c + '/' + sim.v + ' válidas · ' + S.history.filter(h => h.correct != null).length + ' provas'} note="Não somado ao treino" />
+        <StatCard compact label="Revisões" value={M.pct(PF.review.correct + PF.review.wrong ? PF.review.correct / (PF.review.correct + PF.review.wrong) * 100 : null)} detail={PF.review.correct + '/' + (PF.review.correct + PF.review.wrong) + ' · contadas à parte'} />
+        <StatCard compact label="Simulados (histórico)" value={M.pct(sim.v ? sim.c / sim.v * 100 : null)} detail={sim.c + '/' + sim.v + ' válidas · ' + S.history.filter(h => h.correct != null).length + ' provas'} note="Não somado ao treino" />
       </div>
-      {group === 'mes' ? <EmptyState tone="small-sample" title="Agrupamento mensal indisponível" description="A demonstração tem só 14 dias de dados." /> : (
+      {group === 'mes' ? <EmptyState tone="small-sample" title="Agrupamento mensal indisponível" description="Selecione o agrupamento diário ou semanal." /> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16 }}>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Taxa de acertos · treino</span><LineChart data={pts} height={220} label="Taxa de acertos por período" /></Panel>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Volume de itens julgados</span><BarChart height={220} color="var(--viz-2)" data={pts.map(p => ({ label: p.x, value: p.vol || null }))} label="Volume por período" /></Panel>
@@ -107,13 +110,13 @@ const METHOD = [
   ['book-open', 'Status de estudo', 'Não iniciado · Em estudo · Revisando · Dominado. Informação de progresso, independente da faixa de acertos do mapa de calor.'],
   ['grid-3x3', 'Faixas do mapa de calor', '< 60% · 60–74% · 75–84% · 85–89% · ≥ 90% · sem respostas. Calculadas pela taxa de acertos do tópico.'],
   ['circle-help', 'Certeza calibrada', 'Pendente: a definição não consta nos arquivos. Quando definida, comparará confiança declarada com acerto observado — nunca deve ser confundida com a taxa de acertos.'],
-  ['split', 'Limites das comparações', 'Treino, revisão e simulado são séries separadas. Amostras com menos de 10 (gráficos) ou 20 (tabelas) respostas são sinalizadas. Indicadores são demonstrativos, não diagnósticos.'],
+  ['split', 'Limites das comparações', 'Treino, revisão e simulado são séries separadas. Amostras com menos de 10 (gráficos) ou 20 (tabelas) respostas são sinalizadas. Indicadores de estudo não são diagnósticos.'],
 ];
 
 export default function PerformanceScreen({ tab = 'diaria', setTab, go }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <PageHeader overline="Desempenho · dados demonstrativos" title="Desempenho" description="Números calculados a partir das respostas registradas. Nenhum indicador é um diagnóstico."
+      <PageHeader overline="Desempenho" title="Desempenho" description="Números calculados a partir das respostas registradas. Nenhum indicador é um diagnóstico."
         actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
       {tab === 'diaria' && <Daily go={go} />}
       {tab === 'historica' && <Historic />}
