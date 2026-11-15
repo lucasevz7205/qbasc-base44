@@ -7,6 +7,7 @@ import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { askArchitectTutor, getArchitectProviderStatus } from '@/lib/server-fns';
+import { EMPTY_TUTOR_HISTORY, tutorHistory } from '@/lib/tutor-history';
 
 const MODES = [['socratico', 'Socrático'], ['feynman', 'Feynman'], ['banca', 'Banca CEBRASPE'], ['oral', 'Arguição oral']];
 const QUICK = [['retencao', 'target', 'Testar retenção'], ['armadilhas', 'triangle-alert', 'Armadilhas da banca'], ['analogia', 'lightbulb', 'Analogia Feynman'], ['voz', 'mic', 'Arguição por voz']];
@@ -17,7 +18,7 @@ const QUICK_PROMPTS = {
   analogia: 'Me explique este tópico usando uma analogia estilo Feynman e aponte onde a analogia tem limite técnico.',
 };
 
-export default function SocraticChat({ subjects = [], subjectId, topicId, onContextChange, origin, compact = false, style }) {
+export default function SocraticChat({ accountId, subjects = [], subjectId, topicId, onContextChange, origin, compact = false, style }) {
   const askTutor = useServerFn(askArchitectTutor);
   const getProviderStatus = useServerFn(getArchitectProviderStatus);
   const statusFnRef = React.useRef(getProviderStatus);
@@ -26,18 +27,17 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   const key = topic ? topic.id : 'none';
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
   const [settingsOpen, setSettingsOpen] = React.useState(false);
-  const [hist, setHist] = React.useState({});
   const [mode, setMode] = React.useState('socratico');
   const [provider, setProvider] = React.useState('gemini');
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
-  const [busy, setBusy] = React.useState(false);
   const [listening, setListening] = React.useState(false);
   const [voiceNotice, setVoiceNotice] = React.useState(null);
   const [ask, setAsk] = React.useState(false);
   const listRef = React.useRef(null);
   const recRef = React.useRef(null);
-  const msgs = hist[key] || [];
+  const msgs = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.read(accountId, key), () => EMPTY_TUTOR_HISTORY);
+  const busy = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.isPending(accountId, key), () => false);
 
   React.useEffect(() => {
     let mounted = true;
@@ -48,20 +48,20 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
 
   React.useEffect(() => {
     if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
-  }, [msgs.length, busy]);
+  }, [key, msgs.length, busy]);
 
-  const push = m => setHist(h => ({ ...h, [key]: [...(h[key] || []), m] }));
+  const push = message => tutorHistory.append(accountId, key, message);
 
   const answer = async (kind, userText) => {
     const cleanText = (userText || '').trim();
-    if (!cleanText || busy) return;
-    const priorHistory = (hist[key] || [])
+    if (!cleanText || !tutorHistory.begin(accountId, key)) return;
+    if (topic) tutorHistory.rememberTopic(accountId, topic.id);
+    const priorHistory = tutorHistory.read(accountId, key)
       .filter(m => m.role === 'user' || m.role === 'tutor')
       .slice(-10)
       .map(m => ({ role: m.role, text: m.text }));
 
     push({ role: 'user', text: cleanText });
-    setBusy(true);
     try {
       const res = await askTutor({
         data: {
@@ -83,7 +83,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
         retryText: cleanText,
       });
     } finally {
-      setBusy(false);
+      tutorHistory.finish(accountId, key);
     }
   };
 
@@ -156,10 +156,13 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
               subjects={subjects}
               value={topic?.id || null}
               placeholder="Pesquisar matéria, código ou assunto do edital…"
-              onSelect={selection => onContextChange?.(selection.subjectId, selection.topicId)}
+              onSelect={selection => {
+                tutorHistory.rememberTopic(accountId, selection.topicId);
+                onContextChange?.(selection.subjectId, selection.topicId);
+              }}
             />
           </div>
-          <Button variant="secondary" size="sm" icon="trash-2" disabled={!msgs.length} onClick={() => setAsk(true)} style={{ minHeight: 52 }}>Limpar histórico</Button>
+          <Button variant="secondary" size="sm" icon="trash-2" disabled={!msgs.length || busy} onClick={() => setAsk(true)} style={{ minHeight: 52 }}>Limpar histórico</Button>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Provedor</span>
@@ -203,11 +206,11 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           </button>
         ))}
       </div>
-      <form onSubmit={e => { e.preventDefault(); send(); }} style={{ display: 'flex', gap: 8 }}>
+      <form onKeyDown={event => { if (event.key === 'Enter') event.stopPropagation(); }} onSubmit={e => { e.preventDefault(); send(); }} style={{ display: 'flex', gap: 8 }}>
         <input className="qb-input" value={text} onChange={e => setText(e.target.value)} placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'} aria-label="Mensagem ao Arquiteto" style={{ minWidth: 0 }} />
         <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
       </form>
-      <ConfirmDialog open={ask} tone="danger" title="Limpar o histórico deste tópico?" description={'Remove as ' + msgs.length + ' mensagens de ' + tLabel + '. Conversas de outros tópicos são mantidas.'} confirmLabel="Limpar histórico" onCancel={() => setAsk(false)} onConfirm={() => { setHist(h => ({ ...h, [key]: [] })); setAsk(false); }} />
+      <ConfirmDialog open={ask} tone="danger" title="Limpar o histórico deste tópico?" description={'Remove as ' + msgs.length + ' mensagens de ' + tLabel + '. Conversas de outros tópicos são mantidas.'} confirmLabel="Limpar histórico" onCancel={() => setAsk(false)} onConfirm={() => { tutorHistory.clear(accountId, key); setAsk(false); }} />
     </div>
   );
 }

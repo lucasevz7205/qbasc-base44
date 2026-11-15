@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { pickQuestionRound } from '@/lib/study-session-rules';
+import { distinctRoundQuestions, pickQuestionRound } from '@/lib/study-session-rules';
 import { StudyClockProvider } from '@/lib/StudyClockContext';
 
 const KEY = 'qb-uikit-v2';
@@ -67,7 +67,7 @@ function startQuestionRound(bank, selection = {}) {
     answers: {},
     focus: false,
     selection,
-    questionIds: [...new Set(pickQuestionRound(bank, selection).map(q => q.id))],
+    questionIds: distinctRoundQuestions(pickQuestionRound(bank, selection)).map(q => q.id),
     customQuestions: null,
     ganBatch: null,
     startedAt: new Date().toISOString(),
@@ -319,13 +319,13 @@ export function QBStudyProvider({ children }) {
       }
       if (nextView === 'questions' && !arg?.resume) {
         if (arg?.ganBatch && Array.isArray(arg.ganBatch.questions)) {
-          const approvedQuestions = arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada' && !QB_DATA.excludedQuestionIds.has(q.id));
+          const approvedQuestions = distinctRoundQuestions(arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada' && !QB_DATA.excludedQuestionIds.has(q.id)));
           const customQuestions = Object.fromEntries(approvedQuestions.map(q => [q.id, q]));
           setSession({
             idx: 0,
             answers: {},
             focus: false,
-            questionIds: [...new Set(approvedQuestions.map(q => q.id))],
+            questionIds: approvedQuestions.map(q => q.id),
             customQuestions,
             ganBatch: arg.ganBatch,
             startedAt: new Date().toISOString(),

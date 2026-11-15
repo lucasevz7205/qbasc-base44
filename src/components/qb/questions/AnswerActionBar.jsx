@@ -42,9 +42,9 @@ export default function AnswerActionBar({
         </Button>
       )}
       <span style={{ flex: 1 }} />
-      {showHints && (
+      {showHints && !answered && (
         <span aria-hidden="true" style={{ font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' }}>
-          {answered ? (lastQuestion ? 'Enter · concluir' : 'Enter · próxima') : 'C / E · responder   Enter · confirmar'}
+          C / E · responder
         </span>
       )}
       {answered ? (

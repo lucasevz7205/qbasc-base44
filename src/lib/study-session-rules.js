@@ -40,6 +40,19 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
   return matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response))).slice(0, QUESTION_ROUND_LIMIT);
 }
 
+export function distinctRoundQuestions(questions) {
+  const ids = new Set();
+  const prompts = new Set();
+  return questions.filter(question => {
+    const statement = String(question.statement || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase();
+    const key = statement && JSON.stringify([statement, question.key]);
+    if (ids.has(question.id) || (key && prompts.has(key))) return false;
+    ids.add(question.id);
+    if (key) prompts.add(key);
+    return true;
+  });
+}
+
 export function questionTrainingProgress(bank, { subjectId, topicId } = {}) {
   const questions = pickQuestionRound(bank, { subjectId, topicId, filter: 'all' });
   const seen = new Set();

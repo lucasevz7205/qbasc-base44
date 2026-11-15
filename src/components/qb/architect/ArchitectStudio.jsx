@@ -6,6 +6,8 @@ import { FeynmanLab } from '@/components/qb/architect/FeynmanLab';
 import { CornellNotebook } from '@/components/qb/architect/CornellNotebook';
 import { ScannerFlashcards } from '@/components/qb/architect/ScannerFlashcards';
 import StudyClock from '@/components/qb/study/StudyClock';
+import { useAuth } from '@/lib/AuthContext';
+import { tutorHistory } from '@/lib/tutor-history';
 
 const TOOLS = [
   { id: 'socratico', label: 'Tutor Socrático', icon: 'message-circle' },
@@ -27,6 +29,12 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   const dock = mode === 'dock';
   const modal = mode === 'modal';
   const headingRef = React.useRef(null);
+  const { user } = useAuth();
+  const accountId = user?.id;
+  const [rememberedTopic, setRememberedTopic] = React.useState(null);
+  React.useEffect(() => {
+    if (open && accountId && !context.topicId && !context.subjectId) setRememberedTopic(tutorHistory.lastTopic(accountId));
+  }, [open, accountId, context.topicId, context.subjectId]);
 
   React.useEffect(() => {
     if (open && mode !== 'inline') headingRef.current?.focus({ preventScroll: true });
@@ -42,11 +50,13 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
     return () => window.removeEventListener('keydown', k);
   }, [open, mode, onClose]);
   if (!open) return null;
-  const subj = subjects.find(s => s.id === context.subjectId) || subjects[0];
-  const topic = subj && (subj.topics.find(t => t.id === context.topicId) || subj.topics[0]);
+  const topicPreference = context.topicId || (!context.subjectId && (rememberedTopic || 'da-10-6'));
+  const subj = subjects.find(s => s.id === context.subjectId) ||
+    subjects.find(s => s.topics.some(t => t.id === topicPreference)) || subjects.find(s => s.id === 'da') || subjects[0];
+  const topic = subj?.topics.find(t => t.id === topicPreference) || subj?.topics[0];
   const tLabel = topic ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '') : 'o tópico';
   const panel = (
-    <div role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
+    <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
       style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: dock ? 8 : 12, padding: dock ? 12 : '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
         {!dock && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
@@ -63,7 +73,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
       </header>
       <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        {tool === 'socratico' && <SocraticChat subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
+        {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} />}
         {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} deck={deck} />}

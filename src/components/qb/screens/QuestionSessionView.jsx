@@ -240,13 +240,9 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
 
   React.useEffect(() => {
     const onKey = e => {
-      if (done || excluded || deletingCurrent || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], input, textarea, select, button, a, summary')) return;
+      if (done || excluded || deletingCurrent || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], [data-qb-architect], input, textarea, select, button, a, summary')) return;
       const k = e.key.toLowerCase();
       if (k === 'c' || k === 'e') chooseAnswer({ answer: k.toUpperCase() });
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        st.revealed ? next() : confirm();
-      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);

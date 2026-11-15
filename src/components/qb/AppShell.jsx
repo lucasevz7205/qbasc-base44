@@ -73,7 +73,7 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
                 tools={TOOLS}
                 onTool={id =>
                   id === 'keys'
-                    ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Enter confirmar · Esc fechar O Arquiteto' } })
+                    ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Esc fechar O Arquiteto' } })
                     : setUi({ studio: { open: true, tool: id } })
                 }
                 collapsed={ui.collapsed}
@@ -133,7 +133,7 @@ export function ArchitectLayer({ ui, setUi }) {
         onExpand={() => setUi({ studio: { open: true, mode: 'modal', tool: ui.studio.tool || 'socratico' } })}
         onClose={() => setUi({ studio: { open: false } })}
         subjects={E.subjects}
-        context={{ subjectId: ctx.subjectId || 'da', topicId: ctx.topicId || 'da-10-6', origin: ctx.origin }}
+        context={ctx}
         onContextChange={c => setUi({ ctx: c })}
         deck={deck}
       />
