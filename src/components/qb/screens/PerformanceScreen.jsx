@@ -16,6 +16,8 @@ import { Icon } from '@/components/qb/core/Icon';
 import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { groupResponsesByTopic } from '@/lib/daily-question-performance';
+import { buildPerformanceNodes, calendarBuckets, recurringTopicErrors } from '@/lib/performance-v4';
+import { reviewDay, scheduledReviewQueues } from '@/lib/spaced-review';
 
 function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Questões do dia' }) {
   const [open, setOpen] = React.useState(false);
@@ -72,22 +74,24 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Q
   );
 }
 
-function DailySubjectBreakdown({ date, scopeLabel = date ? QB_METRICS.fmtDate(date) : '', responses, questions, subjects, total, go }) {
-  const groups = groupResponsesByTopic(responses, questions, subjects);
+function DailySubjectBreakdown({ date, scopeLabel = date ? QB_METRICS.fmtDate(date) : '', responses, data, subjects, total, go }) {
+  const groups = groupResponsesByTopic(responses, data.questions, subjects);
   const unlinked = total - groups.reduce((sum, group) => sum + group.correct + group.wrong + group.blank, 0);
-  const nodes = groups.map(group => ({ ...group, level: 'subject', subjectId: group.id,
-    children: group.topics.map(topic => ({ ...topic, level: 'topic', name: topic.title || topic.num, code: topic.num, subjectId: group.id, topicId: topic.id, actions: ['edital'] })),
-  }));
+  const nodes = buildPerformanceNodes(groups, responses, data);
   return <section>
     <SubjectPerformanceExplorer nodes={nodes} description={'Respostas de treino de ' + scopeLabel}
       emptyTitle="Sem respostas vinculadas a matérias e assuntos"
-      onAction={({ topicId }) => go('edital', { topicId })} />
+      onAction={({ action, topicId, nodeId }) => {
+        if (action === 'mindmap') go('map', { topicId, node: nodeId, returnTo: { view: 'performance', label: 'Desempenho' } });
+        else if (action === 'review') go('flashcards', { topicId });
+        else if (action === 'edital') go('edital', { topicId });
+      }} />
     {unlinked > 0 && <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>{unlinked} {unlinked === 1 ? 'resposta sem assunto vinculado' : 'respostas sem assunto vinculado'}.</p>}
   </section>;
 }
 
 function Daily({ go }) {
-  const { QB_DATA, QB_EDITAL, QB_PLAN, QB_PERF } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, QB_PLAN, QB_PERF, records } = useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, P = QB_PLAN;
   const [date, setDate] = React.useState(P.today);
   const [subjectId, setSubjectId] = React.useState('all');
@@ -99,7 +103,12 @@ function Daily({ go }) {
   const d = M.dayStats(scoped(selectedDay || { date, n: 0, correct: 0, wrong: 0, blank: 0 }));
   const activeIds = new Set(QB_DATA.questionBank.map(q => q.id));
   const wrongIds = [...new Set(responses.filter(item => item.result === 'wrong' && activeIds.has(item.qid)).map(item => item.qid))];
-  const tasks = Object.values(P.weeks).flat().filter(t => t.date === date);
+  const tasks = P.tasks.filter(t => t.date === date);
+  const priorityDays = Array.from({ length: 7 }, (_, index) => {
+    const day = P.addDays(date, index - 6);
+    return { date: day, attempts: filter(PF.attemptsByDay[day] || []) };
+  });
+  const extraPriorities = priorityItems(priorityDays, QB_DATA, QB_EDITAL.subjects, records, subjectId, topicId, go);
   const series = PF.days.filter(day => day.date <= date).slice(-14).map(x => { const s = M.dayStats(scoped(x)); return { ...s, label: M.fmtDate(x.date), x: M.fmtDate(x.date), y: s.accuracy, n: s.valid, vol: s.n }; });
   const tiers = QB_EDITAL.subjects.flatMap(s => s.topics).filter(t => t.correct + t.wrong >= 20 && t.correct / (t.correct + t.wrong) < 0.6).length;
   const prev = PF.days.map(scoped).findLast(day => day.date < date && day.correct + day.wrong);
@@ -114,16 +123,46 @@ function Daily({ go }) {
         comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. ' + M.fmtDate(prev.date) } : null} />
       <div className="qb-performance-v4-panes">
         <PerformanceTrendChart style={{ flex: '3 1 480px' }} subtitle={'Treino até ' + M.fmtDate(date)} data={series} />
-        <PerformancePriorityPanel style={{ flex: '2 1 320px' }} basis={'Dia ' + M.fmtDate(date)} items={[
+        <PerformancePriorityPanel style={{ flex: '2 1 320px' }} basis={'7 dias até ' + M.fmtDate(date) + ' · revisões conforme a fila de hoje'} items={[
+          ...extraPriorities,
           ...(wrongIds.length ? [{ id: 'errors', kind: 'Erros do dia', tone: 'incorrect', title: d.wrong + ' erros no recorte', reason: 'Reveja a origem dos erros nas questões registradas.', action: { label: 'Treinar erros', run: () => go('questions', { questionIds: wrongIds, filter: 'all' }) } }] : []),
           ...(tasks.some(t => t.status !== 'done') ? [{ id: 'plan', kind: 'Planejamento', tone: 'attention', title: 'Tarefas por concluir', reason: 'Confira as tarefas planejadas para esta data.', action: { label: 'Abrir planejamento', run: () => go('plan', 'semana') } }] : []),
           ...(tiers && subjectId === 'all' ? [{ id: 'heat', kind: 'Baixa precisão', tone: 'attention', title: tiers + ' tópicos abaixo de 60%', reason: 'Cada tópico tem pelo menos 20 respostas válidas no acumulado.', action: { label: 'Mapa de calor', run: () => go('edital', 'calor') } }] : []),
         ]} onAction={item => item.action.run()} />
       </div>
-      <DailySubjectBreakdown date={date} total={d.n} responses={responses} questions={QB_DATA.questions} subjects={QB_EDITAL.subjects} go={go} />
+      <DailySubjectBreakdown date={date} total={d.n} responses={responses} data={QB_DATA} subjects={QB_EDITAL.subjects} go={go} />
       {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} />}
     </div>
   );
+}
+
+function priorityItems(days, data, subjects, records, subjectId, topicId, go) {
+  const topics = new Map(subjects.flatMap(subject => subject.topics.map(topic => [topic.id, topic])));
+  const active = new Set(data.questionBank.map(q => q.id));
+  const errors = recurringTopicErrors(days, new Map(data.questions.map(q => [q.id, q]))).slice(0, 3).map(group => {
+    const ids = [...group.ids].filter(id => active.has(id));
+    return { id: 'recurring-' + group.topicId, kind: 'Erros recorrentes', tone: 'incorrect',
+      title: topics.get(group.topicId)?.title || group.topicId,
+      reason: group.errors + ' erros em ' + group.dates.size + ' dias.',
+      action: ids.length ? { label: 'Treinar erros', run: () => go('questions', { questionIds: ids, filter: 'all' }) } : null };
+  });
+  const subject = subjects.find(item => item.id === subjectId);
+  const queue = scheduledReviewQueues({
+    questions: data.questionBank, flashcards: data.flashcards, reviews: data.reviews, rounds: records?.rodadas,
+    today: reviewDay(new Date()), subjectId: subjectId === 'all' ? undefined : subjectId, topicId: topicId === 'all' ? undefined : topicId,
+    cardTopicIds: subjectId === 'all' ? null : new Set(subject?.topics.map(topic => topic.id) || []),
+  });
+  for (const [type, label, open] of [
+    ['questions', 'Questões', ids => go('questions', { questionIds: ids, filter: 'all', scheduledReview: true })],
+    ['flashcards', 'Flashcards', ids => go('flashcards', { cardIds: ids, scheduledReview: true })],
+  ]) {
+    const { due, ids } = queue[type];
+    if (!due) continue;
+    errors.push({ id: 'due-' + type, kind: 'Revisão pendente', tone: 'attention', title: label + ' a revisar · ' + due,
+      reason: ids.length ? ids.length + ' disponíveis na fila de hoje.' : 'O limite diário desta fila já foi atingido.',
+      action: ids.length ? { label: 'Iniciar revisão', run: () => open(ids) } : null });
+  }
+  return errors;
 }
 
 const formatDelta = delta => (delta > 0 ? '+' : '') + delta;
@@ -172,7 +211,7 @@ function performanceScope(questions, subjects, subjectId, topicId) {
 }
 
 function Historic({ go }) {
-  const { QB_PERF: PF, QB_EDITAL: E, QB_SIM: S, QB_PLAN: P, QB_DATA: D } = useRealStudy();
+  const { QB_PERF: PF, QB_EDITAL: E, QB_SIM: S, QB_PLAN: P, QB_DATA: D, records } = useRealStudy();
   const M = QB_METRICS;
   const [from, setFrom] = React.useState(() => P.addDays(P.today, -13));
   const [to, setTo] = React.useState(P.today);
@@ -200,24 +239,17 @@ function Historic({ go }) {
   }), countAttempts([])));
   const current = sum(days);
   const prior = sum(previous);
-  const buckets = new Map();
-  days.forEach((day, index) => {
-    const key = group === 'mes' ? day.date.slice(0, 7) : group === 'semana' ? Math.floor(index / 7) : day.date;
-    if (!buckets.has(key)) buckets.set(key, []);
-    buckets.get(key).push(day);
-  });
+  const buckets = calendarBuckets(days, group, P.addDays);
+  const previousBuckets = calendarBuckets(previous, group, P.addDays);
   const toPoint = rows => {
     const first = M.fmtDate(rows[0].date), last = M.fmtDate(rows.at(-1).date);
     return { ...sum(rows), label: first === last ? first : first + '–' + last };
   };
-  const points = [...buckets.values()].map(toPoint);
-  let previousIndex = 0;
-  const previousPoints = [...buckets.values()].map(rows => {
-    const point = toPoint(previous.slice(previousIndex, previousIndex + rows.length));
-    previousIndex += rows.length;
-    return point;
-  });
-  const tasks = Object.values(P.weeks).flat().filter(task => task.date >= start && task.date <= end);
+  const points = buckets.map(toPoint);
+  const matchingBuckets = buckets.length === previousBuckets.length && buckets.every((rows, index) => rows.length === previousBuckets[index].length);
+  const previousPoints = matchingBuckets ? previousBuckets.map(toPoint) : null;
+  const tasks = P.tasks.filter(task => task.date >= start && task.date <= end);
+  const extraPriorities = priorityItems(days, D, E.subjects, records, subjectId, topicId, go);
   const cards = days.reduce((count, day) => count + (PF.cardsByDay[day.date] || 0), 0);
   const wrongIds = [...new Set(responses.filter(row => row.result === 'wrong' && activeIds.has(row.qid)).map(row => row.qid))];
   const sim = S.history.filter(h => h.correct != null).reduce((a, h) => ({ c: a.c + h.correct, v: a.v + h.correct + h.wrong }), { c: 0, v: 0 });
@@ -236,12 +268,13 @@ function Historic({ go }) {
         <div className="qb-performance-v4-panes">
           <PerformanceTrendChart style={{ flex: '3 1 480px' }} data={points} previous={prior.valid ? previousPoints : null}
             subtitle={M.fmtDate(start) + ' a ' + M.fmtDate(end) + ' · taxa de acerto do treino'}
-            previousNote="Sem respostas válidas no período anterior."
+            previousNote={prior.valid && !matchingBuckets ? 'Os agrupamentos do período anterior têm limites diferentes. Confira os totais na comparação abaixo.' : 'Sem respostas válidas no período anterior.'}
             granularity={group} onGranularity={setGroup}
-            granularities={[{ id: 'dia', label: 'Dia' }, { id: 'semana', label: '7 dias' }, { id: 'mes', label: 'Mês' }]} />
-          <PerformancePriorityPanel style={{ flex: '2 1 320px' }} items={wrongIds.length ? [
-            { id: 'errors', kind: 'Erros do período', tone: 'incorrect', title: wrongIds.length + ' questões com erro', reason: 'Questões com erro registradas neste recorte e disponíveis para treino.', action: { label: 'Treinar erros' } },
-          ] : []} onAction={() => go('questions', { questionIds: wrongIds, filter: 'all' })} />
+            granularities={[{ id: 'dia', label: 'Dia' }, { id: 'semana', label: 'Semana' }, { id: 'mes', label: 'Mês' }]} />
+          <PerformancePriorityPanel style={{ flex: '2 1 320px' }} basis="Erros do período · revisões conforme a fila de hoje" items={[
+            ...extraPriorities,
+            ...(wrongIds.length ? [{ id: 'errors', kind: 'Erros do período', tone: 'incorrect', title: wrongIds.length + ' questões com erro', reason: 'Questões com erro registradas neste recorte e disponíveis para treino.', action: { label: 'Treinar erros', run: () => go('questions', { questionIds: wrongIds, filter: 'all' }) } }] : []),
+          ]} onAction={item => item.action?.run()} />
         </div>
         <div className="qb-performance-v4-panes">
           <Panel padding={14} style={{ flex: '3 1 480px', minWidth: 0 }}>
@@ -259,7 +292,7 @@ function Historic({ go }) {
             <PerformanceMetricCard compact label="Simulados" icon="graduation-cap" value={M.pct(sim.v ? sim.c / sim.v * 100 : null)} />
           </div>
         </div>
-        <DailySubjectBreakdown scopeLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end)} total={current.n} responses={responses} questions={D.questions} subjects={E.subjects} go={go} />
+        <DailySubjectBreakdown scopeLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end)} total={current.n} responses={responses} data={D} subjects={E.subjects} go={go} />
         {!!responses.length && <DailyQuestionLinks responses={responses} data={D} edital={E} activeIds={activeIds} go={go} title="Questões do período" />}
       </>}
     </div>
