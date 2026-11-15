@@ -6,7 +6,7 @@ import { useStudyClock } from '@/lib/StudyClockContext';
 import { STUDY_ACTIVITIES, formatStudyTime, studyClockTimes } from '@/lib/study-clock';
 
 function useClockDisplay() {
-  const { state, send } = useStudyClock();
+  const { state, send, onOpen } = useStudyClock();
   const [, update] = React.useReducer(value => value + 1, 0);
   React.useEffect(() => {
     if (state.since === null) return;
@@ -15,11 +15,11 @@ function useClockDisplay() {
   }, [state.since]);
   const times = studyClockTimes(state, typeof performance === 'undefined' ? 0 : performance.now());
   const total = Object.values(times).reduce((sum, time) => sum + time, 0);
-  return { state, send, times, total };
+  return { state, send, times, total, onOpen };
 }
 
-export function StudyClockControls({ onOpen }) {
-  const { state, send, total } = useClockDisplay();
+export function StudyClockControls() {
+  const { state, send, total, onOpen } = useClockDisplay();
   const started = state.status === 'active' || state.status === 'paused';
   const paused = state.status === 'paused';
   return (
@@ -57,7 +57,7 @@ export default function StudyClock() {
         {Object.entries(STUDY_ACTIVITIES).map(([key, label]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, paddingTop: 8, borderTop: '1px solid var(--divider)' }}>
             <dt>{label}</dt>
-            <dd style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>{formatStudyTime(times[key] || 0)} · {counts[key]} {key === 'questions' ? 'registr.' : key === 'flashcards' ? 'avaliações' : 'abertos'}</dd>
+            <dd style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>{formatStudyTime(times[key] || 0)} · {counts[key]} {key === 'questions' ? 'respostas' : key === 'flashcards' ? 'avaliações' : 'mapas abertos'}</dd>
           </div>
         ))}
       </dl>
