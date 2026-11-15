@@ -67,7 +67,7 @@ function startQuestionRound(bank, selection = {}) {
     answers: {},
     focus: false,
     selection,
-    questionIds: pickQuestionRound(bank, selection).map(q => q.id),
+    questionIds: [...new Set(pickQuestionRound(bank, selection).map(q => q.id))],
     customQuestions: null,
     ganBatch: null,
     startedAt: new Date().toISOString(),
@@ -331,7 +331,7 @@ export function QBStudyProvider({ children }) {
             idx: 0,
             answers: {},
             focus: false,
-            questionIds: approvedQuestions.map(q => q.id),
+            questionIds: [...new Set(approvedQuestions.map(q => q.id))],
             customQuestions,
             ganBatch: arg.ganBatch,
             startedAt: new Date().toISOString(),
@@ -453,7 +453,7 @@ export function QBStudyProvider({ children }) {
     ],
   );
 
-  const currentQId = session.questionIds?.[session.idx];
+  const currentQId = session.questionIds ? [...new Set(session.questionIds)][session.idx] : undefined;
   const q = (currentQId && session.customQuestions?.[currentQId]) || QB_DATA.questions.find(x => x.id === currentQId);
   const layerUi =
     activeView === 'questions' && q && !ui.ctx

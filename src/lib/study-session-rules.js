@@ -40,6 +40,14 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
   return matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response))).slice(0, QUESTION_ROUND_LIMIT);
 }
 
+export function nextQuestionIndex(questions, from, excludedIds, deletingId) {
+  let index = from;
+  while (index < questions.length && (questions[index].id === deletingId || excludedIds.has(questions[index].id))) {
+    index++;
+  }
+  return index;
+}
+
 export function flashcardOptions(previousLevel) {
   const lastLevel = FLASHCARD_INTERVALS.length - 1;
   const current = Math.min(lastLevel, Math.max(0, Math.trunc(Number(previousLevel) || 0)));

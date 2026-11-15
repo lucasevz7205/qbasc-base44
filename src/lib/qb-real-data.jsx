@@ -21,8 +21,9 @@ async function persist(collection, id, data) {
   const docs=base44.entities.ClaudeDocument, parts=base44.entities.ClaudeDocumentPart;
   const match={collection,legacy_id:id};
   const rows=await docs.filter(match,'id',2);
-  if(rows.length>1)throw new Error('Identificador duplicado. A gravação foi interrompida.');
   const payload={...data,id};
+  if(collection==='questoes_excluidas' && rows.length) return payload;
+  if(rows.length>1)throw new Error('Identificador duplicado. A gravação foi interrompida.');
   const chunks=Array.from(JSON.stringify(payload));
   let payload_json=chunks.join('');
   if(payload_json.length>7000) {
@@ -53,9 +54,11 @@ export function RealStudyGate({children}) {
   const save=React.useCallback(async (collection,id,data)=>{
     if(!admin||!collections.includes(collection))throw new Error('Acesso restrito.');
     const row=await persist(collection,id,data);
+    if(collection==='questoes_excluidas') await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
       if(!before)return before;
       const old=before[collection]||[];
+      if(collection==='questoes_excluidas') return {...before,[collection]:[...old.filter(x=>x.id!==row.id),row]};
       return {...before,[collection]:old.some(x=>x.id===row.id)?old.map(x=>x.id===row.id?row:x):[...old,row]};
     });
     return row;

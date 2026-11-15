@@ -15,7 +15,7 @@ function Section({ title, icon, children }) {
   );
 }
 
-export function QuestionFeedback({ explanation, legalBasis, trap, reflection, onFlashcards }) {
+export function QuestionFeedback({ explanation, legalBasis, trap, identifiedMechanism, identifiedClue, reflection, onFlashcards }) {
   const noteId = React.useId();
 
   return (
@@ -26,7 +26,7 @@ export function QuestionFeedback({ explanation, legalBasis, trap, reflection, on
         </p>}
         {legalBasis && <span style={{ font: '500 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{legalBasis}</span>}
       </Section>
-      {(trap || reflection) && (
+      {(trap || reflection || identifiedMechanism || identifiedClue) && (
         <Section title="Mecanismo de pegadinha da banca" icon="shield-alert">
           {trap ? (
             <div style={{ display: 'grid', gap: 6, overflowWrap: 'anywhere' }}>
@@ -36,6 +36,10 @@ export function QuestionFeedback({ explanation, legalBasis, trap, reflection, on
               {trap.vaccine && trap.vaccine !== trap.description && !explanation?.includes(trap.vaccine) && <span><strong>Como evitar</strong> · {trap.vaccine}</span>}
             </div>
           ) : <span style={{ color: 'var(--text-muted)' }}>Esta questão ainda não tem um mecanismo registrado.</span>}
+          {identifiedMechanism && <span><strong>Você identificou</strong> · {identifiedMechanism.label}
+            {trap?.code && (identifiedMechanism.value === trap.code ? ' · corresponde ao mecanismo registrado' : ' · difere do mecanismo registrado')}
+          </span>}
+          {identifiedClue && <span style={{ overflowWrap: 'anywhere' }}><strong>Trecho que você destacou</strong> · {identifiedClue}</span>}
         </Section>
       )}
       {reflection && (

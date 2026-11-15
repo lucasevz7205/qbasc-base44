@@ -24,6 +24,7 @@ export default function QuestionCard({
   confidence = null,
   onConfidence,
   showConfidence = true,
+  answerDetails,
   answerKey = null,
   correctionRef,
   feedback,
@@ -104,6 +105,7 @@ export default function QuestionCard({
           {choice('E', 'Errado')}
         </div>
       </div>
+      {answer && !revealed && answerDetails}
       {showConfidence && answer && !revealed && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
           <span style={{ font: '500 14px/1.2 var(--font-body)', color: 'var(--text-secondary)' }}>Sua confiança</span>

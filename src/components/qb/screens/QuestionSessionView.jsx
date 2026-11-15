@@ -11,8 +11,10 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
-import { questionTrap, recordErrorReflection } from '@/lib/question-feedback';
+import { mechanismOptions, questionTrap, recordErrorReflection } from '@/lib/question-feedback';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { nextQuestionIndex } from '@/lib/study-session-rules';
+import { SelectField } from '@/components/qb/data/SelectField';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
@@ -90,7 +92,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const qs = React.useMemo(() => {
     if (!session.questionIds?.length) return [];
     const bank = new Map(QB_DATA.questions.map(q => [q.id, q]));
-    return session.questionIds
+    return [...new Set(session.questionIds)]
       .map(id => session.customQuestions?.[id] || bank.get(id))
       .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada');
   }, [session.questionIds, session.customQuestions, QB_DATA.questions]);
@@ -121,8 +123,12 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     return { ...s, answers: { ...s.answers, [q.id]: { ...s.answers[q.id], ...p } } };
   });
   const chooseAnswer = p => {
-    if (!lock.current && !st.revealed) setAns(p);
+    if (lock.current || st.revealed) return;
+    setAns(p.answer && p.answer !== st.answer ? { ...p, mechanism: '', clue: '' } : p);
   };
+  const ganMechanisms = !!ganBatch || /^GAN\b/i.test(q?.origin || '');
+  const options = mechanismOptions(st.answer, ganMechanisms);
+  const markedMechanism = options.find(option => option.value === st.mechanism);
 
   const confirm = async () => {
     if (!q || excluded || !st.answer || st.revealed || lock.current) return;
@@ -141,6 +147,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         confidence: numericConf,
       }).record;
       const attempt = { ...record.hist.at(-1), sessionId: session.sessionId, gabarito: q.key };
+      if (markedMechanism) attempt.mecanismoIdentificado = markedMechanism.value;
+      if (st.clue?.trim()) attempt.trechoIdentificado = st.clue.trim();
       record.hist = [...(Array.isArray(previous?.hist) ? previous.hist : []), attempt];
       record.gabaritoUsado = q.key;
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
@@ -155,9 +163,10 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     }
   };
 
-  const advance = async ({ skipReflection = false } = {}) => {
+  const advance = async ({ deletingId } = {}) => {
     if (lock.current || done) return;
-    const saveReflection = needsReflection && !skipReflection;
+    const nextIdx = nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds, deletingId);
+    const saveReflection = needsReflection && !deletingId;
     if (saveReflection && (!st.errorOrigin || !st.errorJustification?.trim())) {
       reflectionInput.current?.focus();
       return;
@@ -179,7 +188,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       lock.current = false;
       setLoading(false);
     }
-    if (idx + 1 === qs.length) {
+    if (nextIdx === qs.length) {
       const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key, em: answers[x.id].attemptAt }));
       if (items.length) {
         lock.current = true;
@@ -206,7 +215,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         }
       }
     }
-    patch({ idx: idx + 1 });
+    patch({ idx: nextIdx });
   };
   const next = () => advance();
 
@@ -225,7 +234,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       lock.current = false;
       setLoading(false);
     }
-    await advance({ skipReflection: true });
+    await advance({ deletingId: q.id });
   };
 
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
@@ -286,7 +295,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           ) : excluded ? (
             <Panel>
               <p>Esta questão foi excluída do banco ativo.</p>
-              <Button disabled={loading} onClick={next}>{idx + 1 === qs.length ? 'Concluir rodada' : 'Continuar'}</Button>
+              <Button disabled={loading} onClick={next}>{nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds) === qs.length ? 'Concluir rodada' : 'Continuar'}</Button>
             </Panel>
           ) : (
             <>
@@ -331,6 +340,17 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 editorial={q.editorial}
                 answer={st.answer || null}
                 onAnswer={a => chooseAnswer({ answer: a })}
+                answerDetails={
+                  <fieldset disabled={loading} style={{ display: 'grid', gap: 10, minWidth: 0, border: 0, margin: 0, padding: 0 }}>
+                    <SelectField label="Identificar mecanismo da banca" value={st.mechanism || ''}
+                      options={[{ value: '', label: 'Selecione um mecanismo (opcional)' }, ...options]}
+                      onChange={mechanism => chooseAnswer({ mechanism })} />
+                    <label style={{ display: 'grid', gap: 6 }}>
+                      <span className="qb-overline">Trecho que chamou sua atenção (opcional)</span>
+                      <input className="qb-input" value={st.clue || ''} maxLength={240} onChange={event => chooseAnswer({ clue: event.target.value })} />
+                    </label>
+                  </fieldset>
+                }
                 confidence={st.confidence || null}
                 onConfidence={c => chooseAnswer({ confidence: c })}
                 answerKey={showCorrection ? keyAtAnswer : null}
@@ -340,6 +360,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                     explanation={q.explanation}
                     legalBasis={q.basis}
                     trap={ganBatch && q.raw ? questionTrap(q.raw) : q.trap}
+                    identifiedMechanism={markedMechanism}
+                    identifiedClue={st.clue?.trim()}
                     reflection={needsReflection ? {
                       origin: st.errorOrigin,
                       text: st.errorJustification || '',

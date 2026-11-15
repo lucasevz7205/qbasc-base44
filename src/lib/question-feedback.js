@@ -1,3 +1,5 @@
+import { CEBRASPE_MECHANISMS } from './mindmap-gan.js';
+
 export const ERROR_ORIGINS = {
   recuperacao: 'Não lembrei',
   interferencia: 'Confundi com outra regra',
@@ -24,6 +26,15 @@ const LEGACY_MECHANISMS = {
 
 const clean = value => typeof value === 'string' ? value.trim() : '';
 
+export function mechanismOptions(answer, gan = false) {
+  const prefix = answer === 'C' ? 'V' : answer === 'E' ? 'F' : null;
+  if (!prefix) return [];
+  return Object.keys(LEGACY_MECHANISMS).filter(code => code.startsWith(prefix)).map(code => ({
+    value: code,
+    label: code + ' · ' + (gan ? CEBRASPE_MECHANISMS[code] : LEGACY_MECHANISMS[code][0]),
+  }));
+}
+
 export function questionTrap(question, legacy) {
   const direct = question.mecanismo;
   const code = clean(direct || legacy?.mecanismo).toUpperCase();
@@ -33,6 +44,7 @@ export function questionTrap(question, legacy) {
   if (!name) return undefined;
   return {
     name,
+    code: LEGACY_MECHANISMS[code] ? code : undefined,
     description: clean(question.trap?.description) || clean(question.correcaoMinima),
     vaccine: clean(question.vacina) || (!direct ? clean(legacy?.vacina) : '') || legacyDefinition?.[1],
     evidence: clean(question.evidencia) || (!direct ? clean(legacy?.evidencia) : ''),
