@@ -1,5 +1,3 @@
-import { studyDate } from './qb-real-model.js';
-
 export const FLASHCARD_RATINGS = [
   { id: 'errei', label: 'Errei', tone: 'incorrect' },
   { id: 'dificil', label: 'Difícil', tone: 'attention' },
@@ -13,7 +11,7 @@ export const FLASHCARD_FILTERS = [
   { id: 'missed', label: 'Errados', hint: 'Cartões cuja última avaliação foi Errei ou Novamente.' },
 ];
 
-export function filterFlashcardDeck(deck, reviews, filter, today) {
+export function filterFlashcardDeck(deck, reviews, filter, today, studyDate) {
   return deck.filter(card => {
     const review = reviews[card.id];
     const history = Array.isArray(review?.hist) ? review.hist : [];
