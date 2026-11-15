@@ -79,7 +79,9 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
   );
 }
 
-export default function QuestionSessionView({ session, setSession, elapsed, paused, onTogglePause, go, backTo }) {
+import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
+
+export default function QuestionSessionView({ session, setSession, go, backTo }) {
   const { QB_DATA, save } = useRealStudy();
   const qs = session.questionIds
     ? session.questionIds
@@ -94,6 +96,8 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
   }, [session.sessionId]);
 
   const done = idx >= qs.length;
+  useStudyActivity('questions', done ? null : session.sessionId || 'round');
+  const recordCompletion = useStudyCompletion('questions');
   const q = qs[Math.min(idx, Math.max(qs.length - 1, 0))];
   const st = answers[q?.id] || {};
   const keyAtAnswer = st.revealed ? (st.keyAtAnswer || q?.key) : q?.key;
@@ -122,6 +126,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
       record.gabaritoUsado = q.key;
       if (q.editorial?.version) record.versaoEditorial = q.editorial.version;
       await save('respostas', q.id, record);
+      recordCompletion();
       setAns({ revealed: true, keyAtAnswer: q.key });
       patch({ drawer: true });
     } catch {
@@ -193,9 +198,6 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
         topic={q?.chapter || ''}
         current={Math.min(idx + 1, qs.length)}
         total={qs.length}
-        elapsed={elapsed}
-        paused={paused}
-        onTogglePause={onTogglePause}
         focusMode={focus}
         onToggleFocus={() => patch({ focus: !focus })}
         onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}
