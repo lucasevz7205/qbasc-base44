@@ -7,6 +7,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { studyDate } from '@/lib/qb-real-model';
 import { flashcardOptions } from '@/lib/study-session-rules';
 import { FLASHCARD_FILTERS, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
@@ -28,7 +29,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
   const lock=React.useRef(false);
   const pickFilter = (filter) => {
     if (lock.current) return;
-    const queue = filterFlashcardDeck(fullDeck, D.reviews, filter, QB_PLAN.today).map(c => c.id);
+    const queue = filterFlashcardDeck(fullDeck, D.reviews, filter, QB_PLAN.today, studyDate).map(c => c.id);
     setError('');
     setSuggestion(null);
     setCards(c => ({ ...c, idx: 0, flipped: false, ratings: [], filter, queue }));
