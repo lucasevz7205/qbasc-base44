@@ -116,9 +116,10 @@ test("Interface oferece corrigir pelo Arquiteto e mantém classificação humana
   assert.match(correction, /attempt\.trim\(\)/);
   assert.match(correction, /role="alert"/);
   assert.match(card, /\{correction \|\| null\}/);
-  assert.match(session, /<FlashcardCorrection key=\{card\.id\}/);
+  assert.match(session, /<FlashcardCorrection card=\{card\}/);
   assert.match(session, /save\('cartoes_aval',card\.id/);
-  assert.match(session, /\['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'\]/);
+  assert.match(correction, /aria-expanded=\{expanded\}/);
+  assert.match(session, /<EditorialCurator kind="flashcard"/);
 });
 
 test("Chat explicita provedor antes de gastar créditos", () => {
