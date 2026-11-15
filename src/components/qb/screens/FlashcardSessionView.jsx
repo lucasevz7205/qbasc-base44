@@ -13,7 +13,9 @@ import { flashcardOptions } from '@/lib/study-session-rules';
 import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 
-export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go, backTo }) {
+import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
+
+export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
   const {QB_DATA:D,QB_PLAN,save}=useRealStudy();
   const fullDeck = D.flashcards.filter(f => !cards.topicId || f.topicId === cards.topicId);
   const mode = cards.filter || 'all';
@@ -21,6 +23,8 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
   const deck = cards.queue ? cards.queue.map(id => byId.get(id)).filter(Boolean) : fullDeck;
   const { idx, flipped, ratings } = cards;
   const done = idx >= deck.length;
+  useStudyActivity('flashcards', done ? null : cards.topicId || 'deck');
+  const recordCompletion = useStudyCompletion('flashcards');
   const card = deck[Math.min(idx, deck.length - 1)];
   const topicId = cards.topicId || card?.topicId;
   const subject = D.studySubjects?.find(item => item.topics.some(topic => topic.id === topicId));
@@ -50,6 +54,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
     const { level: nextLevel, days: interval } = option;
     try{
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:QB_PLAN.addDays(QB_PLAN.today,interval),ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval}]});
+      recordCompletion();
       setSuggestion(null);
       setCards(c => advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat));
     }catch{setError('Falha ao salvar avaliação. Vire o cartão e tente novamente.');}
@@ -63,7 +68,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
         <span className="qb-overline">Revisão espaçada</span>
         <span style={{ font: '600 20px/1.25 var(--font-serif)', color: 'var(--text-primary)', overflowWrap: 'anywhere' }}>{topicLabel}</span>
       </BrandHeader>
-      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} style={{ '--font-heading': 'var(--font-serif)' }} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go(backTo || 'dashboard')} />
+      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} style={{ '--font-heading': 'var(--font-serif)' }} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div>
           <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>
