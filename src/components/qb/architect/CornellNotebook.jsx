@@ -116,8 +116,9 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
     if (!ownerId || !resolvedTopic || !targetIdentity) return;
     const sig = cornellSignature(snapshot);
     if (!forceHistory && sig === lastSavedRef.current) {
-      if (identityRef.current === targetIdentity && !dirtyRef.current) {
-        setState(s => s.identity === targetIdentity ? { ...s, status: 'Salvo na nuvem' } : s);
+      if (identityRef.current === targetIdentity && cornellSignature(currentDraftRef.current) === sig) {
+        dirtyRef.current = false;
+        setState(s => s.identity === targetIdentity ? { ...s, dirty: false, error: '', status: 'Salvo na nuvem' } : s);
       }
       return;
     }
