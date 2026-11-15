@@ -27,7 +27,7 @@ function localWrite(key, draft) {
   } catch { /* A nuvem segue como destino principal, e falhas aparecem no status. */ }
 }
 const initial = () => ({
-  identity: '', loaded: false, dirty: false,
+  identity: '', loaded: false, dirty: false, offline: false,
   draft: emptyCornell(), recovery: null, status: 'Carregando…', error: '',
 });
 
@@ -82,7 +82,7 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
         currentDraftRef.current = result.data;
         dirtyRef.current = result.importFromBrowser;
         setState({ identity, loaded: true, draft: result.data,
-          dirty: result.importFromBrowser, recovery: result.recovery,
+          dirty: result.importFromBrowser, offline: false, recovery: result.recovery,
           status: result.importFromBrowser ? 'Importando anotações do navegador…' :
             result.source === 'cloud' ? 'Salvo na nuvem' : 'Caderno pronto',
           error: '' });
@@ -94,10 +94,10 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           currentDraftRef.current = cleanCornell(local);
           dirtyRef.current = true;
         }
-        setState({ identity, loaded: false, draft: cleanCornell(local),
-          dirty: !!local, recovery: null, status: 'Falha na sincronização',
+        setState({ identity, loaded: true, offline: true, draft: cleanCornell(local),
+          dirty: !!local, recovery: null, status: 'Offline: salvo somente neste navegador',
           error: 'Não foi possível verificar a versão da nuvem: ' + (error?.message || 'erro desconhecido') +
-            '. Seu rascunho local foi preservado. Reabra o caderno quando a conexão voltar.' });
+            '. Você pode continuar anotando neste dispositivo e tentar reconectar depois.' });
       }
     })();
     return () => { cancelled = true; };
@@ -109,7 +109,8 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
     currentDraftRef.current = draft;
     dirtyRef.current = true;
     localWrite(identity, draft);
-    setState(s => s.identity !== identity ? s : ({ ...s, draft, dirty: true, error: '', status: 'Alterações pendentes…' }));
+    setState(s => s.identity !== identity ? s : ({ ...s, draft, dirty: true,
+      error: s.offline ? s.error : '', status: s.offline ? 'Offline: salvo somente neste navegador' : 'Alterações pendentes…' }));
   };
 
   const saveNow = React.useCallback(async (snapshot, targetIdentity, forceHistory = false) => {
@@ -174,11 +175,11 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
   }, [ownerId, resolvedTopic, topicLabel]);
 
   React.useEffect(() => {
-    if (!state.loaded || !state.dirty || state.identity !== identity) return;
+    if (!state.loaded || state.offline || !state.dirty || state.identity !== identity) return;
     const snapshot = cleanCornell(state.draft);
     const timer = setTimeout(() => saveNow(snapshot, identity), SAVE_DELAY);
     return () => clearTimeout(timer);
-  }, [state.loaded, state.dirty, state.draft, state.identity, identity, saveNow]);
+  }, [state.loaded, state.offline, state.dirty, state.draft, state.identity, identity, saveNow]);
 
   const suggest = async () => {
     const clean = currentDraftRef.current.notes.trim();
@@ -227,8 +228,10 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           <span role="status" aria-live="polite" style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)' }}>
             {saving ? 'Salvando…' : state.status}
           </span>
-          <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || !state.dirty}>Salvar agora</Button>
-          <Button size="sm" variant="ghost" icon="history" onClick={refreshVersions} disabled={!state.loaded}>Versões</Button>
+          {state.offline ?
+            <Button size="sm" variant="secondary" icon="refresh-cw" onClick={() => window.location.reload()}>Reconectar</Button> :
+            <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || !state.dirty}>Salvar agora</Button>}
+          <Button size="sm" variant="ghost" icon="history" onClick={refreshVersions} disabled={!state.loaded || state.offline}>Versões</Button>
           <Button size="sm" variant="secondary" icon="sparkles" loading={busy}
             disabled={!state.loaded || draft.notes.trim().length < 20 || busy} onClick={suggest}>
             Sugerir pistas com Gemini
