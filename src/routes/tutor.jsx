@@ -7,18 +7,23 @@ import { useQBStudy } from '@/lib/QBStudyContext';
 export const Route = createFileRoute('/tutor')({
   head: () => ({
     meta: [
-      { title: 'Tutor Contextual · Quebrando a Banca — A Ascensão' },
-      { name: 'description', content: 'Tutor contextual para dúvidas sobre questões e conceitos do edital.' },
+      { title: 'O Arquiteto · Quebrando a Banca — A Ascensão' },
+      { name: 'description', content: 'Estúdio de aprendizagem ativa: Tutor Socrático, Feynman, Cornell, Scanner e Pomodoro.' },
     ],
   }),
   component: TutorRoute,
 });
 
 function TutorRoute() {
-  const { session, go } = useQBStudy();
+  const { ui, setUi, go } = useQBStudy();
   return (
-    <AppShell active="tutor" onNavigate={go} onProfile={() => go('welcome')}>
-      <TutorView session={session} go={go} />
+    <AppShell ui={ui} setUi={setUi} view="dashboard" go={go} wide>
+      <TutorView
+        context={ui.ctx}
+        onContextChange={c => setUi({ ctx: c })}
+        tool={ui.studio.tool}
+        onToolChange={tl => setUi({ studio: { ...ui.studio, tool: tl } })}
+      />
     </AppShell>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { AppShell } from '@/components/qb/AppShell';
-import { MindMapView } from '@/components/qb/screens/MindMapView';
+import { StudyScreen } from '@/components/qb/screens/StudyScreen';
 import { useQBStudy } from '@/lib/QBStudyContext';
 
 export const Route = createFileRoute('/mapas')({
@@ -15,21 +15,10 @@ export const Route = createFileRoute('/mapas')({
 });
 
 function MapasRoute() {
-  const { go, mapSel, setMapSel, returnTo, setReturnTo } = useQBStudy();
-
+  const { ui, setUi, setSub, go, mapProps } = useQBStudy();
   return (
-    <AppShell active="map" onNavigate={go} onProfile={() => go('welcome')} wide>
-      <MindMapView
-        selected={mapSel}
-        setSelected={setMapSel}
-        returnTo={returnTo}
-        onReturn={() => {
-          const r = returnTo;
-          setReturnTo(null);
-          if (r?.view) go(r.view);
-        }}
-        go={go}
-      />
+    <AppShell ui={ui} setUi={setUi} view="study" go={go} wide>
+      <StudyScreen tab="mapa" setTab={setSub('study')} go={go} mapProps={mapProps} />
     </AppShell>
   );
 }
