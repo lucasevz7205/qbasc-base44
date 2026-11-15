@@ -12,11 +12,13 @@ import { SubjectRadial } from '@/components/qb/edital/SubjectRadial';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { Icon } from '@/components/qb/core/Icon';
-import { QB_EDITAL, QB_METRICS } from '@/lib/qb-data';
+import { QB_METRICS } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 const STATUS = [['all', 'Todos os status'], ['not-started', 'Não iniciado'], ['studying', 'Em estudo'], ['reviewing', 'Revisando'], ['mastered', 'Dominado']];
 
 export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect }) {
+  const { QB_EDITAL } = useRealStudy();
   const E = QB_EDITAL, M = QB_METRICS;
   const [q, setQ] = React.useState('');
   const [subj, setSubj] = React.useState('all');
@@ -37,13 +39,13 @@ export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect 
     const s = E.subjects.find(x => x.topics.includes(t) || x.topics.some(y => y.id === t.id));
     if (a === 'architect') return openArchitect && openArchitect({ subjectId: s.id, topicId: t.id, origin: 'edital ' + s.short + ' ' + t.num });
     if (a === 'study' && evoke) return openArchitect && openArchitect({ subjectId: s.id, topicId: t.id, origin: 'Evocar antes de ler · ' + s.short + ' ' + t.num }, 'cornell');
-    if (a === 'questions') return go('questions');
-    if (a === 'flashcards') return go('flashcards');
-    go('study');
+    if (a === 'questions') return go('questions',{topicId:t.id});
+    if (a === 'flashcards') return go('flashcards',{topicId:t.id});
+    go('map',{topicId:t.id});
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <PageHeader overline="Edital verticalizado · dados demonstrativos" title="Edital" description="Bloco → matéria → assunto → tópico, com status de estudo e taxa de acertos separados."
+      <PageHeader overline="Edital verticalizado" title="Edital" description="Bloco → matéria → assunto → tópico, com status de estudo e taxa de acertos separados."
         actions={<Tabs label="Visualização do edital" value={tab} onChange={setTab} items={[{ id: 'lista', label: 'Lista', icon: 'list' }, { id: 'calor', label: 'Mapa de calor', icon: 'grid-3x3' }, { id: 'radial', label: 'Radial', icon: 'target' }]} />} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 10 }}>
         <StatCard compact label="Taxa de acertos" tone="correct" value={M.pct(tot.accuracy)} detail={tot.correct + ' de ' + tot.valid + ' respostas válidas'} note="acertos ÷ (acertos + erros)" />
