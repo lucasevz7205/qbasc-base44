@@ -61,7 +61,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
         {dock && <span title={tLabel} style={{ flexBasis: '100%', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Contexto: {tLabel}</span>}
       </header>
-      <div style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>
+      <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         {tool === 'socratico' && <SocraticChat subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
