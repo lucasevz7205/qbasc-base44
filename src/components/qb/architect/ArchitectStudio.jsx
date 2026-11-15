@@ -15,12 +15,28 @@ const TOOLS = [
   { id: 'pomodoro', label: 'Pomodoro e Áudio Alfa', icon: 'timer' },
 ];
 
-export default function ArchitectStudio({ open = true, mode = 'modal', onClose, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], style }) {
+const COMPACT_TOOLS = [
+  { ...TOOLS[0], label: 'Perguntar' },
+  { ...TOOLS[1], label: 'Feynman' },
+  { ...TOOLS[2], label: 'Cornell' },
+  { ...TOOLS[3], label: 'Flashcards' },
+  { ...TOOLS[4], label: 'Pomodoro' },
+];
+
+export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], style }) {
+  const dock = mode === 'dock';
+  const modal = mode === 'modal';
+  const headingRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (open && mode !== 'inline') headingRef.current?.focus({ preventScroll: true });
+  }, [open, mode]);
+
   const [toolState, setToolState] = React.useState(toolProp || 'socratico');
   const tool = toolProp || toolState;
   const setTool = t => { setToolState(t); onToolChange && onToolChange(t); };
   React.useEffect(() => {
-    if (!open || mode !== 'modal') return;
+    if (!open || mode === 'inline') return;
     const k = e => { if (e.key === 'Escape' && !document.querySelector('[role=alertdialog]')) onClose && onClose(); };
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
@@ -30,20 +46,24 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   const topic = subj && (subj.topics.find(t => t.id === context.topicId) || subj.topics[0]);
   const tLabel = topic ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '') : 'o tópico';
   const panel = (
-    <div role={mode === 'modal' ? 'dialog' : 'region'} aria-modal={mode === 'modal' || undefined} aria-label="O Arquiteto — estúdio de aprendizagem ativa" className="qb-panel qb-panel--ornate"
-      style={{ position: 'relative', width: mode === 'modal' ? 'min(1180px, 100%)' : '100%', maxHeight: mode === 'modal' ? 'calc(100vh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
-      <header style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
-        <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minWidth: 220 }}>
-          <span style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>Estúdio de aprendizagem ativa</span>
-          <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>
+    <div role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
+      style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
+      <header style={{ display: 'flex', alignItems: 'center', gap: dock ? 8 : 12, padding: dock ? 12 : '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
+        {!dock && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minWidth: dock ? 0 : 220 }}>
+          <span ref={headingRef} tabIndex={mode === 'inline' ? undefined : -1} style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{dock ? 'O Arquiteto' : 'Estúdio de aprendizagem ativa'}</span>
+          {!dock && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
-        <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>
-        {onClose && <button className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{mode === 'modal' ? ' (Esc)' : ''}</button>}
+        {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
+        {!dock && <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {onClose && (dock
+          ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
+          : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
+        {dock && <span title={tLabel} style={{ flexBasis: '100%', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Contexto: {tLabel}</span>}
       </header>
-      <div style={{ padding: '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={TOOLS} value={tool} onChange={setTool} /></div>
-      <div style={{ padding: 16, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        {tool === 'socratico' && <SocraticChat subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} style={{ flex: 1, minHeight: 460 }} />}
+      <div style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>
+      <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        {tool === 'socratico' && <SocraticChat subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
         {tool === 'cornell' && <CornellNotebook topicLabel={tLabel} />}
         {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} deck={deck} />}
@@ -51,10 +71,12 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
       </div>
     </div>
   );
-  if (mode !== 'modal') return panel;
+  if (mode === 'inline') return panel;
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 70, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <div onClick={onClose} aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(8,10,15,.72)', backdropFilter: 'blur(6px)' }} />
+    <div style={dock
+      ? { position: 'fixed', top: 8, right: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))' }
+      : { position: 'fixed', inset: 0, zIndex: 70, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      {modal && <div onClick={onClose} aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(8,10,15,.72)', backdropFilter: 'blur(6px)' }} />}
       {panel}
     </div>
   );
