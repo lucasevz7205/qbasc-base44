@@ -61,6 +61,22 @@ const PATH_TO_VIEW = {
 
 const QBStudyContext = React.createContext(null);
 
+function startQuestionRound(bank, selection = {}) {
+  return {
+    idx: 0,
+    answers: {},
+    drawer: false,
+    focus: false,
+    bannerDismissed: false,
+    selection,
+    questionIds: pickQuestionRound(bank, selection).map(q => q.id),
+    customQuestions: null,
+    ganBatch: null,
+    startedAt: new Date().toISOString(),
+    sessionId: crypto.randomUUID(),
+  };
+}
+
 export function QBStudyProvider({ children }) {
   const { QB_DATA, QB_EDITAL, QB_PLAN } = useRealStudy();
   const navigate = useNavigate();
@@ -100,6 +116,12 @@ export function QBStudyProvider({ children }) {
   const [returnTo, setReturnTo] = React.useState(null);
 
   const activeView = PATH_TO_VIEW[location.pathname] || 'dashboard';
+
+  React.useEffect(() => {
+    if (activeView !== 'questions' || session.questionIds !== undefined) return;
+    const round = startQuestionRound(QB_DATA.questionBank);
+    setSession(previous => previous.questionIds === undefined ? round : previous);
+  }, [activeView, session.questionIds, QB_DATA.questionBank]);
 
   React.useEffect(() => {
     try {
@@ -322,19 +344,8 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const picked = pickQuestionRound(QB_DATA.questionBank, arg);
-          setSession({
-            idx: 0,
-            answers: {},
-            drawer: false,
-            focus: false,
-            bannerDismissed: false,
-            questionIds: picked.map(q => q.id),
-            customQuestions: null,
-            ganBatch: null,
-            startedAt: new Date().toISOString(),
-            sessionId: crypto.randomUUID(),
-          });
+          const { subjectId, topicId, nodeId, filter } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
@@ -387,10 +398,10 @@ export function QBStudyProvider({ children }) {
         return;
       }
       if (intent.action === 'node-questions') {
-        go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, nodeId: intent.nodeId });
+        go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, nodeId: intent.nodeId, filter: intent.filter });
         return;
       }
-      go('questions', { topicId: intent.topicId, subjectId: intent.subjectId });
+      go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, filter: intent.filter });
     },
     [activeView, resolveIntent, openArchitect, go, navigate],
   );

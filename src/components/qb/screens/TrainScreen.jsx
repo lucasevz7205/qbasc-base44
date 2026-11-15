@@ -3,6 +3,7 @@ import { PageHeader } from '@/components/qb/navigation/PageHeader';
 import { Panel } from '@/components/qb/core/Panel';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
+import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { pickQuestionRound } from '@/lib/study-session-rules';
@@ -52,6 +53,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const setSel = setSelProp || ctx.setTrainSel;
   const dispatch = dispatchProp || ctx.dispatch;
   const { pendingByTopic, resolveIntent, missing, clearMissing } = ctx;
+  const [filter, setFilter] = React.useState('all');
 
   if (missing && missing.back === 'train') {
     return <MissingLink missing={missing} go={go} onBack={clearMissing} />;
@@ -67,8 +69,8 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
     .sort((a, b) => a.acc - b.acc)
     .slice(0, 6);
 
-  const suggested = weak.find(({ s, t }) => pickQuestionRound(QB_DATA.questionBank, { subjectId: s.id, topicId: t.id }).length);
-  const roundSize = pickQuestionRound(QB_DATA.questionBank, suggested ? { subjectId: suggested.s.id, topicId: suggested.t.id } : undefined).length;
+  const suggested = weak.find(({ s, t }) => pickQuestionRound(QB_DATA.questionBank, { subjectId: s.id, topicId: t.id, filter }).length);
+  const roundSize = pickQuestionRound(QB_DATA.questionBank, { subjectId: suggested?.s.id, topicId: suggested?.t.id, filter }).length;
   const roundLabel = roundSize === 1 ? '1 item' : roundSize + ' itens';
 
   const linkInfo = (subjectId, topicId, action) => {
@@ -87,6 +89,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
         title="Treinar"
         description="Escolha a matéria e o assunto no anel; cada assunto abre quatro ações com o contexto preservado."
       />
+      <QuestionFilters value={filter} onChange={setFilter} />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' }}>
         <Panel variant="ornate" style={{ flex: '1 1 600px', minWidth: 0 }}>
           <TrainingRadial
@@ -95,7 +98,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             onChange={setSel}
             pending={pendingByTopic}
             linkInfo={linkInfo}
-            onAction={i => dispatch(i, 'train')}
+            onAction={i => dispatch(i.action === 'train' ? { ...i, filter } : i, 'train')}
           />
         </Panel>
         <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -112,8 +115,8 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
               disabled={!roundSize}
               onClick={() =>
                 suggested
-                  ? dispatch({ action: 'train', subjectId: suggested.s.id, topicId: suggested.t.id }, 'train')
-                  : go('questions')
+                  ? dispatch({ action: 'train', subjectId: suggested.s.id, topicId: suggested.t.id, filter }, 'train')
+                  : go('questions', { filter })
               }
             >
               Iniciar rodada

@@ -11,10 +11,12 @@ import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { pickQuestionRound } from '@/lib/study-session-rules';
+import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
+import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
 function SessionSummary({ answers, go, qs, ganBatch }) {
-  const right = qs.filter(q => answers[q.id] && answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
+  const [showItems, setShowItems] = React.useState(false);
+  const right = qs.filter(q => answers[q.id]?.revealed && answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
   const blocked = ganBatch?.blocked || [];
   return (
     <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 18 }} padding={32}>
@@ -30,9 +32,10 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
           {blocked.length > 0 && <Badge tone="incorrect">Bloqueadas por divergência: {blocked.length}</Badge>}
         </div>
       )}
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div><Button variant="secondary" size="sm" aria-expanded={showItems} onClick={() => setShowItems(open => !open)}>{showItems ? 'Recolher questões da rodada' : 'Ver questões da rodada'}</Button></div>
+      {showItems && <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
         {qs.map(q => {
-          const a = answers[q.id];
+          const a = answers[q.id]?.revealed ? answers[q.id] : null;
           const ok = a && a.answer === (a.keyAtAnswer || q.key);
           return (
             <li key={q.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: '1px solid var(--divider)' }}>
@@ -42,7 +45,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
             </li>
           );
         })}
-      </ul>
+      </ul>}
       {blocked.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, borderRadius: 12, background: 'var(--surface-sunken)', border: '1px solid var(--divider)' }}>
           <span className="qb-overline" style={{ color: 'var(--state-incorrect)' }}>
@@ -79,15 +82,15 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
   );
 }
 
-import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
-
 export default function QuestionSessionView({ session, setSession, go, backTo }) {
   const { QB_DATA, save } = useRealStudy();
-  const qs = session.questionIds
-    ? session.questionIds
-        .map(id => session.customQuestions?.[id] || QB_DATA.questionBank.find(q => q.id === id))
-        .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada')
-    : pickQuestionRound(QB_DATA.questionBank);
+  const qs = React.useMemo(() => {
+    if (!session.questionIds?.length) return [];
+    const bank = new Map(QB_DATA.questionBank.map(q => [q.id, q]));
+    return session.questionIds
+      .map(id => session.customQuestions?.[id] || bank.get(id))
+      .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada');
+  }, [session.questionIds, session.customQuestions, QB_DATA.questionBank]);
 
   const { idx, answers, drawer, focus, bannerDismissed, ganBatch } = session;
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
@@ -98,7 +101,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const done = idx >= qs.length;
   useStudyActivity('questions', done ? null : session.sessionId || 'round');
   const recordCompletion = useStudyCompletion('questions');
-  const q = qs[Math.min(idx, Math.max(qs.length - 1, 0))];
+  const q = qs[idx];
   const st = answers[q?.id] || {};
   const keyAtAnswer = st.revealed ? (st.keyAtAnswer || q?.key) : q?.key;
   const [loading, setLoading] = React.useState(false);
@@ -128,7 +131,6 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       await save('respostas', q.id, record);
       recordCompletion();
       setAns({ revealed: true, keyAtAnswer: q.key });
-      patch({ drawer: true });
     } catch {
       setError('Não foi possível salvar a resposta. Tente novamente.');
     } finally {
@@ -174,10 +176,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
 
   React.useEffect(() => {
     const onKey = e => {
-      if (done || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial]') || ['INPUT','TEXTAREA','SELECT','BUTTON'].includes(e.target.tagName)) return;
+      if (done || e.repeat || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.target?.isContentEditable || e.target?.closest?.('[data-qb-editorial], input, textarea, select, button, a, summary')) return;
       const k = e.key.toLowerCase();
       if (!st.revealed && (k === 'c' || k === 'e')) setAns({ answer: k.toUpperCase() });
       if (e.key === 'Enter') {
+        e.preventDefault();
         st.revealed ? next() : confirm();
       }
     };
@@ -205,12 +208,19 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {error && <p role="alert">{error}</p>}
-          {!qs.length ? (
+          {!ganBatch && (done || (idx === 0 && !st.revealed)) && session.questionIds && (
+            <QuestionFilters value={session.selection?.filter} disabled={loading} onChange={filter => {
+              setError('');
+              go('questions', { ...session.selection, filter });
+            }} />
+          )}
+          {!session.questionIds ? <p role="status">Preparando questões…</p> : !qs.length ? (
             <Panel>
-              Sem questões para este tópico. <Button onClick={() => go('train')}>Voltar a Treinar</Button>
+              <p>{session.selection?.filter === 'wrong' ? 'Nenhuma questão errada nesta seleção.' : session.selection?.filter === 'unseen' ? 'Nenhuma questão inédita nesta seleção.' : 'Sem questões para esta seleção.'}</p>
+              <Button onClick={() => go('train')}>Voltar a Treinar</Button>
             </Panel>
           ) : done ? (
-            <SessionSummary answers={answers} go={go} qs={qs} ganBatch={ganBatch} />
+            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs} ganBatch={ganBatch} />
           ) : (
             <>
               {!focus && ganBatch && !ganBannerDismissed && (
