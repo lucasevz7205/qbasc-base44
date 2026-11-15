@@ -28,6 +28,13 @@ export function filterFlashcardDeck(deck, reviews, filter, today, studyDate) {
   });
 }
 
+export function advanceFlashcardSession(session, queue, rating, repeat) {
+  const { idx } = session;
+  const next = { ...session, flipped: false, ratings: [...session.ratings, rating] };
+  if (!repeat) return { ...next, idx: idx + 1 };
+  return { ...next, queue: [...queue.slice(0, idx), ...queue.slice(idx + 1), queue[idx]] };
+}
+
 export function extractFlashcardSuggestion(reply) {
   const plain = String(reply || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[*_`]/g, '').toLowerCase();
   const diagnosis = plain.match(/^[\s>#-]*diagnostico\s*:\s*(correta|parcial|incorreta|indeterminada)\b/m)?.[1];
