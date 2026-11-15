@@ -8,7 +8,7 @@ export const Route = createFileRoute('/tutor')({
   head: () => ({
     meta: [
       { title: 'O Arquiteto · Quebrando a Banca — A Ascensão' },
-      { name: 'description', content: 'Estúdio de aprendizagem ativa: Tutor Socrático, Feynman, Cornell, Scanner e Pomodoro.' },
+      { name: 'description', content: 'Estúdio de aprendizagem ativa: Tutor Socrático, Feynman, Cornell, Scanner e cronômetro de estudo.' },
     ],
   }),
   component: TutorRoute,
