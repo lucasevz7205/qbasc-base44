@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { pickQuestionRound } from '@/lib/study-session-rules';
+import { StudyClockProvider } from '@/lib/StudyClockContext';
 
 const KEY = 'qb-uikit-v2';
 const SUBS = { plan: 'hoje', edital: 'lista', study: 'mapa', performance: 'diaria' };
@@ -97,8 +98,6 @@ export function QBStudyProvider({ children }) {
   const [missing, setMissing] = React.useState(null);
   const [backTo, setBackTo] = React.useState('dashboard');
   const [returnTo, setReturnTo] = React.useState(null);
-  const [elapsed, setElapsed] = React.useState(0);
-  const [paused, setPaused] = React.useState(false);
 
   const activeView = PATH_TO_VIEW[location.pathname] || 'dashboard';
 
@@ -127,12 +126,6 @@ export function QBStudyProvider({ children }) {
     }
   }, [activeView, subs, ui.bg, ui.theme, ui.focus]);
 
-  React.useEffect(() => {
-    if (!['questions', 'flashcards'].includes(activeView) || paused) return;
-    const t = setInterval(() => setElapsed(e => e + 1), 1000);
-    return () => clearInterval(t);
-  }, [activeView, paused]);
-
   const setUi = React.useCallback(p => {
     setUiState(u => {
       const n = { ...u, ...p };
@@ -144,6 +137,7 @@ export function QBStudyProvider({ children }) {
     });
   }, []);
 
+  const openClock = React.useCallback(() => setUi({ studio: { open: true, tool: 'study-clock' } }), [setUi]);
   const toast = React.useCallback(t => setUi({ toast: t }), [setUi]);
 
   const resetStudyMapSelection = React.useCallback(() => {
@@ -342,13 +336,9 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         }
-        setElapsed(0);
-        setPaused(false);
       }
       if (nextView === 'flashcards' && !arg?.resume) {
         setCards({ idx: 0, flipped: false, ratings: [], topicId: arg?.topicId });
-        setElapsed(0);
-        setPaused(false);
       }
       if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
         resetStudyMapSelection();
@@ -488,9 +478,6 @@ export function QBStudyProvider({ children }) {
       resolveIntent,
       topicLabel,
       dispatch,
-      elapsed,
-      paused,
-      onTogglePause: () => setPaused(p => !p),
       go,
     }),
     [
@@ -515,16 +502,16 @@ export function QBStudyProvider({ children }) {
       resolveIntent,
       topicLabel,
       dispatch,
-      elapsed,
-      paused,
       go,
     ],
   );
 
   return (
     <QBStudyContext.Provider value={value}>
-      {children}
-      {activeView !== 'welcome' && <ArchitectLayer ui={layerUi} setUi={setUi} />}
+      <StudyClockProvider onOpen={openClock}>
+        {children}
+        {activeView !== 'welcome' && <ArchitectLayer ui={layerUi} setUi={setUi} />}
+      </StudyClockProvider>
     </QBStudyContext.Provider>
   );
 }
