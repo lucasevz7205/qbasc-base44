@@ -67,8 +67,8 @@ export function RealStudyGate({children}) {
   if(auth.isLoadingAuth)return <Gate title="Verificando acesso ao QBAsc…" detail="Se a verificação não avançar, abra a tela de entrada." action={<a href="/login">Abrir tela de entrada</a>}/>;
   if(auth.authError?.type==='user_not_registered')return <Gate title="Esta conta não tem acesso ao QBAsc" action={<Button onClick={auth.navigateToLogin}>Entrar com outra conta</Button>}/>;
   if(auth.authError)return <Gate title="Falha ao verificar sua conta" detail="Recarregue para iniciar outra verificação ou volte à tela de entrada." action={<><Button onClick={()=>window.location.reload()}>Tentar novamente</Button><Button variant="secondary" onClick={auth.navigateToLogin}>Ir para o login</Button></>}/>;
-  if(!user)return <Gate title="Quebrando a Banca" detail="Versão de teste · entre com sua conta administradora." action={<Button onClick={auth.navigateToLogin}>Entrar</Button>}/>;
-  if(!admin)return <Gate title="Acesso reservado à conta administradora" action={<Button onClick={auth.logout}>Sair</Button>}/>;
+  if(!user)return <Gate title="Quebrando a Banca" detail="Entre com sua conta para acessar o ambiente de estudo." action={<Button onClick={auth.navigateToLogin}>Entrar</Button>}/>;
+  if(!admin)return <Gate title="Conta autenticada" detail="O acesso ao ambiente de estudo ainda não foi liberado para esta conta." action={<Button onClick={auth.logout}>Sair</Button>}/>;
   if(query.isError)return <Gate title="Não foi possível carregar seu progresso" detail="Confira a conexão e tente novamente." action={<Button onClick={()=>query.refetch()}>Tentar novamente</Button>}/>;
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
   return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout}}>{children}</RealStudyContext.Provider>;
