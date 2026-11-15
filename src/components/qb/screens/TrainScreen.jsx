@@ -2,9 +2,10 @@ import React from 'react';
 import { PageHeader } from '@/components/qb/navigation/PageHeader';
 import { Panel } from '@/components/qb/core/Panel';
 import { Button } from '@/components/qb/core/Button';
-import { QB_EDITAL, QB_PLAN } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 export default function TrainScreen({ go, openArchitect }) {
+  const { QB_EDITAL, QB_PLAN } = useRealStudy();
   const E = QB_EDITAL;
   const late = Object.values(QB_PLAN.weeks).flat().filter(t => t.status === 'late');
   const weak = E.subjects.flatMap(s => s.topics.filter(t => t.correct + t.wrong >= 10).map(t => ({ s, t, acc: t.correct / (t.correct + t.wrong) * 100, n: t.correct + t.wrong }))).sort((a, b) => a.acc - b.acc).slice(0, 6);
@@ -15,7 +16,7 @@ export default function TrainScreen({ go, openArchitect }) {
         <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Rodada sugerida</span>
           <h2 style={{ font: 'var(--type-h2)' }}>Processo legislativo · 5 itens</h2>
-          <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>Emendas e medidas provisórias. Cerca de 10 minutos.</span>
+          <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>Até 20 questões do seu banco de estudo.</span>
           <Button iconRight="arrow-right" onClick={() => go('questions')}>Iniciar rodada</Button>
         </Panel>
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -36,7 +37,7 @@ export default function TrainScreen({ go, openArchitect }) {
           <div key={t.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto auto', gap: 12, alignItems: 'center', padding: '10px 4px', borderBottom: '1px solid var(--divider)' }}>
             <span style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}><span style={{ font: '500 14px/1.3 var(--font-body)', color: 'var(--text-primary)' }}><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--qb-gold)', marginRight: 8 }}>{s.short} {t.num}</span>{t.title || 'Título não disponível'}</span><span style={{ font: '400 12px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>{s.name}</span></span>
             <span style={{ font: '500 13px/1.2 var(--font-mono)', color: acc < 60 ? 'var(--state-incorrect)' : 'var(--text-secondary)', textAlign: 'right' }}>{Math.round(acc)}% · {t.correct}/{n}</span>
-            <Button size="sm" variant="secondary" icon="target" onClick={() => go('questions')}>Treinar</Button>
+            <Button size="sm" variant="secondary" icon="target" onClick={() => go('questions',{topicId:t.id})}>Treinar</Button>
           </div>
         ))}
       </Panel>
