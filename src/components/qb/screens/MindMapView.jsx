@@ -528,6 +528,7 @@ export default function MindMapView({
           />
           {(!mapMaximized || showPanelInMax) && (
             <ConceptPanel
+              nodeId={node.id}
               title={node.label}
               path={path}
               mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
