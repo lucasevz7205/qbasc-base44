@@ -38,7 +38,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           <span style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>Estúdio de aprendizagem ativa</span>
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>
         </div>
-        <span className="qb-badge qb-badge--neutral" title="Respostas e análises simuladas; nenhum serviço de IA é chamado"><Icon name="info" size={13} />Simulação</span>
+        <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>
         {onClose && <button className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{mode === 'modal' ? ' (Esc)' : ''}</button>}
       </header>
       <div style={{ padding: '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={TOOLS} value={tool} onChange={setTool} /></div>
