@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
-import { QB_DATA } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 const KEY = 'qb-uikit-v2';
 const SUBS = { plan: 'hoje', edital: 'lista', study: 'mapa', performance: 'diaria' };
@@ -39,6 +39,7 @@ const PATH_TO_VIEW = {
 const QBStudyContext = React.createContext(null);
 
 export function QBStudyProvider({ children }) {
+  const { QB_DATA } = useRealStudy();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -131,12 +132,18 @@ export function QBStudyProvider({ children }) {
     (nextView, arg) => {
       if (nextView === 'map') {
         const o = arg || {};
-        if (o.node) setMapSel(o.node);
+        if (o.node || o.topicId) setMapSel(o.node || QB_DATA.roots[o.topicId] || '__no_map__');
         setReturnTo(o.returnTo || null);
         setSubs(s => ({ ...s, study: 'mapa' }));
         navigate({ to: '/estudo' });
         return;
       }
+      if (nextView==='questions' && !arg?.resume) {
+        const picked=QB_DATA.questionBank.filter(q=>(!arg?.topicId||q.topicId===arg.topicId)&&(!arg?.subjectId||q.subjectId===arg.subjectId)).sort((a,b)=>Number(!!a.response)-Number(!!b.response)).slice(0,20);
+        setSession({idx:0,answers:{},drawer:false,focus:false,bannerDismissed:false,questionIds:picked.map(q=>q.id),startedAt:new Date().toISOString(),sessionId:crypto.randomUUID()});
+        setElapsed(0);setPaused(false);
+      }
+      if(nextView==='flashcards'&&!arg?.resume){setCards({idx:0,flipped:false,ratings:[],topicId:arg?.topicId});setElapsed(0);setPaused(false);}
       if (typeof arg === 'string' && SUBS[nextView]) {
         setSubs(s => ({ ...s, [nextView]: arg }));
       }
@@ -147,7 +154,7 @@ export function QBStudyProvider({ children }) {
       const targetPath = VIEW_TO_PATH[nextView] || '/';
       navigate({ to: targetPath });
     },
-    [navigate, setUi],
+    [navigate, setUi, QB_DATA],
   );
 
   const mapProps = React.useMemo(
@@ -158,16 +165,16 @@ export function QBStudyProvider({ children }) {
       onReturn: () => {
         const r = returnTo;
         setReturnTo(null);
-        if (r && r.view) go(r.view);
+        if (r && r.view) go(r.view, {resume:true});
       },
     }),
     [mapSel, returnTo, go],
   );
 
-  const q = QB_DATA.questions[Math.min(session.idx, 4)];
+  const q = QB_DATA.questions.find(x => x.id===session.questionIds?.[session.idx]);
   const layerUi =
-    activeView === 'questions' && !ui.ctx
-      ? { ...ui, ctx: { subjectId: 'dc', topicId: 'dc-2a', origin: 'questão ' + q.code } }
+    activeView === 'questions' && q && !ui.ctx
+      ? { ...ui, ctx: { subjectId: q.subjectId, topicId: q.topicId, origin: 'questão ' + q.code } }
       : ui;
 
   const value = React.useMemo(
