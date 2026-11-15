@@ -10,26 +10,28 @@ import { QuestionNavigator } from '@/components/qb/simulado/QuestionNavigator';
 import { ExamTimer } from '@/components/qb/simulado/ExamTimer';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { Icon } from '@/components/qb/core/Icon';
-import { QB_SIM } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 const RULES = { cebraspe: { label: '+1 certo · −1 errado · 0 branco', c: 1, w: -1 }, simples: { label: '+1 certo · 0 errado · 0 branco', c: 1, w: 0 } };
 
 export default function SimuladoScreen({ toast }) {
-  const S = QB_SIM;
+  const {QB_SIM:S,QB_PLAN,save}=useRealStudy();
   const [stage, setStage] = React.useState('prep');
   const [tab, setTab] = React.useState('prep');
   const [rule, setRule] = React.useState('cebraspe');
   const [lines, setLines] = React.useState(30);
   const [worry, setWorry] = React.useState(false);
   const [worryLeft, setWorryLeft] = React.useState(300);
-  const [answers, setAnswers] = React.useState(() => S.demoItems.map(() => ({ answer: null, flagged: false })));
+  const [answers, setAnswers] = React.useState(() => S.items.map(() => ({ answer: null, flagged: false })));
   const [cur, setCur] = React.useState(0);
   const [filter, setFilter] = React.useState('all');
   const per = Math.round(S.objective.minutes * 60 / S.objective.items);
-  const total = per * S.demoItems.length;
+  const total = S.items.length === S.objective.items ? S.objective.minutes * 60 : per * S.items.length;
   const [left, setLeft] = React.useState(total);
   const [ask, setAsk] = React.useState(false);
-  const [history, setHistory] = React.useState(S.history);
+  const history=S.history;
+  const saving=React.useRef(false);
+  const [startedAt,setStartedAt]=React.useState(null);
   const [text, setText] = React.useState('');
   const [last, setLast] = React.useState(null);
   React.useEffect(() => {
@@ -40,24 +42,29 @@ export default function SimuladoScreen({ toast }) {
   const short = S.blocks.flatMap(b => b.subjects).filter(s => s.available < s.planned);
   const setA = (i, p) => setAnswers(a => a.map((x, k) => k === i ? { ...x, ...p } : x));
   const pending = answers.filter(a => !a.answer).length;
-  const finish = () => {
-    const c = answers.filter((a, i) => a.answer === S.demoItems[i].key).length;
+  const finish = async () => {
+    if(saving.current)return;
+    const c = answers.filter((a, i) => a.answer === S.items[i].key).length;
     const b = answers.filter(a => !a.answer || a.answer === 'B').length;
     const w = answers.length - c - b;
     const r = RULES[rule];
     const res = { c, w, b, net: c * r.c + w * r.w, time: total - left, rule: r.label };
-    setLast(res); setAsk(false); setStage('result');
-    setHistory(h => [{ id: 'n' + Date.now(), date: '14/11/2026', kind: 'Objetiva · demo (10 itens)', items: answers.length, correct: c, wrong: w, blank: b, minutes: Math.round((total - left) / 60) }, ...h]);
+    saving.current=true;
+    try {
+      await save('simulados','qbasc-obj-'+startedAt,{tipo:'obj',data:QB_PLAN.today,inicio:startedAt,minutos:Math.round(res.time/60),regra:rule,notaLiquida:res.net,itens:S.items.map((it,i)=>({qid:it.id,mat:it.s,gabarito:it.key,marcada:answers[i].answer||'B'}))});
+      setLast(res);setAsk(false);setStage('result');
+    }catch{toast?.({tone:'error',title:'Falha ao salvar simulado',message:'Tente finalizar novamente.'});}
+    finally{saving.current=false;}
   };
-  const start = () => { setAnswers(S.demoItems.map(() => ({ answer: null, flagged: false }))); setCur(0); setLeft(total); setStage('exam'); };
+  const start = () => { if(!S.items.length)return;setStartedAt(new Date().toISOString());setAnswers(S.items.map(() => ({ answer: null, flagged: false }))); setCur(0); setLeft(total); setStage('exam'); };
   const fmt = s => Math.floor(s / 60) + ' min ' + String(s % 60).padStart(2, '0') + ' s';
 
   if (stage === 'exam') {
-    const it = S.demoItems[cur], a = answers[cur];
+    const it = S.items[cur], a = answers[cur];
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(260px,320px)', gap: 18, alignItems: 'start' }}>
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 18 }} padding={28}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}><span style={{ font: '500 13px/1 var(--font-mono)', color: 'var(--text-muted)' }}>Item {cur + 1} de {answers.length}</span><Badge tone="neutral" icon={null}>{it.s}</Badge><Badge tone="gold" icon={null}>Simulado · demonstração</Badge><span style={{ flex: 1 }} /><button className="qb-iconbtn qb-iconbtn--sm" aria-pressed={a.flagged} aria-label="Marcar para revisão" onClick={() => setA(cur, { flagged: !a.flagged })}><Icon name="flag" size={18} /></button></div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}><span style={{ font: '500 13px/1 var(--font-mono)', color: 'var(--text-muted)' }}>Item {cur + 1} de {answers.length}</span><Badge tone="neutral" icon={null}>{it.s}</Badge><Badge tone="gold" icon={null}>Simulado</Badge><span style={{ flex: 1 }} /><button className="qb-iconbtn qb-iconbtn--sm" aria-pressed={a.flagged} aria-label="Marcar para revisão" onClick={() => setA(cur, { flagged: !a.flagged })}><Icon name="flag" size={18} /></button></div>
           <p style={{ font: 'var(--type-reading)', color: 'var(--text-primary)', maxWidth: '68ch' }}>{it.text}</p>
           <div role="group" aria-label="Resposta" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {[['C', 'Certo'], ['E', 'Errado'], ['B', 'Em branco']].map(([k, l]) => <button key={k} className="qb-choice" aria-pressed={a.answer === k} onClick={() => setA(cur, { answer: a.answer === k ? null : k })}><span className="qb-choice__key">{k}</span>{l}</button>)}
@@ -86,25 +93,25 @@ export default function SimuladoScreen({ toast }) {
           <ExamTimer remaining={left} total={S.discursive.minutes * 60} />
         </div>
         <textarea className="qb-textarea" style={{ minHeight: 320, fontSize: 16 }} value={text} maxLength={limit} onChange={e => setText(e.target.value)} aria-label="Texto da discursiva" />
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', font: '400 13px/1.3 var(--font-mono)', color: chars > limit * 0.95 ? 'var(--state-attention)' : 'var(--text-muted)' }}><span>{nLines} linhas · {chars}/{limit} caracteres (≈ {lines} linhas × 75)</span><span>Sem correção automática nesta demonstração</span></div>
-        <div style={{ display: 'flex', gap: 8 }}><Button icon="check" onClick={() => { setHistory(h => [{ id: 'd' + Date.now(), date: '14/11/2026', kind: 'Discursiva · demo', items: null, minutes: Math.round((S.discursive.minutes * 60 - left) / 60), note: 'Autoavaliação pendente' }, ...h]); setStage('prep'); setTab('hist'); toast && toast({ tone: 'success', title: 'Discursiva entregue', message: 'Registrada no histórico, sem nota automática.' }); }}>Entregar</Button><Button variant="ghost" onClick={() => setStage('prep')}>Sair sem entregar</Button></div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', font: '400 13px/1.3 var(--font-mono)', color: chars > limit * 0.95 ? 'var(--state-attention)' : 'var(--text-muted)' }}><span>{nLines} linhas · {chars}/{limit} caracteres (≈ {lines} linhas × 75)</span><span>Sem correção automática</span></div>
+        <div style={{ display: 'flex', gap: 8 }}><Button icon="check" onClick={async () => {if(saving.current)return;saving.current=true;try{await save('simulados','qbasc-disc-'+startedAt,{tipo:'disc',data:QB_PLAN.today,inicio:startedAt,minutos:Math.round((S.discursive.minutes*60-left)/60),itens:[{texto:text,linhas:nLines}]});setStage('prep');setTab('hist');}catch{toast?.({tone:'error',title:'Falha ao salvar discursiva'});}finally{saving.current=false;}}}>Entregar</Button><Button variant="ghost" onClick={() => setStage('prep')}>Sair sem entregar</Button></div>
       </Panel>
     );
   }
 
   if (stage === 'result' && last) {
-    const subjects = [...new Set(S.demoItems.map(i => i.s))];
+    const subjects = [...new Set(S.items.map(i => i.s))];
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <PageHeader overline="Resultado · simulado de demonstração" title="Resultado do simulado" description="Separado das estatísticas de treino." actions={<><Button variant="secondary" icon="rotate-ccw" onClick={start}>Refazer</Button><Button icon="history" onClick={() => { setStage('prep'); setTab('hist'); }}>Histórico</Button></>} />
+        <PageHeader overline="Resultado · simulado" title="Resultado do simulado" description="Separado das estatísticas de treino." actions={<><Button variant="secondary" icon="rotate-ccw" onClick={start}>Refazer</Button><Button icon="history" onClick={() => { setStage('prep'); setTab('hist'); }}>Histórico</Button></>} />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 10 }}>
           <StatCard compact label="Acertos" tone="correct" value={last.c} /><StatCard compact label="Erros" tone="incorrect" value={last.w} /><StatCard compact label="Em branco" value={last.b} />
           <StatCard compact label="Nota líquida" tone="gold" value={(last.net > 0 ? '+' : '') + last.net} detail={last.rule} /><StatCard compact label="Tempo" value={fmt(last.time)} detail={'de ' + fmt(total)} />
         </div>
-        <Panel><table className="qb-table"><thead><tr><th>Matéria</th><th className="num">Itens</th><th className="num">Certos</th><th className="num">Errados</th><th className="num">Brancos</th></tr></thead><tbody>{subjects.map(s => { const idx = S.demoItems.map((x, i) => x.s === s ? i : -1).filter(i => i >= 0); const c = idx.filter(i => answers[i].answer === S.demoItems[i].key).length, b = idx.filter(i => !answers[i].answer || answers[i].answer === 'B').length; return <tr key={s}><td style={{ color: 'var(--text-primary)' }}>{s}</td><td className="num">{idx.length}</td><td className="num">{c}</td><td className="num">{idx.length - c - b}</td><td className="num">{b}</td></tr>; })}</tbody></table></Panel>
+        <Panel><table className="qb-table"><thead><tr><th>Matéria</th><th className="num">Itens</th><th className="num">Certos</th><th className="num">Errados</th><th className="num">Brancos</th></tr></thead><tbody>{subjects.map(s => { const idx = S.items.map((x, i) => x.s === s ? i : -1).filter(i => i >= 0); const c = idx.filter(i => answers[i].answer === S.items[i].key).length, b = idx.filter(i => !answers[i].answer || answers[i].answer === 'B').length; return <tr key={s}><td style={{ color: 'var(--text-primary)' }}>{s}</td><td className="num">{idx.length}</td><td className="num">{c}</td><td className="num">{idx.length - c - b}</td><td className="num">{b}</td></tr>; })}</tbody></table></Panel>
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <h2 style={{ font: 'var(--type-h2)', marginBottom: 6 }}>Revisão das respostas</h2>
-          {S.demoItems.map((it, i) => { const a = answers[i].answer, ok = a === it.key, blank = !a || a === 'B'; return (
+          {S.items.map((it, i) => { const a = answers[i].answer, ok = a === it.key, blank = !a || a === 'B'; return (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '32px minmax(0,1fr) auto', gap: 10, alignItems: 'start', padding: '10px 0', borderBottom: '1px solid var(--divider)' }}>
               <span style={{ font: '500 13px/1.5 var(--font-mono)', color: 'var(--text-muted)' }}>{i + 1}</span>
               <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>{it.text}</span>
@@ -118,7 +125,7 @@ export default function SimuladoScreen({ toast }) {
   const tp = S.blocks.reduce((a, b) => a + b.subjects.reduce((x, s) => x + s.planned, 0), 0);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <PageHeader overline="Simulados · perfil de exemplo" title="Simulado" description={S.profile + '. Valores são do perfil, não regras fixas.'} actions={<Tabs label="Simulados" value={tab} onChange={setTab} items={[{ id: 'prep', label: 'Preparação', icon: 'graduation-cap' }, { id: 'hist', label: 'Histórico', icon: 'history', count: history.length }]} />} />
+      <PageHeader overline="Simulados · Câmara dos Deputados" title="Simulado" description={S.profile + '. Valores são do perfil, não regras fixas.'} actions={<Tabs label="Simulados" value={tab} onChange={setTab} items={[{ id: 'prep', label: 'Preparação', icon: 'graduation-cap' }, { id: 'hist', label: 'Histórico', icon: 'history', count: history.length }]} />} />
       {tab === 'hist' ? (
         <Panel>
           <table className="qb-table"><thead><tr><th>Data</th><th>Modalidade</th><th className="num">Itens</th><th className="num">C</th><th className="num">E</th><th className="num">B</th><th className="num">Nota líquida</th><th className="num">Tempo</th></tr></thead>
@@ -132,12 +139,12 @@ export default function SimuladoScreen({ toast }) {
             <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="qb-overline">Objetiva</span><span style={{ font: '600 20px/1.2 var(--font-body)' }}>{S.objective.items} itens · {S.objective.minutes} min</span>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Regra de pontuação<select className="qb-select" value={rule} onChange={e => setRule(e.target.value)}>{Object.entries(RULES).map(([k, r]) => <option key={k} value={k}>{r.label}</option>)}</select></label>
-              <Button icon="play" onClick={start}>Iniciar objetiva · demo 10 itens</Button>
+              <Button icon="play" onClick={start} disabled={!S.items.length}>Iniciar objetiva · {S.items.length} itens</Button>
             </Panel>
             <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="qb-overline">Discursiva</span><span style={{ font: '600 20px/1.2 var(--font-body)' }}>{S.discursive.minutes} min</span>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Limite de linhas<select className="qb-select" value={lines} onChange={e => setLines(+e.target.value)}>{[20, 30, 45, 60].map(n => <option key={n} value={n}>{n} linhas</option>)}</select></label>
-              <Button variant="secondary" icon="square-pen" onClick={() => { setText(''); setLeft(S.discursive.minutes * 60); setStage('disc'); }}>Iniciar discursiva</Button>
+              <Button variant="secondary" icon="square-pen" onClick={() => { setText(''); setStartedAt(new Date().toISOString()); setLeft(S.discursive.minutes * 60); setStage('disc'); }}>Iniciar discursiva</Button>
             </Panel>
           </div>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
