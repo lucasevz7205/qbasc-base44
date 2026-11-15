@@ -12,6 +12,7 @@ import { SelectField } from '@/components/qb/data/SelectField';
 import { Icon } from '@/components/qb/core/Icon';
 import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { groupResponsesByTopic } from '@/lib/daily-question-performance';
 
 function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
   const [open, setOpen] = React.useState(false);
@@ -66,6 +67,45 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
   );
 }
 
+function DailySubjectBreakdown({ date, responses, questions, subjects, total, go }) {
+  const groups = groupResponsesByTopic(responses, questions, subjects);
+  const unlinked = total - groups.reduce((sum, group) => sum + group.correct + group.wrong + group.blank, 0);
+  const accuracy = row => QB_METRICS.pct(QB_METRICS.dayStats(row).accuracy);
+  return (
+    <Panel style={{ display: 'grid', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap', gap: 10 }}>
+        <h2 style={{ font: 'var(--type-h2)' }}>Desempenho por matéria e assunto</h2>
+        <span style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>Respostas de {QB_METRICS.fmtDate(date)}</span>
+      </div>
+      {!groups.length && <EmptyState compact title="Sem respostas vinculadas a matérias e assuntos nesta data" />}
+      {groups.map(group => (
+        <details key={group.id} className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', minWidth: 0 }}>
+          <summary style={{ cursor: 'pointer', font: 'var(--type-label)' }}>
+            <strong>{group.name}</strong>
+            <span style={{ marginInlineStart: 10, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+              {accuracy(group)} · {group.correct} acertos · {group.wrong} erros{group.blank ? ' · ' + group.blank + ' em branco' : ''}
+            </span>
+          </summary>
+          <div style={{ overflowX: 'auto', marginTop: 8 }}>
+            <table className="qb-table" aria-label={'Assuntos de ' + group.name}>
+              <thead><tr><th>Assunto</th><th className="num">Acertos</th><th className="num">Erros</th><th className="num">Brancos</th><th className="num">Taxa de acerto</th><th>Remissão</th></tr></thead>
+              <tbody>{group.topics.map(topic => (
+                <tr key={topic.id}>
+                  <th scope="row" style={{ textTransform: 'none', letterSpacing: 'normal', font: 'var(--type-label)' }}>{[topic.num, topic.title].filter(Boolean).join(' · ')}</th>
+                  <td className="num">{topic.correct}</td><td className="num">{topic.wrong}</td><td className="num">{topic.blank}</td>
+                  <td className="num">{accuracy(topic)}</td>
+                  <td><Button size="sm" variant="ghost" icon="scroll-text" onClick={() => go('edital', { topicId: topic.id })}>Ver tópico</Button></td>
+                </tr>
+              ))}</tbody>
+            </table>
+          </div>
+        </details>
+      ))}
+      {unlinked > 0 && <small style={{ color: 'var(--text-muted)' }}>{unlinked} {unlinked === 1 ? 'resposta do dia sem vínculo com um assunto do edital' : 'respostas do dia sem vínculo com assuntos do edital'}.</small>}
+    </Panel>
+  );
+}
+
 function Daily({ go }) {
   const { QB_DATA, QB_EDITAL, QB_PLAN, QB_PERF } = useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, P = QB_PLAN;
@@ -88,7 +128,7 @@ function Daily({ go }) {
         <Badge tone="neutral" icon="info">Respostas confirmadas de treino</Badge>
       </div>
       {!d.n ? <EmptyState title={'Sem respostas em ' + M.fmtDate(date)} description="Nenhuma resposta de treino registrada neste dia." /> : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(210px,1fr))', gap: 12 }}>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <StatCard label="Itens julgados" value={d.n} detail={d.correct + ' certos · ' + d.wrong + ' errados · ' + d.blank + ' em branco'} warning={d.valid < 10 ? 'Amostra pequena' : null} />
           <StatCard label="Taxa de acerto" tone="correct" value={M.pct(d.accuracy)} detail={d.correct + ' de ' + d.valid + ' respostas válidas (brancos fora)'} trend={delta != null ? { delta, label: (delta > 0 ? '+' : '') + delta + ' p.p. vs. dia anterior' } : null} />
           <StatCard label="Nota líquida" tone="gold" value={(d.net > 0 ? '+' : '') + d.net} detail="Regra: +1 certo · −1 errado · 0 branco" />
@@ -97,7 +137,6 @@ function Daily({ go }) {
           <StatCard label="Flashcards avaliados" value={PF.cardsByDay[date] || 0} detail={'Avaliações registradas na data'} />
         </div>
       )}
-      {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} />}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16, alignItems: 'start' }}>
         <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Evolução da precisão · até {M.fmtDate(date)}</span>
@@ -116,6 +155,8 @@ function Daily({ go }) {
           ))}
         </Panel>
       </div>
+      <DailySubjectBreakdown date={date} total={d.n} responses={responses} questions={QB_DATA.questions} subjects={QB_EDITAL.subjects} go={go} />
+      {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} />}
     </div>
   );
 }

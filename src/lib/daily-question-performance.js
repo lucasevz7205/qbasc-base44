@@ -96,3 +96,28 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
 
   return { days, attemptsByDay, roundsByDay, review };
 }
+
+
+export function groupResponsesByTopic(responses, questions, subjects) {
+  const questionTopics = new Map(questions.map(q => [q.id, q.topicId]));
+  const stats = new Map();
+  for (const { qid, result } of responses) {
+    const topicId = questionTopics.get(qid);
+    if (!topicId || !outcomes.includes(result)) continue;
+    const row = stats.get(topicId) || empty();
+    row[result]++;
+    stats.set(topicId, row);
+  }
+  return subjects.flatMap(subject => {
+    const topics = subject.topics.flatMap(topic => {
+      const attempts = stats.get(topic.id);
+      return attempts ? [{ id: topic.id, num: topic.num, title: topic.title, ...attempts }] : [];
+    });
+    if (!topics.length) return [];
+    const totals = topics.reduce((sum, topic) => {
+      for (const key of outcomes) sum[key] += topic[key];
+      return sum;
+    }, empty());
+    return [{ id: subject.id, name: subject.name, topics, ...totals }];
+  });
+}
