@@ -5,6 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
+import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { pickQuestionRound } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
@@ -144,6 +145,10 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             >
               Abrir O Arquiteto
             </Button>
+            <a className="qb-btn qb-btn--secondary" href="#qb-pegadinhas-lab"
+              style={{ display: 'inline-flex', minHeight: 44, alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+              Explorar os 14 mecanismos
+            </a>
           </Panel>
         </div>
       </div>
@@ -180,6 +185,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           </div>
         ))}
       </Panel>
+      <PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} />
     </div>
   );
 }
