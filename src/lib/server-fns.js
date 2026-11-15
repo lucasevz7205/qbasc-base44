@@ -92,6 +92,51 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
     return { reply };
   });
 
+/**
+ * Correção explícita da tentativa, sem modificar flashcard, gabarito ou SRS.
+ */
+const FlashcardCorrectionSchema = z.object({
+  cardId: z.string().min(1).max(160),
+  topicLabel: z.string().min(1).max(300),
+  front: z.string().min(1).max(2400),
+  back: z.string().min(1).max(5000),
+  basis: z.string().max(2000).optional().default(""),
+  nodeId: z.string().max(180).optional().default(""),
+  attempt: z.string().trim().min(8).max(3000),
+});
+
+export const correctFlashcardWithArchitect = createServerFn({ method: "POST" })
+  .middleware([requireUser])
+  .validator(FlashcardCorrectionSchema)
+  .handler(async ({ data, context }) => {
+    if (context.user?.role !== "admin") {
+      throw new Error("Acesso restrito à correção de flashcards no QBAsc.");
+    }
+    const prompt = [
+      "Você é O Arquiteto, avaliador de evocação ativa de flashcards do Quebrando a Banca — A Ascensão.",
+      "Compare a tentativa à resposta de referência. Não invente lei, artigo, prazo, jurisprudência, livro ou fonte.",
+      "Trate a resposta do cartão como referência local, não garantia absoluta. Se detectar inconsistência, exija conferência humana.",
+      "Não atribua nota numérica nem altere o SRS: somente o estudante classifica Errei/Difícil/Bom/Fácil.",
+      "Em erros, cite o trecho preciso da tentativa, explique a divergência e forneça a versão correta segundo a referência.",
+      "Se estiver correta porém incompleta, destaque a informação essencial ausente, sem penalizar diferença de redação.",
+      "Estrutura em português: Diagnóstico (correta/parcial/incorreta/indeterminada); Acertos; Erros ou lacunas; Versão corrigida; Uma pergunta de recuperação.",
+      "Responda com concisão, até cerca de 280 palavras.",
+      `ID do cartão: ${data.cardId}`,
+      `Assunto: ${data.topicLabel}`,
+      data.nodeId ? `Nó do mapa: ${data.nodeId}` : "",
+      `Frente (pergunta): ${data.front}`,
+      `Verso (referência): ${data.back}`,
+      data.basis ? `Fonte indicada pelo cartão: ${data.basis}` : "Sem base documental informada; não acrescente referências externas.",
+      `Tentativa do estudante:\n${data.attempt}`,
+    ].filter(Boolean).join("\n\n");
+    // Correção solicitada usa exclusivamente Gemini; nunca InvokeLLM como fallback.
+    return invokeGeminiTutor({
+      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
+      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      prompt,
+    });
+  });
+
 const FeynmanInputSchema = z.object({
   topicLabel: z.string().min(1).max(300),
   explanation: z.string().min(15).max(5000),
