@@ -32,6 +32,8 @@ export default function MindMapView({
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
   const [ganBlockedReport, setGanBlockedReport] = React.useState(null);
+  const [mapMaximized, setMapMaximized] = React.useState(false);
+  const [showPanelInMax, setShowPanelInMax] = React.useState(true);
 
   const allSubjects = E.subjects?.length ? E.subjects : D.studySubjects || [];
   const foundMapByNode =
@@ -445,34 +447,111 @@ export default function MindMapView({
           </span>
         )}
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'stretch' }}>
-        <MindMapCanvas
-          nodes={nodes}
-          selectedId={node.id}
-          onSelect={setSelected}
-          defaultExpanded={expanded}
-          height={620}
-          style={{ flex: '1 1 520px', minWidth: 0 }}
+      {mapMaximized && (
+        <div
+          aria-hidden="true"
+          onClick={() => setMapMaximized(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 69, background: 'rgba(8, 10, 15, 0.82)', backdropFilter: 'blur(6px)' }}
         />
-        <ConceptPanel
-          title={node.label}
-          path={path}
-          mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
-          summary={c.summary}
-          example={c.example}
-          connections={c.connections || []}
-          sources={c.sources || []}
-          onNavigate={setSelected}
-          reviewCount={card || undefined}
-          onReview={() => go('flashcards', { topicId: chosen.topicId })}
-          onGenerateGan={handleGenerateGan}
-          ganLoading={ganLoading}
-          ganError={ganError}
-          ganBlockedReport={ganBlockedReport}
-          returnTo={returnTo && returnTo.label}
-          onReturn={onReturn}
-          style={{ flex: '1 1 340px', maxWidth: 420, height: 620 }}
-        />
+      )}
+      <div
+        style={
+          mapMaximized
+            ? {
+                position: 'fixed',
+                inset: '14px',
+                zIndex: 70,
+                background: 'var(--canvas)',
+                border: '1px solid rgba(208, 179, 134, 0.55)',
+                borderRadius: 'var(--radius-card)',
+                boxShadow: 'var(--shadow-raised)',
+                padding: '14px 16px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 12,
+                overflow: 'hidden',
+              }
+            : { display: 'flex', flexDirection: 'column', gap: 0 }
+        }
+      >
+        {mapMaximized && (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', paddingBottom: 8, borderBottom: '1px solid var(--divider)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: '1 1 260px' }}>
+              <Badge tone="gold">{subj ? subj.short : 'Mapa'} {topic?.num || ''}</Badge>
+              <strong style={{ font: '600 17px/1.25 var(--font-heading)', color: 'var(--qb-ivory)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {chosen.title}
+              </strong>
+              <span style={{ font: '400 12px/1.2 var(--font-mono)', color: 'var(--text-muted)' }}>
+                nó: {node.label}
+              </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <StudyTopicPicker
+                label="Trocar assunto"
+                subjects={allSubjects}
+                value={topicId}
+                counts={mapCounts}
+                recents={recents}
+                pendingReviews={pendingReviews}
+                onSelect={s => handleSelectTopic(s.topicId)}
+                style={{ width: 340, maxWidth: '100%' }}
+              />
+              <Button
+                size="sm"
+                variant="secondary"
+                icon="layout-panel-top"
+                onClick={() => setShowPanelInMax(v => !v)}
+              >
+                {showPanelInMax ? 'Ocultar painel lateral' : 'Mostrar painel do conceito'}
+              </Button>
+              <Button
+                size="sm"
+                variant="secondary"
+                icon="x"
+                onClick={() => setMapMaximized(false)}
+              >
+                Reduzir tela (Esc)
+              </Button>
+            </div>
+          </div>
+        )}
+        <div style={{ display: 'flex', flexWrap: mapMaximized ? 'nowrap' : 'wrap', gap: 20, alignItems: 'stretch', flex: 1, minHeight: 0 }}>
+          <MindMapCanvas
+            nodes={nodes}
+            selectedId={node.id}
+            onSelect={setSelected}
+            defaultExpanded={expanded}
+            height={mapMaximized ? '100%' : 620}
+            maximized={mapMaximized}
+            onToggleMaximize={setMapMaximized}
+            style={{ flex: '1 1 520px', minWidth: 0, height: mapMaximized ? '100%' : 620 }}
+          />
+          {(!mapMaximized || showPanelInMax) && (
+            <ConceptPanel
+              title={node.label}
+              path={path}
+              mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
+              summary={c.summary}
+              example={c.example}
+              connections={c.connections || []}
+              sources={c.sources || []}
+              onNavigate={setSelected}
+              reviewCount={card || undefined}
+              onReview={() => go('flashcards', { topicId: chosen.topicId })}
+              onGenerateGan={handleGenerateGan}
+              ganLoading={ganLoading}
+              ganError={ganError}
+              ganBlockedReport={ganBlockedReport}
+              returnTo={returnTo && returnTo.label}
+              onReturn={onReturn}
+              style={{
+                flex: mapMaximized ? '0 0 380px' : '1 1 340px',
+                maxWidth: 420,
+                height: mapMaximized ? '100%' : 620,
+              }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

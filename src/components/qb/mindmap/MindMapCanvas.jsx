@@ -102,8 +102,32 @@ export default function MindMapCanvas({
   onViewChange,
   focusPath = true,
   height = 560,
+  maximized: maximizedProp,
+  onToggleMaximize,
   style,
 }) {
+  const [localMaximized, setLocalMaximized] = React.useState(false);
+  const isMaximized = maximizedProp !== undefined ? maximizedProp : localMaximized;
+  const toggleMaximize = React.useCallback(() => {
+    if (onToggleMaximize) {
+      onToggleMaximize(!isMaximized);
+    } else {
+      setLocalMaximized((m) => !m);
+    }
+  }, [onToggleMaximize, isMaximized]);
+
+  React.useEffect(() => {
+    if (!isMaximized) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        toggleMaximize();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isMaximized, toggleMaximize]);
+
   const tree = React.useMemo(() => buildTree(nodes), [nodes]);
   const [expanded, setExpanded] = React.useState(() =>
     computeInitialExpanded(nodes, tree, defaultExpanded, selectedId),
@@ -162,7 +186,7 @@ export default function MindMapCanvas({
     const ro = new ResizeObserver(([e]) => setBox({ w: e.contentRect.width, h: e.contentRect.height }));
     ro.observe(wrapRef.current);
     return () => ro.disconnect();
-  }, [view]);
+  }, [view, isMaximized]);
 
   const pathSet = React.useMemo(() => {
     const s = new Set();
@@ -287,6 +311,17 @@ export default function MindMapCanvas({
           {isAllExpanded ? 'Recolher subtópicos' : 'Expandir tudo'}
         </button>
       )}
+      {isMaximized && (
+        <button
+          type="button"
+          className="qb-tool qb-tool--accent"
+          onClick={toggleMaximize}
+          title="Sair da tela ampliada (Esc)"
+        >
+          <Icon name="x" size={14} />
+          Fechar tela cheia
+        </button>
+      )}
       <div className="qb-seg" role="group" aria-label="Visualização">
         <button className="qb-seg__opt" aria-pressed={view === 'map'} onClick={() => setView('map')} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
           <Icon name="network" size={16} />
@@ -408,7 +443,15 @@ export default function MindMapCanvas({
         </span>
         <IconButton variant="solid" size="sm" icon="zoom-in" label="Aproximar" onClick={() => adjustZoom(0.2)} />
         <IconButton variant="solid" size="sm" icon="zoom-out" label="Afastar" onClick={() => adjustZoom(-0.2)} />
-        <IconButton variant="solid" size="sm" icon="maximize" label="Enquadrar mapa" onClick={reset} />
+        <IconButton
+          variant="solid"
+          size="sm"
+          icon="maximize"
+          pressed={isMaximized}
+          label={isMaximized ? 'Restaurar tamanho da área de estudo (Esc)' : 'Ampliar área de estudo em tela cheia'}
+          onClick={toggleMaximize}
+        />
+        <IconButton variant="solid" size="sm" icon="rotate-ccw" label="Reenquadrar e restaurar zoom (100%)" onClick={reset} />
         <IconButton variant="solid" size="sm" icon="locate-fixed" label="Centralizar no nó selecionado" onClick={() => centerOn(selectedId || tree.root)} />
       </div>
       <div style={{ position: 'absolute', bottom: 14, left: 16, display: 'flex', gap: 14, flexWrap: 'wrap', zIndex: 2, font: '400 12px/1 var(--font-body)', color: 'var(--text-muted)' }}>
