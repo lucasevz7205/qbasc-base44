@@ -9,6 +9,8 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { StudyClockControls } from '@/components/qb/study/StudyClock';
+import { useStudyActivity } from '@/lib/StudyClockContext';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
 
@@ -83,6 +85,7 @@ export default function MindMapView({
           : selected;
 
   const node = chosen ? nodes.find(n => n.id === targetNodeId) || null : null;
+  useStudyActivity('maps', !isRadialOpen && node ? chosen.id : null);
 
   React.useEffect(() => {
     setGanError('');
@@ -434,6 +437,7 @@ export default function MindMapView({
           {chosen.id} · nó {node.id}
         </span>
         <span style={{ flex: 1 }} />
+        {!mapMaximized && <StudyClockControls />}
         {qn > 0 ? (
           <Button
             size="sm"
@@ -504,6 +508,7 @@ export default function MindMapView({
                 onSelect={s => handleSelectTopic(s.topicId)}
                 style={{ width: 340, maxWidth: '100%' }}
               />
+              <StudyClockControls />
               <Button
                 size="sm"
                 variant="secondary"
