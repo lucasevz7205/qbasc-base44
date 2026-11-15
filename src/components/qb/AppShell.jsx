@@ -129,6 +129,7 @@ export function ArchitectLayer({ ui, setUi }) {
       {(isAdmin || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}
         mode={mode}
+        clockOnly={!isAdmin}
         tool={ui.studio.tool || 'socratico'}
         onToolChange={tool => setUi({ studio: { open: true, mode, tool } })}
         onExpand={() => setUi({ studio: { open: true, mode: 'modal', tool: ui.studio.tool || 'socratico' } })}

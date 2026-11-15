@@ -30,7 +30,7 @@ export default function MindMapView({
   radialOpen: radialOpenProp,
   setRadialOpen: setRadialOpenProp,
 }) {
-  const { QB_DATA: D, QB_EDITAL: E, save } = useRealStudy();
+  const { QB_DATA: D, QB_EDITAL: E, save, isAdmin } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
@@ -553,7 +553,7 @@ export default function MindMapView({
               onNavigate={setSelected}
               reviewCount={card || undefined}
               onReview={() => go('flashcards', { topicId: chosen.topicId })}
-              onGenerateGan={handleGenerateGan}
+              onGenerateGan={isAdmin ? handleGenerateGan : undefined}
               ganLoading={ganLoading}
               ganError={ganError}
               ganBlockedReport={ganBlockedReport}

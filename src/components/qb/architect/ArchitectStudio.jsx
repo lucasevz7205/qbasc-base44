@@ -25,7 +25,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[4], label: 'Sessão' },
 ];
 
-export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], style }) {
+export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], clockOnly = false, style }) {
   const dock = mode === 'dock';
   const modal = mode === 'modal';
   const headingRef = React.useRef(null);
@@ -41,7 +41,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   }, [open, mode]);
 
   const [toolState, setToolState] = React.useState(toolProp || 'socratico');
-  const tool = toolProp || toolState;
+  const tool = clockOnly ? 'study-clock' : toolProp || toolState;
   const setTool = t => { setToolState(t); onToolChange && onToolChange(t); };
   React.useEffect(() => {
     if (!open || mode === 'inline') return;
@@ -56,22 +56,22 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   const topic = subj?.topics.find(t => t.id === topicPreference) || subj?.topics[0];
   const tLabel = topic ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '') : 'o tópico';
   const panel = (
-    <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
+    <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
       style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: dock ? 8 : 12, padding: dock ? 12 : '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
-        {!dock && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minWidth: dock ? 0 : 220 }}>
-          <span ref={headingRef} tabIndex={mode === 'inline' ? undefined : -1} style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{dock ? 'O Arquiteto' : 'Estúdio de aprendizagem ativa'}</span>
-          {!dock && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
+          <span ref={headingRef} tabIndex={mode === 'inline' ? undefined : -1} style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto' : 'Estúdio de aprendizagem ativa'}</span>
+          {!dock && !clockOnly && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
         {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
-        {!dock && <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>}
         {onClose && (dock
           ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
-        {dock && <span title={tLabel} style={{ flexBasis: '100%', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Contexto: {tLabel}</span>}
+        {dock && !clockOnly && <span title={tLabel} style={{ flexBasis: '100%', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Contexto: {tLabel}</span>}
       </header>
-      <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>
+      {!clockOnly && <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>}
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}

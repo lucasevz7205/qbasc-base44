@@ -17,7 +17,7 @@ import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
 export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
-  const {QB_DATA:D,QB_PLAN,save}=useRealStudy();
+  const {QB_DATA:D,QB_PLAN,save,isAdmin}=useRealStudy();
   const fullDeck = D.flashcards.filter(f => !cards.topicId || f.topicId === cards.topicId);
   const mode = cards.filter || 'all';
   const byId = new Map(fullDeck.map(c => [c.id, c]));
@@ -106,7 +106,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
               ratingDisabled={saving} suggestedRating={suggestion?.cardId === card.id ? suggestion.rating : null}
               correction={<React.Fragment key={card.id}>
                 <FlashcardCorrection card={card} topicLabel={topicLabel} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />
-                <EditorialCurator kind="flashcard" item={card} topicLabel={card.topicId} />
+                {isAdmin && <EditorialCurator kind="flashcard" item={card} topicLabel={card.topicId} />}
               </React.Fragment>} />
           </>
         )}
