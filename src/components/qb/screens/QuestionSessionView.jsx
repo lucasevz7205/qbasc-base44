@@ -5,7 +5,7 @@ import EditorialCurator from '@/components/qb/study/EditorialCurator';
 import { QuestionCard } from '@/components/qb/questions/QuestionCard';
 import { AnswerActionBar } from '@/components/qb/questions/AnswerActionBar';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
-import { FeedbackDrawer } from '@/components/qb/questions/FeedbackDrawer';
+import { QuestionFeedback } from '@/components/qb/questions/QuestionFeedback';
 import { CognitiveAlertBanner } from '@/components/qb/study/CognitiveAlertBanner';
 import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
@@ -93,7 +93,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada');
   }, [session.questionIds, session.customQuestions, QB_DATA.questions]);
 
-  const { idx, answers, drawer, focus, bannerDismissed, ganBatch } = session;
+  const { idx, answers, focus, ganBatch } = session;
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
   React.useEffect(() => {
     setGanBannerDismissed(false);
@@ -178,7 +178,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         }
       }
     }
-    patch({ idx: idx + 1, drawer: false });
+    patch({ idx: idx + 1 });
   };
 
   const excludeQuestion = async () => {
@@ -200,7 +200,12 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   };
 
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
-  const wrong = qs.filter(x => answers[x.id] && answers[x.id].revealed && answers[x.id].answer !== (answers[x.id].keyAtAnswer || x.key));
+  const correctionRef = React.useRef(null);
+  const showCorrection = !!st.revealed && !excluded;
+  const questionId = q?.id;
+  React.useEffect(() => {
+    if (questionId && showCorrection) correctionRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [questionId, showCorrection]);
 
   React.useEffect(() => {
     const onKey = e => {
@@ -287,25 +292,6 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                   )}
                 </CognitiveAlertBanner>
               )}
-              {!focus && wrong.length > 0 && !bannerDismissed && (
-                <CognitiveAlertBanner
-                  tone="attention"
-                  title={`${wrong.length} ${wrong.length > 1 ? 'erros' : 'erro'} nesta sessão`}
-                  onDismiss={() => patch({ bannerDismissed: true })}
-                  actions={
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      icon="network"
-                      onClick={() => go('map', { node: wrong[wrong.length - 1].node, returnTo: { label: `questão ${q.code}`, view: 'questions' } })}
-                    >
-                      Revisar o conceito no mapa
-                    </Button>
-                  }
-                >
-                  O último erro foi em “{QB_DATA.mapNodes.find(n => n.id === wrong[wrong.length - 1].node)?.label || wrong[wrong.length - 1].chapter}”.
-                </CognitiveAlertBanner>
-              )}
               <QuestionCard
                 key={q.id}
                 code={q.code}
@@ -318,7 +304,17 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 onAnswer={a => chooseAnswer({ answer: a })}
                 confidence={st.confidence || null}
                 onConfidence={c => chooseAnswer({ confidence: c })}
-                answerKey={st.revealed ? keyAtAnswer : null}
+                answerKey={showCorrection ? keyAtAnswer : null}
+                correctionRef={correctionRef}
+                feedback={showCorrection && (
+                  <QuestionFeedback
+                    result={st.answer === keyAtAnswer ? 'correct' : 'incorrect'}
+                    explanation={q.explanation}
+                    legalBasis={q.basis}
+                    trap={q.trap}
+                    onFlashcards={q.topicId ? () => go('flashcards', { topicId: q.topicId }) : undefined}
+                  />
+                )}
                 bookmarked={!!st.bookmarked}
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
                 conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
@@ -335,30 +331,6 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
             </>
           )}
         </main>
-        {!done && !excluded && (
-          <FeedbackDrawer
-            open={drawer && st.revealed}
-            onClose={() => patch({ drawer: false })}
-            result={st.answer === keyAtAnswer ? 'correct' : 'incorrect'}
-            answerKey={keyAtAnswer}
-            explanation={q.explanation}
-            legalBasis={q.basis}
-            trap={q.trap}
-            concept={{
-              path: (() => {
-                const p = [];
-                let n = QB_DATA.mapNodes.find(x => x.id === q.node);
-                while (n) {
-                  p.unshift(n.label);
-                  n = QB_DATA.mapNodes.find(x => x.id === n.parent);
-                }
-                return p.length ? p : [q.chapter || 'Conceito'];
-              })(),
-            }}
-            onOpenConcept={openConcept}
-            onFlashcards={() => go('flashcards', { topicId: q.topicId })}
-          />
-        )}
       </div>
       {!done && !excluded && (
         <AnswerActionBar
@@ -369,7 +341,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           onSkip={next}
           onReview={() => setAns({ bookmarked: !st.bookmarked })}
           reviewMarked={!!st.bookmarked}
-          onOpenFeedback={() => patch({ drawer: true })}
+          onOpenFeedback={() => correctionRef.current?.scrollIntoView({ block: 'start' })}
         />
       )}
       <ConfirmDialog

@@ -65,9 +65,7 @@ function startQuestionRound(bank, selection = {}) {
   return {
     idx: 0,
     answers: {},
-    drawer: false,
     focus: false,
-    bannerDismissed: false,
     selection,
     questionIds: pickQuestionRound(bank, selection).map(q => q.id),
     customQuestions: null,
@@ -97,9 +95,7 @@ export function QBStudyProvider({ children }) {
   const [session, setSession] = React.useState({
     idx: 0,
     answers: {},
-    drawer: false,
     focus: false,
-    bannerDismissed: false,
   });
   const [cards, setCards] = React.useState({
     idx: 0,
@@ -334,9 +330,7 @@ export function QBStudyProvider({ children }) {
           setSession({
             idx: 0,
             answers: {},
-            drawer: false,
             focus: false,
-            bannerDismissed: false,
             questionIds: approvedQuestions.map(q => q.id),
             customQuestions,
             ganBatch: arg.ganBatch,

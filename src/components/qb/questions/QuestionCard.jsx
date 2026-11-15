@@ -24,6 +24,8 @@ export default function QuestionCard({
   onConfidence,
   showConfidence = true,
   answerKey = null,
+  correctionRef,
+  feedback,
   conceptLink,
   bookmarked = false,
   onBookmark,
@@ -111,12 +113,15 @@ export default function QuestionCard({
         </div>
       )}
       {revealed && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', paddingTop: 16, borderTop: '1px solid var(--divider)' }}>
-          <Badge tone={answer === answerKey ? 'correct' : 'incorrect'}>{answer === answerKey ? 'Você acertou' : 'Você errou'}</Badge>
-          {confidence && <span style={{ font: '400 13px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>Confiança: {CONF.find((c) => c[0] === confidence)[1].toLowerCase()}</span>}
-          <span style={{ flex: 1 }} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 16, borderTop: '1px solid var(--divider)' }}>
+          <div ref={correctionRef} style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', scrollMarginBlock: '12px 116px' }}>
+            <strong>Gabarito: {answerKey === 'C' ? 'Certo' : 'Errado'}</strong>
+            <Badge tone={answer === answerKey ? 'correct' : 'incorrect'}>{answer === answerKey ? 'Você acertou' : 'Você errou'}</Badge>
+            {confidence && <span style={{ font: '400 13px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>Confiança: {CONF.find((c) => c[0] === confidence)[1].toLowerCase()}</span>}
+          </div>
+          {feedback}
           {conceptLink && (
-            <button className="qb-linkbtn" onClick={conceptLink.onClick}>
+            <button className="qb-linkbtn" style={{ alignSelf: 'flex-start' }} onClick={conceptLink.onClick}>
               <Icon name="network" size={16} />
               {conceptLink.label}
             </button>
