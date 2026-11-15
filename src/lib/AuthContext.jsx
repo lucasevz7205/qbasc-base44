@@ -39,7 +39,7 @@ const AuthContext = createContext(null);
  */
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
-  const { data, error, isPending } = useQuery(authQuery);
+  const { data, error, isPending } = useQuery({ ...authQuery, enabled: typeof window !== 'undefined' });
 
   const value = useMemo(
     () => ({
