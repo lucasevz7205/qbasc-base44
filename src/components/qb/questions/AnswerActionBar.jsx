@@ -9,7 +9,6 @@ export default function AnswerActionBar({
   nextDisabled = false,
   onSkip,
   onReview,
-  onOpenFeedback,
   reviewMarked = false,
   showHints = true,
   sticky = false,
@@ -46,11 +45,6 @@ export default function AnswerActionBar({
         <span aria-hidden="true" style={{ font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' }}>
           {answered ? 'Enter · próxima' : 'C / E · responder   Enter · confirmar'}
         </span>
-      )}
-      {answered && onOpenFeedback && (
-        <Button variant="secondary" icon="book-open" onClick={onOpenFeedback}>
-          Ver fundamento
-        </Button>
       )}
       {answered ? (
         <Button iconRight="arrow-right" disabled={nextDisabled} onClick={onNext}>

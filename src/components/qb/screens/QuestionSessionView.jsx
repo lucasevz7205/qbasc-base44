@@ -337,7 +337,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                   <QuestionFeedback
                     explanation={q.explanation}
                     legalBasis={q.basis}
-                    trap={q.trap || (q.raw && questionTrap(q.raw))}
+                    trap={ganBatch && q.raw ? questionTrap(q.raw) : q.trap}
                     reflection={needsReflection ? {
                       origin: st.errorOrigin,
                       text: st.errorJustification || '',
@@ -375,7 +375,6 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           onSkip={next}
           onReview={() => setAns({ bookmarked: !st.bookmarked })}
           reviewMarked={!!st.bookmarked}
-          onOpenFeedback={() => correctionRef.current?.scrollIntoView({ block: 'start' })}
         />
       )}
       <ConfirmDialog
