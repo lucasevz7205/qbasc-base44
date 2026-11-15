@@ -24,7 +24,8 @@ function localWrite(key, draft) {
   try {
     // Cópia local de segurança; o legado original nunca é apagado.
     localStorage.setItem(key, JSON.stringify({ ...cleanCornell(draft), lastEditedAt: new Date().toISOString() }));
-  } catch { /* A nuvem segue como destino principal, e falhas aparecem no status. */ }
+    return true;
+  } catch { return false; }
 }
 const initial = () => ({
   identity: '', loaded: false, dirty: false, offline: false,
@@ -108,9 +109,11 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
     const draft = { ...currentDraftRef.current, ...updates };
     currentDraftRef.current = draft;
     dirtyRef.current = true;
-    localWrite(identity, draft);
+    const localSaved = localWrite(identity, draft);
     setState(s => s.identity !== identity ? s : ({ ...s, draft, dirty: true,
-      error: s.offline ? s.error : '', status: s.offline ? 'Offline: salvo somente neste navegador' : 'Alterações pendentes…' }));
+      error: !localSaved ? 'O navegador impediu a cópia local. Não saia antes de confirmar a sincronização na nuvem.' :
+        (s.offline ? s.error : ''),
+      status: s.offline ? 'Offline: salvo somente neste navegador' : 'Alterações pendentes…' }));
   };
 
   const saveNow = React.useCallback(async (snapshot, targetIdentity, forceHistory = false) => {
