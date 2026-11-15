@@ -117,7 +117,7 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
                     style={{ accentColor: 'var(--qb-gold)', scrollMarginBlock: '12px 116px' }} />
                   {label}
                 </label>
-              ))
+              ))}
             </div>
             <label htmlFor={noteId}>Por que você errou e qual é a regra correta?</label>
             <textarea id={noteId} ref={reflection.inputRef} className="qb-input" rows={3} value={reflection.text} onChange={event => reflection.onChange({ errorJustification: event.target.value })}
