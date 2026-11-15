@@ -87,7 +87,7 @@ test("sobrescrita exige origem editável e proposta completa",()=>{
 });
 test("UI exige confirmação e salva backup ANTES de sobrescrever questão",()=>{
   const src=readFileSync(new URL("../src/components/qb/study/EditorialCurator.jsx",import.meta.url),"utf8");
-  assert.match(src,/Salvar sobre a questão anterior/);
+  assert.match(src,/Salvar em cima da anterior/);
   assert.match(src,/open=\{confirmOverwrite\}/);
   assert.match(src,/Confirmar substituição/);
   const a=src.indexOf('await save("curadoria", backup.id, backup)');
