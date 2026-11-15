@@ -6,6 +6,7 @@ import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tuto
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
+import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -17,13 +18,13 @@ const MODE_INSTRUCTIONS = {
   feynman:
     "Modo Feynman: peça ou avalie uma explicação em linguagem simples, sem jargão jurídico desnecessário, apontando eventuais lacunas conceituais e sugerindo uma analogia clara.",
   banca:
-    "Modo Banca CEBRASPE: elabore ou analise um item inédito no estilo Certo/Errado da banca CEBRASPE sobre o tópico, destacando a literalidade legal/constitucional, jurisprudência ou pegadinha clássica.",
+    "Modo Banca CEBRASPE: elabore ou analise UM item inédito C/E, indicando após o julgamento o mecanismo F1–F10 ou V1–V4 da taxonomia QB V1, o trecho decisivo, a versão correta para um item E e a vacina. Não apresente item sintético como prova real.",
   oral:
     "Modo Arguição Oral: atue como examinador de prova oral da Câmara dos Deputados. Faça uma pergunta direta de arguição ou avalie a resposta oral/escrita do candidato quanto à precisão técnica, estrutura e concisão.",
   retencao:
     "Teste de Retenção Ativa: proponha 3 perguntas rápidas de evocação ativa (sem consulta) cobrindo: 1) regra geral/conceito, 2) exceção ou prazo/quórum, e 3) pegadinha clássica de prova sobre o tópico.",
   armadilhas:
-    "Armadilhas da Banca: liste as 3 pegadinhas mais cobradas pelo CEBRASPE neste tópico (troca de competência, quórum, prazo, palavras restritivas ou exceção inexistente) e proponha 1 item rápido C/E para testar o aluno.",
+    "Armadilhas da Banca: explique até 3 mecanismos relevantes da taxonomia QB V1 com indícios presentes na fonte e faça UMA pergunta de cada vez. Não afirme que são os mais frequentes sem contagem verificável; diferencie mecanismos F (item E) e V (item C).",
   analogia:
     "Analogia Feynman: explique o núcleo do tópico usando uma analogia concreta do cotidiano e, ao final, mostre exatamente até onde a analogia funciona e qual o detalhe técnico-jurídico que não pode ser esquecido na prova.",
 };
@@ -87,6 +88,8 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       `Matéria: ${data.subjectName || "Concurso Câmara dos Deputados"}`,
       `Tópico do edital: ${data.topicLabel}`,
       `Diretriz pedagógica atual: ${MODE_INSTRUCTIONS[data.mode] || MODE_INSTRUCTIONS.socratico}`,
+      CEBRASPE_V1_TUTOR_RULES,
+      ["banca", "armadilhas"].includes(data.mode) ? CEBRASPE_V1_GENERATION_RULES : "",
       historyBlock ? `Histórico recente da conversa:\n${historyBlock}` : "",
       `Mensagem/solicitação atual do estudante:\n${data.userMessage}`,
       "Responda em português (pt-BR), em texto fluido e bem estruturado (máximo de 2 a 3 parágrafos curtos ou tópicos objetivos).",
@@ -151,6 +154,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       "Se não houver suporte textual bastante para alterar uma resposta factual ou gabarito, conserve a resposta/gabarito anterior, proponha somente melhoria de redação e deixe needsHumanReview=true.",
       "Se houver ambiguidade não resolvida, sinalize no parecer e deixe needsHumanReview=true. Não invente correção para preencher campos.",
       "Questão: preserve padrão Certo/Errado, teste uma regra, com uma resposta inequívoca; comentário aponta trecho decisivo; item errado inclui versão correta por extenso quando comprovável.",
+      CEBRASPE_V1_GENERATION_RULES,
       "Flashcard: uma pergunta e uma resposta precisa; elimine vagueza e jargão solto; se mistura duas ideias, explique no parecer, mas proponha apenas UM cartão neste fluxo, sem novos IDs.",
       "Preserve o vínculo com o mesmo assunto e nó, e não afirme proveniência de prova real quando um enunciado tiver sido reescrito.",
       "Retorne SOMENTE JSON válido, sem markdown, notas fora do JSON ou comentários.",
