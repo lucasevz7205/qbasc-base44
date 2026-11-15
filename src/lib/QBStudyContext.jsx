@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { pickQuestionRound } from '@/lib/study-session-rules';
 
 const KEY = 'qb-uikit-v2';
 const SUBS = { plan: 'hoje', edital: 'lista', study: 'mapa', performance: 'diaria' };
@@ -324,15 +325,7 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const picked = QB_DATA.questionBank
-            .filter(
-              q =>
-                (!arg?.topicId || q.topicId === arg.topicId) &&
-                (!arg?.subjectId || q.subjectId === arg.subjectId) &&
-                (!arg?.nodeId || q.node === arg.nodeId),
-            )
-            .sort((a, b) => Number(!!a.response) - Number(!!b.response))
-            .slice(0, 20);
+          const picked = pickQuestionRound(QB_DATA.questionBank, arg);
           setSession({
             idx: 0,
             answers: {},
