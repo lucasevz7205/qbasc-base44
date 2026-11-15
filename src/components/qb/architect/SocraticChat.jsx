@@ -3,7 +3,7 @@ import { useServerFn } from '@tanstack/react-start';
 import { Icon } from '@/components/qb/core/Icon';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 import { Button } from '@/components/qb/core/Button';
-import { SelectField } from '@/components/qb/data/SelectField';
+import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { askArchitectTutor, getArchitectProviderStatus } from '@/lib/server-fns';
@@ -147,10 +147,17 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minHeight: 0, ...style }}>
       <div className="qb-panel qb-panel--sunken" style={{ padding: 14, display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10, alignItems: 'end' }}>
-          <SelectField label="Matéria do concurso" value={subj ? subj.id : ''} onChange={v => { const s = subjects.find(x => x.id === v); onContextChange && onContextChange(v, s.topics[0].id); }} options={subjects.map(s => ({ value: s.id, label: s.name }))} />
-          <SelectField label="Assunto / tópico do edital" value={topic ? topic.id : ''} onChange={v => onContextChange && onContextChange(subj.id, v)} options={subj ? subj.topics.map(t => ({ value: t.id, label: t.num + ' · ' + (t.title || 'Tópico ' + t.num) })) : []} />
-          <Button variant="secondary" size="sm" icon="trash-2" disabled={!msgs.length} onClick={() => setAsk(true)} style={{ height: 44 }}>Limpar histórico</Button>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'end' }}>
+          <div style={{ flex: '1 1 410px', minWidth: 0, pointerEvents: busy ? 'none' : undefined }} aria-busy={busy}>
+            <StudyTopicPicker
+              label="Matéria e assunto do tutor"
+              subjects={subjects}
+              value={topic?.id || null}
+              placeholder="Pesquisar matéria, código ou assunto do edital…"
+              onSelect={selection => onContextChange?.(selection.subjectId, selection.topicId)}
+            />
+          </div>
+          <Button variant="secondary" size="sm" icon="trash-2" disabled={!msgs.length} onClick={() => setAsk(true)} style={{ minHeight: 52 }}>Limpar histórico</Button>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Provedor</span>
