@@ -24,9 +24,9 @@ export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect,
   const [subj, setSubj] = React.useState('all');
   const [status, setStatus] = React.useState('all');
   const [evoke, setEvoke] = React.useState(false);
-  const focusedSubject = E.subjects.find(s => s.topics.some(t => t.id === topicFocus));
-  const [open, setOpen] = React.useState(() => focusedSubject ? [focusedSubject.id] : ['da']);
-  const [hl, setHl] = React.useState(() => focusedSubject ? topicFocus : null);
+  const focusedSubjectId = E.subjects.find(s => s.topics.some(t => t.id === topicFocus))?.id;
+  const [open, setOpen] = React.useState(() => focusedSubjectId ? [focusedSubjectId] : ['da']);
+  const [hl, setHl] = React.useState(() => focusedSubjectId ? topicFocus : null);
   const tot = M.totals(E.subjects);
   const ql = q.trim().toLowerCase();
   const filtered = E.subjects.filter(s => subj === 'all' || s.id === subj).map(s => ({ ...s, topics: s.topics.filter(t => (status === 'all' || t.status === status) && (!ql || t.num.toLowerCase().startsWith(ql) || (t.title || '').toLowerCase().includes(ql) || s.name.toLowerCase().includes(ql))) })).filter(s => s.topics.length);
@@ -37,13 +37,13 @@ export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect,
   }, [hl, tab]);
   const reveal = (sid, tid) => { setSubj('all'); setStatus('all'); setQ(''); setOpen(o => o.includes(sid) ? o : [...o, sid]); setHl(tid); setTab && setTab('lista'); };
   React.useEffect(() => {
-    if (!focusedSubject) return;
+    if (!focusedSubjectId) return;
     setSubj('all');
     setStatus('all');
     setQ('');
-    setOpen(current => current.includes(focusedSubject.id) ? current : [...current, focusedSubject.id]);
+    setOpen(current => current.includes(focusedSubjectId) ? current : [...current, focusedSubjectId]);
     setHl(topicFocus);
-  }, [topicFocus, focusedSubject]);
+  }, [topicFocus, focusedSubjectId]);
   const onAction = (a, t) => {
     const s = E.subjects.find(x => x.topics.includes(t) || x.topics.some(y => y.id === t.id));
     if (a === 'architect') return openArchitect && openArchitect({ subjectId: s.id, topicId: t.id, origin: 'edital ' + s.short + ' ' + t.num });

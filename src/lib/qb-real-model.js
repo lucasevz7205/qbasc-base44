@@ -22,10 +22,11 @@ function nodeConcept(node, mapSources) {
 }
 
 const num = x => Number.isFinite(Number(x)) ? Number(x) : 0;
+const studyDayFormatter = new Intl.DateTimeFormat('sv-SE', {timeZone:'America/Sao_Paulo'});
 const day = value => {
   if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
   if (!value || !Number.isFinite(new Date(value).getTime())) return '';
-  return new Intl.DateTimeFormat('sv-SE', {timeZone:'America/Sao_Paulo'}).format(new Date(value));
+  return studyDayFormatter.format(new Date(value));
 };
 const shift = (d,n) => { const date = new Date(d+'T12:00:00Z'); date.setUTCDate(date.getUTCDate()+n); return date.toISOString().slice(0,10); };
 const explicitStatus = (v) => ({nao:'not-started', 'nao iniciado':'not-started', 'not-started':'not-started', studying:'studying', reviewing:'reviewing', mastered:'mastered', revisao:'reviewing',dominado:'mastered', revisando:'reviewing', revisado:'reviewing', estudado:'studying', estudo:'studying', 'em estudo':'studying', em_estudo:'studying', estudando:'studying', concluido:'mastered', concluida:'mastered'})[String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()];
