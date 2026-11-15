@@ -40,11 +40,11 @@ export function adaptStudy(records, user, now = new Date()) {
       const add=(v,parent,path)=>{
         if(!v || typeof v!=='object')return;
         const id=parent?root+'::'+path:root;
-        const label=str(v.t??v.label??v.titulo)||title;
+        const label=str(v.t??v.label??v.titulo??v.rotulo)||title;
         nodes.push({id,parent,label});
-        concepts[id]={summary:str(v.x??v.explicacao??v.definicao),example:str(v.ex??v.exemplo),sources:arr(v.f??d.fontes).map(f=>({label:str(f?.titulo??f?.label??f),url:typeof f?.url==='string'&&/^https?:\/\//i.test(f.url)?f.url:undefined})).filter(f=>f.label)};
+        concepts[id]={summary:str(v.x??v.explicacao??v.definicao??v.n),example:str(v.ex??v.exemplo),sources:arr(d.fontes).map(f=>({label:str(f?.titulo??f?.label??f),url:typeof f?.url==='string'&&/^https?:\/\//i.test(f.url)?f.url:undefined})).filter(f=>f.label)};
         if(v.id)(aliases[topicId]??={})[v.id]=id;
-        arr(v.ramos??v.children??v.nos??v.filhos??v.sub).forEach((n,i)=>add(n,id,path+'.'+i));
+        arr(v.ramos??v.children??v.nos??v.filhos??v.sub??v.f).forEach((n,i)=>add(n,id,path+'.'+i));
       };
       add({...map,t:title,ramos:branch},null,'0');
       roots[topicId] ??= root;
@@ -53,17 +53,18 @@ export function adaptStudy(records, user, now = new Date()) {
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);
-      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),nodeRef:c.no??c.node??c.mapaNo});
+      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
     });
   }
-  for(const card of flashcards)card.node=aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
+  const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
+  for(const card of uniqueCards)card.node=aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
   const questionBank=[];
   for(const q of Object.values(rawQuestions)){
     const topic=topics[q.topico??q.topicId] || capTopic[chapterKey(q.cap)];
     const r=answers[q.id];
     if(topic&&r){topic.correct+=num(r.acertos);topic.wrong+=num(r.erros);topic.blank+=num(r.brancos);}
     if(!['C','E'].includes(keyOf(q.gabarito))||!q.enunciado)continue;
-    questionBank.push({id:q.id,code:q.id,year:q.ano,tags:[q.tema||q.capNome].filter(Boolean),key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:aliases[topic?.id]?.[q.no??q.node??q.mapaNo]||roots[topic?.id],response:r,raw:q});
+    questionBank.push({id:q.id,code:q.id,year:q.ano,tags:[q.tema||q.capNome].filter(Boolean),key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:aliases[topic?.id]?.[q.mapaNoId??q.no??q.node??q.mapaNo]||roots[topic?.id],response:r,raw:q});
   }
   const reviews=Object.fromEntries(source('cartoes_aval').map(r=>[r.id,r]));
   const weeks={ '-1':[],0:[],1:[]}, weekday=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
@@ -113,6 +114,6 @@ export function adaptStudy(records, user, now = new Date()) {
   const next=tasks.find(t=>t.type==='simulado'&&t.date>=today&&t.status!=='done');
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
-  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:questionBank,flashcards,questionBank,mapNodes,mindMaps,concepts,roots,masteryText:{},answers,reviews};
+  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:questionBank,flashcards:uniqueCards,questionBank,mapNodes,mindMaps,concepts,roots,masteryText:{},answers,reviews};
   return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }
