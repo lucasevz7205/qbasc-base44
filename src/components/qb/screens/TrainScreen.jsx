@@ -5,6 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { pickQuestionRound } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
 export function MissingLink({ missing, onBack, go }) {
@@ -44,7 +45,7 @@ export function MissingLink({ missing, onBack, go }) {
 }
 
 export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp, sel: selProp, setSel: setSelProp }) {
-  const { QB_EDITAL, QB_PLAN } = useRealStudy();
+  const { QB_EDITAL, QB_PLAN, QB_DATA } = useRealStudy();
   const ctx = useQBStudy();
   const E = QB_EDITAL;
   const sel = selProp || ctx.trainSel;
@@ -66,10 +67,9 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
     .sort((a, b) => a.acc - b.acc)
     .slice(0, 6);
 
-  const suggested = weak[0] || {
-    s: E.subjects[0],
-    t: E.subjects[0]?.topics[0],
-  };
+  const suggested = weak.find(({ s, t }) => pickQuestionRound(QB_DATA.questionBank, { subjectId: s.id, topicId: t.id }).length);
+  const roundSize = pickQuestionRound(QB_DATA.questionBank, suggested ? { subjectId: suggested.s.id, topicId: suggested.t.id } : undefined).length;
+  const roundLabel = roundSize === 1 ? '1 item' : roundSize + ' itens';
 
   const linkInfo = (subjectId, topicId, action) => {
     const r = resolveIntent({ action, subjectId, topicId });
@@ -102,15 +102,16 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Rodada sugerida</span>
             <h2 style={{ font: 'var(--type-h2)' }}>
-              {suggested.t ? `${suggested.s.short} ${suggested.t.num} · ${suggested.t.resources?.questions || 20} itens` : 'Rodada de questões'}
+              {suggested ? `${suggested.s.short} ${suggested.t.num} · ${roundLabel}` : roundSize ? 'Rodada de questões · ' + roundLabel : 'Sem questões disponíveis'}
             </h2>
             <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
-              {suggested.t ? `${suggested.t.title} (${suggested.s.name}).` : 'Até 20 questões do seu banco de estudo.'}
+              {suggested ? `${suggested.t.title} (${suggested.s.name}).` : 'Questões do seu banco de estudo.'}
             </span>
             <Button
               iconRight="arrow-right"
+              disabled={!roundSize}
               onClick={() =>
-                suggested.t
+                suggested
                   ? dispatch({ action: 'train', subjectId: suggested.s.id, topicId: suggested.t.id }, 'train')
                   : go('questions')
               }
@@ -136,7 +137,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             <Button
               variant="secondary"
               icon="sparkles"
-              onClick={() => openArchitect && openArchitect({ subjectId: suggested.s?.id || 'dc', topicId: suggested.t?.id, origin: 'Treinar · armadilhas' })}
+              onClick={() => openArchitect && openArchitect({ subjectId: suggested?.s.id || 'dc', topicId: suggested?.t.id, origin: 'Treinar · armadilhas' })}
             >
               Abrir O Arquiteto
             </Button>
