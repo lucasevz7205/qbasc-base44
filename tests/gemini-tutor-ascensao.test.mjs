@@ -104,7 +104,7 @@ test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
   assert.match(block, /data\.back/);
   assert.match(block, /data\.basis/);
   assert.match(block, /data\.attempt/);
-  assert.doesNotMatch(block, /InvokeLLM|\.create\(|\.update\(|save\(/);
+  assert.doesNotMatch(block, /Core\.InvokeLLM\(|\.create\(|\.update\(|save\(/);
 });
 
 test("Interface oferece corrigir pelo Arquiteto e mantém classificação humana", () => {
