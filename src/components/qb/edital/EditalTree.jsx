@@ -16,6 +16,7 @@ export function StatusTag({ status }) {
 
 function Accuracy({ correct, wrong, blank }) {
   const h = heatTier(correct, wrong);
+  if (h.pct == null && blank) return <span style={{ color: 'var(--text-muted)' }}>{blank} em branco</span>;
   if (h.pct == null) return <span style={{ font: '400 12px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>Sem respostas</span>;
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap' }}>
@@ -25,15 +26,26 @@ function Accuracy({ correct, wrong, blank }) {
   );
 }
 
-const ACTIONS = [['study', 'book-open', 'Estudar'], ['questions', 'target', 'Questões'], ['map', 'network', 'Mapa mental'], ['flashcards', 'layers', 'Flashcards'], ['architect', 'sparkles', 'O Arquiteto']];
+const ACTIONS = [['study', 'book-open', 'Estudo e revisão'], ['questions', 'target', 'Questões'], ['map', 'network', 'Mapa mental'], ['flashcards', 'layers', 'Flashcards'], ['architect', 'sparkles', 'O Arquiteto']];
 
 export function TopicRow({ topic, highlight, onAction, evokeFirst }) {
+  const resources = topic.resources;
+  const maps = (resources?.maps.length || 0) + (resources?.materials.filter(m => m.tipo === 'mapa').length || 0);
+  const entries = [
+    ['questions', resources?.questions, 'questão', 'questões'],
+    ['map', maps, 'mapa', 'mapas'],
+    ['study', resources?.revision.length, 'item de revisão', 'itens de revisão'],
+    ['flashcards', resources?.cards, 'flashcard', 'flashcards'],
+  ].filter(([, count]) => count > 0);
   return (
     <div className={'qb-topic' + (highlight ? ' is-highlight' : '')} data-topic-id={topic.id}>
       <span style={{ font: '500 13px/1 var(--font-mono)', color: 'var(--qb-gold)', minWidth: 36 }}>{topic.num}</span>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
         <span style={{ font: '400 15px/1.35 var(--font-body)', color: topic.known === false ? 'var(--text-muted)' : 'var(--text-primary)', fontStyle: topic.known === false ? 'italic' : 'normal' }}>{topic.title || 'Título não disponível nos arquivos'}</span>
         <span style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '6px 14px' }}><StatusTag status={topic.status} /><Accuracy correct={topic.correct} wrong={topic.wrong} blank={topic.blank} /></span>
+        {entries.length>0 && <span aria-label="Recursos deste tópico" style={{display:'flex',flexWrap:'wrap',gap:'6px 12px'}}>
+          {entries.map(([action,count,singular,plural])=><button key={action} type="button" className="qb-linkbtn" onClick={()=>onAction?.(action,topic)}>{count} {count===1?singular:plural}</button>)}
+        </span>}
       </div>
       <div style={{ display: 'flex', gap: 2 }}>
         {ACTIONS.map(([id, icon, label]) => (
