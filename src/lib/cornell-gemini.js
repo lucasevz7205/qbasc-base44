@@ -1,5 +1,5 @@
 export function parseCornellGemini(reply) {
-  const raw = String(reply || "").trim().replace(/^\`{3}(?:json)?\s*/i, "").replace(/\s*\`{3}$/, "");
+  const raw = String(reply || "").trim().replace(/^`{3}(?:json)?\s*/i, "").replace(/\s*`{3}$/, "");
   const from = raw.indexOf("{"), to = raw.lastIndexOf("}");
   if (from < 0 || to <= from) throw new Error("O Gemini não retornou pistas estruturadas. O caderno não foi alterado.");
   let data;
