@@ -14,7 +14,7 @@ import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { groupResponsesByTopic } from '@/lib/daily-question-performance';
 
-function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
+function DailyQuestionLinks({ responses, data, edital, activeIds, go, title = 'Questões do dia' }) {
   const [open, setOpen] = React.useState(false);
   const [onlyErrors, setOnlyErrors] = React.useState(false);
   const grouped = new Map();
@@ -30,14 +30,14 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
   return (
     <Panel variant="ornate" style={{ display: 'grid', gap: 12 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'space-between' }}>
-        <h2 style={{ font: 'var(--type-h2)', margin: 0 }}>Questões do dia</h2>
+        <h2 style={{ font: 'var(--type-h2)', margin: 0 }}>{title}</h2>
         <Button size="sm" variant="secondary" icon={open ? 'chevron-up' : 'chevron-down'} aria-expanded={open} onClick={() => setOpen(value => !value)}>
           {open ? 'Recolher questões' : 'Ver questões'} · {grouped.size}
         </Button>
       </div>
       {open && <>
         <label className="qb-check"><input type="checkbox" checked={onlyErrors} onChange={event => setOnlyErrors(event.target.checked)} />Somente questões com erro</label>
-        {!rows.length && <EmptyState compact title="Nenhuma questão com erro nesta data" />}
+        {!rows.length && <EmptyState compact title="Nenhuma questão com erro neste recorte" />}
         {!!rows.length && <ul style={{ display: 'grid', gap: 10, margin: 0, listStyle: 'none', padding: 0 }}>
           {rows.map(([id, counts]) => {
             const q = byId.get(id);
@@ -52,7 +52,7 @@ function DailyQuestionLinks({ responses, data, edital, activeIds, go }) {
                   {counts.wrong > 0 && <Badge tone="incorrect">{counts.wrong} {counts.wrong === 1 ? 'erro' : 'erros'}</Badge>}
                   {counts.blank > 0 && <Badge tone="neutral">{counts.blank} em branco</Badge>}
                 </div>
-                {q?.statement && <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={q.statement}>{q.statement}</div>}
+                {q?.statement && <div style={{ overflowWrap: 'anywhere' }} title={q.statement}>{q.statement}</div>}
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {activeIds.has(id) && <Button size="sm" variant="secondary" icon="target" onClick={() => go('questions', { questionIds: [id], filter: 'all' })}>Refazer questão</Button>}
                   {map && <Button size="sm" variant="ghost" icon="network" onClick={() => go('map', { topicId: q.topicId, node, returnTo: { view: 'performance', label: 'Desempenho' } })}>{node ? 'Abrir nó no mapa' : 'Abrir mapa do tópico'}</Button>}
@@ -123,7 +123,7 @@ function Daily({ go }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Data<input type="date" className="qb-input" style={{ width: 170, colorScheme: 'dark' }} min={PF.days[0].date} max={P.today} value={date} onChange={e => e.target.value && setDate(e.target.value)} /></label>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Data<input type="date" className="qb-input" style={{ width: 170, colorScheme: 'dark' }} min={PF.days[0]?.date} max={P.today} value={date} onChange={e => e.target.value && setDate(e.target.value)} /></label>
         <Button size="sm" variant="secondary" disabled={date === P.today} onClick={() => setDate(P.today)}>Hoje</Button>
         <Badge tone="neutral" icon="info">Respostas confirmadas de treino</Badge>
       </div>
@@ -161,18 +161,32 @@ function Daily({ go }) {
   );
 }
 
-function Historic() {
-  const {QB_PERF,QB_EDITAL,QB_SIM}=useRealStudy();
+function Historic({ go }) {
+  const {QB_PERF,QB_EDITAL,QB_SIM,QB_PLAN,QB_DATA}=useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, E = QB_EDITAL, S = QB_SIM;
   const [period, setPeriod] = React.useState('14');
   const [group, setGroup] = React.useState('dia');
   const [subj, setSubj] = React.useState('all');
-  const days = PF.days.slice(-(+period)).map(M.dayStats);
+  const duration = Number(period);
+  const dateIndex = new Map(PF.days.map(day => [day.date, day]));
+  const getDays = offset => Array.from({ length: duration }, (_, index) => {
+    const date = QB_PLAN.addDays(QB_PLAN.today, index - duration + 1 + offset);
+    return M.dayStats(dateIndex.get(date) || { date, n: 0, correct: 0, wrong: 0, blank: 0 });
+  });
+  const days = getDays(0);
+  const previous = getDays(-duration);
+  const prevCorrect = previous.reduce((sum, day) => sum + day.correct, 0);
+  const prevValid = previous.reduce((sum, day) => sum + day.valid, 0);
+  const responses = days.flatMap(day => PF.attemptsByDay[day.date] || []);
+  const activeIds = new Set(QB_DATA.questionBank.map(question => question.id));
   const pts = group === 'dia' ? days.map(d => ({ x: M.fmtDate(d.date), y: d.valid ? d.accuracy : null, n: d.valid, vol: d.n }))
     : [days.slice(0, days.length - 7), days.slice(-7)].filter(w => w.length).map(w => { const c = w.reduce((a, d) => a + d.correct, 0), v = w.reduce((a, d) => a + d.valid, 0); return { x: M.fmtDate(w[0].date) + '–' + M.fmtDate(w[w.length - 1].date), y: v ? c / v * 100 : null, n: v, vol: w.reduce((a, d) => a + d.n, 0) }; });
   const tr = days.reduce((a, d) => ({ c: a.c + d.correct, v: a.v + d.valid, n: a.n + d.n }), { c: 0, v: 0, n: 0 });
   const sim = S.history.filter(h => h.correct != null).reduce((a, h) => ({ c: a.c + h.correct, v: a.v + h.correct + h.wrong, n: a.n + h.items }), { c: 0, v: 0, n: 0 });
-  const rows = (subj === 'all' ? E.subjects.map(s => ({ name: s.name, ...M.totals([s]) })) : E.subjects.find(s => s.id === subj).topics.map(t => ({ name: t.num + ' ' + (t.title || ''), ...M.totals([{ topics: [t] }]) })));
+  const subject = E.subjects.find(s => s.id === subj);
+  const rows = subject
+    ? subject.topics.map(t => ({ name: t.num + ' ' + (t.title || ''), ...M.totals([{ topics: [t] }]) }))
+    : E.subjects.map(s => ({ name: s.name, ...M.totals([s]) }));
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <Panel padding={12} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 10 }}>
@@ -185,6 +199,11 @@ function Historic() {
         <StatCard compact label="Revisões" value={M.pct(PF.review.correct + PF.review.wrong ? PF.review.correct / (PF.review.correct + PF.review.wrong) * 100 : null)} detail={PF.review.correct + '/' + (PF.review.correct + PF.review.wrong) + ' · contadas à parte'} />
         <StatCard compact label="Simulados (histórico)" value={M.pct(sim.v ? sim.c / sim.v * 100 : null)} detail={sim.c + '/' + sim.v + ' válidas · ' + S.history.filter(h => h.correct != null).length + ' provas'} note="Não somado ao treino" />
       </div>
+      {!!(tr.v && prevValid) && <Panel padding={12}>
+        <h2 style={{ font: 'var(--type-h2)' }}>Precisão entre períodos</h2>
+        <p>Atual ({M.fmtDate(days[0].date)} a {M.fmtDate(days.at(-1).date)}) · {M.pct(tr.c / tr.v * 100)} · {tr.v} válidas</p>
+        <p>Anterior ({M.fmtDate(previous[0].date)} a {M.fmtDate(previous.at(-1).date)}) · {M.pct(prevCorrect / prevValid * 100)} · {prevValid} válidas</p>
+      </Panel>}
       {group === 'mes' ? <EmptyState tone="small-sample" title="Agrupamento mensal indisponível" description="Selecione o agrupamento diário ou semanal." /> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16 }}>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Taxa de acertos · treino</span><LineChart data={pts} height={220} label="Taxa de acertos por período" /></Panel>
@@ -192,10 +211,11 @@ function Historic() {
         </div>
       )}
       <Panel>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 8 }}><h2 style={{ font: 'var(--type-h2)' }}>{subj === 'all' ? 'Comparação entre matérias' : 'Tópicos de ' + E.subjects.find(s => s.id === subj).name}</h2><span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Acumulado do edital (treino). Percentual sempre acompanhado das respostas que o sustentam.</span></div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 8 }}><h2 style={{ font: 'var(--type-h2)' }}>{subject ? 'Tópicos de ' + subject.name : 'Comparação entre matérias'}</h2><span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Acumulado do edital (treino). Percentual sempre acompanhado das respostas que o sustentam.</span></div>
         <div style={{ overflowX: 'auto' }}><table className="qb-table"><thead><tr><th>{subj === 'all' ? 'Matéria' : 'Tópico'}</th><th className="num">Taxa de acertos</th><th className="num">Válidas</th><th className="num">Brancos</th><th>Amostra</th></tr></thead>
           <tbody>{rows.map(r => <tr key={r.name}><td style={{ color: 'var(--text-primary)' }}>{r.name}</td><td className="num">{M.pct(r.accuracy)}</td><td className="num">{r.valid}</td><td className="num">{r.blank}</td><td>{r.valid === 0 ? <Badge tone="no-evidence">Sem dados</Badge> : r.valid < 20 ? <Badge tone="attention">Pequena</Badge> : <Badge tone="neutral" icon={null}>Adequada</Badge>}</td></tr>)}</tbody></table></div>
       </Panel>
+      {!!responses.length && <DailyQuestionLinks responses={responses} data={QB_DATA} edital={QB_EDITAL} activeIds={activeIds} go={go} title="Questões do período" />}
     </div>
   );
 }
@@ -213,11 +233,11 @@ const METHOD = [
 
 export default function PerformanceScreen({ tab = 'diaria', setTab, go }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div className="qb-performance" style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
       <PageHeader overline="Desempenho" title="Desempenho" description="Números calculados a partir das respostas registradas. Nenhum indicador é um diagnóstico."
         actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
       {tab === 'diaria' && <Daily go={go} />}
-      {tab === 'historica' && <Historic />}
+      {tab === 'historica' && <Historic go={go} />}
       {tab === 'metodo' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,340px),1fr))', gap: 12 }}>
           {METHOD.map(([i, t, d]) => <Panel key={t} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}><span style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(208,179,134,.55)', color: 'var(--qb-gold)' }}><Icon name={i} size={18} /></span><span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}><span style={{ font: '600 15px/1.3 var(--font-body)', color: 'var(--text-primary)' }}>{t}</span><span style={{ font: '400 14px/1.55 var(--font-body)', color: 'var(--text-secondary)' }}>{d}</span></span></Panel>)}
