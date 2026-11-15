@@ -6,6 +6,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { flashcardOptions } from '@/lib/study-session-rules';
 
 export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go, backTo }) {
   const {QB_DATA:D,QB_PLAN,save}=useRealStudy();
@@ -17,12 +18,15 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
   const parent = node && D.mapNodes.find(n => n.id === node.parent);
   const [error,setError]=React.useState('');
   const lock=React.useRef(false);
+  const previousReview = card ? D.reviews[card.id] || {} : {};
+  const options = flashcardOptions(previousReview.nivel);
+  const intervals = Object.fromEntries(Object.entries(options).map(([rating, option]) => [rating, option.label]));
   const rate=async r=>{
-    if(!card||lock.current)return;
+    const option = options[r];
+    if(!card||!option||lock.current)return;
     lock.current=true;setError('');
-    const prev=D.reviews[card.id]||{}, at=new Date().toISOString(), easy=r==='facil', hard=r==='dificil';
-    const nextLevel=r==='errei'?0:Math.min(4,(Number(prev.nivel)||0)+(easy?2:hard?0:1));
-    const interval=[1,3,7,15,30][nextLevel];
+    const prev = previousReview, at = new Date().toISOString();
+    const { level: nextLevel, days: interval } = option;
     try{
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:QB_PLAN.addDays(QB_PLAN.today,interval),ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval}]});
       setCards(c=>({...c,idx:c.idx+1,flipped:false,ratings:[...c.ratings,r]}));
@@ -60,7 +64,7 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
           </Panel>
         ) : (
           <>
-            <Flashcard key={idx} deck={card.topicId} demo={false} height={380} front={card.front}
+            <Flashcard key={idx} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
               back={<><p style={{ margin: 0, color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}>{card.back}</p><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate} />
