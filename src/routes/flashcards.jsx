@@ -14,6 +14,6 @@ export const Route = createFileRoute('/flashcards')({
 });
 
 function FlashcardsRoute() {
-  const { cards, setCards, elapsed, paused, onTogglePause, go, backTo } = useQBStudy();
-  return <FlashcardSessionView cards={cards} setCards={setCards} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} go={go} backTo={backTo} />;
+  const { cards, setCards, go, backTo } = useQBStudy();
+  return <FlashcardSessionView cards={cards} setCards={setCards} go={go} backTo={backTo} />;
 }
