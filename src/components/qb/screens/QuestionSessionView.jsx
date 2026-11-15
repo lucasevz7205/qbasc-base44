@@ -77,7 +77,7 @@ function SessionSummary({ answers, go, qs, ganBatch }) {
   );
 }
 
-export default function QuestionSessionView({ session, setSession, elapsed, paused, onTogglePause, go }) {
+export default function QuestionSessionView({ session, setSession, elapsed, paused, onTogglePause, go, backTo }) {
   const { QB_DATA, save } = useRealStudy();
   const qs = session.questionIds
     ? session.questionIds
@@ -178,7 +178,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!focus && (
-        <BrandHeader variant="compact" floating={false} onExit={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go('dashboard'))}>
+        <BrandHeader variant="compact" floating={false} onExit={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}>
           <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : 'Sessão de questões'}</span>
           <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{q?.chapter || 'Treinar'}</span>
         </BrandHeader>
@@ -193,7 +193,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
         onTogglePause={onTogglePause}
         focusMode={focus}
         onToggleFocus={() => patch({ focus: !focus })}
-        onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go('dashboard'))}
+        onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}
       />
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>

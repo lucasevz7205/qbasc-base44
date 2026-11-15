@@ -7,7 +7,7 @@ import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 
-export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go }) {
+export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go, backTo }) {
   const {QB_DATA:D,QB_PLAN,save}=useRealStudy();
   const deck=D.flashcards.filter(f=>!cards.topicId||f.topicId===cards.topicId);
   const { idx, flipped, ratings } = cards;
@@ -38,11 +38,11 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <BrandHeader variant="compact" floating={false} onExit={() => go('dashboard')}>
+      <BrandHeader variant="compact" floating={false} onExit={() => go(backTo || 'dashboard')}>
         <span className="qb-overline">Revisão espaçada</span>
         <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{card?.topicId||'Seus cartões'}</span>
       </BrandHeader>
-      <StudySessionHeader subject="Flashcards" topic={card?.topicId||""} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go('dashboard')} />
+      <StudySessionHeader subject="Flashcards" topic={card?.topicId||""} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         {error&&<p role="alert">{error}</p>}
         {!deck.length?<Panel>Sem cartões para este tópico. <Button onClick={()=>go('edital')}>Voltar ao edital</Button></Panel>:done ? (
