@@ -4,7 +4,7 @@ import { initialStudyClock, studyClockReducer } from '@/lib/study-clock';
 const StudyClockContext = React.createContext(null);
 const ActivityDispatch = React.createContext(null);
 
-export function StudyClockProvider({ children }) {
+export function StudyClockProvider({ children, onOpen }) {
   const [state, dispatch] = React.useReducer(studyClockReducer, initialStudyClock);
   const send = React.useCallback(action => dispatch({ ...action, now: performance.now() }), []);
   React.useEffect(() => {
@@ -14,7 +14,7 @@ export function StudyClockProvider({ children }) {
     return () => document.removeEventListener('visibilitychange', updateVisibility);
   }, [send]);
 
-  const value = React.useMemo(() => ({ state, send }), [state, send]);
+  const value = React.useMemo(() => ({ state, send, onOpen }), [state, send, onOpen]);
   return (
     <ActivityDispatch.Provider value={send}>
       <StudyClockContext.Provider value={value}>{children}</StudyClockContext.Provider>
