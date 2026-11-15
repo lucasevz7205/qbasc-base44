@@ -2,9 +2,10 @@ import React from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Icon } from "@/components/qb/core/Icon";
 import { Button } from "@/components/qb/core/Button";
+import { ConfirmDialog } from "@/components/qb/feedback/ConfirmDialog";
 import { useRealStudy } from "@/lib/qb-real-data";
 import { proposeEditorialRevision } from "@/lib/server-fns";
-import { makeEditorialEntry } from "@/lib/editorial-overrides";
+import { makeEditorialEntry, makeDirectQuestionOverwrite } from "@/lib/editorial-overrides";
 
 const ISSUES = [
   ["formulacao", "Má formulação"],
@@ -33,7 +34,7 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
   const requestProposal = useServerFn(proposeEditorialRevision);
   const { records, save } = useRealStudy();
   const versions = (records.curadoria || [])
-    .filter(x => x.kind === kind && x.targetId === item.id && x.status === "aprovada")
+    .filter(x => x.kind === kind && x.targetId === item.id && ["aprovada", "sobrescrita"].includes(x.status))
     .sort((a, b) => Number(b.version || 0) - Number(a.version || 0));
   const previous = versions[0] || null;
   const [expanded, setExpanded] = React.useState(false);
@@ -41,6 +42,7 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
   const [note, setNote] = React.useState("");
   const [proposal, setProposal] = React.useState(null);
   const [approval, setApproval] = React.useState(false);
+  const [confirmOverwrite, setConfirmOverwrite] = React.useState(false);
   const [generating, setGenerating] = React.useState(false);
   const [saving, setSaving] = React.useState(false);
   const [error, setError] = React.useState("");
@@ -65,6 +67,27 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
   const change = (field, value) => setProposal(p => ({
     ...p, replacement: { ...p.replacement, [field]: value }
   }));
+
+  const overwriteOriginal = async () => {
+    if (!isQuestion || !proposal || !approval || saving || disabled || !item.raw) return;
+    setConfirmOverwrite(false);
+    setSaving(true); setError(""); setNotice("");
+    try {
+      // Respostas já registradas, SRS, rodadas e remissões ficam intactos.
+      const { backup, updatedQuestion } = makeDirectQuestionOverwrite({
+        question: item, proposal, previous, issue, note,
+      });
+      // Cópia de segurança obrigatória antes de gravar sobre o registro anterior.
+      await save("curadoria", backup.id, backup);
+      await save("questoes", item.id, updatedQuestion);
+      setNotice("Questão anterior substituída no banco, com o mesmo ID. A cópia anterior ficou salva na curadoria; acertos e erros anteriores não foram alterados.");
+      setProposal(null);
+      setApproval(false);
+    } catch (err) {
+      setError("A substituição não foi concluída: " + (err?.message || "falha ao salvar") +
+        ". A operação não altera respostas anteriores. Se a cópia de segurança tiver sido criada, ela permanece disponível.");
+    } finally { setSaving(false); }
+  };
 
   const approve = async () => {
     if (!proposal || !approval || saving || disabled) return;
@@ -173,12 +196,18 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
               <label style={{ display: "flex", alignItems: "flex-start", gap: 10, font: "400 14px/1.5 var(--font-body)", color: "var(--text-primary)" }}>
                 <input type="checkbox" checked={approval} onChange={e => setApproval(e.target.checked)}
                   style={{ marginTop: 4, accentColor: "var(--qb-gold)", minWidth: 18, minHeight: 18 }} />
-                Revisei a proposta e a referência, e autorizo criar uma nova versão editorial deste {label}.
+                Revisei a proposta e a referência. Autorizo salvar a nova versão ou, no caso de uma questão, substituir o registro anterior após confirmar.
               </label>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <Button icon="check" disabled={!approval || saving || generating} loading={saving} onClick={approve}>
                   Aprovar e salvar nova versão
                 </Button>
+                {isQuestion && (
+                  <Button variant="secondary" icon="save" disabled={!approval || saving || generating || !item.raw}
+                    onClick={() => setConfirmOverwrite(true)}>
+                    Salvar sobre a questão anterior
+                  </Button>
+                )}
                 <Button variant="secondary" icon="x" disabled={saving} onClick={() => { setProposal(null); setApproval(false); }}>
                   Descartar proposta
                 </Button>
@@ -187,6 +216,16 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
           )}
         </div>
       )}
+      <ConfirmDialog
+        open={confirmOverwrite}
+        tone="attention"
+        title="Substituir a questão já cadastrada?"
+        description="O enunciado, gabarito, comentário e referência serão atualizados na mesma questão, mesmo que você já tenha acertado ou errado. Antes disso, será salva uma cópia da versão anterior. Respostas e históricos existentes não serão apagados nem recalculados."
+        confirmLabel="Confirmar substituição"
+        cancelLabel="Manter questão anterior"
+        onCancel={() => setConfirmOverwrite(false)}
+        onConfirm={overwriteOriginal}
+      />
     </section>
   );
 }
