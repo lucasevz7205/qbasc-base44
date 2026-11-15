@@ -1,6 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
+import { secrets } from "base44:runtime";
+import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
@@ -49,8 +51,13 @@ const TutorInputSchema = z.object({
 });
 
 export const askArchitectTutor = createServerFn({ method: "POST" })
+  .middleware([requireUser])
   .validator(TutorInputSchema)
   .handler(async ({ data, context }) => {
+    // O QBAsc permite o estudo apenas à conta administradora.
+    if (context.user?.role !== "admin") {
+      throw new Error("Acesso restrito ao tutor do QBAsc.");
+    }
     const base44 = context.getBase44();
     const historyBlock = (data.history || [])
       .slice(-10)
@@ -70,6 +77,16 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
+    // Apenas o chat migra para Gemini mediante opção explícita no servidor.
+    // Na falha externa, nunca consumir créditos Base44 por fallback silencioso.
+    const provider = secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44";
+    if (provider === "gemini") {
+      return invokeGeminiTutor({
+        apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
+        model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+        prompt,
+      });
+    }
     const res = await base44.asServiceRole.integrations.Core.InvokeLLM({ prompt });
     const reply = typeof res === "string" ? res.trim() : JSON.stringify(res);
     return { reply };
