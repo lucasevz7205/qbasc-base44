@@ -10,13 +10,15 @@ import { RescheduleActions } from '@/components/qb/planning/RescheduleActions';
 import { CycleConfigurator } from '@/components/qb/planning/CycleConfigurator';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
-import { QB_EDITAL, QB_PLAN, QB_PERF, QB_METRICS } from '@/lib/qb-data';
+import { QB_METRICS } from '@/lib/qb-data';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 const WDL = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
 
 export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, toast }) {
+  const { QB_EDITAL, QB_PLAN, QB_PERF, save } = useRealStudy();
   const P = QB_PLAN, M = QB_METRICS;
-  const [tasks, setTasks] = React.useState(() => [...P.weeks['-1'], ...P.weeks[0], ...P.weeks[1]]);
+  const [tasks, setTasks] = React.useState(() => P.tasks);
   const [offset, setOffset] = React.useState(0);
   const [selDate, setSelDate] = React.useState(P.today);
   const [selTask, setSelTask] = React.useState(null);
@@ -25,7 +27,6 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
   const [undo, setUndo] = React.useState(null);
   const [hours, setHours] = React.useState(P.hours);
   const [cycle, setCycle] = React.useState(P.cycle);
-  React.useEffect(() => { [-1, 0, 1].forEach(o => { P.weeks[o] = tasks.filter(t => t.date >= P.weekStart(o) && t.date <= P.addDays(P.weekStart(o), 6)); }); }, [tasks, P]);
 
   const dl = iso => { const d = new Date(iso + 'T12:00:00Z'); return WDL[d.getUTCDay()] + ' ' + M.fmtDate(iso); };
   const start = P.weekStart(offset), end = P.addDays(start, 6);
@@ -55,14 +56,28 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
     }
     setPreview({ action, description: desc, skipped, changes: ch.map(c => ({ id: c.t.id, title: (c.t.topicNum ? c.t.topicNum + ' ' : '') + c.t.title, from: dl(c.t.date) + (c.t.status === 'late' ? ' (atrasada)' : ''), to: dl(c.to), _to: c.to })) });
   };
-  const apply = () => {
+  const [saving,setSaving]=React.useState(false);
+  const updateTasks=async (changes)=>{
+    if(saving)return false;
+    setSaving(true);
+    try{
+      for(const [task,next] of changes) {
+        const raw=await save('planejamento',task.id,{...task.raw,...next,atualizadoEm:new Date().toISOString()});
+        setTasks(rows=>rows.map(t=>t.id===task.id?{...t,raw,date:raw.data,status:raw.status==='concluida'?'done':raw.data<P.today?'late':'pending'}:t));
+      }
+      return true;
+    }catch{toast?.({tone:'error',title:'Falha ao salvar',message:'Os ajustes confirmados antes da falha foram preservados.'});return false;}
+    finally{setSaving(false);}
+  };
+  const apply = async () => {
     const prev = tasks;
     const map = Object.fromEntries(preview.changes.map(c => [c.id, c._to]));
-    setTasks(ts => ts.map(t => map[t.id] ? { ...t, date: map[t.id], status: 'pending' } : t));
+    if(!await updateTasks(tasks.filter(t=>map[t.id]).map(t=>[t,{data:map[t.id]}])))return;
     const msg = preview.changes.length + ' atividades reagendadas. Nada foi concluído ou apagado.';
     setUndo({ prev, msg }); setPreview(null);
-    toast && toast({ tone: 'success', title: 'Cronograma ajustado', message: msg, action: { label: 'Desfazer', onClick: () => { setTasks(prev); setUndo(null); } } });
+    toast && toast({ tone: 'success', title: 'Cronograma ajustado', message: msg });
   };
+  const restore=async prev=>{if(await updateTasks(prev.flatMap(old=>{const cur=tasks.find(t=>t.id===old.id);return cur&&cur.date!==old.date?[[cur,{data:old.date}]]:[];})))setUndo(null);};
   const previews = preview ? Object.fromEntries(preview.changes.map(c => [c.id, '→ ' + c.to])) : {};
 
   const today = QB_PERF.days[QB_PERF.days.length - 1];
@@ -75,13 +90,13 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
 
   const reschedule = (
     <RescheduleActions dayLabel={dl(selDate)} quantity={qty} onQuantity={setQty} counts={{ late: late.filter(t => !t.auto).length, day: dayMovable.length, week: weekPending.length + late.filter(t => !t.auto).length }}
-      preview={preview} onPreview={compute} onConfirm={apply} onCancel={() => setPreview(null)} lastApplied={undo && undo.msg} onUndo={() => { setTasks(undo.prev); setUndo(null); }}
+      preview={preview} onPreview={compute} onConfirm={apply} onCancel={() => setPreview(null)} lastApplied={undo && undo.msg} onUndo={() => { restore(undo.prev); }}
       onEdit={() => { setTab && setTab('semana'); setSelDate(P.today); compute('pull'); }} />
   );
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-      <PageHeader overline="Planejamento de estudos · dados demonstrativos" title="Planejamento" description="Tarefas do dia, calendário da semana e sequência do ciclo de matérias."
+      <PageHeader overline="Planejamento de estudos" title="Planejamento" description="Tarefas do dia, calendário da semana e sequência do ciclo de matérias."
         actions={<Tabs label="Visualização do planejamento" value={tab} onChange={setTab} items={[{ id: 'hoje', label: 'Hoje', icon: 'calendar' }, { id: 'semana', label: 'Semana', icon: 'calendar-days' }, { id: 'ciclos', label: 'Ciclos', icon: 'repeat' }]} />} />
       <Panel padding={16} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 16, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -103,7 +118,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
       {tab === 'hoje' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,420px),1fr))', gap: 16, alignItems: 'start' }}>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}><h2 style={{ font: 'var(--type-h2)', flex: 1 }}>Hoje · {dl(P.today)}</h2><span style={{ font: '400 13px/1 var(--font-mono)', color: 'var(--text-muted)' }}>{Math.round(todayTasks.reduce((a, t) => a + t.minutes, 0) / 6) / 10} h planejadas · {hours[6]} h disponíveis</span></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}><h2 style={{ font: 'var(--type-h2)', flex: 1 }}>Hoje · {dl(P.today)}</h2><span style={{ font: '400 13px/1 var(--font-mono)', color: 'var(--text-muted)' }}>{Math.round(todayTasks.reduce((a, t) => a + t.minutes, 0) / 6) / 10} h planejadas · {hours[new Date(P.today+'T12:00:00Z').getUTCDay()] || '—'} h disponíveis</span></div>
             {todayTasks.map(t => <TaskCard key={t.id} task={t} selected={t.id === selTask} preview={previews[t.id]} onClick={() => setSelTask(t.id)} />)}
             {late.length > 0 && <>
               <span className="qb-overline" style={{ color: 'var(--state-incorrect)', marginTop: 8 }}>Atrasadas · {late.length}</span>
@@ -119,7 +134,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
                 <span style={{ font: '400 14px/1.4 var(--font-body)', color: 'var(--text-secondary)' }}>{sel.subject} · {sel.minutes} min · {dl(sel.date)}{sel.auto ? ' · revisão automática' : ''}</span>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   <Button icon="play" onClick={() => go(sel.type === 'questoes' || sel.type === 'revisao' ? 'questions' : sel.type === 'flashcards' ? 'flashcards' : sel.type === 'simulado' ? 'simulado' : 'study')}>Iniciar</Button>
-                  <Button variant="secondary" icon="check" disabled={sel.status === 'done'} onClick={() => { setTasks(ts => ts.map(t => t.id === sel.id ? { ...t, status: 'done' } : t)); toast && toast({ tone: 'success', title: 'Tarefa concluída' }); }}>Marcar concluída</Button>
+                  <Button variant="secondary" icon="check" disabled={saving || sel.status === 'done'} onClick={async () => { if(await updateTasks([[sel,{status:'concluida',concluidaEm:new Date().toISOString()}]]))toast?.({tone:'success',title:'Tarefa concluída'}); }}>Marcar concluída</Button>
                   <Button variant="ghost" icon="sparkles" onClick={() => openArchitect && openArchitect({ subjectId: sel.subjectId, origin: 'tarefa de ' + dl(sel.date) })}>O Arquiteto</Button>
                 </div>
               </Panel>
@@ -136,7 +151,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
             <WeekCalendar days={days} today={P.today} selectedDate={selDate} onSelectDay={d => { setSelDate(d); setPreview(null); }} selectedTaskId={selTask} onSelectTask={t => setSelTask(t.id)} previews={previews}
               weekLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end) + (offset === 0 ? ' · semana atual' : '')} onPrevWeek={() => setOffset(o => Math.max(-1, o - 1))} onNextWeek={() => setOffset(o => Math.min(1, o + 1))} onToday={() => setOffset(0)} isCurrentWeek={offset === 0} />
           </Panel>
-          <span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Demonstração com 3 semanas (anterior, atual e próxima). Carga da semana: {Math.round(days.reduce((a, d) => a + d.tasks.reduce((x, t) => x + t.minutes, 0), 0) / 60)} h planejadas · {Math.round(days.reduce((a, d) => a + d.tasks.filter(t => t.status === 'done').reduce((x, t) => x + t.minutes, 0), 0) / 60)} h realizadas · {hours.reduce((a, b) => a + b, 0)} h disponíveis.</span>
+          <span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}> Carga da semana: {Math.round(days.reduce((a, d) => a + d.tasks.reduce((x, t) => x + t.minutes, 0), 0) / 60)} h planejadas · {Math.round(days.reduce((a, d) => a + d.tasks.filter(t => t.status === 'done').reduce((x, t) => x + t.minutes, 0), 0) / 60)} h realizadas · {hours.reduce((a, b) => a + b, 0)} h disponíveis.</span>
         </div>
       )}
 
