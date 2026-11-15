@@ -72,7 +72,6 @@ export function QBStudyProvider({ children }) {
     focus: false,
     collapsed: false,
     sync: 'ok',
-    quick: false,
     studio: { open: false },
     ctx: null,
     toasts: [],
@@ -167,7 +166,6 @@ export function QBStudyProvider({ children }) {
       ...u,
       ctx: ctx || u.ctx,
       studio: { open: true, tool },
-      quick: false,
     }));
   }, []);
 
