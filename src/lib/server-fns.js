@@ -4,6 +4,7 @@ import { requireUser } from "@/lib/auth-middleware";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
+import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -110,6 +111,67 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
 /**
  * Correção explícita da tentativa, sem modificar flashcard, gabarito ou SRS.
  */
+
+/**
+ * Curadoria sob demanda: a IA propõe; o estudante revisa e aprova em outra ação.
+ * Não escreve no banco nem chama InvokeLLM como fallback.
+ */
+const EditorialSuggestionSchema = z.object({
+  kind: z.enum(["question", "flashcard"]),
+  issue: z.enum(["formulacao", "gabarito", "fundamentacao", "desatualizacao", "outro"]),
+  note: z.string().max(500).optional().default(""),
+  topicLabel: z.string().min(1).max(300),
+  content: z.object({
+    id: z.string().min(1).max(160),
+    front: z.string().max(2600).optional(),
+    back: z.string().max(6000).optional(),
+    statement: z.string().max(4000).optional(),
+    key: z.enum(["C", "E"]).optional(),
+    explanation: z.string().max(6500).optional(),
+    basis: z.string().max(2000).optional(),
+    origin: z.string().max(300).optional(),
+    node: z.string().max(200).optional(),
+  }),
+});
+
+export const proposeEditorialRevision = createServerFn({ method: "POST" })
+  .middleware([requireUser])
+  .validator(EditorialSuggestionSchema)
+  .handler(async ({ data, context }) => {
+    if (context.user?.role !== "admin") throw new Error("Acesso editorial restrito ao administrador do QBAsc.");
+    const c = data.content;
+    if (data.kind === "question" && (!c.statement || !c.key)) throw new Error("Questão inválida para curadoria.");
+    if (data.kind === "flashcard" && (!c.front || !c.back)) throw new Error("Flashcard inválido para curadoria.");
+    const prompt = [
+      "Você é O Arquiteto, curador pedagógico de questões CEBRASPE e cartões de evocação ativa do Quebrando a Banca A Ascensão.",
+      "Avalie a queixa com rigor. Não considere automaticamente que o estudante esteja certo.",
+      "FONTE: use EXCLUSIVAMENTE o enunciado, o gabarito, o comentário, o verso e a base textual fornecidos. Referência bibliográfica isolada NÃO é evidência do teor de uma lei.",
+      "Não crie artigos, jurisprudência, números, prazos ou fontes que não estejam transcritos no conteúdo enviado.",
+      "Se não houver suporte textual bastante para alterar uma resposta factual ou gabarito, conserve a resposta/gabarito anterior, proponha somente melhoria de redação e deixe needsHumanReview=true.",
+      "Se houver ambiguidade não resolvida, sinalize no parecer e deixe needsHumanReview=true. Não invente correção para preencher campos.",
+      "Questão: preserve padrão Certo/Errado, teste uma regra, com uma resposta inequívoca; comentário aponta trecho decisivo; item errado inclui versão correta por extenso quando comprovável.",
+      "Flashcard: uma pergunta e uma resposta precisa; elimine vagueza e jargão solto; se mistura duas ideias, explique no parecer, mas proponha apenas UM cartão neste fluxo, sem novos IDs.",
+      "Preserve o vínculo com o mesmo assunto e nó, e não afirme proveniência de prova real quando um enunciado tiver sido reescrito.",
+      "Retorne SOMENTE JSON válido, sem markdown, notas fora do JSON ou comentários.",
+      'Para questão: {"parecer":"motivo objetivo","needsHumanReview":true,"replacement":{"statement":"enunciado revisado","key":"C ou E","explanation":"comentário fundamentado","basis":"referência original, se houver"}}',
+      'Para flashcard: {"parecer":"motivo objetivo","needsHumanReview":true,"replacement":{"front":"pergunta revisada","back":"resposta corrigida","basis":"fonte original, se houver"}}',
+      `Tipo: ${data.kind === "question" ? "questão CEBRASPE C/E" : "flashcard"}`,
+      `Assunto: ${data.topicLabel}`,
+      `Problema: ${data.issue}`,
+      `Observação do estudante: ${data.note || "Nenhuma"}`,
+      `ID de origem: ${c.id}; Nó: ${c.node || "não vinculado"}`,
+      data.kind === "question"
+        ? `ENUNCIADO ORIGINAL: ${c.statement}\nGABARITO ORIGINAL: ${c.key}\nCOMENTÁRIO ORIGINAL: ${c.explanation || "ausente"}\nREFERÊNCIA ORIGINAL: ${c.basis || "ausente"}\nORIGEM: ${c.origin || "não informada"}`
+        : `FRENTE ORIGINAL: ${c.front}\nVERSO ORIGINAL: ${c.back}\nFONTE ORIGINAL: ${c.basis || "ausente"}`,
+    ].join("\n\n");
+    const result = await invokeGeminiTutor({
+      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
+      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      prompt,
+    });
+    return parseEditorialSuggestion(result.reply, data.kind);
+  });
+
 const FlashcardCorrectionSchema = z.object({
   cardId: z.string().min(1).max(160),
   topicLabel: z.string().min(1).max(300),
