@@ -15,6 +15,7 @@ export default function ConceptPanel({
   title,
   path = [],
   mastery,
+  performance,
   summary,
   example,
   trap,
@@ -74,6 +75,26 @@ export default function ConceptPanel({
             </div>
           )}
         </header>
+        {performance && (
+          <section aria-label="Aproveitamento do nó" style={{ display: 'grid', gap: 8 }}>
+            <H>Aproveitamento{performance.includesChildren ? ' · inclui sub-ramos' : ''}</H>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 8 }}>
+              {[
+                ['Questões', performance.questions],
+                ['Flashcards', performance.flashcards],
+              ].map(([label, stats]) => (
+                <div key={label} style={{ background: 'var(--surface-sunken)', padding: 10, borderRadius: 10, display: 'grid', gap: 4 }}>
+                  <span style={{ color: 'var(--text-secondary)' }}>{label}</span>
+                  {stats.rate === null ? <small>Sem evidência</small> : <>
+                    <strong style={{ color: 'var(--state-' + (stats.status === 'progress' ? 'progress' : stats.status) + ')' }}>{Math.round(stats.rate)}%</strong>
+                    <small>{stats.correct}/{stats.total} {label === 'Questões' ? 'respostas válidas' : 'avaliações'}</small>
+                  </>}
+                </div>
+              ))}
+            </div>
+            <small style={{ color: 'var(--text-muted)' }}>Questões em branco ficam fora do cálculo. Em flashcards, Bom e Fácil contam como acerto.</small>
+          </section>
+        )}
         {summary && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <H>Resumo</H>
