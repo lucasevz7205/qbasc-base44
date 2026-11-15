@@ -1,8 +1,9 @@
-import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
+import { HeadContent, Outlet, Scripts, createRootRoute, useLocation } from "@tanstack/react-router";
 import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary";
 import { NotFound } from "@/components/NotFound";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/AuthContext";
+import { isAuthPage } from "@/lib/authReturnTo";
 import { RealStudyGate } from "@/lib/qb-real-data";
 import { QBStudyProvider } from "@/lib/QBStudyContext";
 import { Base44Scripts } from "base44:document";
@@ -29,13 +30,16 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const pathname = useLocation({ select: location => location.pathname });
   return (
     <AuthProvider>
-      <RealStudyGate>
-      <QBStudyProvider>
-        <Outlet />
-      </QBStudyProvider>
-      </RealStudyGate>
+      {isAuthPage(pathname) ? <Outlet /> : (
+        <RealStudyGate>
+          <QBStudyProvider>
+            <Outlet />
+          </QBStudyProvider>
+        </RealStudyGate>
+      )}
       <Toaster />
     </AuthProvider>
   );
