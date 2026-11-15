@@ -45,27 +45,31 @@ function ReviewRecord({ item }) {
   );
 }
 
-export default function StudyScreen({ tab = 'mapa', setTab, go, mapProps }) {
+export default function StudyScreen({ tab = 'mapa', setTab, go, mapProps, lastDeckTopicId, dispatch }) {
   const { QB_DATA, QB_EDITAL, QB_PLAN } = useRealStudy();
   const allSubjects = QB_DATA.studySubjects?.length ? QB_DATA.studySubjects : QB_EDITAL.subjects;
   const topics = allSubjects.flatMap(s => s.topics.map(t => ({ ...t, subject: s.name, subjectShort: s.short, subjectId: s.id })));
   const selected = topics.find(t => t.id === mapProps?.studyTopicId);
-  const [filter, setFilter] = React.useState('');
+  const [deckTopicId, setDeckTopicId] = React.useState(lastDeckTopicId || '');
   const [resRadialOpen, setResRadialOpen] = React.useState(false);
   const [resRadialSel, setResRadialSel] = React.useState({ subjectId: selected?.subjectId || null, topicId: null });
 
-  const normalized = value =>
-    String(value || '')
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  const search = normalized(filter.trim());
-  const matching = topics.filter(t => normalized(t.num + ' ' + t.title + ' ' + t.subject).includes(search));
   const byTopic = new Map();
   for (const card of QB_DATA.flashcards) {
     if (!byTopic.has(card.topicId)) byTopic.set(card.topicId, []);
     byTopic.get(card.topicId).push(card);
   }
+
+  const deckCounts = Object.fromEntries([...byTopic].map(([id, cards]) => [id, cards.length]));
+  const deckSubjects = allSubjects
+    .map(subject => ({ ...subject, topics: subject.topics.filter(topic => deckCounts[topic.id] > 0) }))
+    .filter(subject => subject.topics.length > 0);
+  const deckTopic = topics.find(topic => topic.id === deckTopicId && deckCounts[topic.id] > 0);
+  const deck = byTopic.get(deckTopic?.id) || [];
+  const due = deck.filter(card => {
+    const next = QB_DATA.reviews[card.id]?.prox;
+    return !next || next <= QB_PLAN.today;
+  }).length;
 
   const resourceCounts = React.useMemo(() => {
     const out = {};
@@ -187,31 +191,29 @@ export default function StudyScreen({ tab = 'mapa', setTab, go, mapProps }) {
         </>
       )}
       {tab === 'cards' && (
-        <>
-          <label style={{ display: 'grid', gap: 6 }}>
-            Buscar baralho no edital
-            <input className="qb-input" value={filter} onChange={e => setFilter(e.target.value)} placeholder="Matéria, número ou assunto" />
-          </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,260px),1fr))', gap: 14 }}>
-            {matching
-              .filter(t => t.resources.cards > 0)
-              .map(t => {
-                const deck = byTopic.get(t.id) || [];
-                const available = deck.filter(c => {
-                  const next = QB_DATA.reviews[c.id]?.prox;
-                  return !next || next <= QB_PLAN.today;
-                }).length;
-                return (
-                  <Panel key={t.id} style={{ display: 'grid', gap: 10, alignContent: 'start' }}>
-                    <span className="qb-overline">{t.subject}</span>
-                    <h3 style={{ font: 'var(--type-h2)' }}>{t.num} {t.title}</h3>
-                    <span>{deck.length} flashcards · {available} disponíveis para revisar</span>
-                    <Button icon="play" onClick={() => go('flashcards', { topicId: t.id })}>Abrir baralho</Button>
-                  </Panel>
-                );
-              })}
-          </div>
-          {!matching.some(t => t.resources.cards > 0) && <EmptyState title="Nenhum baralho encontrado" />}
+        deckSubjects.length === 0 ? <EmptyState title="Nenhum baralho disponível" /> : <>
+          <StudyTopicPicker
+            label="Baralho de flashcards"
+            subjects={deckSubjects}
+            value={deckTopic?.id || ''}
+            counts={deckCounts}
+            countLabel={['flashcard', 'flashcards']}
+            onSelect={({ topicId }) => setDeckTopicId(topicId)}
+          />
+          {deckTopic ? (
+            <Panel style={{ display: 'grid', gap: 10, alignContent: 'start' }}>
+              <span className="qb-overline">{deckTopic.subject}</span>
+              <h2 style={{ font: 'var(--type-h2)' }}>{deckTopic.num} {deckTopic.title}</h2>
+              <span>{deck.length} {deck.length === 1 ? 'flashcard' : 'flashcards'} · {due} para revisar hoje</span>
+              <div>
+                <Button icon="play" onClick={() => dispatch({ action: 'review', subjectId: deckTopic.subjectId, topicId: deckTopic.id }, 'study')}>
+                  Abrir baralho
+                </Button>
+              </div>
+            </Panel>
+          ) : (
+            <EmptyState title="Escolha uma matéria e um assunto" description="Abra o seletor para ver os baralhos da matéria escolhida." />
+          )}
         </>
       )}
     </div>
