@@ -1,5 +1,23 @@
+import { BrandLogo } from "@/components/qb/brand/BrandLogo";
+
 // Full-screen card shared by the auth pages; it sets its own color tokens so it stays readable under any theme.
-export function AuthLayout({ icon: Icon, title, subtitle, footer, children }) {
+export function AuthLayout({ icon: Icon, title, subtitle, footer, children, ascension = false }) {
+  if (ascension) {
+    return (
+      <main className="qb-auth-ascension">
+        <div className="qb-auth-ascension__scene qb-img qb-scene-night" aria-hidden="true" />
+        <div className="qb-auth-ascension__inner">
+          <BrandLogo variant="q-full" size={110} />
+          <section className="qb-auth-ascension__card" aria-labelledby="qb-auth-title">
+            <h1 id="qb-auth-title"><Icon size={24} aria-hidden="true" />{title}</h1>
+            {subtitle && <p className="qb-auth-ascension__subtitle">{subtitle}</p>}
+            {children}
+          </section>
+          {footer && <p className="qb-auth-ascension__footer">{footer}</p>}
+        </div>
+      </main>
+    );
+  }
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 text-foreground">
       <div className="w-full max-w-md">
