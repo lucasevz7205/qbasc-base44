@@ -7,6 +7,7 @@ import { EmptyState } from '@/components/qb/data/EmptyState';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
+import AcervoPegadinhasV1 from '@/components/qb/study/AcervoPegadinhasV1';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { questionTrainingProgress } from '@/lib/study-session-rules';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
@@ -178,6 +179,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
         ))}
       </Panel>
       <PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} />
+      <AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} />
     </div>
   );
 }
