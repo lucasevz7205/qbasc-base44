@@ -1,3 +1,5 @@
+import { applyEditorialOverlays } from '@/lib/editorial-overrides';
+
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
 const firstText = (...values) => values.map(str).find(value => value.trim()) || '';
@@ -125,7 +127,7 @@ export function adaptStudy(records, user, now = new Date()) {
         if(num(r.tentativas)||num(r.acertos)||num(r.erros)||num(r.brancos)){
           const p=progress[topic.id];
           p.answered++;
-          if(keyOf(r.ultimaMarcada)===keyOf(q.gabarito))p.latestCorrect++;
+          if(keyOf(r.ultimaMarcada)===keyOf(r.gabaritoUsado || q.gabarito))p.latestCorrect++;
           if(r.noCaderno)p.errorsNotebook++;
           if(isRetained(r))p.retained++;
         }
@@ -137,6 +139,8 @@ export function adaptStudy(records, user, now = new Date()) {
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
     questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
   }
+  // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
+  const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));
   const statusRank={'not-started':0,studying:1,reviewing:2,mastered:3};
   for(const t of Object.values(topics)){
     const b=t.resources, p=progress[t.id], tutory=p.tutory;
@@ -184,9 +188,9 @@ export function adaptStudy(records, user, now = new Date()) {
     if(!Array.isArray(entry))return null;
     const [sigla, label, planned]=entry; const n=planned??label;
     const id=String(sigla??'').toLowerCase();
-    return {id,name:subjects[id]?.name||(typeof label==='string'?label:sigla),planned:num(n),available:questionBank.filter(q=>q.subjectId===id).length};
+    return {id,name:subjects[id]?.name||(typeof label==='string'?label:sigla),planned:num(n),available:curated.questions.filter(q=>q.subjectId===id).length};
   }).filter(Boolean)}));
-  const examItems=examBlocks.flatMap(b=>b.subjects.flatMap(s=>questionBank.filter(q=>q.subjectId===s.id).slice(0,s.planned).map(q=>({id:q.id,s:s.name,key:q.key,text:q.statement}))));
+  const examItems=examBlocks.flatMap(b=>b.subjects.flatMap(s=>curated.questions.filter(q=>q.subjectId===s.id).slice(0,s.planned).map(q=>({id:q.id,s:s.name,key:q.key,text:q.statement}))));
   const history=source('simulados').map(s=>{
     const items=arr(s.itens), result=zero();
     if(s.tipo==='obj')for(const i of items){
@@ -201,6 +205,6 @@ export function adaptStudy(records, user, now = new Date()) {
   const next=tasks.find(t=>t.type==='simulado'&&t.date>=today&&t.status!=='done');
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
-  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:questionBank,flashcards:uniqueCards,questionBank,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
+  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:curated.questions,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
   return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }
