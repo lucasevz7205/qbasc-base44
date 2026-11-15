@@ -68,6 +68,7 @@ export function QBStudyProvider({ children }) {
     flipped: false,
     ratings: [],
   });
+  const [studyTopicId,setStudyTopicId]=React.useState(null);
   const [mapSel, setMapSel] = React.useState('em');
   const [returnTo, setReturnTo] = React.useState(null);
   const [elapsed, setElapsed] = React.useState(0);
@@ -130,6 +131,12 @@ export function QBStudyProvider({ children }) {
 
   const go = React.useCallback(
     (nextView, arg) => {
+      if(nextView==='study' && arg?.topicId){
+        setStudyTopicId(arg.topicId);
+        setSubs(s=>({...s,study:'recursos'}));
+        navigate({to:'/estudo'});
+        return;
+      }
       if (nextView === 'map') {
         const o = arg || {};
         if (o.node || o.topicId) setMapSel(o.node || QB_DATA.roots[o.topicId] || '__no_map__');
@@ -177,6 +184,7 @@ export function QBStudyProvider({ children }) {
   const mapProps = React.useMemo(
     () => ({
       selected: mapSel,
+      studyTopicId,
       setSelected: setMapSel,
       returnTo,
       onReturn: () => {
@@ -185,7 +193,7 @@ export function QBStudyProvider({ children }) {
         if (r && r.view) go(r.view, {resume:true});
       },
     }),
-    [mapSel, returnTo, go],
+    [mapSel, studyTopicId, returnTo, go],
   );
 
   const currentQId = session.questionIds?.[session.idx];
