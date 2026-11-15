@@ -10,7 +10,7 @@ export const initialStudyClock = { ...emptySession, activity: null, visible: tru
 export function studyClockReducer(state, action) {
   const { type, now } = action;
   if (type === 'record') {
-    if (state.status !== 'active' || action.id !== state.id) return state;
+    if (!['active', 'paused'].includes(state.status) || action.id !== state.id) return state;
     return { ...state, counts: { ...state.counts, [action.kind]: state.counts[action.kind] + 1 } };
   }
 
