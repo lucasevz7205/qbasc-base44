@@ -37,6 +37,6 @@ export function useStudyActivity(kind, key) {
 
 export function useStudyCompletion(kind) {
   const { state, send } = useStudyClock();
-  const id = state.id;
+  const id = state.status === 'active' && state.visible ? state.id : null;
   return () => send({ type: 'record', kind, id });
 }
