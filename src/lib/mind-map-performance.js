@@ -34,11 +34,11 @@ function remember(out, outcome, timestamp) {
 function countQuestion(out, response, key) {
   if (!response) return;
   const history = Array.isArray(response.hist) ? response.hist : [];
-  const outcomes = history.map(entry => questionOutcome(entry.m, entry.ok, key));
+  const outcomes = history.map(entry => questionOutcome(entry?.m, entry?.ok, key));
   const correct = nonnegative(response.acertos), wrong = nonnegative(response.erros);
   out.correct += correct || outcomes.filter(result => result === 'correct').length;
   out.wrong += wrong || outcomes.filter(result => result === 'wrong').length;
-  const last = history.findLast(entry => questionOutcome(entry.m, entry.ok, key));
+  const last = history.findLast(entry => questionOutcome(entry?.m, entry?.ok, key));
   if (last) remember(out, questionOutcome(last.m, last.ok, key), last.em || response.atualizadoEm);
   else remember(out, questionOutcome(response.ultimaMarcada, undefined, response.gabaritoUsado || key), response.atualizadoEm);
 }
@@ -70,7 +70,9 @@ function merge(target, child) {
 
 function summarize(stats) {
   const total = stats.correct + stats.wrong + stats.partial;
-  return { ...stats, total, rate: total ? stats.correct / total * 100 : null };
+  const rate = total ? stats.correct / total * 100 : null;
+  const status = !total ? 'no-evidence' : stats.latest?.outcome === 'wrong' ? 'incorrect' : rate >= 85 ? 'correct' : 'progress';
+  return { ...stats, total, rate, status };
 }
 
 export function mapNodePerformance({ nodes, rootId, topicId, questions, flashcards, reviews }) {
