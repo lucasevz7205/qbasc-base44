@@ -49,7 +49,7 @@ export default function Flashcard({
           <section className="qb-flash__face" style={face} aria-hidden={flipped}>
             <Head label="Frente" />
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-              <div style={{ font: '400 clamp(20px,2.4vw,26px)/1.4 var(--font-heading)', color: 'var(--text-primary)', maxWidth: '30ch' }}>
+              <div style={{ font: '600 clamp(23px,2.6vw,32px)/1.3 var(--font-serif)', color: 'var(--text-primary)', maxWidth: '30ch' }}>
                 {typeof front === 'string' ? <ChatMarkdown text={front} /> : front}
               </div>
             </div>
