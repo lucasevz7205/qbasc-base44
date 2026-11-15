@@ -6,6 +6,7 @@ import { ERROR_ORIGINS } from '@/lib/question-feedback';
 import { Badge } from '@/components/qb/core/Badge';
 import { assessQuestionMechanism } from '@/lib/architect-mechanism';
 import { recordedMechanism } from '@/lib/mechanism-comparison';
+import { mechanismDetail } from '@/lib/cebraspe-v1-taxonomy';
 
 function Section({ title, icon, children }) {
   return (
@@ -65,9 +66,29 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
               {trap.description && <span>{trap.description}</span>}
               {trap.evidence && trap.evidence !== trap.description && <span><strong>Trecho decisivo</strong> · {trap.evidence}</span>}
               {trap.vaccine && trap.vaccine !== trap.description && !explanation?.includes(trap.vaccine) && <span><strong>Como evitar</strong> · {trap.vaccine}</span>}
+              {trap.keyQuestion && <span><strong>Pergunta preventiva</strong> · {trap.keyQuestion}</span>}
+              {trap.practicalAction && <span><strong>Ação na prova</strong> · {trap.practicalAction}</span>}
+              {trap.strategy?.maxima && <span style={{ color: 'var(--qb-gold)', font: 'italic 400 14px/1.6 var(--font-heading)' }}>
+                “{trap.strategy.maxima}”
+                <small style={{ display: 'block', color: 'var(--text-muted)', font: '400 12px/1.45 var(--font-body)' }}>
+                  Adaptação pedagógica inspirada em {trap.strategy.autor}; não é citação literal.
+                </small>
+              </span>}
+              {trap.legacyConflict && <span role="note" style={{ color: 'var(--state-incorrect)' }}>
+                Código classificado segundo nomenclatura anterior à V1. Confira a fonte: a classificação não foi alterada automaticamente.
+              </span>}
             </div>
           ) : <span style={{ color: 'var(--text-muted)' }}>Esta questão ainda não tem um mecanismo registrado.</span>}
           {identifiedMechanism && <span><strong>Você identificou</strong> · {identifiedMechanism.label}</span>}
+          {identifiedMechanism && (() => {
+            const choice = mechanismDetail(identifiedMechanism.value);
+            return choice ? <span style={{ display: 'grid', gap: 4, padding: 12,
+              border: '1px solid rgba(208,179,134,.28)', borderRadius: 10, color: 'var(--text-secondary)' }}>
+              <strong style={{ color: 'var(--qb-ivory)' }}>{choice.lema}</strong>
+              <span>{choice.pergunta}</span>
+              <small>Vacina: {choice.acao}</small>
+            </span> : null;
+          })()}}
           {identifiedClue && <span style={{ overflowWrap: 'anywhere' }}><strong>Trecho que você destacou</strong> · {identifiedClue}</span>}
           {assessment && <div role="status" style={{ display: 'grid', gap: 4 }}>
             <strong>O Arquiteto · {assessment.code ? assessment.code + ' · ' + assessment.label : 'Avaliação inconclusiva'}</strong>
