@@ -18,6 +18,7 @@ export default function Flashcard({
   flipped: flippedProp,
   onFlip,
   onRate,
+  correction,
   intervals = { errei: '< 1 min', dificil: '10 min', bom: '1 d', facil: '4 d' },
   demo = true,
   height = 360,
@@ -73,6 +74,7 @@ export default function Flashcard({
           </section>
         </div>
       </div>
+      {correction || null}
       {flipped && onRate && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <div role="group" aria-label="Autoavaliação" style={{ display: 'flex', gap: 8 }}>
