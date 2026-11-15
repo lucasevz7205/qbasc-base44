@@ -20,7 +20,8 @@ export function applyEditorialOverlays(questions, cards, entries) {
   return {
     questions: questions.map(q => {
       const patch = overrides.get(editorialId("question", q.id));
-      if (!patch) return q;
+      // Questão sobrescrita diretamente prevalece sobre versões editoriais anteriores.
+      if (!patch || Number(q.raw?.versaoCuradoriaDireta || 0) >= Number(patch.version || 0)) return q;
       const x = patch.replacement;
       if (typeof x.statement !== "string" || !x.statement.trim() || !["C", "E"].includes(x.key)) return q;
       return { ...q, statement: x.statement, key: x.key, explanation: x.explanation || "", basis: x.basis || q.basis, editorial: {
@@ -77,6 +78,45 @@ export function parseEditorialSuggestion(reply, kind) {
     throw new Error("A IA não forneceu frente e verso válidos.");
   }
   return proposal;
+}
+
+/**
+ * Sobrescrita explícita de uma questão de banco (mesmo ID).
+ * A cópia anterior é salva ANTES do registro original ser atualizado.
+ * Respostas, rodadas e SRS nunca são modificados por este fluxo.
+ */
+export function makeDirectQuestionOverwrite({ question, proposal, previous, issue, note, now = new Date() }) {
+  if (!question?.raw || question.raw.id !== question.id) {
+    throw new Error("Esta questão não tem registro original editável no banco.");
+  }
+  const entry = makeEditorialEntry({ kind: "question", content: question, proposal, previous, issue, note, now });
+  const raw = question.raw;
+  const updatedQuestion = {
+    ...raw,
+    enunciado: entry.replacement.statement,
+    gabarito: entry.replacement.key,
+    comentario: entry.replacement.explanation,
+    ref: entry.replacement.basis,
+    reformuladaPeloArquiteto: true,
+    versaoCuradoriaDireta: entry.version,
+    curadoriaDiretaEm: entry.atualizadoEm,
+    curadoriaDiretaId: entry.id,
+  };
+  return {
+    backup: {
+      ...entry,
+      status: "sobrescrita",
+      modoSalvamento: "sobre_original",
+      rawAnterior: { ...raw },
+      exibidaAnterior: {
+        statement: question.statement,
+        key: question.key,
+        explanation: question.explanation,
+        basis: question.basis,
+      },
+    },
+    updatedQuestion,
+  };
 }
 
 export function makeEditorialEntry({ kind, content, proposal, previous, issue, note, now = new Date() }) {
