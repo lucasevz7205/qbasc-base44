@@ -1,6 +1,7 @@
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { questionTrap } from '@/lib/question-feedback';
 import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
+import { PLAN_SETTINGS_ID, planSettings } from '@/lib/plan-settings';
 
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
@@ -178,11 +179,15 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const reviews=Object.fromEntries(source('cartoes_aval').map(r=>[r.id,r]));
   const weeks={ '-1':[],0:[],1:[]}, weekday=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
   const weekStart=offset=>shift(today,offset*7-new Date(today+'T12:00:00Z').getUTCDay());
-  const tasks=source('planejamento').filter(x=>day(x.data)).map(x=>{
+  const planning = source('planejamento');
+  const settings = planSettings(planning.find(row => row.id === PLAN_SETTINGS_ID));
+  const allTasks=planning.filter(x=>x.id!==PLAN_SETTINGS_ID && day(x.data)).map(x=>{
     const date=day(x.data),done=['concluida','concluido','done'].includes(String(x.status??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase());
     const subjectId=Object.values(subjects).find(s=>s.name===x.materia)?.id;
     return {id:x.id,date,subjectId,subject:x.materia,title:x.titulo,type:x.tipo||'estudo',minutes:num(x.minutos)||Math.round(num(x.segundos)/60),status:done?'done':date<today?'late':'pending',auto:!!x.automatica||!!x.auto||x.origem==='automatico',raw:x};
   }).sort((a,b)=>a.date.localeCompare(b.date));
+  const tasks = allTasks.filter(task => !task.raw.arquivadaEm);
+  const archivedTasks = allTasks.filter(task => task.raw.arquivadaEm);
   for(const o of [-1,0,1]) weeks[o]=tasks.filter(x=>x.date>=weekStart(o)&&x.date<=shift(weekStart(o),6));
   const { days: dates, attemptsByDay, roundsByDay, review } = dailyQuestionPerformance({
     answers, questions: rawQuestions, rounds: source('rodadas'), day,
@@ -219,5 +224,5 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
   const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:activeQuestions,excludedQuestionIds,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
-  return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,hours:Array(7).fill(0),cycle:[]},QB_PERF:{attemptsByDay,days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
+  return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,archivedTasks,...settings},QB_PERF:{attemptsByDay,days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }

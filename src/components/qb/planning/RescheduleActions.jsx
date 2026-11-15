@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 
-export default function RescheduleActions({ dayLabel, quantity = 3, onQuantity, counts = {}, preview, onPreview, onConfirm, onCancel, lastApplied, onUndo, onEdit, style }) {
+export default function RescheduleActions({ dayLabel, quantity = 3, onQuantity, counts = {}, preview, onPreview, onConfirm, onCancel, lastApplied, onUndo, style }) {
   const acts = [
     ['pull', 'arrow-down-to-line', 'Puxar próximas ' + quantity + ' para ' + dayLabel],
     ['spread', 'split', 'Distribuir próximas ' + quantity + ' na semana'],
@@ -24,7 +24,6 @@ export default function RescheduleActions({ dayLabel, quantity = 3, onQuantity, 
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {acts.map(([id, icon, label, disabled]) => <Button key={id} variant={preview && preview.action === id ? 'primary' : 'secondary'} size="sm" icon={icon} disabled={disabled || (!!preview && preview.action !== id)} onClick={() => onPreview && onPreview(id)}>{label}</Button>)}
-        {onEdit && <Button variant="ghost" size="sm" icon="pencil" onClick={onEdit}>Editar cronograma e reagendar objetivos</Button>}
       </div>
       {preview && (
         <div role="region" aria-label="Prévia do ajuste" style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 14, borderRadius: 12, border: '1px solid rgba(242,199,110,.5)', background: 'rgba(242,199,110,.06)' }}>
