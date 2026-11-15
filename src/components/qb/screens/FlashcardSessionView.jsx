@@ -35,19 +35,6 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
     finally{lock.current=false;}
   };
 
-  React.useEffect(() => {
-    const onKey = e => {
-      // Não virar o cartão enquanto o estudante digita a resposta livre.
-      const target = e.target;
-      if (target?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(target?.tagName)) return;
-      if (!done && e.key === ' ' && !e.repeat) {
-        e.preventDefault();
-        setCards(c => ({ ...c, flipped: !c.flipped }));
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  });
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -78,7 +65,6 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
               correction={<FlashcardCorrection key={card.id} card={card} topicLabel={card.topicId} />} />
-            {!flipped && <span style={{ textAlign: 'center', font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' }}>Espaço · virar cartão</span>}
           </>
         )}
       </main>
