@@ -16,6 +16,7 @@ export default function ConceptPanel({
   mastery,
   summary,
   example,
+  trap,
   connections = [],
   sources = [],
   onNavigate,
@@ -75,15 +76,21 @@ export default function ConceptPanel({
         {summary && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <H>Resumo</H>
-            <p style={{ font: '400 16px/1.65 var(--font-body)', color: 'var(--text-secondary)', maxWidth: 'var(--measure)' }}>{summary}</p>
+            <p style={{ font: '400 16px/1.65 var(--font-body)', color: 'var(--text-secondary)', maxWidth: 'var(--measure)', whiteSpace: 'pre-wrap' }}>{summary}</p>
           </section>
         )}
         {example && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <H>Exemplo</H>
-            <div style={{ padding: '14px 16px', borderRadius: 12, background: 'var(--surface-sunken)', font: '400 15px/1.6 var(--font-body)', color: 'var(--text-secondary)' }}>
+            <div style={{ padding: '14px 16px', borderRadius: 12, background: 'var(--surface-sunken)', font: '400 15px/1.6 var(--font-body)', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>
               {example}
             </div>
+          </section>
+        )}
+        {trap && (
+          <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <H>Pegadinha</H>
+            <p style={{ font: '400 15px/1.6 var(--font-body)', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>{trap}</p>
           </section>
         )}
         {connections.length > 0 && (
