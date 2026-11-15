@@ -36,7 +36,7 @@ export function adaptStudy(records, user, now = new Date()) {
   const pointLists = Object.fromEntries(source('pontos').map(p=>[p.topico||p.id,arr(p.itens)]));
   const answers = Object.fromEntries(source('respostas').map(r=>[r.qid??r.id,r]));
   const rawQuestions = Object.fromEntries(source('questoes').map(q=>[q.id,q]));
-  const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={};
+  const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   for(const d of source('revisao')){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
     const topic=topics[topicId];
@@ -44,8 +44,10 @@ export function adaptStudy(records, user, now = new Date()) {
     const map=d.mapa || d.root;
     const branch=arr(map?.ramos??map?.children??map?.nos);
     if(map && (branch.length || map.centro)){
-      const root=topicId+'::'+d.id, title=str(map.centro??map.titulo??map.t)||topics[topicId]?.title||topicId;
-      const nodes=[];
+      const existingMap = mapByTopic[topicId];
+      const root = existingMap ? existingMap.id : topicId+'::'+d.id;
+      const title = existingMap ? existingMap.title : (str(map.centro??map.titulo??map.t)||topics[topicId]?.title||topicId);
+      const nodes = existingMap ? existingMap.nodes : [];
       const add=(v,parent,path)=>{
         if(!v || typeof v!=='object')return;
         const id=parent?root+'::'+path:root;
@@ -55,11 +57,23 @@ export function adaptStudy(records, user, now = new Date()) {
         if(v.id)(aliases[topicId]??={})[v.id]=id;
         arr(v.ramos??v.children??v.nos??v.filhos??v.sub??v.f).forEach((n,i)=>add(n,id,path+'.'+i));
       };
-      add({...map,t:title,ramos:branch},null,'0');
-      roots[topicId] ??= root;
-      mindMaps.push({id:root,topicId,title,nodes});
-      if(topic) topic.resources.maps.push({id:root,title});
-      mapNodes.push(...nodes);
+      if (existingMap) {
+        const startIdx = nodes.filter(n => n.parent === root).length;
+        const beforeLen = nodes.length;
+        branch.forEach((n, i) => add(n, root, `0.${startIdx + i}`));
+        (aliases[topicId] ??= {})[d.id] = root;
+        mapNodes.push(...nodes.slice(beforeLen));
+      } else {
+        add({...map,t:title,ramos:branch},null,'0');
+        roots[topicId] ??= root;
+        const subjectId = topic?.subjectId || String(topicId).split('-')[0].toLowerCase();
+        const subjectName = subjects[subjectId]?.name || str(d.materia) || 'Matéria';
+        const mapEntry = {id:root,topicId,subjectId,subjectName,topicNum:topic?.num||'',topicTitle:topic?.title||title,title,nodes};
+        mapByTopic[topicId] = mapEntry;
+        mindMaps.push(mapEntry);
+        if(topic) topic.resources.maps.push({id:root,title});
+        mapNodes.push(...nodes);
+      }
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);

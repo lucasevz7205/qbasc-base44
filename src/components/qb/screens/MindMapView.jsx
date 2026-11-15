@@ -2,17 +2,45 @@ import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { MindMapCanvas } from '@/components/qb/mindmap/MindMapCanvas';
 import { ConceptPanel } from '@/components/qb/mindmap/ConceptPanel';
+import { EmptyState } from '@/components/qb/data/EmptyState';
+import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
 
-export default function MindMapView({ selected, setSelected, returnTo, onReturn, go }) {
+export default function MindMapView({ selected, setSelected, studyTopicId, returnTo, onReturn, go }) {
   const { QB_DATA: D, QB_EDITAL, save } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
   const [ganBlockedReport, setGanBlockedReport] = React.useState(null);
 
-  const chosen = D.mindMaps.find(m => m.nodes.some(n => n.id === selected)) || (selected === '__no_map__' ? null : D.mindMaps[0]);
+  const chosen =
+    D.mindMaps.find(m => m.nodes.some(n => n.id === selected)) ||
+    (studyTopicId ? D.mindMaps.find(m => m.topicId === studyTopicId) : null) ||
+    (selected === '__no_map__' ? null : D.mindMaps[0]);
+
+  const subjectsWithMaps = React.useMemo(() => {
+    const bySubj = new Map();
+    for (const m of D.mindMaps) {
+      const sid = m.subjectId || String(m.topicId || '').split('-')[0].toLowerCase() || 'geral';
+      const sname = m.subjectName || D.studySubjects?.find(s => s.id === sid)?.name || 'Geral';
+      if (!bySubj.has(sid)) {
+        bySubj.set(sid, { id: sid, name: sname, maps: [] });
+      }
+      bySubj.get(sid).maps.push(m);
+    }
+    return Array.from(bySubj.values());
+  }, [D.mindMaps, D.studySubjects]);
+
+  const activeSubjectId =
+    chosen?.subjectId ||
+    String(chosen?.topicId || '').split('-')[0].toLowerCase() ||
+    subjectsWithMaps[0]?.id ||
+    '';
+
+  const activeSubject = subjectsWithMaps.find(s => s.id === activeSubjectId) || subjectsWithMaps[0];
+  const mapsInSubject = activeSubject?.maps?.length ? activeSubject.maps : D.mindMaps;
+
   const nodes = chosen?.nodes || [];
   const node = nodes.find(n => n.id === selected) || nodes[0];
 
@@ -21,16 +49,44 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
     setGanBlockedReport(null);
   }, [node?.id]);
 
+  // Expand only the central root node by default so the canvas displays the chosen assunto cleanly without visual clutter
+  const expanded = React.useMemo(() => (chosen ? [chosen.id] : []), [chosen]);
+
   if (!node) {
     return (
-      <section>
-        <p>Este tópico ainda não tem mapa mental.</p>
-        {returnTo && <button onClick={onReturn}>Voltar</button>}
-        <select aria-label="Escolher mapa" value="" onChange={e => setSelected(e.target.value)}>
-          <option value="" disabled>Escolher outro mapa</option>
-          {D.mindMaps.map(m => <option key={m.id} value={m.id}>{m.title}</option>)}
-        </select>
-      </section>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span className="qb-overline">Mapa mental · Espaço único</span>
+            <h1 style={{ font: 'var(--type-h1)' }}>Selecione o assunto em estudo</h1>
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+            {returnTo && (
+              <Button variant="secondary" size="sm" icon="corner-up-left" onClick={onReturn}>
+                Voltar
+              </Button>
+            )}
+            <select
+              className="qb-select"
+              style={{ width: 'auto', minWidth: 260 }}
+              aria-label="Escolher mapa"
+              value=""
+              onChange={e => setSelected(e.target.value)}
+            >
+              <option value="" disabled>Escolher outro mapa</option>
+              {D.mindMaps.map(m => (
+                <option key={m.id} value={m.id}>
+                  {m.topicNum ? `${m.topicNum} · ` : ''}{m.title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <EmptyState
+          title="Este tópico ainda não tem mapa mental"
+          description="Escolha outro assunto da matéria no seletor acima para abrir no espaço do mapa."
+        />
+      </div>
     );
   }
 
@@ -42,7 +98,13 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
     p = nodes.find(n => n.id === p.parent);
   }
   const card = D.flashcards.filter(f => f.node === node.id).length;
-  const expanded = nodes.filter(n => !n.parent || n.parent === chosen.id).map(n => n.id);
+
+  const handleSubjectChange = (newSubjectId) => {
+    const targetSubj = subjectsWithMaps.find(s => s.id === newSubjectId);
+    if (targetSubj?.maps?.[0]) {
+      setSelected(targetSubj.maps[0].id);
+    }
+  };
 
   const handleGenerateGan = async () => {
     if (ganLoading) return;
@@ -99,7 +161,7 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
         data: {
           topicId: chosen.topicId || chosen.id,
           topicTitle: chosen.title,
-          subjectName: subj?.name || 'Câmara dos Deputados',
+          subjectName: subj?.name || activeSubject?.name || 'Câmara dos Deputados',
           targetNodeId: node.id,
           targetNodeLabel: node.label,
           targetNodePath: [...path, node.label],
@@ -194,8 +256,8 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
           trap,
           origin: 'GAN · Mapa Mental',
           topicId: chosen.topicId,
-          subjectId: subj?.id,
-          subject: subj?.name || 'Câmara dos Deputados',
+          subjectId: subj?.id || activeSubject?.id,
+          subject: subj?.name || activeSubject?.name || 'Câmara dos Deputados',
           chapter: `${node.label} · ${chosen.title}`,
           node: item.mapaNoId || node.id,
           statusConfronto: item.statusConfronto,
@@ -228,17 +290,57 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span className="qb-overline">Mapa mental</span>
+          <span className="qb-overline">
+            {activeSubject?.name ? `${activeSubject.name} · Mapa mental` : 'Mapa mental'}
+          </span>
           <h1 style={{ font: 'var(--type-h1)' }}>{chosen.title}</h1>
         </div>
-        <select className="qb-select" style={{ width: 'auto', minWidth: 260 }} aria-label="Escolher mapa" value={chosen.id} onChange={e => setSelected(e.target.value)}>
-          {D.mindMaps.map(m => <option key={m.id} value={m.id}>{m.title}</option>)}
-        </select>
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+          {subjectsWithMaps.length > 1 && (
+            <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <span className="qb-overline" style={{ fontSize: 11 }}>Matéria em estudo</span>
+              <select
+                className="qb-select"
+                style={{ width: 'auto', minWidth: 220 }}
+                aria-label="Matéria em estudo"
+                value={activeSubject?.id || ''}
+                onChange={e => handleSubjectChange(e.target.value)}
+              >
+                {subjectsWithMaps.map(s => (
+                  <option key={s.id} value={s.id}>
+                    {s.name} ({s.maps.length})
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <span className="qb-overline" style={{ fontSize: 11 }}>Assunto da matéria</span>
+            <select
+              className="qb-select"
+              style={{ width: 'auto', minWidth: 280 }}
+              aria-label="Escolher mapa"
+              value={chosen.id}
+              onChange={e => setSelected(e.target.value)}
+            >
+              {mapsInSubject.map(m => (
+                <option key={m.id} value={m.id}>
+                  {m.topicNum ? `${m.topicNum} · ` : ''}{m.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 380px', gap: 20, alignItems: 'stretch' }}>
-        <MindMapCanvas key={chosen.id} nodes={nodes} selectedId={node.id} onSelect={setSelected} defaultExpanded={expanded} height={620} />
+        <MindMapCanvas
+          nodes={nodes}
+          selectedId={node.id}
+          onSelect={setSelected}
+          defaultExpanded={expanded}
+          height={620}
+        />
         <ConceptPanel
-          key={node.id}
           title={node.label}
           path={path}
           mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}

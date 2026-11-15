@@ -133,12 +133,14 @@ export function QBStudyProvider({ children }) {
     (nextView, arg) => {
       if(nextView==='study' && arg?.topicId){
         setStudyTopicId(arg.topicId);
+        if (QB_DATA.roots[arg.topicId]) setMapSel(QB_DATA.roots[arg.topicId]);
         setSubs(s=>({...s,study:'recursos'}));
         navigate({to:'/estudo'});
         return;
       }
       if (nextView === 'map') {
         const o = arg || {};
+        if (o.topicId) setStudyTopicId(o.topicId);
         if (o.node || o.topicId) setMapSel(o.node || QB_DATA.roots[o.topicId] || '__no_map__');
         setReturnTo(o.returnTo || null);
         setSubs(s => ({ ...s, study: 'mapa' }));
@@ -181,11 +183,20 @@ export function QBStudyProvider({ children }) {
     [navigate, setUi, QB_DATA],
   );
 
+  const handleSelectMapNode = React.useCallback(
+    (nextSel) => {
+      setMapSel(nextSel);
+      const foundMap = QB_DATA.mindMaps.find(m => m.id === nextSel || m.nodes.some(n => n.id === nextSel));
+      if (foundMap?.topicId) setStudyTopicId(foundMap.topicId);
+    },
+    [QB_DATA.mindMaps],
+  );
+
   const mapProps = React.useMemo(
     () => ({
       selected: mapSel,
       studyTopicId,
-      setSelected: setMapSel,
+      setSelected: handleSelectMapNode,
       returnTo,
       onReturn: () => {
         const r = returnTo;
@@ -193,7 +204,7 @@ export function QBStudyProvider({ children }) {
         if (r && r.view) go(r.view, {resume:true});
       },
     }),
-    [mapSel, studyTopicId, returnTo, go],
+    [mapSel, studyTopicId, handleSelectMapNode, returnTo, go],
   );
 
   const currentQId = session.questionIds?.[session.idx];

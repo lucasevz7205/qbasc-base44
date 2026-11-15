@@ -8,7 +8,8 @@ const MASTERY = {
   'no-evidence': ['circle-dashed', 'var(--state-no-evidence)', 'Sem evidência'],
   progress: ['loader-circle', 'var(--state-progress)', 'Em estudo'],
 };
-const RADII = [0, 175, 330, 470];
+
+const BASE_RADII = [0, 300, 600, 900, 1200];
 
 function buildTree(nodes) {
   const byId = {};
@@ -25,31 +26,87 @@ function buildTree(nodes) {
   return { byId, kids, root };
 }
 
-function layout(tree, expanded) {
+function computeInitialExpanded(nodes, tree, defaultExpanded, selectedId) {
+  if (Array.isArray(defaultExpanded) && defaultExpanded.length) {
+    return new Set(defaultExpanded);
+  }
+  const s = new Set();
+  if (tree.root) s.add(tree.root);
+  let cur = selectedId && tree.byId[selectedId] ? tree.byId[selectedId].parent : null;
+  while (cur && tree.byId[cur]) {
+    s.add(cur);
+    cur = tree.byId[cur].parent;
+  }
+  return s;
+}
+
+function layout(tree, expanded, zoomSpread = 1) {
   const pos = {};
-  const leaves = (id) => (expanded.has(id) && tree.kids[id].length ? tree.kids[id].reduce((s, k) => s + leaves(k), 0) : 1);
-  const place = (id, depth, a0, a1) => {
+  if (!tree.root) return pos;
+
+  const leaves = (id) =>
+    expanded.has(id) && tree.kids[id]?.length
+      ? tree.kids[id].reduce((s, k) => s + leaves(k), 0)
+      : 1;
+
+  // Count visible nodes per depth so dense rings expand their radius automatically
+  const depthCounts = {};
+  const countVisible = (id, depth) => {
+    depthCounts[depth] = (depthCounts[depth] || 0) + 1;
+    if (!expanded.has(id)) return;
+    (tree.kids[id] || []).forEach((k) => countVisible(k, depth + 1));
+  };
+  countVisible(tree.root, 0);
+
+  const ringRadius = (depth) => {
+    if (depth === 0) return 0;
+    const base = BASE_RADII[Math.min(depth, 4)] + Math.max(0, depth - 4) * 300;
+    const count = depthCounts[depth] || 1;
+    const minByCircumference = (count * 210) / (2 * Math.PI);
+    return Math.max(base, minByCircumference) * zoomSpread;
+  };
+
+  const place = (id, depth, a0, a1, siblingIdx = 0, siblingCount = 1) => {
     const a = (a0 + a1) / 2;
-    const r = RADII[Math.min(depth, 3)] + Math.max(0, depth - 3) * 140;
-    pos[id] = { x: r * Math.cos(a), y: r * Math.sin(a) * 0.74, depth };
+    const baseR = ringRadius(depth);
+    // Stagger adjacent siblings slightly when there are several to avoid horizontal label overlap
+    const stagger = depth >= 1 && siblingCount >= 4 ? (siblingIdx % 2 === 0 ? -32 : 32) * zoomSpread : 0;
+    const r = baseR + stagger;
+    pos[id] = {
+      x: r * Math.cos(a),
+      y: r * Math.sin(a) * 0.86,
+      depth,
+    };
     if (!expanded.has(id)) return;
     const total = leaves(id);
     let cur = a0;
-    tree.kids[id].forEach((k) => {
+    const children = tree.kids[id] || [];
+    children.forEach((k, idx) => {
       const span = ((a1 - a0) * leaves(k)) / total;
-      place(k, depth + 1, cur, cur + span);
+      place(k, depth + 1, cur, cur + span, idx, children.length);
       cur += span;
     });
   };
-  if (tree.root) place(tree.root, 0, -Math.PI / 2, Math.PI * 1.5);
+
+  place(tree.root, 0, -Math.PI / 2, Math.PI * 1.5, 0, 1);
   pos[tree.root] = { x: 0, y: 0, depth: 0 };
   return pos;
 }
 
-export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaultExpanded, view: viewProp, onViewChange, focusPath = true, height = 560, style }) {
+export default function MindMapCanvas({
+  nodes = [],
+  selectedId,
+  onSelect,
+  defaultExpanded,
+  view: viewProp,
+  onViewChange,
+  focusPath = true,
+  height = 560,
+  style,
+}) {
   const tree = React.useMemo(() => buildTree(nodes), [nodes]);
-  const [expanded, setExpanded] = React.useState(
-    () => new Set(defaultExpanded || nodes.filter((n) => !n.parent || !nodes.find((p) => p.id === n.parent)?.parent).map((n) => n.id)),
+  const [expanded, setExpanded] = React.useState(() =>
+    computeInitialExpanded(nodes, tree, defaultExpanded, selectedId),
   );
   const [viewState, setViewState] = React.useState('map');
   const view = viewProp || viewState;
@@ -59,10 +116,46 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
   };
   const [userZoom, setUserZoom] = React.useState(1);
   const [pan, setPan] = React.useState({ x: 0, y: 0 });
-  const [box, setBox] = React.useState({ w: 800, h: height });
+  const [box, setBox] = React.useState({ w: 860, h: height });
   const drag = React.useRef(null);
   const wrapRef = React.useRef(null);
-  const pos = React.useMemo(() => layout(tree, expanded), [tree, expanded]);
+  const prevRootRef = React.useRef(tree.root);
+
+  // Keep a single unified canvas space: when switching to another assunto/mapa, reset smoothly in place
+  React.useEffect(() => {
+    if (prevRootRef.current !== tree.root) {
+      prevRootRef.current = tree.root;
+      setExpanded(computeInitialExpanded(nodes, tree, defaultExpanded, selectedId));
+      setUserZoom(1);
+      setPan({ x: 0, y: 0 });
+    }
+  }, [tree, nodes, defaultExpanded, selectedId]);
+
+  // Ensure ancestors of selectedId are visible if navigated from outside
+  React.useEffect(() => {
+    if (!selectedId || !tree.byId[selectedId]) return;
+    setExpanded((prev) => {
+      let changed = false;
+      const next = new Set(prev);
+      if (tree.root && !next.has(tree.root)) {
+        next.add(tree.root);
+        changed = true;
+      }
+      let p = tree.byId[selectedId]?.parent;
+      while (p && tree.byId[p]) {
+        if (!next.has(p)) {
+          next.add(p);
+          changed = true;
+        }
+        p = tree.byId[p].parent;
+      }
+      return changed ? next : prev;
+    });
+  }, [selectedId, tree]);
+
+  // Spacing between topics scales proportionally with zoom so zooming in also breathes out the layout
+  const zoomSpread = React.useMemo(() => Math.pow(Math.max(0.5, userZoom), 0.35), [userZoom]);
+  const pos = React.useMemo(() => layout(tree, expanded, zoomSpread), [tree, expanded, zoomSpread]);
 
   React.useEffect(() => {
     if (!wrapRef.current || typeof ResizeObserver === 'undefined') return;
@@ -93,25 +186,75 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
   const bb = visible.reduce(
     (b, n) => {
       const p = pos[n.id];
-      return { x0: Math.min(b.x0, p.x - 100), x1: Math.max(b.x1, p.x + 100), y0: Math.min(b.y0, p.y - 26), y1: Math.max(b.y1, p.y + 26) };
+      return {
+        x0: Math.min(b.x0, p.x - 135),
+        x1: Math.max(b.x1, p.x + 135),
+        y0: Math.min(b.y0, p.y - 42),
+        y1: Math.max(b.y1, p.y + 42),
+      };
     },
-    { x0: 0, x1: 0, y0: 0, y1: 0 },
+    { x0: -180, x1: 180, y0: -120, y1: 120 },
   );
-  const fit = Math.max(0.7, Math.min(1.15, (box.w - 32) / (bb.x1 - bb.x0 || 1), (box.h - 110) / (bb.y1 - bb.y0 || 1)));
+
+  const baseSpanX = (bb.x1 - bb.x0 || 1) / zoomSpread;
+  const baseSpanY = (bb.y1 - bb.y0 || 1) / zoomSpread;
+  const fit = Math.max(
+    0.34,
+    Math.min(
+      1.05,
+      (box.w - 88) / Math.max(baseSpanX, 360),
+      (box.h - 120) / Math.max(baseSpanY, 280),
+    ),
+  );
   const zoom = fit * userZoom;
-  const off = { x: (-(bb.x0 + bb.x1) / 2) * zoom, y: (-(bb.y0 + bb.y1) / 2) * zoom + 4 };
-  const related = (id) => !focusPath || !selectedId || pathSet.has(id) || tree.byId[id].parent === selectedId || (tree.byId[selectedId] && tree.byId[id].parent === tree.byId[selectedId].parent);
+  const off = {
+    x: (-(bb.x0 + bb.x1) / 2) * zoom,
+    y: (-(bb.y0 + bb.y1) / 2) * zoom + 4,
+  };
+
+  const related = (id) =>
+    !focusPath ||
+    !selectedId ||
+    pathSet.has(id) ||
+    tree.byId[id]?.parent === selectedId ||
+    (tree.byId[selectedId] && tree.byId[id]?.parent === tree.byId[selectedId].parent);
 
   const click = (n) => {
-    if (tree.kids[n.id].length && (n.id === selectedId || !expanded.has(n.id))) {
+    if (tree.kids[n.id]?.length && (n.id === selectedId || !expanded.has(n.id))) {
       setExpanded((prev) => {
         const s = new Set(prev);
-        s.has(n.id) && n.id === selectedId ? s.delete(n.id) : s.add(n.id);
+        if (s.has(n.id) && n.id === selectedId) {
+          s.delete(n.id);
+        } else {
+          // If opening a top-level branch, collapse other top-level branches to prevent visual clutter
+          if (n.parent === tree.root) {
+            (tree.kids[tree.root] || []).forEach((sibId) => {
+              if (sibId !== n.id) s.delete(sibId);
+            });
+          }
+          s.add(n.id);
+        }
         return s;
       });
     }
     onSelect && onSelect(n.id);
   };
+
+  const allExpandableIds = React.useMemo(
+    () => nodes.filter((n) => tree.kids[n.id]?.length).map((n) => n.id),
+    [nodes, tree],
+  );
+  const isAllExpanded = allExpandableIds.length > 1 && allExpandableIds.every((id) => expanded.has(id));
+
+  const toggleExpandAll = () => {
+    if (isAllExpanded) {
+      setExpanded(new Set(tree.root ? [tree.root] : []));
+    } else {
+      setExpanded(new Set(allExpandableIds));
+    }
+    setPan({ x: 0, y: 0 });
+  };
+
   const centerOn = (id) => {
     const p = pos[id];
     if (p) setPan({ x: -p.x * zoom - off.x, y: -p.y * zoom - off.y });
@@ -121,8 +264,29 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
     setPan({ x: 0, y: 0 });
   };
 
+  const adjustZoom = (delta) => {
+    setUserZoom((prev) => {
+      const next = Math.max(0.45, Math.min(2.6, Math.round((prev + delta) * 100) / 100));
+      const ratio = next / prev;
+      setPan((p) => ({ x: p.x * ratio, y: p.y * ratio }));
+      return next;
+    });
+  };
+
   const toolbar = (
-    <div style={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 6, zIndex: 2 }}>
+    <div style={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 8, alignItems: 'center', zIndex: 2 }}>
+      {view === 'map' && allExpandableIds.length > 1 && (
+        <button
+          type="button"
+          className="qb-tool"
+          onClick={toggleExpandAll}
+          aria-pressed={isAllExpanded}
+          title={isAllExpanded ? 'Mostrar apenas ramos principais' : 'Expandir todos os subtópicos'}
+        >
+          <Icon name={isAllExpanded ? 'chevrons-up' : 'chevrons-down'} size={14} />
+          {isAllExpanded ? 'Recolher subtópicos' : 'Expandir tudo'}
+        </button>
+      )}
       <div className="qb-seg" role="group" aria-label="Visualização">
         <button className="qb-seg__opt" aria-pressed={view === 'map'} onClick={() => setView('map')} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
           <Icon name="network" size={16} />
@@ -191,6 +355,8 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
     );
   }
 
+  const gridStep = Math.max(18, Math.min(56, Math.round(32 * zoom)));
+
   return (
     <div
       ref={wrapRef}
@@ -202,9 +368,16 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
         padding: 0,
         touchAction: 'none',
         cursor: drag.current ? 'grabbing' : 'grab',
-        backgroundImage: 'radial-gradient(circle at 50% 50%,rgba(30,65,102,.55) 0%,rgba(16,28,45,0) 65%),radial-gradient(rgba(165,138,103,.14) 1px,transparent 1px)',
-        backgroundSize: '100% 100%,28px 28px',
+        backgroundImage:
+          'radial-gradient(circle at 50% 50%,rgba(30,65,102,.55) 0%,rgba(16,28,45,0) 65%),radial-gradient(rgba(165,138,103,.16) 1px,transparent 1px)',
+        backgroundSize: `100% 100%,${gridStep}px ${gridStep}px`,
+        backgroundPosition: `0 0,${pan.x + off.x}px ${pan.y + off.y}px`,
         ...style,
+      }}
+      onWheel={(e) => {
+        e.preventDefault();
+        const delta = e.deltaY < 0 ? 0.14 : -0.14;
+        adjustZoom(delta);
       }}
       onPointerDown={(e) => {
         if (e.target.closest('button')) return;
@@ -219,9 +392,22 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
       }}
     >
       {toolbar}
-      <div style={{ position: 'absolute', bottom: 12, right: 12, display: 'flex', flexDirection: 'column', gap: 6, zIndex: 2 }}>
-        <IconButton variant="solid" size="sm" icon="zoom-in" label="Aproximar" onClick={() => setUserZoom((z) => Math.min(2.2, z + 0.2))} />
-        <IconButton variant="solid" size="sm" icon="zoom-out" label="Afastar" onClick={() => setUserZoom((z) => Math.max(0.5, z - 0.2))} />
+      <div style={{ position: 'absolute', bottom: 12, right: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, zIndex: 2 }}>
+        <span
+          style={{
+            padding: '3px 8px',
+            borderRadius: 999,
+            background: 'rgba(10,30,52,.85)',
+            border: '1px solid var(--divider)',
+            font: '500 11px/1.2 var(--font-mono)',
+            color: 'var(--qb-gold)',
+          }}
+          title="Proporção de zoom"
+        >
+          {Math.round(userZoom * 100)}%
+        </span>
+        <IconButton variant="solid" size="sm" icon="zoom-in" label="Aproximar" onClick={() => adjustZoom(0.2)} />
+        <IconButton variant="solid" size="sm" icon="zoom-out" label="Afastar" onClick={() => adjustZoom(-0.2)} />
         <IconButton variant="solid" size="sm" icon="maximize" label="Enquadrar mapa" onClick={reset} />
         <IconButton variant="solid" size="sm" icon="locate-fixed" label="Centralizar no nó selecionado" onClick={() => centerOn(selectedId || tree.root)} />
       </div>
@@ -233,7 +419,15 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
           </span>
         ))}
       </div>
-      <div style={{ position: 'absolute', left: '50%', top: '50%', transform: `translate(${pan.x + off.x}px,${pan.y + off.y}px) scale(${zoom})`, transition: drag.current ? 'none' : 'transform var(--dur-slow) var(--ease-standard)' }}>
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: `translate(${pan.x + off.x}px,${pan.y + off.y}px) scale(${zoom})`,
+          transition: drag.current ? 'none' : 'transform var(--dur-slow) var(--ease-standard)',
+        }}
+      >
         <svg width="1" height="1" style={{ position: 'absolute', overflow: 'visible' }} aria-hidden="true">
           {visible
             .filter((n) => n.parent && pos[n.parent])
@@ -246,10 +440,10 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
               return (
                 <path
                   key={n.id}
-                  d={`M${a.x},${a.y} Q${mx * 1.05},${my * 0.95} ${b.x},${b.y}`}
+                  d={`M${a.x},${a.y} Q${mx * 1.06},${my * 0.94} ${b.x},${b.y}`}
                   fill="none"
                   stroke={on ? 'var(--qb-gold-bright)' : 'rgba(165,138,103,.45)'}
-                  strokeWidth={on ? 2 : 1.25}
+                  strokeWidth={(on ? 2.2 : 1.35) / Math.max(0.65, Math.min(1.35, zoom))}
                   opacity={related(n.id) ? 1 : 0.35}
                 />
               );
@@ -259,19 +453,44 @@ export default function MindMapCanvas({ nodes = [], selectedId, onSelect, defaul
           const p = pos[n.id];
           const m = n.mastery && MASTERY[n.mastery];
           const hidden = !expanded.has(n.id) ? tree.kids[n.id].length : 0;
-          const cls = ['qb-mm__node', p.depth === 0 && 'qb-mm__node--root', p.depth === 1 && 'qb-mm__node--l1', !related(n.id) && 'is-dim'].filter(Boolean).join(' ');
+          const cls = [
+            'qb-mm__node',
+            p.depth === 0 && 'qb-mm__node--root',
+            p.depth === 1 && 'qb-mm__node--l1',
+            !related(n.id) && 'is-dim',
+          ]
+            .filter(Boolean)
+            .join(' ');
           return (
             <button
               key={n.id}
               className={cls}
               aria-selected={n.id === selectedId}
               aria-expanded={tree.kids[n.id].length ? expanded.has(n.id) : undefined}
-              style={{ left: p.x, top: p.y, width: 'max-content' }}
+              style={{
+                left: p.x,
+                top: p.y,
+                width: 'max-content',
+                maxWidth: p.depth === 0 ? 240 : 210,
+                padding: p.depth === 0 ? '14px 22px' : '10px 16px',
+              }}
               onClick={() => click(n)}
             >
               {m && <Icon name={m[0]} size={15} color={m[1]} label={m[2]} />}
-              <span style={{ whiteSpace: n.label.length > 24 ? 'normal' : 'nowrap' }}>{n.label}</span>
-              {hidden > 0 && <span style={{ font: '500 11px/1 var(--font-mono)', color: 'var(--qb-gold)', padding: '3px 6px', borderRadius: 6, background: 'rgba(208,179,134,.12)' }}>+{hidden}</span>}
+              <span style={{ whiteSpace: n.label.length > 26 ? 'normal' : 'nowrap' }}>{n.label}</span>
+              {hidden > 0 && (
+                <span
+                  style={{
+                    font: '500 11px/1 var(--font-mono)',
+                    color: 'var(--qb-gold)',
+                    padding: '3px 6px',
+                    borderRadius: 6,
+                    background: 'rgba(208,179,134,.12)',
+                  }}
+                >
+                  +{hidden}
+                </span>
+              )}
             </button>
           );
         })}
