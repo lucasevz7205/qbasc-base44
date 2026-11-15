@@ -47,7 +47,7 @@ async function persist(collection, id, data) {
 export function RealStudyGate({children}) {
   const auth=useAuth(), client=useQueryClient();
   const user=auth.user, admin=user?.role==='admin';
-  const queryKey=React.useMemo(()=>['qbasc-study',user?.id], [user?.id]);
+  const queryKey=React.useMemo(()=>['qbasc-study',user?.id,'2026-11-15'], [user?.id]);
   const query=useQuery({queryKey,queryFn:loadRealData,enabled:!!admin&&typeof window!=='undefined',staleTime:60000,retry:false});
   const refresh=React.useCallback(async()=>{const result=await query.refetch();if(result.error)throw result.error;},[query.refetch]);
   const save=React.useCallback(async (collection,id,data)=>{
