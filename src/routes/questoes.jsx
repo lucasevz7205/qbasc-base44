@@ -14,6 +14,6 @@ export const Route = createFileRoute('/questoes')({
 });
 
 function QuestoesRoute() {
-  const { session, setSession, elapsed, paused, onTogglePause, go, backTo } = useQBStudy();
-  return <QuestionSessionView session={session} setSession={setSession} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} go={go} backTo={backTo} />;
+  const { session, setSession, go, backTo } = useQBStudy();
+  return <QuestionSessionView session={session} setSession={setSession} go={go} backTo={backTo} />;
 }
