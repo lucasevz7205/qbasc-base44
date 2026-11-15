@@ -114,28 +114,23 @@ export function ArchitectLayer({ ui, setUi }) {
   const { QB_DATA, QB_EDITAL } = useRealStudy();
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
-  const s = E.subjects.find(x => x.id === ctx.subjectId);
-  const t = s && s.topics.find(x => x.id === ctx.topicId);
-  const label = (ctx.origin ? ctx.origin + ' · ' : '') + (s ? s.short + ' ' + (t ? t.num + (t.title ? ' ' + t.title : '') : '') : '');
+  const mode = ui.studio.mode === 'modal' ? 'modal' : 'dock';
   const deck = QB_DATA.flashcards
     .filter(f => !ctx.topicId || f.topicId === ctx.topicId)
     .slice(0, 30)
     .map(f => ({ front: f.front, back: f.back }));
   return (
     <>
-      {!ui.studio.open && (
-        <ArchitectLauncher
-          open={ui.quick}
-          onOpenChange={v => setUi({ quick: v })}
-          contextLabel={label}
-          onExpand={() => setUi({ quick: false, studio: { open: true } })}
-          onQuick={id => setUi({ quick: false, studio: { open: true, tool: id === 'retencao' ? 'socratico' : id } })}
-        />
-      )}
+      <ArchitectLauncher
+        hidden={ui.studio.open}
+        onOpen={() => setUi({ studio: { open: true, tool: 'socratico' } })}
+      />
       <ArchitectStudio
         open={ui.studio.open}
-        tool={ui.studio.tool}
-        onToolChange={tl => setUi({ studio: { open: true, tool: tl } })}
+        mode={mode}
+        tool={ui.studio.tool || 'socratico'}
+        onToolChange={tool => setUi({ studio: { open: true, mode, tool } })}
+        onExpand={() => setUi({ studio: { open: true, mode: 'modal', tool: ui.studio.tool || 'socratico' } })}
         onClose={() => setUi({ studio: { open: false } })}
         subjects={E.subjects}
         context={{ subjectId: ctx.subjectId || 'da', topicId: ctx.topicId || 'da-10-6', origin: ctx.origin }}
