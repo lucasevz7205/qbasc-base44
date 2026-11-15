@@ -101,7 +101,7 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
       </button>
       <button type="button" className="qb-btn qb-btn--primary"
         style={{ borderRadius: '0 999px 999px 0', minHeight: 48, boxShadow: 'none', padding: '0 15px 0 10px', whiteSpace: 'nowrap' }}
-        onClick={() => { setExpanded(false); onOpen?.(); }}>
+        onClick={onOpen}>
         <Icon name="sparkles" size={18} />O Arquiteto
       </button>
       </div>
