@@ -6,17 +6,12 @@ import { QB_DATA } from '@/lib/qb-data';
 
 export default function MindMapView({ selected, setSelected, returnTo, onReturn, go }) {
   const D = QB_DATA;
-  const node = D.mapNodes.find((n) => n.id === selected) || D.mapNodes[0];
+  const node = D.mapNodes.find(n => n.id === selected) || D.mapNodes[0];
   const c = D.concepts[node.id] || { summary: 'Conteúdo deste nó ainda não preenchido na demonstração.' };
-  const path = [];
-  let p = D.mapNodes.find((n) => n.id === node.parent);
-  while (p) {
-    path.unshift(p.label);
-    p = D.mapNodes.find((n) => n.id === p.parent);
-  }
-  const card = D.flashcards.filter((f) => f.node === node.id).length;
+  const path = []; let p = D.mapNodes.find(n => n.id === node.parent);
+  while (p) { path.unshift(p.label); p = D.mapNodes.find(n => n.id === p.parent); }
+  const card = D.flashcards.filter(f => f.node === node.id).length;
   const expanded = ['pl', 'em', 'lo', 'mp'];
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
@@ -24,30 +19,17 @@ export default function MindMapView({ selected, setSelected, returnTo, onReturn,
           <span className="qb-overline">Direito Constitucional · Mapa mental</span>
           <h1 style={{ font: 'var(--type-h1)' }}>Processo legislativo</h1>
         </div>
-        <Badge tone="neutral" icon="info">
-          Domínio baseado nas suas respostas (demonstração)
-        </Badge>
+        <Badge tone="neutral" icon="info">Domínio baseado nas suas respostas (demonstração)</Badge>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-5 items-stretch">
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 380px', gap: 20, alignItems: 'stretch' }}>
         <MindMapCanvas key={returnTo ? 'r' : 'n'} nodes={D.mapNodes} selectedId={node.id} onSelect={setSelected} defaultExpanded={expanded} height={620} />
-        <ConceptPanel
-          key={node.id}
-          title={node.label}
-          path={path}
+        <ConceptPanel key={node.id} title={node.label} path={path}
           mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
-          summary={c.summary}
-          example={c.example}
-          connections={c.connections || []}
-          sources={c.sources || []}
-          onNavigate={setSelected}
-          reviewCount={card || undefined}
-          onReview={() => go('flashcards')}
-          returnTo={returnTo && returnTo.label}
-          onReturn={onReturn}
-          style={{ height: 620 }}
-        />
+          summary={c.summary} example={c.example} connections={c.connections || []} sources={c.sources || []}
+          onNavigate={setSelected} reviewCount={card || undefined} onReview={() => go('flashcards')}
+          returnTo={returnTo && returnTo.label} onReturn={onReturn} style={{ height: 620 }} />
       </div>
     </div>
   );
 }
-export { MindMapView };
+export { MindMapView, MindMapView as MindMapScreen };
