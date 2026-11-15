@@ -533,6 +533,7 @@ export default function MindMapView({
               mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
               summary={c.summary}
               example={c.example}
+              trap={c.trap}
               connections={c.connections || []}
               sources={c.sources || []}
               onNavigate={setSelected}
