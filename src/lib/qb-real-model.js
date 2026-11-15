@@ -7,7 +7,7 @@ const day = value => {
   return new Intl.DateTimeFormat('sv-SE', {timeZone:'America/Sao_Paulo'}).format(new Date(value));
 };
 const shift = (d,n) => { const date = new Date(d+'T12:00:00Z'); date.setUTCDate(date.getUTCDate()+n); return date.toISOString().slice(0,10); };
-const status = (v) => ({dominado:'mastered', revisando:'reviewing', revisado:'reviewing', estudado:'studying', estudo:'studying', 'em estudo':'studying', em_estudo:'studying', estudando:'studying', concluido:'mastered', concluida:'mastered'})[String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()] || 'not-started';
+const explicitStatus = (v) => ({nao:'not-started', 'nao iniciado':'not-started', 'not-started':'not-started', studying:'studying', reviewing:'reviewing', mastered:'mastered', revisao:'reviewing',dominado:'mastered', revisando:'reviewing', revisado:'reviewing', estudado:'studying', estudo:'studying', 'em estudo':'studying', em_estudo:'studying', estudando:'studying', concluido:'mastered', concluida:'mastered'})[String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()];
 const icons = {lp:'feather',li:'globe',da:'building-2',dc:'landmark',ti:'database',lg:'languages',rf:'audio-lines',pl:'scroll-text',cp:'vote'};
 const blocks = {P1:'Conhecimentos básicos',P2:'Conhecimentos específicos'};
 const zero = () => ({correct:0,wrong:0,blank:0});
@@ -17,21 +17,30 @@ export { day as studyDate };
 export function adaptStudy(records, user, now = new Date()) {
   const today = day(now);
   const source = key => arr(records[key]);
-  const topics = {}, subjects = {}, capTopic = {};
+  const topics = Object.create(null), subjects = Object.create(null), capTopic = Object.create(null);
+  const progress = Object.create(null);
   for (const e of [...source('edital')].sort((a,b)=>num(a.materiaOrdem)-num(b.materiaOrdem)||num(a.ordem)-num(b.ordem))) {
     if(!e.id || !e.materia) continue;
     const subjectId = String(e.sigla || e.id.split('-')[0]).toLowerCase();
     const subject = subjects[subjectId] ??= {id:subjectId,name:e.materia,short:e.sigla||subjectId,block:e.prova,blockLabel:blocks[e.prova],icon:icons[subjectId]||'book-open',topics:[]};
-    const t = {id:e.id,subjectId,num:String(e.num??''),title:e.titulo,known:!!e.titulo,status:status(e.status),foraEdital:!!e.foraEdital,...zero()};
+    const t = {id:e.id,subjectId,num:String(e.num??''),title:e.titulo,known:!!e.titulo,status:'not-started',foraEdital:!!e.foraEdital,...zero()};
     topics[t.id]=t;
+    progress[t.id]={manual:explicitStatus(e.status),tutory:e.tutoryIgnorar?null:e.tutory,answered:0,latestCorrect:0,errorsNotebook:0,retained:0};
+    t.resources={questions:0,maps:[],cards:0,revision:[],materials:[]};
     subject.topics.push(t);
     for(const cap of arr(e.caps)) if(!capTopic[chapterKey(cap)]) capTopic[chapterKey(cap)]=t;
   }
+  for(const material of source('materiais')){
+    for(const id of new Set(arr(material.topicos))) topics[id]?.resources.materials.push(material);
+  }
+  const pointLists = Object.fromEntries(source('pontos').map(p=>[p.topico||p.id,arr(p.itens)]));
   const answers = Object.fromEntries(source('respostas').map(r=>[r.qid??r.id,r]));
   const rawQuestions = Object.fromEntries(source('questoes').map(q=>[q.id,q]));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={};
   for(const d of source('revisao')){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
+    const topic=topics[topicId];
+    if(topic)topic.resources.revision.push(...arr(d.itens));
     const map=d.mapa || d.root;
     const branch=arr(map?.ramos??map?.children??map?.nos);
     if(map && (branch.length || map.centro)){
@@ -49,6 +58,7 @@ export function adaptStudy(records, user, now = new Date()) {
       add({...map,t:title,ramos:branch},null,'0');
       roots[topicId] ??= root;
       mindMaps.push({id:root,topicId,title,nodes});
+      if(topic) topic.resources.maps.push({id:root,title});
       mapNodes.push(...nodes);
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
@@ -57,18 +67,60 @@ export function adaptStudy(records, user, now = new Date()) {
     });
   }
   const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
-  for(const card of uniqueCards)card.node=aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
+  for(const card of uniqueCards){
+    card.node=aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
+    if(topics[card.topicId]) topics[card.topicId].resources.cards++;
+  }
+  const isRetained = r => {
+    if(r.retidoEm)return true;
+    const history=arr(r.hist), first=day(r.primeiraEm||history[0]?.em);
+    return Boolean(first&&history.some(e=>e.ok&&e.c!==1&&day(e.em)>=shift(first,7)));
+  };
   const questionBank=[];
+  const questionTotals=Object.create(null);
   for(const q of Object.values(rawQuestions)){
     const topic=topics[q.topico??q.topicId] || capTopic[chapterKey(q.cap)];
     const r=answers[q.id];
-    if(topic&&r){topic.correct+=num(r.acertos);topic.wrong+=num(r.erros);topic.blank+=num(r.brancos);}
+
     if(!['C','E'].includes(keyOf(q.gabarito))||!q.enunciado||q.statusConfronto==='divergencia_bloqueada')continue;
+    if(topic){
+      topic.resources.questions++;
+      const isTracked = !q.foraNivel&&!/^SIM/i.test(String(q.cap||''));
+      if(isTracked)questionTotals[topic.id]=(questionTotals[topic.id]||0)+1;
+      if(r&&isTracked){
+        topic.correct+=num(r.acertos);
+        topic.wrong+=num(r.erros);
+        topic.blank+=num(r.brancos);
+        if(num(r.tentativas)||num(r.acertos)||num(r.erros)||num(r.brancos)){
+          const p=progress[topic.id];
+          p.answered++;
+          if(keyOf(r.ultimaMarcada)===keyOf(q.gabarito))p.latestCorrect++;
+          if(r.noCaderno)p.errorsNotebook++;
+          if(isRetained(r))p.retained++;
+        }
+      }
+    }
     const rawNodeRef = q.mapaNoId??q.no??q.node??q.mapaNo;
     const resolvedNode = mapNodes.some(n=>n.id===rawNodeRef) ? rawNodeRef : (aliases[topic?.id]?.[rawNodeRef]||roots[topic?.id]);
     const trap = q.trap || (q.mecanismo ? { name: `${q.mecanismo}${q.mecanismoNome ? ' — ' + q.mecanismoNome : ''}`, description: [str(q.correcaoMinima||q.vacina), str(q.criticaAdversaria)].filter(Boolean).join(' · ') || 'Mecanismo CEBRASPE auditado pela GAN.' } : undefined);
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
     questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:str(q.comentario??q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q});
+  }
+  const statusRank={'not-started':0,studying:1,reviewing:2,mastered:3};
+  for(const t of Object.values(topics)){
+    const b=t.resources, p=progress[t.id], tutory=p.tutory;
+    if(!b.revision.length) b.revision.push(...(pointLists[t.id]||[]));
+    const hasContent=b.maps.length||b.cards||b.revision.length||b.materials.some(x=>['mapa','material','cobertura'].includes(x.tipo));
+    // Shared chapters are assigned only once unless a question explicitly names its topic.
+    const accountable=questionTotals[t.id]||0;
+    let effective=hasContent||accountable?'studying':'not-started';
+    if(accountable && p.answered/accountable>=0.8){
+      effective=p.latestCorrect/p.answered>=0.85&&!p.errorsNotebook&&p.retained>=p.answered?'mastered':'reviewing';
+    }
+    if(num(tutory?.revisao)>0&&num(tutory?.exercicio)>0&&statusRank[effective]<2)effective='reviewing';
+    else if(effective==='not-started'&&['estudo','resumo','revisao','exercicio'].some(k=>num(tutory?.[k])>0))effective='studying';
+    t.status=p.manual??effective;
+    t.questionsAnswered=p.answered;
   }
   const reviews=Object.fromEntries(source('cartoes_aval').map(r=>[r.id,r]));
   const weeks={ '-1':[],0:[],1:[]}, weekday=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
