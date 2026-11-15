@@ -5,7 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 import { SelectField } from '@/components/qb/data/SelectField';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
-import { askArchitectTutor } from '@/lib/server-fns';
+import { askArchitectTutor, getArchitectProviderStatus } from '@/lib/server-fns';
 
 const MODES = [['socratico', 'Socrático'], ['feynman', 'Feynman'], ['banca', 'Banca CEBRASPE'], ['oral', 'Arguição oral']];
 const QUICK = [['retencao', 'target', 'Testar retenção'], ['armadilhas', 'triangle-alert', 'Armadilhas da banca'], ['analogia', 'lightbulb', 'Analogia Feynman'], ['voz', 'mic', 'Arguição por voz']];
@@ -18,12 +18,16 @@ const QUICK_PROMPTS = {
 
 export default function SocraticChat({ subjects = [], subjectId, topicId, onContextChange, origin, style }) {
   const askTutor = useServerFn(askArchitectTutor);
+  const getProviderStatus = useServerFn(getArchitectProviderStatus);
+  const statusFnRef = React.useRef(getProviderStatus);
   const subj = subjects.find(s => s.id === subjectId) || subjects[0];
   const topic = subj && (subj.topics.find(t => t.id === topicId) || subj.topics[0]);
   const key = topic ? topic.id : 'none';
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
   const [hist, setHist] = React.useState({});
   const [mode, setMode] = React.useState('socratico');
+  const [provider, setProvider] = React.useState('gemini');
+  const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
   const [busy, setBusy] = React.useState(false);
   const [listening, setListening] = React.useState(false);
@@ -32,6 +36,13 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
   const listRef = React.useRef(null);
   const recRef = React.useRef(null);
   const msgs = hist[key] || [];
+
+  React.useEffect(() => {
+    let mounted = true;
+    statusFnRef.current().then(status => { if (mounted) setIntegrationStatus(status); })
+      .catch(() => { if (mounted) setIntegrationStatus({ geminiConfigured: false }); });
+    return () => { mounted = false; };
+  }, []);
 
   React.useEffect(() => {
     if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
@@ -56,11 +67,12 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           subjectName: subj ? subj.name : 'Câmara dos Deputados',
           topicLabel: tLabel,
           userMessage: cleanText,
+          provider,
           history: priorHistory,
         },
       });
       const modeBadge = MODES.find(x => x[0] === kind)?.[0] || mode;
-      push({ role: 'tutor', mode: modeBadge, text: res?.reply || 'Não foi possível obter resposta.' });
+      push({ role: 'tutor', mode: modeBadge, provider, text: res?.reply || 'Não foi possível obter resposta.' });
     } catch (err) {
       push({
         role: 'error',
@@ -140,6 +152,16 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           <Button variant="secondary" size="sm" icon="trash-2" disabled={!msgs.length} onClick={() => setAsk(true)} style={{ height: 44 }}>Limpar histórico</Button>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <span className="qb-overline">Provedor</span>
+          <div className="qb-seg" role="group" aria-label="Provedor de IA do Arquiteto" style={{ flexWrap: 'wrap' }}>
+            <button className="qb-seg__opt" aria-pressed={provider === 'gemini'} onClick={() => setProvider('gemini')} disabled={busy}>Gemini · API externa</button>
+            <button className="qb-seg__opt" aria-pressed={provider === 'base44'} onClick={() => setProvider('base44')} disabled={busy}>Base44 · créditos</button>
+          </div>
+          <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
+            {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
+          </span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Modo</span>
           <div className="qb-seg" role="group" aria-label="Modo pedagógico" style={{ flexWrap: 'wrap' }}>{MODES.map(([v, l]) => <button key={v} className="qb-seg__opt" aria-pressed={mode === v} onClick={() => setMode(v)}>{l}</button>)}</div>
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
@@ -152,7 +174,7 @@ export default function SocraticChat({ subjects = [], subjectId, topicId, onCont
           : m.role === 'error'
             ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
             : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4, whiteSpace: 'pre-wrap' }}>
-                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {(MODES.find(x => x[0] === m.mode) || MODES[0])[1]}</p><p>{m.text}</p>
+                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {(MODES.find(x => x[0] === m.mode) || MODES[0])[1]} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><p>{m.text}</p>
               </div>)}
         {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
       </div>
