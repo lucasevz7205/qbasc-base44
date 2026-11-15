@@ -65,11 +65,6 @@ export function QBStudyProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const defaultMapTopic = React.useMemo(
-    () => QB_DATA.mindMaps[0]?.topicId || QB_EDITAL.subjects[0]?.topics[0]?.id || 'dc-1',
-    [QB_DATA.mindMaps, QB_EDITAL.subjects],
-  );
-
   const [subs, setSubs] = React.useState(SUBS);
   const [ui, setUiState] = React.useState({
     bg: 'dynamic',
@@ -95,7 +90,7 @@ export function QBStudyProvider({ children }) {
     flipped: false,
     ratings: [],
   });
-  const [studyTopicId, setStudyTopicId] = React.useState(defaultMapTopic);
+  const [studyTopicId, setStudyTopicId] = React.useState(null);
   const [studyRadialOpen, setStudyRadialOpen] = React.useState(true);
   const [mapSel, setMapSel] = React.useState(null);
   const [recentTopics, setRecentTopics] = React.useState([]);
@@ -152,9 +147,19 @@ export function QBStudyProvider({ children }) {
 
   const toast = React.useCallback(t => setUi({ toast: t }), [setUi]);
 
+  const resetStudyMapSelection = React.useCallback(() => {
+    setStudyTopicId(null);
+    setMapSel(null);
+    setReturnTo(null);
+    setStudyRadialOpen(true);
+  }, []);
+
   const setSub = React.useCallback(
-    v => t => setSubs(s => ({ ...s, [v]: t })),
-    [],
+    v => t => {
+      if (v === 'study' && t === 'mapa') resetStudyMapSelection();
+      setSubs(s => ({ ...s, [v]: t }));
+    },
+    [resetStudyMapSelection],
   );
 
   const openArchitect = React.useCallback((ctx, tool) => {
@@ -295,9 +300,9 @@ export function QBStudyProvider({ children }) {
       if (nextView === 'map') {
         const o = arg || {};
         const foundByNode = o.node ? QB_DATA.mindMaps.find(m => m.id === o.node || m.nodes.some(n => n.id === o.node)) : null;
-        const nextTopic = o.topicId || foundByNode?.topicId || studyTopicId || defaultMapTopic;
+        const nextTopic = o.topicId || foundByNode?.topicId || null;
         setStudyTopicId(nextTopic);
-        setStudyRadialOpen(!(o.topicId || o.node));
+        setStudyRadialOpen(!nextTopic);
         if (nextTopic) setRecentTopics(r => [nextTopic, ...r.filter(x => x !== nextTopic)].slice(0, 4));
         setMapSel(o.node || null);
         setReturnTo(o.returnTo || null);
@@ -347,6 +352,10 @@ export function QBStudyProvider({ children }) {
         setElapsed(0);
         setPaused(false);
       }
+      if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
+        resetStudyMapSelection();
+        setSubs(s => ({ ...s, study: 'mapa' }));
+      }
       if (typeof arg === 'string' && SUBS[nextView]) {
         setSubs(s => ({ ...s, [nextView]: arg }));
       }
@@ -357,7 +366,7 @@ export function QBStudyProvider({ children }) {
       const targetPath = VIEW_TO_PATH[nextView] || '/';
       navigate({ to: targetPath });
     },
-    [navigate, setUi, QB_DATA, activeView, studyTopicId, defaultMapTopic],
+    [navigate, setUi, QB_DATA, activeView, resetStudyMapSelection],
   );
 
   const dispatch = React.useCallback(
@@ -413,8 +422,8 @@ export function QBStudyProvider({ children }) {
 
   const mapProps = React.useMemo(
     () => ({
-      topicId: studyTopicId || defaultMapTopic,
-      studyTopicId: studyTopicId || defaultMapTopic,
+      topicId: studyTopicId,
+      studyTopicId: studyTopicId,
       onTopic: pickMapTopic,
       radialOpen: studyRadialOpen,
       setRadialOpen: setStudyRadialOpen,
@@ -433,7 +442,6 @@ export function QBStudyProvider({ children }) {
     }),
     [
       studyTopicId,
-      defaultMapTopic,
       pickMapTopic,
       studyRadialOpen,
       recentTopics,
@@ -469,7 +477,7 @@ export function QBStudyProvider({ children }) {
       setCards,
       mapSel,
       setMapSel: handleSelectMapNode,
-      studyTopicId: studyTopicId || defaultMapTopic,
+      studyTopicId: studyTopicId,
       trainSel,
       setTrainSel,
       missing,
@@ -500,7 +508,6 @@ export function QBStudyProvider({ children }) {
       mapSel,
       handleSelectMapNode,
       studyTopicId,
-      defaultMapTopic,
       trainSel,
       missing,
       backTo,
