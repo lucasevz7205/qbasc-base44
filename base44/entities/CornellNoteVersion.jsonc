@@ -1,0 +1,54 @@
+{
+  "name": "CornellNoteVersion",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string"
+    },
+    "topic_id": {
+      "type": "string"
+    },
+    "topic_label": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "cues": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "number"
+    },
+    "saved_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner_id",
+    "topic_id",
+    "topic_label",
+    "notes",
+    "cues",
+    "summary",
+    "revision",
+    "saved_at"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": false,
+    "delete": false
+  }
+}
