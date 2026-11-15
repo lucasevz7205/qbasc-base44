@@ -11,6 +11,7 @@ const H = ({ children }) => (
 );
 
 export default function ConceptPanel({
+  nodeId,
   title,
   path = [],
   mastery,
@@ -143,9 +144,11 @@ export default function ConceptPanel({
           </section>
         )}
         {sources.length > 0 && (
-          <section style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <H>Fontes</H>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <details key={nodeId}>
+            <summary className="qb-overline" style={{ color: 'var(--qb-gold)', cursor: 'pointer', padding: '6px 0' }}>
+              Fontes ({sources.length})
+            </summary>
+            <ul style={{ margin: '8px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {sources.map((s, i) => {
                 const label = typeof s === 'object' && s !== null ? s.label : s;
                 return (
@@ -156,7 +159,7 @@ export default function ConceptPanel({
                 );
               })}
             </ul>
-          </section>
+          </details>
         )}
       </div>
     </aside>
