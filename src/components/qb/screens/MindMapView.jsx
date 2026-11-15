@@ -3,6 +3,7 @@ import { useServerFn } from '@tanstack/react-start';
 import { MindMapCanvas } from '@/components/qb/mindmap/MindMapCanvas';
 import { ConceptPanel } from '@/components/qb/mindmap/ConceptPanel';
 import { StudyTopicPicker } from '@/components/qb/study/StudyTopicPicker';
+import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
@@ -23,6 +24,8 @@ export default function MindMapView({
   onReturn,
   go,
   dispatch,
+  radialOpen: radialOpenProp,
+  setRadialOpen: setRadialOpenProp,
 }) {
   const { QB_DATA: D, QB_EDITAL: E, save } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
@@ -48,11 +51,19 @@ export default function MindMapView({
     D.studySubjects?.find(s => s.topics.some(t => t.id === topicId));
   const topic = subj && subj.topics.find(t => t.id === topicId);
 
+  const [localRadialOpen, setLocalRadialOpen] = React.useState(false);
+  const isRadialOpen = radialOpenProp !== undefined ? radialOpenProp : localRadialOpen;
+  const setRadialOpen = setRadialOpenProp || setLocalRadialOpen;
+
+  const [radialSel, setRadialSel] = React.useState(() => ({
+    subjectId: subj?.id || null,
+    topicId: null,
+  }));
+
   // Lookup map strictly for the chosen topicId (v3: never silently fall back to another topic's map)
   const chosen = D.mindMaps.find(m => m.topicId === topicId) || null;
   const nodes = chosen?.nodes || [];
 
-  // selected === null means open at the map root; if selected belongs to another map, open at root unless explicitly requested
   const targetNodeId =
     !selected || selected === chosen?.id
       ? chosen?.id
@@ -70,6 +81,11 @@ export default function MindMapView({
   }, [node?.id]);
 
   const handleSelectTopic = nextTopicId => {
+    const nextSubj = allSubjects.find(s => s.topics.some(t => t.id === nextTopicId));
+    if (nextSubj) {
+      setRadialSel({ subjectId: nextSubj.id, topicId: null });
+    }
+    setRadialOpen(false);
     if (onTopic) {
       onTopic(nextTopicId);
     } else {
@@ -78,17 +94,33 @@ export default function MindMapView({
     }
   };
 
+  const openRadialSelector = () => {
+    setRadialSel({ subjectId: subj?.id || null, topicId: null });
+    setRadialOpen(true);
+  };
+
   const picker = (
-    <StudyTopicPicker
-      label="Assunto do mapa"
-      subjects={allSubjects}
-      value={topicId}
-      counts={mapCounts}
-      recents={recents}
-      pendingReviews={pendingReviews}
-      onSelect={s => handleSelectTopic(s.topicId)}
-      style={{ flex: '1 1 360px', maxWidth: 520 }}
-    />
+    <div style={{ display: 'flex', alignItems: 'stretch', gap: 8, flex: '1 1 420px', maxWidth: 640, flexWrap: 'wrap' }}>
+      <StudyTopicPicker
+        label="Assunto do mapa"
+        subjects={allSubjects}
+        value={topicId}
+        counts={mapCounts}
+        recents={recents}
+        pendingReviews={pendingReviews}
+        onSelect={s => handleSelectTopic(s.topicId)}
+        style={{ flex: '1 1 320px' }}
+      />
+      <Button
+        variant={isRadialOpen ? 'primary' : 'secondary'}
+        icon="locate-fixed"
+        onClick={() => (isRadialOpen ? setRadialOpen(false) : openRadialSelector())}
+        title="Selecionar matéria e assunto pelo Menu Radial"
+        style={{ minHeight: 52 }}
+      >
+        {isRadialOpen ? 'Ver mapa atual' : 'Menu radial'}
+      </Button>
+    </div>
   );
 
   const back = returnTo && (
@@ -108,6 +140,51 @@ export default function MindMapView({
       {picker}
     </div>
   );
+
+  const topicMeta = (s, t) => {
+    if (!t) {
+      const totalMaps = s.topics.reduce((acc, item) => acc + (mapCounts[item.id] || 0), 0);
+      return {
+        meta: totalMaps ? `${totalMaps} ${totalMaps > 1 ? 'mapas' : 'mapa'}` : `${s.topics.length} assuntos`,
+        sub: `${s.topics.length} assuntos · ${totalMaps} com mapa mental`,
+      };
+    }
+    const mCount = mapCounts[t.id] || 0;
+    return {
+      meta: mCount ? `${mCount} ${mCount > 1 ? 'mapas' : 'mapa'}` : 'Sem mapa',
+      sub: mCount ? `${mCount} mapa mental disponível` : 'Sem mapa mental na base',
+      badge: mCount || undefined,
+      off: !mCount,
+    };
+  };
+
+  if (isRadialOpen) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        {head}
+        <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+            <div>
+              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Seleção anterior · Menu Radial</span>
+              <h2 style={{ font: 'var(--type-h2)' }}>Escolha a matéria e entre no assunto</h2>
+            </div>
+            {chosen && (
+              <Button variant="secondary" size="sm" icon="network" onClick={() => setRadialOpen(false)}>
+                Abrir mapa de {subj?.short} {topic?.num}
+              </Button>
+            )}
+          </div>
+          <TrainingRadial
+            subjects={allSubjects}
+            value={radialSel}
+            onChange={setRadialSel}
+            onSelectTopic={({ topicId: pickedTopicId }) => handleSelectTopic(pickedTopicId)}
+            topicMeta={topicMeta}
+          />
+        </Panel>
+      </div>
+    );
+  }
 
   if (!chosen || !node) {
     const firstTopicWithMap = D.mindMaps[0]?.topicId;
@@ -130,6 +207,9 @@ export default function MindMapView({
           </code>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {back}
+            <Button icon="locate-fixed" onClick={openRadialSelector}>
+              Escolher assunto no Menu Radial
+            </Button>
             {chosen && (
               <Button variant="secondary" icon="network" onClick={() => setSelected(null)}>
                 Abrir a raiz do mapa

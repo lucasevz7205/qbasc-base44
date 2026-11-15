@@ -31,6 +31,8 @@ export default function TrainingRadial({
   value,
   onChange,
   onAction,
+  onSelectTopic,
+  topicMeta,
   pending = {},
   linkInfo,
   size = 540,
@@ -62,7 +64,7 @@ export default function TrainingRadial({
 
   // No silent fallback: an unknown id simply resolves to the level above.
   const subj = subjects.find(s => s.id === sel.subjectId) || null;
-  const topic = subj ? subj.topics.find(t => t.id === sel.topicId) || null : null;
+  const topic = !onSelectTopic && subj ? subj.topics.find(t => t.id === sel.topicId) || null : null;
   const level = topic ? 3 : subj ? 2 : 1;
 
   React.useEffect(() => {
@@ -94,14 +96,15 @@ export default function TrainingRadial({
   if (level === 1) {
     nodes = subjects.map(s => {
       const r = subjRate(s);
+      const extra = topicMeta ? topicMeta(s, null) : null;
       return {
         key: s.id,
         icon: s.icon || 'book-open',
         label: s.short || s.name,
         full: s.name,
         ring: r.acc,
-        meta: r.acc != null ? pct(r.acc) + ' de acertos' : 'Sem respostas',
-        sub: s.topics.length + ' assuntos · ' + r.valid + ' válidas',
+        meta: extra?.meta || (r.acc != null ? pct(r.acc) + ' de acertos' : s.topics.length + ' assuntos'),
+        sub: extra?.sub || (s.topics.length + ' assuntos · ' + r.valid + ' válidas'),
         onClick: () => {
           setPage(0);
           set({ subjectId: s.id, topicId: null });
@@ -111,6 +114,7 @@ export default function TrainingRadial({
   } else if (level === 2) {
     nodes = subj.topics.map(t => {
       const a = rate(t.correct, t.wrong), p = pending[t.id];
+      const extra = topicMeta ? topicMeta(subj, t) : null;
       return {
         key: t.id,
         code: t.num,
@@ -118,10 +122,20 @@ export default function TrainingRadial({
         full: t.title || emptyTitle,
         untitled: !t.title,
         ring: a,
-        meta: a != null ? pct(a) + ' de acertos' : 'Sem respostas',
-        sub: (a != null ? t.correct + ' de ' + (t.correct + t.wrong) + ' válidas' : 'Sem respostas válidas') + (p ? ' · ' + p + (p > 1 ? ' pendentes' : ' pendente') : ''),
-        pend: p,
-        onClick: () => set({ subjectId: subj.id, topicId: t.id }),
+        meta: extra?.meta || (a != null ? pct(a) + ' de acertos' : 'Sem respostas'),
+        sub:
+          extra?.sub ||
+          (a != null ? t.correct + ' de ' + (t.correct + t.wrong) + ' válidas' : 'Sem respostas válidas') +
+            (p ? ' · ' + p + (p > 1 ? ' pendentes' : ' pendente') : ''),
+        pend: extra?.badge ?? p,
+        off: extra?.off,
+        onClick: () => {
+          if (onSelectTopic) {
+            onSelectTopic({ subjectId: subj.id, topicId: t.id });
+          } else {
+            set({ subjectId: subj.id, topicId: t.id });
+          }
+        },
       };
     });
   } else {
@@ -169,7 +183,13 @@ export default function TrainingRadial({
         <>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Nível 2 · Assuntos</span>
           <span style={{ font: '400 19px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{subj.name}</span>
-          <span style={stat}>{sAcc.acc != null ? pct(sAcc.acc) + ' de acertos · ' + sAcc.valid + ' válidas' : 'Sem respostas válidas'}</span>
+          <span style={stat}>
+            {onSelectTopic
+              ? subj.topics.length + ' assuntos disponíveis'
+              : sAcc.acc != null
+                ? pct(sAcc.acc) + ' de acertos · ' + sAcc.valid + ' válidas'
+                : 'Sem respostas válidas'}
+          </span>
           <Button variant="ghost" size="sm" icon="arrow-left" onClick={toSubjects}>Matérias</Button>
         </>
       )}
@@ -241,7 +261,7 @@ export default function TrainingRadial({
                   style={{ left: size / 2 + R * Math.cos(a), top: size / 2 + R * Math.sin(a), width: 128, marginLeft: -64, gap: 8 }}
                 >
                   <span style={{ position: 'relative', display: 'flex' }}>
-                    <span className="qb-radial__orb">
+                    <span className="qb-radial__orb" style={n.off ? { opacity: 0.55 } : undefined}>
                       {n.icon ? <Icon name={n.icon} size={24} strokeWidth={1.5} /> : <span style={{ font: '500 15px/1 var(--font-mono)' }}>{n.code}</span>}
                     </span>
                     {level < 3 && <Ring value={n.ring} />}
@@ -284,7 +304,7 @@ export default function TrainingRadial({
                     </span>
                     <span style={{ font: '400 13px/1.3 var(--font-body)', color: 'var(--text-secondary)' }}>{level === 1 ? n.meta + ' · ' + n.sub : n.sub}</span>
                   </span>
-                  <Icon name={level === 3 ? 'arrow-right' : 'chevron-right'} size={18} color="var(--text-muted)" />
+                  <Icon name={level === 3 || (level === 2 && onSelectTopic) ? 'arrow-right' : 'chevron-right'} size={18} color="var(--text-muted)" />
                 </button>
               </li>
             ))}
