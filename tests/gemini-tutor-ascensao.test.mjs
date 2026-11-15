@@ -90,3 +90,45 @@ test("QBAsc mantém modos pedagógicos, acesso restrito e opção Gemini", () =>
   assert.match(source, /return invokeGeminiTutor/);
   assert.match(source, /base44\.asServiceRole\.integrations\.Core\.InvokeLLM\(\{ prompt \}\)/);
 });
+test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
+  const source = readFileSync(new URL("../src/lib/server-fns.js", import.meta.url), "utf8");
+  const start = source.indexOf("export const correctFlashcardWithArchitect");
+  const end = source.indexOf("const FeynmanInputSchema", start);
+  const block = source.slice(start, end);
+  assert.ok(start > 0 && end > start);
+  assert.match(block, /\.middleware\(\[requireUser\]\)/);
+  assert.match(block, /context\.user\?\.role !== "admin"/);
+  assert.match(block, /invokeGeminiTutor/);
+  assert.match(block, /secrets\.get\("Arquiteto"\)/);
+  assert.match(block, /data\.front/);
+  assert.match(block, /data\.back/);
+  assert.match(block, /data\.basis/);
+  assert.match(block, /data\.attempt/);
+  assert.doesNotMatch(block, /InvokeLLM|\.create\(|\.update\(|save\(/);
+});
+
+test("Interface oferece corrigir pelo Arquiteto e mantém classificação humana", () => {
+  const correction = readFileSync(new URL("../src/components/qb/flashcards/FlashcardCorrection.jsx", import.meta.url), "utf8");
+  const card = readFileSync(new URL("../src/components/qb/flashcards/Flashcard.jsx", import.meta.url), "utf8");
+  const session = readFileSync(new URL("../src/components/qb/screens/FlashcardSessionView.jsx", import.meta.url), "utf8");
+  assert.match(correction, /Corrigir com O Arquiteto/);
+  assert.match(correction, /correctFlashcardWithArchitect/);
+  assert.match(correction, /attempt\.trim\(\)/);
+  assert.match(correction, /role="alert"/);
+  assert.match(card, /\{correction \|\| null\}/);
+  assert.match(session, /<FlashcardCorrection key=\{card\.id\}/);
+  assert.match(session, /save\('cartoes_aval',card\.id/);
+  assert.match(session, /\['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'\]/);
+});
+
+test("Chat explicita provedor antes de gastar créditos", () => {
+  const tutor = readFileSync(new URL("../src/components/qb/architect/SocraticChat.jsx", import.meta.url), "utf8");
+  const service = readFileSync(new URL("../src/lib/server-fns.js", import.meta.url), "utf8");
+  assert.match(tutor, /React\.useState\('gemini'\)/);
+  assert.match(tutor, /Gemini · API externa/);
+  assert.match(tutor, /Base44 · créditos/);
+  assert.match(tutor, /provider,/);
+  assert.match(service, /getArchitectProviderStatus/);
+  assert.match(service, /geminiConfigured: Boolean/);
+});
+
