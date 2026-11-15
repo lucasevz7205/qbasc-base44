@@ -3,25 +3,35 @@ import { useServerFn } from "@tanstack/react-start";
 import { Icon } from "@/components/qb/core/Icon";
 import { Button } from "@/components/qb/core/Button";
 import { correctFlashcardWithArchitect } from "@/lib/server-fns";
+import { ChatMarkdown } from "@/components/qb/tutor/ChatMarkdown";
+import { extractFlashcardSuggestion, FLASHCARD_RATINGS } from "@/lib/flashcard-review";
 
 /**
  * Extensão visual do Flashcard da Ascensão:
  * resposta livre -> correção fundamentada -> autoavaliação SRS humana.
  * Nenhuma escrita em registros nem chamada automática da IA.
  */
-export default function FlashcardCorrection({ card, topicLabel }) {
+export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) {
   const correct = useServerFn(correctFlashcardWithArchitect);
   const [attempt, setAttempt] = React.useState("");
   const [feedback, setFeedback] = React.useState("");
   const [pending, setPending] = React.useState(false);
   const [error, setError] = React.useState("");
   const [editedSinceFeedback, setEditedSinceFeedback] = React.useState(false);
+  const active = React.useRef(false);
+  React.useEffect(() => {
+    active.current = true;
+    return () => { active.current = false; };
+  }, []);
+  const suggestion = editedSinceFeedback ? null : extractFlashcardSuggestion(feedback);
+  const suggestionLabel = FLASHCARD_RATINGS.find(x => x.id === suggestion)?.label;
 
   const submit = async event => {
     event.preventDefault();
     if (pending || attempt.trim().length < 8) return;
     setError("");
     setFeedback("");
+    onSuggestion?.(null);
     setPending(true);
     try {
       const result = await correct({
@@ -35,12 +45,16 @@ export default function FlashcardCorrection({ card, topicLabel }) {
           attempt: attempt.trim(),
         },
       });
-      setFeedback(String(result?.reply || "A IA não retornou uma análise."));
+      if (!active.current) return;
+      const reply = String(result?.reply || "A IA não retornou uma análise.");
+      setFeedback(reply);
       setEditedSinceFeedback(false);
+      onSuggestion?.(extractFlashcardSuggestion(reply));
     } catch (err) {
+      if (!active.current) return;
       setError(err?.message || "A correção não ficou disponível. Confira a chave Gemini no QBAsc.");
     } finally {
-      setPending(false);
+      if (active.current) setPending(false);
     }
   };
 
@@ -68,7 +82,7 @@ export default function FlashcardCorrection({ card, topicLabel }) {
           value={attempt}
           maxLength={3000}
           placeholder="Escreva a regra ou explique o conceito com suas palavras…"
-          onChange={e => { setAttempt(e.target.value); if (feedback) setEditedSinceFeedback(true); }}
+          onChange={e => { setAttempt(e.target.value); if (feedback) { setEditedSinceFeedback(true); onSuggestion?.(null); } }}
           disabled={pending}
           style={{ width: "100%", resize: "vertical", minHeight: 96, lineHeight: 1.6, fontFamily: "var(--font-body)" }}
         />
@@ -88,8 +102,9 @@ export default function FlashcardCorrection({ card, topicLabel }) {
           <strong style={{ color: "var(--qb-gold)", font: "600 15px/1.4 var(--font-body)" }}>
             Análise do Arquiteto{editedSinceFeedback ? " (referente à resposta anterior)" : ""}
           </strong>
-          <div style={{ color: "var(--text-secondary)", font: "400 15px/1.65 var(--font-body)", whiteSpace: "pre-wrap" }}>
-            {feedback}
+          {suggestionLabel && <span style={{ color: "var(--qb-gold)" }}>Avaliação sugerida: <strong>{suggestionLabel}</strong></span>}
+          <div className="qb-chat-format" style={{ color: "var(--text-secondary)", font: "400 15px/1.65 var(--font-body)" }}>
+            <ChatMarkdown text={feedback} />
           </div>
           <small style={{ color: "var(--text-muted)", font: "400 12px/1.5 var(--font-body)" }}>
             A correção não altera automaticamente o gabarito nem sua avaliação de revisão espaçada.
