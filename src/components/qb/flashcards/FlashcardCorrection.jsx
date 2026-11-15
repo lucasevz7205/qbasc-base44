@@ -68,12 +68,12 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
         style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", width: "100%", minHeight: 44,
           textAlign: "left", border: 0, color: "var(--text-primary)", background: "transparent", cursor: "pointer", padding: "8px 2px" }}>
         <Icon name="sparkles" size={20} color="var(--qb-gold)" />
-        <div style={{ flex: 1, minWidth: 160 }}>
-          <h2 style={{ margin: 0, font: "var(--type-h3)", color: "var(--text-primary)" }}>O Arquiteto · Correção ativa</h2>
-          <p style={{ margin: "5px 0 0", font: "400 13px/1.5 var(--font-body)", color: "var(--text-muted)" }}>
+        <span style={{ flex: 1, minWidth: 160, display: "flex", flexDirection: "column", gap: 5 }}>
+          <strong style={{ font: "var(--type-h3)", color: "var(--text-primary)" }}>O Arquiteto · Correção ativa</strong>
+          <span style={{ font: "400 13px/1.5 var(--font-body)", color: "var(--text-muted)" }}>
             Responda de memória. O tutor compara com o verso e a fonte deste cartão.
-          </p>
-        </div>
+          </span>
+        </span>
         <Icon name={expanded ? "chevron-up" : "chevron-down"} size={19} color="var(--qb-gold)" />
       </button>
       {expanded && <>
