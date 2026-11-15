@@ -22,6 +22,10 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
   const { idx, flipped, ratings } = cards;
   const done = idx >= deck.length;
   const card = deck[Math.min(idx, deck.length - 1)];
+  const topicId = cards.topicId || card?.topicId;
+  const subject = D.studySubjects?.find(item => item.topics.some(topic => topic.id === topicId));
+  const topic = subject?.topics.find(item => item.id === topicId);
+  const topicLabel = topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : 'Seus cartões';
   const node = D.mapNodes.find(n => n.id === card?.node);
   const parent = node && D.mapNodes.find(n => n.id === node.parent);
   const [error,setError]=React.useState('');
@@ -57,9 +61,9 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <BrandHeader variant="compact" floating={false} onExit={() => go(backTo || 'dashboard')}>
         <span className="qb-overline">Revisão espaçada</span>
-        <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{card?.topicId||'Seus cartões'}</span>
+        <span style={{ font: '600 20px/1.25 var(--font-serif)', color: 'var(--text-primary)', overflowWrap: 'anywhere' }}>{topicLabel}</span>
       </BrandHeader>
-      <StudySessionHeader subject="Flashcards" topic={card?.topicId||""} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go(backTo || 'dashboard')} />
+      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} style={{ '--font-heading': 'var(--font-serif)' }} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div>
           <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>
@@ -87,13 +91,13 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
           </Panel>
         ) : (
           <>
-            <Flashcard key={mode + ':' + card.id + ':' + ratings.length} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
+            <Flashcard key={mode + ':' + card.id + ':' + ratings.length} deck={subject?.name || 'Flashcards'} demo={false} intervals={intervals} height={380} front={card.front}
               back={<><div style={{ color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}><ChatMarkdown text={card.back} /></div><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
               ratingDisabled={saving} suggestedRating={suggestion?.cardId === card.id ? suggestion.rating : null}
               correction={<React.Fragment key={card.id}>
-                <FlashcardCorrection card={card} topicLabel={card.topicId} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />
+                <FlashcardCorrection card={card} topicLabel={topicLabel} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />
                 <EditorialCurator kind="flashcard" item={card} topicLabel={card.topicId} />
               </React.Fragment>} />
           </>
