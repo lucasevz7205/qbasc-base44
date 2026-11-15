@@ -35,7 +35,7 @@ function Backdrop({ bg }) {
 }
 
 export default function AppShell({ ui, setUi, view, quick, go, children, wide }) {
-  const { QB_DATA, QB_PLAN, refresh, logout } = useRealStudy();
+  const { QB_DATA, QB_PLAN, refresh, logout, isAdmin } = useRealStudy();
   const compact = !!ui.focus;
   const scene = ui.bg === 'dynamic' && !ui.focus && view !== 'performance';
   const isWide = wide ?? (view === 'study' || view === 'plan' || view === 'train');
@@ -70,7 +70,8 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
                 onBackground={v => setUi({ bg: v })}
                 theme={ui.theme}
                 onTheme={v => setUi({ theme: v })}
-                tools={TOOLS}
+                showAdministration={isAdmin}
+                tools={isAdmin ? TOOLS : TOOLS.filter(t => ['study-clock', 'keys'].includes(t.id))}
                 onTool={id =>
                   id === 'keys'
                     ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Esc fechar O Arquiteto' } })
@@ -78,7 +79,7 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
                 }
                 collapsed={ui.collapsed}
                 onCollapse={() => setUi({ collapsed: !ui.collapsed })}
-                onArchitect={() => setUi({ studio: { open: true } })}
+                onArchitect={isAdmin ? () => setUi({ studio: { open: true } }) : undefined}
               />
             </div>
           )}
@@ -111,7 +112,7 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
 }
 
 export function ArchitectLayer({ ui, setUi }) {
-  const { QB_DATA, QB_EDITAL } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, isAdmin } = useRealStudy();
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
   const mode = ui.studio.mode === 'modal' ? 'modal' : 'dock';
@@ -121,11 +122,11 @@ export function ArchitectLayer({ ui, setUi }) {
     .map(f => ({ front: f.front, back: f.back }));
   return (
     <>
-      <ArchitectLauncher
+      {isAdmin && <ArchitectLauncher
         hidden={ui.studio.open}
         onOpen={() => setUi({ studio: { open: true, tool: 'socratico' } })}
-      />
-      <ArchitectStudio
+      />}
+      {(isAdmin || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}
         mode={mode}
         tool={ui.studio.tool || 'socratico'}
@@ -136,7 +137,7 @@ export function ArchitectLayer({ ui, setUi }) {
         context={ctx}
         onContextChange={c => setUi({ ctx: c })}
         deck={deck}
-      />
+      />}
       <ToastStack toasts={ui.toasts} onDismiss={id => setUi({ toasts: ui.toasts.filter(x => x.id !== id) })} />
     </>
   );

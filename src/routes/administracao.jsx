@@ -137,11 +137,11 @@ function AccountDetails({ profile, refresh }) {
     </Panel>
     <Panel style={{ display: 'grid', gap: 12 }}>
       <h2 style={{ font: 'var(--type-h2)' }}>Copiar questões do banco geral</h2>
-      <label>Assunto de destino <select className="qb-input" value={topicId} onChange={event => { setTopicId(event.target.value); clearPreview(); }}>
+      <label>Assunto de destino <select className="qb-input" value={topicId} disabled={busy} onChange={event => { setTopicId(event.target.value); clearPreview(); }}>
         <option value="">Selecione um assunto</option>
         {(summary?.edital || []).map(row => <option key={row.id} value={row.id}>{[row.materia, row.num, row.titulo].filter(Boolean).join(' · ')}</option>)}
       </select></label>
-      <label>Código do capítulo no banco <input className="qb-input" maxLength={120} value={chapter} onChange={event => { setChapter(event.target.value); clearPreview(); }} /></label>
+      <label>Código do capítulo no banco <input className="qb-input" maxLength={120} value={chapter} disabled={busy} onChange={event => { setChapter(event.target.value); clearPreview(); }} /></label>
       <Button variant="secondary" disabled={busy || !topicId || !bankArgs.chapter} onClick={() => run(async () => {
         clearPreview();
         setPreview(await previewStudyBank({ data: bankArgs }));

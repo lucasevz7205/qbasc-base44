@@ -36,7 +36,7 @@ const zero = () => ({correct:0,wrong:0,blank:0});
 const keyOf = x => String(x??'').trim().toUpperCase();
 const chapterKey = x => keyOf(x);
 export { day as studyDate };
-export function adaptStudy(records, user, now = new Date()) {
+export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const today = day(now);
   const source = key => arr(records[key]);
   const topics = Object.create(null), subjects = Object.create(null), capTopic = Object.create(null);
@@ -195,7 +195,7 @@ export function adaptStudy(records, user, now = new Date()) {
   const first=Object.keys(dates).sort()[0]||today;
   for(let i=0,d=first;d<=today&&i<3700;i++,d=shift(d,1))stat(d);
   stat(today);
-  const exam = 'Câmara dos Deputados · Analista Legislativo';
+  const exam = examName || 'Câmara dos Deputados · Analista Legislativo';
   const config=source('config').find(x=>x.id==='simulado')||{};
   const examBlocks=arr(config.obj?.blocos).map(b=>({block:b.prova,label:b.nome,subjects:arr(b.mats).map(entry=>{
     if(!Array.isArray(entry))return null;

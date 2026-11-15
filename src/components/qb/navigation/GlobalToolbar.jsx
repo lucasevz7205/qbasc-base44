@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 import { Icon } from '@/components/qb/core/Icon';
 
 const SYNC = {
@@ -73,6 +74,7 @@ export default function GlobalToolbar({
   collapsed = false,
   onCollapse,
   onArchitect,
+  showAdministration,
   style,
 }) {
   const s = SYNC[sync] || SYNC.ok;
@@ -150,6 +152,7 @@ export default function GlobalToolbar({
           }
         </Menu>
       )}
+      {showAdministration && <Link to="/administracao" className="qb-tool"><Icon name="settings" size={14} />Administração</Link>}
       {onCollapse && (
         <button className="qb-tool" onClick={onCollapse} aria-pressed={collapsed}>
           <Icon name={collapsed ? 'chevrons-down' : 'chevrons-up'} size={14} />

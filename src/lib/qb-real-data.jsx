@@ -4,6 +4,7 @@ import { useAuth } from '@/lib/AuthContext';
 import { base44 } from '@/api/base44Client';
 import { listClaudeCollection } from '@/lib/study-store';
 import { adaptStudy } from '@/lib/qb-real-model';
+import { loadPersonalStudy, writePersonalStudy } from '@/lib/study-accounts';
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
@@ -48,30 +49,46 @@ async function persist(collection, id, data) {
 export function RealStudyGate({children}) {
   const auth=useAuth(), client=useQueryClient();
   const user=auth.user, admin=user?.role==='admin';
-  const queryKey=React.useMemo(()=>['qbasc-study',user?.id,'2026-11-15'], [user?.id]);
-  const query=useQuery({queryKey,queryFn:loadRealData,enabled:!!admin&&typeof window!=='undefined',staleTime:60000,retry:false});
+  const queryKey = React.useMemo(() => ['qbasc-study', user?.id, admin], [user?.id, admin]);
+  const query = useQuery({
+    queryKey,
+    queryFn: async () => admin ? { profile: null, records: await loadRealData() } : loadPersonalStudy(),
+    enabled: !!user && typeof window !== 'undefined',
+    staleTime: 60000,
+    refetchInterval: admin ? false : 60000,
+    retry: false,
+  });
   const refresh=React.useCallback(async()=>{const result=await query.refetch();if(result.error)throw result.error;},[query.refetch]);
   const save=React.useCallback(async (collection,id,data)=>{
-    if(!admin||!collections.includes(collection))throw new Error('Acesso restrito.');
-    const row=await persist(collection,id,data);
+    if (!user || !collections.includes(collection)) throw new Error('Acesso restrito.');
+    const row = admin ? await persist(collection, id, data) : await writePersonalStudy({ data: { collection, id, value: data } });
     if(collection==='questoes_excluidas') await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
-      if(!before)return before;
-      const old=before[collection]||[];
-      if(collection==='questoes_excluidas') return {...before,[collection]:[...old.filter(x=>x.id!==row.id),row]};
-      return {...before,[collection]:old.some(x=>x.id===row.id)?old.map(x=>x.id===row.id?row:x):[...old,row]};
+      if (!before?.records) return before;
+      const old = before.records[collection] || [];
+      const rows = collection === 'questoes_excluidas' ? [...old.filter(x => x.id !== row.id), row]
+        : old.some(x => x.id === row.id) ? old.map(x => x.id === row.id ? row : x) : [...old, row];
+      return { ...before, records: { ...before.records, [collection]: rows } };
     });
     return row;
-  },[admin,client,queryKey]);
-  const model=React.useMemo(()=>query.data&&admin?adaptStudy(query.data,user):null,[query.data,user,admin]);
+  }, [admin, client, queryKey, user]);
+  const { profile, records } = query.data || {};
+  const model = React.useMemo(() => records ? adaptStudy(records, user, new Date(), {
+    examName: admin ? undefined : profile?.exam || 'Meu projeto de estudo',
+  }) : null, [records, user, admin, profile?.exam]);
   if(auth.isLoadingAuth)return <Gate title="Verificando acesso ao QBAsc…" detail="Se a verificação não avançar, abra a tela de entrada." action={<a href="/login">Abrir tela de entrada</a>}/>;
   if(auth.authError?.type==='user_not_registered')return <Gate title="Esta conta não tem acesso ao QBAsc" action={<Button onClick={auth.navigateToLogin}>Entrar com outra conta</Button>}/>;
   if(auth.authError)return <Gate title="Falha ao verificar sua conta" detail="Recarregue para iniciar outra verificação ou volte à tela de entrada." action={<><Button onClick={()=>window.location.reload()}>Tentar novamente</Button><Button variant="secondary" onClick={auth.navigateToLogin}>Ir para o login</Button></>}/>;
   if(!user)return <Gate title="Quebrando a Banca" detail="Entre com sua conta para acessar o ambiente de estudo." action={<Button onClick={auth.navigateToLogin}>Entrar</Button>}/>;
-  if(!admin)return <Gate title="Conta autenticada" detail="O acesso ao ambiente de estudo ainda não foi liberado para esta conta." action={<Button onClick={auth.logout}>Sair</Button>}/>;
   if(query.isError)return <Gate title="Não foi possível carregar seu progresso" detail="Confira a conexão e tente novamente." action={<Button onClick={()=>query.refetch()}>Tentar novamente</Button>}/>;
+  if (!admin && profile && profile.status !== 'active') {
+    const suspended = profile.status === 'suspended';
+    return <Gate title={suspended ? 'Acesso suspenso' : 'Aguardando ativação'}
+      detail={suspended ? 'Fale com a administração para recuperar o acesso.' : 'Sua conta foi cadastrada. O acesso será liberado pela administração.'}
+      action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
+  }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout,isAdmin:admin}}>{children}</RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>

@@ -33,7 +33,7 @@ function RootComponent() {
   const pathname = useLocation({ select: location => location.pathname });
   return (
     <AuthProvider>
-      {isAuthPage(pathname) ? <Outlet /> : (
+      {(isAuthPage(pathname) || pathname.replace(/\/$/, '') === '/administracao') ? <Outlet /> : (
         <RealStudyGate>
           <QBStudyProvider>
             <Outlet />

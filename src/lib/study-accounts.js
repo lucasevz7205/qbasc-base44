@@ -78,10 +78,11 @@ async function requireAccount(entities, id) {
   return result;
 }
 
-export const loadPersonalStudy = createServerFn({ method: 'GET' })
+export const loadPersonalStudy = createServerFn({ method: 'POST' })
   .middleware([requireUser])
   .handler(async ({ context }) => {
     const { user } = context;
+    if (user.role === 'admin') throw new Error('O ambiente administrativo usa o espaço original.');
     const id = accountId.parse(user.id);
     const entities = context.getBase44().asServiceRole.entities;
     let profile = await account(entities, id);

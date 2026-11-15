@@ -3,8 +3,9 @@ import { ArchitectStudio } from '@/components/qb/architect/ArchitectStudio';
 import { useRealStudy } from '@/lib/qb-real-data';
 
 export default function TutorView({ context, onContextChange, tool, onToolChange }) {
-  const { QB_DATA, QB_EDITAL } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, isAdmin } = useRealStudy();
   const deck = QB_DATA.flashcards.filter(f=>!context?.topicId||f.topicId===context.topicId).slice(0,30).map(f => ({ front: f.front, back: f.back }));
+  if (!isAdmin) return <p>O Arquiteto está reservado à administração durante o beta.</p>;
   return (
     <ArchitectStudio
       open
