@@ -1,5 +1,22 @@
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
+const firstText = (...values) => values.map(str).find(value => value.trim()) || '';
+
+function nodeConcept(node, mapSources) {
+  const detail = node.x && typeof node.x === 'object' && !Array.isArray(node.x) ? node.x : {};
+  const sourceInputs = [detail.src, node.src, ...arr(mapSources)].flat();
+  const sources = sourceInputs.map(source => ({
+    label: firstText(source?.titulo, source?.label, source),
+    url: typeof source?.url === 'string' && /^https?:\/\//i.test(source.url) ? source.url : undefined,
+  })).filter(source => source.label);
+  return {
+    summary: firstText(detail.e, detail.explicacao, detail.definicao, node.x, node.explicacao, node.definicao, node.n),
+    example: firstText(detail.ex, detail.exemplo, node.ex, node.exemplo),
+    trap: firstText(detail.trap, detail.pegadinha, node.trap, node.pegadinha),
+    sources: [...new Map(sources.map(source => [source.label, source])).values()],
+  };
+}
+
 const num = x => Number.isFinite(Number(x)) ? Number(x) : 0;
 const day = value => {
   if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
@@ -53,7 +70,7 @@ export function adaptStudy(records, user, now = new Date()) {
         const id=parent?root+'::'+path:root;
         const label=str(v.t??v.label??v.titulo??v.rotulo)||title;
         nodes.push({id,parent,label});
-        concepts[id]={summary:str(v.x??v.explicacao??v.definicao??v.n),example:str(v.ex??v.exemplo),sources:arr(d.fontes).map(f=>({label:str(f?.titulo??f?.label??f),url:typeof f?.url==='string'&&/^https?:\/\//i.test(f.url)?f.url:undefined})).filter(f=>f.label)};
+        concepts[id] = nodeConcept(v, d.fontes);
         if(v.id)(aliases[topicId]??={})[v.id]=id;
         arr(v.ramos??v.children??v.nos??v.filhos??v.sub??v.f).forEach((n,i)=>add(n,id,path+'.'+i));
       };
