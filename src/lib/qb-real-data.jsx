@@ -61,8 +61,9 @@ export function RealStudyGate({children}) {
     return row;
   },[admin,client,queryKey]);
   const model=React.useMemo(()=>query.data&&admin?adaptStudy(query.data,user):null,[query.data,user,admin]);
-  if(auth.isLoadingAuth||typeof window==='undefined')return <Gate title="Verificando acesso ao QBAsc…"/>;
-  if(auth.authError)return <Gate title="Falha ao verificar sua conta" action={<Button onClick={()=>auth.refresh().catch(()=>{})}>Tentar novamente</Button>}/>;
+  if(auth.isLoadingAuth)return <Gate title="Verificando acesso ao QBAsc…" detail="Se a verificação não avançar, abra a tela de entrada." action={<a href="/login">Abrir tela de entrada</a>}/>;
+  if(auth.authError?.type==='user_not_registered')return <Gate title="Esta conta não tem acesso ao QBAsc" action={<Button onClick={auth.navigateToLogin}>Entrar com outra conta</Button>}/>;
+  if(auth.authError)return <Gate title="Falha ao verificar sua conta" detail="Recarregue para iniciar outra verificação ou volte à tela de entrada." action={<><Button onClick={()=>window.location.reload()}>Tentar novamente</Button><Button variant="secondary" onClick={auth.navigateToLogin}>Ir para o login</Button></>}/>;
   if(!user)return <Gate title="Quebrando a Banca" detail="Versão de teste · entre com sua conta administradora." action={<Button onClick={auth.navigateToLogin}>Entrar</Button>}/>;
   if(!admin)return <Gate title="Acesso reservado à conta administradora" action={<Button onClick={auth.logout}>Sair</Button>}/>;
   if(query.isError)return <Gate title="Não foi possível carregar seu progresso" detail="Confira a conexão e tente novamente." action={<Button onClick={()=>query.refetch()}>Tentar novamente</Button>}/>;
