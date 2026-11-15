@@ -42,8 +42,8 @@ function ReviewRecord({ item }) {
 }
 
 export default function StudyScreen({ tab = 'mapa', setTab, go, mapProps }) {
-  const { QB_EDITAL, QB_DATA, QB_PLAN }=useRealStudy();
-  const topics = QB_EDITAL.subjects.flatMap(s=>s.topics.map(t=>({...t,subject:s.name})));
+  const { QB_DATA, QB_PLAN }=useRealStudy();
+  const topics = QB_DATA.studySubjects.flatMap(s=>s.topics.map(t=>({...t,subject:s.name})));
   const selected = topics.find(t=>t.id===mapProps?.studyTopicId);
   const [filter,setFilter]=React.useState('');
   const normalized = value => String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
