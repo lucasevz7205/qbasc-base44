@@ -2,6 +2,7 @@ import React from 'react';
 import { BrandHeader } from '@/components/qb/navigation/BrandHeader';
 import { StudySessionHeader } from '@/components/qb/study/StudySessionHeader';
 import { Flashcard } from '@/components/qb/flashcards/Flashcard';
+import { FlashcardCorrection } from '@/components/qb/flashcards/FlashcardCorrection';
 import { Panel } from '@/components/qb/core/Panel';
 import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
@@ -35,7 +36,15 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
   };
 
   React.useEffect(() => {
-    const onKey = e => { if (!done && e.key === ' ') { e.preventDefault(); setCards(c => ({ ...c, flipped: !c.flipped })); } };
+    const onKey = e => {
+      // Não virar o cartão enquanto o estudante digita a resposta livre.
+      const target = e.target;
+      if (target?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(target?.tagName)) return;
+      if (!done && e.key === ' ' && !e.repeat) {
+        e.preventDefault();
+        setCards(c => ({ ...c, flipped: !c.flipped }));
+      }
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   });
@@ -67,7 +76,8 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
             <Flashcard key={idx} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
               back={<><p style={{ margin: 0, color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}>{card.back}</p><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
-              flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate} />
+              flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
+              correction={<FlashcardCorrection key={card.id} card={card} topicLabel={card.topicId} />} />
             {!flipped && <span style={{ textAlign: 'center', font: '400 12px/1 var(--font-mono)', color: 'var(--text-muted)' }}>Espaço · virar cartão</span>}
           </>
         )}
