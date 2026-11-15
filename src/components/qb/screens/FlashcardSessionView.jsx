@@ -3,6 +3,7 @@ import { BrandHeader } from '@/components/qb/navigation/BrandHeader';
 import { StudySessionHeader } from '@/components/qb/study/StudySessionHeader';
 import { Flashcard } from '@/components/qb/flashcards/Flashcard';
 import { FlashcardCorrection } from '@/components/qb/flashcards/FlashcardCorrection';
+import EditorialCurator from '@/components/qb/study/EditorialCurator';
 import { Panel } from '@/components/qb/core/Panel';
 import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
@@ -91,7 +92,10 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
               ratingDisabled={saving} suggestedRating={suggestion?.cardId === card.id ? suggestion.rating : null}
-              correction={<FlashcardCorrection key={card.id} card={card} topicLabel={card.topicId} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />} />
+              correction={<React.Fragment key={card.id}>
+                <FlashcardCorrection card={card} topicLabel={card.topicId} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />
+                <EditorialCurator kind="flashcard" item={card} topicLabel={card.topicId} />
+              </React.Fragment>} />
           </>
         )}
       </main>
