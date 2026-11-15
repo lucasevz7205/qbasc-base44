@@ -1,19 +1,13 @@
-import React from 'react';
 import { createFileRoute } from '@tanstack/react-router';
-import { WelcomeView } from '@/components/qb/screens/WelcomeView';
-import { useQBStudy } from '@/lib/QBStudyContext';
+import { LoginPage } from '@/components/auth/LoginPage';
 
 export const Route = createFileRoute('/boas-vindas')({
+  ssr: false,
   head: () => ({
     meta: [
       { title: 'Boas-vindas · Quebrando a Banca — A Ascensão' },
       { name: 'description', content: 'Conhecimento · Estratégia · Disciplina · Conquista.' },
     ],
   }),
-  component: BoasVindasRoute,
+  component: LoginPage,
 });
-
-function BoasVindasRoute() {
-  const { go } = useQBStudy();
-  return <WelcomeView onEnter={() => go('dashboard')} />;
-}
