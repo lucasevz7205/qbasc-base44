@@ -16,10 +16,12 @@ export default function DashboardView({ go, openArchitect }) {
   const tot = M.totals(QB_EDITAL.subjects);
   const todayTasks = P.weeks[0].filter(t => t.date === P.today);
   const done = todayTasks.filter(t => t.status === 'done').length;
+  const usingCycle = P.mode === 'cycle';
+  const currentBlock = P.cycle.find(block => block.subjectId === P.currentSubjectId);
   const late = Object.values(P.weeks).flat().filter(t => t.status === 'late').length;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <HeroAscension scene="sunset" height={220} focal="right" eyebrow={QB_DATA.exam} title="Sua preparação continua" subtitle={'Hoje: ' + todayTasks.length + ' tarefas planejadas · Simulado: ' + QB_SIM.next.label + '.'}>
+      <HeroAscension scene="sunset" height={220} focal="right" eyebrow={QB_DATA.exam} title="Sua preparação continua" subtitle={(usingCycle ? 'Ciclo: ' + (currentBlock?.name || 'sem matérias') : 'Hoje: ' + todayTasks.length + ' tarefas planejadas') + ' · Simulado: ' + QB_SIM.next.label + '.'}>
         <Button iconRight="arrow-right" onClick={() => go('plan', 'hoje')}>Ver o plano de hoje</Button>
         <Button variant="secondary" icon="target" onClick={() => go('train')}>Treinar agora</Button>
       </HeroAscension>
@@ -28,7 +30,8 @@ export default function DashboardView({ go, openArchitect }) {
         <StatCard label="Taxa de acertos" icon="target" tone="correct" value={M.pct(tot.accuracy)} detail={tot.correct + ' de ' + tot.valid + ' respostas válidas'} note="acertos ÷ (acertos + erros). Brancos fora." onClick={() => go('performance')} />
         <StatCard label="Cobertura do edital" icon="scroll-text" value={M.pct(tot.coverage)} detail={tot.studied + ' de ' + tot.total + ' tópicos com estudo iniciado'} note="Tópico coberto = status diferente de Não iniciado." onClick={() => go('edital')} />
         <StatCard label="Questões respondidas" icon="list-checks" value={tot.answered} detail={tot.blank + ' em branco incluídas'} onClick={() => go('performance')} />
-        <StatCard label="Tarefas de hoje" icon="calendar" value={done + '/' + todayTasks.length} detail={late ? late + ' atrasadas (últimos 14 dias)' : 'Nenhuma atrasada'} warning={late ? 'Há tarefas atrasadas' : null} onClick={() => go('plan', 'hoje')} />
+        {usingCycle ? <StatCard label="Bloco atual" icon="repeat" value={currentBlock ? currentBlock.minutes + ' min' : '—'} detail={currentBlock?.name || 'Sem matérias no ciclo'} onClick={() => go('plan', 'hoje')} />
+          : <StatCard label="Tarefas de hoje" icon="calendar" value={done + '/' + todayTasks.length} detail={late ? late + ' atrasadas (últimos 14 dias)' : 'Nenhuma atrasada'} warning={late ? 'Há tarefas atrasadas' : null} onClick={() => go('plan', 'hoje')} />}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,460px),1fr))', gap: 20, alignItems: 'start' }}>
         <Panel padding="20px 16px 24px" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
@@ -47,8 +50,10 @@ export default function DashboardView({ go, openArchitect }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}><h2 style={{ font: 'var(--type-h2)' }}>Hoje</h2><button className="qb-linkbtn" onClick={() => go('plan', 'hoje')}>Planejamento completo</button></div>
-            {todayTasks.slice(0, 4).map(t => <TaskCard key={t.id} task={t} onClick={() => go('plan', 'hoje')} />)}
-            {todayTasks.length > 4 && <span style={{ font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}>+ {todayTasks.length - 4} tarefas</span>}
+            {usingCycle ? <Button variant="secondary" onClick={() => go('plan', 'hoje')}>{currentBlock ? currentBlock.name + ' · ' + currentBlock.minutes + ' min' : 'Configurar ciclo'}</Button> : <>
+              {todayTasks.slice(0, 4).map(t => <TaskCard key={t.id} task={t} onClick={() => go('plan', 'hoje')} />)}
+              {todayTasks.length > 4 && <span style={{ font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}>+ {todayTasks.length - 4} tarefas</span>}
+            </>}
           </Panel>
           <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <h2 style={{ font: '600 14px/1.2 var(--font-display)', letterSpacing: '.12em', color: 'var(--qb-gold)' }}>MARCOS</h2>

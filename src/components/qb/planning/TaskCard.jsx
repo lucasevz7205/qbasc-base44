@@ -26,6 +26,7 @@ export default function TaskCard({ task, selected, onClick, preview, compact = f
       </span>
       <span style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', font: '400 12px/1.2 var(--font-body)', color: 'var(--text-muted)' }}>
         {task.subject}
+        {task.raw?.horario && <time dateTime={task.raw.horario}>{task.raw.horario}</time>}
         {done && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--state-correct)' }}><Icon name="circle-check" size={13} />Concluída</span>}
         {late && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--state-incorrect)' }}><Icon name="clock" size={13} />Atrasada</span>}
         {preview && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: 'var(--qb-gold-bright)' }}><Icon name="calendar-clock" size={13} />{preview}</span>}

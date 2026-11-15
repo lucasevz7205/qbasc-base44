@@ -110,14 +110,20 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
     toast?.({ tone: 'success', title: mode === 'cycle' ? 'Ciclo de estudos ativado' : 'Cronograma semanal ativado' });
   };
   const apply = async () => {
-    const prev = tasks;
-    const map = Object.fromEntries(preview.changes.map(c => [c.id, c._to]));
-    if(!await updateTasks(tasks.filter(t=>map[t.id]).map(t=>[t,{data:map[t.id]}])))return;
-    const msg = preview.changes.length + ' atividades reagendadas. Nada foi concluído ou apagado.';
-    setUndo({ prev, msg }); setPreview(null);
+    const dates = new Map(preview.changes.map(change => [change.id, change._to]));
+    const affected = tasks.filter(task => dates.has(task.id) && movable(task));
+    if (!await updateTasks(affected.map(task => [task, { data: dates.get(task.id) }]))) return;
+    const msg = affected.length + ' atividades reagendadas.';
+    setUndo({ affected, dates, msg }); setPreview(null);
     toast && toast({ tone: 'success', title: 'Cronograma ajustado', message: msg });
   };
-  const restore=async prev=>{if(await updateTasks(prev.flatMap(old=>{const cur=tasks.find(t=>t.id===old.id);return cur&&cur.date!==old.date?[[cur,{data:old.date}]]:[];})))setUndo(null);};
+  const restore = async () => {
+    const changes = undo.affected.flatMap(old => {
+      const task = tasks.find(item => item.id === old.id);
+      return task && movable(task) && task.date === undo.dates.get(old.id) ? [[task, { data: old.date }]] : [];
+    });
+    if (await updateTasks(changes)) setUndo(null);
+  };
   const previews = preview ? Object.fromEntries(preview.changes.map(c => [c.id, '→ ' + c.to])) : {};
 
   const today = QB_PERF.days[QB_PERF.days.length - 1];
@@ -130,7 +136,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
 
   const reschedule = (
     <RescheduleActions dayLabel={dl(selDate)} quantity={qty} onQuantity={setQty} counts={{ late: late.filter(t => !t.auto).length, day: dayMovable.length, week: weekPending.length + late.filter(t => !t.auto).length }}
-      preview={preview} onPreview={compute} onConfirm={apply} onCancel={() => setPreview(null)} lastApplied={undo && undo.msg} onUndo={() => { restore(undo.prev); }} />
+      preview={preview} onPreview={compute} onConfirm={apply} onCancel={() => setPreview(null)} lastApplied={undo && undo.msg} onUndo={restore} />
   );
 
   return (
@@ -234,7 +240,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {reschedule}
           <Panel padding={14}>
-            <WeekCalendar days={days} today={P.today} selectedDate={selDate} onSelectDay={d => { setSelDate(d); setPreview(null); }} selectedTaskId={selTask} onSelectTask={t => setSelTask(t.id)} previews={previews}
+            <WeekCalendar days={days} today={P.today} selectedDate={selDate} onSelectDay={d => { setSelDate(d); setPreview(null); }} selectedTaskId={selTask} onSelectTask={t => { setSelTask(t.id); setSelDate(t.date); }} previews={previews}
               weekLabel={M.fmtDate(start) + ' a ' + M.fmtDate(end) + (offset === 0 ? ' · semana atual' : '')} onPrevWeek={() => setOffset(o => Math.max(-1, o - 1))} onNextWeek={() => setOffset(o => Math.min(1, o + 1))} onToday={() => setOffset(0)} isCurrentWeek={offset === 0} />
           </Panel>
           <span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}> Carga da semana: {Math.round(days.reduce((a, d) => a + d.tasks.reduce((x, t) => x + t.minutes, 0), 0) / 60)} h planejadas · {Math.round(days.reduce((a, d) => a + d.tasks.filter(t => t.status === 'done').reduce((x, t) => x + t.minutes, 0), 0) / 60)} h realizadas · {P.hours.reduce((a, b) => a + b, 0)} h disponíveis.</span>

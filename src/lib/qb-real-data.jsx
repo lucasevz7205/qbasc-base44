@@ -62,7 +62,7 @@ export function RealStudyGate({children}) {
   const save=React.useCallback(async (collection,id,data)=>{
     if (!user || !collections.includes(collection)) throw new Error('Acesso restrito.');
     const row = admin ? await persist(collection, id, data) : await writePersonalStudy({ data: { collection, id, value: data } });
-    if(collection==='questoes_excluidas') await client.cancelQueries({queryKey,exact:true});
+    if (collection === 'questoes_excluidas' || collection === 'planejamento') await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
       if (!before?.records) return before;
       const old = before.records[collection] || [];
