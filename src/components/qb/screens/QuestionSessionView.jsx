@@ -10,6 +10,7 @@ import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { pickQuestionRound } from '@/lib/study-session-rules';
 
 function SessionSummary({ answers, go, qs, ganBatch }) {
   const right = qs.filter(q => answers[q.id] && answers[q.id].answer === q.key).length;
@@ -83,7 +84,7 @@ export default function QuestionSessionView({ session, setSession, elapsed, paus
     ? session.questionIds
         .map(id => session.customQuestions?.[id] || QB_DATA.questionBank.find(q => q.id === id))
         .filter(q => q && q.statusConfronto !== 'divergencia_bloqueada')
-    : QB_DATA.questionBank.slice(0, 20);
+    : pickQuestionRound(QB_DATA.questionBank);
 
   const { idx, answers, drawer, focus, bannerDismissed, ganBatch } = session;
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
