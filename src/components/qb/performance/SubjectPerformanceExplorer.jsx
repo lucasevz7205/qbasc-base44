@@ -6,7 +6,7 @@ import { ProgressBar } from '../core/ProgressBar.jsx';
 import { EmptyState } from '../data/EmptyState.jsx';
 
 const ACTIONS = { edital: { label: 'Ver tópico', icon: 'scroll-text' }, train: { label: 'Treinar', icon: 'target' }, mindmap: { label: 'Abrir mapa', icon: 'map' }, review: { label: 'Revisão ativa', icon: 'layers' }, architect: { label: 'O Arquiteto', icon: 'sparkles' } };
-const LEVEL = { subject: 'Matéria', group: 'Assunto', topic: 'Assunto' };
+const LEVEL = { subject: 'Matéria', group: 'Assunto', topic: 'Subtópico' };
 const SORTS = [{ id: 'edital', label: 'Ordem do edital' }, { id: 'accuracy', label: 'Menor acerto' }, { id: 'volume', label: 'Mais respostas' }];
 const stat = n => { const valid = n.correct + n.wrong; return { valid, pct: valid ? Math.round((n.correct / valid) * 100) : null }; };
 const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
@@ -27,6 +27,12 @@ function Row({ node, open, toggle, onAction, minSample, lowBelow, prep }) {
     }
   };
   const acts = (node.actions || []).filter(a => ACTIONS[a]);
+  const actionButtons = acts.length ? (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {acts.map(a => <Button key={a} size="sm" variant="secondary" icon={ACTIONS[a].icon} data-action={a} data-subject-id={node.subjectId} data-topic-id={node.topicId} data-node-id={node.nodeId || undefined}
+                onClick={() => onAction && onAction({ action: a, subjectId: node.subjectId, topicId: node.topicId, ...(node.nodeId ? { nodeId: node.nodeId } : {}) })}>{ACTIONS[a].label}</Button>)}
+            </div>
+  ) : null;
   return (
     <li>
       <button type="button" className="qb-perf-row" data-perf-row={node.id} aria-expanded={isOpen} aria-controls={pid} onClick={() => toggle(node.id)} onKeyDown={onKey}>
@@ -42,6 +48,7 @@ function Row({ node, open, toggle, onAction, minSample, lowBelow, prep }) {
         <span className="qb-perf-row__counts">{valid ? <><b style={{ color: 'var(--state-correct)', fontWeight: 500 }}>{node.correct} C</b> · <b style={{ color: 'var(--state-incorrect)', fontWeight: 500 }}>{node.wrong} E</b> · {plural(valid, 'válida', 'válidas')}</> : 'sem respostas válidas'}</span>
         <span className="qb-perf-row__badge">{badge}</span>
       </button>
+      {isOpen && kids && actionButtons && <div className="qb-perf-detail">{actionButtons}</div>}
       {isOpen && (kids ? (
         kids.length ? <ul id={pid} className="qb-perf-children">{kids.map(c => <Row key={c.id} node={c} open={open} toggle={toggle} onAction={onAction} minSample={minSample} lowBelow={lowBelow} prep={prep} />)}</ul>
           : <p id={pid} className="qb-perf-detail" style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Nenhum item com respostas neste nível.</p>
@@ -52,10 +59,7 @@ function Row({ node, open, toggle, onAction, minSample, lowBelow, prep }) {
           </dl>
           {!valid && <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Sem respostas válidas no período selecionado; o percentual não é calculado.</span>}
           {acts.length ? (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {acts.map(a => <Button key={a} size="sm" variant="secondary" icon={ACTIONS[a].icon} data-action={a} data-subject-id={node.subjectId} data-topic-id={node.topicId} data-node-id={node.nodeId || undefined}
-                onClick={() => onAction && onAction({ action: a, subjectId: node.subjectId, topicId: node.topicId, ...(node.nodeId ? { nodeId: node.nodeId } : {}) })}>{ACTIONS[a].label}</Button>)}
-            </div>
+            actionButtons
           ) : <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Nenhum conteúdo vinculado a este tópico.</span>}
         </div>
       ))}
