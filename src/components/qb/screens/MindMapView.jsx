@@ -9,6 +9,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
 
 export default function MindMapView({
@@ -64,7 +65,18 @@ export default function MindMapView({
 
   // Lookup map strictly for the chosen topicId (v3: never silently fall back to another topic's map)
   const chosen = D.mindMaps.find(m => m.topicId === topicId) || null;
-  const nodes = chosen?.nodes || [];
+  const performance = React.useMemo(() => chosen ? mapNodePerformance({
+    nodes: chosen.nodes,
+    rootId: chosen.id,
+    topicId: chosen.topicId,
+    questions: D.questionBank,
+    flashcards: D.flashcards,
+    reviews: D.reviews,
+  }) : new Map(), [chosen, D.questionBank, D.flashcards, D.reviews]);
+  const nodes = React.useMemo(() => (chosen?.nodes || []).map(item => {
+    const stats = performance.get(item.id);
+    return { ...item, mastery: stats?.status, performance: stats };
+  }), [chosen, performance]);
 
   const targetNodeId =
     !selected || selected === chosen?.id
@@ -531,7 +543,7 @@ export default function MindMapView({
               nodeId={node.id}
               title={node.label}
               path={path}
-              mastery={node.mastery ? { state: node.mastery, text: D.masteryText[node.mastery] } : undefined}
+              performance={node.performance}
               summary={c.summary}
               example={c.example}
               trap={c.trap}
