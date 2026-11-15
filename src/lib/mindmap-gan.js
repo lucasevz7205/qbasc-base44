@@ -1,31 +1,16 @@
 const asText = (v, max = 12000) => String(v == null ? "" : v).trim().slice(0, max);
 
-export const CEBRASPE_MECHANISMS = {
-  F1: "Restrição ou generalização indevida",
-  F2: "Troca de sujeito, órgão ou competência",
-  F3: "Troca de conceito ou espécie normativa",
-  F4: "Alteração de prazo, quórum ou número",
-  F5: "Inversão entre regra geral e exceção",
-  F6: "Troca de natureza privativa/comum ou vinculada/discricionária",
-  F7: "Requisito ou etapa procedimental inexistente",
-  F8: "Efeito jurídico ou alcance temporal trocado",
-  F9: "Relação lógica invertida (cumulativo × alternativo)",
-  F10: "Entendimento jurisprudencial ou regimental invertido",
-  V1: "Paráfrase fiel com equivalência técnica",
-  V2: "Aplicação em situação hipotética",
-  V3: "Integração de sub-ramos conexos do mapa",
-  V4: "Exceção legítima ou ressalva expressa",
-};
+import { CEBRASPE_V1_TAXONOMY, CEBRASPE_V1_GENERATION_RULES, mechanismForKey } from './cebraspe-v1-taxonomy.js';
+
+export const CEBRASPE_MECHANISMS = Object.freeze(Object.fromEntries(
+  Object.entries(CEBRASPE_V1_TAXONOMY).map(([code, data]) => [code, data.n])
+));
 
 export const CEBRASPE_METHODOLOGY_RULES = [
-  "METODOLOGIA CEBRASPE (CERTO/ERRADO) — REGRAS DE ELABORAÇÃO:",
-  "1. Cada item deve ser uma proposição afirmativa única, objetiva, impessoal e de alta densidade técnica (padrão Câmara dos Deputados · Analista Legislativo).",
-  "2. PROIBIDO usar palavras absolutas artificiais ('sempre', 'nunca', 'jamais', 'exclusivamente' sem respaldo literal) que entreguem o gabarito por heurística superficial.",
-  "3. Para itens ERRADOS (gabarito 'E'), aplique cirurgicamente um mecanismo F1 a F10:",
-  "   - F1: Restrição/generalização indevida · F2: Troca de órgão/competência · F3: Troca de conceito/espécie · F4: Alteração de prazo/quórum · F5: Inversão regra/exceção · F6: Troca privativa/comum ou vinculada/discricionária · F7: Requisito inexistente · F8: Efeito jurídico trocado · F9: Conjunção/requisito cumulativo×alternativo · F10: Jurisprudência/regimento invertido.",
-  "4. Para itens CERTOS (gabarito 'C'), aplique um mecanismo V1 a V4:",
-  "   - V1: Paráfrase fiel sem cópia mecânica · V2: Situação prática aplicando a regra · V3: Conexão entre dois nós do mapa · V4: Exceção constitucional/regimental verdadeira.",
-  "5. Equilibre o lote entre itens 'C' e 'E' e ancore cada item estritamente no nó selecionado (ou seus sub-ramos imediatos) e no conteúdo-fonte fornecido.",
+  "METODOLOGIA CEBRASPE (CERTO/ERRADO) — TAXONOMIA QB V1:",
+  "Cada item apresenta uma única regra, verificável nos dados; evite palavras restritivas artificiais que entreguem a resposta por heurística.",
+  "Equilibre itens C/E somente quando houver fonte suficiente, e associe ao nó exato do mapa.",
+  CEBRASPE_V1_GENERATION_RULES,
 ].join("\n");
 
 export function enumerateMapNodes(map = {}) {
@@ -131,14 +116,13 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
     }
     seenStatements.add(finalStatement.toLowerCase());
 
-    let mecanismo = genMechanism;
-    if (finalKey === "E") {
-      if (!/^F([1-9]|10)$/.test(mecanismo)) mecanismo = "F3";
-    } else if (!/^V[1-4]$/.test(mecanismo)) {
-      mecanismo = "V1";
+    // Taxonomia V1: não inventar um código quando o gerador divergir do gabarito.
+    const mecanismo = mechanismForKey(genMechanism, finalKey) ? genMechanism : "";
+    if (!mecanismo) {
+      statusConfronto = "divergencia_bloqueada";
+      falhasDetectadas.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
     }
-
-    const mecanismoNome = CEBRASPE_MECHANISMS[mecanismo] || "Mecanismo CEBRASPE";
+    const mecanismoNome = CEBRASPE_MECHANISMS[mecanismo] || "Não classificado";
 
     questoes.push({
       id: `gan-${Date.now()}-${idx + 1}`,
