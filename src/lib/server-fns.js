@@ -39,6 +39,7 @@ const TutorInputSchema = z.object({
   subjectName: z.string().max(200).optional(),
   topicLabel: z.string().min(1).max(300),
   userMessage: z.string().min(1).max(3000),
+  provider: z.enum(["gemini", "base44"]).optional(),
   history: z
     .array(
       z.object({
@@ -49,6 +50,20 @@ const TutorInputSchema = z.object({
     .max(16)
     .optional(),
 });
+
+export const getArchitectProviderStatus = createServerFn({ method: "GET" })
+  .middleware([requireUser])
+  .handler(({ context }) => {
+    if (context.user?.role !== "admin") {
+      throw new Error("Acesso restrito à configuração do Arquiteto.");
+    }
+    // Só informa se a chave está presente; nunca seu valor ou prefixo.
+    return {
+      geminiConfigured: Boolean(secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY")),
+      defaultProvider: secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
+      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+    };
+  });
 
 export const askArchitectTutor = createServerFn({ method: "POST" })
   .middleware([requireUser])
@@ -79,7 +94,7 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
 
     // Apenas o chat migra para Gemini mediante opção explícita no servidor.
     // Na falha externa, nunca consumir créditos Base44 por fallback silencioso.
-    const provider = secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44";
+    const provider = data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
       return invokeGeminiTutor({
         apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
