@@ -8,31 +8,46 @@ import { AchievementEmblem } from '@/components/qb/brand/AchievementEmblem';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { flashcardOptions } from '@/lib/study-session-rules';
+import { FLASHCARD_FILTERS, filterFlashcardDeck } from '@/lib/flashcard-review';
+import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 
 export default function FlashcardSessionView({ cards, setCards, elapsed, paused, onTogglePause, go, backTo }) {
   const {QB_DATA:D,QB_PLAN,save}=useRealStudy();
-  const deck=D.flashcards.filter(f=>!cards.topicId||f.topicId===cards.topicId);
+  const fullDeck = D.flashcards.filter(f => !cards.topicId || f.topicId === cards.topicId);
+  const mode = cards.filter || 'all';
+  const byId = new Map(fullDeck.map(c => [c.id, c]));
+  const deck = cards.queue ? cards.queue.map(id => byId.get(id)).filter(Boolean) : fullDeck;
   const { idx, flipped, ratings } = cards;
   const done = idx >= deck.length;
   const card = deck[Math.min(idx, deck.length - 1)];
   const node = D.mapNodes.find(n => n.id === card?.node);
   const parent = node && D.mapNodes.find(n => n.id === node.parent);
   const [error,setError]=React.useState('');
+  const [suggestion, setSuggestion] = React.useState(null);
+  const [saving, setSaving] = React.useState(false);
   const lock=React.useRef(false);
+  const pickFilter = (filter) => {
+    if (lock.current) return;
+    const queue = filterFlashcardDeck(fullDeck, D.reviews, filter, QB_PLAN.today).map(c => c.id);
+    setError('');
+    setSuggestion(null);
+    setCards(c => ({ ...c, idx: 0, flipped: false, ratings: [], filter, queue }));
+  };
   const previousReview = card ? D.reviews[card.id] || {} : {};
   const options = flashcardOptions(previousReview.nivel);
   const intervals = Object.fromEntries(Object.entries(options).map(([rating, option]) => [rating, option.label]));
   const rate=async r=>{
     const option = options[r];
     if(!card||!option||lock.current)return;
-    lock.current=true;setError('');
+    lock.current=true;setSaving(true);setError('');
     const prev = previousReview, at = new Date().toISOString();
     const { level: nextLevel, days: interval } = option;
     try{
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:QB_PLAN.addDays(QB_PLAN.today,interval),ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval}]});
+      setSuggestion(null);
       setCards(c=>({...c,idx:c.idx+1,flipped:false,ratings:[...c.ratings,r]}));
     }catch{setError('Falha ao salvar avaliação. Vire o cartão e tente novamente.');}
-    finally{lock.current=false;}
+    finally{lock.current=false;setSaving(false);}
   };
 
 
@@ -44,8 +59,17 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
       </BrandHeader>
       <StudySessionHeader subject="Flashcards" topic={card?.topicId||""} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} elapsed={elapsed} paused={paused} onTogglePause={onTogglePause} onBack={() => go(backTo || 'dashboard')} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div>
+          <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>
+            {FLASHCARD_FILTERS.map(({ id, label }) => (
+              <button key={id} type="button" className="qb-seg__opt" aria-pressed={mode === id} disabled={saving}
+                onClick={() => { if (mode !== id) pickFilter(id); }}>{label}</button>
+            ))}
+          </div>
+          {mode !== 'all' && <p style={{ color: 'var(--text-muted)', margin: '8px 0 0' }}>{FLASHCARD_FILTERS.find(f => f.id === mode)?.hint}</p>}
+        </div>
         {error&&<p role="alert">{error}</p>}
-        {!deck.length?<Panel>Sem cartões para este tópico. <Button onClick={()=>go('edital')}>Voltar ao edital</Button></Panel>:done ? (
+        {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={()=>go('edital')}>Voltar ao edital</Button>}</Panel> : done ? (
           <Panel variant="ornate" padding={32} style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
             <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(D.reviews).length/200,1)} size={110} rule="Rumo a 200 flashcards revisados" />
             <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -54,17 +78,18 @@ export default function FlashcardSessionView({ cards, setCards, elapsed, paused,
               <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcados como “Errei” e agendados para nova revisão.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
                 <Button icon="house" onClick={() => go('dashboard')}>Voltar ao início</Button>
-                <Button variant="secondary" icon="rotate-ccw" onClick={() => setCards(c=>({...c,idx:0,flipped:false,ratings:[]}))}>Revisar de novo</Button>
+                <Button variant="secondary" icon="rotate-ccw" onClick={() => pickFilter(mode)}>Revisar de novo</Button>
               </div>
             </div>
           </Panel>
         ) : (
           <>
-            <Flashcard key={idx} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
-              back={<><p style={{ margin: 0, color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}>{card.back}</p><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
+            <Flashcard key={mode + ':' + card.id} deck={card.topicId} demo={false} intervals={intervals} height={380} front={card.front}
+              back={<><div style={{ color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}><ChatMarkdown text={card.back} /></div><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
-              correction={<FlashcardCorrection key={card.id} card={card} topicLabel={card.topicId} />} />
+              ratingDisabled={saving} suggestedRating={suggestion?.cardId === card.id ? suggestion.rating : null}
+              correction={<FlashcardCorrection key={card.id} card={card} topicLabel={card.topicId} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />} />
           </>
         )}
       </main>
