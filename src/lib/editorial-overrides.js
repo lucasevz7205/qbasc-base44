@@ -12,8 +12,10 @@ export function applyEditorialOverlays(questions, cards, entries) {
   const overrides = new Map();
   for (const entry of Array.isArray(entries) ? entries : []) {
     if (!entry || entry.status !== "aprovada" || !["question", "flashcard"].includes(entry.kind)) continue;
-    if (!entry.targetId || !entry.replacement || entry.id !== editorialId(entry.kind, entry.targetId)) continue;
-    overrides.set(entry.id, entry);
+    if (!entry.targetId || !entry.replacement || !String(entry.id || "").startsWith(editorialId(entry.kind, entry.targetId) + ":v")) continue;
+    const key = editorialId(entry.kind, entry.targetId);
+    const previous = overrides.get(key);
+    if (!previous || Number(entry.version || 0) > Number(previous.version || 0)) overrides.set(key, entry);
   }
   return {
     questions: questions.map(q => {
@@ -41,7 +43,9 @@ export function applyEditorialOverlays(questions, cards, entries) {
 
 export function makeEditorialEntry({ kind, content, proposal, previous, issue, note, now = new Date() }) {
   const targetId = String(content?.id || "");
-  const id = editorialId(kind, targetId);
+  const baseId = editorialId(kind, targetId);
+  const version = Math.min(9999, Number(previous?.version || 0) + 1);
+  const id = baseId + ":v" + version;
   const original = previous?.original || (kind === "question"
     ? { statement: content.statement, key: content.key, explanation: content.explanation, basis: content.basis, origin: content.origin }
     : { front: content.front, back: content.back, basis: content.basis });
@@ -68,16 +72,12 @@ export function makeEditorialEntry({ kind, content, proposal, previous, issue, n
   }
   return {
     id, kind, targetId, status: "aprovada",
-    version: Math.min(9999, Number(previous?.version || 0) + 1),
+    version,
     atualizadoEm: now.toISOString(),
     issue, observacao: String(note || "").slice(0, 500),
     parecer: String(proposal.parecer || "").slice(0, 1300),
     original, replacement,
-    // Preserva a versão anterior para rastreabilidade; limita histórico.
-    previousVersions: [
-      ...(Array.isArray(previous?.previousVersions) ? previous.previousVersions : []),
-      ...(previous?.replacement ? [{ version: previous.version, replacement: previous.replacement, updatedAt: previous.atualizadoEm }] : []),
-    ].slice(-12),
+    // Documentos de versões anteriores permanecem imutáveis na coleção curadoria.
     origem: "Curadoria aprovada pelo estudante · O Arquiteto/Gemini",
   };
 }
