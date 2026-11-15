@@ -15,10 +15,10 @@ export const Route = createFileRoute('/estudo')({
 });
 
 function EstudoRoute() {
-  const { ui, setUi, subs, setSub, go, mapProps } = useQBStudy();
+  const { ui, setUi, subs, setSub, go, mapProps, cards, dispatch } = useQBStudy();
   return (
     <AppShell ui={ui} setUi={setUi} view="study" go={go} wide>
-      <StudyScreen tab={subs.study} setTab={setSub('study')} go={go} mapProps={mapProps} />
+      <StudyScreen tab={subs.study} setTab={setSub('study')} go={go} mapProps={mapProps} lastDeckTopicId={cards.topicId} dispatch={dispatch} />
     </AppShell>
   );
 }
