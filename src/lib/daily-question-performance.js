@@ -57,8 +57,13 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
     const remaining = { ...totals };
     const start = time(round.inicio);
     const end = time(round.fim);
+    const inLegacyWindow = candidate => !candidate.sessionId &&
+      (Number.isFinite(start) && Number.isFinite(end)
+        ? candidate.timestamp >= start && candidate.timestamp <= end
+        : candidate.date === date);
     const sessionId = round.id?.startsWith('qbasc-') ? round.id.slice('qbasc-'.length) : null;
-    for (const item of list(round.itens)) {
+    const items = list(round.itens);
+    for (const item of items) {
       const qid = item.qid;
       const answer = mark(item.marcada);
       const result = outcome(answer, mark(item.gabarito || questions[qid]?.gabarito), item.ok);
@@ -69,11 +74,22 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
       const recorded = time(item.em);
       const exact = Number.isFinite(recorded) ? pool.find(candidate => matches(candidate) && candidate.timestamp === recorded) : null;
       const sameSession = sessionId ? pool.find(candidate => matches(candidate) && candidate.sessionId === sessionId) : null;
-      const legacy = pool.filter(candidate => matches(candidate) && !candidate.sessionId && candidate.timestamp <= end && candidate.timestamp >= start)
+      const legacy = pool.filter(candidate => matches(candidate) && inLegacyWindow(candidate))
         .sort((a, b) => a.timestamp - b.timestamp)[0];
       const match = exact || sameSession || legacy;
       if (match) match.matched = true;
       else add(day(item.em) || date, result, qid);
+    }
+    // Some imported rounds contain totals only. Match attempts inside their
+    // recorded interval, without consuming attempts from newer identified sessions.
+    if (!items.length && Number.isFinite(start) && Number.isFinite(end)) {
+      for (const pool of candidates.values()) {
+        for (const candidate of pool) {
+          if (candidate.matched || !inLegacyWindow(candidate) || !remaining[candidate.result]) continue;
+          candidate.matched = true;
+          remaining[candidate.result]--;
+        }
+      }
     }
     for (const key of outcomes) if (remaining[key]) add(date, key, null, remaining[key]);
   }
