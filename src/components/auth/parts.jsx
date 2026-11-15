@@ -31,16 +31,17 @@ export function SubmitButton({ busy, busyLabel, children, ...props }) {
   );
 }
 
-export function GoogleButton({ returnTo, onError }) {
+export function GoogleButton({ returnTo, onError, disabled }) {
   return (
     <Button
       type="button"
       variant="outline"
+      disabled={disabled}
       className="mb-6 h-12 w-full text-sm font-medium"
-      onClick={() => signInWithProvider("google", returnTo).catch((err) => onError(err.message || "Unable to sign in with Google"))}
+      onClick={() => signInWithProvider("google", returnTo).catch((err) => onError(err.message || "Não foi possível entrar com o Google"))}
     >
       <GoogleIcon className="mr-2 h-5 w-5" />
-      Continue with Google
+      Continuar com Google
     </Button>
   );
 }
@@ -52,7 +53,7 @@ export function OrDivider() {
         <div className="w-full border-t border-border" />
       </div>
       <div className="relative flex justify-center text-xs uppercase">
-        <span className="bg-card px-3 text-muted-foreground">or</span>
+        <span className="bg-card px-3 text-muted-foreground">ou</span>
       </div>
     </div>
   );
