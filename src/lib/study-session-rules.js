@@ -18,7 +18,8 @@ export function flashcardOptions(previousLevel) {
   const current = Math.min(lastLevel, Math.max(0, Math.trunc(Number(previousLevel) || 0)));
   return Object.fromEntries(RATINGS.map(rating => {
     const step = rating === 'facil' ? 2 : rating === 'bom' ? 1 : 0;
-    const level = rating === 'errei' ? 0 : Math.min(lastLevel, current + step);
+    if (rating === 'errei') return [rating, { level: 0, days: 0, label: 'Nesta sessão', repeat: true }];
+    const level = Math.min(lastLevel, current + step);
     const days = FLASHCARD_INTERVALS[level];
     return [rating, { level, days, label: days === 1 ? '1 dia' : days + ' dias' }];
   }));
