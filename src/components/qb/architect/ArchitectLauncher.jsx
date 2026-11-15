@@ -9,6 +9,8 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
   const containerRef = React.useRef(null);
   const dragRef = React.useRef(null);
   const [position, setPosition] = React.useState(null);
+  const [expanded, setExpanded] = React.useState(false);
+  const controlsId = React.useId();
 
   React.useEffect(() => {
     let fromStorage = null;
@@ -20,10 +22,19 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
     const place = fromStorage ? clampLauncherPosition(fromStorage, viewport(), size) : defaultLauncherPosition(viewport(), size);
     setPosition(place);
     const onResize = () => {
-      setPosition(current => clampLauncherPosition(current || place, viewport(), launcherSize(containerRef.current)));
+      if (containerRef.current?.hidden) return;
+      setPosition(current => {
+        const next = clampLauncherPosition(current || place, viewport(), launcherSize(containerRef.current));
+        return current?.x === next.x && current?.y === next.y ? current : next;
+      });
     };
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onResize);
+    if (containerRef.current) observer?.observe(containerRef.current);
     window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   const persist = pos => {
@@ -73,11 +84,12 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
   };
 
   return (
-    <div ref={containerRef} hidden={hidden}
+    <div ref={containerRef} hidden={hidden} className="qb-architect-launcher" data-expanded={expanded}
       style={{ position: 'fixed', left: position?.x ?? 16, top: position?.y ?? '55vh', zIndex: 60,
         display: hidden ? 'none' : 'flex', alignItems: 'stretch', isolation: 'isolate',
         borderRadius: 999, boxShadow: 'var(--shadow-raised)', border: '1px solid rgba(208,179,134,.6)',
         background: 'var(--qb-navy)', maxWidth: 'calc(100vw - 24px)' }}>
+      <div id={controlsId} className="qb-architect-launcher__controls">
       <button type="button" className="qb-iconbtn"
         aria-label="Arrastar atalho do Arquiteto para outra posição"
         title="Arraste para mover. Use as setas do teclado; Home restaura a posição."
@@ -89,8 +101,15 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
       </button>
       <button type="button" className="qb-btn qb-btn--primary"
         style={{ borderRadius: '0 999px 999px 0', minHeight: 48, boxShadow: 'none', padding: '0 15px 0 10px', whiteSpace: 'nowrap' }}
-        onClick={onOpen}>
+        onClick={() => { setExpanded(false); onOpen?.(); }}>
         <Icon name="sparkles" size={18} />O Arquiteto
+      </button>
+      </div>
+      <button type="button" className="qb-iconbtn qb-architect-launcher__toggle"
+        aria-expanded={expanded} aria-controls={controlsId}
+        aria-label={expanded ? 'Recolher atalho do Arquiteto' : 'Expandir atalho do Arquiteto'}
+        onClick={() => setExpanded(value => !value)}>
+        <Icon name={expanded ? 'chevron-left' : 'sparkles'} size={20} />
       </button>
     </div>
   );
