@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { registerHooks } from 'node:module';
+import { URL } from 'node:url';
 import { buildGanSource, findNodesWithoutQuestions, runGanQueue } from '../src/lib/gan-queue.js';
 
 const hooks = registerHooks({
