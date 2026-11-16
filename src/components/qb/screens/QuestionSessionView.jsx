@@ -118,6 +118,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const deletingCurrent = !!q && deleteTarget?.id === q.id;
   const lock = React.useRef(false);
   const reflectionAnchor = React.useRef(null);
+  const reflectionDraft = React.useRef(null);
   const [reflectionError, setReflectionError] = React.useState('');
   const needsReflection = st.revealed && st.answer !== keyAtAnswer && !excluded;
   const savedReflection = needsReflection ? findErrorReflection(records.justificativas, q?.id, st.attemptAt, QB_DATA.answers[q?.id]) : undefined;
@@ -240,7 +241,12 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     await advance({ deletingId: q.id });
   };
 
-  const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
+  const openConcept = () => {
+    if (needsReflection && !savedReflection && reflectionDraft.current?.questionId === q.id) {
+      setAns({ reflectionDraft: reflectionDraft.current.value });
+    }
+    go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
+  };
   const stageRef = React.useRef(null);
   const correctionRef = React.useRef(null);
   const showCorrection = !!st.revealed && !excluded;
@@ -384,6 +390,8 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                     identifiedClue={st.clue?.trim()}
                     reflection={needsReflection ? {
                       saved: savedReflection,
+                      initialDraft: st.reflectionDraft,
+                      onDraftChange: value => { reflectionDraft.current = { questionId: q.id, value }; },
                       busy: loading,
                       error: reflectionError,
                       anchor: reflectionAnchor,

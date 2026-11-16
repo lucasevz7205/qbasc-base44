@@ -25,6 +25,7 @@ export default function MindMapView({
   setSelected,
   returnTo,
   onReturn,
+  sessionReturn,
   go,
   dispatch,
   radialOpen: radialOpenProp,
@@ -136,7 +137,7 @@ export default function MindMapView({
     </div>
   );
 
-  const back = returnTo && (
+  const back = returnTo && !sessionReturn && (
     <Button variant="secondary" icon="corner-up-left" onClick={onReturn}>
       Voltar para {returnTo.label}
     </Button>
@@ -509,6 +510,7 @@ export default function MindMapView({
                 style={{ width: 340, maxWidth: '100%' }}
               />
               <StudyClockControls />
+              {sessionReturn && <Button variant="secondary" icon="corner-up-left" onClick={sessionReturn.onReturn}>{sessionReturn.label}</Button>}
               <Button
                 size="sm"
                 variant="secondary"
@@ -557,7 +559,7 @@ export default function MindMapView({
               ganLoading={ganLoading}
               ganError={ganError}
               ganBlockedReport={ganBlockedReport}
-              returnTo={returnTo && returnTo.label}
+              returnTo={sessionReturn ? undefined : returnTo?.label}
               onReturn={onReturn}
               style={{
                 flex: mapMaximized ? '0 0 380px' : '1 1 340px',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalToolbar } from '@/components/qb/navigation/GlobalToolbar';
 import { MainNav } from '@/components/qb/navigation/MainNav';
+import { Button } from '@/components/qb/core/Button';
 import { BrandLogo } from '@/components/qb/brand/BrandLogo';
 import { ArchitectLauncher } from '@/components/qb/architect/ArchitectLauncher';
 import { ArchitectStudio } from '@/components/qb/architect/ArchitectStudio';
@@ -34,7 +35,7 @@ function Backdrop({ bg }) {
   );
 }
 
-export default function AppShell({ ui, setUi, view, quick, go, children, wide }) {
+export default function AppShell({ ui, setUi, view, quick, go, mapReturn, children, wide }) {
   const { QB_DATA, QB_PLAN, refresh, logout, isAdmin } = useRealStudy();
   const compact = !!ui.focus;
   const scene = ui.bg === 'dynamic' && !ui.focus && view !== 'performance';
@@ -104,6 +105,9 @@ export default function AppShell({ ui, setUi, view, quick, go, children, wide })
               </button>
             }
           />
+          {mapReturn && <Button variant="secondary" icon="corner-up-left" onClick={mapReturn.onReturn} style={{ marginTop: 8 }}>
+            {mapReturn.label}
+          </Button>}
         </div>
       </div>
       <main style={{ flex: 1, width: '100%', maxWidth: isWide ? 1360 : 1280, margin: '0 auto', padding: '20px 16px 96px' }}>{children}</main>

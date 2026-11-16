@@ -3,10 +3,15 @@ import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { ERROR_ORIGINS } from '@/lib/question-feedback';
 
-export function ErrorReflection({ saved, busy, error, anchor, onSave }) {
+export function ErrorReflection({ saved, busy, error, anchor, onSave, initialDraft, onDraftChange }) {
   const fieldId = React.useId();
-  const [origin, setOrigin] = React.useState('');
-  const [text, setText] = React.useState('');
+  const [draft, setDraft] = React.useState(() => initialDraft || { origin: '', text: '' });
+  const { origin, text } = draft;
+  const updateDraft = patch => {
+    const next = { ...draft, ...patch };
+    setDraft(next);
+    onDraftChange?.(next);
+  };
   const resultRef = React.useRef(null);
   React.useEffect(() => {
     if (saved) resultRef.current?.focus({ preventScroll: true });
@@ -30,14 +35,14 @@ export function ErrorReflection({ saved, busy, error, anchor, onSave }) {
                 style={{ gap: 8, minHeight: 44, whiteSpace: 'normal', cursor: 'pointer',
                   borderColor: origin === id ? 'var(--qb-gold)' : undefined,
                   background: origin === id ? 'var(--surface-hover)' : undefined }}>
-                <input type="radio" name={fieldId + '-origem'} value={id} checked={origin === id} onChange={() => setOrigin(id)}
+                <input type="radio" name={fieldId + '-origem'} value={id} checked={origin === id} onChange={() => updateDraft({ origin: id })}
                   style={{ accentColor: 'var(--qb-gold)' }} />
                 {description}
               </label>
             ))}
           </div>
           <label htmlFor={fieldId}>Por que você errou e qual é a regra correta?</label>
-          <textarea id={fieldId} className="qb-input" rows={3} maxLength={2000} value={text} onChange={event => setText(event.target.value)}
+          <textarea id={fieldId} className="qb-input" rows={3} maxLength={2000} value={text} onChange={event => updateDraft({ text: event.target.value })}
             style={{ minHeight: 84, resize: 'vertical', scrollMarginBlock: '12px 116px' }} />
           {error && <p role="alert" style={{ margin: 0 }}>{error}</p>}
           <div>

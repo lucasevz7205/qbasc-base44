@@ -17,7 +17,7 @@ export const Route = createFileRoute('/mapas')({
 function MapasRoute() {
   const { ui, setUi, setSub, go, mapProps } = useQBStudy();
   return (
-    <AppShell ui={ui} setUi={setUi} view="study" go={go} wide>
+    <AppShell ui={ui} setUi={setUi} view="study" go={go} mapReturn={mapProps.sessionReturn} wide>
       <StudyScreen tab="mapa" setTab={setSub('study')} go={go} mapProps={mapProps} />
     </AppShell>
   );

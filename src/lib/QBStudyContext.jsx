@@ -419,6 +419,13 @@ export function QBStudyProvider({ children }) {
     [QB_DATA.mindMaps],
   );
 
+  const returnFromMap = React.useCallback(() => {
+    setReturnTo(null);
+    if (returnTo?.view) go(returnTo.view, { resume: true });
+  }, [returnTo, go]);
+  const sessionReturnLabel = returnTo?.view === 'questions' ? 'Voltar à questão' :
+    returnTo?.view === 'flashcards' ? 'Voltar ao flashcard' : null;
+
   const mapProps = React.useMemo(
     () => ({
       topicId: studyTopicId,
@@ -433,11 +440,8 @@ export function QBStudyProvider({ children }) {
       setSelected: handleSelectMapNode,
       dispatch,
       returnTo,
-      onReturn: () => {
-        const r = returnTo;
-        setReturnTo(null);
-        if (r && r.view) go(r.view, { resume: true });
-      },
+      onReturn: returnFromMap,
+      sessionReturn: sessionReturnLabel ? { label: sessionReturnLabel, onReturn: returnFromMap } : null,
     }),
     [
       studyTopicId,
@@ -450,7 +454,8 @@ export function QBStudyProvider({ children }) {
       handleSelectMapNode,
       dispatch,
       returnTo,
-      go,
+      returnFromMap,
+      sessionReturnLabel,
     ],
   );
 
