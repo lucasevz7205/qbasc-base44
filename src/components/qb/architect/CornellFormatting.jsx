@@ -98,14 +98,35 @@ export function CornellFormatting({ actions, children, disabled }) {
   );
 }
 
-export function CornellRichEditor({ value, onChange, label, placeholder, disabled, height }) {
+export function CornellRichEditor({ value, onChange, label, placeholder, disabled, height, id, viewRef }) {
   const { activate, release } = React.useContext(Selection);
   const host = React.useRef(null);
   const editor = React.useRef(null);
+  const rememberedView = React.useRef(null);
   const latest = React.useRef(null);
   latest.current = { value, onChange, disabled, label };
   const [ready, setReady] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
+
+  React.useImperativeHandle(viewRef, () => ({
+    focused: () => editor.current?.hasFocus(),
+    remember: () => {
+      const quill = editor.current;
+      if (quill) rememberedView.current = { top: quill.root.scrollTop, range: quill.getSelection() };
+    },
+  }), []);
+
+  React.useLayoutEffect(() => {
+    const quill = editor.current;
+    const view = rememberedView.current;
+    rememberedView.current = null;
+    if (!quill || !view) return;
+    if (view.range && quill.isEnabled()) {
+      quill.focus({ preventScroll: true });
+      quill.setSelection(view.range.index, view.range.length, 'silent');
+    }
+    quill.root.scrollTop = view.top;
+  }, [height]);
 
   React.useEffect(() => {
     let mounted = true;
@@ -157,7 +178,7 @@ export function CornellRichEditor({ value, onChange, label, placeholder, disable
   }, [disabled, label, value]);
 
   return (
-    <div style={{ minWidth: 0 }}>
+    <div id={id} style={{ minWidth: 0 }}>
       <div className="qb-textarea qb-cornell-editor" ref={host} hidden={!ready} style={{ height, minHeight: height }} />
       {!ready && <textarea className="qb-textarea" style={{ height, minHeight: height }} aria-label={label}
         value={cornellPlainText(value)} readOnly disabled={disabled} placeholder={placeholder} />}
