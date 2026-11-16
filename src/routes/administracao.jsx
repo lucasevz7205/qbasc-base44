@@ -5,6 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 import { Panel } from '@/components/qb/core/Panel';
 import { PageHeader } from '@/components/qb/navigation/PageHeader';
 import { IMPORTABLE } from '@/lib/account-boundary';
+import FlashcardBatchPanel from '@/components/qb/study/FlashcardBatchPanel';
 import { listStudyAccounts, updateStudyAccount, inspectStudyAccount, importStudyDocuments, previewStudyBank, importStudyBank } from '@/lib/study-accounts';
 
 export const Route = createFileRoute('/administracao')({
@@ -52,6 +53,7 @@ function AccountList() {
         {item.name} {item.email ? '· ' + item.email : ''} · {STATUS[item.status] || item.status}
       </Button>)}
     </Panel>
+    <FlashcardBatchPanel />
     {profile && <AccountDetails key={profile.id} profile={profile} refresh={refresh} />}
   </main>;
 }
