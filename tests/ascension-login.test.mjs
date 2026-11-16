@@ -22,7 +22,10 @@ test('o Menu principal usa a arte diurna e a tipografia de lema do Design System
   const dashboard = read('src/components/qb/screens/DashboardView.jsx');
   const styles = read('src/index.css');
   assert.match(dashboard, /HeroAscension scene="day"/);
-  assert.match(read('src/components/qb/AppShell.jsx'), /view === 'dashboard' \? 'qb-scene-night-ascensao'/);
+  const shell = read('src/components/qb/AppShell.jsx');
+  assert.match(shell, /className="qb-img qb-scene-night-ascensao"/);
+  assert.match(shell, /const scene = ui\.bg === 'dynamic' && !ui\.focus;/);
+  assert.match(shell, /\{scene && <Backdrop \/>\}/);
   assert.match(styles, /\.qb-scene-night-ascensao[^}]+ascensao-noturna\.webp/);
   assert.match(dashboard, /A memória é a mãe de toda a sabedoria/);
   assert.match(dashboard, /author: 'Ésquilo'/);
