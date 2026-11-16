@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cornellPairsTopicId, readCornellPairs } from '../src/lib/cornell-pairs.js';
+import { cornellPairTitle, cornellPairsTopicId, readCornellPairs } from '../src/lib/cornell-pairs.js';
 import { cleanCornell, cornellDraftKey, reconcileCornell } from '../src/lib/cornell-logic.js';
 
 test('pares Cornell usam documento e rascunho independentes do caderno original', () => {
@@ -24,4 +24,15 @@ test('pistas continuam vinculadas às respectivas notas após sincronizar ou rec
   const conflict = reconcileCornell(saved, changed, null);
   assert.deepEqual(readCornellPairs(conflict.data.notes), pairs);
   assert.equal(readCornellPairs(conflict.recovery.notes)[0].note, 'Nota revisada');
+});
+
+test('usa a primeira linha nas pistas antigas e conserva a nota ao gravar um novo nome', () => {
+  const previous = { id: 'p1', cue: '1) Governabilidade\nPergunta original completa.', note: 'Nota original' };
+  assert.equal(cornellPairTitle(previous, 0), 'Governabilidade');
+  assert.equal(cornellPairTitle({ id: 'p2', cue: '', note: '' }, 1), 'Pista 2');
+  const [renamed] = readCornellPairs(JSON.stringify([{ ...previous, title: '  Governabilidade e legitimidade  ' }]));
+  assert.equal(cornellPairTitle(renamed, 0), 'Governabilidade e legitimidade');
+  assert.equal(renamed.id, previous.id);
+  assert.equal(renamed.cue, previous.cue);
+  assert.equal(renamed.note, previous.note);
 });
