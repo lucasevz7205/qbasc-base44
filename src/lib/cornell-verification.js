@@ -78,17 +78,21 @@ function findRelations({ pairs, notes, cues }) {
   if (cues && !notes[0] && relations.length < 3) {
     relations.push({ label: 'Pistas das anotações originais', feedback: 'Transforme cada pista em uma resposta com a regra, um exemplo ou um contraste.' });
   }
-  const seen = new Set();
+  const seen = new Map();
   for (const note of notes.flatMap(passages)) {
     if (relations.length >= 3) break;
-    const words = keywords(note);
-    if (words.length === 0) continue;
-    const shared = seen.size ? words.filter(word => seen.has(word)).slice(0, 3) : [];
-    words.forEach(word => seen.add(word));
-    if (shared.length < 2) continue;
+    const matches = new Map();
+    for (const word of keywords(note)) {
+      const earlier = seen.get(word);
+      if (earlier && earlier !== note) matches.set(earlier, [...(matches.get(earlier) || []), word]);
+      if (!earlier) seen.set(word, note);
+    }
+    const [earlier, shared] = [...matches].sort((a, b) => b[1].length - a[1].length)[0] || [];
+    if (!shared || shared.length < 2) continue;
     relations.push({
-      label: shared.join(' · '),
-      feedback: 'Estes termos aparecem em mais de um trecho. Escreva uma frase que diga se as ideias se explicam, se complementam ou se contrastam.',
+      label: shared.slice(0, 3).join(' · '),
+      excerpts: [earlier, note].map(text => text.length > 150 ? text.slice(0, 149) + '…' : text),
+      feedback: 'Compare estes dois trechos. Escreva uma frase que diga se as ideias se explicam, se complementam ou se contrastam.',
     });
     shared.forEach(word => seen.delete(word));
   }
@@ -117,7 +121,8 @@ function checkSources(notes, sources) {
     .filter(passage => passage.length >= 25 && !passage.endsWith('?')).slice(0, 5);
   const documents = sources.map(source => ({
     text: compact(source.text),
-    passages: passages(source.text).map(quote => ({ quote, words: new Set(keywords(quote)) })),
+    passages: [...new Set([...passages(compact(source.text)), ...passages(source.text)])]
+      .map(quote => ({ quote, words: new Set(keywords(quote)) })),
   }));
   return claims.map(claim => {
     const literal = documents.findIndex(source => source.text.includes(claim));
