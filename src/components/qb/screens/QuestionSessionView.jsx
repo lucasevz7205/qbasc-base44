@@ -11,7 +11,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
 import { buildAnswerRecord } from '@/lib/study-store';
-import { questionTrap, recordErrorReflection } from '@/lib/question-feedback';
+import { buildErrorReflection, findErrorReflection, questionTrap } from '@/lib/question-feedback';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { nextQuestionIndex, questionRoundProgress } from '@/lib/study-session-rules';
 import { mechanismOptionList } from '@/lib/cebraspe-v1-taxonomy';
@@ -88,7 +88,7 @@ function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
 }
 
 export default function QuestionSessionView({ session, setSession, go, backTo }) {
-  const { QB_DATA, save, isAdmin } = useRealStudy();
+  const { QB_DATA, records, save, isAdmin } = useRealStudy();
   const qs = React.useMemo(() => {
     if (!session.questionIds?.length) return [];
     const bank = new Map(QB_DATA.questions.map(q => [q.id, q]));
@@ -117,9 +117,10 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const [deleteTarget, setDeleteTarget] = React.useState(null);
   const deletingCurrent = !!q && deleteTarget?.id === q.id;
   const lock = React.useRef(false);
-  const reflectionInput = React.useRef(null);
-  const reflectionOrigin = React.useRef(null);
+  const reflectionAnchor = React.useRef(null);
+  const [reflectionError, setReflectionError] = React.useState('');
   const needsReflection = st.revealed && st.answer !== keyAtAnswer && !excluded;
+  const savedReflection = needsReflection ? findErrorReflection(records.justificativas, q?.id, st.attemptAt, QB_DATA.answers[q?.id]) : undefined;
   const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
   const setAns = p => setSession(s => {
     if (s.sessionId !== session.sessionId || s.idx !== idx) return s;
@@ -166,28 +167,35 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     }
   };
 
+  const saveReflection = async draft => {
+    if (!needsReflection || savedReflection || lock.current) return;
+    lock.current = true;
+    setLoading(true);
+    setReflectionError('');
+    try {
+      const note = buildErrorReflection({ ...draft, questionId: q.id, sessionId: session.sessionId, attemptAt: st.attemptAt, marked: st.answer });
+      await save('justificativas', note.id, note);
+    } catch {
+      setReflectionError('Não foi possível salvar a justificativa. Seu texto está nesta questão. Tente novamente.');
+    } finally {
+      lock.current = false;
+      setLoading(false);
+    }
+  };
+
   const advance = async ({ deletingId } = {}) => {
     if (lock.current || done) return;
     const nextIdx = nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds, deletingId);
-    const saveReflection = needsReflection && !deletingId;
-    if (saveReflection && (!st.errorOrigin || !st.errorJustification?.trim())) {
-      (st.errorOrigin ? reflectionInput : reflectionOrigin).current?.focus();
+    if (needsReflection && !deletingId && !savedReflection) {
+      reflectionAnchor.current?.focus();
       return;
     }
     lock.current = true;
     setLoading(true);
     setError('');
-    let failure = 'Não foi possível salvar a justificativa. Tente novamente.';
     try {
-      if (saveReflection) {
-        const response = QB_DATA.answers[q.id];
-        if (!response) throw new Error('Resposta indisponível');
-        const reflected = recordErrorReflection(response, { text: st.errorJustification, origin: st.errorOrigin, marked: st.answer, attemptAt: st.attemptAt });
-        if (reflected !== response) await save('respostas', q.id, reflected);
-      }
       const finished = nextIdx >= qs.length;
       if (finished) {
-        failure = 'Não foi possível salvar a rodada. Tente concluir novamente.';
         const items = qs.filter(x => answers[x.id]?.revealed).map(x => ({ qid: x.id, marcada: answers[x.id].answer, gabarito: answers[x.id].keyAtAnswer || x.key, em: answers[x.id].attemptAt }));
         if (items.length) {
           const certos = items.filter(x => x.marcada === x.gabarito).length;
@@ -206,7 +214,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       }
       patch({ idx: nextIdx, finished });
     } catch {
-      setError(failure);
+      setError('Não foi possível salvar a rodada. Tente novamente.');
     } finally {
       lock.current = false;
       setLoading(false);
@@ -239,6 +247,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const questionId = q?.id;
   const stageKey = session.sessionId + ':' + (done ? 'summary' : questionId || 'empty');
   React.useEffect(() => {
+    setReflectionError('');
     stageRef.current?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [stageKey]);
@@ -374,12 +383,11 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                     identifiedMechanism={markedMechanism}
                     identifiedClue={st.clue?.trim()}
                     reflection={needsReflection ? {
-                      origin: st.errorOrigin,
-                      text: st.errorJustification || '',
-                      disabled: loading,
-                      inputRef: reflectionInput,
-                      originRef: reflectionOrigin,
-                      onChange: setAns,
+                      saved: savedReflection,
+                      busy: loading,
+                      error: reflectionError,
+                      anchor: reflectionAnchor,
+                      onSave: saveReflection,
                     } : null}
                     onFlashcards={q.topicId ? () => go('flashcards', { topicId: q.topicId }) : undefined}
                   />

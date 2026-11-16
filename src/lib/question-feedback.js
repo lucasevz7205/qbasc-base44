@@ -91,15 +91,25 @@ export function questionTrap(question = {}, legacy, key) {
   };
 }
 
-export function recordErrorReflection(response, { text, origin, marked, attemptAt }) {
+export function findErrorReflection(notes, questionId, attemptAt, response) {
+  if (!questionId || !attemptAt) return undefined;
+  return notes?.find(note => note?.qid === questionId && note.tentativaEm === attemptAt)
+    || response?.justificativas?.find?.(note => note?.tentativaEm === attemptAt);
+}
+
+export function buildErrorReflection({ questionId, sessionId, attemptAt, marked, origin, text }) {
   const note = clean(text);
-  if (!response || !attemptAt || !note || !Object.hasOwn(ERROR_ORIGINS, origin)) return response;
-  const previous = Array.isArray(response.justificativas) ? response.justificativas : [];
-  if (previous.some(entry => entry?.tentativaEm === attemptAt)) return response;
+  const instant = Date.parse(attemptAt);
+  if (!questionId || !sessionId || !Number.isFinite(instant) || !Object.hasOwn(ERROR_ORIGINS, origin) || !note || note.length > 2000) {
+    throw new Error('Marque a origem do erro e escreva uma justificativa de até 2.000 caracteres.');
+  }
   return {
-    ...response,
-    ...(response.atualizadoEm === attemptAt ? { origem: origin } : {}),
-    nota: clean(response.nota) ? response.nota : note,
-    justificativas: [...previous, { em: new Date().toISOString(), texto: note, origem: origin, marcada: marked, tentativaEm: attemptAt }],
+    id: 'just-' + sessionId + '-' + instant,
+    qid: questionId,
+    tentativaEm: attemptAt,
+    marcada: marked,
+    origem: origin,
+    texto: note,
+    em: new Date().toISOString(),
   };
 }

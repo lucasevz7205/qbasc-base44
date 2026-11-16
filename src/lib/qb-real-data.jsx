@@ -8,7 +8,7 @@ import { loadPersonalStudy, writePersonalStudy } from '@/lib/study-accounts';
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
-const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise'];
+const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise','justificativas'];
 async function loadRealData() {
   const results = {};
   for (let i=0;i<collections.length;i+=3) {
@@ -62,7 +62,7 @@ export function RealStudyGate({children}) {
   const save=React.useCallback(async (collection,id,data)=>{
     if (!user || !collections.includes(collection)) throw new Error('Acesso restrito.');
     const row = admin ? await persist(collection, id, data) : await writePersonalStudy({ data: { collection, id, value: data } });
-    if (collection === 'questoes_excluidas' || collection === 'planejamento') await client.cancelQueries({queryKey,exact:true});
+    if (collection === 'questoes_excluidas' || collection === 'planejamento' || collection === 'justificativas') await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
       if (!before?.records) return before;
       const old = before.records[collection] || [];

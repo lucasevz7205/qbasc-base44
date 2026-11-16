@@ -2,7 +2,7 @@ import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
-import { ERROR_ORIGINS } from '@/lib/question-feedback';
+import { ErrorReflection } from '@/components/qb/questions/ErrorReflection';
 import { Badge } from '@/components/qb/core/Badge';
 import { assessQuestionMechanism } from '@/lib/architect-mechanism';
 import { recordedMechanism } from '@/lib/mechanism-comparison';
@@ -21,7 +21,6 @@ function Section({ title, icon, heading: Heading = 'h3', children }) {
 }
 
 export function QuestionFeedback({ statement, answerKey, generatorName, generatorReference, explanation, legalBasis, trap, identifiedMechanism, identifiedClue, reflection, onFlashcards }) {
-  const noteId = React.useId();
   const assess = useServerFn(assessQuestionMechanism);
   const [assessment, setAssessment] = React.useState(null);
   const [pending, setPending] = React.useState(false);
@@ -106,27 +105,7 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
       </Section>
       {reflection && (
         <Section title="Justificativa do erro" icon="notebook-pen">
-          <fieldset disabled={reflection.disabled} style={{ display: 'grid', gap: 10, margin: 0, padding: 0, border: 0, minWidth: 0 }}>
-            <legend style={{ marginBottom: 8 }}>De onde veio o erro?</legend>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {Object.entries(ERROR_ORIGINS).map(([id, label], index) => (
-                <label key={id} className="qb-btn qb-btn--secondary qb-btn--sm"
-                  style={{ gap: 8, minHeight: 42, whiteSpace: 'normal', cursor: 'pointer',
-                    borderColor: reflection.origin === id ? 'var(--qb-gold)' : undefined,
-                    background: reflection.origin === id ? 'var(--surface-hover)' : undefined }}>
-                  <input type="radio" name={noteId + '-origin'} value={id} checked={reflection.origin === id}
-                    ref={index === 0 ? reflection.originRef : undefined}
-                    onChange={() => reflection.onChange({ errorOrigin: id })}
-                    style={{ accentColor: 'var(--qb-gold)', scrollMarginBlock: '12px 116px' }} />
-                  {label}
-                </label>
-              ))}
-            </div>
-            <label htmlFor={noteId}>Por que você errou e qual é a regra correta?</label>
-            <textarea id={noteId} ref={reflection.inputRef} className="qb-input" rows={3} value={reflection.text} onChange={event => reflection.onChange({ errorJustification: event.target.value })}
-              style={{ minHeight: 84, resize: 'vertical', scrollMarginBlock: '12px 116px' }} />
-            <small style={{ color: 'var(--text-muted)' }}>Marque a origem e escreva a justificativa para avançar.</small>
-          </fieldset>
+          <ErrorReflection {...reflection} />
         </Section>
       )}
       {onFlashcards && <Button variant="ghost" size="sm" icon="layers" onClick={onFlashcards} style={{ alignSelf: 'flex-start' }}>Revisar flashcards do assunto</Button>}
