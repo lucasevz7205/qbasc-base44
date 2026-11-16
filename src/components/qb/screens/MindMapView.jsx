@@ -130,7 +130,7 @@ export default function MindMapView({
       : { topicId: chosen.topicId, targetNodeId: target.id, count: 4, queue };
     if (isAdmin && extraContext) data.sourceContext = [data.sourceContext, extraContext].filter(Boolean).join('\n\n').slice(0, 7500);
     const res = await generateGanFn({ data });
-    if (!isAdmin) cacheGanQuestions(res.registros);
+    if (!isAdmin) await cacheGanQuestions(res.registros);
     return res;
   }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
 

@@ -73,8 +73,9 @@ export function RealStudyGate({children}) {
     });
     return row;
   }, [admin, client, queryKey, user]);
-  const cacheGanQuestions = React.useCallback(rows => {
+  const cacheGanQuestions = React.useCallback(async rows => {
     if (!rows?.length) return;
+    await client.cancelQueries({ queryKey, exact: true });
     client.setQueryData(queryKey, before => {
       if (!before?.records) return before;
       const questions = new Map((before.records.questoes || []).map(row => [row.id, row]));
