@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/qb/core/Button';
 
-export function CornellPairs({ pairs, onChange, disabled, notesHidden }) {
+export function CornellPairs({ pairs, onChange, disabled }) {
   const [addedId, setAddedId] = React.useState(null);
   const add = () => {
     const id = crypto.randomUUID();
@@ -23,12 +23,11 @@ export function CornellPairs({ pairs, onChange, disabled, notesHidden }) {
             <details className="qb-train-fold qb-train-fold--nested">
               <summary>Nota {index + 1}</summary>
               <div className="qb-train-fold__body">
-                {notesHidden ? <p>Nota oculta. Responda à pista de memória.</p> :
-                  <label style={{ display: 'grid', gap: 6 }}>
+                <label style={{ display: 'grid', gap: 6 }}>
                     <span className="qb-overline">Resposta da pista {index + 1}</span>
                     <textarea className="qb-textarea" rows={3} value={pair.note} disabled={disabled}
                       onChange={event => edit(pair.id, { note: event.target.value })} placeholder="Registre a resposta ou explicação." />
-                  </label>}
+                  </label>
               </div>
             </details>
           </div>

@@ -53,8 +53,9 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sub
     }
   };
   return <section aria-label="Caderno Cornell" style={{ display: 'grid', gap: 13, ...style }}>
-    <StudyTopicPicker label="Matéria e assunto do Cornell" subjects={subjects} value={topicId}
-      onSelect={selectTopic} />
+    <div aria-busy={switching}>
+      <StudyTopicPicker label="Matéria e assunto do Cornell" subjects={subjects} value={topicId} onSelect={selectTopic} />
+    </div>
     <CornellDocument key={topicId} topicId={topicId} topicLabel={topicLabel} flushRef={notes} switching={switching} />
     {topicId && <CornellDocument key={cornellPairsTopicId(topicId)} topicId={cornellPairsTopicId(topicId)}
       topicLabel={topicLabel} flushRef={pairs} switching={switching} paired />}
@@ -271,15 +272,15 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
           </span>
           {state.offline ?
             <Button size="sm" variant="secondary" icon="refresh-cw" onClick={() => window.location.reload()}>Reconectar</Button> :
-            <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || !state.dirty}>Salvar agora</Button>}
+            <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || switching || !state.dirty}>Salvar agora</Button>}
           <Button size="sm" variant="ghost" icon="history" onClick={refreshVersions} disabled={!state.loaded || state.offline}>Versões</Button>
           {!paired && <Button size="sm" variant="secondary" icon="sparkles" loading={busy}
             disabled={!state.loaded || draft.notes.trim().length < 20 || busy} onClick={suggest}>
             Sugerir pistas com Gemini
           </Button>}
-          <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} onClick={() => setHide(h => !h)}>
+          {!paired && <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} onClick={() => setHide(h => !h)}>
             {hide ? 'Mostrar notas' : 'Esconder para evocar'}
-          </Button>
+          </Button>}
         </div>
         {state.recovery && (
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', paddingTop: 10 }}>
@@ -292,8 +293,11 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
           </div>
         )}
       </div>
-      {paired ? <CornellPairs pairs={linkedPairs} disabled={!state.loaded || switching} notesHidden={hide}
-        onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
+      {paired ? <CornellPairs pairs={linkedPairs} disabled={!state.loaded || switching}
+        onChange={value => edit({ notes: JSON.stringify(value) })} /> : (
+        <details open className="qb-train-fold qb-train-fold--nested">
+          <summary>Pistas, notas e síntese originais</summary>
+          <div className="qb-train-fold__body">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
@@ -320,7 +324,9 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
           value={draft.summary} onChange={e => edit({ summary: e.target.value })}
           disabled={!state.loaded || switching} placeholder="Resuma em 2–3 frases, com suas palavras" />
       </label>
-      </>}
+          </div>
+        </details>
+      )}
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {syncStatus}
       </p>
