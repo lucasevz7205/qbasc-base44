@@ -24,7 +24,10 @@ export function applyEditorialOverlays(questions, cards, entries) {
       if (!patch || Number(q.raw?.versaoCuradoriaDireta || 0) >= Number(patch.version || 0)) return q;
       const x = patch.replacement;
       if (typeof x.statement !== "string" || !x.statement.trim() || !["C", "E"].includes(x.key)) return q;
-      return { ...q, statement: x.statement, key: x.key, explanation: x.explanation || "", basis: x.basis || q.basis, editorial: {
+      const assessment = x.statement.trim() === q.statement.trim() && x.key === q.key ? {} : {
+        trap: undefined, tags: q.tags?.filter(tag => !/^(?:F(?:10|[1-9])|V[1-4])(?:$|[\s·:–—-])/i.test(tag)),
+      };
+      return { ...q, ...assessment, statement: x.statement, key: x.key, explanation: x.explanation || "", basis: x.basis || q.basis, editorial: {
         version: patch.version, editedAt: patch.atualizadoEm, status: "reformulada",
         original: patch.original, note: patch.parecer || "",
       }};

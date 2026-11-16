@@ -25,7 +25,7 @@ function lastAnswerOutcome(question) {
   return (originalKey === 'C' || originalKey === 'E') && marked !== originalKey ? 'wrong' : 'answered';
 }
 
-export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds } = {}, { unique = false } = {}) {
+export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds, scheduledReview } = {}, { unique = false } = {}) {
   const selected = questionIds ? new Set(questionIds) : null;
   const eligible = bank.filter(question =>
     (!selected || selected.has(question.id)) &&
@@ -41,7 +41,7 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
     const filtered = matching.filter(question => lastAnswerOutcome(question) === filter);
     return unique ? distinctRoundQuestions(filtered) : filtered;
   }
-  const sorted = matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response)));
+  const sorted = scheduledReview ? matching : matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response)));
   return (unique ? distinctRoundQuestions(sorted) : sorted).slice(0, QUESTION_ROUND_LIMIT);
 }
 
