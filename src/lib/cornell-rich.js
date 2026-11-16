@@ -15,7 +15,7 @@ export const CORNELL_HIGHLIGHTS = [
 
 const ink = new Set([...CORNELL_INK.map(tone => tone.value), ...CORNELL_HIGHLIGHTS.map(tone => tone.ink)]);
 const highlights = new Set(CORNELL_HIGHLIGHTS.map(tone => tone.value));
-const inline = ['bold', 'underline', 'strike'];
+const inline = ['bold', 'italic', 'underline', 'strike'];
 export const CORNELL_FORMATS = [...inline, 'color', 'background', 'list', 'indent'];
 
 function cleanAttributes(value = {}) {

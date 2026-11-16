@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bold, Highlighter, IndentDecrease, IndentIncrease, List, ListOrdered, Palette, Strikethrough, Underline } from 'lucide-react';
+import { Bold, Highlighter, IndentDecrease, IndentIncrease, Italic, List, ListOrdered, Palette, Strikethrough, Underline } from 'lucide-react';
 import { Button } from '@/components/qb/core/Button';
 import { CORNELL_FORMATS, CORNELL_HIGHLIGHTS, CORNELL_INK, cornellContentOps, cornellPlainText, readCornellRich, writeCornellRich } from '@/lib/cornell-rich';
 import 'react-quill-new/dist/quill.core.css';
@@ -8,6 +8,7 @@ import './cornell-formatting.css';
 const Selection = React.createContext(null);
 const tools = [
   ['Negrito', Bold, 'bold', true],
+  ['Itálico', Italic, 'italic', true],
   ['Sublinhado', Underline, 'underline', true],
   ['Tachado', Strikethrough, 'strike', true],
   ['Lista numerada', ListOrdered, 'list', 'ordered'],

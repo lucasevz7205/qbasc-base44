@@ -29,3 +29,16 @@ test('formatos externos e mídia são removidos e o texto selecionado é preserv
   ] });
   assert.deepEqual(readCornellRich(value).ops, [{ insert: 'Trecho', attributes: { bold: true } }, { insert: '\n' }]);
 });
+
+test('itálico fica restrito ao trecho selecionado e permanece após recarregar', () => {
+  const delta = { ops: [
+    { insert: 'Texto normal ' },
+    { insert: 'termo', attributes: { italic: true, bold: true } },
+    { insert: '.\n' },
+  ] };
+  const stored = writeCornellRich(delta);
+  const reloaded = readCornellRich(stored);
+  assert.deepEqual(reloaded, delta);
+  assert.equal(writeCornellRich(reloaded), stored);
+  assert.equal(cornellPlainText(stored), 'Texto normal termo.');
+});
