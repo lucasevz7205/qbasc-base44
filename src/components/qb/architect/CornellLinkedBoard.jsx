@@ -9,7 +9,7 @@ export function CornellLinkedBoard({ pairs, onChange, disabled, notesHidden }) {
   const [selectedId, setSelectedId] = React.useState(null);
   const [editingCue, setEditingCue] = React.useState(false);
   const titleInput = React.useRef(null);
-  const index = Math.max(0, pairs.findIndex(pair => pair.id === selectedId));
+  const index = pairs.findIndex(pair => pair.id === selectedId);
   const selected = pairs[index];
 
   const select = id => {
