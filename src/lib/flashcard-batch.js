@@ -125,13 +125,14 @@ export const runFlashcardBatch = createServerFn({ method: 'POST' })
       if (proposals.length !== pending.length || new Set(proposals.map(p => p.position)).size !== pending.length ||
           proposals.some(p => p.position > pending.length)) throw new Error('O Gemini não devolveu uma proposta completa para cada cartão.');
       for (const proposal of proposals) {
+        const reason = proposal.reason.slice(0, 240);
         const { previous, prefix, card, nextId } = pending[proposal.position - 1];
         if (proposal.decision === 'keep') {
-          results.push({ id: card.id, status: 'kept', reason: proposal.reason });
+          results.push({ id: card.id, status: 'kept', reason });
           continue;
         }
         if (proposal.decision === 'review' || !equivalentShape(card, proposal, prefix) || (await checkNext(nextId)).length) {
-          results.push({ id: card.id, status: 'review', reason: proposal.decision === 'review' ? proposal.reason : 'A proposta requer conferência ou já existe uma edição mais recente.' });
+          results.push({ id: card.id, status: 'review', reason: proposal.decision === 'review' ? reason : 'A proposta requer conferência ou já existe uma edição mais recente.' });
           continue;
         }
         const entry = makeEditorialEntry({
@@ -146,7 +147,7 @@ export const runFlashcardBatch = createServerFn({ method: 'POST' })
           continue;
         }
         await docs.create({ collection: 'curadoria', legacy_id: entry.id, payload_json, source: runId });
-        results.push({ id: card.id, status: 'updated', reason: proposal.reason });
+        results.push({ id: card.id, status: 'updated', reason });
       }
     }
     await docs.update(rows[0].id, { payload_json: JSON.stringify({ ...batch, results }) });
