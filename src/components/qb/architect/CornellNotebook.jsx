@@ -7,6 +7,8 @@ import { Icon } from '@/components/qb/core/Icon';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { cornellPairsTopicId, readCornellPairs } from '@/lib/cornell-pairs';
 import { CornellLinkedBoard } from '@/components/qb/architect/CornellLinkedBoard';
+import { CornellFormatting, CornellRichEditor } from '@/components/qb/architect/CornellFormatting';
+import { cornellPlainText } from '@/lib/cornell-rich';
 import { generateCornellCues } from '@/lib/server-fns';
 import {
   LEGACY_CORNELL_PREFIX, emptyCornell, cleanCornell,
@@ -228,7 +230,7 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
   }, [state.loaded, state.offline, state.dirty, state.draft, state.identity, identity, saveNow]);
 
   const suggest = async () => {
-    const clean = currentDraftRef.current.notes.trim();
+    const clean = cornellPlainText(currentDraftRef.current.notes).trim();
     if (clean.length < 20 || busy || !state.loaded) return;
     setBusy(true);
     setState(s => ({ ...s, error: '' }));
@@ -238,7 +240,7 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
       if (Array.isArray(res?.cues) && res.cues.length) {
         suggestions.cues = res.cues.map(c => String(c).startsWith('•') ? c : '• ' + c).join('\n');
       }
-      if (res?.summary && !currentDraftRef.current.summary.trim()) suggestions.summary = res.summary;
+      if (res?.summary && !cornellPlainText(currentDraftRef.current.summary).trim()) suggestions.summary = res.summary;
       if (Object.keys(suggestions).length) edit(suggestions);
     } catch (error) {
       setState(s => ({ ...s, error: 'Falha ao gerar pistas pelo Gemini: ' + (error?.message || 'erro desconhecido') }));
@@ -280,7 +282,7 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
             <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || switching || !state.dirty}>Salvar agora</Button>}
           <Button size="sm" variant="ghost" icon="history" onClick={refreshVersions} disabled={!state.loaded || state.offline}>Versões</Button>
           {!paired && <Button size="sm" variant="secondary" icon="sparkles" loading={busy}
-            disabled={!state.loaded || draft.notes.trim().length < 20 || busy} onClick={suggest}>
+            disabled={!state.loaded || cornellPlainText(draft.notes).trim().length < 20 || busy} onClick={suggest}>
             Sugerir pistas com Gemini
           </Button>}
           <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} aria-pressed={hide} onClick={() => setHide(h => !h)}>
@@ -299,43 +301,42 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
         )}
       </div>
       <div className="qb-train-fold qb-train-fold--nested">
-        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, padding: '8px 10px' }}>
-          {onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'notebook-pen' : 'link'}
-            disabled={switching} onClick={onTogglePairs}>
-            {paired ? 'Anotações originais' : 'Pistas e notas vinculadas'}
-          </Button>}
-        </div>
+        <CornellFormatting disabled={disabled} actions={onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'notebook-pen' : 'link'}
+          disabled={switching} onClick={onTogglePairs}>
+          {paired ? 'Anotações originais' : 'Pistas e notas vinculadas'}
+        </Button>}>
         <div className="qb-train-fold__body">
           {paired ? <CornellLinkedBoard pairs={linkedPairs} notesHidden={hide} disabled={disabled}
             onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+              <div style={{ display: 'grid', gap: 6, minWidth: 0 }}>
                 <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
-                <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                  value={draft.cues} onChange={event => edit({ cues: event.target.value })}
+                <CornellRichEditor label="Pistas / perguntas" height={220}
+                  value={draft.cues} onChange={value => edit({ cues: value })}
                   disabled={disabled} placeholder="Perguntas de evocação ativa que suas notas respondem" />
-              </label>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+              </div>
+              <div style={{ display: 'grid', alignContent: 'start', gap: 6, minWidth: 0 }}>
                 <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
                 {hide ? (
                   <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
                     Notas ocultas. Responda às pistas de memória.
                   </div>
                 ) : (
-                  <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                    value={draft.notes} onChange={event => edit({ notes: event.target.value })}
+                  <CornellRichEditor label="Notas" height={220}
+                    value={draft.notes} onChange={value => edit({ notes: value })}
                     disabled={disabled} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
                 )}
-              </label>
+              </div>
             </div>
           </>}
-          <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={{ display: 'grid', gap: 6, minWidth: 0 }}>
             <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired ? 'Síntese das pistas vinculadas' : 'Síntese'}</span>
-            <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
-              value={draft.summary} onChange={event => edit({ summary: event.target.value })}
+            <CornellRichEditor label={paired ? 'Síntese das pistas vinculadas' : 'Síntese'} height={92}
+              value={draft.summary} onChange={value => edit({ summary: value })}
               disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
-          </label>
+          </div>
         </div>
+        </CornellFormatting>
       </div>
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {syncStatus}

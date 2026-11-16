@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/qb/core/Button';
 import { cornellPairTitle } from '@/lib/cornell-pairs';
+import { CornellRichEditor } from '@/components/qb/architect/CornellFormatting';
 
 const fieldStyle = { display: 'grid', gap: 6, minWidth: 0 };
 const columnStyle = { display: 'flex', flexDirection: 'column', gap: 8, minWidth: 0 };
@@ -60,9 +61,9 @@ export function CornellLinkedBoard({ pairs, onChange, disabled, notesHidden }) {
           {notesHidden && !editingCue ? (
             <div className="qb-textarea" style={{ minHeight: 148, color: 'var(--text-muted)' }}>Nota oculta. Responda à pista de memória.</div>
           ) : (
-            <textarea className="qb-textarea" aria-label={editingCue ? 'Texto da pista' : 'Nota'} style={{ minHeight: 148 }}
+            <CornellRichEditor key={selected.id + (editingCue ? ':cue' : ':note')} label={editingCue ? 'Texto da pista' : 'Nota'} height={148}
               value={editingCue ? selected.cue : selected.note} disabled={disabled}
-              onChange={event => edit(editingCue ? { cue: event.target.value } : { note: event.target.value })}
+              onChange={value => edit(editingCue ? { cue: value } : { note: value })}
               placeholder={editingCue ? 'Escreva uma pergunta para esta pista.' : 'Escreva a nota vinculada.'} />
           )}
         </> : <span style={{ color: 'var(--text-muted)' }}>A nota da pista selecionada aparece aqui.</span>}
