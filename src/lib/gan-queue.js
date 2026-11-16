@@ -20,17 +20,49 @@ export function findNodesWithoutQuestions({ nodes = [], concepts = {}, questionB
   );
 }
 
-function pathOf(node, nodes) {
-  const path = [];
-  let p = nodes.find((n) => n.id === node.parent);
-  while (p) {
-    path.unshift(p.label);
-    p = nodes.find((n) => n.id === p.parent);
+export function buildGanSource({ chosen, nodes, concepts, node, subjectName, count = 4 }) {
+  const byId = new Map(nodes.map(entry => [entry.id, entry]));
+  const lineage = new Set([node.id]);
+  const path = [node.label];
+  for (let parent = byId.get(node.parent); parent && !lineage.has(parent.id); parent = byId.get(parent.parent)) {
+    lineage.add(parent.id);
+    path.unshift(parent.label);
   }
-  return [...path, node.label];
+  const concept = concepts[node.id] || {};
+  const sources = (Array.isArray(concept.sources) ? concept.sources : [])
+    .map(source => typeof source === 'object' ? source?.label : source).filter(Boolean);
+  const context = [
+    concept.summary && `Resumo do nó (${node.label}): ${concept.summary}`,
+    concept.example && `Exemplo do nó: ${concept.example}`,
+    sources.length && `Fontes vinculadas: ${sources.join('; ')}`,
+  ].filter(Boolean);
+  const scopedNodes = [node, ...nodes.filter(n => n.id !== node.id && (lineage.has(n.id) || n.parent === node.id))];
+  return {
+    topicId: chosen.topicId,
+    topicTitle: chosen.title.slice(0, 300),
+    subjectName: (subjectName || chosen.subjectName || 'Matéria').slice(0, 200),
+    targetNodeId: node.id,
+    targetNodeLabel: node.label.slice(0, 240),
+    targetNodePath: path.slice(-12).map(label => label.slice(0, 240)),
+    count,
+    mapa: {
+      id: chosen.id,
+      title: chosen.title.slice(0, 300),
+      nodes: scopedNodes.slice(0, 100).map(n => ({
+        id: n.id, parent: n.parent || null, label: n.label.slice(0, 240),
+        summary: (concepts[n.id]?.summary || '').slice(0, 1500),
+        example: (concepts[n.id]?.example || '').slice(0, 1000),
+      })),
+    },
+    sourceContext: context.join('\n\n').slice(0, 7500),
+  };
 }
 
-function buildRecord(item, { chosen, node }) {
+export function isApprovedGanQuestion(item) {
+  return item?.statusConfronto === 'aprovada_gan' || item?.statusConfronto === 'refinada_gan';
+}
+
+export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
   const statusLabel = item.statusConfronto === "refinada_gan" ? "Refinada pela GAN" : "Aprovada no teste cego";
   const trap = {
     name: `${item.mecanismo} — ${item.mecanismoNome} (${statusLabel} · Gerador: ${item.gabaritoGerador} × Discriminador Cego: ${item.gabaritoDiscriminador})`,
@@ -45,9 +77,8 @@ function buildRecord(item, { chosen, node }) {
     item.criticaAdversaria ? `Auditoria Cega (Score GAN ${item.ganScore}%): ${item.criticaAdversaria}` : "",
   ].filter(Boolean).join("\n\n");
   const tags = [item.nodeTitle || node.label, `${item.mecanismo} · ${item.mecanismoNome}`, statusLabel, `Score GAN ${item.ganScore}%`].filter(Boolean);
-  const id = `${item.id}-${String(node.id).replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 40)}`;
   return {
-    id,
+    id: item.id,
     code: item.code,
     ano: "GAN · CEBRASPE",
     cap: chosen.topicId,
@@ -58,7 +89,7 @@ function buildRecord(item, { chosen, node }) {
     gabarito: item.gabarito,
     comentario: explanation,
     ref: item.trechoDecisivo ? `Trecho decisivo: ${item.trechoDecisivo}` : `Conceito: ${item.nodeTitle || node.label}`,
-    origem: "GAN · Mapa Mental · fila do Arquiteto",
+    origem: queue ? 'GAN · Mapa Mental · fila do Arquiteto' : 'GAN · Mapa Mental',
     mapaNoId: item.mapaNoId || node.id,
     mecanismo: item.mecanismo,
     mecanismoNome: item.mecanismoNome,
@@ -76,18 +107,7 @@ function buildRecord(item, { chosen, node }) {
  * Bloqueados não são gravados. Para após 2 erros seguidos para não gastar crédito à toa.
  * Não altera respostas, status, SRS nem itens existentes.
  */
-export async function runGanQueue({ chosen, nodes, concepts, subjectName, pending, generate, save, shouldStop, onProgress, maxNodes = GAN_QUEUE_MAX_NODES_PER_RUN }) {
-  const mapa = {
-    id: chosen.id,
-    title: chosen.title,
-    nodes: nodes.slice(0, 100).map((n) => ({
-      id: n.id,
-      parent: n.parent || null,
-      label: n.label,
-      summary: concepts[n.id]?.summary || "",
-      example: concepts[n.id]?.example || "",
-    })),
-  };
+export async function runGanQueue({ chosen, pending, generate, save, shouldStop, onProgress, maxNodes = GAN_QUEUE_MAX_NODES_PER_RUN }) {
   const todo = pending.slice(0, maxNodes);
   const out = { processados: 0, aprovadas: 0, bloqueadas: 0, erros: 0, restantes: Math.max(0, pending.length - todo.length) };
   let errosSeguidos = 0;
@@ -95,32 +115,15 @@ export async function runGanQueue({ chosen, nodes, concepts, subjectName, pendin
     if (shouldStop && shouldStop()) { out.restantes += todo.length - out.processados; break; }
     onProgress && onProgress({ atual: out.processados + 1, total: todo.length, no: node.label });
     try {
-      const c = concepts[node.id] || {};
-      const sourceParts = [
-        c.summary && `Resumo do nó (${node.label}): ${c.summary}`,
-        c.example && `Exemplo do nó: ${c.example}`,
-        Array.isArray(c.sources) && c.sources.length
-          ? `Fontes vinculadas: ${c.sources.map((s) => (typeof s === "object" ? s.label : s)).join("; ")}`
-          : "",
-      ].filter(Boolean);
-      const res = await generate({
-        data: {
-          topicId: chosen.topicId || chosen.id,
-          topicTitle: chosen.title,
-          subjectName: subjectName || "Câmara dos Deputados",
-          targetNodeId: node.id,
-          targetNodeLabel: node.label,
-          targetNodePath: pathOf(node, nodes),
-          count: 4,
-          mapa,
-          sourceContext: sourceParts.join("\n\n").slice(0, 7500),
-        },
-      });
-      const aprovadas = Array.isArray(res?.aprovadas) ? res.aprovadas : [];
+      const res = await generate(node);
+      const aprovadas = (Array.isArray(res?.aprovadas) ? res.aprovadas : []).filter(isApprovedGanQuestion);
       out.bloqueadas += Array.isArray(res?.bloqueadas) ? res.bloqueadas.length : 0;
       for (const item of aprovadas) {
         try {
-          await save("questoes", ...(() => { const r = buildRecord(item, { chosen, node }); return [r.id, r]; })());
+          if (save) {
+            const record = buildGanQuestionRecord(item, { chosen, node, queue: true });
+            await save('questoes', record.id, record);
+          }
           out.aprovadas += 1;
         } catch {
           out.erros += 1;

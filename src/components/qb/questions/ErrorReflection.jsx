@@ -13,9 +13,10 @@ export function ErrorReflection({ saved, busy, error, anchor, onSave, initialDra
     onDraftChange?.(next);
   };
   const resultRef = React.useRef(null);
+  const savedId = saved?.id;
   React.useEffect(() => {
-    if (saved) resultRef.current?.focus({ preventScroll: true });
-  }, [saved]);
+    if (savedId) resultRef.current?.focus({ preventScroll: true });
+  }, [savedId]);
 
   const label = originId => ERROR_ORIGINS[originId] || originId;
   return (

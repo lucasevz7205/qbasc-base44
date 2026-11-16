@@ -120,8 +120,12 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const reflectionAnchor = React.useRef(null);
   const reflectionDraft = React.useRef(null);
   const [reflectionError, setReflectionError] = React.useState('');
+  const [reflectionSaving, setReflectionSaving] = React.useState(false);
   const needsReflection = st.revealed && st.answer !== keyAtAnswer && !excluded;
-  const savedReflection = needsReflection ? findErrorReflection(records.justificativas, q?.id, st.attemptAt, QB_DATA.answers[q?.id]) : undefined;
+  const savedReflection = needsReflection
+    ? (st.savedReflection?.tentativaEm === st.attemptAt ? st.savedReflection : undefined)
+      || findErrorReflection(records.justificativas, q?.id, st.attemptAt, QB_DATA.answers[q?.id])
+    : undefined;
   const patch = p => setSession(s => s.sessionId === session.sessionId && s.idx === idx ? { ...s, ...p } : s);
   const setAns = p => setSession(s => {
     if (s.sessionId !== session.sessionId || s.idx !== idx) return s;
@@ -171,16 +175,17 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   const saveReflection = async draft => {
     if (!needsReflection || savedReflection || lock.current) return;
     lock.current = true;
-    setLoading(true);
+    setReflectionSaving(true);
     setReflectionError('');
     try {
       const note = buildErrorReflection({ ...draft, questionId: q.id, sessionId: session.sessionId, attemptAt: st.attemptAt, marked: st.answer });
-      await save('justificativas', note.id, note);
+      const saved = await save('justificativas', note.id, note);
+      setAns({ savedReflection: saved, reflectionDraft: undefined });
     } catch {
       setReflectionError('Não foi possível salvar a justificativa. Seu texto está nesta questão. Tente novamente.');
     } finally {
       lock.current = false;
-      setLoading(false);
+      setReflectionSaving(false);
     }
   };
 
@@ -392,7 +397,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                       saved: savedReflection,
                       initialDraft: st.reflectionDraft,
                       onDraftChange: value => { reflectionDraft.current = { questionId: q.id, value }; },
-                      busy: loading,
+                      busy: reflectionSaving,
                       error: reflectionError,
                       anchor: reflectionAnchor,
                       onSave: saveReflection,

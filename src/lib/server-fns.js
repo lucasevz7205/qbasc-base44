@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
-import { requireArchitectAccess } from "@/lib/study-accounts";
+import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
@@ -492,10 +492,15 @@ const GenerateMindMapGanSchema = z.object({
   sourceContext: z.string().max(8000).optional(),
 });
 
+const PersonalMapGanSchema = GenerateMindMapGanSchema.pick({ topicId: true, targetNodeId: true, count: true })
+  .extend({ queue: z.boolean().optional() }).strict();
+
 export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
   .middleware([requireUser])
-  .validator(GenerateMindMapGanSchema)
-  .handler(async ({ data, context }) => {
+  .validator(z.union([PersonalMapGanSchema, GenerateMindMapGanSchema]))
+  .handler(async ({ data: request, context }) => {
+    const personal = context.user.role === 'admin' ? null : await preparePersonalMapGan(context, request);
+    const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
     const base44 = context.getBase44();
     const core = base44.asServiceRole.integrations.Core;
     const count = data.count || 4;
@@ -628,8 +633,12 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
 
     const judgments = Array.isArray(discRes?.julgamentos) ? discRes.julgamentos : [];
 
-    return normalizeGanConfrontation(candidateQuestions, judgments, data.mapa, {
+    const result = normalizeGanConfrontation(candidateQuestions, judgments, data.mapa, {
       targetNodeId: data.targetNodeId,
       targetNodeLabel: data.targetNodeLabel,
     });
+    result.questoes.forEach(item => { item.id = 'gan-' + crypto.randomUUID(); });
+    if (!personal) return result;
+    const registros = await personal.persist(result.aprovadas);
+    return { ...result, registros };
   });

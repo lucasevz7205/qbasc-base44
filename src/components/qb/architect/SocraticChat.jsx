@@ -32,8 +32,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const [provider, setProvider] = React.useState('gemini');
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
-  const [composerExpanded, setComposerExpanded] = React.useState(false);
-  const composerId = React.useId();
+  const [transcriptExpanded, setTranscriptExpanded] = React.useState(false);
+  const transcriptId = React.useId();
   const [listening, setListening] = React.useState(false);
   const [voiceNotice, setVoiceNotice] = React.useState(null);
   const [ask, setAsk] = React.useState(false);
@@ -188,17 +188,26 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
         </div>
       </div>
-      <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa" className="qb-panel qb-panel--sunken"
-        style={{ flex: 1, minHeight: compact ? 100 : 220, minWidth: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, padding: 10 }}>
-        {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description={compact ? "Digite sua dúvida ou escolha uma ação abaixo." : "Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo."} />}
-        {msgs.map((m, i) => m.role === 'user'
-          ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--surface)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
-          : m.role === 'error'
-            ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
-            : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface-sunken)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
-                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
-              </div>)}
-        {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
+      <div className="qb-arch-transcript" data-compact={compact} data-expanded={transcriptExpanded}>
+        <div className="qb-arch-transcript__tools">
+          <Button size="sm" variant="ghost" icon={transcriptExpanded ? 'minimize' : 'maximize'}
+            aria-expanded={transcriptExpanded} aria-controls={transcriptId}
+            onClick={() => setTranscriptExpanded(value => !value)}>
+            {transcriptExpanded ? 'Recolher conversa' : 'Expandir conversa'}
+          </Button>
+        </div>
+        <div id={transcriptId} ref={listRef} role="log" aria-live="polite" aria-label="Conversa"
+          className="qb-panel qb-panel--sunken qb-arch-transcript__messages">
+          {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description={compact ? "Digite sua dúvida ou escolha uma ação abaixo." : "Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo."} />}
+          {msgs.map((m, i) => m.role === 'user'
+            ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--surface)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
+            : m.role === 'error'
+              ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
+              : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface-sunken)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
+                  <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
+                </div>)}
+          {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
+        </div>
       </div>
       {voiceNotice && (
         <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 12, border: '1px dashed rgba(208,179,134,.5)', font: '400 13px/1.4 var(--font-body)', color: 'var(--text-secondary)' }}>
@@ -216,27 +225,19 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
         ))}
       </div>
       {personal && <small style={{ color: 'var(--text-muted)' }}>Ao enviar, o Gemini usa a mensagem, o assunto selecionado e a conversa recente deste tópico.</small>}
-      <form className="qb-arch-composer" data-expanded={composerExpanded} onSubmit={event => { event.preventDefault(); send(); }}>
-        <textarea id={composerId} className="qb-input qb-arch-composer__input" rows={composerExpanded ? 5 : 1}
+      <form className="qb-arch-composer" onSubmit={event => { event.preventDefault(); send(); }}>
+        <textarea className="qb-input qb-arch-composer__input" rows={1}
           value={text} maxLength={3000} aria-label="Mensagem ao Arquiteto"
           placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'}
           onChange={event => setText(event.target.value)}
           onKeyDown={event => {
             if (event.key !== 'Enter') return;
             event.stopPropagation();
-            if (event.nativeEvent.isComposing || event.shiftKey || (composerExpanded && !event.ctrlKey && !event.metaKey)) return;
+            if (event.nativeEvent.isComposing || event.shiftKey) return;
             event.preventDefault();
             send();
           }} />
-        <div className="qb-arch-composer__actions">
-          <Button variant="ghost" className="qb-arch-composer__toggle"
-            icon={composerExpanded ? 'chevron-down' : 'maximize'}
-            aria-label={composerExpanded ? 'Recolher caixa de mensagem' : 'Expandir caixa de mensagem'}
-            title={composerExpanded ? 'Recolher caixa de mensagem' : 'Expandir caixa de mensagem'}
-            aria-expanded={composerExpanded} aria-controls={composerId}
-            onClick={() => setComposerExpanded(value => !value)} />
-          <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
-        </div>
+        <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
       </form>
       <ConfirmDialog open={ask} tone="danger" title="Limpar o histórico deste tópico?" description={'Remove as ' + msgs.length + ' mensagens de ' + tLabel + '. Conversas de outros tópicos são mantidas.'} confirmLabel="Limpar histórico" onCancel={() => setAsk(false)} onConfirm={() => { tutorHistory.clear(accountId, key); setAsk(false); }} />
     </div>

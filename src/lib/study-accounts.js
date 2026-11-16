@@ -1,6 +1,8 @@
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
+import { adaptStudy } from './qb-real-model.js';
+import { buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion } from './gan-queue.js';
 import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect } from './account-boundary';
 
 const accountId = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
@@ -76,6 +78,38 @@ async function requireAccount(entities, id) {
   const result = await account(entities, id);
   if (!result) throw new Error('Conta não cadastrada no ambiente de estudo.');
   return result;
+}
+
+export async function preparePersonalMapGan(context, request) {
+  const { user } = context;
+  if (user?.role !== 'user') throw new Error('Acesso ao espaço de estudo indisponível.');
+  const id = accountId.parse(user.id);
+  const entities = context.getBase44().asServiceRole.entities;
+  const profile = await requireAccount(entities, id);
+  if (profile.status !== 'active') throw new Error('Acesso ao espaço de estudo indisponível.');
+  const topic = await unique(entities, workspaceCollection(id, 'edital'), documentId.parse(request.topicId));
+  if (!topic) throw new Error('O assunto não pertence ao seu espaço de estudo.');
+  const revisions = await loadDocuments(entities, workspaceCollection(id, 'revisao'));
+  const { QB_DATA } = adaptStudy({
+    edital: [await decode(entities, topic)],
+    revisao: revisions.filter(row => (row.topico || row.id.replace(/\.(mapa|cartoes)$/, '')) === request.topicId),
+  }, user);
+  const chosen = QB_DATA.mindMaps.find(map => map.topicId === request.topicId);
+  const node = chosen?.nodes.find(entry => entry.id === request.targetNodeId);
+  if (!node) throw new Error('O nó não pertence ao mapa deste assunto.');
+  return {
+    data: buildGanSource({ chosen, nodes: chosen.nodes, concepts: QB_DATA.concepts, node, count: request.count }),
+    async persist(items) {
+      const records = [];
+      for (const item of items.filter(isApprovedGanQuestion)) {
+        const record = buildGanQuestionRecord(item, { chosen, node, queue: request.queue });
+        const stored = await write(entities, workspaceCollection(id, 'questoes'), record.id, record, true);
+        if (!stored) throw new Error('O identificador desta questão já está em uso.');
+        records.push(stored);
+      }
+      return records;
+    },
+  };
 }
 
 export async function requireArchitectAccess(context) {

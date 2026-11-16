@@ -73,6 +73,15 @@ export function RealStudyGate({children}) {
     });
     return row;
   }, [admin, client, queryKey, user]);
+  const cacheGanQuestions = React.useCallback(rows => {
+    if (!rows?.length) return;
+    client.setQueryData(queryKey, before => {
+      if (!before?.records) return before;
+      const questions = new Map((before.records.questoes || []).map(row => [row.id, row]));
+      for (const row of rows) questions.set(row.id, row);
+      return { ...before, records: { ...before.records, questoes: [...questions.values()] } };
+    });
+  }, [client, queryKey]);
   const { profile, records } = query.data || {};
   const model = React.useMemo(() => records ? adaptStudy(records, user, new Date(), {
     examName: admin ? undefined : profile?.exam || 'Meu projeto de estudo',
@@ -89,7 +98,7 @@ export function RealStudyGate({children}) {
       action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
   }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile)}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile)}}>{children}</RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>

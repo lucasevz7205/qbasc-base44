@@ -26,6 +26,7 @@ export default function ConceptPanel({
   reviewCount,
   onGenerateGan,
   ganLoading = false,
+  ganUnavailable = false,
   ganError = '',
   ganBlockedReport = null,
   returnTo,
@@ -113,7 +114,7 @@ export default function ConceptPanel({
           <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <H>Revisão ativa</H>
             {onGenerateGan && (
-              <Button variant="primary" icon="sparkles" loading={ganLoading} disabled={ganLoading} onClick={onGenerateGan} fullWidth>
+              <Button variant="primary" icon="sparkles" loading={ganLoading} disabled={ganLoading || ganUnavailable} onClick={onGenerateGan} fullWidth>
                 {ganLoading ? 'Confronto GAN (Gerador × Discriminador Cego)…' : 'Gerar questões GAN deste nó'}
               </Button>
             )}

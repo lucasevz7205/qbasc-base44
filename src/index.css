@@ -639,11 +639,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* Arquiteto */
 .qb-arch-composer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
 .qb-input.qb-arch-composer__input{min-width:0;min-height:44px;height:44px;padding-block:10px;resize:none;line-height:1.4}
-.qb-arch-composer[data-expanded="true"]{grid-template-columns:minmax(0,1fr)}
-.qb-arch-composer[data-expanded="true"] .qb-arch-composer__input{height:clamp(110px,24dvh,220px);min-height:110px;resize:vertical}
-.qb-arch-composer__actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}
-.qb-arch-composer__actions .qb-btn{min-height:44px}
-.qb-arch-composer__actions .qb-arch-composer__toggle{width:44px;padding:0}
+.qb-arch-composer .qb-btn{min-height:44px}
+.qb-arch-transcript{display:flex;flex:1 0 auto;flex-direction:column;gap:4px;min-width:0}
+.qb-arch-transcript__tools{display:flex;justify-content:flex-end}
+.qb-arch-transcript__tools .qb-btn{min-height:44px}
+.qb-arch-transcript__messages{display:flex;flex:1;flex-direction:column;gap:12px;padding:10px;min-width:0;min-height:220px;height:clamp(220px,32dvh,360px);overflow-y:auto;overscroll-behavior-y:contain}
+.qb-arch-transcript[data-compact="true"] .qb-arch-transcript__messages{min-height:100px;height:clamp(100px,25dvh,240px)}
+.qb-arch-transcript[data-expanded="true"] .qb-arch-transcript__messages{height:clamp(280px,57dvh,640px)}
 .qb-arch-msg{max-width:80%;padding:14px 16px;border-radius:16px;font:400 15px/1.6 var(--font-body);overflow-wrap:anywhere}
 .qb-architect-dock-tools .qb-tabs{flex-wrap:wrap}
 .qb-architect-dock-tools .qb-tab{min-height:34px;padding:0 8px;gap:5px;font-size:12px}

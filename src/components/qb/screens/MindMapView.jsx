@@ -13,7 +13,7 @@ import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
-import { findNodesWithoutQuestions, runGanQueue, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
+import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -32,7 +32,7 @@ export default function MindMapView({
   radialOpen: radialOpenProp,
   setRadialOpen: setRadialOpenProp,
 }) {
-  const { QB_DATA: D, QB_EDITAL: E, save, isAdmin } = useRealStudy();
+  const { QB_DATA: D, QB_EDITAL: E, save, isAdmin, accountId, cacheGanQuestions } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
@@ -40,14 +40,15 @@ export default function MindMapView({
   const [queueRunning, setQueueRunning] = React.useState(false);
   const [queueProgress, setQueueProgress] = React.useState(null);
   const [queueReport, setQueueReport] = React.useState(null);
+  const queueAutoKey = 'qb-gan-auto:' + accountId;
   const [queueAuto, setQueueAutoState] = React.useState(() => {
-    try { return localStorage.getItem('qb-gan-auto') === '1'; } catch { return false; }
+    try { return localStorage.getItem(queueAutoKey) === '1'; } catch { return false; }
   });
-  const queueStop = React.useRef(false);
+  const ganTask = React.useRef(null);
   const queueAutoDone = React.useRef(new Set());
-  const setQueueAuto = v => {
-    setQueueAutoState(v);
-    try { localStorage.setItem('qb-gan-auto', v ? '1' : '0'); } catch { /* ignore */ }
+  const setQueueAuto = value => {
+    setQueueAutoState(value);
+    try { localStorage.setItem(queueAutoKey, value ? '1' : '0'); } catch { /* ignore */ }
   };
   const [mapMaximized, setMapMaximized] = React.useState(false);
   const [showPanelInMax, setShowPanelInMax] = React.useState(true);
@@ -111,36 +112,56 @@ export default function MindMapView({
     () => chosen ? findNodesWithoutQuestions({ nodes, concepts: D.concepts || {}, questionBank: D.questionBank || [], rootId: chosen.id }) : [],
     [chosen, nodes, D.concepts, D.questionBank],
   );
+  const mapId = chosen?.id;
+  React.useEffect(() => {
+    setQueueReport(null);
+    setQueueProgress(null);
+    return () => {
+      if (ganTask.current) {
+        ganTask.current.stop = true;
+        ganTask.current.discard = true;
+      }
+    };
+  }, [mapId, isRadialOpen]);
+
+  const generateNode = React.useCallback(async (target, queue, extraContext = '') => {
+    const data = isAdmin
+      ? buildGanSource({ chosen, nodes, concepts: D.concepts, node: target, subjectName: subj?.name })
+      : { topicId: chosen.topicId, targetNodeId: target.id, count: 4, queue };
+    if (isAdmin && extraContext) data.sourceContext = [data.sourceContext, extraContext].filter(Boolean).join('\n\n').slice(0, 7500);
+    const res = await generateGanFn({ data });
+    if (!isAdmin) cacheGanQuestions(res.registros);
+    return res;
+  }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
+
   const runQueue = React.useCallback(async () => {
-    if (!chosen || queueRunning || !ganPending.length) return;
+    if (!chosen || isRadialOpen || ganTask.current || !ganPending.length) return;
+    const task = { stop: false, discard: false };
+    ganTask.current = task;
     setQueueRunning(true);
     setQueueReport(null);
-    queueStop.current = false;
     try {
-      const subjForQueue = (D.studySubjects?.length ? D.studySubjects : E.subjects || []).find(s => s.topics.some(t => t.id === chosen.topicId));
       const report = await runGanQueue({
         chosen,
-        nodes,
-        concepts: D.concepts || {},
-        subjectName: subjForQueue?.name,
         pending: ganPending,
-        generate: generateGanFn,
-        save,
-        shouldStop: () => queueStop.current,
+        generate: target => generateNode(target, true),
+        save: isAdmin ? save : undefined,
+        shouldStop: () => task.stop,
         onProgress: setQueueProgress,
       });
-      setQueueReport(report);
+      if (!task.discard) setQueueReport(report);
     } finally {
+      ganTask.current = null;
       setQueueRunning(false);
       setQueueProgress(null);
     }
-  }, [chosen, nodes, ganPending, queueRunning, D.concepts, D.studySubjects, E.subjects, generateGanFn, save]);
+  }, [chosen, isRadialOpen, ganPending, generateNode, isAdmin, save]);
+
   React.useEffect(() => {
-    if (!queueAuto || !chosen || queueRunning || !ganPending.length) return;
-    if (queueAutoDone.current.has(chosen.id)) return;
-    queueAutoDone.current.add(chosen.id);
+    if (!queueAuto || !mapId || isRadialOpen || ganTask.current || !ganPending.length || queueAutoDone.current.has(mapId)) return;
+    queueAutoDone.current.add(mapId);
     runQueue();
-  }, [queueAuto, chosen?.id, ganPending.length]);
+  }, [queueAuto, mapId, isRadialOpen, ganPending.length, queueRunning, ganLoading, runQueue]);
 
   const handleSelectTopic = nextTopicId => {
     const nextSubj = allSubjects.find(s => s.topics.some(t => t.id === nextTopicId));
@@ -301,69 +322,37 @@ export default function MindMapView({
   const qn = D.questionBank.filter(q => q.node === node.id || (node.id === chosen.id && q.topicId === chosen.topicId)).length;
 
   const handleGenerateGan = async () => {
-    if (ganLoading) return;
+    if (ganTask.current) return;
+    const task = { stop: false, discard: false };
+    ganTask.current = task;
     setGanLoading(true);
     setGanError('');
     setGanBlockedReport(null);
 
     try {
-      const tLabel = topic
-        ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '')
-        : chosen.title;
-
-      let cornellText = '';
-      try {
-        const savedCornell = JSON.parse(localStorage.getItem('qb-cornell::' + tLabel) || 'null');
-        if (savedCornell) {
-          cornellText = [savedCornell.cues, savedCornell.notes, savedCornell.summary].filter(Boolean).join('\n');
-        }
-      } catch {
-        // ignore storage errors
+      let additionalContext = '';
+      if (isAdmin) {
+        const tLabel = topic
+          ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '')
+          : chosen.title;
+        let cornell = '';
+        try {
+          const saved = JSON.parse(localStorage.getItem('qb-cornell::' + tLabel) || 'null');
+          if (saved) cornell = [saved.cues, saved.notes, saved.summary].filter(Boolean).join('\n');
+        } catch { /* storage unavailable */ }
+        const relatedCards = D.flashcards
+          .filter(f => f.node === node.id || f.topicId === chosen.topicId)
+          .slice(0, 6)
+          .map(f => `P: ${f.front} | R: ${f.back}`)
+          .join('\n');
+        additionalContext = [
+          cornell && 'Anotações Cornell do tópico:\n' + cornell,
+          relatedCards && 'Referências de revisão do tópico:\n' + relatedCards,
+        ].filter(Boolean).join('\n\n');
       }
-
-      const relatedCards = D.flashcards
-        .filter(f => f.node === node.id || f.topicId === chosen.topicId)
-        .slice(0, 6)
-        .map(f => `P: ${f.front} | R: ${f.back}`)
-        .join('\n');
-
-      const sourceParts = [
-        c.summary && `Resumo do nó (${node.label}): ${c.summary}`,
-        c.example && `Exemplo do nó: ${c.example}`,
-        Array.isArray(c.sources) && c.sources.length
-          ? `Fontes vinculadas: ${c.sources.map(s => (typeof s === 'object' ? s.label : s)).join('; ')}`
-          : '',
-        cornellText && `Anotações Cornell do tópico:\n${cornellText}`,
-        relatedCards && `Referências de revisão do tópico:\n${relatedCards}`,
-      ].filter(Boolean);
-
-      const mapaPayload = {
-        id: chosen.id,
-        title: chosen.title,
-        nodes: nodes.slice(0, 100).map(n => ({
-          id: n.id,
-          parent: n.parent || null,
-          label: n.label,
-          summary: D.concepts[n.id]?.summary || '',
-          example: D.concepts[n.id]?.example || '',
-        })),
-      };
-
-      const res = await generateGanFn({
-        data: {
-          topicId: chosen.topicId || chosen.id,
-          topicTitle: chosen.title,
-          subjectName: subj?.name || 'Câmara dos Deputados',
-          targetNodeId: node.id,
-          targetNodeLabel: node.label,
-          targetNodePath: [...path, node.label],
-          count: 4,
-          mapa: mapaPayload,
-          sourceContext: sourceParts.join('\n\n').slice(0, 7500),
-        },
-      });
-
-      const aprovadas = Array.isArray(res?.aprovadas) ? res.aprovadas : [];
+      const res = await generateNode(node, false, additionalContext);
+      if (task.discard) return;
+      const aprovadas = (Array.isArray(res?.aprovadas) ? res.aprovadas : []).filter(isApprovedGanQuestion);
       const bloqueadas = Array.isArray(res?.bloqueadas) ? res.bloqueadas : [];
       const resumoConfronto = res?.resumoConfronto || {
         totalGeradas: aprovadas.length + bloqueadas.length,
@@ -381,60 +370,11 @@ export default function MindMapView({
 
       const formattedQuestions = [];
       for (const item of aprovadas) {
-        const statusLabel = item.statusConfronto === 'refinada_gan' ? 'Refinada pela GAN' : 'Aprovada no teste cego';
-        const trap = {
-          name: `${item.mecanismo} — ${item.mecanismoNome} (${statusLabel} · Gerador: ${item.gabaritoGerador} × Discriminador Cego: ${item.gabaritoDiscriminador})`,
-          description: [
-            item.correcaoMinima && `Ponto decisivo / correção mínima: ${item.correcaoMinima}`,
-            item.teseGerador && `Tese avaliada: ${item.teseGerador}`,
-            item.criticaAdversaria && `Parecer do Discriminador Cego: ${item.criticaAdversaria}`,
-          ]
-            .filter(Boolean)
-            .join(' · '),
-        };
-        const explanation = [
-          item.comentario,
-          item.criticaAdversaria ? `Auditoria Cega (Score GAN ${item.ganScore}%): ${item.criticaAdversaria}` : '',
-        ]
-          .filter(Boolean)
-          .join('\n\n');
-        const basis = item.trechoDecisivo ? `Trecho decisivo: ${item.trechoDecisivo}` : `Conceito: ${item.nodeTitle}`;
-        const tags = [
-          item.nodeTitle || node.label,
-          `${item.mecanismo} · ${item.mecanismoNome}`,
-          statusLabel,
-          `Score GAN ${item.ganScore}%`,
-        ].filter(Boolean);
-
-        const rawRecord = {
-          id: item.id,
-          code: item.code,
-          ano: 'GAN · CEBRASPE',
-          cap: chosen.topicId,
-          capNome: chosen.title,
-          topico: chosen.topicId,
-          tema: item.tema || node.label,
-          enunciado: item.enunciado,
-          gabarito: item.gabarito,
-          comentario: explanation,
-          ref: basis,
-          origem: 'GAN · Mapa Mental',
-          mapaNoId: item.mapaNoId || node.id,
-          mecanismo: item.mecanismo,
-          mecanismoNome: item.mecanismoNome,
-          correcaoMinima: item.correcaoMinima,
-          criticaAdversaria: item.criticaAdversaria,
-          statusConfronto: item.statusConfronto,
-          ganScore: item.ganScore,
-          tags,
-          trap,
-        };
-
-        try {
-          await save('questoes', item.id, rawRecord);
-        } catch {
-          // Segue na sessão mesmo se a gravação no banco falhar
-        }
+        const rawRecord = isAdmin
+          ? await save('questoes', item.id, buildGanQuestionRecord(item, { chosen, node }))
+          : res.registros?.find(record => record.id === item.id);
+        if (!rawRecord) throw new Error('Não foi possível confirmar a gravação da questão GAN.');
+        const { tags, comentario: explanation, ref: basis, trap } = rawRecord;
 
         formattedQuestions.push({
           id: item.id,
@@ -460,6 +400,7 @@ export default function MindMapView({
         });
       }
 
+      if (task.discard) return;
       go('questions', {
         ganBatch: {
           questions: formattedQuestions,
@@ -472,8 +413,9 @@ export default function MindMapView({
         },
       });
     } catch (err) {
-      setGanError(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
+      if (!task.discard) setGanError(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
     } finally {
+      ganTask.current = null;
       setGanLoading(false);
     }
   };
@@ -586,16 +528,16 @@ export default function MindMapView({
               {queueRunning && queueProgress
                 ? `Gerando e confrontando ${queueProgress.atual} de ${queueProgress.total}: ${queueProgress.no}`
                 : queueReport
-                  ? `Aprovadas e gravadas: ${queueReport.aprovadas} · bloqueadas pelo teste cego: ${queueReport.bloqueadas} · erros: ${queueReport.erros} · nós restantes: ${queueReport.restantes + 0}`
+                  ? `Aprovadas e gravadas: ${queueReport.aprovadas} · bloqueadas pelo teste cego: ${queueReport.bloqueadas} · erros: ${queueReport.erros} · nós restantes: ${queueReport.restantes}`
                   : `${ganPending.length} nó(s) deste mapa com menos de ${GAN_QUEUE_MIN_QUESTIONS} questões.`}
             </span>
             {!queueRunning && ganPending.length > 0 && (
-              <Button size="sm" variant="secondary" icon="network" onClick={runQueue}>
+              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={runQueue}>
                 {`Gerar pendentes (até ${GAN_QUEUE_MAX_NODES_PER_RUN} nós)`}
               </Button>
             )}
             {queueRunning && (
-              <Button size="sm" variant="secondary" icon="x" onClick={() => { queueStop.current = true; }}>Parar</Button>
+              <Button size="sm" variant="secondary" icon="x" onClick={() => { if (ganTask.current) ganTask.current.stop = true; }}>Parar</Button>
             )}
             <label style={{ fontSize: 12, display: 'flex', gap: 6, alignItems: 'center' }}>
               <input type="checkbox" checked={queueAuto} onChange={e => setQueueAuto(e.target.checked)} />
@@ -628,8 +570,9 @@ export default function MindMapView({
               onNavigate={setSelected}
               reviewCount={card || undefined}
               onReview={() => go('flashcards', { topicId: chosen.topicId })}
-              onGenerateGan={isAdmin ? handleGenerateGan : undefined}
+              onGenerateGan={handleGenerateGan}
               ganLoading={ganLoading}
+              ganUnavailable={queueRunning}
               ganError={ganError}
               ganBlockedReport={ganBlockedReport}
               returnTo={sessionReturn ? undefined : returnTo?.label}
