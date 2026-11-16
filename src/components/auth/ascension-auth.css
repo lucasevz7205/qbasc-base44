@@ -36,6 +36,6 @@
   position:absolute;inset-block:0;inset-inline-end:0;width:44px;display:grid;place-items:center;border-radius:8px;color:#D0B386;
 }
 @media(max-width:600px) {
-  .qb-auth-ascension__scene {background-position:75% center}
+  .qb-auth-ascension__scene {background-position:right center}
   .qb-auth-ascension::after {background:rgba(10,30,52,.70)}
 }

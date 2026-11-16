@@ -21,7 +21,9 @@ export default function DashboardView({ go, openArchitect }) {
   const late = Object.values(P.weeks).flat().filter(t => t.status === 'late').length;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <HeroAscension scene="sunset" height={220} focal="right" eyebrow={QB_DATA.exam} title="Sua preparação continua" subtitle={(usingCycle ? 'Ciclo: ' + (currentBlock?.name || 'sem matérias') : 'Hoje: ' + todayTasks.length + ' tarefas planejadas') + ' · Simulado: ' + QB_SIM.next.label + '.'}>
+      <HeroAscension scene="day" height={220} focal="right" eyebrow={QB_DATA.exam} title="Sua preparação continua"
+        quote={{ text: 'A memória é a mãe de toda a sabedoria', author: 'Ésquilo' }}
+        subtitle={(usingCycle ? 'Ciclo: ' + (currentBlock?.name || 'sem matérias') : 'Hoje: ' + todayTasks.length + ' tarefas planejadas') + ' · Simulado: ' + QB_SIM.next.label + '.'}>
         <Button iconRight="arrow-right" onClick={() => go('plan', 'hoje')}>Ver o plano de hoje</Button>
         <Button variant="secondary" icon="target" onClick={() => go('train')}>Treinar agora</Button>
       </HeroAscension>

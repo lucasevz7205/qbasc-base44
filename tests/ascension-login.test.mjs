@@ -12,9 +12,23 @@ test('as entradas do design usam o formulário real e os ativos locais', () => {
   }
   assert.match(read('src/components/auth/LoginPage.jsx'), /await loginWithMfa\(email, password\)/);
   assert.match(read('src/components/auth/LoginPage.jsx'), /<MfaFlow challenge=\{mfaChallenge\} returnTo=\{returnTo\}/);
-  assert.match(read('src/components/auth/AuthLayout.jsx'), /qb-scene-night/);
-  for (const asset of ['logo/logo-q-sword-full.jpg', 'scenes/ascension-night.jpg']) {
+  assert.match(read('src/components/auth/AuthLayout.jsx'), /qb-scene-night-entry/);
+  for (const asset of ['logo/logo-q-sword-full.jpg', 'scenes/ascensao-noturna.webp']) {
     assert.ok(statSync(new URL('../public/assets/' + asset, import.meta.url)).size > 0);
+  }
+});
+
+test('o Menu principal usa a arte diurna e a tipografia de lema do Design System', () => {
+  const dashboard = read('src/components/qb/screens/DashboardView.jsx');
+  const styles = read('src/index.css');
+  assert.match(dashboard, /HeroAscension scene="day"/);
+  assert.match(dashboard, /A memória é a mãe de toda a sabedoria/);
+  assert.match(dashboard, /author: 'Ésquilo'/);
+  assert.match(styles, /\.qb-hero-motto blockquote[^}]+var\(--font-serif\)/);
+  assert.match(styles, /\.qb-scene-day[^}]+ascensao-diurna\.webp/);
+  for (const art of ['ascensao-diurna.webp', 'ascensao-noturna.webp']) {
+    const bytes = readFileSync(new URL('../public/assets/scenes/' + art, import.meta.url));
+    assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
   }
 });
 

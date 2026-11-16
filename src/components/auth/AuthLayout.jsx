@@ -6,7 +6,7 @@ export function AuthLayout({ icon: Icon, title, subtitle, footer, children, asce
   if (ascension) {
     return (
       <main className="qb-auth-ascension">
-        <div className="qb-auth-ascension__scene qb-img qb-scene-night" aria-hidden="true" />
+        <div className="qb-auth-ascension__scene qb-img qb-scene-night-entry" aria-hidden="true" />
         <div className="qb-auth-ascension__inner">
           <BrandLogo variant="q-full" size={110} />
           <section className="qb-auth-ascension__card" aria-labelledby="qb-auth-title">
