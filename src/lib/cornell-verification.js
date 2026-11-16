@@ -217,6 +217,7 @@ function checkSources(claims, sources) {
 }
 
 function compareBank(claims, bank) {
+  if (!claims.length || !bank.length) return [];
   const documents = bank.map(({ text, ...citation }) => ({ ...indexPassages(text), citation }));
   return claims.map(claim => {
     const words = keywords(claim);
@@ -227,7 +228,7 @@ function compareBank(claims, bank) {
       const threshold = preferred ? 0.4 : 0.55;
       const topicBonus = preferred ? 0.12 : 0;
       const literal = document.text.includes(claim);
-      const matches = literal ? [{ quote: claim, score: 1.05 }] : document.passages.map(passage => ({
+      const matches = literal ? [{ quote: claim, score: 2 }] : document.passages.map(passage => ({
         quote: passage.quote, score: overlapScore(words, passage.words),
       }));
       for (const { quote, score } of matches) {
