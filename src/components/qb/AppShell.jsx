@@ -19,6 +19,7 @@ export const NAV = (late = 0) => [
 ];
 
 export const TOOLS = [
+  { id: 'socratico', label: 'O Arquiteto', icon: 'sparkles' },
   { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
   { id: 'cards', label: 'Scanner de material', icon: 'scan-line' },
@@ -71,15 +72,15 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
                 theme={ui.theme}
                 onTheme={v => setUi({ theme: v })}
                 showAdministration={isAdmin}
-                tools={isAdmin ? TOOLS : TOOLS.filter(t => ['study-clock', 'keys'].includes(t.id))}
+                tools={isAdmin ? TOOLS : TOOLS.filter(t => ['study-clock', 'keys'].includes(t.id) || (architectAccess && t.id === 'socratico'))}
                 onTool={id =>
                   id === 'keys'
                     ? setUi({ toast: { tone: 'info', title: 'Atalhos', message: 'C / E responder · Esc fechar O Arquiteto' } })
-                    : setUi({ studio: { open: true, tool: id } })
+                    : setUi({ studio: { open: true, mode: 'modal', tool: id } })
                 }
                 collapsed={ui.collapsed}
                 onCollapse={() => setUi({ collapsed: !ui.collapsed })}
-                onArchitect={architectAccess ? () => setUi({ studio: { open: true } }) : undefined}
+                onArchitect={architectAccess ? () => setUi({ studio: { open: true, mode: 'modal', tool: 'socratico' } }) : undefined}
               />
             </div>
           )}
@@ -127,7 +128,7 @@ export function ArchitectLayer({ ui, setUi }) {
     <>
       {architectAccess && <ArchitectLauncher
         hidden={ui.studio.open}
-        onOpen={() => setUi({ studio: { open: true, tool: 'socratico' } })}
+        onOpen={() => setUi({ studio: { open: true, mode: 'dock', tool: 'socratico' } })}
       />}
       {(architectAccess || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}

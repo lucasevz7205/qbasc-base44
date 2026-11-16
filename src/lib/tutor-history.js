@@ -1,10 +1,14 @@
 export const EMPTY_TUTOR_HISTORY = Object.freeze([]);
 const prefix = 'qbasc-tutor-history:v1:';
 const scoped = (account, topic) => prefix + JSON.stringify([account, topic]);
+export const DEFAULT_TUTOR_MODE = 'socratico';
+const selectableModes = new Set([DEFAULT_TUTOR_MODE, 'feynman', 'banca', 'oral']);
+const modeKey = (account, subject, topic) => prefix + 'mode:' + JSON.stringify([account, subject, topic]);
 
 export function createTutorHistory(getStorage = () => globalThis.localStorage) {
   const cache = new Map();
   const pending = new Set();
+  const modesInMemory = new Map();
   const listeners = new Set();
   const notify = () => { for (const listener of listeners) listener(); };
 
@@ -36,6 +40,23 @@ export function createTutorHistory(getStorage = () => globalThis.localStorage) {
 
   return {
     read,
+    mode(account, subject, topic) {
+      const key = modeKey(account, subject, topic);
+      if (modesInMemory.has(key)) return modesInMemory.get(key);
+      try {
+        const value = getStorage().getItem(key);
+        return selectableModes.has(value) ? value : DEFAULT_TUTOR_MODE;
+      } catch { return DEFAULT_TUTOR_MODE; }
+    },
+    setMode(account, subject, topic, value) {
+      if (!account || !selectableModes.has(value)) return;
+      const key = modeKey(account, subject, topic);
+      try {
+        getStorage().setItem(key, value);
+        modesInMemory.delete(key);
+      } catch { modesInMemory.set(key, value); }
+      notify();
+    },
     append(account, topic, message) { write(account, topic, [...read(account, topic), message]); },
     clear(account, topic) {
       if (!pending.has(scoped(account, topic))) write(account, topic, EMPTY_TUTOR_HISTORY);

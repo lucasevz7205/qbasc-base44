@@ -45,3 +45,28 @@ test('assuntos do dia registram acertos, erros e brancos vinculados ao edital', 
   assert.deepEqual([subject.correct, subject.wrong, subject.blank], [1, 1, 1]);
   assert.deepEqual(subject.topics.map(t => [t.id, t.correct, t.wrong, t.blank]), [['da-1',1,1,0], ['da-2',0,0,1]]);
 });
+
+test('modo cognitivo persiste por conta, matéria e assunto entre instâncias e ao limpar mensagens', () => {
+  const memory = new Map();
+  const storage = { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) };
+  const side = createTutorHistory(() => storage);
+  const studio = createTutorHistory(() => storage);
+  assert.equal(side.mode('conta', 'direito', 'tema'), 'socratico');
+  side.setMode('conta', 'direito', 'tema', 'feynman');
+  assert.equal(studio.mode('conta', 'direito', 'tema'), 'feynman');
+  assert.equal(studio.mode('outra', 'direito', 'tema'), 'socratico');
+  assert.equal(studio.mode('conta', 'outra', 'tema'), 'socratico');
+  assert.equal(studio.mode('conta', 'direito', 'novo'), 'socratico');
+  studio.setMode('conta', 'direito', 'tema', 'oral');
+  side.clear('conta', 'tema');
+  assert.equal(side.mode('conta', 'direito', 'tema'), 'oral');
+});
+
+test('só conserva saudações e apresentações na primeira resposta', async () => {
+  const { continueTutorConversation } = await import('../src/lib/tutor-continuation.js');
+  const reply = 'Salve, futuro Analista Legislativo. Sou O Arquiteto.\n\nQual é a regra?';
+  assert.equal(continueTutorConversation(reply, false), reply);
+  assert.equal(continueTutorConversation(reply, true), 'Qual é a regra?');
+  assert.equal(continueTutorConversation('**Olá!**\n\nCompare as teses.', true), 'Compare as teses.');
+  assert.equal(continueTutorConversation('A união dos poderes deve ser analisada.', true), 'A união dos poderes deve ser analisada.');
+});

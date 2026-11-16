@@ -10,6 +10,7 @@ import { parseCornellGemini } from "@/lib/cornell-gemini";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
 import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
 import { contextualFlashcardFront } from "@/lib/flashcard-standard";
+import { continueTutorConversation } from "@/lib/tutor-continuation";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -98,6 +99,9 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       profile ? "Diferencie explicação, inferência e afirmação documentada. Quando faltar base para conferir uma regra, indique a necessidade de consultar a fonte original." : CEBRASPE_V1_TUTOR_RULES,
       !profile && ["banca", "armadilhas"].includes(data.mode) ? CEBRASPE_V1_GENERATION_RULES : "",
       historyBlock ? `Histórico recente da conversa:\n${historyBlock}` : "",
+      historyBlock
+        ? "Continue a conversa diretamente. Pule cumprimentos, saudações e apresentações, mesmo após uma mudança de modo pedagógico."
+        : "Na primeira resposta, um cumprimento breve é opcional.",
       `Mensagem/solicitação atual do estudante:\n${data.userMessage}`,
       "Responda em português (pt-BR), em texto fluido e bem estruturado (máximo de 2 a 3 parágrafos curtos ou tópicos objetivos).",
     ]
@@ -106,12 +110,13 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
 
     const provider = profile ? "gemini" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
-      return invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt });
+      const result = await invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt });
+      return { ...result, reply: continueTutorConversation(result.reply, Boolean(historyBlock)) };
     }
     const base44 = context.getBase44();
     const res = await base44.asServiceRole.integrations.Core.InvokeLLM({ prompt });
     const reply = typeof res === "string" ? res.trim() : JSON.stringify(res);
-    return { reply };
+    return { reply: continueTutorConversation(reply, Boolean(historyBlock)) };
   });
 
 /**

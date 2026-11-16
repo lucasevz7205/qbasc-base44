@@ -7,7 +7,7 @@ import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { askArchitectTutor, getArchitectProviderStatus } from '@/lib/server-fns';
-import { EMPTY_TUTOR_HISTORY, tutorHistory } from '@/lib/tutor-history';
+import { DEFAULT_TUTOR_MODE, EMPTY_TUTOR_HISTORY, tutorHistory } from '@/lib/tutor-history';
 
 const MODES = [['socratico', 'Socrático'], ['feynman', 'Feynman'], ['banca', 'Banca CEBRASPE'], ['oral', 'Arguição oral']];
 const QUICK = [['retencao', 'target', 'Testar retenção'], ['armadilhas', 'triangle-alert', 'Armadilhas da banca'], ['analogia', 'lightbulb', 'Analogia Feynman'], ['voz', 'mic', 'Arguição por voz']];
@@ -28,7 +28,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const modeLabel = (kind, label) => personal && kind === 'banca' ? 'Questão de banca' : label;
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
   const [settingsOpen, setSettingsOpen] = React.useState(false);
-  const [mode, setMode] = React.useState('socratico');
+  const subjectKey = subj?.id ?? null;
   const [provider, setProvider] = React.useState('gemini');
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
@@ -41,6 +41,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const recRef = React.useRef(null);
   const msgs = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.read(accountId, key), () => EMPTY_TUTOR_HISTORY);
   const busy = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.isPending(accountId, key), () => false);
+  const mode = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.mode(accountId, subjectKey, key), () => DEFAULT_TUTOR_MODE);
+  const setMode = value => tutorHistory.setMode(accountId, subjectKey, key, value);
 
   React.useEffect(() => {
     let mounted = true;
@@ -62,7 +64,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
     const priorHistory = tutorHistory.read(accountId, key)
       .filter(m => m.role === 'user' || m.role === 'tutor')
       .slice(-10)
-      .map(m => ({ role: m.role, text: m.text }));
+      .map(m => ({ role: m.role, text: m.text.slice(0, 3000) }));
 
     push({ role: 'user', text: cleanText });
     try {
