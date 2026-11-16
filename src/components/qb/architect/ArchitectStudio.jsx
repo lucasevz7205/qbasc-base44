@@ -75,7 +75,8 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
         {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
-        {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} />}
+        {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
+          onTopicChange={({ subjectId, topicId }) => onContextChange?.({ ...context, subjectId, topicId })} />}
         {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} deck={deck} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>

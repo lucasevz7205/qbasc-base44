@@ -4,6 +4,9 @@ import { useAuth } from '@/lib/AuthContext';
 import { Button } from '@/components/qb/core/Button';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { Icon } from '@/components/qb/core/Icon';
+import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
+import { CornellPairs } from '@/components/qb/architect/CornellPairs';
+import { cornellPairsTopicId, readCornellPairs } from '@/lib/cornell-pairs';
 import { generateCornellCues } from '@/lib/server-fns';
 import {
   LEGACY_CORNELL_PREFIX, emptyCornell, cleanCornell,
@@ -16,7 +19,7 @@ const SAVE_DELAY = 1300;
 
 function localRead(key) {
   try {
-    const raw = localStorage.getItem(key);
+    const raw = key && localStorage.getItem(key);
     return raw ? JSON.parse(raw) : null;
   } catch { return null; }
 }
@@ -32,12 +35,38 @@ const initial = () => ({
   draft: emptyCornell(), recovery: null, status: 'Carregando…', error: '',
 });
 
-export default function CornellNotebook({ topicId, topicLabel = 'o tópico', style }) {
+export default function CornellNotebook({ topicId, topicLabel = 'o tópico', subjects = [], onTopicChange, style }) {
+  const notes = React.useRef(null);
+  const pairs = React.useRef(null);
+  const switchingLock = React.useRef(false);
+  const [switching, setSwitching] = React.useState(false);
+  const selectTopic = async selection => {
+    if (!onTopicChange || selection.topicId === topicId || switchingLock.current) return;
+    switchingLock.current = true;
+    setSwitching(true);
+    try {
+      const results = await Promise.all([notes.current?.(), pairs.current?.()]);
+      if (results.every(result => result !== false)) onTopicChange(selection);
+    } finally {
+      switchingLock.current = false;
+      setSwitching(false);
+    }
+  };
+  return <section aria-label="Caderno Cornell" style={{ display: 'grid', gap: 13, ...style }}>
+    <StudyTopicPicker label="Matéria e assunto do Cornell" subjects={subjects} value={topicId}
+      onSelect={selectTopic} />
+    <CornellDocument key={topicId} topicId={topicId} topicLabel={topicLabel} flushRef={notes} switching={switching} />
+    {topicId && <CornellDocument key={cornellPairsTopicId(topicId)} topicId={cornellPairsTopicId(topicId)}
+      topicLabel={topicLabel} flushRef={pairs} switching={switching} paired />}
+  </section>;
+}
+
+function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = false }) {
   const { user } = useAuth();
   const ownerId = user?.id;
   const resolvedTopic = String(topicId || topicLabel).trim();
   const identity = ownerId && resolvedTopic ? cornellDraftKey(ownerId, resolvedTopic) : '';
-  const legacyKey = LEGACY_CORNELL_PREFIX + topicLabel;
+  const legacyKey = paired ? null : LEGACY_CORNELL_PREFIX + topicLabel;
   const generateCuesFn = useServerFn(generateCornellCues);
 
   const [state, setState] = React.useState(initial);
@@ -55,6 +84,7 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
   const queueRef = React.useRef(Promise.resolve());
   const currentDraftRef = React.useRef(emptyCornell());
   const dirtyRef = React.useRef(false);
+  const localCopyRef = React.useRef(true);
 
   React.useEffect(() => {
     identityRef.current = identity;
@@ -63,6 +93,7 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
     lastVersionAtRef.current = null;
     currentDraftRef.current = emptyCornell();
     dirtyRef.current = false;
+    localCopyRef.current = true;
     setState({ ...initial(), identity });
     setVersions([]);
     setShowHistory(false);
@@ -105,11 +136,12 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
   }, [identity, ownerId, resolvedTopic, legacyKey]);
 
   const edit = (updates) => {
-    if (!state.loaded || state.identity !== identity || !identity) return;
+    if (!state.loaded || state.identity !== identity || !identity || switching) return;
     const draft = { ...currentDraftRef.current, ...updates };
     currentDraftRef.current = draft;
     dirtyRef.current = true;
     const localSaved = localWrite(identity, draft);
+    localCopyRef.current = localSaved;
     setState(s => s.identity !== identity ? s : ({ ...s, draft, dirty: true,
       error: !localSaved ? 'O navegador impediu a cópia local. Não saia antes de confirmar a sincronização na nuvem.' :
         (s.offline ? s.error : ''),
@@ -177,6 +209,12 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
     await task;
   }, [ownerId, resolvedTopic, topicLabel]);
 
+  React.useImperativeHandle(flushRef, () => async () => {
+    if (!dirtyRef.current) return true;
+    if (!state.offline) await saveNow(currentDraftRef.current, identity);
+    return !dirtyRef.current || localCopyRef.current;
+  }, [identity, saveNow, state.offline]);
+
   React.useEffect(() => {
     if (!state.loaded || state.offline || !state.dirty || state.identity !== identity) return;
     const snapshot = cleanCornell(state.draft);
@@ -220,24 +258,25 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
   };
 
   const draft = state.draft;
+  const linkedPairs = paired ? readCornellPairs(draft.notes) : [];
   const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
     ? 'Sincronização pendente' : state.status;
   return (
-    <section aria-label="Caderno Cornell" style={{ display: 'flex', flexDirection: 'column', gap: 13, ...style }}>
+    <section aria-label={paired ? 'Pistas e notas vinculadas' : 'Anotações do assunto'} style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
       <div className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', border: '1px solid rgba(208,179,134,.35)', borderRadius: 14 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <Icon name="notebook-pen" color="var(--qb-gold)" size={19} />
           <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)', flex: 1 }}>
-            Caderno de <strong style={{ color: 'var(--qb-ivory)' }}>{topicLabel}</strong>
+            {paired ? <strong style={{ color: 'var(--qb-ivory)' }}>Pistas e notas vinculadas</strong> : <>Caderno de <strong style={{ color: 'var(--qb-ivory)' }}>{topicLabel}</strong></>}
           </span>
           {state.offline ?
             <Button size="sm" variant="secondary" icon="refresh-cw" onClick={() => window.location.reload()}>Reconectar</Button> :
             <Button size="sm" variant="secondary" icon="save" onClick={() => saveNow(currentDraftRef.current, identity)} disabled={!state.loaded || saving || !state.dirty}>Salvar agora</Button>}
           <Button size="sm" variant="ghost" icon="history" onClick={refreshVersions} disabled={!state.loaded || state.offline}>Versões</Button>
-          <Button size="sm" variant="secondary" icon="sparkles" loading={busy}
+          {!paired && <Button size="sm" variant="secondary" icon="sparkles" loading={busy}
             disabled={!state.loaded || draft.notes.trim().length < 20 || busy} onClick={suggest}>
             Sugerir pistas com Gemini
-          </Button>
+          </Button>}
           <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} onClick={() => setHide(h => !h)}>
             {hide ? 'Mostrar notas' : 'Esconder para evocar'}
           </Button>
@@ -253,12 +292,14 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           </div>
         )}
       </div>
+      {paired ? <CornellPairs pairs={linkedPairs} disabled={!state.loaded || switching} notesHidden={hide}
+        onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
           <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
             value={draft.cues} onChange={e => edit({ cues: e.target.value })}
-            disabled={!state.loaded} placeholder="Perguntas de evocação ativa que suas notas respondem" />
+            disabled={!state.loaded || switching} placeholder="Perguntas de evocação ativa que suas notas respondem" />
         </label>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
@@ -269,7 +310,7 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           ) : (
             <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
               value={draft.notes} onChange={e => edit({ notes: e.target.value })}
-              disabled={!state.loaded} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
+              disabled={!state.loaded || switching} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
           )}
         </label>
       </div>
@@ -277,8 +318,9 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
         <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
         <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
           value={draft.summary} onChange={e => edit({ summary: e.target.value })}
-          disabled={!state.loaded} placeholder="Resuma em 2–3 frases, com suas palavras" />
+          disabled={!state.loaded || switching} placeholder="Resuma em 2–3 frases, com suas palavras" />
       </label>
+      </>}
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {syncStatus}
       </p>
@@ -303,9 +345,9 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           ))}
         </div>
       )}
-      <p style={{ margin: 0, color: 'var(--text-muted)', font: '400 12px/1.5 var(--font-body)' }}>
+      {!paired && <p style={{ margin: 0, color: 'var(--text-muted)', font: '400 12px/1.5 var(--font-body)' }}>
         Sincronização na conta do QBAsc. As alterações são salvas após uma pausa na digitação. Uma cópia no navegador permanece como segurança.
-      </p>
+      </p>}
       <ConfirmDialog open={Boolean(restore)} tone="attention"
         title="Restaurar uma versão anterior?" description="A versão selecionada será carregada como nova edição. As versões já salvas e a cópia antiga não serão excluídas."
         confirmLabel="Restaurar como nova edição" onCancel={() => setRestore(null)}
