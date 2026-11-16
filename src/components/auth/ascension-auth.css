@@ -1,14 +1,14 @@
 .qb-auth-ascension {
-  position:relative; isolation:isolate; display:flex; align-items:center; min-height:100svh;
-  padding:clamp(20px,5vw,64px); background:#0A1E34; color:#F1E8D5;
+  position:relative; isolation:isolate; display:flex; align-items:flex-start; min-height:100svh;
+  padding:clamp(16px,3vw,48px); background:#0A1E34; color:#F1E8D5;
 }
 .qb-auth-ascension__scene {position:absolute; inset:0; z-index:-2; background-position:65% 40%}
 .qb-auth-ascension::after {
   content:""; position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(90deg,rgba(10,30,52,.98) 0%,rgba(10,30,52,.9) 33%,rgba(10,30,52,.35) 71%,rgba(10,30,52,.1)),
-    linear-gradient(0deg,rgba(10,30,52,.84),transparent 50%);
+  background:linear-gradient(90deg,rgba(10,30,52,.90) 0%,rgba(10,30,52,.70) 31%,rgba(10,30,52,.25) 70%,rgba(10,30,52,.08)),
+    linear-gradient(0deg,rgba(10,30,52,.56),transparent 52%);
 }
-.qb-auth-ascension__inner {width:min(100%,1240px); margin:auto; display:grid; justify-items:start; gap:12px}
+.qb-auth-ascension__inner {width:min(100%,440px); display:grid; justify-items:start; gap:12px}
 .qb-auth-ascension__card {
   width:min(100%,440px); padding:clamp(16px,4vw,28px); border:1px solid #A58A67; border-radius:20px;
   background:rgba(10,30,52,.95); box-shadow:var(--shadow-raised);
@@ -37,5 +37,5 @@
 }
 @media(max-width:600px) {
   .qb-auth-ascension__scene {background-position:right center}
-  .qb-auth-ascension::after {background:rgba(10,30,52,.70)}
+  .qb-auth-ascension::after {background:rgba(10,30,52,.58)}
 }

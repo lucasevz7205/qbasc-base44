@@ -324,7 +324,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* Brand imagery classes pointing to /public/assets/ */
 .qb-img { background-repeat: no-repeat; background-position: center; background-size: cover; }
 .qb-scene-night { background-image: url('/assets/scenes/ascension-night.jpg'); }
-.qb-scene-night-entry { background-image: url('/assets/scenes/ascensao-noturna.webp'); }
+.qb-scene-night-ascensao { background-image: url('/assets/scenes/ascensao-noturna.webp'); }
 .qb-scene-day { background-image: url('/assets/scenes/ascensao-diurna.webp'); }
 .qb-hero-motto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0; color: var(--qb-ivory); }
 .qb-hero-motto blockquote { margin: 0; font: italic var(--fw-medium) clamp(20px, 2.1vw, 26px)/1.3 var(--font-serif); }

@@ -25,11 +25,12 @@ export const TOOLS = [
   { id: 'keys', label: 'Atalhos de teclado', icon: 'monitor' },
 ];
 
-function Backdrop({ bg }) {
+function Backdrop({ bg, view }) {
   if (bg !== 'dynamic') return null;
+  const sceneClass = view === 'dashboard' ? 'qb-scene-night-ascensao' : 'qb-scene-night';
   return (
     <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: -1 }}>
-      <div className="qb-img qb-scene-night" style={{ position: 'absolute', inset: 0, backgroundPosition: '70% 30%' }} />
+      <div className={`qb-img ${sceneClass}`} style={{ position: 'absolute', inset: 0, backgroundPosition: '70% 30%' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(10,30,52,.55) 0%,rgba(10,30,52,.88) 280px,rgba(10,30,52,.94) 100%)' }} />
     </div>
   );
@@ -42,7 +43,7 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
   const isWide = wide ?? (view === 'study' || view === 'plan' || view === 'train');
   return (
     <div data-qb-theme={ui.theme} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', isolation: 'isolate' }}>
-      <Backdrop bg={scene ? 'dynamic' : 'static'} />
+      <Backdrop bg={scene ? 'dynamic' : 'static'} view={view} />
       <div style={{ padding: '10px 16px 0' }}>
         <div style={{ maxWidth: 1360, margin: '0 auto' }}>
           {!ui.collapsed && (
