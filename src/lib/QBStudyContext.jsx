@@ -79,7 +79,7 @@ function startQuestionRound(bank, selection = {}) {
 }
 
 export function QBStudyProvider({ children }) {
-  const { QB_DATA, QB_EDITAL, QB_PLAN, isAdmin } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, QB_PLAN, architectAccess } = useRealStudy();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -171,13 +171,13 @@ export function QBStudyProvider({ children }) {
   );
 
   const openArchitect = React.useCallback((ctx, tool) => {
-    if (!isAdmin) return toast({ tone: 'info', title: 'Ferramenta administrativa', message: 'O Arquiteto está reservado à administração durante o beta.' });
+    if (!architectAccess) return toast({ tone: 'info', title: 'O Arquiteto', message: 'O tutor ainda não está liberado para esta conta.' });
     setUiState(u => ({
       ...u,
       ctx: ctx || u.ctx,
       studio: { open: true, tool },
     }));
-  }, [isAdmin, toast]);
+  }, [architectAccess, toast]);
 
   // Pedagogical lookup & resolution (v3 contract)
   const findTopic = React.useCallback(

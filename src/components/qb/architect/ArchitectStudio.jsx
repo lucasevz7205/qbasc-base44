@@ -25,7 +25,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[4], label: 'Sessão' },
 ];
 
-export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], clockOnly = false, style }) {
+export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], clockOnly = false, personal = false, style }) {
   const dock = mode === 'dock';
   const modal = mode === 'modal';
   const headingRef = React.useRef(null);
@@ -41,7 +41,10 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   }, [open, mode]);
 
   const [toolState, setToolState] = React.useState(toolProp || 'socratico');
-  const tool = clockOnly ? 'study-clock' : toolProp || toolState;
+  const available = dock ? COMPACT_TOOLS : TOOLS;
+  const tools = personal ? available.filter(item => item.id !== 'cornell' && item.id !== 'cards') : available;
+  const requestedTool = toolProp || toolState;
+  const tool = clockOnly ? 'study-clock' : tools.some(item => item.id === requestedTool) ? requestedTool : 'socratico';
   const setTool = t => { setToolState(t); onToolChange && onToolChange(t); };
   React.useEffect(() => {
     if (!open || mode === 'inline') return;
@@ -50,9 +53,9 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
     return () => window.removeEventListener('keydown', k);
   }, [open, mode, onClose]);
   if (!open) return null;
-  const topicPreference = context.topicId || (!context.subjectId && (rememberedTopic || 'da-10-6'));
+  const topicPreference = context.topicId || (!context.subjectId && (rememberedTopic || (!personal && 'da-10-6')));
   const subj = subjects.find(s => s.id === context.subjectId) ||
-    subjects.find(s => s.topics.some(t => t.id === topicPreference)) || subjects.find(s => s.id === 'da') || subjects[0];
+    subjects.find(s => s.topics.some(t => t.id === topicPreference)) || (!personal && subjects.find(s => s.id === 'da')) || subjects[0];
   const topic = subj?.topics.find(t => t.id === topicPreference) || subj?.topics[0];
   const tLabel = topic ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '') : 'o tópico';
   const panel = (
@@ -65,16 +68,16 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           {!dock && !clockOnly && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
         {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
-        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title="Conectado à IA real para tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards"><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Gemini' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards'}><Icon name="sparkles" size={13} />IA Ativa</span>}
         {onClose && (dock
           ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
         {dock && !clockOnly && <span title={tLabel} style={{ flexBasis: '100%', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Contexto: {tLabel}</span>}
       </header>
-      {!clockOnly && <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={dock ? COMPACT_TOOLS : TOOLS} value={tool} onChange={setTool} /></div>}
+      {!clockOnly && <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={tools} value={tool} onChange={setTool} /></div>}
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
-        {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} />}
+        {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} personal={personal} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
+        {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} personal={personal} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={({ subjectId, topicId }) => {
             tutorHistory.rememberTopic(accountId, topicId);

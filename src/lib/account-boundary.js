@@ -3,6 +3,13 @@ export const IMPORTABLE = ['edital', 'questoes', 'revisao', 'planejamento', 'mat
 export const PERSONAL_WRITE = ['respostas', 'justificativas', 'cartoes_aval', 'planejamento', 'rodadas', 'simulados', 'diario'];
 export const READABLE = [...new Set([...IMPORTABLE, ...PERSONAL_WRITE, 'config'])];
 
+export function canUseArchitect(user, profile) {
+  return user?.role === 'admin' || Boolean(
+    user?.role === 'user' && user.id && profile?.id === user.id &&
+    profile.status === 'active' && profile.architectEnabled === true
+  );
+}
+
 export function workspaceCollection(userId, collection) {
   if (!/^[A-Za-z0-9_-]{1,100}$/.test(userId) || !READABLE.includes(collection)) throw new Error('Coleção inválida.');
   return 'qbasc-conta:' + userId + ':' + collection;

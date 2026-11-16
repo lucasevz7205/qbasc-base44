@@ -11,7 +11,7 @@ import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
 
 export default function DashboardView({ go, openArchitect }) {
-  const { QB_EDITAL, QB_PLAN, QB_SIM, QB_DATA, isAdmin } = useRealStudy();
+  const { QB_EDITAL, QB_PLAN, QB_SIM, QB_DATA, isAdmin, architectAccess } = useRealStudy();
   const M = QB_METRICS, P = QB_PLAN;
   const tot = M.totals(QB_EDITAL.subjects);
   const todayTasks = P.weeks[0].filter(t => t.date === P.today);
@@ -46,7 +46,7 @@ export default function DashboardView({ go, openArchitect }) {
               { id: 'study', label: 'Estudo', icon: 'book-open', meta: 'Mapas e cartões' },
               { id: 'simulado', label: 'Simulado', icon: 'graduation-cap', meta: QB_SIM.next.date ? M.fmtDate(QB_SIM.next.date) : 'Sem data' },
               { id: 'performance', label: 'Desempenho', icon: 'chart-column', meta: M.pct(tot.accuracy) + ' acertos' },
-              ...(isAdmin ? [{ id: 'architect', label: 'O Arquiteto', icon: 'sparkles', meta: 'Simulação' }] : []),
+              ...(architectAccess ? [{ id: 'architect', label: 'O Arquiteto', icon: 'sparkles', meta: 'Tutoria' }] : []),
             ]} />
         </Panel>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>

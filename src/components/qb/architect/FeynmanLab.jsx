@@ -5,7 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 import { Badge } from '@/components/qb/core/Badge';
 import { evaluateFeynmanExplanation } from '@/lib/server-fns';
 
-export default function FeynmanLab({ topicLabel = 'o tópico', style }) {
+export default function FeynmanLab({ topicLabel = 'o tópico', personal = false, style }) {
   const evaluateFn = useServerFn(evaluateFeynmanExplanation);
   const [text, setText] = React.useState('');
   const [fb, setFb] = React.useState(null);
@@ -40,7 +40,7 @@ export default function FeynmanLab({ topicLabel = 'o tópico', style }) {
   );
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 16, ...style }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 16, ...style }}>
       <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>1 · Explique com suas palavras</span>
         <p style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-muted)' }}>
@@ -53,7 +53,9 @@ export default function FeynmanLab({ topicLabel = 'o tópico', style }) {
           onChange={e => setText(e.target.value)}
           placeholder="Comece pela ideia central, evite jargões sem explicação e inclua um exemplo prático…"
           aria-label="Sua explicação"
+          maxLength={5000}
         />
+        {personal && <small style={{ color: 'var(--text-muted)' }}>Ao avaliar, o Gemini recebe sua explicação e o assunto selecionado.</small>}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <Button icon="sparkles" loading={busy} disabled={text.trim().length < 20 || busy} onClick={evaluate}>
             Avaliar com IA

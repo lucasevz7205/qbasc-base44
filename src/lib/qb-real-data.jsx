@@ -4,6 +4,7 @@ import { useAuth } from '@/lib/AuthContext';
 import { base44 } from '@/api/base44Client';
 import { listClaudeCollection } from '@/lib/study-store';
 import { adaptStudy } from '@/lib/qb-real-model';
+import { canUseArchitect } from '@/lib/account-boundary';
 import { loadPersonalStudy, writePersonalStudy } from '@/lib/study-accounts';
 import { Button } from '@/components/qb/core/Button';
 
@@ -88,7 +89,7 @@ export function RealStudyGate({children}) {
       action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
   }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout,isAdmin:admin}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,refresh,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile)}}>{children}</RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>

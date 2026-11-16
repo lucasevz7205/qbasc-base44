@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
+import { requireArchitectAccess } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
@@ -54,17 +55,18 @@ const TutorInputSchema = z.object({
     .optional(),
 });
 
+const namedArchitectKey = () => secrets.get("Arquiteto") || secrets.get("ARQUITETO");
+const architectModel = () => secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL;
+const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY") : undefined);
+
 export const getArchitectProviderStatus = createServerFn({ method: "GET" })
   .middleware([requireUser])
-  .handler(({ context }) => {
-    if (context.user?.role !== "admin") {
-      throw new Error("Acesso restrito à configuração do Arquiteto.");
-    }
-    // Só informa se a chave está presente; nunca seu valor ou prefixo.
+  .handler(async ({ context }) => {
+    const profile = await requireArchitectAccess(context);
     return {
-      geminiConfigured: Boolean(secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY")),
-      defaultProvider: secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
-      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      geminiConfigured: Boolean(architectKey(profile)),
+      defaultProvider: profile || secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
+      model: architectModel(),
     };
   });
 
@@ -72,24 +74,27 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
   .middleware([requireUser])
   .validator(TutorInputSchema)
   .handler(async ({ data, context }) => {
-    // O QBAsc permite o estudo apenas à conta administradora.
-    if (context.user?.role !== "admin") {
-      throw new Error("Acesso restrito ao tutor do QBAsc.");
-    }
-    const base44 = context.getBase44();
+    const profile = await requireArchitectAccess(context);
     const historyBlock = (data.history || [])
       .slice(-10)
       .map((m) => `${m.role === "user" ? "Estudante" : "O Arquiteto"}: ${m.text}`)
       .join("\n\n");
 
+    const personalMode = data.mode === "banca"
+      ? "Analise ou proponha uma questão adequada ao assunto do concurso. Se não houver banca informada, use Certo/Errado como formato de prática e marque as questões criadas como inéditas."
+      : data.mode === "armadilhas"
+        ? "Aponte até três erros de interpretação plausíveis no assunto e faça uma pergunta por vez. Só atribua uma pegadinha a uma banca se houver fonte suficiente."
+        : "";
     const prompt = [
-      "Você é 'O Arquiteto', mentor de aprendizagem ativa da plataforma Quebrando a Banca (foco: Câmara dos Deputados · Analista Legislativo · banca CEBRASPE).",
+      profile
+        ? `Você é O Arquiteto, mentor de aprendizagem ativa da plataforma Quebrando a Banca. Projeto individual do estudante: ${profile.exam || "concurso público"}. Só identifique uma banca se ela tiver sido informada.`
+        : "Você é 'O Arquiteto', mentor de aprendizagem ativa da plataforma Quebrando a Banca (foco: Câmara dos Deputados · Analista Legislativo · banca CEBRASPE).",
       "Seja preciso, elegante, direto e rigorosamente fiel à Constituição Federal de 1988, à legislação aplicável e à doutrina consolidada. Nunca invente artigos ou súmulas.",
-      `Matéria: ${data.subjectName || "Concurso Câmara dos Deputados"}`,
+      `Matéria: ${data.subjectName || profile?.exam || "Concurso Câmara dos Deputados"}`,
       `Tópico do edital: ${data.topicLabel}`,
-      `Diretriz pedagógica atual: ${MODE_INSTRUCTIONS[data.mode] || MODE_INSTRUCTIONS.socratico}`,
-      CEBRASPE_V1_TUTOR_RULES,
-      ["banca", "armadilhas"].includes(data.mode) ? CEBRASPE_V1_GENERATION_RULES : "",
+      `Diretriz pedagógica atual: ${(profile && personalMode) || MODE_INSTRUCTIONS[data.mode]}`,
+      profile ? "Diferencie explicação, inferência e afirmação documentada. Quando faltar base para conferir uma regra, indique a necessidade de consultar a fonte original." : CEBRASPE_V1_TUTOR_RULES,
+      !profile && ["banca", "armadilhas"].includes(data.mode) ? CEBRASPE_V1_GENERATION_RULES : "",
       historyBlock ? `Histórico recente da conversa:\n${historyBlock}` : "",
       `Mensagem/solicitação atual do estudante:\n${data.userMessage}`,
       "Responda em português (pt-BR), em texto fluido e bem estruturado (máximo de 2 a 3 parágrafos curtos ou tópicos objetivos).",
@@ -97,16 +102,11 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    // Apenas o chat migra para Gemini mediante opção explícita no servidor.
-    // Na falha externa, nunca consumir créditos Base44 por fallback silencioso.
-    const provider = data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
+    const provider = profile ? "gemini" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
-      return invokeGeminiTutor({
-        apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
-        model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
-        prompt,
-      });
+      return invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt });
     }
+    const base44 = context.getBase44();
     const res = await base44.asServiceRole.integrations.Core.InvokeLLM({ prompt });
     const reply = typeof res === "string" ? res.trim() : JSON.stringify(res);
     return { reply };
@@ -224,14 +224,31 @@ const FeynmanInputSchema = z.object({
   explanation: z.string().min(15).max(5000),
 });
 
+const FeynmanFeedbackSchema = z.object({
+  clarityScore: z.number().min(0).max(100),
+  isAdequateLength: z.boolean(),
+  lengthFeedback: z.string(),
+  jargonDetected: z.array(z.string()),
+  jargonFeedback: z.string(),
+  sentenceClarityOk: z.boolean(),
+  sentenceFeedback: z.string(),
+  hasConcreteExample: z.boolean(),
+  exampleFeedback: z.string(),
+  gaps: z.array(z.string()).max(3),
+  nextStep: z.string(),
+});
+
 export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
+  .middleware([requireUser])
   .validator(FeynmanInputSchema)
   .handler(async ({ data, context }) => {
-    const base44 = context.getBase44();
+    const profile = await requireArchitectAccess(context);
     const words = data.explanation.trim().split(/\s+/).filter(Boolean).length;
 
     const prompt = [
-      "Você é 'O Arquiteto', avaliador do Laboratório Feynman da plataforma Quebrando a Banca (Câmara dos Deputados · CEBRASPE).",
+      profile
+        ? `Você é O Arquiteto, avaliador do Laboratório Feynman. Projeto individual: ${profile.exam || "concurso público"}.`
+        : "Você é 'O Arquiteto', avaliador do Laboratório Feynman da plataforma Quebrando a Banca (Câmara dos Deputados · CEBRASPE).",
       `Avalie a explicação escrita pelo estudante sobre o tópico "${data.topicLabel}" segundo a técnica Feynman (explicar um conceito complexo com palavras simples, precisão conceitual, frases claras e exemplo concreto).`,
       `Explicação do estudante (${words} palavras):\n"""\n${data.explanation}\n"""`,
       "Retorne um JSON avaliando:",
@@ -248,6 +265,21 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
       "- nextStep: recomendação prática em 1 frase sobre o que ajustar na reescrita.",
     ].join("\n\n");
 
+    if (profile) {
+      const { reply } = await invokeGeminiTutor({
+        apiKey: architectKey(profile),
+        model: architectModel(),
+        prompt: prompt + "\n\nResponda exclusivamente com o objeto JSON solicitado.",
+      });
+      try {
+        const json = reply.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
+        return { words, ...FeynmanFeedbackSchema.parse(JSON.parse(json)) };
+      } catch {
+        throw new Error("O Gemini devolveu uma avaliação incompleta. Tente novamente.");
+      }
+    }
+
+    const base44 = context.getBase44();
     const res = await base44.asServiceRole.integrations.Core.InvokeLLM({
       prompt,
       response_json_schema: {

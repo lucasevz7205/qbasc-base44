@@ -35,7 +35,7 @@ function Backdrop() {
 }
 
 export default function AppShell({ ui, setUi, view, quick, go, mapReturn, children, wide }) {
-  const { QB_DATA, QB_PLAN, refresh, logout, isAdmin } = useRealStudy();
+  const { QB_DATA, QB_PLAN, refresh, logout, isAdmin, architectAccess } = useRealStudy();
   const compact = !!ui.focus;
   const scene = ui.bg === 'dynamic' && !ui.focus;
   const isWide = wide ?? (view === 'study' || view === 'plan' || view === 'train');
@@ -79,7 +79,7 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
                 }
                 collapsed={ui.collapsed}
                 onCollapse={() => setUi({ collapsed: !ui.collapsed })}
-                onArchitect={isAdmin ? () => setUi({ studio: { open: true } }) : undefined}
+                onArchitect={architectAccess ? () => setUi({ studio: { open: true } }) : undefined}
               />
             </div>
           )}
@@ -115,7 +115,7 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
 }
 
 export function ArchitectLayer({ ui, setUi }) {
-  const { QB_DATA, QB_EDITAL, isAdmin } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
   const mode = ui.studio.mode === 'modal' ? 'modal' : 'dock';
@@ -125,14 +125,15 @@ export function ArchitectLayer({ ui, setUi }) {
     .map(f => ({ front: f.front, back: f.back }));
   return (
     <>
-      {isAdmin && <ArchitectLauncher
+      {architectAccess && <ArchitectLauncher
         hidden={ui.studio.open}
         onOpen={() => setUi({ studio: { open: true, tool: 'socratico' } })}
       />}
-      {(isAdmin || ui.studio.tool === 'study-clock') && <ArchitectStudio
+      {(architectAccess || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}
         mode={mode}
-        clockOnly={!isAdmin}
+        clockOnly={!architectAccess}
+        personal={!isAdmin}
         tool={ui.studio.tool || 'socratico'}
         onToolChange={tool => setUi({ studio: { open: true, mode, tool } })}
         onExpand={() => setUi({ studio: { open: true, mode: 'modal', tool: ui.studio.tool || 'socratico' } })}

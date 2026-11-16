@@ -18,13 +18,14 @@ const QUICK_PROMPTS = {
   analogia: 'Me explique este tópico usando uma analogia estilo Feynman e aponte onde a analogia tem limite técnico.',
 };
 
-export default function SocraticChat({ accountId, subjects = [], subjectId, topicId, onContextChange, origin, compact = false, style }) {
+export default function SocraticChat({ accountId, subjects = [], subjectId, topicId, onContextChange, origin, compact = false, personal = false, style }) {
   const askTutor = useServerFn(askArchitectTutor);
   const getProviderStatus = useServerFn(getArchitectProviderStatus);
   const statusFnRef = React.useRef(getProviderStatus);
   const subj = subjects.find(s => s.id === subjectId) || subjects[0];
   const topic = subj && (subj.topics.find(t => t.id === topicId) || subj.topics[0]);
   const key = topic ? topic.id : 'none';
+  const modeLabel = (kind, label) => personal && kind === 'banca' ? 'Questão de banca' : label;
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
   const [settingsOpen, setSettingsOpen] = React.useState(false);
   const [mode, setMode] = React.useState('socratico');
@@ -66,7 +67,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
       const res = await askTutor({
         data: {
           mode: kind,
-          subjectName: subj ? subj.name : 'Câmara dos Deputados',
+          subjectName: subj?.name,
           topicLabel: tLabel,
           userMessage: cleanText,
           provider,
@@ -142,7 +143,10 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
       toggleVoiceInput();
       return;
     }
-    answer(k, QUICK_PROMPTS[k] || QUICK.find(q => q[0] === k)?.[2] || k);
+    const prompt = personal && k === 'armadilhas'
+      ? 'Quais armadilhas de prova vale analisar neste tópico do meu projeto de estudo?'
+      : QUICK_PROMPTS[k];
+    answer(k, prompt || QUICK.find(q => q[0] === k)?.[2] || k);
   };
 
   return (
@@ -166,17 +170,17 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Provedor</span>
-          <div className="qb-seg" role="group" aria-label="Provedor de IA do Arquiteto" style={{ flexWrap: 'wrap' }}>
+          {personal ? <span>Gemini · Google</span> : <div className="qb-seg" role="group" aria-label="Provedor de IA do Arquiteto" style={{ flexWrap: 'wrap' }}>
             <button className="qb-seg__opt" aria-pressed={provider === 'gemini'} onClick={() => setProvider('gemini')} disabled={busy}>Gemini · API externa</button>
             <button className="qb-seg__opt" aria-pressed={provider === 'base44'} onClick={() => setProvider('base44')} disabled={busy}>Base44 · créditos</button>
-          </div>
+          </div>}
           <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
             {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.checkError ? 'Não foi possível verificar a chave' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Modo</span>
-          <div className="qb-seg" role="group" aria-label="Modo pedagógico" style={{ flexWrap: 'wrap' }}>{MODES.map(([v, l]) => <button key={v} className="qb-seg__opt" aria-pressed={mode === v} onClick={() => setMode(v)}>{l}</button>)}</div>
+          <div className="qb-seg" role="group" aria-label="Modo pedagógico" style={{ flexWrap: 'wrap' }}>{MODES.map(([v, l]) => <button key={v} className="qb-seg__opt" aria-pressed={mode === v} onClick={() => setMode(v)}>{modeLabel(v, l)}</button>)}</div>
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
         </div>
       </div>
@@ -187,7 +191,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           : m.role === 'error'
             ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
             : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
-                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {(MODES.find(x => x[0] === m.mode) || MODES[0])[1]} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
+                <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
               </div>)}
         {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
       </div>
@@ -206,6 +210,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           </button>
         ))}
       </div>
+      {personal && <small style={{ color: 'var(--text-muted)' }}>Ao enviar, o Gemini usa a mensagem, o assunto selecionado e a conversa recente deste tópico.</small>}
       <form onKeyDown={event => { if (event.key === 'Enter') event.stopPropagation(); }} onSubmit={e => { e.preventDefault(); send(); }} style={{ display: 'flex', gap: 8 }}>
         <input className="qb-input" value={text} onChange={e => setText(e.target.value)} placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'} aria-label="Mensagem ao Arquiteto" style={{ minWidth: 0 }} />
         <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>

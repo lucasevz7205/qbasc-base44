@@ -1,7 +1,7 @@
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
-import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument } from './account-boundary';
+import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect } from './account-boundary';
 
 const accountId = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
 const documentId = z.string().min(1).max(160).refine(id => !['__proto__', 'prototype', 'constructor'].includes(id));
@@ -76,6 +76,15 @@ async function requireAccount(entities, id) {
   const result = await account(entities, id);
   if (!result) throw new Error('Conta não cadastrada no ambiente de estudo.');
   return result;
+}
+
+export async function requireArchitectAccess(context) {
+  const { user } = context;
+  if (user?.role === 'admin') return null;
+  if (user?.role !== 'user' || !user.id) throw new Error('O Arquiteto ainda não está liberado para esta conta.');
+  const profile = await account(context.getBase44().asServiceRole.entities, user.id);
+  if (!canUseArchitect(user, profile)) throw new Error('O Arquiteto ainda não está liberado para esta conta.');
+  return profile;
 }
 
 export const loadPersonalStudy = createServerFn({ method: 'POST' })
