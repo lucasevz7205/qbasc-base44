@@ -18,9 +18,10 @@ export const Route = createRootRoute({
       { title: "Quebrando a Banca — A Ascensão" },
       { name: "description", content: "Conhecimento · Estratégia · Disciplina · Conquista" },
     ],
-    // No icon link: the platform adds the app's logo when serving.
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
     ],
   }),
   errorComponent: DefaultCatchBoundary,
