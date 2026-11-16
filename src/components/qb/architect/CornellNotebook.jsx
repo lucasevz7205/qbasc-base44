@@ -328,13 +328,13 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
                 )}
               </label>
             </div>
-            <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
-              <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
-                value={draft.summary} onChange={e => edit({ summary: e.target.value })}
-                disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
-            </label>
           </>}
+          <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired ? 'Síntese das pistas vinculadas' : 'Síntese'}</span>
+            <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
+              value={draft.summary} onChange={event => edit({ summary: event.target.value })}
+              disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
+          </label>
         </div>
       </div>
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>

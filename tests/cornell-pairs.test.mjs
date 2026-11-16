@@ -36,3 +36,11 @@ test('usa a primeira linha nas pistas antigas e conserva a nota ao gravar um nov
   assert.equal(renamed.cue, previous.cue);
   assert.equal(renamed.note, previous.note);
 });
+
+test('a síntese das pistas vinculadas é preservada no rascunho do assunto com seus pares', () => {
+  const pairs = [{ id: 'p1', title: 'Governabilidade', cue: 'O que é?', note: 'Nota de estudo' }];
+  const saved = cleanCornell({ notes: JSON.stringify(pairs), summary: 'Síntese das pistas vinculadas.' });
+  const loaded = reconcileCornell(saved, null, null).data;
+  assert.equal(loaded.summary, saved.summary);
+  assert.deepEqual(readCornellPairs(loaded.notes), pairs);
+});
