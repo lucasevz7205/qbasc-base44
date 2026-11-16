@@ -270,6 +270,7 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
         apiKey: architectKey(profile),
         model: architectModel(),
         prompt: prompt + "\n\nResponda exclusivamente com o objeto JSON solicitado.",
+        jsonReply: true,
       });
       try {
         const json = reply.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");

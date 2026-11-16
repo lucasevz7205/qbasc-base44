@@ -11,6 +11,7 @@ export async function invokeGeminiTutor({
   model = DEFAULT_TUTOR_GEMINI_MODEL,
   fetchImpl = fetch,
   timeoutMs = 30000,
+  jsonReply = false,
 }) {
   if (typeof apiKey !== "string" || !apiKey.trim()) {
     throw new Error("Chave Gemini ausente. Confira o segredo Arquiteto (ou ARQUITETO/GEMINI_API_KEY) na Base44.");
@@ -34,7 +35,11 @@ export async function invokeGeminiTutor({
         },
         body: JSON.stringify({
           contents: [{ role: "user", parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.3, maxOutputTokens: 1800 },
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 1800,
+            ...(jsonReply ? { responseMimeType: "application/json" } : {}),
+          },
         }),
         signal: controller.signal,
       }
