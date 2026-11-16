@@ -643,7 +643,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .qb-arch-transcript{display:flex;flex:1 0 auto;flex-direction:column;gap:4px;min-width:0}
 .qb-arch-transcript__tools{display:flex;justify-content:flex-end}
 .qb-arch-transcript__tools .qb-btn{min-height:44px}
-.qb-arch-transcript__messages{display:flex;flex:1;flex-direction:column;gap:12px;padding:10px;min-width:0;min-height:220px;height:clamp(220px,32dvh,360px);overflow-y:auto;overscroll-behavior-y:contain}
+.qb-arch-transcript__messages{display:flex;flex:none;flex-direction:column;gap:12px;padding:10px;min-width:0;min-height:220px;height:clamp(220px,32dvh,360px);overflow-y:auto;overscroll-behavior-y:contain}
 .qb-arch-transcript[data-compact="true"] .qb-arch-transcript__messages{min-height:100px;height:clamp(100px,25dvh,240px)}
 .qb-arch-transcript[data-expanded="true"] .qb-arch-transcript__messages{height:clamp(280px,57dvh,640px)}
 .qb-arch-msg{max-width:80%;padding:14px 16px;border-radius:16px;font:400 15px/1.6 var(--font-body);overflow-wrap:anywhere}
