@@ -13,6 +13,7 @@ import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
+import { findNodesWithoutQuestions, runGanQueue, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -36,6 +37,18 @@ export default function MindMapView({
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
   const [ganBlockedReport, setGanBlockedReport] = React.useState(null);
+  const [queueRunning, setQueueRunning] = React.useState(false);
+  const [queueProgress, setQueueProgress] = React.useState(null);
+  const [queueReport, setQueueReport] = React.useState(null);
+  const [queueAuto, setQueueAutoState] = React.useState(() => {
+    try { return localStorage.getItem('qb-gan-auto') === '1'; } catch { return false; }
+  });
+  const queueStop = React.useRef(false);
+  const queueAutoDone = React.useRef(new Set());
+  const setQueueAuto = v => {
+    setQueueAutoState(v);
+    try { localStorage.setItem('qb-gan-auto', v ? '1' : '0'); } catch { /* ignore */ }
+  };
   const [mapMaximized, setMapMaximized] = React.useState(false);
   const [showPanelInMax, setShowPanelInMax] = React.useState(true);
 
@@ -92,6 +105,42 @@ export default function MindMapView({
     setGanError('');
     setGanBlockedReport(null);
   }, [node?.id]);
+
+  // Fila do Arquiteto: nós-folha com resumo e menos de 2 questões vinculadas.
+  const ganPending = React.useMemo(
+    () => chosen ? findNodesWithoutQuestions({ nodes, concepts: D.concepts || {}, questionBank: D.questionBank || [], rootId: chosen.id }) : [],
+    [chosen, nodes, D.concepts, D.questionBank],
+  );
+  const runQueue = React.useCallback(async () => {
+    if (!chosen || queueRunning || !ganPending.length) return;
+    setQueueRunning(true);
+    setQueueReport(null);
+    queueStop.current = false;
+    try {
+      const subjForQueue = (D.studySubjects?.length ? D.studySubjects : E.subjects || []).find(s => s.topics.some(t => t.id === chosen.topicId));
+      const report = await runGanQueue({
+        chosen,
+        nodes,
+        concepts: D.concepts || {},
+        subjectName: subjForQueue?.name,
+        pending: ganPending,
+        generate: generateGanFn,
+        save,
+        shouldStop: () => queueStop.current,
+        onProgress: setQueueProgress,
+      });
+      setQueueReport(report);
+    } finally {
+      setQueueRunning(false);
+      setQueueProgress(null);
+    }
+  }, [chosen, nodes, ganPending, queueRunning, D.concepts, D.studySubjects, E.subjects, generateGanFn, save]);
+  React.useEffect(() => {
+    if (!queueAuto || !chosen || queueRunning || !ganPending.length) return;
+    if (queueAutoDone.current.has(chosen.id)) return;
+    queueAutoDone.current.add(chosen.id);
+    runQueue();
+  }, [queueAuto, chosen?.id, ganPending.length]);
 
   const handleSelectTopic = nextTopicId => {
     const nextSubj = allSubjects.find(s => s.topics.some(t => t.id === nextTopicId));
@@ -528,6 +577,30 @@ export default function MindMapView({
                 Reduzir tela (Esc)
               </Button>
             </div>
+          </div>
+        )}
+        {(ganPending.length > 0 || queueRunning || queueReport) && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', padding: '8px 12px', marginBottom: 10 }}>
+            <Badge tone="gold">Fila do Arquiteto</Badge>
+            <span style={{ fontSize: 13 }}>
+              {queueRunning && queueProgress
+                ? `Gerando e confrontando ${queueProgress.atual} de ${queueProgress.total}: ${queueProgress.no}`
+                : queueReport
+                  ? `Aprovadas e gravadas: ${queueReport.aprovadas} · bloqueadas pelo teste cego: ${queueReport.bloqueadas} · erros: ${queueReport.erros} · nós restantes: ${queueReport.restantes + 0}`
+                  : `${ganPending.length} nó(s) deste mapa com menos de ${GAN_QUEUE_MIN_QUESTIONS} questões.`}
+            </span>
+            {!queueRunning && ganPending.length > 0 && (
+              <Button size="sm" variant="secondary" icon="network" onClick={runQueue}>
+                {`Gerar pendentes (até ${GAN_QUEUE_MAX_NODES_PER_RUN} nós)`}
+              </Button>
+            )}
+            {queueRunning && (
+              <Button size="sm" variant="secondary" icon="x" onClick={() => { queueStop.current = true; }}>Parar</Button>
+            )}
+            <label style={{ fontSize: 12, display: 'flex', gap: 6, alignItems: 'center' }}>
+              <input type="checkbox" checked={queueAuto} onChange={e => setQueueAuto(e.target.checked)} />
+              Gerar ao abrir mapa novo
+            </label>
           </div>
         )}
         <div style={{ display: 'flex', flexWrap: mapMaximized ? 'nowrap' : 'wrap', gap: 20, alignItems: 'stretch', flex: 1, minHeight: 0 }}>
