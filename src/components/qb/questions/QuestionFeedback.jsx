@@ -8,13 +8,13 @@ import { assessQuestionMechanism } from '@/lib/architect-mechanism';
 import { recordedMechanism } from '@/lib/mechanism-comparison';
 import { mechanismDetail } from '@/lib/cebraspe-v1-taxonomy';
 
-function Section({ title, icon, children }) {
+function Section({ title, icon, heading: Heading = 'h3', children }) {
   return (
     <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <h3 style={{ display: 'flex', alignItems: 'center', gap: 8, font: '600 12px/1.2 var(--font-body)', letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>
+      <Heading style={{ display: 'flex', alignItems: 'center', gap: 8, font: '600 12px/1.2 var(--font-body)', letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>
         <Icon name={icon} size={16} />
         {title}
-      </h3>
+      </Heading>
       {children}
     </section>
   );
@@ -58,12 +58,14 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
           {explanation || 'Fundamento indisponível para esta questão.'}
         </p>}
         {legalBasis && <span style={{ font: '500 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{legalBasis}</span>}
-      </Section>
-      <Section title="Mecanismo de pegadinha da banca" icon="shield-alert">
+        <Section title="Mecanismo de pegadinha" icon="shield-alert" heading="h4">
           {trap ? (
             <div style={{ display: 'grid', gap: 6, overflowWrap: 'anywhere' }}>
-              <strong>{generatorReference ? 'Registro do gerador' : 'Classificação registrada'} · {trap.name}</strong>
+              <strong>{generatorReference ? 'Registro do gerador' : trap.source || 'Classificação registrada'} · {trap.name}</strong>
               {trap.description && <span>{trap.description}</span>}
+              {trap.linkedRule && <span><strong>Regra no acervo</strong> · {trap.linkedRule}</span>}
+              {trap.linkedSignal && <span><strong>Sinal no acervo</strong> · {trap.linkedSignal}</span>}
+              {trap.keyConflict && <span role="note">O código registrado diverge do gabarito desta versão e precisa de conferência.</span>}
               {trap.evidence && trap.evidence !== trap.description && <span><strong>Trecho decisivo</strong> · {trap.evidence}</span>}
               {trap.vaccine && trap.vaccine !== trap.description && !explanation?.includes(trap.vaccine) && <span><strong>Como evitar</strong> · {trap.vaccine}</span>}
               {trap.keyQuestion && <span><strong>Pergunta preventiva</strong> · {trap.keyQuestion}</span>}
@@ -95,12 +97,13 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
             <span style={{ overflowWrap: 'anywhere' }}>{assessment.reason}</span>
           </div>}
           {comparison?.code && identifiedMechanism && <div><Badge tone={aligned ? 'correct' : 'attention'}>{aligned ? 'Alinhado' : 'Divergente'} {reference ? (generatorReference ? 'com o gerador' : 'com o registro') : 'com O Arquiteto'}</Badge></div>}
-          {!reference && trap && <small style={{ color: 'var(--text-muted)' }}>O registro antigo precisa de uma avaliação na taxonomia atual para permitir comparação.</small>}
+          {!reference && trap?.legacyConflict && <small style={{ color: 'var(--text-muted)' }}>O registro antigo precisa de uma avaliação na taxonomia atual para permitir comparação.</small>}
           {!reference && !assessment && statement && <div>
             <Button size="sm" variant="secondary" icon="sparkles" onClick={evaluate} loading={pending} disabled={pending}>Comparar com O Arquiteto</Button>
           </div>}
           {error && <span role="alert">{error}</span>}
         </Section>
+      </Section>
       {reflection && (
         <Section title="Justificativa do erro" icon="notebook-pen">
           <fieldset disabled={reflection.disabled} style={{ display: 'grid', gap: 10, margin: 0, padding: 0, border: 0, minWidth: 0 }}>

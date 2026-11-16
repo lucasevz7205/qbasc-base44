@@ -233,9 +233,16 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   };
 
   const openConcept = () => go('map', { node: q.node, topicId: q.topicId, returnTo: { label: `questão ${q.code}`, view: 'questions' } });
+  const stageRef = React.useRef(null);
   const correctionRef = React.useRef(null);
   const showCorrection = !!st.revealed && !excluded;
   const questionId = q?.id;
+  const stageKey = session.sessionId + ':' + (done ? 'summary' : questionId || 'empty');
+  React.useEffect(() => {
+    stageRef.current?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [stageKey]);
+
   React.useEffect(() => {
     if (questionId && showCorrection) correctionRef.current?.scrollIntoView({ block: 'nearest' });
   }, [questionId, showCorrection]);
@@ -269,7 +276,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
         onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}
       />
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <main style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <main key={stageKey} ref={stageRef} tabIndex={-1} data-current-question={done ? undefined : questionId} style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {error && <p role="alert">{error}</p>}
           {!ganBatch && !scheduledReview && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
             <QuestionFilters value={session.selection?.filter} disabled={loading} onChange={filter => {
@@ -363,7 +370,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                     generatorReference={!!ganBatch || /^GAN\b/i.test(q.origin || '')}
                     explanation={q.explanation}
                     legalBasis={q.basis}
-                    trap={ganBatch && q.raw ? questionTrap(q.raw) : q.trap}
+                    trap={ganBatch && q.raw ? questionTrap(q.raw, undefined, keyAtAnswer) : q.trap}
                     identifiedMechanism={markedMechanism}
                     identifiedClue={st.clue?.trim()}
                     reflection={needsReflection ? {

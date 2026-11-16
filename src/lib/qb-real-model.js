@@ -1,5 +1,5 @@
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
-import { questionTrap } from '@/lib/question-feedback';
+import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-feedback';
 import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
 import { PLAN_SETTINGS_ID, planSettings } from '@/lib/plan-settings';
 
@@ -121,7 +121,7 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
     return Boolean(first&&history.some(e=>e.ok&&e.c!==1&&day(e.em)>=shift(first,7)));
   };
   const legacyAnalysis = source('analise').find(row => row.id === 'CONTROLE');
-  const mechanisms = new Map(arr(legacyAnalysis?.itens).filter(item=>typeof item?.item==='string' && item.mecanismo).map(item=>[item.item,item]));
+  const mechanisms = indexQuestionMechanisms(legacyAnalysis?.itens, source('pegadinhas'));
   const questionBank=[];
   const questionTotals=Object.create(null);
   for(const q of Object.values(rawQuestions)){
@@ -153,8 +153,8 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
     const referencedNodes = questionNodeLinks.get(q.id)?.filter(link => link.topicId === topic?.id) || [];
     const uniqueReferences = [...new Set(referencedNodes.map(link => link.id))];
     const resolvedNode = exactNode || (uniqueReferences.length === 1 ? uniqueReferences[0] : roots[topic?.id]);
-    const trap = questionTrap(q, mechanisms.get(q.id));
-    const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, q.mecanismo ? `${q.mecanismo}${q.mecanismoNome ? ' · ' + q.mecanismoNome : ''}` : null].filter(Boolean);
+    const trap = resolveQuestionTrap(q, keyOf(q.gabarito), mechanisms);
+    const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, trap?.code ? trap.name : null].filter(Boolean);
     questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.

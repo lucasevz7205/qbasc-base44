@@ -25,29 +25,51 @@ function lastAnswerOutcome(question) {
   return (originalKey === 'C' || originalKey === 'E') && marked !== originalKey ? 'wrong' : 'answered';
 }
 
-export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds } = {}) {
+export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds } = {}, { unique = false } = {}) {
   const selected = questionIds ? new Set(questionIds) : null;
-  const matching = bank.filter(question =>
+  const eligible = bank.filter(question =>
     (!selected || selected.has(question.id)) &&
     question.statusConfronto !== 'divergencia_bloqueada' &&
     (!topicId || question.topicId === topicId) &&
     (!subjectId || question.subjectId === subjectId) &&
     (!nodeId || question.node === nodeId),
   );
-  if (filter === 'all') return matching;
+  const conflicts = unique ? conflictingPrompts(eligible) : null;
+  const matching = conflicts ? eligible.filter(question => !conflicts.has(promptKey(question))) : eligible;
+  if (filter === 'all') return unique ? distinctRoundQuestions(matching) : matching;
   if (filter === 'wrong' || filter === 'unseen') {
-    return matching.filter(question => lastAnswerOutcome(question) === filter);
+    const filtered = matching.filter(question => lastAnswerOutcome(question) === filter);
+    return unique ? distinctRoundQuestions(filtered) : filtered;
   }
-  return matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response))).slice(0, QUESTION_ROUND_LIMIT);
+  const sorted = matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response)));
+  return (unique ? distinctRoundQuestions(sorted) : sorted).slice(0, QUESTION_ROUND_LIMIT);
 }
 
-export function distinctRoundQuestions(questions) {
+function promptKey(question) {
+  return String(question.statement || '').normalize('NFC').replace(/[“”]/g, '"').replace(/[‘’]/g, "'")
+    .trim().replace(/\s+/g, ' ').replace(/\s+([.,;!?])/g, '$1').replace(/\.$/, '').toLowerCase();
+}
+
+function conflictingPrompts(questions) {
+  const keys = new Map();
+  const conflicts = new Set();
+  for (const question of questions) {
+    const prompt = promptKey(question);
+    if (!prompt || !['C', 'E'].includes(question.key)) continue;
+    if (keys.has(prompt) && keys.get(prompt) !== question.key) conflicts.add(prompt);
+    else keys.set(prompt, question.key);
+  }
+  return conflicts;
+}
+
+export function distinctRoundQuestions(questions, { omitConflicts = false } = {}) {
+  const conflicts = omitConflicts ? conflictingPrompts(questions) : new Set();
   const ids = new Set();
   const prompts = new Set();
   return questions.filter(question => {
-    const statement = String(question.statement || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase();
+    const statement = promptKey(question);
     const key = statement && JSON.stringify([statement, question.key]);
-    if (ids.has(question.id) || (key && prompts.has(key))) return false;
+    if (conflicts.has(statement) || ids.has(question.id) || (key && prompts.has(key))) return false;
     ids.add(question.id);
     if (key) prompts.add(key);
     return true;

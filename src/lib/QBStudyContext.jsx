@@ -62,15 +62,15 @@ const PATH_TO_VIEW = {
 const QBStudyContext = React.createContext(null);
 
 function startQuestionRound(bank, selection = {}) {
-  const picked = pickQuestionRound(bank, selection);
-  const byId = selection.scheduledReview ? new Map(picked.map(q => [q.id, q])) : null;
-  const ordered = byId ? (selection.questionIds || []).map(id => byId.get(id)).filter(Boolean) : picked;
+  const order = selection.scheduledReview ? new Map((selection.questionIds || []).map((id, index) => [id, index])) : null;
+  const candidates = order ? bank.filter(q => order.has(q.id)).sort((a, b) => order.get(a.id) - order.get(b.id)) : bank;
+  const ordered = pickQuestionRound(candidates, selection, { unique: true });
   return {
     idx: 0,
     answers: {},
     focus: false,
     selection,
-    questionIds: distinctRoundQuestions(ordered).map(q => q.id),
+    questionIds: ordered.map(q => q.id),
     customQuestions: null,
     ganBatch: null,
     startedAt: new Date().toISOString(),
@@ -323,7 +323,7 @@ export function QBStudyProvider({ children }) {
       }
       if (nextView === 'questions' && !arg?.resume) {
         if (arg?.ganBatch && Array.isArray(arg.ganBatch.questions)) {
-          const approvedQuestions = distinctRoundQuestions(arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada' && !QB_DATA.excludedQuestionIds.has(q.id)));
+          const approvedQuestions = distinctRoundQuestions(arg.ganBatch.questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada' && !QB_DATA.excludedQuestionIds.has(q.id)), { omitConflicts: true });
           const customQuestions = Object.fromEntries(approvedQuestions.map(q => [q.id, q]));
           setSession({
             idx: 0,
