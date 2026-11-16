@@ -11,3 +11,9 @@ export function readCornellPairs(notes) {
     return [];
   }
 }
+
+export function cornellPairTitle(pair, position) {
+  const title = typeof pair?.title === 'string' ? pair.title.trim() : '';
+  const cue = String(pair?.cue || '').split(/\r?\n/).map(text => text.trim()).find(Boolean) || '';
+  return title || cue.replace(/^\d+[.)]\s+/, '').slice(0, 100) || 'Pista ' + (position + 1);
+}

@@ -6,6 +6,7 @@ import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { Icon } from '@/components/qb/core/Icon';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { cornellPairsTopicId, readCornellPairs } from '@/lib/cornell-pairs';
+import { CornellLinkedBoard } from '@/components/qb/architect/CornellLinkedBoard';
 import { generateCornellCues } from '@/lib/server-fns';
 import {
   LEGACY_CORNELL_PREFIX, emptyCornell, cleanCornell,
@@ -38,7 +39,7 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sub
   const currentDocument = React.useRef(null);
   const switchingLock = React.useRef(false);
   const [switching, setSwitching] = React.useState(false);
-  const [showPairs, setShowPairs] = React.useState(false);
+  const [showPairs, setShowPairs] = React.useState(true);
   const paired = Boolean(topicId && showPairs);
   const documentId = paired ? cornellPairsTopicId(topicId) : topicId;
   const switchDocument = async change => {
@@ -75,8 +76,6 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
 
   const [state, setState] = React.useState(initial);
   const [hide, setHide] = React.useState(false);
-  const [selectedPairId, setSelectedPairId] = React.useState(null);
-  const pairControlsId = React.useId();
   const [busy, setBusy] = React.useState(false);
   const [saving, setSaving] = React.useState(false);
   const [showHistory, setShowHistory] = React.useState(false);
@@ -265,14 +264,6 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
 
   const draft = state.draft;
   const linkedPairs = paired ? readCornellPairs(draft.notes) : [];
-  const pairIndex = Math.max(0, linkedPairs.findIndex(pair => pair.id === selectedPairId));
-  const selectedPair = linkedPairs[pairIndex];
-  const addPair = () => {
-    const id = crypto.randomUUID();
-    edit({ notes: JSON.stringify([...linkedPairs, { id, cue: '', note: '' }]) });
-    setSelectedPairId(id);
-  };
-  const editPair = updates => edit({ notes: JSON.stringify(linkedPairs.map(pair => pair.id === selectedPair.id ? { ...pair, ...updates } : pair)) });
   const disabled = !state.loaded || switching;
   const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
     ? 'Sincronização pendente' : state.status;
@@ -309,49 +300,41 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
       </div>
       <div className="qb-train-fold qb-train-fold--nested">
         <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, padding: '8px 10px' }}>
-          {onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'chevron-up' : 'chevron-down'}
-            aria-expanded={paired} aria-controls={paired ? pairControlsId : undefined} disabled={switching} onClick={onTogglePairs}>
-            Pistas e notas vinculadas
+          {onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'notebook-pen' : 'link'}
+            disabled={switching} onClick={onTogglePairs}>
+            {paired ? 'Anotações originais' : 'Pistas e notas vinculadas'}
           </Button>}
-          {paired && <div id={pairControlsId} style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, minWidth: 0 }}>
-            {selectedPair && <select className="qb-select" aria-label="Par de pista e nota" value={selectedPair.id} disabled={disabled}
-              onChange={event => setSelectedPairId(event.target.value)}>
-              {linkedPairs.map((pair, index) => <option key={pair.id} value={pair.id}>Pista {index + 1} → Nota {index + 1}</option>)}
-            </select>}
-            <Button size="sm" variant="secondary" icon="plus" disabled={disabled} onClick={addPair}>Adicionar par</Button>
-          </div>}
         </div>
         <div className="qb-train-fold__body">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
-            <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired && selectedPair ? 'Pista ' + (pairIndex + 1) : 'Pistas / perguntas'}</span>
-              <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                value={paired ? selectedPair?.cue || '' : draft.cues}
-                onChange={event => paired ? editPair({ cue: event.target.value }) : edit({ cues: event.target.value })}
-                disabled={disabled || (paired && !selectedPair)}
-                placeholder={paired ? 'O que você quer lembrar?' : 'Perguntas de evocação ativa que suas notas respondem'} />
-            </label>
-            <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
-              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired && selectedPair ? 'Nota ' + (pairIndex + 1) : 'Notas'}</span>
-              {hide ? (
-                <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
-                  Notas ocultas. Responda às pistas de memória.
-                </div>
-              ) : (
+          {paired ? <CornellLinkedBoard pairs={linkedPairs} notesHidden={hide} disabled={disabled}
+            onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
                 <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                  value={paired ? selectedPair?.note || '' : draft.notes}
-                  onChange={event => paired ? editPair({ note: event.target.value }) : edit({ notes: event.target.value })}
-                  disabled={disabled || (paired && !selectedPair)}
-                  placeholder={paired ? 'Registre a resposta ou explicação.' : 'Registre as anotações de leitura e aula. Salvas automaticamente na sua conta.'} />
-              )}
+                  value={draft.cues} onChange={event => edit({ cues: event.target.value })}
+                  disabled={disabled} placeholder="Perguntas de evocação ativa que suas notas respondem" />
+              </label>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
+                {hide ? (
+                  <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                    Notas ocultas. Responda às pistas de memória.
+                  </div>
+                ) : (
+                  <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
+                    value={draft.notes} onChange={event => edit({ notes: event.target.value })}
+                    disabled={disabled} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
+                )}
+              </label>
+            </div>
+            <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
+              <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
+                value={draft.summary} onChange={e => edit({ summary: e.target.value })}
+                disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
             </label>
-          </div>
-          {!paired && <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
-            <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
-              value={draft.summary} onChange={e => edit({ summary: e.target.value })}
-              disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
-          </label>}
+          </>}
         </div>
       </div>
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
