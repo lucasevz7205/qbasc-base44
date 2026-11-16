@@ -112,7 +112,7 @@ export function CornellRichEditor({ value, onChange, label, placeholder, disable
     focused: () => editor.current?.hasFocus(),
     remember: () => {
       const quill = editor.current;
-      if (quill) rememberedView.current = { top: quill.root.scrollTop, range: quill.getSelection() };
+      if (quill) rememberedView.current = { top: quill.root.scrollTop, range: quill.hasFocus() ? quill.getSelection() : null };
     },
   }), []);
 
