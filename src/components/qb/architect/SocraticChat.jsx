@@ -190,7 +190,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
       </div>
       <div className="qb-arch-transcript" data-compact={compact} data-expanded={transcriptExpanded}>
         <div className="qb-arch-transcript__tools">
-          <Button size="sm" variant="ghost" icon={transcriptExpanded ? 'minimize' : 'maximize'}
+          <Button size="sm" variant="ghost" icon={transcriptExpanded ? 'chevron-up' : 'maximize'}
             aria-expanded={transcriptExpanded} aria-controls={transcriptId}
             onClick={() => setTranscriptExpanded(value => !value)}>
             {transcriptExpanded ? 'Recolher conversa' : 'Expandir conversa'}

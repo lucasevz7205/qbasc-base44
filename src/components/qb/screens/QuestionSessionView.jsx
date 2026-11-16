@@ -407,7 +407,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 )}
                 bookmarked={!!st.bookmarked}
                 onBookmark={() => setAns({ bookmarked: !st.bookmarked })}
-                deleteDisabled={loading}
+                deleteDisabled={loading || reflectionSaving}
                 onDelete={isAdmin ? () => {
                   setError('');
                   setDeleteTarget({ id: q.id, code: q.code || q.id });
@@ -428,7 +428,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           state={st.revealed ? 'answered' : loading ? 'loading' : st.answer ? 'ready' : 'idle'}
           onConfirm={confirm}
           onNext={next}
-          nextDisabled={loading}
+          nextDisabled={loading || reflectionSaving}
           lastQuestion={nextQuestionIndex(qs, idx + 1, QB_DATA.excludedQuestionIds) === qs.length}
           onSkip={next}
           onReview={() => setAns({ bookmarked: !st.bookmarked })}
