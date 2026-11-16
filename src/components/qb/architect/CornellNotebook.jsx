@@ -7,6 +7,7 @@ import { Icon } from '@/components/qb/core/Icon';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { cornellPairsTopicId, readCornellPairs } from '@/lib/cornell-pairs';
 import { CornellLinkedBoard } from '@/components/qb/architect/CornellLinkedBoard';
+import { CornellVerification } from '@/components/qb/architect/CornellVerification';
 import { CornellFormatting, CornellRichEditor } from '@/components/qb/architect/CornellFormatting';
 import { cornellPlainText } from '@/lib/cornell-rich';
 import { generateCornellCues } from '@/lib/server-fns';
@@ -63,12 +64,12 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sub
       <StudyTopicPicker label="Matéria e assunto do Cornell" subjects={subjects} value={topicId} onSelect={selectTopic} />
     </div>
     <CornellDocument key={documentId} topicId={documentId} topicLabel={topicLabel} flushRef={currentDocument}
-      switching={switching} paired={paired}
+      switching={switching} paired={paired} studyTopicId={topicId}
       onTogglePairs={topicId ? () => switchDocument(() => setShowPairs(value => !value)) : undefined} />
   </section>;
 }
 
-function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onTogglePairs }) {
+function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, studyTopicId, onTogglePairs }) {
   const { user } = useAuth();
   const ownerId = user?.id;
   const resolvedTopic = String(topicId || topicLabel).trim();
@@ -81,6 +82,8 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
   const [busy, setBusy] = React.useState(false);
   const [saving, setSaving] = React.useState(false);
   const [showHistory, setShowHistory] = React.useState(false);
+  const [verificationOpen, setVerificationOpen] = React.useState(null);
+  const verificationId = React.useId();
   const [versions, setVersions] = React.useState([]);
   const [restore, setRestore] = React.useState(null);
   const [recoverLocal, setRecoverLocal] = React.useState(false);
@@ -104,6 +107,7 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
     setState({ ...initial(), identity });
     setVersions([]);
     setShowHistory(false);
+    setVerificationOpen(null);
     if (!identity) {
       setState(s => ({ ...s, loaded: true, status: 'Conta ou assunto indisponível', error: 'Entre novamente para sincronizar o caderno.' }));
       return;
@@ -264,9 +268,19 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
     setRecoverLocal(false);
   };
 
+  const readCompanion = async () => {
+    const otherId = paired ? studyTopicId : cornellPairsTopicId(studyTopicId);
+    const cached = localRead(cornellDraftKey(ownerId, otherId));
+    const legacy = paired ? localRead(LEGACY_CORNELL_PREFIX + topicLabel) : null;
+    const row = await getCornellNote(ownerId, otherId);
+    if (identityRef.current !== identity) throw new Error('O caderno ativo mudou. Abra a verificação no assunto atual.');
+    return reconcileCornell(row, cached, legacy).data;
+  };
+
   const draft = state.draft;
   const linkedPairs = paired ? readCornellPairs(draft.notes) : [];
   const disabled = !state.loaded || switching;
+  const verificationDisabled = disabled || state.identity !== identity || !ownerId;
   const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
     ? 'Sincronização pendente' : state.status;
   return (
@@ -304,8 +318,17 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onT
         <CornellFormatting disabled={disabled} actions={onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'notebook-pen' : 'link'}
           disabled={switching} onClick={onTogglePairs}>
           {paired ? 'Anotações originais' : 'Pistas e notas vinculadas'}
+        </Button>} afterFormatting={studyTopicId && <Button size="sm" variant={verificationOpen ? 'secondary' : 'ghost'}
+          className="qb-cornell-verification__toggle" icon="list-checks" disabled={verificationDisabled}
+          aria-expanded={Boolean(verificationOpen)} aria-controls={verificationOpen === null ? undefined : verificationId}
+          onClick={() => setVerificationOpen(open => !open)}>
+          Verificação do Arquiteto
         </Button>}>
         <div className="qb-train-fold__body">
+          {verificationOpen !== null && <section id={verificationId} aria-label="Verificação do Arquiteto" hidden={!verificationOpen}>
+            <CornellVerification key={identity} topicId={studyTopicId} paired={paired}
+              draft={draft} readCompanion={readCompanion} disabled={verificationDisabled} />
+          </section>}
           {paired ? <CornellLinkedBoard pairs={linkedPairs} notesHidden={hide} disabled={disabled}
             onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>

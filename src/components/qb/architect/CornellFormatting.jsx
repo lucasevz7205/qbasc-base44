@@ -18,7 +18,7 @@ const tools = [
 
 const quillContents = editor => writeCornellRich(editor.getContents());
 
-export function CornellFormatting({ actions, children, disabled }) {
+export function CornellFormatting({ actions, afterFormatting, children, disabled }) {
   const active = React.useRef(null);
   const [formats, setFormats] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -66,6 +66,7 @@ export function CornellFormatting({ actions, children, disabled }) {
           aria-expanded={open} aria-controls={open ? toolbarId : undefined} onClick={() => setOpen(value => !value)}>
           Formatação
         </Button>
+        {afterFormatting}
       </div>
       {open && <div id={toolbarId} className="qb-cornell-format" role="group" aria-label="Formatação do Cornell">
         {tools.map(([label, Glyph, name, value]) => (
