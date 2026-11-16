@@ -20,8 +20,8 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "icon", href: "/assets/logo/qbasc-favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+      { rel: "apple-touch-icon", href: "/assets/logo/qbasc-touch-icon.png", sizes: "180x180" },
     ],
   }),
   errorComponent: DefaultCatchBoundary,
