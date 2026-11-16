@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { URL } from 'node:url';
 import { buildErrorReflection, findErrorReflection } from '../src/lib/question-feedback.js';
 import { PERSONAL_WRITE, workspaceCollection } from '../src/lib/account-boundary.js';
 
@@ -37,4 +39,11 @@ test('justificativas ficam separadas dos documentos de respostas e das outras co
   assert(PERSONAL_WRITE.includes('justificativas'));
   assert.notEqual(workspaceCollection('aluno-1', 'justificativas'), workspaceCollection('aluno-1', 'respostas'));
   assert.notEqual(workspaceCollection('aluno-1', 'justificativas'), workspaceCollection('aluno-2', 'justificativas'));
+});
+
+test('o cartão conserva a identidade do estágio sem dividir a chave do painel de curadoria', () => {
+  const source = readFileSync(new URL('../src/components/qb/screens/QuestionSessionView.jsx', import.meta.url), 'utf8');
+  assert.match(source, /<main key=\{stageKey\}/);
+  assert.match(source, /<EditorialCurator key=\{q.id\}/);
+  assert.doesNotMatch(source, /<QuestionCard\s+key=\{q.id\}/);
 });

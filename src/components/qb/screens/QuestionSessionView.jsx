@@ -350,7 +350,6 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 </CognitiveAlertBanner>
               )}
               <QuestionCard
-                key={q.id}
                 code={q.code}
                 year={q.year}
                 exam={QB_DATA.exam}
