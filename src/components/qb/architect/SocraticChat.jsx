@@ -184,13 +184,14 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
         </div>
       </div>
-      <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa" style={{ flex: 1, minHeight: compact ? 100 : 220, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, padding: 4 }}>
+      <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa" className="qb-panel qb-panel--sunken"
+        style={{ flex: 1, minHeight: compact ? 100 : 220, minWidth: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 12, padding: 10 }}>
         {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description={compact ? "Digite sua dúvida ou escolha uma ação abaixo." : "Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo."} />}
         {msgs.map((m, i) => m.role === 'user'
-          ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--qb-navy-hover)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
+          ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--surface)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
           : m.role === 'error'
             ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
-            : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
+            : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface-sunken)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
                 <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
               </div>)}
         {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
