@@ -220,6 +220,8 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
   };
 
   const draft = state.draft;
+  const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
+    ? 'Sincronização pendente' : state.status;
   return (
     <section aria-label="Caderno Cornell" style={{ display: 'flex', flexDirection: 'column', gap: 13, ...style }}>
       <div className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', border: '1px solid rgba(208,179,134,.35)', borderRadius: 14 }}>
@@ -227,9 +229,6 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           <Icon name="notebook-pen" color="var(--qb-gold)" size={19} />
           <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)', flex: 1 }}>
             Caderno de <strong style={{ color: 'var(--qb-ivory)' }}>{topicLabel}</strong>
-          </span>
-          <span role="status" aria-live="polite" style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)' }}>
-            {saving ? 'Salvando…' : state.status}
           </span>
           {state.offline ?
             <Button size="sm" variant="secondary" icon="refresh-cw" onClick={() => window.location.reload()}>Reconectar</Button> :
@@ -243,7 +242,6 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
             {hide ? 'Mostrar notas' : 'Esconder para evocar'}
           </Button>
         </div>
-        {state.error && <p role="alert" style={{ color: 'var(--state-incorrect)', font: '400 13px/1.5 var(--font-body)', margin: '10px 0 0' }}>{state.error}</p>}
         {state.recovery && (
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', paddingTop: 10 }}>
             <span style={{ flex: 1, color: 'var(--text-secondary)', font: '400 13px/1.5 var(--font-body)' }}>
@@ -281,6 +279,10 @@ export default function CornellNotebook({ topicId, topicLabel = 'o tópico', sty
           value={draft.summary} onChange={e => edit({ summary: e.target.value })}
           disabled={!state.loaded} placeholder="Resuma em 2–3 frases, com suas palavras" />
       </label>
+      <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        {syncStatus}
+      </p>
+      {state.error && <p role="alert" style={{ color: 'var(--state-incorrect)', font: '400 13px/1.5 var(--font-body)', margin: 0 }}>{state.error}</p>}
       {showHistory && (
         <div className="qb-panel qb-panel--sunken" style={{ border: '1px solid rgba(208,179,134,.34)', borderRadius: 12, padding: 14, display: 'grid', gap: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'space-between', flexWrap: 'wrap' }}>
