@@ -5,7 +5,6 @@ import { Button } from '@/components/qb/core/Button';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
 import { Icon } from '@/components/qb/core/Icon';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
-import { CornellPairs } from '@/components/qb/architect/CornellPairs';
 import { cornellPairsTopicId, readCornellPairs } from '@/lib/cornell-pairs';
 import { generateCornellCues } from '@/lib/server-fns';
 import {
@@ -36,33 +35,37 @@ const initial = () => ({
 });
 
 export default function CornellNotebook({ topicId, topicLabel = 'o tópico', subjects = [], onTopicChange, style }) {
-  const notes = React.useRef(null);
-  const pairs = React.useRef(null);
+  const currentDocument = React.useRef(null);
   const switchingLock = React.useRef(false);
   const [switching, setSwitching] = React.useState(false);
-  const selectTopic = async selection => {
-    if (!onTopicChange || selection.topicId === topicId || switchingLock.current) return;
+  const [showPairs, setShowPairs] = React.useState(false);
+  const paired = Boolean(topicId && showPairs);
+  const documentId = paired ? cornellPairsTopicId(topicId) : topicId;
+  const switchDocument = async change => {
+    if (switchingLock.current) return;
     switchingLock.current = true;
     setSwitching(true);
     try {
-      const results = await Promise.all([notes.current?.(), pairs.current?.()]);
-      if (results.every(result => result !== false)) onTopicChange(selection);
+      if (await currentDocument.current?.() !== false) change();
     } finally {
       switchingLock.current = false;
       setSwitching(false);
     }
   };
+  const selectTopic = selection => {
+    if (onTopicChange && selection.topicId !== topicId) void switchDocument(() => onTopicChange(selection));
+  };
   return <section aria-label="Caderno Cornell" style={{ display: 'grid', gap: 13, ...style }}>
     <div aria-busy={switching}>
       <StudyTopicPicker label="Matéria e assunto do Cornell" subjects={subjects} value={topicId} onSelect={selectTopic} />
     </div>
-    <CornellDocument key={topicId} topicId={topicId} topicLabel={topicLabel} flushRef={notes} switching={switching} />
-    {topicId && <CornellDocument key={cornellPairsTopicId(topicId)} topicId={cornellPairsTopicId(topicId)}
-      topicLabel={topicLabel} flushRef={pairs} switching={switching} paired />}
+    <CornellDocument key={documentId} topicId={documentId} topicLabel={topicLabel} flushRef={currentDocument}
+      switching={switching} paired={paired}
+      onTogglePairs={topicId ? () => switchDocument(() => setShowPairs(value => !value)) : undefined} />
   </section>;
 }
 
-function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = false }) {
+function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, onTogglePairs }) {
   const { user } = useAuth();
   const ownerId = user?.id;
   const resolvedTopic = String(topicId || topicLabel).trim();
@@ -72,6 +75,8 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
 
   const [state, setState] = React.useState(initial);
   const [hide, setHide] = React.useState(false);
+  const [selectedPairId, setSelectedPairId] = React.useState(null);
+  const pairControlsId = React.useId();
   const [busy, setBusy] = React.useState(false);
   const [saving, setSaving] = React.useState(false);
   const [showHistory, setShowHistory] = React.useState(false);
@@ -260,15 +265,24 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
 
   const draft = state.draft;
   const linkedPairs = paired ? readCornellPairs(draft.notes) : [];
+  const pairIndex = Math.max(0, linkedPairs.findIndex(pair => pair.id === selectedPairId));
+  const selectedPair = linkedPairs[pairIndex];
+  const addPair = () => {
+    const id = crypto.randomUUID();
+    edit({ notes: JSON.stringify([...linkedPairs, { id, cue: '', note: '' }]) });
+    setSelectedPairId(id);
+  };
+  const editPair = updates => edit({ notes: JSON.stringify(linkedPairs.map(pair => pair.id === selectedPair.id ? { ...pair, ...updates } : pair)) });
+  const disabled = !state.loaded || switching;
   const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
     ? 'Sincronização pendente' : state.status;
   return (
-    <section aria-label={paired ? 'Pistas e notas vinculadas' : 'Anotações do assunto'} style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
+    <section aria-label="Quadro do Cornell" style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
       <div className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', border: '1px solid rgba(208,179,134,.35)', borderRadius: 14 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <Icon name="notebook-pen" color="var(--qb-gold)" size={19} />
           <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)', flex: 1 }}>
-            {paired ? <strong style={{ color: 'var(--qb-ivory)' }}>Pistas e notas vinculadas</strong> : <>Caderno de <strong style={{ color: 'var(--qb-ivory)' }}>{topicLabel}</strong></>}
+            Caderno de <strong style={{ color: 'var(--qb-ivory)' }}>{topicLabel}</strong>
           </span>
           {state.offline ?
             <Button size="sm" variant="secondary" icon="refresh-cw" onClick={() => window.location.reload()}>Reconectar</Button> :
@@ -278,9 +292,9 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
             disabled={!state.loaded || draft.notes.trim().length < 20 || busy} onClick={suggest}>
             Sugerir pistas com Gemini
           </Button>}
-          {!paired && <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} onClick={() => setHide(h => !h)}>
+          <Button size="sm" variant="ghost" icon={hide ? 'eye' : 'eye-off'} aria-pressed={hide} onClick={() => setHide(h => !h)}>
             {hide ? 'Mostrar notas' : 'Esconder para evocar'}
-          </Button>}
+          </Button>
         </div>
         {state.recovery && (
           <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', paddingTop: 10 }}>
@@ -293,40 +307,53 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
           </div>
         )}
       </div>
-      {paired ? <CornellPairs pairs={linkedPairs} disabled={!state.loaded || switching}
-        onChange={value => edit({ notes: JSON.stringify(value) })} /> : (
-        <details open className="qb-train-fold qb-train-fold--nested">
-          <summary>Pistas, notas e síntese originais</summary>
-          <div className="qb-train-fold__body">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
+      <div className="qb-train-fold qb-train-fold--nested">
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, padding: '8px 10px' }}>
+          {onTogglePairs && <Button size="sm" variant="ghost" icon={paired ? 'chevron-up' : 'chevron-down'}
+            aria-expanded={paired} aria-controls={paired ? pairControlsId : undefined} disabled={switching} onClick={onTogglePairs}>
+            Pistas e notas vinculadas
+          </Button>}
+          {paired && <div id={pairControlsId} style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 8, minWidth: 0 }}>
+            {selectedPair && <select className="qb-select" aria-label="Par de pista e nota" value={selectedPair.id} disabled={disabled}
+              onChange={event => setSelectedPairId(event.target.value)}>
+              {linkedPairs.map((pair, index) => <option key={pair.id} value={pair.id}>Pista {index + 1} → Nota {index + 1}</option>)}
+            </select>}
+            <Button size="sm" variant="secondary" icon="plus" disabled={disabled} onClick={addPair}>Adicionar par</Button>
+          </div>}
+        </div>
+        <div className="qb-train-fold__body">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
+            <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired && selectedPair ? 'Pista ' + (pairIndex + 1) : 'Pistas / perguntas'}</span>
+              <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
+                value={paired ? selectedPair?.cue || '' : draft.cues}
+                onChange={event => paired ? editPair({ cue: event.target.value }) : edit({ cues: event.target.value })}
+                disabled={disabled || (paired && !selectedPair)}
+                placeholder={paired ? 'O que você quer lembrar?' : 'Perguntas de evocação ativa que suas notas respondem'} />
+            </label>
+            <label style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>{paired && selectedPair ? 'Nota ' + (pairIndex + 1) : 'Notas'}</span>
+              {hide ? (
+                <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                  Notas ocultas. Responda às pistas de memória.
+                </div>
+              ) : (
                 <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                  value={draft.cues} onChange={e => edit({ cues: e.target.value })}
-                  disabled={!state.loaded || switching} placeholder="Perguntas de evocação ativa que suas notas respondem" />
-              </label>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
-                {hide ? (
-                  <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
-                    Notas ocultas. Responda às pistas de memória.
-                  </div>
-                ) : (
-                  <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-                    value={draft.notes} onChange={e => edit({ notes: e.target.value })}
-                    disabled={!state.loaded || switching} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
-                )}
-              </label>
-            </div>
-            <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
-              <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
-                value={draft.summary} onChange={e => edit({ summary: e.target.value })}
-                disabled={!state.loaded || switching} placeholder="Resuma em 2–3 frases, com suas palavras" />
+                  value={paired ? selectedPair?.note || '' : draft.notes}
+                  onChange={event => paired ? editPair({ note: event.target.value }) : edit({ notes: event.target.value })}
+                  disabled={disabled || (paired && !selectedPair)}
+                  placeholder={paired ? 'Registre a resposta ou explicação.' : 'Registre as anotações de leitura e aula. Salvas automaticamente na sua conta.'} />
+              )}
             </label>
           </div>
-        </details>
-      )}
+          {!paired && <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
+            <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
+              value={draft.summary} onChange={e => edit({ summary: e.target.value })}
+              disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
+          </label>}
+        </div>
+      </div>
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {syncStatus}
       </p>
