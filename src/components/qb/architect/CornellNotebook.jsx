@@ -152,15 +152,15 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
   const saveNow = React.useCallback(async (snapshot, targetIdentity, forceHistory = false) => {
     if (!ownerId || !resolvedTopic || !targetIdentity) return;
     const sig = cornellSignature(snapshot);
-    if (!forceHistory && sig === lastSavedRef.current) {
-      if (identityRef.current === targetIdentity && cornellSignature(currentDraftRef.current) === sig) {
-        dirtyRef.current = false;
-        setState(s => s.identity === targetIdentity ? { ...s, dirty: false, error: '', status: 'Salvo na nuvem' } : s);
-      }
-      return;
-    }
     const task = queueRef.current.catch(() => {}).then(async () => {
       if (identityRef.current !== targetIdentity) return;
+      if (!forceHistory && sig === lastSavedRef.current) {
+        if (cornellSignature(currentDraftRef.current) === sig) {
+          dirtyRef.current = false;
+          setState(s => s.identity === targetIdentity ? { ...s, dirty: false, error: '', status: 'Salvo na nuvem' } : s);
+        }
+        return;
+      }
       setSaving(true);
       try {
         const current = cloudRef.current;
@@ -298,32 +298,32 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired = fa
         <details open className="qb-train-fold qb-train-fold--nested">
           <summary>Pistas, notas e síntese originais</summary>
           <div className="qb-train-fold__body">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
-          <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-            value={draft.cues} onChange={e => edit({ cues: e.target.value })}
-            disabled={!state.loaded || switching} placeholder="Perguntas de evocação ativa que suas notas respondem" />
-        </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
-          {hide ? (
-            <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
-              Notas ocultas. Responda às pistas de memória.
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Pistas / perguntas</span>
+                <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
+                  value={draft.cues} onChange={e => edit({ cues: e.target.value })}
+                  disabled={!state.loaded || switching} placeholder="Perguntas de evocação ativa que suas notas respondem" />
+              </label>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Notas</span>
+                {hide ? (
+                  <div className="qb-textarea" style={{ minHeight: 220, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
+                    Notas ocultas. Responda às pistas de memória.
+                  </div>
+                ) : (
+                  <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
+                    value={draft.notes} onChange={e => edit({ notes: e.target.value })}
+                    disabled={!state.loaded || switching} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
+                )}
+              </label>
             </div>
-          ) : (
-            <textarea className="qb-textarea" style={{ minHeight: 220, fontSize: 15, lineHeight: 1.55 }}
-              value={draft.notes} onChange={e => edit({ notes: e.target.value })}
-              disabled={!state.loaded || switching} placeholder="Registre as anotações de leitura e aula. Salvas automaticamente na sua conta." />
-          )}
-        </label>
-      </div>
-      <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
-        <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
-          value={draft.summary} onChange={e => edit({ summary: e.target.value })}
-          disabled={!state.loaded || switching} placeholder="Resuma em 2–3 frases, com suas palavras" />
-      </label>
+            <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Síntese</span>
+              <textarea className="qb-textarea" style={{ minHeight: 92, fontSize: 15, lineHeight: 1.55 }}
+                value={draft.summary} onChange={e => edit({ summary: e.target.value })}
+                disabled={!state.loaded || switching} placeholder="Resuma em 2–3 frases, com suas palavras" />
+            </label>
           </div>
         </details>
       )}
