@@ -12,7 +12,10 @@ export async function invokeGeminiTutor({
   fetchImpl = fetch,
   timeoutMs = 30000,
   jsonReply = false,
+  responseJsonSchema,
+  maxOutputTokens = 1800,
 }) {
+  const expectsJson = jsonReply || Boolean(responseJsonSchema);
   if (typeof apiKey !== "string" || !apiKey.trim()) {
     throw new Error("Chave Gemini ausente. Confira o segredo Arquiteto (ou ARQUITETO/GEMINI_API_KEY) na Base44.");
   }
@@ -37,8 +40,9 @@ export async function invokeGeminiTutor({
           contents: [{ role: "user", parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.3,
-            maxOutputTokens: 1800,
-            ...(jsonReply ? { responseMimeType: "application/json" } : {}),
+            maxOutputTokens,
+            ...(expectsJson ? { responseMimeType: "application/json" } : {}),
+            ...(responseJsonSchema ? { responseJsonSchema } : {}),
           },
         }),
         signal: controller.signal,
@@ -55,15 +59,19 @@ export async function invokeGeminiTutor({
       throw new Error(`Falha na API Gemini (HTTP ${response.status}). A Base44 não será acionada como fallback.`);
     }
     const data = await response.json();
-    const reply = (data?.candidates?.[0]?.content?.parts || [])
-      .filter(part => typeof part?.text === "string")
+    const candidate = data?.candidates?.[0];
+    if (expectsJson && candidate?.finishReason === "MAX_TOKENS") {
+      throw new Error("O Gemini interrompeu a resposta antes de concluir. Tente novamente.");
+    }
+    const reply = (candidate?.content?.parts || [])
+      .filter(part => !part?.thought && typeof part?.text === "string")
       .map(part => part.text)
-      .join("\n")
+      .join(expectsJson ? "" : "\n")
       .trim();
     if (!reply) {
       throw new Error("O Gemini não retornou texto. Nenhum fallback com créditos Base44 foi realizado.");
     }
-    return { reply: reply.slice(0, 12000), provider: "gemini" };
+    return { reply: expectsJson ? reply : reply.slice(0, 12000), provider: "gemini" };
   } catch (error) {
     if (controller.signal.aborted) {
       throw new Error("Tempo limite do Gemini excedido. Nenhum fallback com créditos Base44 foi realizado.");

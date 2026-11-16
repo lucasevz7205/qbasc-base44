@@ -133,3 +133,38 @@ test("Chat explicita provedor antes de gastar créditos", () => {
   assert.match(service, /geminiConfigured: Boolean/);
 });
 
+test("Gemini solicita JSON com o esquema e reúne as partes sem inserir uma quebra na resposta", async () => {
+  const schema = { type: "object", properties: { front: { type: "string" } }, required: ["front"] };
+  const proposal = { front: "Qual é a relação entre os poderes?", back: "Resposta simulada." };
+  const raw = JSON.stringify(proposal);
+  const result = await invokeGeminiTutor({
+    apiKey: "test-secret-not-real",
+    prompt: "Proponha uma revisão",
+    responseJsonSchema: schema,
+    maxOutputTokens: 4096,
+    fetchImpl: async (_url, opts) => {
+      assert.deepEqual(JSON.parse(opts.body).generationConfig, {
+        temperature: 0.3, maxOutputTokens: 4096, responseMimeType: "application/json", responseJsonSchema: schema,
+      });
+      return new Response(JSON.stringify({
+        candidates: [{ finishReason: "STOP", content: { parts: [
+          { text: "texto interno", thought: true },
+          { text: raw.slice(0, 18) },
+          { text: raw.slice(18) },
+        ] } }],
+      }));
+    },
+  });
+  assert.deepEqual(JSON.parse(result.reply), proposal);
+});
+
+test("Gemini sinaliza o limite de saída antes de tentar interpretar uma proposta truncada", async () => {
+  await assert.rejects(invokeGeminiTutor({
+    apiKey: "test-secret-not-real",
+    prompt: "Reformulação de flashcard",
+    jsonReply: true,
+    fetchImpl: async () => new Response(JSON.stringify({
+      candidates: [{ finishReason: "MAX_TOKENS", content: { parts: [{ text: '{"front":"incom' }] } }],
+    })),
+  }), /interrompeu a resposta antes de concluir/);
+});

@@ -138,6 +138,23 @@ const EditorialSuggestionSchema = z.object({
   }),
 });
 
+function editorialResponseSchema(kind) {
+  const text = { type: "string" };
+  const properties = kind === "question"
+    ? { statement: text, key: { ...text, enum: ["C", "E"] }, explanation: text, basis: text }
+    : { front: text, back: text, basis: text };
+  return {
+    type: "object",
+    properties: {
+      parecer: text,
+      needsHumanReview: { type: "boolean" },
+      replacement: { type: "object", properties, required: Object.keys(properties), additionalProperties: false },
+    },
+    required: ["parecer", "needsHumanReview", "replacement"],
+    additionalProperties: false,
+  };
+}
+
 export const proposeEditorialRevision = createServerFn({ method: "POST" })
   .middleware([requireUser])
   .validator(EditorialSuggestionSchema)
@@ -157,9 +174,10 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       CEBRASPE_V1_GENERATION_RULES,
       "Flashcard: uma pergunta e uma resposta precisa; elimine vagueza e jargão solto; se mistura duas ideias, explique no parecer, mas proponha apenas UM cartão neste fluxo, sem novos IDs.",
       "Preserve o vínculo com o mesmo assunto e nó, e não afirme proveniência de prova real quando um enunciado tiver sido reescrito.",
-      "Retorne SOMENTE JSON válido, sem markdown, notas fora do JSON ou comentários.",
-      'Para questão: {"parecer":"motivo objetivo","needsHumanReview":true,"replacement":{"statement":"enunciado revisado","key":"C ou E","explanation":"comentário fundamentado","basis":"referência original, se houver"}}',
-      'Para flashcard: {"parecer":"motivo objetivo","needsHumanReview":true,"replacement":{"front":"pergunta revisada","back":"resposta corrigida","basis":"fonte original, se houver"}}',
+      "Preencha os campos do formato solicitado. Em parecer, justifique a mudança em até três frases. Em basis, mantenha a referência original ou use uma string vazia quando ela estiver ausente.",
+      data.kind === "question"
+        ? "Em replacement, informe enunciado, gabarito (C ou E), comentário e referência."
+        : "Em replacement, informe uma frente direta, um verso conciso e a referência.",
       `Tipo: ${data.kind === "question" ? "questão CEBRASPE C/E" : "flashcard"}`,
       `Assunto: ${data.topicLabel}`,
       `Problema: ${data.issue}`,
@@ -173,6 +191,8 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
       model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
       prompt,
+      responseJsonSchema: editorialResponseSchema(data.kind),
+      maxOutputTokens: 4096,
     });
     return parseEditorialSuggestion(result.reply, data.kind);
   });
