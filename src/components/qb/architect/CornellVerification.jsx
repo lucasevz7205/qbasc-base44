@@ -19,7 +19,7 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
   const [error, setError] = React.useState('');
   const [completed, setCompleted] = React.useState(null);
   const topic = QB_DATA.studySubjects.flatMap(subject => subject.topics).find(item => item.id === topicId);
-  const { map, references, mapLimited } = React.useMemo(() => cornellVerificationContext(QB_DATA, topic), [QB_DATA, topic]);
+  const { map, references, mapLimited, bank } = React.useMemo(() => cornellVerificationContext(QB_DATA, topic), [QB_DATA, topic]);
   const changeSource = (index, patch) => setSources(current => current.map((source, i) => i === index ? { ...source, ...patch } : source));
   const review = async () => {
     if (disabled || inFlight.current) return;
@@ -40,8 +40,9 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
         linked: paired ? draft : other,
         map,
         sources: evidence,
+        bank,
       });
-      setCompleted({ feedback, draft, sources, evidence });
+      setCompleted({ feedback, draft, sources, evidence, bank });
     } catch (failure) {
       setError(failure?.message || 'Não foi possível verificar o caderno. Tente novamente.');
     } finally {
@@ -49,10 +50,10 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
       setBusy(false);
     }
   };
-  const stale = completed && (completed.draft !== draft || completed.sources !== sources);
+  const stale = completed && (completed.draft !== draft || completed.sources !== sources || completed.bank !== bank);
   return (
     <div className="qb-cornell-verification qb-panel qb-panel--sunken">
-      <p>Revise a ligação entre suas ideias nas anotações originais e nas pistas vinculadas. {map.length
+      <p>A verificação compara suas notas com materiais, mapas, fundamentos das questões e flashcards da matéria. {map.length
         ? 'O mapa deste assunto ajuda a localizar tópicos que podem faltar nas notas.'
         : 'Este assunto não tem mapa mental para a comparação de tópicos.'}</p>
       {mapLimited && <p>O mapa é extenso. A revisão prioriza até {CORNELL_VERIFICATION_LIMITS.mapNodes} tópicos, começando pelos ramos principais.</p>}
@@ -92,7 +93,7 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
       </div>
       {busy && <p role="status">Verificando o caderno…</p>}
       {error && <p role="alert">{error}</p>}
-      {stale && <p role="status">O caderno ou as fontes mudaram. Verifique novamente para atualizar o parecer.</p>}
+      {stale && <p role="status">O caderno, as fontes ou o acervo mudaram. Verifique novamente para atualizar o parecer.</p>}
       {completed && <div className="qb-cornell-verification__feedback" aria-label="Parecer do Arquiteto">
         <div role="status" className="qb-overline">Parecer do Arquiteto disponível</div>
         {completed.feedback.relations.length > 0 && <div>
@@ -111,11 +112,20 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
             : <p>A busca encontrou termos dos ramos analisados nas notas. Confira se cada ideia está desenvolvida.</p>}
         </div>}
         {completed.feedback.checks.length > 0 && <div>
-          <h4>Conferência com as fontes originais</h4>
-          <p>Até cinco trechos do caderno por verificação.</p>
+          <h4>Comparação com o acervo e as fontes originais</h4>
+          <p>Até cinco trechos do caderno por verificação. O acervo indica pontos para conferir no material de origem.</p>
           <ul>{completed.feedback.checks.map((check, i) => <li key={i}>
             <strong>{check.claim}</strong>
-            <p>{labelForCheck[check.status]}</p>
+            {check.bank ? <>
+              <p>{check.bank.literal ? 'Correspondência literal no acervo' : 'Trecho relacionado no acervo'} · {check.bank.kind} · {check.bank.topic}</p>
+              <blockquote>
+                <p>“{check.bank.quote}”</p>
+                <cite>{check.bank.title}</cite>
+                {check.bank.reference && <p style={{ whiteSpace: 'pre-line' }}>{check.bank.reference}</p>}
+                {check.bank.url && <a href={check.bank.url} target="_blank" rel="noreferrer">Abrir referência do acervo</a>}
+              </blockquote>
+            </> : <p>{completed.bank.length ? 'Sem trecho semelhante no acervo da matéria' : 'Acervo textual indisponível para esta matéria'}</p>}
+            <p>Fonte original · {labelForCheck[check.status]}</p>
             {check.quote && <blockquote>
               <p>“{check.quote}”</p>
               <cite>{completed.evidence[check.sourceId - 1].title}</cite>

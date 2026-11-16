@@ -13,8 +13,60 @@ const safeUrl = value => {
   return undefined;
 };
 
+const textContent = value => Array.isArray(value)
+  ? value.map(textContent).filter(Boolean).join('\n')
+  : titleText(value);
+
+function collectStudyBank(data, topic) {
+  const subject = data.studySubjects?.find(item => item.topics.some(entry => entry.id === topic.id));
+  const topics = new Map((subject?.topics || []).map(entry => [entry.id, entry]));
+  topics.set(topic.id, topic);
+  const bank = [];
+  const add = (topicId, kind, title, content, reference, url) => {
+    const scopedTopic = topics.get(topicId);
+    const text = textContent(content);
+    if (!scopedTopic || !text) return;
+    bank.push({
+      kind, title, text, reference: textContent(reference), url: safeUrl(url),
+      topic: [scopedTopic.num, scopedTopic.title].filter(Boolean).join(' · ') || topicId,
+      currentTopic: topicId === topic.id,
+    });
+  };
+
+  for (const entry of topics.values()) {
+    for (const material of entry.resources?.materials || []) {
+      add(entry.id, 'Material', material.titulo || 'Material de estudo',
+        [material.conteudo, material.resumo, material.referenceText], null, material.url);
+    }
+    for (const item of entry.resources?.revision || []) {
+      if (!item) continue;
+      add(entry.id, 'Revisão ativa', item.k || item.titulo || item.conceito || 'Registro de revisão',
+        typeof item === 'string' ? item : item.regra || item.explicacao || item.texto || item.resposta || item.a, item.src);
+    }
+  }
+  for (const map of data.mindMaps || []) {
+    if (!topics.has(map.topicId)) continue;
+    for (const node of map.nodes) {
+      const concept = data.concepts?.[node.id];
+      const sources = concept?.sources || [];
+      add(map.topicId, 'Mapa mental', node.label, concept?.summary,
+        sources.map(source => source.label), sources.find(source => safeUrl(source.url))?.url);
+    }
+  }
+  const excluded = new Set(data.excludedQuestionIds || []);
+  for (const question of data.questions || data.questionBank || []) {
+    if (excluded.has(question.id) || question.raw?.anulada || question.raw?.anulado) continue;
+    // O enunciado C/E pode conter uma afirmação falsa; compare só o fundamento.
+    add(question.topicId, 'Fundamento de questão', question.code || question.id, question.explanation, question.basis);
+  }
+  for (const card of data.flashcards || []) {
+    add(card.topicId, 'Flashcard', card.front, card.back, card.basis);
+  }
+  return bank;
+}
+
 export function cornellVerificationContext(data, topic) {
-  if (!topic) return { map: [], references: [], mapLimited: false };
+  if (!topic) return { map: [], references: [], mapLimited: false, bank: [] };
   const nodes = data.mindMaps.find(entry => entry.topicId === topic.id)?.nodes || [];
   const byId = new Map(nodes.map(node => [node.id, node]));
   const references = new Map();
@@ -43,7 +95,7 @@ export function cornellVerificationContext(data, topic) {
     label: node.label.trim().slice(0, 160),
     parent: (byId.get(node.parent)?.label || '').trim().slice(0, 100),
   }));
-  return { map, references: [...references.values()], mapLimited: branches.length > map.length };
+  return { map, references: [...references.values()], mapLimited: branches.length > map.length, bank: collectStudyBank(data, topic) };
 }
 
 const STOP = new Set('acordo ainda antes aquela aquele aquilo assim cada como contra coisa coisas dessa dessas desse desses desta destas deste destes deve devem direito durante elas eles enquanto entre esta estao estas este estes fazer forma foram isto mais maior mesmo menor muito nenhum nesta neste nossa nosso onde outra outro para pela pelas pelo pelos pode podem pois porque qual quais quando quanto seja sobre somente tambem tenha tendo toda todas todo todos suas seus voce uma umas uns das dos que com sem seu sua ser nao sim por mas tem foi sao até'.split(' '));
@@ -116,14 +168,34 @@ function findGaps(map, notes) {
   }));
 }
 
-function checkSources(notes, sources) {
-  const claims = [...new Set(notes.flatMap(passages))]
-    .filter(passage => passage.length >= 25 && !passage.endsWith('?')).slice(0, 5);
-  const documents = sources.map(source => ({
-    text: compact(source.text),
-    passages: [...new Set([...passages(compact(source.text)), ...passages(source.text)])]
+function sampleClaims(notes) {
+  const groups = notes.map(note => passages(note).filter(passage => passage.length >= 25 && !passage.endsWith('?')));
+  const claims = new Set();
+  for (let i = 0; claims.size < 5 && groups.some(group => group.length > i); i++) {
+    for (const group of groups) {
+      if (group[i]) claims.add(group[i]);
+      if (claims.size === 5) break;
+    }
+  }
+  return [...claims];
+}
+
+function indexPassages(text) {
+  const normalized = compact(text);
+  return {
+    text: normalized,
+    passages: [...new Set([...passages(normalized), ...passages(text)])]
       .map(quote => ({ quote, words: new Set(keywords(quote)) })),
-  }));
+  };
+}
+
+function overlapScore(words, referenceWords) {
+  const matched = words.filter(word => referenceWords.has(word)).length;
+  return matched >= 3 ? matched / Math.max(words.length, referenceWords.size) : 0;
+}
+
+function checkSources(claims, sources) {
+  const documents = sources.map(source => indexPassages(source.text));
   return claims.map(claim => {
     const literal = documents.findIndex(source => source.text.includes(claim));
     if (literal >= 0) return { claim, status: 'literal', quote: claim, sourceId: literal + 1 };
@@ -133,9 +205,8 @@ function checkSources(notes, sources) {
     let bestScore = 0;
     documents.forEach((source, index) => {
       for (const { quote, words: referenceWords } of source.passages) {
-        const matched = words.filter(word => referenceWords.has(word)).length;
-        const score = matched / Math.max(words.length, referenceWords.size);
-        if (matched >= 3 && score >= 0.35 && score > bestScore) {
+        const score = overlapScore(words, referenceWords);
+        if (score >= 0.35 && score > bestScore) {
           best = { claim, status: 'related', quote: quote.slice(0, 420), sourceId: index + 1 };
           bestScore = score;
         }
@@ -145,7 +216,31 @@ function checkSources(notes, sources) {
   });
 }
 
-export function reviewCornellNotebook({ original, linked, map, sources }) {
+function compareBank(claims, bank) {
+  const documents = bank.map(({ text, ...citation }) => ({ ...indexPassages(text), citation }));
+  return claims.map(claim => {
+    const words = keywords(claim);
+    let best;
+    let bestScore = 0;
+    for (const document of documents) {
+      const preferred = document.citation.currentTopic;
+      const threshold = preferred ? 0.4 : 0.55;
+      const topicBonus = preferred ? 0.12 : 0;
+      const literal = document.text.includes(claim);
+      const matches = literal ? [{ quote: claim, score: 1.05 }] : document.passages.map(passage => ({
+        quote: passage.quote, score: overlapScore(words, passage.words),
+      }));
+      for (const { quote, score } of matches) {
+        if (score < threshold || score + topicBonus <= bestScore) continue;
+        bestScore = score + topicBonus;
+        best = { ...document.citation, literal, quote: quote.length > 420 ? quote.slice(0, 419) + '…' : quote };
+      }
+    }
+    return best;
+  });
+}
+
+export function reviewCornellNotebook({ original, linked, map, sources, bank = [] }) {
   const notebook = readNotebook(original, linked);
   const { notes, cues, pairs } = notebook;
   if (!cues && !notes.some(Boolean) && !pairs.length) {
@@ -155,9 +250,11 @@ export function reviewCornellNotebook({ original, linked, map, sources }) {
   if (length > CORNELL_VERIFICATION_LIMITS.notebook) {
     throw new Error('O caderno excede o tamanho disponível para uma verificação.');
   }
+  const claims = sampleClaims(notes);
+  const bankMatches = compareBank(claims, bank);
   return {
     relations: findRelations(notebook),
     gaps: findGaps(map, notes),
-    checks: checkSources(notes, sources),
+    checks: checkSources(claims, sources).map((check, index) => ({ ...check, bank: bankMatches[index] })),
   };
 }
