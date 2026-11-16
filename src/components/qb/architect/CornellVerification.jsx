@@ -7,7 +7,7 @@ const emptySource = () => ({ title: '', text: '' });
 const labelForCheck = {
   literal: 'Correspondência literal no trecho',
   related: 'Trecho relacionado. Compare a redação.',
-  pending: 'Pendente de fonte original',
+  pending: 'Pendente de conferência',
 };
 
 export function CornellVerification({ topicId, draft, paired, readCompanion, disabled }) {
