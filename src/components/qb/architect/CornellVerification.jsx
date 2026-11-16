@@ -97,7 +97,11 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
         <div role="status" className="qb-overline">Parecer do Arquiteto disponível</div>
         {completed.feedback.relations.length > 0 && <div>
           <h4>Relações entre as ideias</h4>
-          <ul>{completed.feedback.relations.map((relation, i) => <li key={i}><strong>{relation.label}</strong><p>{relation.feedback}</p></li>)}</ul>
+          <ul>{completed.feedback.relations.map((relation, i) => <li key={i}>
+            <strong>{relation.label}</strong>
+            {relation.excerpts?.map((excerpt, index) => <blockquote key={index}><p>“{excerpt}”</p></blockquote>)}
+            <p>{relation.feedback}</p>
+          </li>)}</ul>
         </div>}
         {map.length > 0 && <div>
           <h4>Cobertura do mapa mental</h4>
@@ -108,6 +112,7 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
         </div>}
         {completed.feedback.checks.length > 0 && <div>
           <h4>Conferência com as fontes originais</h4>
+          <p>Até cinco trechos do caderno por verificação.</p>
           <ul>{completed.feedback.checks.map((check, i) => <li key={i}>
             <strong>{check.claim}</strong>
             <p>{labelForCheck[check.status]}</p>
