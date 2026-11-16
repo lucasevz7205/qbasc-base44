@@ -8,7 +8,7 @@ import { extractMaterialText, generateFlashcardsFromMaterial } from '@/lib/serve
 
 const SAMPLE = 'O fiscal do contrato acompanha a execução, anota ocorrências em registro próprio e determina o que for necessário à regularização de faltas ou defeitos observados (Lei 14.133/2021, art. 117). O gestor do contrato coordena as atividades relacionadas à fiscalização técnica, administrativa e setorial, bem como os atos preparatórios à instrução processual.';
 
-export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico', style }) {
+export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico', subjectName, topicName, style }) {
   const extractTextFn = useServerFn(extractMaterialText);
   const generateCardsFn = useServerFn(generateFlashcardsFromMaterial);
 
@@ -52,7 +52,8 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
     try {
       const res = await generateCardsFn({
         data: {
-          topicLabel,
+          topicLabel: (topicName || topicLabel).slice(0, 300),
+          subjectName,
           sourceText: clean,
           count: 4,
         },

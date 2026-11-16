@@ -83,7 +83,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
             tutorHistory.rememberTopic(accountId, topicId);
             onContextChange?.({ ...context, subjectId, topicId });
           }} />}
-        {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} deck={deck} />}
+        {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} deck={deck} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>

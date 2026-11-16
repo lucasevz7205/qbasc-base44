@@ -30,7 +30,7 @@ const Field = ({ title, value, onChange, rows = 3, readOnly = false }) => (
  * Aprovação editorial orientada pelo Claude Design (Ascensão).
  * A IA só propõe. Apenas clique explícito e confirmação salvam uma nova versão.
  */
-export default function EditorialCurator({ kind, item, topicLabel, disabled = false }) {
+export default function EditorialCurator({ kind, item, topicLabel, subjectName, disabled = false }) {
   const requestProposal = useServerFn(proposeEditorialRevision);
   const { records, save } = useRealStudy();
   const versions = (records.curadoria || [])
@@ -57,7 +57,7 @@ export default function EditorialCurator({ kind, item, topicLabel, disabled = fa
     if (generating || saving || disabled) return;
     setGenerating(true); setError(""); setNotice(""); setProposal(null); setApproval(false);
     try {
-      const result = await requestProposal({ data: { kind, issue, note: note.trim(), topicLabel: String(topicLabel || item.topicId || "Assunto"), content: current } });
+      const result = await requestProposal({ data: { kind, issue, note: note.trim(), topicLabel: String(topicLabel || item.topicId || "Assunto").slice(0, 300), subjectName, content: current } });
       setProposal(result);
     } catch (err) {
       setError(err?.message || "O Arquiteto não conseguiu produzir uma proposta verificável.");

@@ -8,6 +8,8 @@ import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/min
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
+import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
+import { contextualFlashcardFront } from "@/lib/flashcard-standard";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -125,6 +127,7 @@ const EditorialSuggestionSchema = z.object({
   issue: z.enum(["formulacao", "gabarito", "fundamentacao", "desatualizacao", "outro"]),
   note: z.string().max(500).optional().default(""),
   topicLabel: z.string().min(1).max(300),
+  subjectName: z.string().trim().max(200).optional(),
   content: z.object({
     id: z.string().min(1).max(160),
     front: z.string().max(2600).optional(),
@@ -172,7 +175,9 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       "Se houver ambiguidade não resolvida, sinalize no parecer e deixe needsHumanReview=true. Não invente correção para preencher campos.",
       "Questão: preserve padrão Certo/Errado, teste uma regra, com uma resposta inequívoca; comentário aponta trecho decisivo; item errado inclui versão correta por extenso quando comprovável.",
       CEBRASPE_V1_GENERATION_RULES,
-      "Flashcard: uma pergunta e uma resposta precisa; elimine vagueza e jargão solto; se mistura duas ideias, explique no parecer, mas proponha apenas UM cartão neste fluxo, sem novos IDs.",
+      "Flashcard: proponha apenas UM cartão neste fluxo, sem novos IDs. Se o cartão original mistura duas ideias, escolha a principal e explique no parecer que o restante precisa de outro cartão.",
+      data.kind === "flashcard" ? FLASHCARD_RULES : "",
+      data.kind === "flashcard" && data.subjectName ? `Contexto obrigatório da frente: ${data.subjectName} · ${data.topicLabel}:` : "",
       "Preserve o vínculo com o mesmo assunto e nó, e não afirme proveniência de prova real quando um enunciado tiver sido reescrito.",
       "Preencha os campos do formato solicitado. Em parecer, justifique a mudança em até três frases. Em basis, mantenha a referência original ou use uma string vazia quando ela estiver ausente.",
       data.kind === "question"
@@ -186,7 +191,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       data.kind === "question"
         ? `ENUNCIADO ORIGINAL: ${c.statement}\nGABARITO ORIGINAL: ${c.key}\nCOMENTÁRIO ORIGINAL: ${c.explanation || "ausente"}\nREFERÊNCIA ORIGINAL: ${c.basis || "ausente"}\nORIGEM: ${c.origin || "não informada"}`
         : `FRENTE ORIGINAL: ${c.front}\nVERSO ORIGINAL: ${c.back}\nFONTE ORIGINAL: ${c.basis || "ausente"}`,
-    ].join("\n\n");
+    ].filter(Boolean).join("\n\n");
     const result = await invokeGeminiTutor({
       apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
       model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
@@ -194,7 +199,11 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       responseJsonSchema: editorialResponseSchema(data.kind),
       maxOutputTokens: 4096,
     });
-    return parseEditorialSuggestion(result.reply, data.kind);
+    const proposal = parseEditorialSuggestion(result.reply, data.kind);
+    if (data.kind === "flashcard") {
+      proposal.replacement.front = contextualFlashcardFront(proposal.replacement.front, data.subjectName, data.topicLabel);
+    }
+    return proposal;
   });
 
 const FlashcardCorrectionSchema = z.object({
@@ -403,6 +412,7 @@ export const extractMaterialText = createServerFn({ method: "POST" })
 
 const GenerateFlashcardsSchema = z.object({
   topicLabel: z.string().min(1).max(300),
+  subjectName: z.string().trim().max(200).optional(),
   sourceText: z.string().min(20).max(10000),
   count: z.number().int().min(1).max(8).optional(),
 });
@@ -415,9 +425,10 @@ export const generateFlashcardsFromMaterial = createServerFn({ method: "POST" })
     const prompt = [
       "Você é 'O Arquiteto', criador de flashcards de repetição espaçada da plataforma Quebrando a Banca (Câmara dos Deputados · CEBRASPE).",
       `A partir do texto-base abaixo sobre "${data.topicLabel}", gere ${count} flashcards de alta retenção.`,
-      "Regras para cada cartão:",
-      "- front: pergunta direta, específica e sem ambiguidade (ex.: quórum, competência, exceção, distinção conceitual ou pegadinha clássica).",
-      "- back: resposta objetiva, precisa e fundamentada no texto/dispositivo legal (1 a 3 frases curtas).",
+      FLASHCARD_RULES,
+      "Gere somente cartões que o texto-base sustenta. Se uma afirmação do texto precisar de mais de um cartão, pode ultrapassar o número pedido em até 2 cartões; se o texto não sustentar nenhum, devolva a lista vazia.",
+      "Dê preferência a cartões de contraste e de lacuna sobre exceções, quóruns, competências e prazos.",
+      data.subjectName ? `Contexto obrigatório da frente: ${data.subjectName} · ${data.topicLabel}:` : "",
       `Texto-base:\n"""\n${data.sourceText}\n"""`,
     ].join("\n\n");
 
@@ -443,7 +454,12 @@ export const generateFlashcardsFromMaterial = createServerFn({ method: "POST" })
     });
 
     return {
-      cards: Array.isArray(res?.cards) ? res.cards.slice(0, 8) : [],
+      cards: Array.isArray(res?.cards)
+        ? res.cards
+            .filter((c) => c && typeof c.front === "string" && typeof c.back === "string" && c.front.trim().length >= 12 && c.back.trim().length >= 1)
+            .slice(0, count + 2)
+            .map(c => ({ front: contextualFlashcardFront(c.front, data.subjectName, data.topicLabel), back: c.back.trim() }))
+        : [],
     };
   });
 

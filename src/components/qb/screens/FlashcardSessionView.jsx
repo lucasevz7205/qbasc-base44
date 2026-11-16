@@ -106,7 +106,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
               ratingDisabled={saving} suggestedRating={suggestion?.cardId === card.id ? suggestion.rating : null}
               correction={<React.Fragment key={card.id}>
                 <FlashcardCorrection card={card} topicLabel={topicLabel} onSuggestion={rating => setSuggestion({ cardId: card.id, rating })} />
-                {isAdmin && <EditorialCurator kind="flashcard" item={card} topicLabel={card.topicId} />}
+                {isAdmin && <EditorialCurator kind="flashcard" item={card} topicLabel={topic?.title || topicLabel} subjectName={subject?.name} />}
               </React.Fragment>} />
           </>
         )}

@@ -32,6 +32,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const [provider, setProvider] = React.useState('gemini');
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
+  const [composerExpanded, setComposerExpanded] = React.useState(false);
+  const composerId = React.useId();
   const [listening, setListening] = React.useState(false);
   const [voiceNotice, setVoiceNotice] = React.useState(null);
   const [ask, setAsk] = React.useState(false);
@@ -212,9 +214,27 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
         ))}
       </div>
       {personal && <small style={{ color: 'var(--text-muted)' }}>Ao enviar, o Gemini usa a mensagem, o assunto selecionado e a conversa recente deste tópico.</small>}
-      <form onKeyDown={event => { if (event.key === 'Enter') event.stopPropagation(); }} onSubmit={e => { e.preventDefault(); send(); }} style={{ display: 'flex', gap: 8 }}>
-        <input className="qb-input" value={text} onChange={e => setText(e.target.value)} placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'} aria-label="Mensagem ao Arquiteto" style={{ minWidth: 0 }} />
-        <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
+      <form className="qb-arch-composer" data-expanded={composerExpanded} onSubmit={event => { event.preventDefault(); send(); }}>
+        <textarea id={composerId} className="qb-input qb-arch-composer__input" rows={composerExpanded ? 5 : 1}
+          value={text} maxLength={3000} aria-label="Mensagem ao Arquiteto"
+          placeholder={'Responda ou tire sua dúvida sobre ' + (topic ? (topic.title || topic.num) : 'o tópico') + '…'}
+          onChange={event => setText(event.target.value)}
+          onKeyDown={event => {
+            if (event.key !== 'Enter') return;
+            event.stopPropagation();
+            if (event.nativeEvent.isComposing || event.shiftKey || (composerExpanded && !event.ctrlKey && !event.metaKey)) return;
+            event.preventDefault();
+            send();
+          }} />
+        <div className="qb-arch-composer__actions">
+          <Button variant="ghost" className="qb-arch-composer__toggle"
+            icon={composerExpanded ? 'chevron-down' : 'maximize'}
+            aria-label={composerExpanded ? 'Recolher caixa de mensagem' : 'Expandir caixa de mensagem'}
+            title={composerExpanded ? 'Recolher caixa de mensagem' : 'Expandir caixa de mensagem'}
+            aria-expanded={composerExpanded} aria-controls={composerId}
+            onClick={() => setComposerExpanded(value => !value)} />
+          <Button type="submit" icon="send" loading={busy} disabled={!text.trim() || busy}>Enviar</Button>
+        </div>
       </form>
       <ConfirmDialog open={ask} tone="danger" title="Limpar o histórico deste tópico?" description={'Remove as ' + msgs.length + ' mensagens de ' + tLabel + '. Conversas de outros tópicos são mantidas.'} confirmLabel="Limpar histórico" onCancel={() => setAsk(false)} onConfirm={() => { tutorHistory.clear(accountId, key); setAsk(false); }} />
     </div>
