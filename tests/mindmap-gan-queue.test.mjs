@@ -10,6 +10,7 @@ const hooks = registerHooks({
       const stub = 'export const createServerFn = () => ({ middleware() { return this; }, validator() { return this; }, handler(fn) { return fn; } });';
       return { shortCircuit: true, url: 'data:text/javascript,' + encodeURIComponent(stub) };
     }
+    if (specifier.startsWith('@/lib/')) return next(new URL('../src/' + specifier.slice(2) + (specifier.endsWith('.js') ? '' : '.js'), import.meta.url).href, context);
     if (specifier === './account-boundary' && context.parentURL?.endsWith('/study-accounts.js')) return next(specifier + '.js', context);
     return next(specifier, context);
   },
