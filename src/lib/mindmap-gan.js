@@ -132,7 +132,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
     const mecanismo = mechanismForKey(genMechanism, finalKey) ? genMechanism : "";
     if (!mecanismo) {
       statusConfronto = "divergencia_bloqueada";
-      motivosConfronto.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
+      falhasDetectadas.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
     }
     const mecanismoNome = CEBRASPE_MECHANISMS[mecanismo] || "Não classificado";
 

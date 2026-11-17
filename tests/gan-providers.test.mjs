@@ -206,7 +206,7 @@ test('callGanDiscriminator + normalizeGanConfrontation: itemRefinado null não q
   const mechanism = Object.keys(CEBRASPE_V1_TAXONOMY).find(code => mechanismForKey(code, 'E'));
   assert.ok(mechanism, 'taxonomia deve ter um mecanismo compatível com E');
   const gen = [{ mapaNoId: 'n1', tema: 'Tema', enunciado: 'Assertiva longa o bastante para passar na validação do confronto.', gabarito: 'E', mecanismo: mechanism, trechoDecisivo: 'trecho', comentario: 'comentário', correcaoMinima: 'correção', teseGerador: 'tese' }];
-  const fetchImpl = async () => openaiOk({ julgamentos: [{ index: 0, gabaritoDiscriminador: 'E', falhasDetectadas: [], itemRefinado: null }] });
+  const fetchImpl = async () => openaiOk({ julgamentos: [{ index: 0, gabaritoDiscriminador: 'E', veredicto: 'APROVADA', scoreRealismo: 84, falhasDetectadas: [], itemRefinado: null }] });
   const disc = await callGanDiscriminator({ prompt: 'julgue', response_json_schema: SCHEMA, apiKey: 'sk-a', model: 'gpt-6.1-terra', fetchImpl });
   const result = normalizeGanConfrontation(gen, disc.julgamentos, { nodes: [{ id: 'n1', label: 'Nó' }] }, { targetNodeId: 'n1', targetNodeLabel: 'Nó' });
   assert.equal(result.questoes.length, 1);
