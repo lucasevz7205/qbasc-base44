@@ -515,7 +515,7 @@ export default function MindMapView({
                 title={showPanelInMax ? 'Ocultar painel lateral' : 'Mostrar painel do conceito'}
                 onClick={() => setShowPanelInMax(v => !v)}
               >
-                <span className="qb-map-full-header__action-text">Painel lateral</span>
+                <span className="qb-map-full-header__action-text">{showPanelInMax ? 'Ocultar painel' : 'Mostrar painel'}</span>
               </Button>
               <Button
                 size="sm"
