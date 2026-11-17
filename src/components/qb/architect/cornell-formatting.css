@@ -52,6 +52,7 @@
 .qb-cornell-assessment__criteria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .qb-cornell-assessment__criteria article { display: grid; align-content: start; gap: 8px; padding: 14px; min-width: 0; }
 .qb-cornell-assessment__criterion-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; color: var(--qb-gold); }
+.qb-cornell-assessment__guidance { display: grid; gap: 8px; padding: 14px; }
 .qb-cornell-assessment__test { display: grid; gap: 12px; padding: 16px; border: 1px solid var(--qb-bronze); border-radius: var(--radius-md, 12px); background: var(--surface-sunken); }
 .qb-cornell-assessment__test textarea { resize: vertical; min-height: 140px; max-height: 60dvh; }
 .qb-cornell-assessment__confidence { display: flex; flex-wrap: wrap; gap: 8px 16px; }
