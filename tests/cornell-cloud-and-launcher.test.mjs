@@ -85,7 +85,9 @@ test("Cornell Gemini não usa InvokeLLM Base44", () => {
   assert.match(fn, /context\.user\?\.role !== "admin"/);
   assert.match(fn, /invokeGeminiTutor/);
   assert.match(fn, /parseCornellGemini/);
-  assert.match(fn, /secrets\.get\("Arquiteto"\)/);
+  assert.match(fn, /apiKey: architectKey\(\)/);
+  assert.match(src, /const architectKey = .*namedArchitectKey\(\)/);
+  assert.match(src, /const namedArchitectKey = .*secrets\.get\("Arquiteto"\)/);
   assert.doesNotMatch(fn, /Core\.InvokeLLM/);
 });
 test("atalho abre chat e aceita arrastar com mouse, toque e teclado", () => {
