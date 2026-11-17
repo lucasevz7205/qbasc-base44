@@ -1,4 +1,6 @@
 import test from 'node:test';
+import process from 'node:process';
+import { Buffer } from 'node:buffer';
 import { prepareCornellAssessment, CORNELL_ASSESSMENT_CRITERIA } from '../src/lib/cornell-assessment.js';
 
 import assert from 'node:assert/strict';
