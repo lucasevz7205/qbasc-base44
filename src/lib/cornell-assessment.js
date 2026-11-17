@@ -41,11 +41,24 @@ export function prepareCornellAssessment({ original, linked, map = [], sources =
   if (body.length > CORNELL_ASSESSMENT_LIMITS.notebook) throw new Error('O caderno excede o tamanho disponível para uma análise.');
   if (notebookNotes(notebook).length < 15) throw new Error('Desenvolva uma nota ou síntese antes da análise. Somente nomes de pistas não permitem avaliar compreensão.');
   let budget = CORNELL_ASSESSMENT_LIMITS.sourceBudget;
+  let clipped = false;
   const evidence = [];
   const add = (entry, id, kind) => {
     const sourceText = text(entry.text);
-    if (!sourceText || !text(entry.title) || budget < 100 || evidence.length >= CORNELL_ASSESSMENT_LIMITS.sources) return;
-    const excerpt = sourceText.slice(0, Math.min(CORNELL_ASSESSMENT_LIMITS.sourceText, budget, kind === 'original_fornecida' ? 8000 : 1800));
+    if (!sourceText || !text(entry.title)) return;
+    if (budget < 100 || evidence.length >= CORNELL_ASSESSMENT_LIMITS.sources) { clipped = true; return; }
+    const maxLength = Math.min(CORNELL_ASSESSMENT_LIMITS.sourceText, budget, kind === 'original_fornecida' ? 8000 : 1800);
+    let start = 0;
+    if (kind !== 'original_fornecida' && sourceText.length > maxLength) {
+      const terms = new Set((body.toLowerCase().match(/[\p{L}\p{N}]{5,}/gu) || []));
+      const blocks = [...sourceText.matchAll(/[^\n]+/g)].map(match => ({
+        index: match.index,
+        score: [...new Set(match[0].toLowerCase().match(/[\p{L}\p{N}]{5,}/gu) || [])].filter(word => terms.has(word)).length,
+      })).sort((a, b) => b.score - a.score);
+      if (blocks[0]?.score) start = Math.max(0, Math.min(blocks[0].index, sourceText.length - maxLength));
+    }
+    const excerpt = sourceText.slice(start, start + maxLength);
+    if (excerpt.length < sourceText.length) clipped = true;
     evidence.push({ id, title: text(entry.title).slice(0, 300), kind, text: excerpt });
     budget -= excerpt.length;
   };
@@ -59,7 +72,7 @@ export function prepareCornellAssessment({ original, linked, map = [], sources =
   return {
     topicLabel: text(topicLabel).slice(0, 300) || 'Assunto do caderno',
     notebook, map: scopedMap, sources: evidence,
-    contextLimited: mapLimited || map.length > scopedMap.length || evidence.length < sources.filter(s => text(s.text)).length + bank.filter(s => text(s.text)).length ||
+    contextLimited: clipped || mapLimited || map.length > scopedMap.length || evidence.length < sources.filter(s => text(s.text)).length + bank.filter(s => text(s.text)).length ||
       sources.some(s => text(s.text).length > 8000) || ranked.some(({ entry }) => text(entry.text).length > 1800),
   };
 }
