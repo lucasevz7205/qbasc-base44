@@ -42,6 +42,7 @@ export default function MindMapView({
   const [ganReviews, setGanReviews] = React.useState({});
   const [ganReviewOpen, setGanReviewOpen] = React.useState(false);
   const ganReviewFocus = React.useRef(null);
+  const ganReviewButton = React.useRef(null);
   const [queueRunning, setQueueRunning] = React.useState(false);
   const [queueProgress, setQueueProgress] = React.useState(null);
   const [queueReport, setQueueReport] = React.useState(null);
@@ -548,7 +549,7 @@ export default function MindMapView({
                   : `${ganPending.length} nó(s) deste mapa com menos de ${GAN_QUEUE_MIN_QUESTIONS} questões.`}
             </span>
             {ganReview && (
-              <Button size="sm" variant={ganReviewPending ? 'primary' : 'secondary'} icon="list-checks" onClick={openGanReview}>
+              <Button size="sm" variant={ganReviewPending ? 'primary' : 'secondary'} icon="list-checks" ref={ganReviewButton} aria-haspopup="dialog" onClick={openGanReview}>
                 {ganReviewPending ? 'Revisar questões GAN' : 'Reabrir revisão GAN'}
               </Button>
             )}
@@ -619,7 +620,7 @@ export default function MindMapView({
           )}
         </div>
         {ganReview && <GanReviewDialog key={ganReview.id} review={ganReview} open={ganReviewOpen} onOpenChange={setGanReviewOpen}
-          returnFocus={ganReviewFocus} questionBank={D.questionBank} onApprove={approveGanEntry}
+          returnFocus={ganReviewFocus} fallbackFocus={ganReviewButton} questionBank={D.questionBank} onApprove={approveGanEntry}
           onDiscard={entry => setReviewEntry(entry, { status: 'discarded' })} onTrain={trainGanReview} />}
       </div>
     </div>

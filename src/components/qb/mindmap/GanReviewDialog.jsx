@@ -72,7 +72,7 @@ function ReviewFields({ draft, onChange, quality, busy }) {
   );
 }
 
-export function GanReviewDialog({ review, open, onOpenChange, returnFocus, questionBank, onApprove, onDiscard, onTrain }) {
+export function GanReviewDialog({ review, open, onOpenChange, returnFocus, fallbackFocus, questionBank, onApprove, onDiscard, onTrain }) {
   const titleRef = React.useRef(null);
   const lock = React.useRef(false);
   const [drafts, setDrafts] = React.useState({});
@@ -104,7 +104,12 @@ export function GanReviewDialog({ review, open, onOpenChange, returnFocus, quest
         <Dialog.Overlay className="qb-gan-review__overlay" />
         <Dialog.Content className="qb-panel qb-panel--ornate qb-gan-review"
           onOpenAutoFocus={event => { event.preventDefault(); titleRef.current?.focus(); }}
-          onCloseAutoFocus={event => { event.preventDefault(); const target = returnFocus.current; if (target?.isConnected) target.focus(); }}
+          onCloseAutoFocus={event => {
+            event.preventDefault();
+            const target = returnFocus.current;
+            if (target?.isConnected && !target.disabled) target.focus();
+            else fallbackFocus.current?.focus();
+          }}
           onEscapeKeyDown={event => event.stopPropagation()}
           onPointerDownOutside={event => event.preventDefault()}
         >

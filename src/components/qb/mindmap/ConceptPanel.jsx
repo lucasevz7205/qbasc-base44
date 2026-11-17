@@ -124,7 +124,7 @@ export default function ConceptPanel({
               </div>
             )}
             {onOpenGanReview && (
-              <Button variant="secondary" icon="list-checks" onClick={onOpenGanReview} fullWidth>
+              <Button variant="secondary" icon="list-checks" aria-haspopup="dialog" onClick={onOpenGanReview} fullWidth>
                 Ver revisão GAN deste nó
               </Button>
             )}
