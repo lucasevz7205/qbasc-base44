@@ -538,7 +538,11 @@ export default function MindMapView({
             </label>
           </div>
         )}
-        <div style={{ display: 'flex', flexWrap: mapMaximized ? 'nowrap' : 'wrap', gap: 20, alignItems: 'stretch', flex: 1, minHeight: 0 }}>
+        <div
+          className={mapMaximized ? 'qb-map-full__body' : undefined}
+          data-show-panel={mapMaximized ? showPanelInMax : undefined}
+          style={mapMaximized ? undefined : { display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'stretch' }}
+        >
           <MindMapCanvas
             nodes={nodes}
             selectedId={node.id}
@@ -570,11 +574,7 @@ export default function MindMapView({
               ganBlockedReport={ganBlockedReport}
               returnTo={sessionReturn ? undefined : returnTo?.label}
               onReturn={onReturn}
-              style={{
-                flex: mapMaximized ? '0 0 380px' : '1 1 340px',
-                maxWidth: 420,
-                height: mapMaximized ? '100%' : 620,
-              }}
+              style={mapMaximized ? { height: '100%' } : { flex: '1 1 340px', maxWidth: 420, height: 620 }}
             />
           )}
         </div>
