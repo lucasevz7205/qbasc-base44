@@ -1,4 +1,8 @@
 import React from 'react';
+import { useServerFn } from '@tanstack/react-start';
+import { assessCornellNotebook } from '@/lib/server-fns';
+import { prepareCornellAssessment } from '@/lib/cornell-assessment';
+import { CornellAssessmentFeedback } from '@/components/qb/architect/CornellAssessmentFeedback';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { CORNELL_VERIFICATION_LIMITS, cornellVerificationContext, reviewCornellNotebook } from '@/lib/cornell-verification';
@@ -14,10 +18,16 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
   const { QB_DATA } = useRealStudy();
   const id = React.useId();
   const inFlight = React.useRef(false);
+  const mounted = React.useRef(true);
+  const assess = useServerFn(assessCornellNotebook);
+  React.useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const [sources, setSources] = React.useState(() => [emptySource()]);
   const [busy, setBusy] = React.useState(false);
   const [error, setError] = React.useState('');
   const [completed, setCompleted] = React.useState(null);
+  const [answer, setAnswer] = React.useState('');
+  const [confidence, setConfidence] = React.useState(null);
+  const [answerBusy, setAnswerBusy] = React.useState(false);
   const topic = QB_DATA.studySubjects.flatMap(subject => subject.topics).find(item => item.id === topicId);
   const { map, references, mapLimited, bank } = React.useMemo(() => cornellVerificationContext(QB_DATA, topic), [QB_DATA, topic]);
   const changeSource = (index, patch) => setSources(current => current.map((source, i) => i === index ? { ...source, ...patch } : source));
@@ -35,22 +45,49 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
     try {
       const other = await readCompanion();
       const evidence = sourceInputs.map(source => ({ title: source.title.trim(), text: source.text.trim() }));
-      const feedback = reviewCornellNotebook({
-        original: paired ? other : draft,
-        linked: paired ? draft : other,
-        map,
-        sources: evidence,
-        bank,
-      });
-      setCompleted({ feedback, draft, sources, evidence, bank });
+      const notebookData = { original: paired ? other : draft, linked: paired ? draft : other, map, sources: evidence, bank };
+      const feedback = reviewCornellNotebook(notebookData);
+      const input = prepareCornellAssessment({ ...notebookData, topicLabel: topic?.title || topicId, mapLimited });
+      const snapshot = { feedback, draft, sources, evidence, bank, input, analysis: null, attempt: null };
+      if (!mounted.current) return;
+      setCompleted(snapshot);
+      setAnswer('');
+      setConfidence(null);
+      const analysis = await assess({ data: input });
+      if (mounted.current) setCompleted(current => current?.input === input ? { ...current, analysis } : current);
     } catch (failure) {
-      setError(failure?.message || 'Não foi possível verificar o caderno. Tente novamente.');
+      if (mounted.current) setError(failure?.message || 'Não foi possível verificar o caderno. Tente novamente.');
     } finally {
       inFlight.current = false;
-      setBusy(false);
+      if (mounted.current) setBusy(false);
     }
   };
   const stale = completed && (completed.draft !== draft || completed.sources !== sources || completed.bank !== bank);
+  const checkAnswer = async () => {
+    if (disabled || stale || !completed?.analysis || inFlight.current || answer.trim().length < 10 || !confidence) return;
+    inFlight.current = true;
+    setAnswerBusy(true);
+    setError('');
+    const snapshot = completed;
+    const tentativa = { pergunta: snapshot.analysis.pergunta, resposta: answer.trim(), confianca: confidence };
+    try {
+      const other = await readCompanion();
+      const currentInput = prepareCornellAssessment({
+        original: paired ? other : draft, linked: paired ? draft : other, map, sources: snapshot.evidence, bank,
+        topicLabel: topic?.title || topicId, mapLimited,
+      });
+      if (JSON.stringify(currentInput.notebook) !== JSON.stringify(snapshot.input.notebook)) throw new Error('O outro caderno mudou. Verifique novamente antes de avaliar a resposta.');
+      const result = await assess({ data: { ...snapshot.input, tentativa } });
+      if (mounted.current) setCompleted(current => current?.input === snapshot.input ? {
+        ...current, analysis: { ...current.analysis, avaliacaoResposta: result.avaliacaoResposta }, attempt: tentativa,
+      } : current);
+    } catch (failure) {
+      if (mounted.current) setError(failure?.message || 'Não foi possível avaliar a resposta. Tente novamente.');
+    } finally {
+      inFlight.current = false;
+      if (mounted.current) setAnswerBusy(false);
+    }
+  };
   return (
     <div className="qb-cornell-verification qb-panel qb-panel--sunken">
       <p>A verificação compara suas notas com materiais, mapas, fundamentos das questões e flashcards da matéria. {map.length
@@ -88,14 +125,16 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
           onClick={() => setSources(current => [...current, emptySource()])}>Adicionar outra fonte</Button>}
       </details>
       <div className="qb-cornell-verification__run">
-        <Button variant="secondary" icon="list-checks" disabled={disabled} loading={busy} onClick={review}>Verificar caderno</Button>
-        <p>A conferência é feita no navegador. Abra a fonte para confirmar o contexto de cada trecho.</p>
+        <Button variant="secondary" icon="list-checks" disabled={disabled || answerBusy} loading={busy} onClick={review}>Analisar com O Arquiteto</Button>
+        <p>Envia as notas e os trechos selecionados ao Gemini pela API do Arquiteto. A análise não modifica o caderno nem o progresso.</p>
       </div>
       {busy && <p role="status">Verificando o caderno…</p>}
       {error && <p role="alert">{error}</p>}
       {stale && <p role="status">O caderno, as fontes ou o acervo mudaram. Verifique novamente para atualizar o parecer.</p>}
-      {completed && <div className="qb-cornell-verification__feedback" aria-label="Parecer do Arquiteto">
-        <div role="status" className="qb-overline">Parecer do Arquiteto disponível</div>
+      {completed?.analysis && <CornellAssessmentFeedback analysis={completed.analysis} id={id} answer={answer} confidence={confidence}
+        onAnswer={setAnswer} onConfidence={setConfidence} onCheck={checkAnswer} busy={answerBusy} disabled={disabled || busy || Boolean(stale)} attempt={completed.attempt} />}
+      {completed && <details><summary>Comparação local de trechos e cobertura</summary><div className="qb-cornell-verification__feedback" aria-label="Comparação local do caderno">
+        <div className="qb-overline">Indícios locais · comparação por termos e trechos</div>
         {completed.feedback.relations.length > 0 && <div>
           <h4>Relações entre as ideias</h4>
           <ul>{completed.feedback.relations.map((relation, i) => <li key={i}>
@@ -132,7 +171,7 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
             </blockquote>}
           </li>)}</ul>
         </div>}
-      </div>}
+      </div></details>}
     </div>
   );
 }
