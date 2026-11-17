@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { toStrictJsonSchema, invokeOpenAIJson, callGanGenerator, callGanDiscriminator } from '../src/lib/gan-providers.js';
+import { toStrictJsonSchema, invokeOpenAIJson, callGanGenerator, callGanGeneratorWithFallback, callGanDiscriminator } from '../src/lib/gan-providers.js';
 import { withGanDiagnostics } from '../src/lib/gan-diagnostics.js';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
 import { CEBRASPE_V1_TAXONOMY, mechanismForKey } from '../src/lib/cebraspe-v1-taxonomy.js';
@@ -164,6 +164,42 @@ test('gerador respeita o tempo limite durante a espera e não repete HTTP 429', 
     fetchImpl: async () => { calls += 1; return okResponse({}, 429); },
   }), /Limite de uso do Gemini/);
   assert.equal(calls, 2);
+});
+
+test('GPT gera as questões se o Gemini devolver 503 persistente', async () => {
+  const { prompt, response_json_schema, ...gemini } = generatorInput;
+  const events = [];
+  const out = await callGanGeneratorWithFallback({
+    prompt,
+    response_json_schema,
+    gemini: { ...gemini, fetchImpl: async () => {
+      events.push('gemini');
+      return { ...okResponse({}, 503), headers: { get: () => '30' } };
+    } },
+    openai: { apiKey: 'sk-teste', model: 'gpt-modelo-teste', fetchImpl: async (_url, init) => {
+      events.push('gpt-gerador');
+      const req = JSON.parse(init.body);
+      assert.deepEqual(req.messages, [{ role: 'user', content: prompt }]);
+      assert.equal(req.response_format.json_schema.name, 'questoes_gan');
+      assert.equal(req.response_format.json_schema.strict, true);
+      return openaiOk({ questoes: [] });
+    } },
+    onOpenAIFallback: () => events.push('fallback'),
+  });
+  assert.deepEqual(events, ['gemini', 'fallback', 'gpt-gerador']);
+  assert.deepEqual(out, { draft: { questoes: [] }, provedorGerador: 'gpt' });
+});
+
+test('erros de credencial e cota do Gemini não acionam o GPT gerador', async () => {
+  const { prompt, response_json_schema, ...gemini } = generatorInput;
+  for (const [status, message] of [[403, /recusou a requisição/], [429, /Limite de uso/]]) {
+    await assert.rejects(callGanGeneratorWithFallback({
+      prompt,
+      response_json_schema,
+      gemini: { ...gemini, fetchImpl: async () => okResponse({}, status) },
+      onOpenAIFallback: () => assert.fail('Ativou o GPT para erro ' + status),
+    }), message);
+  }
 });
 
 test('callGanDiscriminator + normalizeGanConfrontation: itemRefinado null não quebra e o confronto cego funciona', async () => {

@@ -105,7 +105,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     criticaAdversaria: item.criticaAdversaria,
     statusConfronto: item.statusConfronto,
     ganScore: item.ganScore,
-    provedorGerador: item.provedorGerador,
+    ...(item.provedorGerador ? { provedorGerador: item.provedorGerador } : {}),
     tags,
     trap,
   };

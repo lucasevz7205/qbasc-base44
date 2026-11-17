@@ -165,3 +165,21 @@ test('fila pausa no primeiro 503 do Gemini e preserva questões já gravadas e n
     falhas: [{ no: 'b', ...unavailable }],
   });
 });
+
+test('fila identifica a recuperação com GPT e grava a procedência apenas dos itens aprovados', async () => {
+  const writes = [];
+  const report = await runGanQueue({
+    chosen: { topicId: 't', title: 'Mapa' },
+    pending: [{ id: 'a', label: 'A' }],
+    generate: async () => ({
+      provedorGerador: 'gpt',
+      aprovadas: [{ id: 'ok', statusConfronto: 'aprovada_gan', provedorGerador: 'gpt' }],
+      bloqueadas: [{ id: 'bloqueada', statusConfronto: 'divergencia_bloqueada', provedorGerador: 'gpt' }],
+    }),
+    save: async (_collection, _id, record) => { writes.push(record); },
+  });
+  assert.equal(report.nosComGeradorGpt, 1);
+  assert.equal(report.aprovadas, 1);
+  assert.deepEqual(writes.map(record => [record.id, record.provedorGerador]), [['ok', 'gpt']]);
+  assert.ok(writes[0].tags.includes('Geração e revisão pelo GPT'));
+});

@@ -7,7 +7,7 @@ import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "../src/lib/gemini
 test("Gemini: API externa recebe o prompt, modelo e chave somente no header", async () => {
   let seen;
   const result = await invokeGeminiTutor({
-    apiKey: "test-secret-not-real",
+    apiKey: "  test-secret-not-real  ",
     prompt: "Pergunta socrática",
     fetchImpl: async (url, opts) => {
       seen = { url, opts };
@@ -57,6 +57,25 @@ test("Gemini: limite 429 é erro explícito, sem cobrança via fallback", async 
   assert.equal(calls, 1);
 });
 
+test("Gemini: análise com JSON estruturado recupera uma indisponibilidade 503", async () => {
+  let calls = 0;
+  const result = await invokeGeminiTutor({
+    apiKey: "chave-teste",
+    prompt: "Analise a formulação deste cartão.",
+    responseJsonSchema: { type: "object", properties: { parecer: { type: "string" } } },
+    fetchImpl: async (_url, opts) => {
+      calls += 1;
+      assert.equal(JSON.parse(opts.body).generationConfig.responseMimeType, "application/json");
+      if (calls === 1) return new Response("temporariamente indisponível", { status: 503 });
+      return new Response(JSON.stringify({
+        candidates: [{ content: { parts: [{ text: '{"parecer":"Claro"}' }] } }],
+      }));
+    },
+  });
+  assert.equal(calls, 2);
+  assert.deepEqual(JSON.parse(result.reply), { parecer: "Claro" });
+});
+
 test("Gemini: recusa resposta vazia ou bloqueada sem fabricar tutor", async () => {
   await assert.rejects(invokeGeminiTutor({
     apiKey: "teste",
@@ -99,7 +118,8 @@ test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
   assert.match(block, /\.middleware\(\[requireUser\]\)/);
   assert.match(block, /context\.user\?\.role !== "admin"/);
   assert.match(block, /invokeGeminiTutor/);
-  assert.match(block, /secrets\.get\("Arquiteto"\)/);
+  assert.match(block, /apiKey: architectKey\(\)/);
+  assert.match(source, /const namedArchitectKey = .*secrets\.get\("Arquiteto"\)/);
   assert.match(block, /data\.front/);
   assert.match(block, /data\.back/);
   assert.match(block, /data\.basis/);
