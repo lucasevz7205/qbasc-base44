@@ -479,18 +479,17 @@ export default function MindMapView({
         }
       >
         {mapMaximized && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', paddingBottom: 8, borderBottom: '1px solid var(--divider)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: '1 1 260px' }}>
+          <div className="qb-map-full-header">
+            <div className="qb-map-full-header__context">
               <Badge tone="gold">{subj ? subj.short : 'Mapa'} {topic?.num || ''}</Badge>
-              <strong style={{ font: '600 17px/1.25 var(--font-heading)', color: 'var(--qb-ivory)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {chosen.title}
-              </strong>
-              <span style={{ font: '400 12px/1.2 var(--font-mono)', color: 'var(--text-muted)' }}>
-                nó: {node.label}
-              </span>
+              <div className="qb-map-full-header__caption">
+                <strong title={chosen.title}>{chosen.title}</strong>
+                {node.id !== chosen.id && <small title={node.label}>{node.label}</small>}
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <div className="qb-map-full-header__picker">
               <StudyTopicPicker
+                compact
                 label="Trocar assunto"
                 subjects={allSubjects}
                 value={topicId}
@@ -498,25 +497,35 @@ export default function MindMapView({
                 recents={recents}
                 pendingReviews={pendingReviews}
                 onSelect={s => handleSelectTopic(s.topicId)}
-                style={{ width: 340, maxWidth: '100%' }}
               />
+            </div>
+            <div className="qb-map-full-header__actions">
               <StudyClockControls />
-              {sessionReturn && <Button variant="secondary" icon="corner-up-left" onClick={sessionReturn.onReturn}>{sessionReturn.label}</Button>}
+              {sessionReturn && (
+                <Button size="sm" variant="secondary" icon="corner-up-left" aria-label={sessionReturn.label}
+                  title={sessionReturn.label} onClick={sessionReturn.onReturn}>
+                  <span className="qb-map-full-header__action-text">{sessionReturn.label}</span>
+                </Button>
+              )}
               <Button
                 size="sm"
                 variant="secondary"
                 icon="layout-panel-top"
+                aria-label={showPanelInMax ? 'Ocultar painel lateral' : 'Mostrar painel do conceito'}
+                title={showPanelInMax ? 'Ocultar painel lateral' : 'Mostrar painel do conceito'}
                 onClick={() => setShowPanelInMax(v => !v)}
               >
-                {showPanelInMax ? 'Ocultar painel lateral' : 'Mostrar painel do conceito'}
+                <span className="qb-map-full-header__action-text">Painel lateral</span>
               </Button>
               <Button
                 size="sm"
                 variant="secondary"
                 icon="x"
+                aria-label="Reduzir tela (Esc)"
+                title="Reduzir tela (Esc)"
                 onClick={() => setMapMaximized(false)}
               >
-                Reduzir tela (Esc)
+                <span className="qb-map-full-header__action-text">Reduzir tela</span>
               </Button>
             </div>
           </div>

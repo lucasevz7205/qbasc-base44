@@ -20,6 +20,7 @@ export default function StudyTopicPicker({
   label = 'Assunto',
   placeholder = 'Buscar por matéria, código ou assunto',
   emptyTitle = 'Título não disponível nos arquivos',
+  compact = false,
   style,
 }) {
   const [open, setOpen] = React.useState(false);
@@ -209,21 +210,24 @@ export default function StudyTopicPicker({
         <button
           ref={trigger}
           type="button"
-          className="qb-picker__trigger"
+          className={'qb-picker__trigger' + (compact ? ' qb-picker__trigger--compact' : '')}
           aria-haspopup="dialog"
           aria-expanded={open}
+          aria-label={compact && cur ? [label, cur.s.name, cur.s.short + ' ' + cur.t.num, cur.t.title || emptyTitle].join(' · ') : undefined}
+          title={compact ? cur?.t.title : undefined}
           onClick={() => show(true)}
           style={{ flex: 1 }}
         >
           <Icon name="search" size={18} color="var(--qb-gold)" />
           <span style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 3 }}>
             <span className="qb-overline" style={{ fontSize: 11 }}>
-              {label} · {cur ? cur.s.name : 'Escolher matéria e assunto'}
+              {compact ? label : label + ' · ' + (cur ? cur.s.name : 'Escolher matéria e assunto')}
             </span>
             {cur ? (
-              <span style={{ font: '500 15px/1.35 var(--font-body)', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{ font: '500 15px/1.35 var(--font-body)', display: 'flex', alignItems: 'center', gap: 8, flexWrap: compact ? 'nowrap' : 'wrap' }}>
                 <span className="qb-picker__code">{cur.s.short} {cur.t.num}</span>
-                <span style={cur.t.title ? undefined : { fontStyle: 'italic', color: 'var(--text-muted)', fontWeight: 400 }}>
+                <span className={compact ? 'qb-picker__compact-title' : undefined}
+                  style={cur.t.title ? undefined : { fontStyle: 'italic', color: 'var(--text-muted)', fontWeight: 400 }}>
                   {cur.t.title || emptyTitle}
                 </span>
               </span>
@@ -241,7 +245,7 @@ export default function StudyTopicPicker({
             className="qb-btn qb-btn--secondary qb-btn--sm"
             onClick={() => show(false)}
             title={'Ver todos os assuntos de ' + cur.s.name}
-            style={{ height: 'auto', minHeight: 52, padding: '0 14px', flexShrink: 0 }}
+            style={{ height: 'auto', minHeight: compact ? 48 : 52, paddingInline: compact ? 10 : 14, paddingBlock: 0, flexShrink: 0 }}
           >
             <Icon name={cur.s.icon || 'book-open'} size={16} color="var(--qb-gold)" />
             <span>{cur.s.short}</span>
