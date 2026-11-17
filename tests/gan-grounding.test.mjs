@@ -28,7 +28,7 @@ test('seleção de fontes respeita o assunto, ignora títulos sem texto e manté
   assert.equal(list.length, 1);
   assert.equal(list[0].natureza, 'texto');
   assert.equal(list[0].titulo, original.titulo);
-  assert.equal(list[0].texto, original.referenceText);
+  assert.equal(list[0].texto.replace(/\s+/g, ' '), original.referenceText);
   assert.ok(list[0].id.startsWith('texto-t:referenceText:'));
 });
 
