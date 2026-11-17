@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { toStrictJsonSchema, invokeOpenAIJson, callGanGenerator, callGanDiscriminator } from '../src/lib/gan-providers.js';
+import { withGanDiagnostics } from '../src/lib/gan-diagnostics.js';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
 import { CEBRASPE_V1_TAXONOMY, mechanismForKey } from '../src/lib/cebraspe-v1-taxonomy.js';
 
@@ -100,6 +101,69 @@ test('callGanGenerator: Gemini devolve JSON, que é lido com a mesma forma de an
   assert.equal(seen.body.generationConfig.responseMimeType, 'application/json');
   assert.equal(seen.body.generationConfig.maxOutputTokens, 6000);
   await assert.rejects(callGanGenerator({ prompt: 'x', response_json_schema: SCHEMA, apiKey: '', model: 'gemini-3.5-flash-lite', fetchImpl }), /Chave Gemini ausente/);
+});
+
+const generatorInput = { prompt: 'gere', response_json_schema: SCHEMA, apiKey: 'g-key', model: 'gemini-3.5-flash-lite' };
+
+test('gerador repete HTTP 503 até duas vezes e devolve o JSON recuperado', async () => {
+  const attempts = [];
+  const result = await callGanGenerator({
+    ...generatorInput,
+    fetchImpl: async (url, init) => {
+      attempts.push({ url, body: init.body, signal: init.signal });
+      if (attempts.length < 3) return okResponse({}, 503);
+      return okResponse({ candidates: [{ content: { parts: [{ text: '{"questoes":[]}' }] } }] });
+    },
+  });
+  assert.deepEqual(result, { questoes: [] });
+  assert.equal(attempts.length, 3);
+  assert.deepEqual(attempts[1], attempts[0]);
+  assert.deepEqual(attempts[2], attempts[0]);
+});
+
+test('gerador preserva o diagnóstico de HTTP 503 após esgotar as retentativas', async () => {
+  let calls = 0;
+  const result = await withGanDiagnostics(stage => {
+    stage('gemini');
+    return callGanGenerator({
+      ...generatorInput,
+      fetchImpl: async () => { calls += 1; return okResponse({}, 503); },
+    });
+  });
+  assert.equal(calls, 3);
+  assert.equal(result.falha.etapa, 'gemini');
+  assert.equal(result.falha.codigo, 'gemini-http-503');
+  assert.match(result.falha.mensagem, /temporariamente indisponível/);
+});
+
+test('gerador adia a retentativa quando o Gemini pede uma espera longa', async () => {
+  let calls = 0;
+  await assert.rejects(callGanGenerator({
+    ...generatorInput,
+    fetchImpl: async () => {
+      calls += 1;
+      return {
+        ...okResponse({}, 503),
+        headers: { get: name => name === 'Retry-After' ? '30' : null },
+      };
+    },
+  }), /HTTP 503/);
+  assert.equal(calls, 1);
+});
+
+test('gerador respeita o tempo limite durante a espera e não repete HTTP 429', async () => {
+  let calls = 0;
+  await assert.rejects(callGanGenerator({
+    ...generatorInput,
+    timeoutMs: 20,
+    fetchImpl: async () => { calls += 1; return okResponse({}, 503); },
+  }), /Tempo limite do Gemini/);
+  assert.equal(calls, 1);
+  await assert.rejects(callGanGenerator({
+    ...generatorInput,
+    fetchImpl: async () => { calls += 1; return okResponse({}, 429); },
+  }), /Limite de uso do Gemini/);
+  assert.equal(calls, 2);
 });
 
 test('callGanDiscriminator + normalizeGanConfrontation: itemRefinado null não quebra e o confronto cego funciona', async () => {

@@ -141,3 +141,27 @@ test('reprovação no confronto restabelece a fila após erro e não conta como 
   assert.equal(report.falhas[0].etapa, 'servidor');
   assert.doesNotMatch(report.falhas[0].mensagem, /Mensagem interna/);
 });
+
+test('fila pausa no primeiro 503 do Gemini e preserva questões já gravadas e nós pendentes', async () => {
+  const pending = ['a', 'b', 'c', 'd'].map(id => ({ id, label: id }));
+  const visited = [];
+  const writes = [];
+  const unavailable = { etapa: 'gemini', codigo: 'gemini-http-503', mensagem: 'Indisponível' };
+  const report = await runGanQueue({
+    chosen: { topicId: 't', title: 'Mapa' },
+    pending,
+    maxNodes: 3,
+    generate: async node => {
+      visited.push(node.id);
+      if (node.id === 'b') return { falha: unavailable };
+      return { aprovadas: [{ id: node.id, statusConfronto: 'aprovada_gan' }], bloqueadas: [] };
+    },
+    save: async (_collection, id) => { writes.push(id); },
+  });
+  assert.deepEqual(visited, ['a', 'b']);
+  assert.deepEqual(writes, ['a']);
+  assert.deepEqual(report, {
+    processados: 2, aprovadas: 1, bloqueadas: 0, erros: 1, restantes: 3,
+    falhas: [{ no: 'b', ...unavailable }],
+  });
+});
