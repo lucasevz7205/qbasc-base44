@@ -92,4 +92,3 @@ test('anotação ou resumo coincidente e refinamento escrito pela revisora reque
   assert.equal(refined.aprovadas.length, 0);
   assert.equal(refined.bloqueadas.length, 1);
 });
-
