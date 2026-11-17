@@ -17,7 +17,7 @@ export function ganReviewDraft(item) {
 
 export function ganReviewQuality(draft, questionBank = [], currentId) {
   const statement = statementKey(draft.statement);
-  const { problems, warnings } = questionQualityProblems(draft);
+  const { problems, warnings } = questionQualityProblems(draft, { checkComment: false });
   if (statement.length < 20) {
     problems.unshift({ code: 'enunciado_curto', message: 'Escreva um enunciado completo com pelo menos 20 caracteres.' });
   } else if (questionBank.some(row => row.id !== currentId && statementKey(row.statement) === statement)) {

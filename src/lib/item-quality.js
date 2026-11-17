@@ -32,13 +32,11 @@ export function overlapWithStatement(explanation, statement) {
  * Confere um item. `problems` bloqueiam o salvamento; `warnings` apenas avisam.
  * item: { statement, key, explanation, basis, mecanismo, correcaoMinima, trechoDecisivo }
  */
-export function questionQualityProblems(item = {}) {
+export function questionQualityProblems(item = {}, { checkComment = true } = {}) {
   const problems = [];
   const warnings = [];
   const key = clean(item.key).toUpperCase();
   const code = clean(item.mecanismo).toUpperCase();
-  const explanation = clean(item.explanation);
-  const basis = clean(item.basis);
   if (!code) problems.push({ code: "mecanismo_ausente", message: "Falta o mecanismo de falsificação (F1–F10 para item Errado, V1–V4 para item Certo)." });
   else if (!mechanismForKey(code, key)) problems.push({ code: "mecanismo_incompativel", message: "O mecanismo " + code + " não combina com o gabarito " + (key || "?") + ": F só em item Errado, V só em item Certo." });
   if (clean(item.correcaoMinima).length < 15) {
@@ -46,14 +44,18 @@ export function questionQualityProblems(item = {}) {
       ? "Falta mostrar como o item seria falsificado: a menor alteração que o tornaria Errado, com o código F."
       : "Falta a correção mínima: a versão correta do item, por extenso." });
   }
-  if (sentenceCount(explanation) < 2 || explanation.length < 120) {
-    problems.push({ code: "comentario_curto", message: "O comentário precisa de pelo menos duas frases: o veredito com a regra e o dispositivo, e por que o item parece errado (Certo) ou onde está o erro (Errado)." });
-  }
-  if (explanation && basis && (flat(explanation) === flat(basis) || flat(basis).includes(flat(explanation)))) {
-    problems.push({ code: "comentario_igual_referencia", message: "O comentário é só a referência. Explique a regra, não apenas indique onde ela está." });
-  }
-  if (explanation && clean(item.statement) && overlapWithStatement(explanation, item.statement) >= 0.7) {
-    problems.push({ code: "comentario_repete_enunciado", message: "O comentário repete o enunciado. Diga por que o julgamento é esse, com a regra que decide." });
+  if (checkComment) {
+    const explanation = clean(item.explanation);
+    const basis = clean(item.basis);
+    if (sentenceCount(explanation) < 2 || explanation.length < 120) {
+      problems.push({ code: "comentario_curto", message: "O comentário precisa de pelo menos duas frases: o veredito com a regra e o dispositivo, e por que o item parece errado (Certo) ou onde está o erro (Errado)." });
+    }
+    if (explanation && basis && (flat(explanation) === flat(basis) || flat(basis).includes(flat(explanation)))) {
+      problems.push({ code: "comentario_igual_referencia", message: "O comentário é só a referência. Explique a regra, não apenas indique onde ela está." });
+    }
+    if (explanation && clean(item.statement) && overlapWithStatement(explanation, item.statement) >= 0.7) {
+      problems.push({ code: "comentario_repete_enunciado", message: "O comentário repete o enunciado. Diga por que o julgamento é esse, com a regra que decide." });
+    }
   }
   if (clean(item.trechoDecisivo).length < 8) {
     warnings.push({ code: "trecho_ausente", message: "Sem trecho decisivo literal. Se a fonte não está no registro, confira-o antes de aceitar." });

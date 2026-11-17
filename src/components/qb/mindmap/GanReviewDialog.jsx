@@ -58,7 +58,7 @@ function ReviewFields({ draft, onChange, quality, busy }) {
       <label>Correção mínima
         <textarea rows={2} maxLength={600} value={draft.correcaoMinima} onChange={e => onChange('correcaoMinima', e.target.value)} />
       </label>
-      <label>Comentário e fundamentação
+      <label>Comentário e fundamentação (opcional)
         <textarea rows={4} maxLength={2400} value={draft.explanation} onChange={e => onChange('explanation', e.target.value)} />
       </label>
       {quality.problems.length > 0 && (

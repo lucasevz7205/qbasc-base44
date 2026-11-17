@@ -67,8 +67,20 @@ test('aprovação manual exige o portão de qualidade e detecta duplicação no 
   const [item] = normalizeGanConfrontation([candidate], [rejection], map).bloqueadas;
   const draft = ganReviewDraft(item);
   assert.throws(() => approveGanReview(item, { ...draft, key: 'C' }), /mecanismo.*não combina/);
-  assert.throws(() => approveGanReview(item, { ...draft, explanation: 'Muito curto.' }), /pelo menos duas frases/);
+  assert.throws(() => approveGanReview(item, { ...draft, correcaoMinima: '' }), /Falta a correção mínima/);
   assert.throws(() => approveGanReview(item, draft, [{ id: 'outro', statement: draft.statement.toUpperCase() }]), /Já existe/);
+});
+
+test('revisão GAN aprova questão com comentário vazio, curto ou repetido', () => {
+  const [item] = normalizeGanConfrontation([candidate], [rejection], map).bloqueadas;
+  const draft = ganReviewDraft(item);
+  for (const explanation of ['', 'Muito curto.', draft.statement]) {
+    const review = { ...draft, explanation, basis: explanation };
+    assert.deepEqual(ganReviewQuality(review).problems, []);
+    const approved = approveGanReview(item, review);
+    assert.equal(approved.statusConfronto, 'aprovada_manual');
+    assert.equal(approved.comentario, explanation);
+  }
 });
 
 test('lote administrativo entrega candidatos para revisão e adia a gravação', async () => {
