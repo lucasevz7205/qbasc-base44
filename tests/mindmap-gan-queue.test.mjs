@@ -16,7 +16,7 @@ const hooks = registerHooks({
     return next(specifier, context);
   },
 });
-const { preparePersonalMapGan } = await import('../src/lib/study-accounts.js');
+const { preparePersonalMapGan, prepareGanSourcePassages } = await import('../src/lib/study-accounts.js');
 hooks.deregister();
 
 function fixture() {
@@ -197,4 +197,24 @@ test('fila pausa quando a quota Gemini impede o julgamento cego', async () => {
   assert.deepEqual(visited, ['a']);
   assert.equal(report.restantes, 2);
   assert.deepEqual(report.falhas, [{ no: 'Nó A', ...quota }]);
+});
+
+test('consulta do acervo do servidor mantém a separação entre administrador e contas', async () => {
+  const calls = [];
+  const original = { id: 'texto-t', topicos: ['t'], titulo: 'Regulamento',
+    referenceText: 'Compete ao dirigente autorizar a despesa.' };
+  const request = { topicId: 't', targetNodeLabel: 'Competência' };
+  const context = id => ({
+    user: id ? { role: 'user', id } : { role: 'admin' },
+    getBase44: () => ({ asServiceRole: { entities: {
+      ClaudeDocument: { filter: async query => {
+        calls.push(query.collection);
+        return [{ collection: query.collection, legacy_id: original.id, payload_json: JSON.stringify(original) }];
+      } },
+    } } }),
+  });
+  assert.equal((await prepareGanSourcePassages(context(), request))[0].texto, original.referenceText);
+  assert.equal((await prepareGanSourcePassages(context('lucas'), request))[0].texto, original.referenceText);
+  assert.deepEqual(calls, ['materiais', 'qbasc-conta:lucas:materiais']);
+  assert.ok(calls.every(collection => !/respostas|cartoes_aval|rodadas/.test(collection)));
 });

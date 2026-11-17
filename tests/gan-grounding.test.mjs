@@ -4,7 +4,6 @@ import { ganSourcePassages, verifyGanEvidence } from '../src/lib/gan-grounding.j
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
 import { approveGanReview, ganReviewDraft } from '../src/lib/gan-review.js';
 import { buildGanQuestionRecord } from '../src/lib/gan-queue.js';
-import { prepareGanSourcePassages } from '../src/lib/study-accounts.js';
 
 const request = { topicId: 't', targetNodeLabel: 'competência para autorizar despesa', targetNodePath: ['Governança'] };
 const original = { id: 'texto-t', topicos: ['t'], titulo: 'Regulamento da unidade — texto extraído',
@@ -34,7 +33,7 @@ test('seleção de fontes respeita o assunto, ignora títulos sem texto e manté
 });
 
 test('texto longo prioriza o trecho do nó e mantém o orçamento de quatro passagens', () => {
-  const body = Array(12).fill('Parágrafo de material não relacionado. '.repeat(30)).join('\n\n') +
+  const body = Array.from({ length: 12 }, (_, i) => ('Parágrafo ' + i + ' de material não relacionado. ').repeat(30)).join('\n\n') +
     '\n\nCompete ao dirigente autorizar a despesa e verificar a competência no processo de governança.';
   const list = ganSourcePassages([{ ...original, referenceText: body }], request);
   assert.equal(list.length, 4);
@@ -94,19 +93,3 @@ test('anotação ou resumo coincidente e refinamento escrito pela revisora reque
   assert.equal(refined.bloqueadas.length, 1);
 });
 
-test('consulta do acervo do servidor mantém a separação entre administrador e contas', async () => {
-  const calls = [];
-  const context = id => ({
-    user: id ? { role: 'user', id } : { role: 'admin' },
-    getBase44: () => ({ asServiceRole: { entities: {
-      ClaudeDocument: { filter: async query => {
-        calls.push(query.collection);
-        return [{ collection: query.collection, legacy_id: original.id, payload_json: JSON.stringify(original) }];
-      } },
-    } } }),
-  });
-  assert.equal((await prepareGanSourcePassages(context(), request))[0].texto, original.referenceText);
-  assert.equal((await prepareGanSourcePassages(context('lucas'), request))[0].texto, original.referenceText);
-  assert.deepEqual(calls, ['materiais', 'qbasc-conta:lucas:materiais']);
-  assert.ok(calls.every(collection => !/respostas|cartoes_aval|rodadas/.test(collection)));
-});
