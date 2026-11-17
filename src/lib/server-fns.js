@@ -4,7 +4,7 @@ import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
-import { callGanGeneratorWithFallback, callGanDiscriminator, validateGanDiscriminatorConfig } from "@/lib/gan-providers";
+import { callGanGemini } from "@/lib/gan-providers";
 import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-diagnostics";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
@@ -63,7 +63,6 @@ const TutorInputSchema = z.object({
 const namedArchitectKey = () => secrets.get("Arquiteto")?.trim() || secrets.get("ARQUITETO")?.trim();
 const architectModel = () => secrets.get("QB_GEMINI_MODEL")?.trim() || DEFAULT_TUTOR_GEMINI_MODEL;
 const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY")?.trim() : undefined);
-const ganDiscriminatorConfig = () => ({ apiKey: secrets.get("Discriminador"), model: secrets.get("QB_DISCRIMINATOR_MODEL") });
 
 export const getArchitectProviderStatus = createServerFn({ method: "GET" })
   .middleware([requireUser])
@@ -513,8 +512,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     const personal = context.user.role === 'admin' ? null : await preparePersonalMapGan(context, request);
     const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
     stage("configuracao");
-    const discriminator = ganDiscriminatorConfig();
-    validateGanDiscriminatorConfig(discriminator);
+    const gemini = { apiKey: architectKey(), model: architectModel() };
     const count = data.count || 4;
     const mapJson = JSON.stringify(data.mapa).slice(0, 12000);
     const pathText = Array.isArray(data.targetNodePath) && data.targetNodePath.length
@@ -538,12 +536,10 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .join("\n\n");
 
     stage("gemini");
-    const { draft, provedorGerador } = await callGanGeneratorWithFallback({
-      gemini: { apiKey: architectKey(), model: architectModel() },
-      openai: discriminator,
-      onOpenAIFallback: () => stage("gpt-gerador"),
+    const draft = await callGanGemini({
+      ...gemini,
       prompt: generatorPrompt,
-      response_json_schema: {
+      schema: {
         type: "object",
         properties: {
           questoes: {
@@ -554,7 +550,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
                 mapaNoId: { type: "string" },
                 tema: { type: "string" },
                 enunciado: { type: "string" },
-                gabarito: { type: "string" },
+                gabarito: { type: "string", enum: ["C", "E"] },
                 mecanismo: { type: "string" },
                 trechoDecisivo: { type: "string" },
                 comentario: { type: "string" },
@@ -581,17 +577,11 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
 
     const candidateQuestions = Array.isArray(draft?.questoes) ? draft.questoes.slice(0, count) : [];
     if (!candidateQuestions.length) {
-      const gerador = provedorGerador === "gpt" ? "GPT" : "Gemini";
-      throw new GanStepError(provedorGerador + "-sem-itens", `O ${gerador} não retornou questões para este nó.`);
+      throw new GanStepError("gemini-sem-itens", "O Gemini não retornou questões para este nó.");
     }
 
-    // ETAPA 2 DA GAN: Agente Discriminador Cego recebe APENAS os enunciados (sem gabarito, sem mecanismo e sem comentários do Gerador)
-    const blindItems = candidateQuestions.map((q, index) => ({
-      index,
-      mapaNoId: q.mapaNoId || data.targetNodeId,
-      tema: q.tema || data.targetNodeLabel,
-      enunciado: q.enunciado,
-    }));
+    // A segunda chamada começa sem histórico e recebe apenas os enunciados numerados e as fontes.
+    const blindItems = candidateQuestions.map((q, index) => ({ index, enunciado: q.enunciado }));
 
     const discriminatorPrompt = [
       "ARQUITETURA GAN — ETAPA 2: AGENTE DISCRIMINADOR ADVERSÁRIO (REVISÃO CEGA CEBRASPE).",
@@ -601,7 +591,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       "1. Resolver o item de forma totalmente independente (`gabaritoDiscriminador`: 'C' ou 'E') com base exclusivamente no Mapa Mental, no conteúdo-fonte vinculado e na literalidade constitucional/legal aplicável ao nó.",
       "2. Auditar rigorosamente o item procurando falhas (`falhasDetectadas`): ambiguidade, palavra restritiva artificial entregando o gabarito, extrapolação fora do escopo ou dupla interpretação.",
       "3. Atribuir `scoreRealismo` (0 a 100) e emitir `veredicto`: 'APROVADA' (item perfeito e unívoco), 'REFINAR' (boa tese, mas precisa de ajuste redacional para eliminar ambiguidade) ou 'REJEITADA' (item contraditório, sem amparo ou irremediavelmente viciado).",
-      "4. Se o veredicto for 'REFINAR', forneça obrigatoriamente `itemRefinado` com `{ enunciado, gabarito, comentario }` reconstruído de forma unívoca no padrão CEBRASPE.",
+      "4. Se o veredicto for 'REFINAR', forneça obrigatoriamente `itemRefinado` com `{ enunciado, gabarito, comentario }` reconstruído de forma unívoca no padrão CEBRASPE. Para outros veredictos, omita `itemRefinado`.",
       `MAPA MENTAL (DADOS):\n${mapJson}`,
       data.sourceContext ? `CONTEÚDO-FONTE E NOTAS VINCULADAS AO NÓ (DADOS):\n${data.sourceContext.slice(0, 6000)}` : "",
       `ITENS PARA JULGAMENTO CEGO (SEM GABARITO):\n${JSON.stringify(blindItems, null, 2)}`,
@@ -609,11 +599,12 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    stage("gpt");
-    const discRes = await callGanDiscriminator({
-      ...discriminator,
+    stage("gemini-discriminador");
+    const discRes = await callGanGemini({
+      ...gemini,
       prompt: discriminatorPrompt,
-      response_json_schema: {
+      timeoutMs: 120000,
+      schema: {
         type: "object",
         properties: {
           julgamentos: {
@@ -621,19 +612,20 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
             items: {
               type: "object",
               properties: {
-                index: { type: "number" },
-                gabaritoDiscriminador: { type: "string" },
-                veredicto: { type: "string" },
-                scoreRealismo: { type: "number" },
+                index: { type: "integer", minimum: 0, maximum: blindItems.length - 1 },
+                gabaritoDiscriminador: { type: "string", enum: ["C", "E"] },
+                veredicto: { type: "string", enum: ["APROVADA", "REFINAR", "REJEITADA"] },
+                scoreRealismo: { type: "number", minimum: 0, maximum: 100 },
                 falhasDetectadas: { type: "array", items: { type: "string" } },
                 criticaAdversaria: { type: "string" },
                 itemRefinado: {
                   type: "object",
                   properties: {
                     enunciado: { type: "string" },
-                    gabarito: { type: "string" },
+                    gabarito: { type: "string", enum: ["C", "E"] },
                     comentario: { type: "string" },
                   },
+                  required: ["enunciado", "gabarito", "comentario"],
                 },
               },
               required: [
@@ -661,9 +653,11 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     });
     for (const item of result.questoes) {
       item.id = 'gan-' + crypto.randomUUID();
-      item.provedorGerador = provedorGerador;
+      item.provedorGerador = "gemini";
+      item.provedorDiscriminador = "gemini";
     }
-    result.provedorGerador = provedorGerador;
+    result.provedorGerador = "gemini";
+    result.provedorDiscriminador = "gemini";
     if (!personal) return result;
     stage("gravacao");
     const registros = await personal.persist(result.aprovadas);

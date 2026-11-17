@@ -18,7 +18,7 @@ function Recommendation({ item }) {
   return (
     <div className="qb-gan-review__evidence">
       <p><strong>Gerador:</strong> {item.provedorGerador === 'gpt' ? 'GPT' : 'Gemini'} · {keyLabel(item.gabaritoGerador)}</p>
-      <p><strong>Julgamento cego (GPT):</strong> {keyLabel(item.gabaritoDiscriminador)}</p>
+      <p><strong>Julgamento cego:</strong> {item.provedorDiscriminador === 'gemini' ? 'Gemini' : 'GPT'} · {keyLabel(item.gabaritoDiscriminador)}</p>
       <p><strong>Recomendação:</strong> {verdicts[item.veredictoDiscriminador] || 'Sem recomendação'}</p>
       {item.criticaAdversaria && <p><strong>Parecer:</strong> {item.criticaAdversaria}</p>}
       {issues.length > 0 && <ul>{issues.map(issue => <li key={issue}>{issue}</li>)}</ul>}

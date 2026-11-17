@@ -4,8 +4,7 @@ const stageLabels = {
   contexto: 'Preparação do nó',
   configuracao: 'Configuração do GAN',
   gemini: 'Gerador Gemini',
-  'gpt-gerador': 'Gerador GPT',
-  gpt: 'Discriminador GPT',
+  'gemini-discriminador': 'Julgamento cego Gemini',
   confronto: 'Conferência do julgamento',
   gravacao: 'Gravação',
   servidor: 'Comunicação com o servidor',
@@ -15,8 +14,7 @@ const defaultMessages = {
   contexto: 'Não foi possível preparar este nó para a geração.',
   configuracao: 'Não foi possível ler a configuração do GAN.',
   gemini: 'Não foi possível obter uma resposta válida do Gemini.',
-  'gpt-gerador': 'Não foi possível gerar questões com o GPT.',
-  gpt: 'Não foi possível obter uma resposta válida da OpenAI.',
+  'gemini-discriminador': 'Não foi possível obter o julgamento cego do Gemini.',
   confronto: 'Não foi possível confirmar o julgamento dos itens.',
   gravacao: 'A gravação das questões aprovadas não foi confirmada.',
   servidor: 'O servidor não devolveu o resultado do GAN. Confira a conexão e tente novamente.',
@@ -42,7 +40,7 @@ const geminiErrors = [
 const knownFailure = (etapa, err) => {
   if (err instanceof GanStepError) return [err.codigo, err.message];
   if (err instanceof GeminiUnavailableError) return ['gemini-http-503', err.message];
-  if (etapa === 'gemini') {
+  if (etapa === 'gemini' || etapa === 'gemini-discriminador') {
     const message = typeof err?.message === 'string' ? err.message : '';
     const match = geminiErrors.find(([prefix]) => message.startsWith(prefix));
     if (match) return [match[1], match[2]];
@@ -80,6 +78,6 @@ export function assertGanJudgments(judgments, count) {
   if (!Array.isArray(judgments) || judgments.length !== count ||
       judgments.some(j => !Number.isInteger(j?.index) || j.index < 0 || j.index >= count) ||
       new Set(judgments.map(j => j.index)).size !== count) {
-    throw new GanStepError('julgamentos-incompletos', 'O GPT não retornou um julgamento único para cada questão. Nenhum item deste nó foi salvo.');
+    throw new GanStepError('julgamentos-incompletos', 'O Gemini não retornou um julgamento único para cada questão. Nenhum item deste nó foi salvo.');
   }
 }

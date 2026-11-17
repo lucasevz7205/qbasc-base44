@@ -85,6 +85,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     `${item.mecanismo} · ${item.mecanismoNome}`,
     statusLabel,
     scoreLabel,
+    item.provedorDiscriminador === 'gemini' && 'Geração e revisão pelo Gemini',
     item.provedorGerador === 'gpt' && 'Geração e revisão pelo GPT',
   ].filter(Boolean);
   return {
@@ -111,6 +112,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     statusConfronto: item.statusConfronto,
     ganScore: item.ganScore,
     ...(item.provedorGerador ? { provedorGerador: item.provedorGerador } : {}),
+    ...(item.provedorDiscriminador ? { provedorDiscriminador: item.provedorDiscriminador } : {}),
     tags,
     trap,
   };
@@ -138,7 +140,7 @@ export async function runGanQueue({ chosen, pending, generate, save, onReview, s
       errosSeguidos = 0;
     }
     out.processados += 1;
-    if (falha?.codigo === 'gemini-http-503' || errosSeguidos >= 2) {
+    if (['gemini-http-503', 'gemini-limite'].includes(falha?.codigo) || errosSeguidos >= 2) {
       out.restantes += todo.length - out.processados;
       break;
     }
@@ -158,7 +160,6 @@ async function processGanNode({ node, chosen, generate, save, onReview, out }) {
 
   const aprovadas = res.aprovadas.filter(isApprovedGanQuestion);
   out.bloqueadas += res.bloqueadas.length;
-  if (res.provedorGerador === 'gpt') out.nosComGeradorGpt = (out.nosComGeradorGpt || 0) + 1;
   if (onReview) {
     const count = Array.isArray(res.questoes) ? res.questoes.length : aprovadas.length + res.bloqueadas.length;
     if (!count) return ganTransportFailure;
