@@ -459,24 +459,8 @@ export default function MindMapView({
         />
       )}
       <div
-        style={
-          mapMaximized
-            ? {
-                position: 'fixed',
-                inset: '14px',
-                zIndex: 70,
-                background: 'var(--canvas)',
-                border: '1px solid rgba(208, 179, 134, 0.55)',
-                borderRadius: 'var(--radius-card)',
-                boxShadow: 'var(--shadow-raised)',
-                padding: '14px 16px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12,
-                overflow: 'hidden',
-              }
-            : { display: 'flex', flexDirection: 'column', gap: 0 }
-        }
+        className={mapMaximized ? 'qb-map-full' : undefined}
+        style={mapMaximized ? undefined : { display: 'flex', flexDirection: 'column', gap: 0 }}
       >
         {mapMaximized && (
           <div className="qb-map-full-header">
