@@ -91,24 +91,24 @@ test('fila seleciona apenas folhas elegíveis, pausa entre nós e nunca grava it
   assert.equal(buildGanSource({ chosen: { ...root, title: 'Mapa' }, nodes, concepts, node: nodes.at(-1) }).mapa.nodes[0].id, 'n6');
 });
 
-test('fila distingue falha de configuração e falha HTTP do GPT, preservando os nós pendentes', async () => {
+test('fila distingue falha na geração e falha no julgamento Gemini, preservando os nós pendentes', async () => {
   const pending = [{ id: 'a', label: 'Nó A' }, { id: 'b', label: 'Nó B' }, { id: 'c', label: 'Nó C' }];
   const visited = [];
-  const config = { etapa: 'configuracao', codigo: 'modelo-gpt-invalido', mensagem: 'Modelo inválido' };
-  const quota = { etapa: 'gpt', codigo: 'gpt-http-429', mensagem: 'Limite de uso (429)' };
+  const config = { etapa: 'gemini', codigo: 'modelo-gemini-invalido', mensagem: 'Modelo inválido' };
+  const reviewFailure = { etapa: 'gemini-discriminador', codigo: 'gemini-json-invalido', mensagem: 'JSON inválido' };
   const report = await runGanQueue({
     pending,
     chosen: { topicId: 't', title: 'Mapa' },
     generate: async node => {
       visited.push(node.id);
-      return { falha: node.id === 'a' ? config : quota };
+      return { falha: node.id === 'a' ? config : reviewFailure };
     },
     save: async () => { assert.fail('O nó que falhou não pode gravar questões.'); },
   });
   assert.deepEqual(visited, ['a', 'b']);
   assert.deepEqual(report, {
     processados: 2, aprovadas: 0, bloqueadas: 0, erros: 2, restantes: 3,
-    falhas: [{ no: 'Nó A', ...config }, { no: 'Nó B', ...quota }],
+    falhas: [{ no: 'Nó A', ...config }, { no: 'Nó B', ...reviewFailure }],
   });
 });
 
@@ -166,20 +166,35 @@ test('fila pausa no primeiro 503 do Gemini e preserva questões já gravadas e n
   });
 });
 
-test('fila identifica a recuperação com GPT e grava a procedência apenas dos itens aprovados', async () => {
+test('fila grava a procedência Gemini apenas nos itens aprovados', async () => {
   const writes = [];
   const report = await runGanQueue({
     chosen: { topicId: 't', title: 'Mapa' },
     pending: [{ id: 'a', label: 'A' }],
     generate: async () => ({
-      provedorGerador: 'gpt',
-      aprovadas: [{ id: 'ok', statusConfronto: 'aprovada_gan', provedorGerador: 'gpt' }],
-      bloqueadas: [{ id: 'bloqueada', statusConfronto: 'divergencia_bloqueada', provedorGerador: 'gpt' }],
+      aprovadas: [{ id: 'ok', statusConfronto: 'aprovada_gan', provedorGerador: 'gemini', provedorDiscriminador: 'gemini' }],
+      bloqueadas: [{ id: 'bloqueada', statusConfronto: 'divergencia_bloqueada', provedorGerador: 'gemini', provedorDiscriminador: 'gemini' }],
     }),
     save: async (_collection, _id, record) => { writes.push(record); },
   });
-  assert.equal(report.nosComGeradorGpt, 1);
   assert.equal(report.aprovadas, 1);
-  assert.deepEqual(writes.map(record => [record.id, record.provedorGerador]), [['ok', 'gpt']]);
-  assert.ok(writes[0].tags.includes('Geração e revisão pelo GPT'));
+  assert.deepEqual(writes.map(record => [record.id, record.provedorGerador, record.provedorDiscriminador]), [['ok', 'gemini', 'gemini']]);
+  assert.ok(writes[0].tags.includes('Geração e revisão pelo Gemini'));
+});
+
+test('fila pausa quando a quota Gemini impede o julgamento cego', async () => {
+  const pending = [{ id: 'a', label: 'Nó A' }, { id: 'b', label: 'Nó B' }];
+  const visited = [];
+  const quota = { etapa: 'gemini-discriminador', codigo: 'gemini-limite', mensagem: 'Limite de uso (429)' };
+  const report = await runGanQueue({
+    chosen: { topicId: 't', title: 'Mapa' }, pending,
+    generate: async node => {
+      visited.push(node.id);
+      return { falha: quota };
+    },
+    save: async () => assert.fail('sem julgamento não pode gravar'),
+  });
+  assert.deepEqual(visited, ['a']);
+  assert.equal(report.restantes, 2);
+  assert.deepEqual(report.falhas, [{ no: 'Nó A', ...quota }]);
 });
