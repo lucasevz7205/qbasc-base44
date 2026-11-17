@@ -143,7 +143,7 @@ async function processGanNode({ node, chosen, generate, save, out }) {
 
   const aprovadas = res.aprovadas.filter(isApprovedGanQuestion);
   out.bloqueadas += res.bloqueadas.length;
-  const persisted = new Set(res.registros?.map(r => r.id));
+  const persisted = new Set(Array.isArray(res.registros) ? res.registros.map(r => r?.id) : []);
   let failed = false;
   for (const item of aprovadas) {
     try {

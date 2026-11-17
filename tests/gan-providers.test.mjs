@@ -124,3 +124,13 @@ test('discriminador com gabarito diferente do gerador bloqueia o item', async ()
   assert.equal(result.aprovadas.length, 0);
   assert.equal(result.bloqueadas[0].statusConfronto, 'divergencia_bloqueada');
 });
+
+test('refinamento sem nova redação não aprova a questão original', () => {
+  const result = normalizeGanConfrontation(
+    [{ mapaNoId:'n1', enunciado:'Uma assertiva longa para testar um refinamento faltante.', gabarito:'E', mecanismo:'F1' }],
+    [{ index:0, gabaritoDiscriminador:'E', veredicto:'REFINAR', scoreRealismo:90, itemRefinado:null }],
+    { nodes:[{id:'n1',label:'Nó do teste'}] },
+  );
+  assert.equal(result.aprovadas.length, 0);
+  assert.equal(result.bloqueadas[0].statusConfronto, 'divergencia_bloqueada');
+});

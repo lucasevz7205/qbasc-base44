@@ -90,3 +90,54 @@ test('fila seleciona apenas folhas elegíveis, pausa entre nós e nunca grava it
   assert.deepEqual(report, { processados: 2, aprovadas: 2, bloqueadas: 2, erros: 0, restantes: 4 });
   assert.equal(buildGanSource({ chosen: { ...root, title: 'Mapa' }, nodes, concepts, node: nodes.at(-1) }).mapa.nodes[0].id, 'n6');
 });
+
+test('fila distingue falha de configuração e falha HTTP do GPT, preservando os nós pendentes', async () => {
+  const pending = [{ id: 'a', label: 'Nó A' }, { id: 'b', label: 'Nó B' }, { id: 'c', label: 'Nó C' }];
+  const visited = [];
+  const config = { etapa: 'configuracao', codigo: 'modelo-gpt-invalido', mensagem: 'Modelo inválido' };
+  const quota = { etapa: 'gpt', codigo: 'gpt-http-429', mensagem: 'Limite de uso (429)' };
+  const report = await runGanQueue({
+    pending,
+    chosen: { topicId: 't', title: 'Mapa' },
+    generate: async node => {
+      visited.push(node.id);
+      return { falha: node.id === 'a' ? config : quota };
+    },
+    save: async () => { assert.fail('O nó que falhou não pode gravar questões.'); },
+  });
+  assert.deepEqual(visited, ['a', 'b']);
+  assert.deepEqual(report, {
+    processados: 2, aprovadas: 0, bloqueadas: 0, erros: 2, restantes: 3,
+    falhas: [{ no: 'Nó A', ...config }, { no: 'Nó B', ...quota }],
+  });
+});
+
+test('fila pessoal conta apenas questões cuja gravação foi confirmada', async () => {
+  const report = await runGanQueue({
+    pending: [{ id: 'a', label: 'Nó A' }], chosen: { topicId: 't', title: 'Mapa' },
+    generate: async () => ({
+      bloqueadas: [],
+      aprovadas: [{ id: 'gravada', statusConfronto: 'aprovada_gan' }, { id: 'pendente', statusConfronto: 'aprovada_gan' }],
+      registros: [{ id: 'gravada' }],
+    }),
+  });
+  assert.equal(report.aprovadas, 1);
+  assert.equal(report.restantes, 1);
+  assert.equal(report.falhas[0].etapa, 'gravacao');
+});
+
+test('reprovação no confronto restabelece a fila após erro e não conta como falha de provedor', async () => {
+  const pending = ['a', 'b', 'c'].map(id => ({ id, label: id }));
+  const report = await runGanQueue({
+    pending, chosen: { topicId: 't', title: 'Mapa' },
+    generate: async node => {
+      if (node.id === 'a') throw new Error('Mensagem interna');
+      if (node.id === 'b') return { aprovadas: [], bloqueadas: [{ id: 'blocked' }] };
+      return { aprovadas: [{ id: 'ok', statusConfronto: 'aprovada_gan' }], bloqueadas: [], registros: [{ id: 'ok' }] };
+    },
+  });
+  assert.equal(report.processados, 3);
+  assert.deepEqual([report.erros, report.bloqueadas, report.aprovadas, report.restantes], [1, 1, 1, 1]);
+  assert.equal(report.falhas[0].etapa, 'servidor');
+  assert.doesNotMatch(report.falhas[0].mensagem, /Mensagem interna/);
+});

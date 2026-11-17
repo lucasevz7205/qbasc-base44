@@ -542,7 +542,7 @@ export default function MindMapView({
               Gerar ao abrir mapa novo
             </label>
             {queueReport?.falhas?.length > 0 && (
-              <ul role="status" style={{ flexBasis: '100%', margin: 0, paddingInlineStart: 20, fontSize: 13, color: 'var(--text-secondary)', overflowWrap: 'anywhere' }}>
+              <ul role="status" style={{ flexBasis: '100%', margin: 0, paddingInlineStart: 20, fontSize: 13, color: 'var(--text-secondary)', overflowWrap: 'anywhere', maxHeight: '18dvh', overflowY: 'auto' }}>
                 {queueReport.falhas.map((failure, index) => (
                   <li key={index}><strong>{failure.no}</strong> · {ganFailureLabel(failure)}</li>
                 ))}
