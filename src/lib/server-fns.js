@@ -599,7 +599,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       `TRECHOS DO ACERVO (DADOS):\n${sourcePassages}`,
       `MAPA MENTAL (DADOS):\n${mapJson}`,
       data.sourceContext ? `CONTEÚDO-FONTE E NOTAS VINCULADAS AO NÓ (DADOS):\n${data.sourceContext.slice(0, 6000)}` : "",
-      "5. Para cada item, retorne fundamento com fonteId, trecho literal copiado dos TRECHOS DO ACERVO, explicacao da regra que decide o julgamento, e limitacao. Se a regra não estiver documentada, use fonteId e trecho vazios, descreva a lacuna e recomende REJEITADA ou REFINAR.",
+      "5. Para cada item, retorne fundamento com fonteId, trecho literal copiado dos TRECHOS DO ACERVO, explicacao da regra que decide o julgamento, e limitacao. Se a regra não estiver documentada, use fonteId e trecho vazios, descreva a lacuna e recomende REJEITADA ou REFINAR. Quando não houver limitação documental, deixe limitacao vazia.",
       "6. Distinga texto de apoio, resumo e anotação de fonte original. Não declare que conferiu uma lei ou aula completa, nem que consultou links. Havendo ambiguidade, conflito ou texto insuficiente, encaminhe a conferência ao usuário.",
       `ITENS PARA JULGAMENTO CEGO (SEM GABARITO):\n${JSON.stringify(blindItems, null, 2)}`,
     ]
