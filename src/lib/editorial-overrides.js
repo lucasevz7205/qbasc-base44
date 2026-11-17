@@ -3,6 +3,9 @@
  * Os documentos originais (questoes, revisao, respostas, cartoes_aval) nunca são regravados.
  * Cada substituição visual é mantida em "curadoria", pela mesma ID estável.
  */
+import { questionTrap } from "./question-feedback.js";
+import { CEBRASPE_V1_TAXONOMY } from "./cebraspe-v1-taxonomy.js";
+
 export function editorialId(kind, id) {
   if (!["question", "flashcard"].includes(kind) || !id) throw new Error("Identificador editorial inválido.");
   return kind + ":" + String(id);
@@ -27,8 +30,12 @@ export function applyEditorialOverlays(questions, cards, entries) {
       const assessment = x.statement.trim() === q.statement.trim() && x.key === q.key ? {} : {
         trap: undefined, tags: q.tags?.filter(tag => !/^(?:F(?:10|[1-9])|V[1-4])(?:$|[\s·:–—-])/i.test(tag)),
       };
-      return { ...q, ...assessment, statement: x.statement, key: x.key, explanation: x.explanation || "", basis: x.basis || q.basis, editorial: {
+      const trapFields = x.mecanismo
+        ? { trap: questionTrap({ mecanismo: x.mecanismo, trechoDecisivo: x.trechoDecisivo, correcaoMinima: x.correcaoMinima }, undefined, x.key) }
+        : {};
+      return { ...q, ...assessment, ...trapFields, statement: x.statement, key: x.key, explanation: x.explanation || "", basis: x.basis || q.basis, editorial: {
         version: patch.version, editedAt: patch.atualizadoEm, status: "reformulada",
+        ...(x.mecanismo ? { trechoDecisivo: x.trechoDecisivo, correcaoMinima: x.correcaoMinima } : {}),
         original: patch.original, note: patch.parecer || "",
       }};
     }),
@@ -66,6 +73,9 @@ export function parseEditorialSuggestion(reply, kind) {
           key: String(entry.key || entry.gabarito || "").trim().toUpperCase().replace(/^CERTO$/, "C").replace(/^ERRADO$/, "E"),
           explanation: String(entry.explanation || entry.comentario || "").trim().slice(0, 6500),
           basis: String(entry.basis || entry.ref || "").trim().slice(0, 2000),
+          mecanismo: String(entry.mecanismo || "").trim().toUpperCase().slice(0, 4),
+          trechoDecisivo: String(entry.trechoDecisivo || "").trim().slice(0, 400),
+          correcaoMinima: String(entry.correcaoMinima || "").trim().slice(0, 600),
         }
       : {
           front: String(entry.front || entry.q || "").trim().slice(0, 2600),
@@ -100,6 +110,18 @@ export function makeDirectQuestionOverwrite({ question, proposal, previous, issu
     gabarito: entry.replacement.key,
     comentario: entry.replacement.explanation,
     ref: entry.replacement.basis,
+    ...(entry.replacement.mecanismo ? {
+      // O app lê o mecanismo, o trecho e a correção mínima do registro da questão.
+      mecanismo: entry.replacement.mecanismo,
+      mecanismoNome: CEBRASPE_V1_TAXONOMY[entry.replacement.mecanismo]?.n || raw.mecanismoNome,
+      trechoDecisivo: entry.replacement.trechoDecisivo,
+      correcaoMinima: entry.replacement.correcaoMinima,
+      // A cópia de segurança preserva os campos legados que têm precedência na leitura.
+      ...(Object.hasOwn(raw, "evidencia") ? { evidencia: entry.replacement.trechoDecisivo } : {}),
+      ...(raw.trap && typeof raw.trap === "object" ? {
+        trap: { ...raw.trap, description: entry.replacement.correcaoMinima },
+      } : {}),
+    } : {}),
     reformuladaPeloArquiteto: true,
     versaoCuradoriaDireta: entry.version,
     curadoriaDiretaEm: entry.atualizadoEm,
@@ -136,6 +158,11 @@ export function makeEditorialEntry({ kind, content, proposal, previous, issue, n
     key: String(raw.key || "").trim().toUpperCase(),
     explanation: String(raw.explanation || "").trim(),
     basis: String(raw.basis || content.basis || "").trim(),
+    ...(String(raw.mecanismo || "").trim() ? {
+      mecanismo: String(raw.mecanismo).trim().toUpperCase().slice(0, 4),
+      trechoDecisivo: String(raw.trechoDecisivo || "").trim().slice(0, 400),
+      correcaoMinima: String(raw.correcaoMinima || "").trim().slice(0, 600),
+    } : {}),
   } : {
     front: String(raw.front || "").trim(),
     back: String(raw.back || "").trim(),

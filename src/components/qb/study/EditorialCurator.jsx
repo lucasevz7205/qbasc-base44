@@ -6,6 +6,8 @@ import { ConfirmDialog } from "@/components/qb/feedback/ConfirmDialog";
 import { useRealStudy } from "@/lib/qb-real-data";
 import { proposeEditorialRevision } from "@/lib/server-fns";
 import { makeEditorialEntry, makeDirectQuestionOverwrite } from "@/lib/editorial-overrides";
+import { questionQualityProblems, itemFromDisplayedQuestion } from "@/lib/item-quality";
+import { mechanismOptions } from "@/lib/question-feedback";
 
 const ISSUES = [
   ["formulacao", "Má formulação"],
@@ -49,8 +51,9 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
   const [notice, setNotice] = React.useState("");
   const isQuestion = kind === "question";
   const label = isQuestion ? "questão" : "flashcard";
-  const current = isQuestion
-    ? { id: item.id, statement: item.statement, key: item.key, explanation: item.explanation, basis: item.basis, origin: item.origin, node: item.node }
+  const displayedQuestion = isQuestion ? itemFromDisplayedQuestion(item) : null;
+  const current = displayedQuestion
+    ? { id: item.id, ...displayedQuestion, origin: item.origin, node: item.node }
     : { id: item.id, front: item.front, back: item.back, basis: item.basis, node: item.node };
 
   const propose = async () => {
@@ -68,8 +71,13 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
     ...p, replacement: { ...p.replacement, [field]: value }
   }));
 
+  // Portão de qualidade: item sem mecanismo, correção mínima ou comentário de verdade não é salvo.
+  const quality = isQuestion && proposal ? questionQualityProblems({ ...proposal.replacement }) : { problems: [], warnings: [] };
+  const itemGaps = displayedQuestion ? questionQualityProblems(displayedQuestion).problems : [];
+  const blocked = quality.problems.length > 0;
+
   const overwriteOriginal = async () => {
-    if (!isQuestion || !proposal || !approval || saving || disabled || !item.raw) return;
+    if (!isQuestion || !proposal || !approval || saving || disabled || !item.raw || blocked) return;
     setConfirmOverwrite(false);
     setSaving(true); setError(""); setNotice("");
     try {
@@ -90,7 +98,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
   };
 
   const approve = async () => {
-    if (!proposal || !approval || saving || disabled) return;
+    if (!proposal || !approval || saving || disabled || blocked) return;
     setSaving(true); setError(""); setNotice("");
     try {
       const entry = makeEditorialEntry({ kind, content: current, proposal, previous, issue, note });
@@ -118,6 +126,9 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
         <Icon name="sparkles" size={18} color="var(--qb-gold)" />
         <span style={{ flex: 1, minWidth: 0 }}>
           <strong style={{ font: "600 15px/1.4 var(--font-body)" }}>O Arquiteto · Reformular {label}</strong>
+          {itemGaps.length > 0 && <span style={{ display: "block", font: "400 12px/1.4 var(--font-body)", color: "var(--state-incorrect, #efa69d)" }}>
+            Fora do padrão: {itemGaps.length === 1 ? "1 pendência" : itemGaps.length + " pendências"} (mecanismo, correção mínima ou comentário). Peça uma reformulação.
+          </span>}
           {previous && <span style={{ display: "block", font: "400 12px/1.4 var(--font-body)", color: "var(--qb-gold)" }}>
             Versão editorial {previous.version} aplicada · original preservado
           </span>}
@@ -179,6 +190,20 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
                   {editable(isQuestion ? "Comentário proposto" : "Verso proposto", isQuestion ? "explanation" : "back")}
                   {editable("Referência informada", "basis", 2)}
                   {isQuestion && (
+                    <>
+                      <label style={{ display: "grid", gap: 6, minWidth: 0 }}>
+                        <span style={{ font: "600 13px/1.4 var(--font-body)", color: "var(--qb-gold)" }}>Mecanismo de falsificação</span>
+                        <select className="qb-input" value={proposal.replacement.mecanismo || ""}
+                          onChange={e => change("mecanismo", e.target.value)} style={{ minHeight: 44 }}>
+                          <option value="">Escolha o mecanismo…</option>
+                          {mechanismOptions(proposal.replacement.key).map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                        </select>
+                      </label>
+                      {editable("Trecho decisivo (literal da fonte)", "trechoDecisivo", 2)}
+                      {editable("Correção mínima (como o item seria falsificado, ou a versão correta)", "correcaoMinima", 2)}
+                    </>
+                  )}
+                  {isQuestion && (
                     <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
                       <legend style={{ color: "var(--qb-gold)", font: "600 13px/1.5 var(--font-body)" }}>Gabarito proposto</legend>
                       <div className="qb-seg" role="group" aria-label="Gabarito da proposta">
@@ -189,6 +214,12 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
                   )}
                 </div>
               </div>
+              {isQuestion && (quality.problems.length > 0 || quality.warnings.length > 0) && (
+                <ul role="status" style={{ margin: 0, paddingLeft: 18, display: "grid", gap: 4, font: "400 13px/1.5 var(--font-body)" }}>
+                  {quality.problems.map(p => <li key={p.code} style={{ color: "var(--state-incorrect, #efa69d)" }}>{p.message}</li>)}
+                  {quality.warnings.map(p => <li key={p.code} style={{ color: "var(--text-secondary)" }}>{p.message}</li>)}
+                </ul>
+              )}
               <p style={{ margin: 0, font: "400 13px/1.5 var(--font-body)", color: "var(--text-secondary)" }}>
                 Confirme a fonte antes de aceitar mudanças factuais ou de gabarito.
                 O item reformulado conserva seu ID e remissões, mas deixa de ser a redação original da fonte.
@@ -199,11 +230,11 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
                 Revisei a proposta e a referência. Autorizo salvar a nova versão ou, no caso de uma questão, substituir o registro anterior após confirmar.
               </label>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <Button icon="check" disabled={!approval || saving || generating} loading={saving} onClick={approve}>
+                <Button icon="check" disabled={!approval || saving || generating || blocked} loading={saving} onClick={approve}>
                   Aprovar e salvar nova versão
                 </Button>
                 {isQuestion && (
-                  <Button variant="secondary" icon="save" disabled={!approval || saving || generating || !item.raw}
+                  <Button variant="secondary" icon="save" disabled={!approval || saving || generating || !item.raw || blocked}
                     onClick={() => setConfirmOverwrite(true)}>
                     Salvar em cima da anterior
                   </Button>

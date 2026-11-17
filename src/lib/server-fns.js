@@ -147,13 +147,16 @@ const EditorialSuggestionSchema = z.object({
     basis: z.string().max(2000).optional(),
     origin: z.string().max(300).optional(),
     node: z.string().max(200).optional(),
+    mecanismo: z.string().max(12).optional(),
+    trechoDecisivo: z.string().max(600).optional(),
+    correcaoMinima: z.string().max(800).optional(),
   }),
 });
 
 function editorialResponseSchema(kind) {
   const text = { type: "string" };
   const properties = kind === "question"
-    ? { statement: text, key: { ...text, enum: ["C", "E"] }, explanation: text, basis: text }
+    ? { statement: text, key: { ...text, enum: ["C", "E"] }, mecanismo: text, trechoDecisivo: text, correcaoMinima: text, explanation: text, basis: text }
     : { front: text, back: text, basis: text };
   return {
     type: "object",
@@ -190,7 +193,12 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       "Preserve o vínculo com o mesmo assunto e nó, e não afirme proveniência de prova real quando um enunciado tiver sido reescrito.",
       "Preencha os campos do formato solicitado. Em parecer, justifique a mudança em até três frases. Em basis, mantenha a referência original ou use uma string vazia quando ela estiver ausente.",
       data.kind === "question"
-        ? "Em replacement, informe enunciado, gabarito (C ou E), comentário e referência."
+        ? [
+            "Em replacement, informe: enunciado; gabarito (C ou E); mecanismo (código da taxonomia QB V1: F1–F10 se o gabarito for E, V1–V4 se for C, o mecanismo realmente aplicado); trechoDecisivo (trecho LITERAL dos textos fornecidos que decide o item; string vazia se nenhum texto fornecido o contiver); correcaoMinima; comentário; referência.",
+            "correcaoMinima: a menor alteração que inverteria o gabarito. Em item E, a versão correta por extenso. Em item C, a menor mudança que o tornaria Errado, com o código F dessa falsificação (por exemplo, trocar um prazo ou um quórum, ou generalizar com 'sempre').",
+            "Comentário: no mínimo duas frases completas. Primeira: o veredito e a regra, citando o dispositivo ou o trecho quando constar nos textos fornecidos. Segunda: em item C, por que ele parece errado e mesmo assim está certo; em item E, onde está o erro e qual é a versão correta. Não repita a referência no lugar do comentário e não reescreva o enunciado como se fosse explicação.",
+            "Se os textos fornecidos não bastam para explicar com segurança, escreva o melhor comentário possível apenas com eles, aponte a lacuna no parecer e mantenha needsHumanReview=true. Nunca invente artigo, prazo, quórum ou fonte.",
+          ].join("\n")
         : "Em replacement, informe uma frente direta, um verso conciso e a referência.",
       `Tipo: ${data.kind === "question" ? "questão CEBRASPE C/E" : "flashcard"}`,
       `Assunto: ${data.topicLabel}`,
@@ -198,7 +206,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
       `Observação do estudante: ${data.note || "Nenhuma"}`,
       `ID de origem: ${c.id}; Nó: ${c.node || "não vinculado"}`,
       data.kind === "question"
-        ? `ENUNCIADO ORIGINAL: ${c.statement}\nGABARITO ORIGINAL: ${c.key}\nCOMENTÁRIO ORIGINAL: ${c.explanation || "ausente"}\nREFERÊNCIA ORIGINAL: ${c.basis || "ausente"}\nORIGEM: ${c.origin || "não informada"}`
+        ? `ENUNCIADO ORIGINAL: ${c.statement}\nGABARITO ORIGINAL: ${c.key}\nCOMENTÁRIO ORIGINAL: ${c.explanation || "ausente"}\nREFERÊNCIA ORIGINAL: ${c.basis || "ausente"}\nMECANISMO ORIGINAL: ${c.mecanismo || "ausente"}\nTRECHO DECISIVO ORIGINAL: ${c.trechoDecisivo || "ausente"}\nCORREÇÃO MÍNIMA ORIGINAL: ${c.correcaoMinima || "ausente"}\nORIGEM: ${c.origin || "não informada"}`
         : `FRENTE ORIGINAL: ${c.front}\nVERSO ORIGINAL: ${c.back}\nFONTE ORIGINAL: ${c.basis || "ausente"}`,
     ].filter(Boolean).join("\n\n");
     const result = await invokeGeminiTutor({
