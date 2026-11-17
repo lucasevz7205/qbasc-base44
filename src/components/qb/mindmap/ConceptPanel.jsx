@@ -28,7 +28,7 @@ export default function ConceptPanel({
   ganLoading = false,
   ganUnavailable = false,
   ganError = '',
-  ganBlockedReport = null,
+  onOpenGanReview,
   returnTo,
   onReturn,
   onClose,
@@ -123,20 +123,10 @@ export default function ConceptPanel({
                 {ganError}
               </div>
             )}
-            {ganBlockedReport && Array.isArray(ganBlockedReport.bloqueadas) && ganBlockedReport.bloqueadas.length > 0 && (
-              <div style={{ padding: 12, borderRadius: 12, background: 'var(--surface-sunken)', border: '1px solid var(--divider)', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                  <Badge tone="incorrect">Não aprovadas · {ganBlockedReport.bloqueadas.length}</Badge>
-                  <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>
-                    Bloqueadas pelo Discriminador Cego
-                  </span>
-                </div>
-                {ganBlockedReport.bloqueadas.map((b) => (
-                  <div key={b.id} style={{ font: '400 12px/1.45 var(--font-body)', color: 'var(--text-secondary)', borderTop: '1px solid var(--divider)', paddingTop: 6 }}>
-                    <strong style={{ color: 'var(--text-primary)' }}>{b.code} ({b.mecanismo})</strong> — Gerador: {b.gabaritoGerador} × Discriminador Cego: {b.gabaritoDiscriminador}. {b.criticaAdversaria}
-                  </div>
-                ))}
-              </div>
+            {onOpenGanReview && (
+              <Button variant="secondary" icon="list-checks" onClick={onOpenGanReview} fullWidth>
+                Ver revisão GAN deste nó
+              </Button>
             )}
             {onReview && (
               <Button variant="secondary" icon="layers" onClick={onReview} fullWidth>

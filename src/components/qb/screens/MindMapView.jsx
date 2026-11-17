@@ -2,6 +2,7 @@ import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { MindMapCanvas } from '@/components/qb/mindmap/MindMapCanvas';
 import { ConceptPanel } from '@/components/qb/mindmap/ConceptPanel';
+import { GanReviewDialog } from '@/components/qb/mindmap/GanReviewDialog';
 import { StudyTopicPicker } from '@/components/qb/study/StudyTopicPicker';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import { EmptyState } from '@/components/qb/data/EmptyState';
@@ -14,7 +15,8 @@ import { useStudyActivity } from '@/lib/StudyClockContext';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
-import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
+import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
+import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -37,7 +39,9 @@ export default function MindMapView({
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const [ganLoading, setGanLoading] = React.useState(false);
   const [ganError, setGanError] = React.useState('');
-  const [ganBlockedReport, setGanBlockedReport] = React.useState(null);
+  const [ganReviews, setGanReviews] = React.useState({});
+  const [ganReviewOpen, setGanReviewOpen] = React.useState(false);
+  const ganReviewFocus = React.useRef(null);
   const [queueRunning, setQueueRunning] = React.useState(false);
   const [queueProgress, setQueueProgress] = React.useState(null);
   const [queueReport, setQueueReport] = React.useState(null);
@@ -105,7 +109,6 @@ export default function MindMapView({
 
   React.useEffect(() => {
     setGanError('');
-    setGanBlockedReport(null);
   }, [node?.id]);
 
   // Fila do Arquiteto: nós-folha com resumo e menos de 2 questões vinculadas.
@@ -114,7 +117,22 @@ export default function MindMapView({
     [chosen, nodes, D.concepts, D.questionBank],
   );
   const mapId = chosen?.id;
+  const ganReview = ganReviews[mapId];
+  const ganReviewPending = Boolean(ganReview?.entries.some(entry => entry.status === 'pending'));
+  const openGanReview = React.useCallback(() => {
+    ganReviewFocus.current = document.activeElement;
+    setGanReviewOpen(true);
+  }, []);
+  const newGanReview = React.useCallback((entries, anchor, queue, open) => {
+    if (!entries.length) return false;
+    setGanReviews(current => ({ ...current, [mapId]: {
+      id: entries[0].item.id, anchor, queue, entries, manual: isAdmin,
+    } }));
+    if (open) setGanReviewOpen(true);
+    return true;
+  }, [mapId, isAdmin]);
   React.useEffect(() => {
+    setGanReviewOpen(false);
     setQueueReport(null);
     setQueueProgress(null);
     return () => {
@@ -135,8 +153,15 @@ export default function MindMapView({
     return res;
   }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
 
-  const runQueue = React.useCallback(async () => {
-    if (!chosen || isRadialOpen || ganTask.current || !ganPending.length) return;
+  const runQueue = React.useCallback(async (openReview = true) => {
+    if (!chosen || isRadialOpen || ganTask.current) return;
+    if (ganReviewPending) {
+      if (openReview) openGanReview();
+      return;
+    }
+    if (!ganPending.length) return;
+    if (openReview) ganReviewFocus.current = document.activeElement;
+    const entries = [];
     const task = { stop: false, discard: false };
     ganTask.current = task;
     setQueueRunning(true);
@@ -146,23 +171,26 @@ export default function MindMapView({
         chosen,
         pending: ganPending,
         generate: target => generateNode(target, true),
-        save: isAdmin ? save : undefined,
+        onReview: isAdmin ? (target, result) => entries.push(...ganReviewEntries(target, result, true)) : undefined,
         shouldStop: () => task.stop,
         onProgress: setQueueProgress,
       });
-      if (!task.discard) setQueueReport(report);
+      if (!task.discard) {
+        setQueueReport(report);
+        newGanReview(entries, { id: chosen.id, label: chosen.title }, true, openReview);
+      }
     } finally {
       ganTask.current = null;
       setQueueRunning(false);
       setQueueProgress(null);
     }
-  }, [chosen, isRadialOpen, ganPending, generateNode, isAdmin, save]);
+  }, [chosen, isRadialOpen, ganPending, generateNode, isAdmin, ganReviewPending, openGanReview, newGanReview]);
 
   React.useEffect(() => {
-    if (!queueAuto || !mapId || isRadialOpen || ganTask.current || !ganPending.length || queueAutoDone.current.has(mapId)) return;
+    if (!queueAuto || !mapId || isRadialOpen || ganTask.current || ganReviewPending || !ganPending.length || queueAutoDone.current.has(mapId)) return;
     queueAutoDone.current.add(mapId);
-    runQueue();
-  }, [queueAuto, mapId, isRadialOpen, ganPending.length, queueRunning, ganLoading, runQueue]);
+    runQueue(false);
+  }, [queueAuto, mapId, isRadialOpen, ganReviewPending, ganPending.length, queueRunning, ganLoading, runQueue]);
 
   const handleSelectTopic = nextTopicId => {
     const nextSubj = allSubjects.find(s => s.topics.some(t => t.id === nextTopicId));
@@ -322,13 +350,61 @@ export default function MindMapView({
   const card = D.flashcards.filter(f => f.node === node.id || (node.id === chosen.id && f.topicId === chosen.topicId)).length;
   const qn = D.questionBank.filter(q => q.node === node.id || (node.id === chosen.id && q.topicId === chosen.topicId)).length;
 
+  const setReviewEntry = (entry, update) => {
+    setGanReviews(current => {
+      const review = current[mapId];
+      if (review?.id !== ganReview.id) return current;
+      return { ...current, [mapId]: { ...review, entries: review.entries.map(candidate =>
+        candidate.item.id === entry.item.id && candidate.status === 'pending' ? { ...candidate, ...update } : candidate,
+      ) } };
+    });
+  };
+
+  const approveGanEntry = async (entry, draft) => {
+    if (!isAdmin || entry.status !== 'pending') return;
+    const item = approveGanReview(entry.item, draft, D.questionBank);
+    const record = buildGanQuestionRecord(item, { chosen, node: entry.node, queue: ganReview.queue });
+    const saved = await save('questoes', record.id, record);
+    if (!saved) throw new Error('Não foi possível confirmar a gravação da questão.');
+    setReviewEntry(entry, { record: saved, status: 'saved' });
+  };
+
+  const trainGanReview = () => {
+    const saved = ganReview.entries.filter(entry => entry.status === 'saved' && entry.record);
+    if (!saved.length) return;
+    const scores = saved.map(({ item }) => item.ganScore).filter(Number.isFinite);
+    const questions = saved.map(({ item, node: origin, record }) => ({
+      id: record.id, code: record.code, year: record.ano, tags: record.tags,
+      key: record.gabarito, statement: record.enunciado, explanation: record.comentario, basis: record.ref,
+      trap: record.trap, origin: record.origem, topicId: chosen.topicId, subjectId: subj?.id, subject: subj?.name,
+      chapter: chosen.title, node: record.mapaNoId || origin.id, statusConfronto: record.statusConfronto,
+      ganScore: item.ganScore, gabaritoGerador: item.gabaritoGerador, gabaritoDiscriminador: item.gabaritoDiscriminador,
+      raw: record,
+    }));
+    setGanReviewOpen(false);
+    go('questions', { ganBatch: {
+      questions, blocked: [], originNodeId: ganReview.anchor.id, originNodeLabel: ganReview.anchor.label,
+      topicId: chosen.topicId, mapTitle: chosen.title,
+      summary: {
+        aprovadasManual: questions.filter(q => q.statusConfronto === 'aprovada_manual').length,
+        aprovadasDireto: questions.filter(q => q.statusConfronto === 'aprovada_gan').length,
+        refinadasGan: questions.filter(q => q.statusConfronto === 'refinada_gan').length,
+        mediaScoreGan: scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : null,
+      },
+    } });
+  };
+
   const handleGenerateGan = async () => {
     if (ganTask.current) return;
+    if (ganReviewPending) {
+      openGanReview();
+      return;
+    }
+    ganReviewFocus.current = document.activeElement;
     const task = { stop: false, discard: false };
     ganTask.current = task;
     setGanLoading(true);
     setGanError('');
-    setGanBlockedReport(null);
 
     try {
       let additionalContext = '';
@@ -357,68 +433,8 @@ export default function MindMapView({
         setGanError(ganFailureLabel(res.falha));
         return;
       }
-      const aprovadas = (Array.isArray(res?.aprovadas) ? res.aprovadas : []).filter(isApprovedGanQuestion);
-      const bloqueadas = Array.isArray(res?.bloqueadas) ? res.bloqueadas : [];
-      const resumoConfronto = res?.resumoConfronto || {
-        totalGeradas: aprovadas.length + bloqueadas.length,
-        aprovadasDireto: aprovadas.filter(q => q.statusConfronto === 'aprovada_gan').length,
-        refinadasGan: aprovadas.filter(q => q.statusConfronto === 'refinada_gan').length,
-        bloqueadasDivergencia: bloqueadas.length,
-        mediaScoreGan: 85,
-      };
-
-      if (!aprovadas.length) {
-        setGanBlockedReport({ bloqueadas, resumoConfronto });
-        setGanError(res.provedorGerador === 'gpt'
-          ? 'O GPT gerou e revisou em duas chamadas. O teste cego não aprovou questões deste nó.'
-          : 'O teste cego não aprovou questões deste nó. Confira os motivos no relatório.');
-        return;
-      }
-
-      const formattedQuestions = [];
-      for (const item of aprovadas) {
-        const rawRecord = isAdmin
-          ? await save('questoes', item.id, buildGanQuestionRecord(item, { chosen, node }))
-          : res.registros?.find(record => record.id === item.id);
-        if (!rawRecord) throw new Error('Não foi possível confirmar a gravação da questão GAN.');
-        const { tags, comentario: explanation, ref: basis, trap } = rawRecord;
-
-        formattedQuestions.push({
-          id: item.id,
-          code: item.code,
-          year: 'GAN · CEBRASPE',
-          tags,
-          key: item.gabarito,
-          statement: item.enunciado,
-          explanation,
-          basis,
-          trap,
-          origin: 'GAN · Mapa Mental',
-          topicId: chosen.topicId,
-          subjectId: subj?.id,
-          subject: subj?.name || 'Câmara dos Deputados',
-          chapter: `${node.label} · ${chosen.title}`,
-          node: item.mapaNoId || node.id,
-          statusConfronto: item.statusConfronto,
-          ganScore: item.ganScore,
-          gabaritoGerador: item.gabaritoGerador,
-          gabaritoDiscriminador: item.gabaritoDiscriminador,
-          raw: rawRecord,
-        });
-      }
-
-      if (task.discard) return;
-      go('questions', {
-        ganBatch: {
-          questions: formattedQuestions,
-          blocked: bloqueadas,
-          summary: resumoConfronto,
-          originNodeId: node.id,
-          originNodeLabel: node.label,
-          topicId: chosen.topicId,
-          mapTitle: chosen.title,
-        },
-      });
+      const entries = ganReviewEntries(node, res || {}, isAdmin);
+      if (!newGanReview(entries, node, false, true)) setGanError('A geração não retornou questões para revisar.');
     } catch (err) {
       if (!task.discard) setGanError(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
     } finally {
@@ -521,18 +537,23 @@ export default function MindMapView({
             </div>
           </div>
         )}
-        {(ganPending.length > 0 || queueRunning || queueReport) && (
+        {(ganPending.length > 0 || queueRunning || queueReport || ganReview) && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', padding: '8px 12px', marginBottom: 10 }}>
             <Badge tone="gold">Fila do Arquiteto</Badge>
             <span style={{ fontSize: 13 }}>
               {queueRunning && queueProgress
                 ? `Gerando e confrontando ${queueProgress.atual} de ${queueProgress.total}: ${queueProgress.no}`
                 : queueReport
-                  ? `Aprovadas e gravadas: ${queueReport.aprovadas} · bloqueadas pelo teste cego: ${queueReport.bloqueadas} · erros: ${queueReport.erros} · nós restantes: ${queueReport.restantes}`
+                  ? `${isAdmin ? 'Geradas para revisão: ' + (queueReport.paraRevisao || 0) : 'Aprovadas e gravadas: ' + queueReport.aprovadas} · bloqueadas pelo confronto: ${queueReport.bloqueadas} · erros: ${queueReport.erros} · nós não processados: ${queueReport.restantes}`
                   : `${ganPending.length} nó(s) deste mapa com menos de ${GAN_QUEUE_MIN_QUESTIONS} questões.`}
             </span>
-            {!queueRunning && ganPending.length > 0 && (
-              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={runQueue}>
+            {ganReview && (
+              <Button size="sm" variant={ganReviewPending ? 'primary' : 'secondary'} icon="list-checks" onClick={openGanReview}>
+                {ganReviewPending ? 'Revisar questões GAN' : 'Reabrir revisão GAN'}
+              </Button>
+            )}
+            {!queueRunning && ganPending.length > 0 && !ganReviewPending && (
+              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={() => runQueue()}>
                 {`Gerar pendentes (até ${GAN_QUEUE_MAX_NODES_PER_RUN} nós)`}
               </Button>
             )}
@@ -590,13 +611,16 @@ export default function MindMapView({
               ganLoading={ganLoading}
               ganUnavailable={queueRunning}
               ganError={ganError}
-              ganBlockedReport={ganBlockedReport}
+              onOpenGanReview={ganReview?.anchor.id === node.id && !ganReview.queue ? openGanReview : undefined}
               returnTo={sessionReturn ? undefined : returnTo?.label}
               onReturn={onReturn}
               style={mapMaximized ? { height: '100%' } : { flex: '1 1 340px', maxWidth: 420, height: 620 }}
             />
           )}
         </div>
+        {ganReview && <GanReviewDialog key={ganReview.id} review={ganReview} open={ganReviewOpen} onOpenChange={setGanReviewOpen}
+          returnFocus={ganReviewFocus} questionBank={D.questionBank} onApprove={approveGanEntry}
+          onDiscard={entry => setReviewEntry(entry, { status: 'discarded' })} onTrain={trainGanReview} />}
       </div>
     </div>
   );

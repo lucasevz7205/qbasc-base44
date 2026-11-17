@@ -32,8 +32,9 @@ function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
       <p style={{ color: 'var(--text-secondary)', margin: 0 }}>{answered.length} confirmadas · {qs.length - answered.length} puladas</p>
       {ganBatch?.summary && (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <Badge tone="gold">Score médio GAN: {ganBatch.summary.mediaScoreGan}%</Badge>
-          <Badge tone="correct">Aprovadas no teste cego: {ganBatch.summary.aprovadasDireto}</Badge>
+          {Number.isFinite(ganBatch.summary.mediaScoreGan) && <Badge tone="gold">Score médio GAN: {ganBatch.summary.mediaScoreGan}%</Badge>}
+          {ganBatch.summary.aprovadasManual > 0 && <Badge tone="correct">Aprovadas em revisão manual: {ganBatch.summary.aprovadasManual}</Badge>}
+          {ganBatch.summary.aprovadasDireto > 0 && <Badge tone="correct">Aprovadas no teste cego: {ganBatch.summary.aprovadasDireto}</Badge>}
           {ganBatch.summary.refinadasGan > 0 && <Badge tone="attention">Refinadas pela GAN: {ganBatch.summary.refinadasGan}</Badge>}
           {blocked.length > 0 && <Badge tone="incorrect">Bloqueadas por divergência: {blocked.length}</Badge>}
         </div>
@@ -321,7 +322,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
               {!focus && ganBatch && !ganBannerDismissed && (
                 <CognitiveAlertBanner
                   tone={ganBatch.blocked?.length ? 'attention' : 'info'}
-                  title={`Confronto GAN · Nó “${ganBatch.originNodeLabel}” (${ganBatch.summary?.aprovadasDireto || 0} aprovadas · ${ganBatch.summary?.refinadasGan || 0} refinadas · Score ${ganBatch.summary?.mediaScoreGan || 85}%)`}
+                  title={`Questões GAN · ${ganBatch.originNodeLabel}`}
                   onDismiss={() => setGanBannerDismissed(true)}
                   actions={
                     <Button size="sm" variant="secondary" icon="network" onClick={openConcept}>
@@ -345,7 +346,9 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                       ))}
                     </div>
                   ) : (
-                    <span>Todos os itens desta sessão superaram o confronto cego Gerador × Discriminador no padrão CEBRASPE.</span>
+                    <span>{ganBatch.summary?.aprovadasManual > 0
+                      ? 'Esta sessão usa as questões gravadas após sua revisão.'
+                      : 'Os itens desta sessão passaram pelo confronto cego.'}</span>
                   )}
                 </CognitiveAlertBanner>
               )}
