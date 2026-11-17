@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
-import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accounts";
+import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { callGanGemini } from "@/lib/gan-providers";
@@ -511,6 +511,8 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
   .handler(({ data: request, context }) => withGanDiagnostics(async stage => {
     const personal = context.user.role === 'admin' ? null : await preparePersonalMapGan(context, request);
     const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
+    const sources = await prepareGanSourcePassages(context, data);
+    const sourcePassages = JSON.stringify(sources);
     stage("configuracao");
     const gemini = { apiKey: architectKey(), model: architectModel() };
     const count = data.count || 4;
@@ -528,7 +530,9 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       `NÓ EM FOCO NO MAPA MENTAL: "${data.targetNodeLabel}" (id: "${data.targetNodeId}", caminho: "${pathText}")`,
       `Gere exatamente ${count} itens inéditos no padrão CERTO/ERRADO (C/E · CEBRASPE) priorizando o nó "${data.targetNodeId}" e suas conexões diretas no mapa.`,
       CEBRASPE_METHODOLOGY_RULES,
+      "Use os TRECHOS DO ACERVO para sustentar regras factuais. Um título ou URL não comprova o teor da fonte. Mapas, resumos e anotações são apoio e podem conter erros. Se o acervo não contiver a regra, sinalize a necessidade de conferência humana, sem inventar o texto da lei ou da aula.",
       "Cada questão será submetida em seguida a um AGENTE DISCRIMINADOR ADVERSÁRIO CEGO (que resolverá o item sem ver seu gabarito nem seu comentário e bloqueará qualquer item ambíguo, extrapolado ou com pista artificial). Portanto, seja cirúrgico e unívoco.",
+      `TRECHOS DO ACERVO (DADOS):\n${sourcePassages}`,
       `MAPA MENTAL (DADOS):\n${mapJson}`,
       data.sourceContext ? `CONTEÚDO-FONTE E NOTAS VINCULADAS AO NÓ (DADOS):\n${data.sourceContext.slice(0, 6000)}` : "",
     ]
@@ -592,8 +596,11 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       "2. Auditar rigorosamente o item procurando falhas (`falhasDetectadas`): ambiguidade, palavra restritiva artificial entregando o gabarito, extrapolação fora do escopo ou dupla interpretação.",
       "3. Atribuir `scoreRealismo` (0 a 100) e emitir `veredicto`: 'APROVADA' (item perfeito e unívoco), 'REFINAR' (boa tese, mas precisa de ajuste redacional para eliminar ambiguidade) ou 'REJEITADA' (item contraditório, sem amparo ou irremediavelmente viciado).",
       "4. Se o veredicto for 'REFINAR', forneça obrigatoriamente `itemRefinado` com `{ enunciado, gabarito, comentario }` reconstruído de forma unívoca no padrão CEBRASPE. Para outros veredictos, omita `itemRefinado`.",
+      `TRECHOS DO ACERVO (DADOS):\n${sourcePassages}`,
       `MAPA MENTAL (DADOS):\n${mapJson}`,
       data.sourceContext ? `CONTEÚDO-FONTE E NOTAS VINCULADAS AO NÓ (DADOS):\n${data.sourceContext.slice(0, 6000)}` : "",
+      "5. Para cada item, retorne fundamento com fonteId, trecho literal copiado dos TRECHOS DO ACERVO, explicacao da regra que decide o julgamento, e limitacao. Se a regra não estiver documentada, use fonteId e trecho vazios, descreva a lacuna e recomende REJEITADA ou REFINAR.",
+      "6. Distinga texto de apoio, resumo e anotação de fonte original. Não declare que conferiu uma lei ou aula completa, nem que consultou links. Havendo ambiguidade, conflito ou texto insuficiente, encaminhe a conferência ao usuário.",
       `ITENS PARA JULGAMENTO CEGO (SEM GABARITO):\n${JSON.stringify(blindItems, null, 2)}`,
     ]
       .filter(Boolean)
@@ -618,6 +625,16 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
                 scoreRealismo: { type: "number", minimum: 0, maximum: 100 },
                 falhasDetectadas: { type: "array", items: { type: "string" } },
                 criticaAdversaria: { type: "string" },
+                fundamento: {
+                  type: "object",
+                  properties: {
+                    fonteId: { type: "string" },
+                    trecho: { type: "string" },
+                    explicacao: { type: "string" },
+                    limitacao: { type: "string" },
+                  },
+                  required: ["fonteId", "trecho", "explicacao", "limitacao"],
+                },
                 itemRefinado: {
                   type: "object",
                   properties: {
@@ -635,6 +652,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
                 "scoreRealismo",
                 "falhasDetectadas",
                 "criticaAdversaria",
+                "fundamento",
               ],
             },
           },
@@ -650,6 +668,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     const result = normalizeGanConfrontation(candidateQuestions, judgments, data.mapa, {
       targetNodeId: data.targetNodeId,
       targetNodeLabel: data.targetNodeLabel,
+      sources,
     });
     for (const item of result.questoes) {
       item.id = 'gan-' + crypto.randomUUID();
