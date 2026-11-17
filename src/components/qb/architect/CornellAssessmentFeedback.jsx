@@ -23,7 +23,7 @@ export function CornellAssessmentFeedback({ analysis, answer, confidence, onAnsw
   return <section className="qb-cornell-assessment" aria-label="Avaliação pedagógica do Arquiteto">
     <header className="qb-cornell-assessment__header">
       <div>
-        <span className="qb-overline">O Arquiteto · avaliação formativa</span>
+        <span className="qb-overline" role="status">O Arquiteto · avaliação disponível</span>
         <h3>O que suas notas demonstram</h3>
       </div>
       <div className="qb-cornell-assessment__grade" aria-label="Nota provisória do caderno">
@@ -53,15 +53,14 @@ export function CornellAssessmentFeedback({ analysis, answer, confidence, onAnsw
         {item.pergunta && <p>{item.pergunta}</p>}<Citation citation={item.citation} />
       </li>)}</ul> : <p>Não foram apontadas lacunas neste recorte. Isso não comprova domínio nem dispensa o teste sem consulta.</p>}
     </div>
-    <div className="qb-panel qb-panel--sunken"><h4>Orientação para o próximo passo</h4><p>{analysis.orientacao}</p></div>
+    <div className="qb-panel qb-panel--sunken qb-cornell-assessment__guidance"><h4>Orientação para o próximo passo</h4><p>{analysis.orientacao}</p></div>
     <div className="qb-cornell-assessment__test">
       <h4>Teste sua compreensão</h4>
       <p>Responda de memória, sem consultar as notas. Sua tentativa fica apenas neste painel.</p>
       <p><strong>{analysis.pergunta}</strong></p>
-      <label htmlFor={id + '-answer'}>Sua explicação
-        <textarea id={id + '-answer'} className="qb-textarea" rows={5} maxLength={3000} value={answer} disabled={busy || disabled}
+      <label htmlFor={id + '-answer'}>Sua explicação</label>
+      <textarea id={id + '-answer'} className="qb-textarea" rows={5} maxLength={3000} value={answer} disabled={busy || disabled}
           onChange={event => onAnswer(event.target.value)} placeholder="Explique a ligação e use um exemplo ou contraste." />
-      </label>
       <fieldset disabled={busy || disabled}>
         <legend>Confiança antes da avaliação</legend>
         <div className="qb-cornell-assessment__confidence">{[[1, '1 · Baixa'], [2, '2 · Média'], [3, '3 · Certeza']].map(([value, label]) =>
