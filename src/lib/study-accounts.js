@@ -2,6 +2,7 @@ import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
 import { adaptStudy } from './qb-real-model.js';
+import { ganSourcePassages } from './gan-grounding.js';
 import { buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion } from './gan-queue.js';
 import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect } from './account-boundary';
 
@@ -78,6 +79,14 @@ async function requireAccount(entities, id) {
   const result = await account(entities, id);
   if (!result) throw new Error('Conta não cadastrada no ambiente de estudo.');
   return result;
+}
+
+export async function prepareGanSourcePassages(context, request) {
+  const user = context.user;
+  const entities = context.getBase44().asServiceRole.entities;
+  const collection = user.role === 'admin' ? 'materiais' : workspaceCollection(accountId.parse(user.id), 'materiais');
+  const materials = await loadDocuments(entities, collection);
+  return ganSourcePassages(materials, request);
 }
 
 export async function preparePersonalMapGan(context, request) {
