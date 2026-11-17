@@ -541,7 +541,7 @@ export default function MindMapView({
         <div
           className={mapMaximized ? 'qb-map-full__body' : undefined}
           data-show-panel={mapMaximized ? showPanelInMax : undefined}
-          style={mapMaximized ? undefined : { display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'stretch' }}
+          style={mapMaximized ? undefined : { display: 'flex', flexWrap: 'wrap', gap: 20, alignItems: 'stretch', flex: 1, minHeight: 0 }}
         >
           <MindMapCanvas
             nodes={nodes}
