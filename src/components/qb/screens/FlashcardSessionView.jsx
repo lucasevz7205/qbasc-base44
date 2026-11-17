@@ -14,6 +14,7 @@ import { flashcardOptions } from '@/lib/study-session-rules';
 import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 import { stripFlashcardContext } from '@/lib/flashcard-standard';
+import FlashcardStandardPanel from '@/components/qb/study/FlashcardStandardPanel';
 
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
@@ -111,6 +112,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
               </React.Fragment>} />
           </>
         )}
+        {isAdmin && !cards.scheduledReview && <FlashcardStandardPanel />}
       </main>
     </div>
   );
