@@ -39,7 +39,7 @@ export default function Flashcard({
   const Head = ({ label }) => (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
       <span className="qb-overline">{label}</span>
-      {deck && <span style={{ font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}>{deck}</span>}
+      {deck && <span style={{ font: '400 13px/1.35 var(--font-body)', color: 'var(--text-muted)', minWidth: 0 }}>{deck}</span>}
     </div>
   );
   return (
