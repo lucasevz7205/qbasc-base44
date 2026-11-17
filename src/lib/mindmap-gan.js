@@ -1,5 +1,7 @@
 const asText = (v, max = 12000) => String(v == null ? "" : v).trim().slice(0, max);
 
+import { verifyGanEvidence } from './gan-grounding.js';
+
 import { CEBRASPE_V1_TAXONOMY, CEBRASPE_V1_GENERATION_RULES, mechanismForKey } from './cebraspe-v1-taxonomy.js';
 
 export const CEBRASPE_MECHANISMS = Object.freeze(Object.fromEntries(
@@ -135,6 +137,16 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       falhasDetectadas.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
     }
     const mecanismoNome = CEBRASPE_MECHANISMS[mecanismo] || "Não classificado";
+    const fundamentacaoCega = Array.isArray(options.sources) ? verifyGanEvidence(disc?.fundamento, options.sources) : null;
+    if (fundamentacaoCega) {
+      if (fundamentacaoCega.verificacao !== "trecho_localizado") motivosConfronto.push("O trecho decisivo do julgamento cego não foi localizado no acervo enviado.");
+      if (!fundamentacaoCega.explicacao) motivosConfronto.push("O julgamento cego não explicou a regra usada para resolver o item.");
+      if (fundamentacaoCega.limitacao) motivosConfronto.push(fundamentacaoCega.limitacao);
+      if (["anotacoes", "resumo"].includes(fundamentacaoCega.natureza)) motivosConfronto.push("A fundamentação disponível é uma anotação ou resumo e requer conferência na fonte original.");
+      if (!blindKeyMatch || discVerdict !== "APROVADA" || ganScore === null || ganScore < 65 || falhasDetectadas.length || motivosConfronto.length) {
+        statusConfronto = "divergencia_bloqueada";
+      }
+    }
 
     questoes.push({
       id: `gan-${Date.now()}-${idx + 1}`,
@@ -158,6 +170,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       falhasDetectadas,
       motivosConfronto,
       criticaAdversaria: discCritique,
+      ...(fundamentacaoCega ? { fundamentacaoCega } : {}),
       ganScore,
       statusConfronto,
       aprovadaParaSessao: statusConfronto === "aprovada_gan" || statusConfronto === "refinada_gan",
