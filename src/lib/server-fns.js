@@ -4,6 +4,7 @@ import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
+import { callGanGenerator, callGanDiscriminator, validateGanDiscriminatorConfig } from "@/lib/gan-providers";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
@@ -61,6 +62,9 @@ const TutorInputSchema = z.object({
 const namedArchitectKey = () => secrets.get("Arquiteto") || secrets.get("ARQUITETO");
 const architectModel = () => secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL;
 const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY") : undefined);
+// Confronto GAN: gerador no Gemini (segredo Arquiteto), discriminador cego no GPT (segredos Discriminador e QB_DISCRIMINATOR_MODEL).
+const ganGeneratorCall = args => callGanGenerator({ ...args, apiKey: architectKey(), model: architectModel() });
+const ganDiscriminatorConfig = () => ({ apiKey: secrets.get("Discriminador"), model: secrets.get("QB_DISCRIMINATOR_MODEL") });
 
 export const getArchitectProviderStatus = createServerFn({ method: "GET" })
   .middleware([requireUser])
@@ -501,8 +505,8 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
   .handler(async ({ data: request, context }) => {
     const personal = context.user.role === 'admin' ? null : await preparePersonalMapGan(context, request);
     const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
-    const base44 = context.getBase44();
-    const core = base44.asServiceRole.integrations.Core;
+    const discriminator = ganDiscriminatorConfig();
+    validateGanDiscriminatorConfig(discriminator);
     const count = data.count || 4;
     const mapJson = JSON.stringify(data.mapa).slice(0, 12000);
     const pathText = Array.isArray(data.targetNodePath) && data.targetNodePath.length
@@ -525,7 +529,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    const genRes = await core.InvokeLLM({
+    const genRes = await ganGeneratorCall({
       prompt: generatorPrompt,
       response_json_schema: {
         type: "object",
@@ -591,7 +595,8 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    const discRes = await core.InvokeLLM({
+    const discRes = await callGanDiscriminator({
+      ...discriminator,
       prompt: discriminatorPrompt,
       response_json_schema: {
         type: "object",
