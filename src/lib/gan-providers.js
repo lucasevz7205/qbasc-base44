@@ -7,6 +7,7 @@
  * Só deve ser chamado a partir de funções autenticadas do servidor.
  */
 import { invokeGeminiTutor } from "./gemini-tutor.js";
+import { GanStepError } from "./gan-diagnostics.js";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
@@ -40,10 +41,10 @@ export function toStrictJsonSchema(schema) {
 
 export function validateGanDiscriminatorConfig({ apiKey, model }) {
   if (typeof apiKey !== "string" || !apiKey.trim()) {
-    throw new Error("Chave do Discriminador ausente. Crie o segredo Discriminador na Base44 com a chave da OpenAI.");
+    throw new GanStepError("chave-gpt-ausente", "Chave do Discriminador ausente. Crie o segredo Discriminador na Base44 com a chave da OpenAI.");
   }
   if (typeof model !== "string" || !/^gpt-[a-z0-9.-]{2,60}$/.test(model.trim())) {
-    throw new Error("Modelo do Discriminador ausente ou inválido. Confira o segredo QB_DISCRIMINATOR_MODEL (ex.: gpt-6.1-terra, sem espaços).");
+    throw new GanStepError("modelo-gpt-invalido", "Modelo do Discriminador ausente ou inválido. Confira o segredo QB_DISCRIMINATOR_MODEL (ex.: gpt-6.1-terra, sem espaços).");
   }
 }
 
@@ -59,7 +60,7 @@ export async function invokeOpenAIJson({
 }) {
   validateGanDiscriminatorConfig({ apiKey, model });
   if (typeof prompt !== "string" || !prompt.trim() || prompt.length > 120000) {
-    throw new Error("Contexto do Discriminador inválido ou excessivamente longo.");
+    throw new GanStepError("contexto-gpt-invalido", "Contexto do Discriminador inválido ou excessivamente longo.");
   }
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -87,25 +88,25 @@ export async function invokeOpenAIJson({
           detail = code;
         }
       } catch { /* resposta sem JSON */ }
-      if (response.status === 401) throw new Error("A OpenAI recusou a chave (401). Confira o segredo Discriminador.");
-      if (response.status === 429) throw new Error("Limite de uso ou de gasto da OpenAI atingido (429). Confira o limite mensal e o saldo.");
-      throw new Error(`A OpenAI recusou a requisição (HTTP ${response.status}${detail ? ": " + detail : ""}).`);
+      if (response.status === 401) throw new GanStepError("gpt-http-401", "A OpenAI recusou a chave (401). Confira o segredo Discriminador.");
+      if (response.status === 429) throw new GanStepError("gpt-http-429", "Limite de uso ou de gasto da OpenAI atingido (429). Confira o limite mensal e o saldo.");
+      throw new GanStepError("gpt-http-" + response.status, `A OpenAI recusou a requisição (HTTP ${response.status}${detail ? ": " + detail : ""}).`);
     }
     const data = await response.json();
     const choice = data?.choices?.[0];
-    if (choice?.message?.refusal) throw new Error("O Discriminador (OpenAI) recusou-se a avaliar este conteúdo.");
-    if (choice?.finish_reason === "length") throw new Error("O Discriminador interrompeu a resposta antes de concluir. Tente novamente.");
+    if (choice?.message?.refusal) throw new GanStepError("gpt-recusou", "O Discriminador (OpenAI) recusou-se a avaliar este conteúdo.");
+    if (choice?.finish_reason === "length") throw new GanStepError("gpt-resposta-incompleta", "O Discriminador interrompeu a resposta antes de concluir. Tente novamente.");
     const text = typeof choice?.message?.content === "string" ? choice.message.content.trim() : "";
-    if (!text) throw new Error("O Discriminador (OpenAI) não retornou texto.");
+    if (!text) throw new GanStepError("gpt-sem-texto", "O Discriminador (OpenAI) não retornou texto.");
     let parsed;
     try {
       parsed = JSON.parse(text);
     } catch {
-      throw new Error("O Discriminador devolveu uma resposta que não é JSON válido. Tente novamente.");
+      throw new GanStepError("gpt-json-invalido", "O Discriminador devolveu uma resposta que não é JSON válido. Tente novamente.");
     }
     return { parsed, usage: { entrada: data?.usage?.prompt_tokens ?? null, saida: data?.usage?.completion_tokens ?? null } };
   } catch (error) {
-    if (controller.signal.aborted) throw new Error("Tempo limite do Discriminador (OpenAI) excedido.");
+    if (controller.signal.aborted) throw new GanStepError("gpt-tempo-limite", "Tempo limite do Discriminador (OpenAI) excedido.");
     throw error;
   } finally {
     clearTimeout(timeout);
@@ -126,7 +127,7 @@ export async function callGanGenerator({ prompt, response_json_schema, apiKey, m
   try {
     return JSON.parse(reply);
   } catch {
-    throw new Error("O Gerador (Gemini) devolveu uma resposta que não é JSON válido. Tente novamente.");
+    throw new GanStepError("gemini-json-invalido", "O Gerador (Gemini) devolveu uma resposta que não é JSON válido. Tente novamente.");
   }
 }
 

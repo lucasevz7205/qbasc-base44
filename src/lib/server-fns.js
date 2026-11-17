@@ -5,6 +5,7 @@ import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accou
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { callGanGenerator, callGanDiscriminator, validateGanDiscriminatorConfig } from "@/lib/gan-providers";
+import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-diagnostics";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
@@ -510,9 +511,10 @@ const PersonalMapGanSchema = GenerateMindMapGanSchema.pick({ topicId: true, targ
 export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
   .middleware([requireUser])
   .validator(z.union([PersonalMapGanSchema, GenerateMindMapGanSchema]))
-  .handler(async ({ data: request, context }) => {
+  .handler(({ data: request, context }) => withGanDiagnostics(async stage => {
     const personal = context.user.role === 'admin' ? null : await preparePersonalMapGan(context, request);
     const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
+    stage("configuracao");
     const discriminator = ganDiscriminatorConfig();
     validateGanDiscriminatorConfig(discriminator);
     const count = data.count || 4;
@@ -537,6 +539,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
+    stage("gemini");
     const genRes = await ganGeneratorCall({
       prompt: generatorPrompt,
       response_json_schema: {
@@ -577,7 +580,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
 
     const candidateQuestions = Array.isArray(genRes?.questoes) ? genRes.questoes.slice(0, count) : [];
     if (!candidateQuestions.length) {
-      throw new Error("O Agente Gerador não retornou itens válidos para este nó.");
+      throw new GanStepError("gemini-sem-itens", "O Gemini não retornou questões para este nó.");
     }
 
     // ETAPA 2 DA GAN: Agente Discriminador Cego recebe APENAS os enunciados (sem gabarito, sem mecanismo e sem comentários do Gerador)
@@ -603,6 +606,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
+    stage("gpt");
     const discRes = await callGanDiscriminator({
       ...discriminator,
       prompt: discriminatorPrompt,
@@ -644,7 +648,9 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       },
     });
 
-    const judgments = Array.isArray(discRes?.julgamentos) ? discRes.julgamentos : [];
+    stage("confronto");
+    const judgments = discRes?.julgamentos;
+    assertGanJudgments(judgments, candidateQuestions.length);
 
     const result = normalizeGanConfrontation(candidateQuestions, judgments, data.mapa, {
       targetNodeId: data.targetNodeId,
@@ -652,6 +658,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     });
     result.questoes.forEach(item => { item.id = 'gan-' + crypto.randomUUID(); });
     if (!personal) return result;
+    stage("gravacao");
     const registros = await personal.persist(result.aprovadas);
     return { ...result, registros };
-  });
+  }));

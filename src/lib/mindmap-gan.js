@@ -106,7 +106,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
         finalKey = refinedKey;
         finalCommentary = asText(refined.comentario || genCommentary, 2400);
         statusConfronto = "refinada_gan";
-      } else if (!blindKeyMatch || discVerdict === "REJEITADA" || ganScore < 65) {
+      } else {
         statusConfronto = "divergencia_bloqueada";
       }
     }

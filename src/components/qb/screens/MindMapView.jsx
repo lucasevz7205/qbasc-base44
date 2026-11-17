@@ -13,6 +13,7 @@ import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapGanQuestions } from '@/lib/server-fns';
+import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
@@ -130,7 +131,7 @@ export default function MindMapView({
       : { topicId: chosen.topicId, targetNodeId: target.id, count: 4, queue };
     if (isAdmin && extraContext) data.sourceContext = [data.sourceContext, extraContext].filter(Boolean).join('\n\n').slice(0, 7500);
     const res = await generateGanFn({ data });
-    if (!isAdmin) await cacheGanQuestions(res.registros);
+    if (!isAdmin && !res?.falha) await cacheGanQuestions(res?.registros);
     return res;
   }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
 
@@ -352,6 +353,10 @@ export default function MindMapView({
       }
       const res = await generateNode(node, false, additionalContext);
       if (task.discard) return;
+      if (res?.falha) {
+        setGanError(ganFailureLabel(res.falha));
+        return;
+      }
       const aprovadas = (Array.isArray(res?.aprovadas) ? res.aprovadas : []).filter(isApprovedGanQuestion);
       const bloqueadas = Array.isArray(res?.bloqueadas) ? res.bloqueadas : [];
       const resumoConfronto = res?.resumoConfronto || {
@@ -364,7 +369,7 @@ export default function MindMapView({
 
       if (!aprovadas.length) {
         setGanBlockedReport({ bloqueadas, resumoConfronto });
-        setGanError('Todos os itens gerados apresentaram divergência no teste cego e foram bloqueados pelo portão determinístico. Tente gerar novamente.');
+        setGanError('O teste cego não aprovou questões deste nó. Confira os motivos no relatório.');
         return;
       }
 
@@ -536,6 +541,13 @@ export default function MindMapView({
               <input type="checkbox" checked={queueAuto} onChange={e => setQueueAuto(e.target.checked)} />
               Gerar ao abrir mapa novo
             </label>
+            {queueReport?.falhas?.length > 0 && (
+              <ul role="status" style={{ flexBasis: '100%', margin: 0, paddingInlineStart: 20, fontSize: 13, color: 'var(--text-secondary)', overflowWrap: 'anywhere' }}>
+                {queueReport.falhas.map((failure, index) => (
+                  <li key={index}><strong>{failure.no}</strong> · {ganFailureLabel(failure)}</li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
         <div

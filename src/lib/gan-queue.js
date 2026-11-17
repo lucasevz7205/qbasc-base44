@@ -1,3 +1,5 @@
+import { ganStorageFailure, ganTransportFailure } from './gan-diagnostics.js';
+
 // Fila do Arquiteto: gera, pelo confronto GAN que já existe (generateMindMapGanQuestions),
 // as questões dos nós de mapa que ainda não têm cobertura. Nada é apresentado como prova real.
 export const GAN_QUEUE_MIN_QUESTIONS = 2;
@@ -114,28 +116,48 @@ export async function runGanQueue({ chosen, pending, generate, save, shouldStop,
   for (const node of todo) {
     if (shouldStop && shouldStop()) { out.restantes += todo.length - out.processados; break; }
     onProgress && onProgress({ atual: out.processados + 1, total: todo.length, no: node.label });
-    try {
-      const res = await generate(node);
-      const aprovadas = (Array.isArray(res?.aprovadas) ? res.aprovadas : []).filter(isApprovedGanQuestion);
-      out.bloqueadas += Array.isArray(res?.bloqueadas) ? res.bloqueadas.length : 0;
-      for (const item of aprovadas) {
-        try {
-          if (save) {
-            const record = buildGanQuestionRecord(item, { chosen, node, queue: true });
-            await save('questoes', record.id, record);
-          }
-          out.aprovadas += 1;
-        } catch {
-          out.erros += 1;
-        }
-      }
-      errosSeguidos = 0;
-    } catch {
+    const falha = await processGanNode({ node, chosen, generate, save, out });
+    if (falha) {
+      (out.falhas ??= []).push({ no: node.label, ...falha });
       out.erros += 1;
+      out.restantes += 1;
       errosSeguidos += 1;
+    } else {
+      errosSeguidos = 0;
     }
     out.processados += 1;
     if (errosSeguidos >= 2) { out.restantes += todo.length - out.processados; break; }
   }
   return out;
+}
+
+async function processGanNode({ node, chosen, generate, save, out }) {
+  let res;
+  try {
+    res = await generate(node);
+  } catch {
+    return ganTransportFailure;
+  }
+  if (res?.falha) return res.falha;
+  if (!Array.isArray(res?.aprovadas) || !Array.isArray(res?.bloqueadas)) return ganTransportFailure;
+
+  const aprovadas = res.aprovadas.filter(isApprovedGanQuestion);
+  out.bloqueadas += res.bloqueadas.length;
+  const persisted = new Set(res.registros?.map(r => r.id));
+  let failed = false;
+  for (const item of aprovadas) {
+    try {
+      if (save) {
+        const record = buildGanQuestionRecord(item, { chosen, node, queue: true });
+        await save('questoes', record.id, record);
+      } else if (!persisted.has(item.id)) {
+        failed = true;
+        continue;
+      }
+      out.aprovadas += 1;
+    } catch {
+      failed = true;
+    }
+  }
+  return failed ? ganStorageFailure : null;
 }
