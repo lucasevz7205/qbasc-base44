@@ -42,6 +42,7 @@ const knownFailure = (etapa, err) => {
     const match = geminiErrors.find(([prefix]) => message.startsWith(prefix));
     if (match) return [match[1], match[2]];
     const http = /^Falha na API Gemini \(HTTP ([45]\d{2})\)/.exec(message)?.[1];
+    if (http === '503') return ['gemini-http-503', 'O Gemini está temporariamente indisponível (HTTP 503). Tente novamente em alguns minutos.'];
     if (http) return ['gemini-http-' + http, 'O Gemini retornou HTTP ' + http + '.'];
   }
   return [etapa + '-falhou', defaultMessages[etapa]];

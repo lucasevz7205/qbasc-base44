@@ -10,6 +10,45 @@ import { invokeGeminiTutor } from "./gemini-tutor.js";
 import { GanStepError } from "./gan-diagnostics.js";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
+const GEMINI_RETRY_DELAYS_MS = [1000, 2000];
+const GEMINI_MAX_RETRY_WAIT_MS = 8000;
+
+function geminiRetryAfterMs(response) {
+  const value = response.headers?.get('Retry-After')?.trim();
+  if (!value) return 0;
+  if (/^\d+$/.test(value)) return Number(value) * 1000;
+  const date = Date.parse(value);
+  return Number.isFinite(date) ? Math.max(date - Date.now(), 0) : 0;
+}
+
+function waitForGeminiRetry(delayMs, signal) {
+  return new Promise((resolve, reject) => {
+    signal.throwIfAborted();
+    const abort = () => {
+      clearTimeout(timer);
+      reject(signal.reason);
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener('abort', abort);
+      resolve();
+    }, delayMs);
+    signal.addEventListener('abort', abort, { once: true });
+  });
+}
+
+async function fetchGeminiWithRetry(fetchImpl, url, init) {
+  let response = await fetchImpl(url, init);
+  for (const backoffMs of GEMINI_RETRY_DELAYS_MS) {
+    if (response.status !== 503) return response;
+    const waitMs = Math.max(backoffMs, geminiRetryAfterMs(response));
+    if (waitMs > GEMINI_MAX_RETRY_WAIT_MS) return response;
+    await response.body?.cancel();
+    await waitForGeminiRetry(waitMs, init.signal);
+    init.signal.throwIfAborted();
+    response = await fetchImpl(url, init);
+  }
+  return response;
+}
 
 function allowNull(schema) {
   const type = Array.isArray(schema.type) ? schema.type : [schema.type];
@@ -114,7 +153,7 @@ export async function invokeOpenAIJson({
 }
 
 /** Gerador do confronto: mesma assinatura usada antes com InvokeLLM ({ prompt, response_json_schema }). */
-export async function callGanGenerator({ prompt, response_json_schema, apiKey, model, fetchImpl, timeoutMs = 90000 }) {
+export async function callGanGenerator({ prompt, response_json_schema, apiKey, model, fetchImpl = fetch, timeoutMs = 90000 }) {
   const { reply } = await invokeGeminiTutor({
     apiKey,
     model,
@@ -122,7 +161,7 @@ export async function callGanGenerator({ prompt, response_json_schema, apiKey, m
     responseJsonSchema: response_json_schema,
     maxOutputTokens: 6000,
     timeoutMs,
-    ...(fetchImpl ? { fetchImpl } : {}),
+    fetchImpl: (url, init) => fetchGeminiWithRetry(fetchImpl, url, init),
   });
   try {
     return JSON.parse(reply);

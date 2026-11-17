@@ -106,7 +106,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
 
 /**
  * Processa até maxNodes nós, um por vez. Só grava itens aprovados ou refinados pelo confronto.
- * Bloqueados não são gravados. Para após 2 erros seguidos para não gastar crédito à toa.
+ * Bloqueados não são gravados. A fila pausa após indisponibilidade do Gemini ou dois erros seguidos.
  * Não altera respostas, status, SRS nem itens existentes.
  */
 export async function runGanQueue({ chosen, pending, generate, save, shouldStop, onProgress, maxNodes = GAN_QUEUE_MAX_NODES_PER_RUN }) {
@@ -126,7 +126,10 @@ export async function runGanQueue({ chosen, pending, generate, save, shouldStop,
       errosSeguidos = 0;
     }
     out.processados += 1;
-    if (errosSeguidos >= 2) { out.restantes += todo.length - out.processados; break; }
+    if (falha?.codigo === 'gemini-http-503' || errosSeguidos >= 2) {
+      out.restantes += todo.length - out.processados;
+      break;
+    }
   }
   return out;
 }
