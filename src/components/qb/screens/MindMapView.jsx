@@ -120,8 +120,8 @@ export default function MindMapView({
   const mapId = chosen?.id;
   const ganReview = ganReviews[mapId];
   const ganReviewPending = Boolean(ganReview?.entries.some(entry => entry.status === 'pending'));
-  const openGanReview = React.useCallback(() => {
-    ganReviewFocus.current = document.activeElement;
+  const openGanReview = React.useCallback(event => {
+    ganReviewFocus.current = event.currentTarget;
     setGanReviewOpen(true);
   }, []);
   const newGanReview = React.useCallback((entries, anchor, queue, open) => {
@@ -154,14 +154,14 @@ export default function MindMapView({
     return res;
   }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
 
-  const runQueue = React.useCallback(async (openReview = true) => {
+  const runQueue = React.useCallback(async event => {
     if (!chosen || isRadialOpen || ganTask.current) return;
     if (ganReviewPending) {
-      if (openReview) openGanReview();
+      if (event) openGanReview(event);
       return;
     }
     if (!ganPending.length) return;
-    if (openReview) ganReviewFocus.current = document.activeElement;
+    if (event) ganReviewFocus.current = event.currentTarget;
     const entries = [];
     const task = { stop: false, discard: false };
     ganTask.current = task;
@@ -178,7 +178,7 @@ export default function MindMapView({
       });
       if (!task.discard) {
         setQueueReport(report);
-        newGanReview(entries, { id: chosen.id, label: chosen.title }, true, openReview);
+        newGanReview(entries, { id: chosen.id, label: chosen.title }, true, Boolean(event));
       }
     } finally {
       ganTask.current = null;
@@ -190,7 +190,7 @@ export default function MindMapView({
   React.useEffect(() => {
     if (!queueAuto || !mapId || isRadialOpen || ganTask.current || ganReviewPending || !ganPending.length || queueAutoDone.current.has(mapId)) return;
     queueAutoDone.current.add(mapId);
-    runQueue(false);
+    runQueue();
   }, [queueAuto, mapId, isRadialOpen, ganReviewPending, ganPending.length, queueRunning, ganLoading, runQueue]);
 
   const handleSelectTopic = nextTopicId => {
@@ -395,13 +395,13 @@ export default function MindMapView({
     } });
   };
 
-  const handleGenerateGan = async () => {
+  const handleGenerateGan = async event => {
     if (ganTask.current) return;
     if (ganReviewPending) {
-      openGanReview();
+      openGanReview(event);
       return;
     }
-    ganReviewFocus.current = document.activeElement;
+    ganReviewFocus.current = event.currentTarget;
     const task = { stop: false, discard: false };
     ganTask.current = task;
     setGanLoading(true);
@@ -554,7 +554,7 @@ export default function MindMapView({
               </Button>
             )}
             {!queueRunning && ganPending.length > 0 && !ganReviewPending && (
-              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={() => runQueue()}>
+              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={runQueue}>
                 {`Gerar pendentes (até ${GAN_QUEUE_MAX_NODES_PER_RUN} nós)`}
               </Button>
             )}
