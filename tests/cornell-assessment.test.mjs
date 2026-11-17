@@ -52,6 +52,13 @@ test('a seleção prioriza a fonte fornecida, o assunto e limita o envio do acer
   assert.equal(data.contextLimited, true);
 });
 
+test('recorte longo do acervo procura a passagem relacionada às notas e informa truncamento', () => {
+  const longText = ('Texto lateral que trata de outros temas e usa exemplos diferentes.\n').repeat(80) + note;
+  const data = prepareCornellAssessment({ original: { notes: note }, bank: [{ title: 'Aula extensa', kind: 'Material', text: longText, currentTopic: true }] });
+  assert.ok(data.sources[0].text.includes(note));
+  assert.equal(data.contextLimited, true);
+});
+
 test('calcula a nota por critérios e impede declaração de domínio antes de uma tentativa', () => {
   const result = normalizeCornellAssessment(JSON.stringify(response()), input());
   assert.equal(result.nota, 8);
