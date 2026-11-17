@@ -39,3 +39,27 @@
 .qb-cornell-verification blockquote {
   margin: 6px 0 0; padding-inline-start: 10px; border-inline-start: 2px solid var(--qb-bronze);
 }
+
+/* Avaliação pedagógica: a nota e o teste pertencem somente ao Cornell. */
+.qb-cornell-assessment { display: grid; gap: var(--space-4, 16px); min-width: 0; font: 400 16px/1.6 var(--font-body); overflow-wrap: anywhere; }
+.qb-cornell-assessment__header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.qb-cornell-assessment h3 { margin: 4px 0; font: 500 24px/1.25 var(--font-display); color: var(--text-primary); }
+.qb-cornell-assessment h4 { font-size: 17px; color: var(--qb-gold); }
+.qb-cornell-assessment__grade { display: grid; gap: 4px; padding: 12px 16px; border: 1px solid var(--qb-bronze); border-radius: var(--radius-md, 12px); background: var(--surface-sunken); color: var(--qb-gold); }
+.qb-cornell-assessment__grade strong { font: 500 32px/1 var(--font-display); }
+.qb-cornell-assessment__grade small { font: 400 16px/1 var(--font-body); margin-left: 4px; }
+.qb-cornell-assessment__grade span { font-size: 14px; }
+.qb-cornell-assessment__criteria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.qb-cornell-assessment__criteria article { display: grid; align-content: start; gap: 8px; padding: 14px; min-width: 0; }
+.qb-cornell-assessment__criterion-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; color: var(--qb-gold); }
+.qb-cornell-assessment__test { display: grid; gap: 12px; padding: 16px; border: 1px solid var(--qb-bronze); border-radius: var(--radius-md, 12px); background: var(--surface-sunken); }
+.qb-cornell-assessment__test textarea { resize: vertical; min-height: 140px; max-height: 60dvh; }
+.qb-cornell-assessment__confidence { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.qb-cornell-assessment__confidence label { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; cursor: pointer; }
+.qb-cornell-assessment__confidence input { width: 18px; height: 18px; accent-color: var(--qb-bronze); }
+.qb-cornell-assessment [aria-label="Resultado do teste de compreensão"] { display: grid; gap: 8px; }
+@media (max-width: 600px) {
+  .qb-cornell-assessment__criteria { grid-template-columns: minmax(0, 1fr); }
+  .qb-cornell-assessment__test { padding: 12px; }
+}
+
