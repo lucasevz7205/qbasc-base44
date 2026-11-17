@@ -9,7 +9,7 @@ import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
 import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
-import { contextualFlashcardFront } from "@/lib/flashcard-standard";
+import { stripFlashcardContext } from "@/lib/flashcard-standard";
 import { continueTutorConversation } from "@/lib/tutor-continuation";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
@@ -206,7 +206,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
     });
     const proposal = parseEditorialSuggestion(result.reply, data.kind);
     if (data.kind === "flashcard") {
-      proposal.replacement.front = contextualFlashcardFront(proposal.replacement.front, data.subjectName, data.topicLabel);
+      proposal.replacement.front = stripFlashcardContext(proposal.replacement.front, data.subjectName, data.topicLabel);
     }
     return proposal;
   });
@@ -463,7 +463,7 @@ export const generateFlashcardsFromMaterial = createServerFn({ method: "POST" })
         ? res.cards
             .filter((c) => c && typeof c.front === "string" && typeof c.back === "string" && c.front.trim().length >= 12 && c.back.trim().length >= 1)
             .slice(0, count + 2)
-            .map(c => ({ front: contextualFlashcardFront(c.front, data.subjectName, data.topicLabel), back: c.back.trim() }))
+            .map(c => ({ front: stripFlashcardContext(c.front.trim(), data.subjectName, data.topicLabel), back: c.back.trim() }))
         : [],
     };
   });

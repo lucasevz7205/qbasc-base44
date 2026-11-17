@@ -6,6 +6,26 @@ function normalized(text) {
   return label(text).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
 }
 
+// O app já mostra matéria e assunto no cabeçalho do cartão. Esta função tira da frente o prefixo
+// "Matéria · assunto:" (gravado em cartões antigos) só na exibição; o dado e o progresso não mudam.
+export function stripFlashcardContext(front, subject, topics) {
+  if (typeof front !== 'string') return front;
+  const matter = label(subject);
+  const list = (Array.isArray(topics) ? topics : [topics]).map(label).filter(Boolean);
+  if (!matter || !list.length) return front;
+  const question = front.trim();
+  for (const focus of list) {
+    const prefix = matter + ' · ' + focus + ':';
+    const length = Array.from(prefix).length;
+    const start = Array.from(question).slice(0, length).join('');
+    if (normalized(start) === normalized(prefix)) {
+      const rest = question.slice(start.length).trimStart();
+      if (rest.length >= 12) return rest;
+    }
+  }
+  return front;
+}
+
 export function contextualFlashcardFront(front, subject, topic) {
   if (typeof front !== 'string' || !front.trim()) return '';
   const question = front.trim();

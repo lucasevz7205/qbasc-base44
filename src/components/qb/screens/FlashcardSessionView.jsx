@@ -13,6 +13,7 @@ import { flashcardWasRated, reviewDay } from '@/lib/spaced-review';
 import { flashcardOptions } from '@/lib/study-session-rules';
 import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
+import { stripFlashcardContext } from '@/lib/flashcard-standard';
 
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
@@ -99,7 +100,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
           </Panel>
         ) : (
           <>
-            <Flashcard key={mode + ':' + card.id + ':' + ratings.length} deck={subject?.name || 'Flashcards'} demo={false} intervals={intervals} height={380} front={card.front}
+            <Flashcard key={mode + ':' + card.id + ':' + ratings.length} deck={[subject?.name, topic?.title].filter(Boolean).join(' · ') || 'Flashcards'} demo={false} intervals={intervals} height={380} front={stripFlashcardContext(card.front, subject?.name, [topic?.title, topicLabel])}
               back={<><div style={{ color: 'var(--text-primary)', fontSize: 19, lineHeight: 1.5 }}><ChatMarkdown text={card.back} /></div><p style={{ margin: '14px 0 0', font: '400 13px/1.4 var(--font-mono)', color: 'var(--text-muted)' }}>{card.basis}</p></>}
               origin={node && `${parent ? parent.label + ' › ' : ''}${node.label}`} onOpenOrigin={() => go('map', { node: card.node, topicId: card.topicId, returnTo: { label: 'revisão de flashcards', view: 'flashcards' } })}
               flipped={flipped} onFlip={() => setCards(c => ({ ...c, flipped: !c.flipped }))} onRate={rate}
