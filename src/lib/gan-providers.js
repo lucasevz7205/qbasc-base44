@@ -2,53 +2,15 @@
  * Provedores do confronto GAN do Arquiteto.
  *  - Gerador: Gemini (segredo "Arquiteto"), pelo adaptador que o app já usa.
  *  - Discriminador cego: OpenAI/GPT (segredo "Discriminador" + modelo em "QB_DISCRIMINATOR_MODEL").
- * Famílias diferentes de propósito: os erros do gerador não se repetem no discriminador.
+ * Se o Gemini estiver indisponível (HTTP 503), o GPT gera em uma chamada separada do julgamento.
+ * Nesse caso a revisão segue sendo cega, embora ambos os papéis usem o mesmo modelo.
  * Sem fallback para InvokeLLM (créditos Base44): se faltar segredo, falha com mensagem clara.
  * Só deve ser chamado a partir de funções autenticadas do servidor.
  */
-import { invokeGeminiTutor } from "./gemini-tutor.js";
+import { GeminiUnavailableError, invokeGeminiTutor } from "./gemini-tutor.js";
 import { GanStepError } from "./gan-diagnostics.js";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
-const GEMINI_RETRY_DELAYS_MS = [1000, 2000];
-const GEMINI_MAX_RETRY_WAIT_MS = 8000;
-
-function geminiRetryAfterMs(response) {
-  const value = response.headers?.get('Retry-After')?.trim();
-  if (!value) return 0;
-  if (/^\d+$/.test(value)) return Number(value) * 1000;
-  const date = Date.parse(value);
-  return Number.isFinite(date) ? Math.max(date - Date.now(), 0) : 0;
-}
-
-function waitForGeminiRetry(delayMs, signal) {
-  return new Promise((resolve, reject) => {
-    signal.throwIfAborted();
-    const abort = () => {
-      clearTimeout(timer);
-      reject(signal.reason);
-    };
-    const timer = setTimeout(() => {
-      signal.removeEventListener('abort', abort);
-      resolve();
-    }, delayMs);
-    signal.addEventListener('abort', abort, { once: true });
-  });
-}
-
-async function fetchGeminiWithRetry(fetchImpl, url, init) {
-  let response = await fetchImpl(url, init);
-  for (const backoffMs of GEMINI_RETRY_DELAYS_MS) {
-    if (response.status !== 503) return response;
-    const waitMs = Math.max(backoffMs, geminiRetryAfterMs(response));
-    if (waitMs > GEMINI_MAX_RETRY_WAIT_MS) return response;
-    await response.body?.cancel();
-    await waitForGeminiRetry(waitMs, init.signal);
-    init.signal.throwIfAborted();
-    response = await fetchImpl(url, init);
-  }
-  return response;
-}
 
 function allowNull(schema) {
   const type = Array.isArray(schema.type) ? schema.type : [schema.type];
@@ -133,19 +95,19 @@ export async function invokeOpenAIJson({
     }
     const data = await response.json();
     const choice = data?.choices?.[0];
-    if (choice?.message?.refusal) throw new GanStepError("gpt-recusou", "O Discriminador (OpenAI) recusou-se a avaliar este conteúdo.");
-    if (choice?.finish_reason === "length") throw new GanStepError("gpt-resposta-incompleta", "O Discriminador interrompeu a resposta antes de concluir. Tente novamente.");
+    if (choice?.message?.refusal) throw new GanStepError("gpt-recusou", "O GPT recusou-se a avaliar este conteúdo.");
+    if (choice?.finish_reason === "length") throw new GanStepError("gpt-resposta-incompleta", "O GPT interrompeu a resposta antes de concluir. Tente novamente.");
     const text = typeof choice?.message?.content === "string" ? choice.message.content.trim() : "";
-    if (!text) throw new GanStepError("gpt-sem-texto", "O Discriminador (OpenAI) não retornou texto.");
+    if (!text) throw new GanStepError("gpt-sem-texto", "O GPT não retornou texto.");
     let parsed;
     try {
       parsed = JSON.parse(text);
     } catch {
-      throw new GanStepError("gpt-json-invalido", "O Discriminador devolveu uma resposta que não é JSON válido. Tente novamente.");
+      throw new GanStepError("gpt-json-invalido", "O GPT devolveu uma resposta que não é JSON válido. Tente novamente.");
     }
     return { parsed, usage: { entrada: data?.usage?.prompt_tokens ?? null, saida: data?.usage?.completion_tokens ?? null } };
   } catch (error) {
-    if (controller.signal.aborted) throw new GanStepError("gpt-tempo-limite", "Tempo limite do Discriminador (OpenAI) excedido.");
+    if (controller.signal.aborted) throw new GanStepError("gpt-tempo-limite", "Tempo limite do GPT excedido.");
     throw error;
   } finally {
     clearTimeout(timeout);
@@ -161,12 +123,29 @@ export async function callGanGenerator({ prompt, response_json_schema, apiKey, m
     responseJsonSchema: response_json_schema,
     maxOutputTokens: 6000,
     timeoutMs,
-    fetchImpl: (url, init) => fetchGeminiWithRetry(fetchImpl, url, init),
+    fetchImpl,
   });
   try {
     return JSON.parse(reply);
   } catch {
     throw new GanStepError("gemini-json-invalido", "O Gerador (Gemini) devolveu uma resposta que não é JSON válido. Tente novamente.");
+  }
+}
+
+export async function callGanGeneratorWithFallback({ prompt, response_json_schema, gemini, openai, onOpenAIFallback }) {
+  try {
+    const draft = await callGanGenerator({ ...gemini, prompt, response_json_schema });
+    return { draft, provedorGerador: "gemini" };
+  } catch (error) {
+    if (!(error instanceof GeminiUnavailableError)) throw error;
+    onOpenAIFallback();
+    const { parsed } = await invokeOpenAIJson({
+      ...openai,
+      prompt,
+      schema: response_json_schema,
+      schemaName: "questoes_gan",
+    });
+    return { draft: parsed, provedorGerador: "gpt" };
   }
 }
 

@@ -4,7 +4,7 @@ import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
-import { callGanGenerator, callGanDiscriminator, validateGanDiscriminatorConfig } from "@/lib/gan-providers";
+import { callGanGeneratorWithFallback, callGanDiscriminator, validateGanDiscriminatorConfig } from "@/lib/gan-providers";
 import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-diagnostics";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
@@ -60,11 +60,9 @@ const TutorInputSchema = z.object({
     .optional(),
 });
 
-const namedArchitectKey = () => secrets.get("Arquiteto") || secrets.get("ARQUITETO");
-const architectModel = () => secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL;
-const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY") : undefined);
-// Confronto GAN: gerador no Gemini (segredo Arquiteto), discriminador cego no GPT (segredos Discriminador e QB_DISCRIMINATOR_MODEL).
-const ganGeneratorCall = args => callGanGenerator({ ...args, apiKey: architectKey(), model: architectModel() });
+const namedArchitectKey = () => secrets.get("Arquiteto")?.trim() || secrets.get("ARQUITETO")?.trim();
+const architectModel = () => secrets.get("QB_GEMINI_MODEL")?.trim() || DEFAULT_TUTOR_GEMINI_MODEL;
+const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY")?.trim() : undefined);
 const ganDiscriminatorConfig = () => ({ apiKey: secrets.get("Discriminador"), model: secrets.get("QB_DISCRIMINATOR_MODEL") });
 
 export const getArchitectProviderStatus = createServerFn({ method: "GET" })
@@ -211,8 +209,8 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
         : `FRENTE ORIGINAL: ${c.front}\nVERSO ORIGINAL: ${c.back}\nFONTE ORIGINAL: ${c.basis || "ausente"}`,
     ].filter(Boolean).join("\n\n");
     const result = await invokeGeminiTutor({
-      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
-      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      apiKey: architectKey(),
+      model: architectModel(),
       prompt,
       responseJsonSchema: editorialResponseSchema(data.kind),
       maxOutputTokens: 4096,
@@ -260,8 +258,8 @@ export const correctFlashcardWithArchitect = createServerFn({ method: "POST" })
     ].filter(Boolean).join("\n\n");
     // Correção solicitada usa exclusivamente Gemini; nunca InvokeLLM como fallback.
     return invokeGeminiTutor({
-      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
-      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      apiKey: architectKey(),
+      model: architectModel(),
       prompt,
     });
   });
@@ -389,8 +387,8 @@ export const generateCornellCues = createServerFn({ method: "POST" })
 
     // Gemini externo, mediante ação explícita. Não há fallback para créditos Base44.
     const result = await invokeGeminiTutor({
-      apiKey: secrets.get("Arquiteto") || secrets.get("ARQUITETO") || secrets.get("GEMINI_API_KEY"),
-      model: secrets.get("QB_GEMINI_MODEL") || DEFAULT_TUTOR_GEMINI_MODEL,
+      apiKey: architectKey(),
+      model: architectModel(),
       prompt,
     });
     return parseCornellGemini(result.reply);
@@ -540,7 +538,10 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .join("\n\n");
 
     stage("gemini");
-    const genRes = await ganGeneratorCall({
+    const { draft, provedorGerador } = await callGanGeneratorWithFallback({
+      gemini: { apiKey: architectKey(), model: architectModel() },
+      openai: discriminator,
+      onOpenAIFallback: () => stage("gpt-gerador"),
       prompt: generatorPrompt,
       response_json_schema: {
         type: "object",
@@ -578,9 +579,10 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       },
     });
 
-    const candidateQuestions = Array.isArray(genRes?.questoes) ? genRes.questoes.slice(0, count) : [];
+    const candidateQuestions = Array.isArray(draft?.questoes) ? draft.questoes.slice(0, count) : [];
     if (!candidateQuestions.length) {
-      throw new GanStepError("gemini-sem-itens", "O Gemini não retornou questões para este nó.");
+      const gerador = provedorGerador === "gpt" ? "GPT" : "Gemini";
+      throw new GanStepError(provedorGerador + "-sem-itens", `O ${gerador} não retornou questões para este nó.`);
     }
 
     // ETAPA 2 DA GAN: Agente Discriminador Cego recebe APENAS os enunciados (sem gabarito, sem mecanismo e sem comentários do Gerador)
@@ -656,7 +658,11 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       targetNodeId: data.targetNodeId,
       targetNodeLabel: data.targetNodeLabel,
     });
-    result.questoes.forEach(item => { item.id = 'gan-' + crypto.randomUUID(); });
+    for (const item of result.questoes) {
+      item.id = 'gan-' + crypto.randomUUID();
+      item.provedorGerador = provedorGerador;
+    }
+    result.provedorGerador = provedorGerador;
     if (!personal) return result;
     stage("gravacao");
     const registros = await personal.persist(result.aprovadas);

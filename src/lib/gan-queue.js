@@ -78,7 +78,13 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     item.comentario,
     item.criticaAdversaria ? `Auditoria Cega (Score GAN ${item.ganScore}%): ${item.criticaAdversaria}` : "",
   ].filter(Boolean).join("\n\n");
-  const tags = [item.nodeTitle || node.label, `${item.mecanismo} · ${item.mecanismoNome}`, statusLabel, `Score GAN ${item.ganScore}%`].filter(Boolean);
+  const tags = [
+    item.nodeTitle || node.label,
+    `${item.mecanismo} · ${item.mecanismoNome}`,
+    statusLabel,
+    `Score GAN ${item.ganScore}%`,
+    item.provedorGerador === 'gpt' && 'Geração e revisão pelo GPT',
+  ].filter(Boolean);
   return {
     id: item.id,
     code: item.code,
@@ -99,6 +105,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     criticaAdversaria: item.criticaAdversaria,
     statusConfronto: item.statusConfronto,
     ganScore: item.ganScore,
+    provedorGerador: item.provedorGerador,
     tags,
     trap,
   };
@@ -146,6 +153,7 @@ async function processGanNode({ node, chosen, generate, save, out }) {
 
   const aprovadas = res.aprovadas.filter(isApprovedGanQuestion);
   out.bloqueadas += res.bloqueadas.length;
+  if (res.provedorGerador === 'gpt') out.nosComGeradorGpt = (out.nosComGeradorGpt || 0) + 1;
   const persisted = new Set(Array.isArray(res.registros) ? res.registros.map(r => r?.id) : []);
   let failed = false;
   for (const item of aprovadas) {

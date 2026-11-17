@@ -369,7 +369,9 @@ export default function MindMapView({
 
       if (!aprovadas.length) {
         setGanBlockedReport({ bloqueadas, resumoConfronto });
-        setGanError('O teste cego não aprovou questões deste nó. Confira os motivos no relatório.');
+        setGanError(res.provedorGerador === 'gpt'
+          ? 'O GPT gerou e revisou em duas chamadas. O teste cego não aprovou questões deste nó.'
+          : 'O teste cego não aprovou questões deste nó. Confira os motivos no relatório.');
         return;
       }
 
@@ -541,6 +543,11 @@ export default function MindMapView({
               <input type="checkbox" checked={queueAuto} onChange={e => setQueueAuto(e.target.checked)} />
               Gerar ao abrir mapa novo
             </label>
+            {queueReport?.nosComGeradorGpt > 0 && (
+              <span role="status" style={{ fontSize: 13 }}>
+                GPT gerou e revisou em chamadas separadas · {queueReport.nosComGeradorGpt} nó(s)
+              </span>
+            )}
             {queueReport?.falhas?.length > 0 && (
               <ul role="status" style={{ flexBasis: '100%', margin: 0, paddingInlineStart: 20, fontSize: 13, color: 'var(--text-secondary)', overflowWrap: 'anywhere', maxHeight: '18dvh', overflowY: 'auto' }}>
                 {queueReport.falhas.map((failure, index) => (

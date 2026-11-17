@@ -5,6 +5,52 @@
  */
 export const DEFAULT_TUTOR_GEMINI_MODEL = "gemini-3.5-flash-lite";
 
+export class GeminiUnavailableError extends Error {
+  constructor() {
+    super("O Gemini está temporariamente indisponível (HTTP 503). Tente novamente em alguns minutos.");
+  }
+}
+
+const GEMINI_RETRY_DELAYS_MS = [1000, 2000];
+const GEMINI_MAX_RETRY_WAIT_MS = 8000;
+
+function geminiRetryAfterMs(response) {
+  const value = response.headers?.get('Retry-After')?.trim();
+  if (!value) return 0;
+  if (/^\d+$/.test(value)) return Number(value) * 1000;
+  const date = Date.parse(value);
+  return Number.isFinite(date) ? Math.max(date - Date.now(), 0) : 0;
+}
+
+function waitForGeminiRetry(delayMs, signal) {
+  return new Promise((resolve, reject) => {
+    signal.throwIfAborted();
+    const abort = () => {
+      clearTimeout(timer);
+      reject(signal.reason);
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener('abort', abort);
+      resolve();
+    }, delayMs);
+    signal.addEventListener('abort', abort, { once: true });
+  });
+}
+
+async function fetchGeminiWithRetry(fetchImpl, url, init) {
+  let response = await fetchImpl(url, init);
+  for (const backoffMs of GEMINI_RETRY_DELAYS_MS) {
+    if (response.status !== 503) return response;
+    const waitMs = Math.max(backoffMs, geminiRetryAfterMs(response));
+    if (waitMs > GEMINI_MAX_RETRY_WAIT_MS) return response;
+    await response.body?.cancel();
+    await waitForGeminiRetry(waitMs, init.signal);
+    init.signal.throwIfAborted();
+    response = await fetchImpl(url, init);
+  }
+  return response;
+}
+
 export async function invokeGeminiTutor({
   apiKey,
   prompt,
@@ -28,13 +74,14 @@ export async function invokeGeminiTutor({
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetchImpl(
+    const response = await fetchGeminiWithRetry(
+      fetchImpl,
       `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-goog-api-key": apiKey,
+          "x-goog-api-key": apiKey.trim(),
         },
         body: JSON.stringify({
           contents: [{ role: "user", parts: [{ text: prompt }] }],
@@ -53,6 +100,7 @@ export async function invokeGeminiTutor({
       if (response.status === 400 || response.status === 401 || response.status === 403) {
         throw new Error("Gemini recusou a requisição. Verifique a chave, o modelo e as permissões do projeto.");
       }
+      if (response.status === 503) throw new GeminiUnavailableError();
       if (response.status === 429) {
         throw new Error("Limite de uso do Gemini atingido. Tente novamente após conferir as cotas.");
       }

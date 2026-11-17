@@ -1,7 +1,10 @@
+import { GeminiUnavailableError } from "./gemini-tutor.js";
+
 const stageLabels = {
   contexto: 'Preparação do nó',
   configuracao: 'Configuração do GAN',
   gemini: 'Gerador Gemini',
+  'gpt-gerador': 'Gerador GPT',
   gpt: 'Discriminador GPT',
   confronto: 'Conferência do julgamento',
   gravacao: 'Gravação',
@@ -12,6 +15,7 @@ const defaultMessages = {
   contexto: 'Não foi possível preparar este nó para a geração.',
   configuracao: 'Não foi possível ler a configuração do GAN.',
   gemini: 'Não foi possível obter uma resposta válida do Gemini.',
+  'gpt-gerador': 'Não foi possível gerar questões com o GPT.',
   gpt: 'Não foi possível obter uma resposta válida da OpenAI.',
   confronto: 'Não foi possível confirmar o julgamento dos itens.',
   gravacao: 'A gravação das questões aprovadas não foi confirmada.',
@@ -37,12 +41,12 @@ const geminiErrors = [
 
 const knownFailure = (etapa, err) => {
   if (err instanceof GanStepError) return [err.codigo, err.message];
+  if (err instanceof GeminiUnavailableError) return ['gemini-http-503', err.message];
   if (etapa === 'gemini') {
     const message = typeof err?.message === 'string' ? err.message : '';
     const match = geminiErrors.find(([prefix]) => message.startsWith(prefix));
     if (match) return [match[1], match[2]];
     const http = /^Falha na API Gemini \(HTTP ([45]\d{2})\)/.exec(message)?.[1];
-    if (http === '503') return ['gemini-http-503', 'O Gemini está temporariamente indisponível (HTTP 503). Tente novamente em alguns minutos.'];
     if (http) return ['gemini-http-' + http, 'O Gemini retornou HTTP ' + http + '.'];
   }
   return [etapa + '-falhou', defaultMessages[etapa]];
