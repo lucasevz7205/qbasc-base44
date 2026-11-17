@@ -9,6 +9,7 @@ import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
+import { CORNELL_ASSESSMENT_SCHEMA, cornellAssessmentPrompt, normalizeCornellAssessment, notebookBody, notebookNotes } from "@/lib/cornell-assessment";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
 import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
 import { stripFlashcardContext } from "@/lib/flashcard-standard";
@@ -391,6 +392,41 @@ export const generateCornellCues = createServerFn({ method: "POST" })
       prompt,
     });
     return parseCornellGemini(result.reply);
+  });
+
+const CornellAssessmentInputSchema = z.object({
+  topicLabel: z.string().trim().min(1).max(300),
+  notebook: z.object({
+    notes: z.string().max(40000), cues: z.string().max(40000), summary: z.string().max(40000),
+    pairs: z.array(z.object({ title: z.string().max(40000), cue: z.string().max(40000), note: z.string().max(40000) })).max(100),
+    linkedSummary: z.string().max(40000),
+  }).refine(value => notebookBody(value).length <= 40000 && notebookNotes(value).length >= 15, 'Desenvolva uma nota ou síntese; o caderno deve ter até 40 mil caracteres.'),
+  map: z.array(z.object({ label: z.string().max(140), parent: z.string().max(80) })).max(100),
+  sources: z.array(z.object({
+    id: z.string().min(1).max(100), title: z.string().min(1).max(300),
+    kind: z.string().min(1).max(80), text: z.string().min(1).max(8000),
+  })).max(10).refine(value => value.reduce((sum, source) => sum + source.text.length, 0) <= 22000 &&
+    new Set(value.map(source => source.id)).size === value.length, 'Fontes repetidas ou contexto excessivo.'),
+  contextLimited: z.boolean(),
+  tentativa: z.object({
+    pergunta: z.string().trim().min(10).max(800), resposta: z.string().trim().min(10).max(3000),
+    confianca: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  }).optional(),
+});
+
+// Parecer sob demanda: analisa uma cópia do caderno e do acervo selecionado.
+// Mantém a mesma permissão do Cornell; nenhuma escrita ou fallback Base44.
+export const assessCornellNotebook = createServerFn({ method: "POST" })
+  .middleware([requireUser])
+  .validator(CornellAssessmentInputSchema)
+  .handler(async ({ data, context }) => {
+    if (context.user?.role !== "admin") throw new Error("Acesso ao caderno Cornell reservado à conta administradora.");
+    const result = await invokeGeminiTutor({
+      apiKey: architectKey(), model: architectModel(),
+      prompt: cornellAssessmentPrompt(data), responseJsonSchema: CORNELL_ASSESSMENT_SCHEMA,
+      maxOutputTokens: 6000, timeoutMs: 90000,
+    });
+    return { ...normalizeCornellAssessment(result.reply, data), provider: "gemini" };
   });
 
 const ExtractMaterialSchema = z.object({
