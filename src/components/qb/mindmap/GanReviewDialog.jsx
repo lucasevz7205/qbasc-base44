@@ -21,6 +21,19 @@ function Recommendation({ item }) {
       <p><strong>Julgamento cego:</strong> {item.provedorDiscriminador === 'gemini' ? 'Gemini' : 'GPT'} · {keyLabel(item.gabaritoDiscriminador)}</p>
       <p><strong>Recomendação:</strong> {verdicts[item.veredictoDiscriminador] || 'Sem recomendação'}</p>
       {item.criticaAdversaria && <p><strong>Parecer:</strong> {item.criticaAdversaria}</p>}
+      {item.fundamentacaoCega && (
+        <section className="qb-gan-review__evidence" aria-label="Fonte do julgamento cego">
+          <Badge tone={item.fundamentacaoCega.verificacao === 'trecho_localizado' ? 'correct' : 'attention'}>
+            {item.fundamentacaoCega.verificacao === 'trecho_localizado' ? 'Trecho localizado no acervo' : 'Fonte pendente de conferência'}
+          </Badge>
+          {item.fundamentacaoCega.titulo && <p><strong>Material:</strong> {item.fundamentacaoCega.titulo}</p>}
+          {item.fundamentacaoCega.natureza && <p><strong>Tipo de texto:</strong> {item.fundamentacaoCega.natureza}</p>}
+          {item.fundamentacaoCega.trecho && <blockquote style={{ margin: 0, paddingInlineStart: 'var(--space-3)', borderInlineStart: '2px solid var(--qb-bronze)', whiteSpace: 'pre-wrap' }}>{item.fundamentacaoCega.trecho}</blockquote>}
+          {item.fundamentacaoCega.explicacao && <p><strong>Regra que decide o julgamento:</strong> {item.fundamentacaoCega.explicacao}</p>}
+          {item.fundamentacaoCega.limitacao && <p>{item.fundamentacaoCega.limitacao}</p>}
+          <small>A correspondência do trecho é conferida no texto disponível. A vigência e a fidelidade ao documento original dependem da fonte cadastrada.</small>
+        </section>
+      )}
       {issues.length > 0 && <ul>{issues.map(issue => <li key={issue}>{issue}</li>)}</ul>}
       {item.enunciadoOriginal && <p><strong>Enunciado antes do refinamento:</strong> {item.enunciadoOriginal}</p>}
     </div>
