@@ -5,7 +5,6 @@ import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 import { Flashcard } from '@/components/qb/flashcards/Flashcard';
 import { extractMaterialText, generateFlashcardsFromMaterial } from '@/lib/server-fns';
-import { stripFlashcardContext } from '@/lib/flashcard-standard';
 
 const SAMPLE = 'O fiscal do contrato acompanha a execução, anota ocorrências em registro próprio e determina o que for necessário à regularização de faltas ou defeitos observados (Lei 14.133/2021, art. 117). O gestor do contrato coordena as atividades relacionadas à fiscalização técnica, administrativa e setorial, bem como os atos preparatórios à instrução processual.';
 
@@ -110,7 +109,7 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
               key={i}
               height={300}
               deck={topicLabel}
-              front={stripFlashcardContext(card.front, subjectName, [topicName, topicLabel])}
+              front={card.front}
               back={card.back}
               flipped={flipped}
               onFlip={() => setFlipped(f => !f)}
