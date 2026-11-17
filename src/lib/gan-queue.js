@@ -65,7 +65,9 @@ export function isApprovedGanQuestion(item) {
 }
 
 export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
-  const statusLabel = item.statusConfronto === "refinada_gan" ? "Refinada pela GAN" : "Aprovada no teste cego";
+  const statusLabel = item.revisaoManual ? "Aprovada em revisão manual"
+    : item.statusConfronto === "refinada_gan" ? "Refinada pela GAN" : "Aprovada no teste cego";
+  const scoreLabel = Number.isFinite(item.ganScore) ? `Score GAN ${item.ganScore}%` : "";
   const trap = {
     name: `${item.mecanismo} — ${item.mecanismoNome} (${statusLabel} · Gerador: ${item.gabaritoGerador} × Discriminador Cego: ${item.gabaritoDiscriminador})`,
     description: [
@@ -76,13 +78,13 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
   };
   const explanation = [
     item.comentario,
-    item.criticaAdversaria ? `Auditoria Cega (Score GAN ${item.ganScore}%): ${item.criticaAdversaria}` : "",
+    item.criticaAdversaria ? `Auditoria cega${scoreLabel ? " · " + scoreLabel : ""}: ${item.criticaAdversaria}` : "",
   ].filter(Boolean).join("\n\n");
   const tags = [
     item.nodeTitle || node.label,
     `${item.mecanismo} · ${item.mecanismoNome}`,
     statusLabel,
-    `Score GAN ${item.ganScore}%`,
+    scoreLabel,
     item.provedorGerador === 'gpt' && 'Geração e revisão pelo GPT',
   ].filter(Boolean);
   return {
@@ -102,6 +104,9 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     mecanismo: item.mecanismo,
     mecanismoNome: item.mecanismoNome,
     correcaoMinima: item.correcaoMinima,
+    trechoDecisivo: item.trechoDecisivo,
+    ...(item.revisaoManual ? { revisaoManual: item.revisaoManual, gabaritoGerador: item.gabaritoGerador,
+      gabaritoDiscriminador: item.gabaritoDiscriminador, veredictoDiscriminador: item.veredictoDiscriminador } : {}),
     criticaAdversaria: item.criticaAdversaria,
     statusConfronto: item.statusConfronto,
     ganScore: item.ganScore,
@@ -112,18 +117,18 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
 }
 
 /**
- * Processa até maxNodes nós, um por vez. Só grava itens aprovados ou refinados pelo confronto.
- * Bloqueados não são gravados. A fila pausa após indisponibilidade do Gemini ou dois erros seguidos.
+ * Processa até maxNodes nós, um por vez. Quando há revisão administrativa, entrega todos os candidatos.
+ * No fluxo automático, só contabiliza itens aprovados ou refinados cuja gravação foi confirmada.
  * Não altera respostas, status, SRS nem itens existentes.
  */
-export async function runGanQueue({ chosen, pending, generate, save, shouldStop, onProgress, maxNodes = GAN_QUEUE_MAX_NODES_PER_RUN }) {
+export async function runGanQueue({ chosen, pending, generate, save, onReview, shouldStop, onProgress, maxNodes = GAN_QUEUE_MAX_NODES_PER_RUN }) {
   const todo = pending.slice(0, maxNodes);
   const out = { processados: 0, aprovadas: 0, bloqueadas: 0, erros: 0, restantes: Math.max(0, pending.length - todo.length) };
   let errosSeguidos = 0;
   for (const node of todo) {
     if (shouldStop && shouldStop()) { out.restantes += todo.length - out.processados; break; }
     onProgress && onProgress({ atual: out.processados + 1, total: todo.length, no: node.label });
-    const falha = await processGanNode({ node, chosen, generate, save, out });
+    const falha = await processGanNode({ node, chosen, generate, save, onReview, out });
     if (falha) {
       (out.falhas ??= []).push({ no: node.label, ...falha });
       out.erros += 1;
@@ -141,7 +146,7 @@ export async function runGanQueue({ chosen, pending, generate, save, shouldStop,
   return out;
 }
 
-async function processGanNode({ node, chosen, generate, save, out }) {
+async function processGanNode({ node, chosen, generate, save, onReview, out }) {
   let res;
   try {
     res = await generate(node);
@@ -154,6 +159,13 @@ async function processGanNode({ node, chosen, generate, save, out }) {
   const aprovadas = res.aprovadas.filter(isApprovedGanQuestion);
   out.bloqueadas += res.bloqueadas.length;
   if (res.provedorGerador === 'gpt') out.nosComGeradorGpt = (out.nosComGeradorGpt || 0) + 1;
+  if (onReview) {
+    const count = Array.isArray(res.questoes) ? res.questoes.length : aprovadas.length + res.bloqueadas.length;
+    if (!count) return ganTransportFailure;
+    onReview(node, res);
+    out.paraRevisao = (out.paraRevisao || 0) + count;
+    return null;
+  }
   const persisted = new Set(Array.isArray(res.registros) ? res.registros.map(r => r?.id) : []);
   let failed = false;
   for (const item of aprovadas) {

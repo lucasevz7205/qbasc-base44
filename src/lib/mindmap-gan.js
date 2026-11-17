@@ -74,24 +74,24 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
     const correcaoMinima = asText(rawQ?.correcaoMinima, 600);
 
     const discKey = asText(disc?.gabaritoDiscriminador || disc?.gabaritoCalculado, 16).toUpperCase();
-    const discVerdict = asText(disc?.veredicto || "APROVADA", 30).toUpperCase();
+    const discVerdict = asText(disc?.veredicto, 30).toUpperCase();
     const falhasDetectadas = Array.isArray(disc?.falhasDetectadas)
       ? disc.falhasDetectadas.map((f) => asText(f, 300)).filter(Boolean)
       : [];
     const discCritique = asText(
       disc?.criticaAdversaria ||
-        disc?.parecer ||
-        "Item auditado em revisão cega pelo Discriminador GAN.",
+        disc?.parecer,
       1200,
     );
-    const rawScore = Number(disc?.scoreRealismo ?? disc?.score ?? 85);
-    const ganScore = Number.isFinite(rawScore) ? Math.max(0, Math.min(100, Math.round(rawScore))) : 85;
+    const rawScore = disc?.scoreRealismo ?? disc?.score;
+    const ganScore = Number.isFinite(rawScore) ? Math.max(0, Math.min(100, Math.round(rawScore))) : null;
+    const motivosConfronto = [];
 
     const validKeys = ["C", "E"];
     const blindKeyMatch = validKeys.includes(genKey) && genKey === discKey;
 
     let finalStatement = genStatement;
-    let finalKey = validKeys.includes(genKey) ? genKey : "C";
+    let finalKey = validKeys.includes(genKey) ? genKey : "";
     let finalCommentary = genCommentary;
     let statusConfronto = "aprovada_gan";
 
@@ -100,8 +100,15 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
     const refinedKey = asText(refined?.gabarito, 10).toUpperCase();
     const hasValidRefined = refined && refinedStatement.length >= 25 && validKeys.includes(refinedKey);
 
-    if (!blindKeyMatch || discVerdict === "REFINAR" || discVerdict === "REJEITADA" || ganScore < 65) {
-      if (hasValidRefined && discVerdict !== "REJEITADA") {
+    if (!blindKeyMatch) motivosConfronto.push("Os gabaritos do gerador e do julgamento cego divergem ou estão incompletos.");
+    if (discVerdict === "REJEITADA") motivosConfronto.push("O julgamento cego recomendou rejeitar o item.");
+    if (ganScore === null) motivosConfronto.push("O julgamento cego não retornou um escore válido.");
+    else if (ganScore < 65) motivosConfronto.push("Escore de realismo abaixo do mínimo de 65.");
+    if (!["APROVADA", "REFINAR", "REJEITADA"].includes(discVerdict)) motivosConfronto.push("O veredicto da IA está ausente ou é inválido.");
+    if (discVerdict === "REFINAR" && !hasValidRefined) motivosConfronto.push("A IA sugeriu refinar o item, mas não entregou uma versão utilizável.");
+
+    if (motivosConfronto.length || discVerdict === "REFINAR") {
+      if (hasValidRefined && ["APROVADA", "REFINAR"].includes(discVerdict) && ganScore !== null) {
         finalStatement = refinedStatement;
         finalKey = refinedKey;
         finalCommentary = asText(refined.comentario || genCommentary, 2400);
@@ -111,16 +118,21 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       }
     }
 
-    if (finalStatement.length < 20 || seenStatements.has(finalStatement.toLowerCase())) {
-      return;
+    const statementKey = finalStatement.normalize("NFC").replace(/\s+/g, " ").toLowerCase();
+    if (statementKey.length < 20) {
+      statusConfronto = "divergencia_bloqueada";
+      motivosConfronto.push("O enunciado está ausente ou incompleto.");
+    } else if (seenStatements.has(statementKey)) {
+      statusConfronto = "divergencia_bloqueada";
+      motivosConfronto.push("Enunciado repetido neste lote.");
     }
-    seenStatements.add(finalStatement.toLowerCase());
+    if (statementKey) seenStatements.add(statementKey);
 
     // Taxonomia V1: não inventar um código quando o gerador divergir do gabarito.
     const mecanismo = mechanismForKey(genMechanism, finalKey) ? genMechanism : "";
     if (!mecanismo) {
       statusConfronto = "divergencia_bloqueada";
-      falhasDetectadas.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
+      motivosConfronto.push("Mecanismo F/V incompatível com o gabarito segundo a taxonomia QB V1.");
     }
     const mecanismoNome = CEBRASPE_MECHANISMS[mecanismo] || "Não classificado";
 
@@ -131,6 +143,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       nodeTitle,
       tema: asText(rawQ?.tema, 200) || nodeTitle,
       enunciado: finalStatement,
+      ...(finalStatement !== genStatement ? { enunciadoOriginal: genStatement } : {}),
       gabarito: finalKey,
       mecanismo,
       mecanismoNome,
@@ -138,11 +151,12 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       correcaoMinima,
       teseGerador: genThesis,
       comentario: finalCommentary,
-      gabaritoGerador: validKeys.includes(genKey) ? genKey : finalKey,
+      gabaritoGerador: validKeys.includes(genKey) ? genKey : "?",
       gabaritoDiscriminador: validKeys.includes(discKey) ? discKey : "?",
       blindKeyMatch,
       veredictoDiscriminador: discVerdict,
       falhasDetectadas,
+      motivosConfronto,
       criticaAdversaria: discCritique,
       ganScore,
       statusConfronto,
@@ -157,13 +171,14 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
   const aprovadas = questoes.filter((q) => q.aprovadaParaSessao);
   const bloqueadas = questoes.filter((q) => !q.aprovadaParaSessao);
 
-  const totalScore = questoes.reduce((acc, q) => acc + q.ganScore, 0);
+  const scores = questoes.map(q => q.ganScore).filter(Number.isFinite);
+  const totalScore = scores.reduce((sum, score) => sum + score, 0);
   const resumoConfronto = {
     totalGeradas: questoes.length,
     aprovadasDireto: questoes.filter((q) => q.statusConfronto === "aprovada_gan").length,
     refinadasGan: questoes.filter((q) => q.statusConfronto === "refinada_gan").length,
     bloqueadasDivergencia: bloqueadas.length,
-    mediaScoreGan: Math.round(totalScore / questoes.length),
+    mediaScoreGan: scores.length ? Math.round(totalScore / scores.length) : null,
   };
 
   return {
