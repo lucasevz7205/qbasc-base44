@@ -61,7 +61,7 @@ export function RealStudyGate({children}) {
   });
   const refresh=React.useCallback(async()=>{const result=await query.refetch();if(result.error)throw result.error;},[query.refetch]);
   const cacheStudyDocument=React.useCallback(async (collection,row)=>{
-    if (['questoes_excluidas', 'planejamento', 'justificativas', 'curadoria'].includes(collection)) await client.cancelQueries({queryKey,exact:true});
+    if (['questoes_excluidas', 'planejamento', 'justificativas', 'curadoria', 'revisao'].includes(collection)) await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
       if (!before?.records) return before;
       const old = before.records[collection] || [];
