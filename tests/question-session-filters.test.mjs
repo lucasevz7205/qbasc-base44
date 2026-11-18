@@ -13,6 +13,26 @@ test('Todas inclui o assunto inteiro e preserva o limite das rodadas antigas', (
   assert.equal(pickQuestionRound(bank, { topicId: 'da-1' }).length, 20);
 });
 
+test('Treino aleatório embaralha só o assunto selecionado, depois dos filtros e da deduplicação', () => {
+  const bank = [
+    question('first', { statement: 'Item A', response: { ultimaMarcada: 'E' } }),
+    question('second', { statement: 'Item B', response: { ultimaMarcada: 'E' } }),
+    question('third', { statement: 'Item C' }),
+    question('same-item', { statement: 'Item A', response: { ultimaMarcada: 'E' } }),
+    question('other-subject', { subjectId: 'ti', response: { ultimaMarcada: 'E' } }),
+    question('other-topic', { topicId: 'da-2', response: { ultimaMarcada: 'E' } }),
+    question('blocked', { statusConfronto: 'divergencia_bloqueada', response: { ultimaMarcada: 'E' } }),
+  ];
+  const original = ids(bank);
+  const scope = { subjectId: 'da', topicId: 'da-1', randomOrder: true };
+  const options = { unique: true, random: () => 0 };
+  assert.deepEqual(ids(pickQuestionRound(bank, { ...scope, filter: 'all' }, options)), ['second', 'third', 'first']);
+  assert.deepEqual(ids(pickQuestionRound(bank, { ...scope, filter: 'wrong' }, options)), ['second', 'first']);
+  assert.deepEqual(ids(pickQuestionRound(bank, { ...scope, filter: 'unseen' }, options)), ['third']);
+  assert.deepEqual(ids(pickQuestionRound(bank, { ...scope, filter: 'all', scheduledReview: true }, options)), ['first', 'second', 'third']);
+  assert.deepEqual(ids(bank), original);
+});
+
 test('Erradas usa a última resposta válida, o gabarito da tentativa e registros importados', () => {
   const bank = [
     question('wrong', { response: { ultimaMarcada: 'E' } }),
