@@ -343,7 +343,8 @@ export function QBStudyProvider({ children }) {
       if (nextView === 'flashcards' && !arg?.resume) {
         setCards({
           idx: 0, flipped: false, ratings: [], topicId: arg?.topicId, sessionId: crypto.randomUUID(),
-          ...(arg?.scheduledReview ? { scheduledReview: true, queue: [...new Set(arg.cardIds || [])] } : {}),
+          ...(arg?.scheduledReview ? { scheduledReview: true } : {}),
+          ...(arg?.scheduledReview || Array.isArray(arg?.cardIds) ? { queue: [...new Set(arg.cardIds || [])] } : {}),
         });
       }
       if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
