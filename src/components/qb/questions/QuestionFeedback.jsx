@@ -98,7 +98,7 @@ export function QuestionFeedback({ statement, answerKey, generatorName, generato
           {comparison?.code && identifiedMechanism && <div><Badge tone={aligned ? 'correct' : 'attention'}>{aligned ? 'Alinhado' : 'Divergente'} {reference ? (generatorReference ? 'com o gerador' : 'com o registro') : 'com O Arquiteto'}</Badge></div>}
           {!reference && trap?.legacyConflict && <small style={{ color: 'var(--text-muted)' }}>O registro antigo precisa de uma avaliação na taxonomia atual para permitir comparação.</small>}
           {!reference && !assessment && statement && <div>
-            <Button size="sm" variant="secondary" icon="sparkles" onClick={evaluate} loading={pending} disabled={pending}>Comparar com O Arquiteto</Button>
+            <Button size="sm" variant="secondary" icon="astrolabe" onClick={evaluate} loading={pending} disabled={pending}>Comparar com O Arquiteto</Button>
           </div>}
           {error && <span role="alert">{error}</span>}
         </Section>
