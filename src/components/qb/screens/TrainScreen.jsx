@@ -193,7 +193,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             </span>
             <Button
               variant="secondary"
-              icon="sparkles"
+              icon="astrolabe"
               onClick={() => openArchitect && openArchitect({ subjectId: subject?.id || 'dc', topicId: topic?.id, origin: 'Treinar · armadilhas' })}
             >
               Abrir O Arquiteto
