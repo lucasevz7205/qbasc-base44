@@ -193,7 +193,12 @@ export const approvePersonalQuestionEditorial = createServerFn({ method: 'POST' 
     if ((previous?.id ?? null) !== data.baseRevision) {
       throw new Error('A questão já tem uma versão mais recente. Gere uma nova proposta.');
     }
-    const entry = makeEditorialEntry({ kind: 'question', content: question, proposal: data.proposal, previous, issue: data.issue, note: data.note });
+    const lastVersion = Math.max(Number(previous?.version) || 0, Number(question.raw.versaoCuradoriaDireta) || 0);
+    if (lastVersion >= 9999) throw new Error('Esta questão atingiu o limite de versões.');
+    const entry = makeEditorialEntry({
+      kind: 'question', content: question, proposal: data.proposal, previous: { ...previous, version: lastVersion },
+      issue: data.issue, note: data.note,
+    });
     const { problems } = questionQualityProblems(entry.replacement);
     if (problems.length) throw new Error(problems[0].message);
     // An independent ID keeps both approved versions when two tabs save concurrently.
