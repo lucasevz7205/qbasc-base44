@@ -118,7 +118,7 @@ const ICONS = {
 
 export const ICON_NAMES = Object.keys(ICONS);
 
-export default function Icon({ name, size = 20, strokeWidth, color = 'currentColor', label, style, className }) {
+export default function Icon({ name, size = name === 'astrolabe' ? 24 : 20, strokeWidth = name === 'astrolabe' ? 2.15 : 1.75, color = 'currentColor', label, style, className }) {
   const inner = ICONS[name];
   if (!inner) return null;
   const astrolabe = name === 'astrolabe';
@@ -131,7 +131,7 @@ export default function Icon({ name, size = 20, strokeWidth, color = 'currentCol
       viewBox={viewBox}
       fill="none"
       stroke={color}
-      strokeWidth={strokeWidth ?? (astrolabe ? 2.15 : 1.75)}
+      strokeWidth={strokeWidth}
       focusable={astrolabe ? 'false' : undefined}
       strokeLinecap="round"
       strokeLinejoin="round"
