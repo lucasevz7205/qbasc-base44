@@ -198,11 +198,12 @@ export const listStudyClockRecords = createServerFn({ method: 'GET' })
 
 export const saveStudyClockRecords = createServerFn({ method: 'POST' })
   .middleware([requireUser])
-  .validator(z.array(clockRecord).min(1).max(20))
+  .validator(z.object({ accountId, records: z.array(clockRecord).min(1).max(20) }).strict())
   .handler(async ({ context, data }) => {
+    if (context.user.id !== data.accountId) throw new Error('A conta da sessão mudou.');
     const { entities, collection } = await studyClockAccess(context);
     const saved = [];
-    for (const record of data) {
+    for (const record of data.records) {
       saved.push(await write(entities, collection, record.id, record, false, mergeStudyClockRecord));
     }
     return saved;
