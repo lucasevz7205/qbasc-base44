@@ -4,8 +4,8 @@ import { useAuth } from '@/lib/AuthContext';
 import { base44 } from '@/api/base44Client';
 import { listClaudeCollection } from '@/lib/study-store';
 import { adaptStudy } from '@/lib/qb-real-model';
-import { canUseArchitect } from '@/lib/account-boundary';
-import { loadPersonalStudy, writePersonalStudy } from '@/lib/study-accounts';
+import { canUseArchitect, canReformulateQuestions } from '@/lib/account-boundary';
+import { approvePersonalQuestionEditorial, loadPersonalStudy, writePersonalStudy } from '@/lib/study-accounts';
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
@@ -60,10 +60,8 @@ export function RealStudyGate({children}) {
     retry: false,
   });
   const refresh=React.useCallback(async()=>{const result=await query.refetch();if(result.error)throw result.error;},[query.refetch]);
-  const save=React.useCallback(async (collection,id,data)=>{
-    if (!user || !collections.includes(collection)) throw new Error('Acesso restrito.');
-    const row = admin ? await persist(collection, id, data) : await writePersonalStudy({ data: { collection, id, value: data } });
-    if (collection === 'questoes_excluidas' || collection === 'planejamento' || collection === 'justificativas') await client.cancelQueries({queryKey,exact:true});
+  const cacheStudyDocument=React.useCallback(async (collection,row)=>{
+    if (['questoes_excluidas', 'planejamento', 'justificativas', 'curadoria'].includes(collection)) await client.cancelQueries({queryKey,exact:true});
     client.setQueryData(queryKey, before=>{
       if (!before?.records) return before;
       const old = before.records[collection] || [];
@@ -72,7 +70,16 @@ export function RealStudyGate({children}) {
       return { ...before, records: { ...before.records, [collection]: rows } };
     });
     return row;
-  }, [admin, client, queryKey, user]);
+  }, [client, queryKey]);
+  const save=React.useCallback(async (collection,id,data)=>{
+    if (!user || !collections.includes(collection)) throw new Error('Acesso restrito.');
+    const row = admin ? await persist(collection, id, data) : await writePersonalStudy({ data: { collection, id, value: data } });
+    return cacheStudyDocument(collection, row);
+  }, [admin, cacheStudyDocument, user]);
+  const savePersonalQuestionRevision=React.useCallback(async data=>{
+    const row = await approvePersonalQuestionEditorial({ data });
+    return cacheStudyDocument('curadoria', row);
+  }, [cacheStudyDocument]);
   const cacheGanQuestions = React.useCallback(async rows => {
     if (!rows?.length) return;
     await client.cancelQueries({ queryKey, exact: true });
@@ -99,7 +106,7 @@ export function RealStudyGate({children}) {
       action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
   }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile)}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,savePersonalQuestionRevision,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile),questionEditorialAccess:canReformulateQuestions(user, profile)}}>{children}</RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>
