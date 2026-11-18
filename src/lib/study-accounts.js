@@ -6,7 +6,9 @@ import { compareEditorialVersions, editorialId, makeEditorialEntry } from './edi
 import { itemFromDisplayedQuestion, questionQualityProblems } from './item-quality.js';
 import { STUDY_ACTIVITIES, mergeStudyClockRecord, studyTimeTotal } from './study-clock.js';
 import { ganSourcePassages } from './gan-grounding.js';
-import { buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion } from './gan-queue.js';
+import { buildGanSource, buildGanQuestionRecord } from './gan-queue.js';
+import { approveGanReview } from './gan-review.js';
+import { buildNodeFlashcardRecord } from './node-flashcards.js';
 import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect, canReformulateQuestions } from './account-boundary';
 
 const accountId = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
@@ -92,7 +94,7 @@ export async function prepareGanSourcePassages(context, request) {
   return ganSourcePassages(materials, request);
 }
 
-export async function preparePersonalMapGan(context, request) {
+async function personalMapScope(context, request) {
   const { user } = context;
   if (user?.role !== 'user') throw new Error('Acesso ao espaço de estudo indisponível.');
   const id = accountId.parse(user.id);
@@ -109,20 +111,84 @@ export async function preparePersonalMapGan(context, request) {
   const chosen = QB_DATA.mindMaps.find(map => map.topicId === request.topicId);
   const node = chosen?.nodes.find(entry => entry.id === request.targetNodeId);
   if (!node) throw new Error('O nó não pertence ao mapa deste assunto.');
+  return { id, entities, chosen, node, concepts: QB_DATA.concepts };
+}
+
+const draftsCollection = id => 'qbasc-rascunhos-gan:' + id;
+const mapTarget = z.object({ topicId: documentId, targetNodeId: z.string().min(1).max(250) });
+
+export async function preparePersonalMapGan(context, request) {
+  const { id, entities, chosen, node, concepts } = await personalMapScope(context, request);
   return {
-    data: buildGanSource({ chosen, nodes: chosen.nodes, concepts: QB_DATA.concepts, node, count: request.count }),
-    async persist(items) {
-      const records = [];
-      for (const item of items.filter(isApprovedGanQuestion)) {
-        const record = buildGanQuestionRecord(item, { chosen, node, queue: request.queue });
-        const stored = await write(entities, workspaceCollection(id, 'questoes'), record.id, record, true);
-        if (!stored) throw new Error('O identificador desta questão já está em uso.');
-        records.push(stored);
-      }
-      return records;
+    data: buildGanSource({ chosen, nodes: chosen.nodes, concepts, node, count: request.count }),
+    async stage(items) {
+      if (!items.length) return null;
+      const reviewId = 'gan-review-' + crypto.randomUUID();
+      const draft = {
+        topicId: chosen.topicId, targetNodeId: node.id, queue: Boolean(request.queue),
+        expires: Date.now() + 24 * 60 * 60 * 1000, items,
+      };
+      const created = await write(entities, draftsCollection(id), reviewId, draft, true);
+      if (!created) throw new Error('Não foi possível abrir a revisão das questões.');
+      return reviewId;
     },
   };
 }
+
+export const approvePersonalMapGan = createServerFn({ method: 'POST' })
+  .middleware([requireUser])
+  .validator(mapTarget.extend({
+    reviewId: z.string().regex(/^gan-review-[a-f0-9-]{36}$/),
+    questionId: z.string().regex(/^gan-[a-f0-9-]{36}$/),
+    draft: z.object({
+      statement: z.string().trim().min(20).max(1600), key: z.enum(['C', 'E']),
+      explanation: z.string().max(2400), mecanismo: z.string().max(4),
+      trechoDecisivo: z.string().max(400), correcaoMinima: z.string().max(600),
+    }).strict(),
+  }).strict())
+  .handler(async ({ context, data }) => {
+    const { id, entities, chosen, node } = await personalMapScope(context, data);
+    const savedRow = await unique(entities, draftsCollection(id), data.reviewId);
+    const review = savedRow && await decode(entities, savedRow);
+    const candidate = review?.items?.find(item => item.id === data.questionId);
+    if (!candidate || review.expires < Date.now() || review.topicId !== chosen.topicId || review.targetNodeId !== node.id) {
+      throw new Error('A proposta não pertence a este nó ou expirou. Gere uma nova lista.');
+    }
+    const collection = workspaceCollection(id, 'questoes');
+    const previous = await unique(entities, collection, candidate.id);
+    if (previous) {
+      const record = await decode(entities, previous);
+      if (record.revisaoManual?.lote === data.reviewId) return record;
+      throw new Error('O identificador desta questão já está em uso.');
+    }
+
+    const bank = (await loadDocuments(entities, collection)).map(q => ({ id: q.id, statement: q.enunciado }));
+    const item = approveGanReview(candidate, data.draft, bank);
+    const record = buildGanQuestionRecord({ ...item, mapaNoId: node.id }, { chosen, node, queue: review.queue });
+    record.revisaoManual.lote = data.reviewId;
+    const saved = await write(entities, collection, record.id, record, true);
+    if (!saved) throw new Error('A questão já foi gravada. Tente abrir a revisão novamente.');
+    return saved;
+  });
+
+export const savePersonalNodeFlashcard = createServerFn({ method: 'POST' })
+  .middleware([requireUser])
+  .validator(mapTarget.extend({
+    cardId: z.string().regex(/^node-card-[a-f0-9-]{36}$/),
+    front: z.string().trim().min(12).max(600),
+    back: z.string().trim().min(1).max(1200),
+  }).strict())
+  .handler(async ({ context, data }) => {
+    const { id, entities, chosen, node } = await personalMapScope(context, data);
+    const record = buildNodeFlashcardRecord({ ...data, topicId: chosen.topicId, targetNodeId: node.id, nodeLabel: node.label });
+    const collection = workspaceCollection(id, 'revisao');
+    const saved = await write(entities, collection, record.id, record, true);
+    if (saved) return saved;
+    const stored = await unique(entities, collection, record.id);
+    const previous = stored && await decode(entities, stored);
+    if (previous?.topico === record.topico && JSON.stringify(previous.cartoes) === JSON.stringify(record.cartoes)) return previous;
+    throw new Error('O identificador deste flashcard já está em uso.');
+  });
 
 export async function requireArchitectAccess(context) {
   const { user } = context;
