@@ -68,8 +68,10 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
   const statusLabel = item.revisaoManual ? "Aprovada em revisão manual"
     : item.statusConfronto === "refinada_gan" ? "Refinada pela GAN" : "Aprovada no teste cego";
   const scoreLabel = Number.isFinite(item.ganScore) ? `Score GAN ${item.ganScore}%` : "";
+  const judgments = item.gabaritoGerador && item.gabaritoDiscriminador
+    ? ` · Gerador: ${item.gabaritoGerador} × Discriminador Cego: ${item.gabaritoDiscriminador}` : '';
   const trap = {
-    name: `${item.mecanismo} — ${item.mecanismoNome} (${statusLabel} · Gerador: ${item.gabaritoGerador} × Discriminador Cego: ${item.gabaritoDiscriminador})`,
+    name: `${item.mecanismo} — ${item.mecanismoNome} (${statusLabel}${judgments})`,
     description: [
       item.correcaoMinima && `Ponto decisivo / correção mínima: ${item.correcaoMinima}`,
       item.teseGerador && `Tese avaliada: ${item.teseGerador}`,
