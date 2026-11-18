@@ -42,8 +42,8 @@ async function decode(entities, row) {
   return { ...JSON.parse(pieces.map(piece => piece.payload_chunk).join('')), id: row.legacy_id };
 }
 
-async function loadDocuments(entities, collection) {
-  const rows = await pageAll(entities.ClaudeDocument, { collection });
+async function loadDocuments(entities, collection, filter = {}) {
+  const rows = await pageAll(entities.ClaudeDocument, { ...filter, collection });
   const out = [];
   for (let i = 0; i < rows.length; i += 8)
     out.push(...await Promise.all(rows.slice(i, i + 8).map(row => decode(entities, row))));
@@ -146,8 +146,8 @@ async function personalQuestionEditorialScope(context, questionId) {
   const original = await decode(entities, stored);
   const collection = workspaceCollection(id, 'curadoria');
   const prefix = editorialId('question', target) + ':v';
-  const rows = await pageAll(entities.ClaudeDocument, { collection, legacy_id: { $regex: '^' + prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') } });
-  const versions = (await Promise.all(rows.map(row => decode(entities, row))))
+  const rows = await loadDocuments(entities, collection, { legacy_id: { $regex: '^' + prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') } });
+  const versions = rows
     .filter(entry => entry.kind === 'question' && entry.targetId === target && entry.status === 'aprovada')
     .sort(compareEditorialVersions);
   const { QB_DATA } = adaptStudy({ questoes: [original], curadoria: versions }, user);
