@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ICONS = {
+  "astrolabe": `<circle cx="24" cy="6.5" r="2.75" /><path d="M22.35 9.1 9.4 31.6M25.65 9.1l12.95 22.5" /><path d="M24 9.8v24" /><path d="M12.5 27.5c6.25 8.6 16.75 8.6 23 0" /><path d="M8.3 31.4c8.3 13.8 23.1 13.8 31.4 0" /><path d="m10.4 34.5 2.55-2.3m1.05 5.55 2.1-2.7m2.3 4.95 1.45-3.1m4.15 4.2v-3.25m4.15 2.15-1.45-3.1m5.85.85-2.1-2.7m5.65-.55-2.55-2.3" />`,
   "search": "<circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" />",
   "bell": "<path d=\"M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9\" /><path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\" />",
   "chart-column": "<path d=\"M3 3v16a2 2 0 0 0 2 2h16\" /><path d=\"M18 17V9\" /><path d=\"M13 17V5\" /><path d=\"M8 17v-3\" />",
@@ -117,18 +118,21 @@ const ICONS = {
 
 export const ICON_NAMES = Object.keys(ICONS);
 
-export default function Icon({ name, size = 20, strokeWidth = 1.75, color = 'currentColor', label, style, className }) {
+export default function Icon({ name, size = 20, strokeWidth, color = 'currentColor', label, style, className }) {
   const inner = ICONS[name];
   if (!inner) return null;
+  const astrolabe = name === 'astrolabe';
+  const viewBox = astrolabe ? '0 0 48 48' : '0 0 24 24';
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      viewBox={viewBox}
       fill="none"
       stroke={color}
-      strokeWidth={strokeWidth}
+      strokeWidth={strokeWidth ?? (astrolabe ? 2.15 : 1.75)}
+      focusable={astrolabe ? 'false' : undefined}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
