@@ -5,7 +5,7 @@ import { Button } from '../core/Button.jsx';
 import { ProgressBar } from '../core/ProgressBar.jsx';
 import { EmptyState } from '../data/EmptyState.jsx';
 
-const ACTIONS = { edital: { label: 'Ver tópico', icon: 'scroll-text' }, train: { label: 'Treinar', icon: 'target' }, mindmap: { label: 'Abrir mapa', icon: 'map' }, review: { label: 'Revisão ativa', icon: 'layers' }, architect: { label: 'O Arquiteto', icon: 'sparkles' } };
+const ACTIONS = { edital: { label: 'Ver tópico', icon: 'scroll-text' }, train: { label: 'Treinar', icon: 'target' }, mindmap: { label: 'Abrir mapa', icon: 'map' }, review: { label: 'Revisão ativa', icon: 'layers' }, architect: { label: 'O Arquiteto', icon: 'astrolabe' } };
 const LEVEL = { subject: 'Matéria', group: 'Assunto', topic: 'Subtópico' };
 const SORTS = [{ id: 'edital', label: 'Ordem do edital' }, { id: 'accuracy', label: 'Menor acerto' }, { id: 'volume', label: 'Mais respostas' }];
 const stat = n => { const valid = n.correct + n.wrong; return { valid, pct: valid ? Math.round((n.correct / valid) * 100) : null }; };
