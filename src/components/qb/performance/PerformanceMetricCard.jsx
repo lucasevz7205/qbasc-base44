@@ -3,7 +3,7 @@ import { Icon } from '../core/Icon.jsx';
 
 const TONES = { correct: 'var(--state-correct)', incorrect: 'var(--state-incorrect)', gold: 'var(--qb-gold-bright)', neutral: 'var(--text-primary)' };
 
-export function PerformanceMetricCard({ label, icon, value, unit, tone = 'neutral', formula, detail, breakdown, comparison, state = 'ok', stateText, warning, method, action, compact = false, style }) {
+export function PerformanceMetricCard({ label, icon, value, unit, tone = 'neutral', formula, detail, breakdown, comparison, state = 'ok', stateText, warning, method, action, compact = false, style, children }) {
   const [open, setOpen] = React.useState(false);
   const id = React.useId();
   const d = comparison ? comparison.delta : 0;
@@ -39,6 +39,7 @@ export function PerformanceMetricCard({ label, icon, value, unit, tone = 'neutra
       {warning && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, font: '500 12px/1.3 var(--font-body)', color: 'var(--state-attention)' }}><Icon name="triangle-alert" size={14} />{warning}</span>}
       {method && open && <p id={id + 'm'} role="note" style={{ margin: 0, padding: '8px 10px', borderRadius: 10, background: 'var(--surface-sunken)', border: '1px solid var(--divider)', font: '400 12px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>{method}</p>}
       {action && <button type="button" className="qb-linkbtn" style={{ alignSelf: 'flex-start', fontSize: 13, marginTop: 'auto' }} onClick={action.onClick}>{action.label}</button>}
+      {children}
     </section>
   );
 }
