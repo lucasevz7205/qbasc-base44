@@ -176,7 +176,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
     const personal = context.user.role !== "admin";
     if (personal && data.kind !== "question") throw new Error("Acesso editorial restrito à reformulação de questões.");
     const workspace = personal ? await preparePersonalQuestionEditorial(context, data.content.id) : null;
-    const c = workspace?.content ?? data.content;
+    const c = workspace ? EditorialSuggestionSchema.shape.content.parse(workspace.content) : data.content;
     if (data.kind === "question" && (!c.statement || !c.key)) throw new Error("Questão inválida para curadoria.");
     if (data.kind === "flashcard" && (!c.front || !c.back)) throw new Error("Flashcard inválido para curadoria.");
     const prompt = [
