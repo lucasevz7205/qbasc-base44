@@ -64,6 +64,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
     <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
       style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: dock ? 8 : 12, padding: dock ? 12 : '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
+        {!clockOnly && <Icon name="astrolabe" size={24} color="var(--qb-gold)" />}
         {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minWidth: dock ? 0 : 220 }}>
           <span ref={headingRef} tabIndex={mode === 'inline' ? undefined : -1} style={{ font: '400 20px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto' : 'Estúdio de aprendizagem ativa'}</span>
