@@ -1,3 +1,4 @@
+import {parseImport} from './map-import.js';
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
@@ -108,7 +109,7 @@ async function personalMapScope(context, request) {
     edital: [await decode(entities, topic)],
     revisao: revisions.filter(row => (row.topico || row.id.replace(/\.(mapa|cartoes)$/, '')) === request.topicId),
   }, user);
-  const chosen = QB_DATA.mindMaps.find(map => map.topicId === request.topicId);
+  const chosen = QB_DATA.mindMaps.find(map => map.topicId === request.topicId && map.nodes.some(n=>n.id===request.targetNodeId));
   const node = chosen?.nodes.find(entry => entry.id === request.targetNodeId);
   if (!node) throw new Error('O nó não pertence ao mapa deste assunto.');
   return { id, entities, chosen, node, concepts: QB_DATA.concepts };
@@ -169,6 +170,24 @@ export const approvePersonalMapGan = createServerFn({ method: 'POST' })
     const saved = await write(entities, collection, record.id, record, true);
     if (!saved) throw new Error('A questão já foi gravada. Tente abrir a revisão novamente.');
     return saved;
+  });
+
+export const importPersonalMap = createServerFn({method:'POST'}).middleware([requireUser])
+  .validator(z.object({id:z.string().regex(/^import-[a-f0-9-]{36}$/),topico:documentId,target:z.string().max(400),mode:z.enum(['new','merge','replace']),markdown:z.string().max(27000),choices:z.record(z.string().max(100),z.enum(['existing','incoming']))}).strict())
+  .handler(async({context,data})=>{
+    parseImport(data.markdown);
+    const entities=context.getBase44().asServiceRole.entities;
+    const isAdmin=context.user.role==='admin';
+    const uid=accountId.parse(context.user.id);
+    if(!isAdmin && (await requireAccount(entities,uid)).status!=='active')throw Error('Conta indisponível.');
+    const collection=name=>isAdmin?name:workspaceCollection(uid,name);
+    if(!await unique(entities,collection('edital'),data.topico))throw Error('Assunto indisponível.');
+    const entry={...data,kind:'markdown-map',created:new Date().toISOString()};
+    const saved=await write(entities,collection('revisao'),entry.id,entry,true);
+    if(saved)return saved;
+    const previous=await decode(entities,await unique(entities,collection('revisao'),entry.id));
+    if(previous.markdown!==data.markdown||previous.target!==data.target||previous.mode!==data.mode||previous.topico!==data.topico)throw Error('Importação já registrada.');
+    return previous;
   });
 
 export const savePersonalNodeFlashcard = createServerFn({ method: 'POST' })

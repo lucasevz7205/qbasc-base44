@@ -5,7 +5,7 @@ import { base44 } from '@/api/base44Client';
 import { listClaudeCollection } from '@/lib/study-store';
 import { adaptStudy } from '@/lib/qb-real-model';
 import { canUseArchitect, canReformulateQuestions } from '@/lib/account-boundary';
-import { approvePersonalQuestionEditorial, loadPersonalStudy, savePersonalNodeFlashcard, writePersonalStudy } from '@/lib/study-accounts';
+import { importPersonalMap, approvePersonalQuestionEditorial, loadPersonalStudy, savePersonalNodeFlashcard, writePersonalStudy } from '@/lib/study-accounts';
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
@@ -110,7 +110,7 @@ export function RealStudyGate({children}) {
       action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
   }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,savePersonalQuestionRevision,saveNodeFlashcard,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile),questionEditorialAccess:canReformulateQuestions(user, profile)}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,importMap:async data=>cacheStudyDocument('revisao',await importPersonalMap({data})),savePersonalQuestionRevision,saveNodeFlashcard,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile),questionEditorialAccess:canReformulateQuestions(user, profile)}}>{children}</RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>

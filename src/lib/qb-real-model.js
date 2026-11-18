@@ -1,3 +1,4 @@
+import {parseImport,importResult} from './map-import.js';
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-feedback';
 import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
@@ -109,6 +110,27 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);
       if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
     });
+  }
+  for(const entry of source('revisao').filter(d=>d.kind==='markdown-map').sort((a,b)=>a.created.localeCompare(b.created)||a.id.localeCompare(b.id))){
+    const topic=topics[entry.topico];
+    const current=mindMaps.find(m=>m.id===entry.target && m.topicId===entry.topico);
+    if(!topic || (entry.mode!=='new' && !current)) continue;
+    const next=importResult(current,parseImport(entry.markdown),entry,concepts,nodeConcept);
+    if(entry.mode==='new'){
+      const map={...next,topicId:entry.topico,subjectId:topic.subjectId,topicTitle:topic.title,topicNum:topic.num,subjectName:subjects[topic.subjectId]?.name};
+      mindMaps.push(map);
+      topic.resources.maps.push({id:map.id,title:map.title});
+      mapByTopic[entry.topico]??=map;
+      roots[entry.topico]??=map.id;
+    }else{
+      const oldIds=new Set(current.nodes.map(n=>n.id));
+      for(let i=mapNodes.length-1;i>=0;i--) if(oldIds.has(mapNodes[i].id)) mapNodes.splice(i,1);
+      Object.assign(current,next);
+      const resource=topic.resources.maps.find(m=>m.id===next.id);
+      if(resource)resource.title=next.title;
+    }
+    mapNodes.push(...next.nodes);
+    for(const n of next.nodes)(aliases[entry.topico]??={})[n.id]=n.id;
   }
   const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
   for(const card of uniqueCards){

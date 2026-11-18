@@ -1,3 +1,4 @@
+import {MapImport} from '../mindmap/MapImport';
 import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { MindMapCanvas } from '@/components/qb/mindmap/MindMapCanvas';
@@ -38,7 +39,7 @@ export default function MindMapView({
   radialOpen: radialOpenProp,
   setRadialOpen: setRadialOpenProp,
 }) {
-  const { QB_DATA: D, QB_EDITAL: E, save, isAdmin, accountId, cacheGanQuestions, saveNodeFlashcard } = useRealStudy();
+  const { QB_DATA: D, QB_EDITAL: E, save, importMap, isAdmin, accountId, cacheGanQuestions, saveNodeFlashcard } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const approvePersonalGanFn = useServerFn(approvePersonalMapGan);
   const generateFlashcardsFn = useServerFn(generateMindMapFlashcards);
@@ -91,7 +92,7 @@ export default function MindMapView({
   }, [isRadialOpen, topicId]);
 
   // Lookup map strictly for the chosen topicId (v3: never silently fall back to another topic's map)
-  const chosen = D.mindMaps.find(m => m.topicId === topicId) || null;
+  const chosen = (foundMapByNode?.topicId===topicId && foundMapByNode) || D.mindMaps.find(m => m.topicId === topicId) || null;
   const performance = React.useMemo(() => chosen ? mapNodePerformance({
     nodes: chosen.nodes,
     rootId: chosen.id,
@@ -260,6 +261,8 @@ export default function MindMapView({
           {chosen ? chosen.title : topic ? `${subj.short} ${topic.num}${topic.title ? ' · ' + topic.title : ''}` : 'Mapa mental'}
         </h1>
       </div>
+      <MapImport topics={allSubjects.flatMap(s=>s.topics.map(t=>({id:t.id,label:s.name+' · '+t.title})))} maps={D.mindMaps.map(m=>({...m,active:m.id===chosen?.id}))} initial={topicId} onSave={importMap} onOpen={(tid,id)=>{handleSelectTopic(tid);setSelected(id)}}/>
+      {D.mindMaps.filter(m=>m.topicId===topicId).length>1 && <label>Mapa <select value={chosen?.id} onChange={e=>{setSelected(e.target.value);setRadialOpen(false)}}>{D.mindMaps.filter(m=>m.topicId===topicId).map(m=><option key={m.id} value={m.id}>{m.title}</option>)}</select></label>}
       {picker}
     </div>
   );
