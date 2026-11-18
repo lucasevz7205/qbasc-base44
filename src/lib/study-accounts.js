@@ -175,7 +175,7 @@ const clockRecord = z.object({
   id: z.string().max(48),
   sessionId: z.uuid(),
   date: z.iso.date(),
-  startedAt: z.number().int().min(0).max(8640000000000000),
+  startedAt: z.number().int().positive().max(253402300799999),
   time: z.object(Object.fromEntries(Object.keys(STUDY_ACTIVITIES).map(kind => [kind, clockTime]))).strict(),
 }).strict().refine(row => row.id === row.sessionId + ':' + row.date && studyTimeTotal(row.time) > 0);
 
