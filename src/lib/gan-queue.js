@@ -188,3 +188,32 @@ async function processGanNode({ node, chosen, generate, save, onReview, out }) {
   }
   return failed ? ganStorageFailure : null;
 }
+
+export function centralGanRound(nodes, root, questions) {
+  const byId = new Map(nodes.map(n => [n.id, n]));
+  const candidates = nodes.filter(n => n.id !== root);
+  const branches = new Map(), counts = new Map(), planned = new Map();
+  for (const n of candidates) {
+    let branch = n;
+    while (branch.parent !== root && byId.has(branch.parent)) branch = byId.get(branch.parent);
+    branches.set(n.id, branch.id);
+  }
+  const totals = new Map();
+  function increment(id) {
+    counts.set(id, (counts.get(id) || 0) + 1);
+    const branch = branches.get(id);
+    totals.set(branch, (totals.get(branch) || 0) + 1);
+  }
+  for (const q of questions) {
+    const id = q.node || q.mapaNoId;
+    if (branches.has(id)) increment(id);
+  }
+  for (let i = 0; i < 20; i++) {
+    candidates.sort((a,b) => (totals.get(branches.get(a.id)) || 0) - (totals.get(branches.get(b.id)) || 0)
+      || (counts.get(a.id) || 0) - (counts.get(b.id) || 0));
+    const target = candidates[0] || byId.get(root);
+    planned.set(target, (planned.get(target) || 0) + 1);
+    increment(target.id);
+  }
+  return [...planned].flatMap(([target,total]) => Array.from({length: Math.ceil(total / 4)}, (_,i) => ({target,count:Math.min(4,total-i*4)})));
+}

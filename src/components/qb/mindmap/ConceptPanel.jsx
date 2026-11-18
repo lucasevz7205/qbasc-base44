@@ -24,6 +24,7 @@ export default function ConceptPanel({
   onNavigate,
   onReview,
   reviewCount,
+  centralGan,
   onGenerateGan,
   onGenerateFlashcards,
   flashcardsLoading = false,
@@ -127,7 +128,7 @@ export default function ConceptPanel({
                 </Button>
                 <div id={optionsId} hidden={!generationOpen}>
                   <div style={{ display: 'grid', gap: 8 }}>
-                    {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating || ganUnavailable} onClick={onGenerateGan} fullWidth>Questões</Button>}
+                    {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating || ganUnavailable} onClick={onGenerateGan} fullWidth>{centralGan ? "20 questões distribuídas pelos ramos" : "Questões"}</Button>}
                     {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating || ganUnavailable} onClick={onGenerateFlashcards} fullWidth>Flashcards</Button>}
                   </div>
                 </div>

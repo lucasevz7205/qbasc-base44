@@ -20,7 +20,7 @@ import { approvePersonalMapGan } from '@/lib/study-accounts';
 import { buildNodeFlashcardRecord } from '@/lib/node-flashcards';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
-import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
+import { centralGanRound, findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -156,10 +156,10 @@ export default function MindMapView({
     };
   }, [mapId, isRadialOpen]);
 
-  const generateNode = React.useCallback(async (target, queue, extraContext = '') => {
+  const generateNode = React.useCallback(async (target, queue, extraContext = '', count = 4) => {
     const data = isAdmin
-      ? buildGanSource({ chosen, nodes, concepts: D.concepts, node: target, subjectName: subj?.name })
-      : { topicId: chosen.topicId, targetNodeId: target.id, count: 4, queue };
+      ? buildGanSource({ chosen, nodes, concepts: D.concepts, node: target, count, subjectName: subj?.name })
+      : { topicId: chosen.topicId, targetNodeId: target.id, count, queue };
     if (isAdmin && extraContext) data.sourceContext = [data.sourceContext, extraContext].filter(Boolean).join('\n\n').slice(0, 7500);
     return generateGanFn({ data });
   }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn]);
@@ -497,14 +497,22 @@ export default function MindMapView({
           relatedCards && 'Referências de revisão do tópico:\n' + relatedCards,
         ].filter(Boolean).join('\n\n');
       }
-      const res = await generateNode(node, false, additionalContext);
-      if (task.discard) return;
-      if (res?.falha) {
-        setGanError(ganFailureLabel(res.falha));
-        return;
+      const central = node.id === chosen.id;
+      const batches = central ? centralGanRound(nodes, chosen.id, D.questionBank || []) : [{target:node, count:4}];
+      const entries = [];
+      let failure = '';
+      for (const {target,count} of batches) {
+        if (task.stop) return;
+        try {
+          const res = await generateNode(target, false, additionalContext, count);
+          if (task.discard) return;
+          if (res?.falha) { failure = ganFailureLabel(res.falha); break; }
+          entries.push(...ganReviewEntries(target,res || {},true).slice(0,count));
+        } catch (err) { failure = err.message || 'Falha na geração.'; break; }
       }
-      const entries = ganReviewEntries(node, res || {}, true);
-      if (!newGanReview(entries, node, false, true)) setGanError('A geração não retornou questões para revisar.');
+      if (task.discard) return;
+      newGanReview(entries,node,false,true);
+      if (failure || entries.length < (central ? 20 : 4)) setGanError(entries.length + ' questões disponíveis para revisar. ' + failure);
     } catch (err) {
       if (!task.discard) setGanError(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
     } finally {
@@ -672,6 +680,7 @@ export default function MindMapView({
               onNavigate={setSelected}
               reviewCount={card || undefined}
               onReview={() => go('flashcards', { topicId: chosen.topicId })}
+              centralGan={node.id === chosen.id}
               onGenerateGan={handleGenerateGan}
               onGenerateFlashcards={handleGenerateFlashcards}
               flashcardsLoading={flashcardsLoading}

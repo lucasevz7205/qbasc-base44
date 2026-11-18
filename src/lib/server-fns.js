@@ -531,7 +531,7 @@ const GenerateMindMapGanSchema = z.object({
   targetNodeId: z.string().min(1).max(160),
   targetNodeLabel: z.string().min(1).max(240),
   targetNodePath: z.array(z.string().max(240)).max(12).optional(),
-  count: z.number().int().min(2).max(6).optional(),
+  count: z.number().int().min(1).max(6).optional(),
   mapa: z.object({
     id: z.string().max(200).optional(),
     title: z.string().max(300).optional(),
