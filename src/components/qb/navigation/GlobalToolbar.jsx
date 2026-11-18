@@ -99,7 +99,7 @@ export default function GlobalToolbar({
       )}
       {onArchitect && (
         <button className="qb-tool qb-tool--accent" onClick={onArchitect}>
-          <Icon name="sparkles" size={14} />
+          <Icon name="astrolabe" size={20} />
           O Arquiteto
         </button>
       )}
