@@ -4,6 +4,7 @@ const mark = value => String(value ?? '').trim().toUpperCase();
 const count = value => Math.max(0, Math.trunc(Number(value) || 0));
 const list = value => Array.isArray(value) ? value : [];
 const time = value => value ? Date.parse(value) : NaN;
+const confidenceLevel = value => [1, 2, 3].includes(Number(value)) ? Number(value) : undefined;
 
 function outcome(answer, key, recorded) {
   if (answer === 'B') return 'blank';
@@ -19,11 +20,11 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
   const review = empty();
   const candidates = new Map();
   const stat = date => days[date] ??= { date, n: 0, ...empty() };
-  const add = (date, result, qid, amount = 1) => {
+  const add = (date, result, qid, amount = 1, confidence) => {
     const row = stat(date);
     row[result] += amount;
     row.n += amount;
-    if (qid) (attemptsByDay[date] ??= []).push({ qid, result });
+    if (qid) (attemptsByDay[date] ??= []).push(confidence ? { qid, result, confidence } : { qid, result });
   };
 
   for (const [qid, response] of Object.entries(answers)) {
@@ -42,7 +43,8 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
       const pool = candidates.get(qid) || [];
       pool.push({ answer, result, date, timestamp: time(entry.em), sessionId: entry.sessionId, matched: false });
       candidates.set(qid, pool);
-      add(date, result, qid);
+      const latestConfidence = entry.em === response.atualizadoEm && answer === current ? response.conf : undefined;
+      add(date, result, qid, 1, confidenceLevel(entry.c ?? latestConfidence));
     }
   }
 
@@ -78,7 +80,7 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
         .sort((a, b) => a.timestamp - b.timestamp)[0];
       const match = exact || sameSession || legacy;
       if (match) match.matched = true;
-      else add(day(item.em) || date, result, qid);
+      else add(day(item.em) || date, result, qid, 1, confidenceLevel(item.c ?? item.conf));
     }
     // Some imported rounds contain totals only. Match attempts inside their
     // recorded interval, without consuming attempts from newer identified sessions.
@@ -97,6 +99,17 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
   return { days, attemptsByDay, roundsByDay, review };
 }
 
+
+export function certaintyAccuracy(attempts) {
+  let correct = 0;
+  let total = 0;
+  for (const attempt of attempts) {
+    if (attempt.confidence !== 3 || !['correct', 'wrong'].includes(attempt.result)) continue;
+    total++;
+    if (attempt.result === 'correct') correct++;
+  }
+  return { correct, total, rate: total ? correct / total * 100 : null };
+}
 
 export function groupResponsesByTopic(responses, questions, subjects) {
   const questionTopics = new Map(questions.map(q => [q.id, q.topicId]));
