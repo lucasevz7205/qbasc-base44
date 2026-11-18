@@ -5,7 +5,7 @@ import { Button } from "@/components/qb/core/Button";
 import { ConfirmDialog } from "@/components/qb/feedback/ConfirmDialog";
 import { useRealStudy } from "@/lib/qb-real-data";
 import { proposeEditorialRevision } from "@/lib/server-fns";
-import { makeEditorialEntry, makeDirectQuestionOverwrite } from "@/lib/editorial-overrides";
+import { compareEditorialVersions, makeEditorialEntry, makeDirectQuestionOverwrite } from "@/lib/editorial-overrides";
 import { questionQualityProblems, itemFromDisplayedQuestion } from "@/lib/item-quality";
 import { mechanismOptions } from "@/lib/question-feedback";
 
@@ -34,10 +34,10 @@ const Field = ({ title, value, onChange, rows = 3, readOnly = false }) => (
  */
 export default function EditorialCurator({ kind, item, topicLabel, subjectName, disabled = false }) {
   const requestProposal = useServerFn(proposeEditorialRevision);
-  const { records, save } = useRealStudy();
+  const { records, save, isAdmin, savePersonalQuestionRevision } = useRealStudy();
   const versions = (records.curadoria || [])
     .filter(x => x.kind === kind && x.targetId === item.id && ["aprovada", "sobrescrita"].includes(x.status))
-    .sort((a, b) => Number(b.version || 0) - Number(a.version || 0));
+    .sort(compareEditorialVersions);
   const previous = versions[0] || null;
   const [expanded, setExpanded] = React.useState(false);
   const [issue, setIssue] = React.useState("formulacao");
@@ -60,7 +60,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
     if (generating || saving || disabled) return;
     setGenerating(true); setError(""); setNotice(""); setProposal(null); setApproval(false);
     try {
-      const result = await requestProposal({ data: { kind, issue, note: note.trim(), topicLabel: String(topicLabel || item.topicId || "Assunto").slice(0, 300), subjectName, content: current } });
+      const result = await requestProposal({ data: { kind, issue, note: note.trim(), topicLabel: String(topicLabel || item.topicId || "Assunto").slice(0, 300), subjectName, content: isAdmin ? current : { id: item.id } } });
       setProposal(result);
     } catch (err) {
       setError(err?.message || "O Arquiteto não conseguiu produzir uma proposta verificável.");
@@ -77,7 +77,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
   const blocked = quality.problems.length > 0;
 
   const overwriteOriginal = async () => {
-    if (!isQuestion || !proposal || !approval || saving || disabled || !item.raw || blocked) return;
+    if (!isAdmin || !isQuestion || !proposal || !approval || saving || disabled || !item.raw || blocked) return;
     setConfirmOverwrite(false);
     setSaving(true); setError(""); setNotice("");
     try {
@@ -101,8 +101,15 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
     if (!proposal || !approval || saving || disabled || blocked) return;
     setSaving(true); setError(""); setNotice("");
     try {
-      const entry = makeEditorialEntry({ kind, content: current, proposal, previous, issue, note });
-      await save("curadoria", entry.id, entry);
+      if (isAdmin) {
+        const entry = makeEditorialEntry({ kind, content: current, proposal, previous, issue, note });
+        await save("curadoria", entry.id, entry);
+      } else {
+        await savePersonalQuestionRevision({
+          questionId: item.id, baseRevision: proposal.baseRevision ?? null, issue, note,
+          proposal: { parecer: proposal.parecer, replacement: proposal.replacement },
+        });
+      }
       setNotice("Nova versão editorial aprovada e salva. O conteúdo original e o histórico foram preservados.");
       setProposal(null);
       setApproval(false);
@@ -227,13 +234,15 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
               <label style={{ display: "flex", alignItems: "flex-start", gap: 10, font: "400 14px/1.5 var(--font-body)", color: "var(--text-primary)" }}>
                 <input type="checkbox" checked={approval} onChange={e => setApproval(e.target.checked)}
                   style={{ marginTop: 4, accentColor: "var(--qb-gold)", minWidth: 18, minHeight: 18 }} />
-                Revisei a proposta e a referência. Autorizo salvar a nova versão ou, no caso de uma questão, substituir o registro anterior após confirmar.
+                {isAdmin && isQuestion
+                  ? "Revisei a proposta e a referência. Autorizo salvar a nova versão ou substituir o registro anterior após confirmar."
+                  : "Revisei a proposta e a referência. Autorizo salvar a nova versão."}
               </label>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <Button icon="check" disabled={!approval || saving || generating || blocked} loading={saving} onClick={approve}>
                   Aprovar e salvar nova versão
                 </Button>
-                {isQuestion && (
+                {isAdmin && isQuestion && (
                   <Button variant="secondary" icon="save" disabled={!approval || saving || generating || !item.raw || blocked}
                     onClick={() => setConfirmOverwrite(true)}>
                     Salvar em cima da anterior
