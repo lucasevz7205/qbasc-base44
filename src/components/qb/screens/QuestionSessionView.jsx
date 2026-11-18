@@ -89,7 +89,7 @@ function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
 }
 
 export default function QuestionSessionView({ session, setSession, go, backTo }) {
-  const { QB_DATA, records, save, isAdmin } = useRealStudy();
+  const { QB_DATA, records, save, isAdmin, questionEditorialAccess } = useRealStudy();
   const qs = React.useMemo(() => {
     if (!session.questionIds?.length) return [];
     const bank = new Map(QB_DATA.questions.map(q => [q.id, q]));
@@ -417,7 +417,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
                 conceptLink={q.node ? { label: `Ver no mapa: ${QB_DATA.mapNodes.find(n => n.id === q.node)?.label || q.chapter}`, onClick: openConcept } : undefined}
               />
               {showCorrection && st.nextReviewDate && <Badge tone="neutral" icon="calendar-days">Próxima revisão · {st.nextReviewDate.split('-').reverse().join('/')}</Badge>}
-              {isAdmin && st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
+              {questionEditorialAccess && st.revealed && QB_DATA.questionBank.some(item => item.id === q.id) && (
                 <EditorialCurator key={q.id} kind="question" item={q} topicLabel={q.chapter || q.topicId || q.subject} />
               )}
             </>
