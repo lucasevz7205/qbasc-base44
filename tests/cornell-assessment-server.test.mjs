@@ -9,7 +9,7 @@ import { build } from 'esbuild';
 const stubs = {
  '@tanstack/react-start': 'export const createServerFn = () => { let schema; let guarded = false; return { middleware(m){ guarded = Boolean(m.length); return this; }, validator(s){ schema=s;return this; }, handler(f){ return input=>{if(guarded&&!input.context?.user) throw new Error("Sessão obrigatória");return f({...input,data:schema?schema.parse(input.data):input.data});}; } }; };',
  '@/lib/auth-middleware': 'export const requireUser=Symbol("requireUser");',
- '@/lib/study-accounts': 'export const requireArchitectAccess=async()=>null; export const prepareGanSourcePassages=async()=>globalThis.qaSources; export const preparePersonalMapGan=(...args)=>globalThis.preparePersonalFixture(...args);',
+ '@/lib/study-accounts': 'export const requireArchitectAccess=async()=>null; export const prepareGanSourcePassages=async()=>globalThis.qaSources; export const preparePersonalMapGan=(...args)=>globalThis.preparePersonalFixture(...args); export const preparePersonalQuestionEditorial=async()=>{throw new Error("Curadoria fora do escopo deste teste");};',
  'base44:runtime': 'export const secrets={get(name){return globalThis.testGanSecrets[name];}};',
 };
 const bundle = await build({
