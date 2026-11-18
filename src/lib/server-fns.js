@@ -553,7 +553,7 @@ export const generateMindMapFlashcards = createServerFn({ method: 'POST' })
     const node = data.mapa.nodes.find(item => item.id === data.targetNodeId);
     if (!node) throw new Error('Nó do mapa não localizado.');
     const sources = await prepareGanSourcePassages(context, data);
-    const material = [node.summary, node.example, ...sources.map(entry => entry.text)].filter(Boolean).join('\n').slice(0, 10000);
+    const material = [node.summary, node.example, ...sources.map(entry => entry.texto)].filter(Boolean).join('\n').slice(0, 10000);
     if (material.trim().length < 20) throw new Error('Este nó precisa de um resumo ou de uma fonte textual para gerar flashcards.');
     const count = data.count || 4;
     const prompt = [
