@@ -106,7 +106,7 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
       <button type="button" className="qb-btn qb-btn--primary"
         style={{ borderRadius: '0 999px 999px 0', minHeight: 48, boxShadow: 'none', padding: '0 15px 0 10px', whiteSpace: 'nowrap' }}
         onClick={onOpen}>
-        <Icon name="sparkles" size={18} />O Arquiteto
+        <Icon name="astrolabe" size={24} />O Arquiteto
       </button>
       </div>
       <button type="button" className="qb-iconbtn qb-architect-launcher__toggle"
@@ -120,7 +120,7 @@ export default function ArchitectLauncher({ onOpen, hidden }) {
           if (event.detail !== 0 && suppressToggleClick.current) return;
           setExpanded(value => !value);
         }}>
-        <Icon name={expanded ? 'chevron-left' : 'sparkles'} size={20} />
+        <Icon name={expanded ? 'chevron-left' : 'astrolabe'} size={expanded ? 20 : 24} />
       </button>
     </div>
   );
