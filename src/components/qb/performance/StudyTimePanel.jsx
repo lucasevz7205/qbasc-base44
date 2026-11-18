@@ -28,7 +28,7 @@ function Sessions({ rows }) {
       return <li key={row.id} style={{ display: 'grid', gap: 4, padding: '10px 0', borderTop: '1px solid var(--divider)' }}>
         <span style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
           <time dateTime={new Date(row.startedAt).toISOString()}>
-            {startedDay === row.date ? '' : displayDate(startedDay) + ' · '}
+            {startedDay && startedDay !== row.date ? displayDate(startedDay) + ' · ' : ''}
             {startTime.format(row.startedAt)}
           </time>
           <strong>{formatStudyTime(studyTimeTotal(row.time))}</strong>
