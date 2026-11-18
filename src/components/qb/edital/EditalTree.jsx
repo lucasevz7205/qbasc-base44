@@ -26,7 +26,7 @@ function Accuracy({ correct, wrong, blank }) {
   );
 }
 
-const ACTIONS = [['study', 'book-open', 'Estudo e revisão'], ['questions', 'target', 'Questões'], ['map', 'network', 'Mapa mental'], ['flashcards', 'layers', 'Flashcards'], ['architect', 'sparkles', 'O Arquiteto']];
+const ACTIONS = [['study', 'book-open', 'Estudo e revisão'], ['questions', 'target', 'Questões'], ['map', 'network', 'Mapa mental'], ['flashcards', 'layers', 'Flashcards'], ['architect', 'astrolabe', 'O Arquiteto']];
 
 export function TopicRow({ topic, highlight, onAction, evokeFirst }) {
   const resources = topic.resources;
