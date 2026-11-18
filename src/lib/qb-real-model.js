@@ -112,7 +112,8 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   }
   const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
   for(const card of uniqueCards){
-    card.node=aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
+    const ownNode = mapByTopic[card.topicId]?.nodes.some(node => node.id === card.nodeRef);
+    card.node=ownNode ? card.nodeRef : aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
     if(topics[card.topicId]) topics[card.topicId].resources.cards++;
   }
   const isRetained = r => {
