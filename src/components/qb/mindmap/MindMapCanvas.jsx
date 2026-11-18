@@ -541,14 +541,15 @@ export default function MindMapCanvas({
               onClick={() => click(n)}
             >
               {m && <Icon name={m[0]} size={15} color={m[1]} label={m[2]} />}
-              <span style={{ display: 'grid', gap: 4 }}>
-                <span style={{ whiteSpace: n.label.length > 26 ? 'normal' : 'nowrap' }}>{n.label}</span>
+              <span className="qb-mm__node-content">
+                <span className="qb-mm__node-label">{n.label}</span>
                 <NodeRates performance={n.performance} />
               </span>
               {hidden > 0 && (
                 <span
                   style={{
                     font: '500 11px/1 var(--font-mono)',
+                    flexShrink: 0,
                     color: 'var(--qb-gold)',
                     padding: '3px 6px',
                     borderRadius: 6,
