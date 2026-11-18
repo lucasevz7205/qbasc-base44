@@ -336,8 +336,8 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview } = arg || {};
-          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview }));
+          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
@@ -401,7 +401,7 @@ export function QBStudyProvider({ children }) {
         go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, nodeId: intent.nodeId, filter: intent.filter });
         return;
       }
-      go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, filter: intent.filter });
+      go('questions', { topicId: intent.topicId, subjectId: intent.subjectId, filter: intent.filter, randomOrder: intent.randomOrder });
     },
     [activeView, resolveIntent, openArchitect, go, navigate],
   );
