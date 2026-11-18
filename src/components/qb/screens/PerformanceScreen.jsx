@@ -7,6 +7,7 @@ import { Badge } from '@/components/qb/core/Badge';
 import { PerformanceMetricCard } from '@/components/qb/performance/PerformanceMetricCard';
 import { PerformanceTrendChart } from '@/components/qb/performance/PerformanceTrendChart';
 import { PerformancePriorityPanel } from '@/components/qb/performance/PerformancePriorityPanel';
+import StudyTimePanel, { useStudyTimeRecords } from '@/components/qb/performance/StudyTimePanel';
 import { PerformancePeriodSelector } from '@/components/qb/performance/PerformancePeriodSelector';
 import { SubjectPerformanceExplorer } from '@/components/qb/performance/SubjectPerformanceExplorer';
 import '@/components/qb/performance/performance.css';
@@ -93,7 +94,10 @@ function DailySubjectBreakdown({ date, scopeLabel = date ? QB_METRICS.fmtDate(da
 function Daily({ go }) {
   const { QB_DATA, QB_EDITAL, QB_PLAN, QB_PERF, records } = useRealStudy();
   const M = QB_METRICS, PF = QB_PERF, P = QB_PLAN;
-  const [date, setDate] = React.useState(P.today);
+  const studyTime = useStudyTimeRecords();
+  const today = reviewDay(new Date());
+  const firstDate = studyTime.rows.reduce((first, row) => row.date < first ? row.date : first, PF.days[0]?.date || today);
+  const [date, setDate] = React.useState(today);
   const [subjectId, setSubjectId] = React.useState('all');
   const [topicId, setTopicId] = React.useState('all');
   const filter = performanceScope(QB_DATA.questions, QB_EDITAL.subjects, subjectId, topicId);
@@ -116,9 +120,10 @@ function Daily({ go }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <Panel className="qb-performance-v4-filters" padding={14}>
-        <PerformancePeriodSelector mode="day" value={{ date }} min={PF.days[0]?.date} max={P.today} today={P.today} onChange={value => setDate(value.date)} />
+        <PerformancePeriodSelector mode="day" value={{ date }} min={firstDate} max={today} today={today} onChange={value => setDate(value.date)} />
         {scopeFilters(QB_EDITAL.subjects, subjectId, topicId, setSubjectId, setTopicId)}
       </Panel>
+      <StudyTimePanel data={studyTime} from={date} />
       <PerformanceMetrics stats={d} tasks={tasks} cards={PF.cardsByDay[date] || 0} go={go}
         comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. ' + M.fmtDate(prev.date) } : null} />
       <div className="qb-performance-v4-panes">
@@ -213,15 +218,17 @@ function performanceScope(questions, subjects, subjectId, topicId) {
 function Historic({ go }) {
   const { QB_PERF: PF, QB_EDITAL: E, QB_SIM: S, QB_PLAN: P, QB_DATA: D, records } = useRealStudy();
   const M = QB_METRICS;
-  const [from, setFrom] = React.useState(() => P.addDays(P.today, -13));
-  const [to, setTo] = React.useState(P.today);
+  const studyTime = useStudyTimeRecords();
+  const today = reviewDay(new Date());
+  const [from, setFrom] = React.useState(() => P.addDays(today, -13));
+  const [to, setTo] = React.useState(today);
   const [group, setGroup] = React.useState('dia');
   const [subjectId, setSubjectId] = React.useState('all');
   const [topicId, setTopicId] = React.useState('all');
   const end = to;
   const start = from;
   const duration = Math.round((Date.parse(end) - Date.parse(start)) / 86400000) + 1;
-  const validRange = duration >= 1 && duration <= 90 && end <= P.today;
+  const validRange = duration >= 1 && duration <= 90 && end <= today;
   const filter = performanceScope(D.questions, E.subjects, subjectId, topicId);
   const dateIndex = new Map(PF.days.map(day => [day.date, day]));
   const getDays = offset => Array.from({ length: validRange ? duration : 0 }, (_, index) => {
@@ -257,12 +264,13 @@ function Historic({ go }) {
   return (
     <div style={{ display: 'grid', gap: 16, minWidth: 0 }}>
       <Panel padding={14} className="qb-performance-v4-filters">
-        <PerformancePeriodSelector mode="range" value={{ from: start, to: end }} max={P.today}
-          presets={[7, 14, 30].map(n => ({ id: n, label: n + ' dias', from: P.addDays(P.today, 1 - n), to: P.today }))}
+        <PerformancePeriodSelector mode="range" value={{ from: start, to: end }} max={today}
+          presets={[7, 14, 30].map(n => ({ id: n, label: n + ' dias', from: P.addDays(today, 1 - n), to: today }))}
           onChange={range => { setFrom(range.from); setTo(range.to); }} />
         {scopeFilters(E.subjects, subjectId, topicId, setSubjectId, setTopicId)}
       </Panel>
       {!validRange ? <EmptyState compact title="Intervalo inválido" description="Selecione de 1 a 90 dias, até a data de hoje." /> : <>
+        <StudyTimePanel data={studyTime} from={start} to={end} />
         <PerformanceMetrics stats={current} tasks={tasks} cards={cards} go={go}
           comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. período anterior' } : null} />
         <div className="qb-performance-v4-panes">
