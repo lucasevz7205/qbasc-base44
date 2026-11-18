@@ -25,7 +25,7 @@ const { outputFiles } = await build({
   bundle: true, write: false, platform: 'node', format: 'esm',
   stdin: {
     contents: `
-      export { approvePersonalQuestionEditorial, loadPersonalStudy, writePersonalStudy } from './src/lib/study-accounts.js';
+      export { approvePersonalQuestionEditorial, loadPersonalStudy, preparePersonalQuestionEditorial, writePersonalStudy } from './src/lib/study-accounts.js';
       export { proposeEditorialRevision } from './src/lib/server-fns.js';
     `,
     resolveDir: process.cwd(),
@@ -35,7 +35,7 @@ const { outputFiles } = await build({
     builder.onLoad({ filter: /.*/, namespace: 'stub' }, ({ path }) => ({ contents: stubs[path], loader: 'js' }));
   } }],
 });
-const { approvePersonalQuestionEditorial, loadPersonalStudy, writePersonalStudy, proposeEditorialRevision } =
+const { approvePersonalQuestionEditorial, loadPersonalStudy, preparePersonalQuestionEditorial, writePersonalStudy, proposeEditorialRevision } =
   await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
 
 const user = id => ({ id, role: 'user' });
@@ -124,5 +124,18 @@ test('aprovação pessoal salva uma versão privada, preserva o banco e impede p
   await assert.rejects(approvePersonalQuestionEditorial({ context: primo, data: approval }), /versão mais recente/);
   const next = await approvePersonalQuestionEditorial({ context: primo, data: { ...approval, baseRevision: saved.id } });
   assert.equal(next.version, 2);
-  assert.deepEqual(next.original, saved.original);
+  assert.deepEqual(next.original, JSON.parse(JSON.stringify(saved.original)));
+  const displayed = await preparePersonalQuestionEditorial(primo, approval.questionId);
+  assert.equal(displayed.content.statement, next.replacement.statement);
+  assert.equal(displayed.baseRevision, next.id);
+});
+
+test('nova revisão prevalece sobre versão direta já importada no banco pessoal', async () => {
+  const { context, rows } = fixture();
+  const primo = context('primo');
+  const stored = rows.find(row => row.collection === workspaceCollection('primo', 'questoes'));
+  stored.payload_json = JSON.stringify({ ...JSON.parse(stored.payload_json), versaoCuradoriaDireta: 3 });
+  const saved = await approvePersonalQuestionEditorial({ context: primo, data: approval });
+  assert.equal(saved.version, 4);
+  assert.equal((await preparePersonalQuestionEditorial(primo, approval.questionId)).content.statement, saved.replacement.statement);
 });
