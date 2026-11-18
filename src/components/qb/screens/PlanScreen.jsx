@@ -227,7 +227,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   <Button icon="play" onClick={() => go(sel.type === 'questoes' || sel.type === 'revisao' ? 'questions' : sel.type === 'flashcards' ? 'flashcards' : sel.type === 'simulado' ? 'simulado' : 'study')}>Iniciar</Button>
                   <Button variant="secondary" icon="check" disabled={saving || sel.status === 'done'} onClick={async () => { if(await updateTasks([[sel,{status:'concluida',concluidaEm:new Date().toISOString()}]]))toast?.({tone:'success',title:'Tarefa concluída'}); }}>Marcar concluída</Button>
-                  <Button variant="ghost" icon="sparkles" onClick={() => openArchitect && openArchitect({ subjectId: sel.subjectId, origin: 'tarefa de ' + dl(sel.date) })}>O Arquiteto</Button>
+                  <Button variant="ghost" icon="astrolabe" onClick={() => openArchitect && openArchitect({ subjectId: sel.subjectId, origin: 'tarefa de ' + dl(sel.date) })}>O Arquiteto</Button>
                 </div>
               </Panel>
             ) : <EmptyState icon="calendar" title="Selecione uma tarefa" description="Veja detalhes, inicie a atividade ou abra O Arquiteto no contexto dela." />}
