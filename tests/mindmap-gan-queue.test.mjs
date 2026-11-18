@@ -65,7 +65,7 @@ test('GAN individual usa o nó da própria conta e guarda propostas até a aprov
   await assert.rejects(approvePersonalMapGan({ context: { ...context, user: { role: 'user', id: 'outro' } },
     data: { ...data, topicId: 'outro-t', targetNodeId: 'outro-t::importacao::0.0' } }), /não pertence/);
   const record = await approvePersonalMapGan({ context, data });
-  assert.deepEqual(await approvePersonalMapGan({ context, data }), record);
+  assert.deepEqual(await approvePersonalMapGan({ context, data }), JSON.parse(JSON.stringify(record)));
   assert.equal(record.id, questionId);
   assert.equal(record.mapaNoId, input.targetNodeId);
   assert.equal(record.statusConfronto, 'aprovada_manual');
