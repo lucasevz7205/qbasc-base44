@@ -6,7 +6,7 @@ export const TRAINING_ACTIONS = [
   { id: 'train', label: 'Treinar', icon: 'target', hint: 'Questões deste assunto' },
   { id: 'mindmap', label: 'Mapa Mental', icon: 'network', hint: 'Mapa do assunto' },
   { id: 'review', label: 'Revisão Ativa', icon: 'layers', hint: 'Revisão deste assunto' },
-  { id: 'architect', label: 'O Arquiteto', icon: 'sparkles', hint: 'Tutor com este contexto' },
+  { id: 'architect', label: 'O Arquiteto', icon: 'astrolabe', hint: 'Tutor com este contexto' },
 ];
 const rate = (c, w) => (c + w ? (c / (c + w)) * 100 : null);
 const subjRate = s => {
