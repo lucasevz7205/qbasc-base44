@@ -58,9 +58,9 @@ export function studyClockTimes(state, now) {
 }
 
 function dayBoundary(start, end, date) {
-  if (reviewDay(end - 1) === date) return end;
+  if (reviewDay(Math.ceil(end) - 1) === date) return end;
   let low = start + 1;
-  let high = end;
+  let high = Math.ceil(end);
   while (low < high) {
     const midpoint = Math.floor((low + high) / 2);
     if (reviewDay(midpoint) === date) low = midpoint + 1;
