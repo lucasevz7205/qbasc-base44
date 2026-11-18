@@ -1,12 +1,18 @@
 export const ACCOUNT_COLLECTION = 'qbasc-contas';
 export const IMPORTABLE = ['edital', 'questoes', 'revisao', 'planejamento', 'materiais', 'pontos', 'pegadinhas'];
 export const PERSONAL_WRITE = ['respostas', 'justificativas', 'cartoes_aval', 'planejamento', 'rodadas', 'simulados', 'diario'];
-export const READABLE = [...new Set([...IMPORTABLE, ...PERSONAL_WRITE, 'config'])];
+export const READABLE = [...new Set([...IMPORTABLE, ...PERSONAL_WRITE, 'config', 'curadoria'])];
 
 export function canUseArchitect(user, profile) {
   return user?.role === 'admin' || Boolean(
     user?.role === 'user' && user.id && profile?.id === user.id &&
     profile.status === 'active' && profile.architectEnabled === true
+  );
+}
+
+export function canReformulateQuestions(user, profile) {
+  return user?.role === 'admin' || Boolean(
+    user?.role === 'user' && user.id && profile?.id === user.id && profile.status === 'active'
   );
 }
 
