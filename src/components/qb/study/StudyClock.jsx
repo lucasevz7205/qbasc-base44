@@ -57,7 +57,10 @@ export default function StudyClock() {
         {Object.entries(STUDY_ACTIVITIES).map(([key, label]) => (
           <div key={key} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, paddingTop: 8, borderTop: '1px solid var(--divider)' }}>
             <dt>{label}</dt>
-            <dd style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>{formatStudyTime(times[key] || 0)} · {counts[key]} {key === 'questions' ? 'respostas' : key === 'flashcards' ? 'avaliações' : 'mapas abertos'}</dd>
+            <dd style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>
+              {formatStudyTime(times[key] || 0)}
+              {counts[key] != null && ` · ${counts[key]} ${{ questions: 'respostas', flashcards: 'avaliações', maps: 'mapas abertos' }[key]}`}
+            </dd>
           </div>
         ))}
       </dl>
