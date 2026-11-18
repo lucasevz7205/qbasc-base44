@@ -4,6 +4,7 @@ import { Button } from '@/components/qb/core/Button';
 
 export const TRAINING_ACTIONS = [
   { id: 'train', label: 'Treinar', icon: 'target', hint: 'Questões deste assunto' },
+  { id: 'train-random', action: 'train', randomOrder: true, label: 'Treinar aleatório', icon: 'shuffle', hint: 'Questões deste assunto em ordem aleatória' },
   { id: 'mindmap', label: 'Mapa Mental', icon: 'network', hint: 'Mapa do assunto' },
   { id: 'review', label: 'Revisão Ativa', icon: 'layers', hint: 'Revisão deste assunto' },
   { id: 'architect', label: 'O Arquiteto', icon: 'astrolabe', hint: 'Tutor com este contexto' },
@@ -32,6 +33,7 @@ export default function TrainingRadial({
   onChange,
   onAction,
   onSelectTopic,
+  allowRandomTraining = false,
   topicMeta,
   pending = {},
   linkInfo,
@@ -83,8 +85,9 @@ export default function TrainingRadial({
   };
   const toTopics = () => set({ subjectId: subj.id, topicId: null });
   const fire = a => {
-    const info = linkInfo ? linkInfo(subj.id, topic.id, a.id) || {} : {};
-    onAction && onAction({ subjectId: subj.id, topicId: topic.id, action: a.id, nodeId: info.nodeId });
+    const action = a.action ?? a.id;
+    const info = linkInfo ? linkInfo(subj.id, topic.id, action) || {} : {};
+    onAction?.({ subjectId: subj.id, topicId: topic.id, action, nodeId: info.nodeId, ...(a.randomOrder && { randomOrder: true }) });
   };
   const onKey = e => {
     if (e.key !== 'Escape' || level === 1) return;
@@ -139,8 +142,8 @@ export default function TrainingRadial({
       };
     });
   } else {
-    nodes = TRAINING_ACTIONS.map(a => {
-      const info = linkInfo ? linkInfo(subj.id, topic.id, a.id) || {} : {};
+    nodes = TRAINING_ACTIONS.filter(a => allowRandomTraining || !a.randomOrder).map(a => {
+      const info = linkInfo ? linkInfo(subj.id, topic.id, a.action ?? a.id) || {} : {};
       return {
         key: a.id,
         icon: a.icon,
