@@ -282,7 +282,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!focus && (
         <BrandHeader variant="compact" floating={false} onExit={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}>
-          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : 'Sessão de questões'}</span>
+          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : session.selection?.randomOrder ? 'Treino aleatório' : 'Sessão de questões'}</span>
           <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{q?.chapter || 'Treinar'}</span>
         </BrandHeader>
       )}
