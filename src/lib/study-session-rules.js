@@ -25,7 +25,16 @@ function lastAnswerOutcome(question) {
   return (originalKey === 'C' || originalKey === 'E') && marked !== originalKey ? 'wrong' : 'answered';
 }
 
-export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds, scheduledReview } = {}, { unique = false } = {}) {
+function shuffleQuestions(questions, random) {
+  const shuffled = [...questions];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const other = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+  }
+  return shuffled;
+}
+
+export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, questionIds, scheduledReview, randomOrder } = {}, { unique = false, random = Math.random } = {}) {
   const selected = questionIds ? new Set(questionIds) : null;
   const eligible = bank.filter(question =>
     (!selected || selected.has(question.id)) &&
@@ -36,13 +45,17 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
   );
   const conflicts = unique ? conflictingPrompts(eligible) : null;
   const matching = conflicts ? eligible.filter(question => !conflicts.has(promptKey(question))) : eligible;
-  if (filter === 'all') return unique ? distinctRoundQuestions(matching) : matching;
+  const shuffle = randomOrder && topicId && !scheduledReview;
+  const prepare = items => {
+    const questions = unique ? distinctRoundQuestions(items) : items;
+    return shuffle ? shuffleQuestions(questions, random) : questions;
+  };
+  if (filter === 'all') return prepare(matching);
   if (filter === 'wrong' || filter === 'unseen') {
-    const filtered = matching.filter(question => lastAnswerOutcome(question) === filter);
-    return unique ? distinctRoundQuestions(filtered) : filtered;
+    return prepare(matching.filter(question => lastAnswerOutcome(question) === filter));
   }
-  const sorted = scheduledReview ? matching : matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response)));
-  return (unique ? distinctRoundQuestions(sorted) : sorted).slice(0, QUESTION_ROUND_LIMIT);
+  const sorted = scheduledReview || shuffle ? matching : matching.sort((a, b) => Number(Boolean(a.response)) - Number(Boolean(b.response)));
+  return prepare(sorted).slice(0, QUESTION_ROUND_LIMIT);
 }
 
 function promptKey(question) {
