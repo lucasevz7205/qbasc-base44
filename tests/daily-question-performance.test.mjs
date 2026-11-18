@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { dailyQuestionPerformance } from '../src/lib/daily-question-performance.js';
+import { certaintyAccuracy, dailyQuestionPerformance } from '../src/lib/daily-question-performance.js';
 import { pickQuestionRound } from '../src/lib/study-session-rules.js';
 
 const day = value => value && new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Sao_Paulo' }).format(new Date(value));
@@ -38,6 +38,19 @@ test('totalizações antigas e simulados mantêm seu tratamento', () => {
   const pf = analyze(answers, [legacy, exam]);
   assert.deepEqual(pf.days['2026-11-15'], { date: '2026-11-15', correct: 3, wrong: 2, blank: 0, n: 5 });
   assert.deepEqual(pf.review, { correct: 3, wrong: 2, blank: 0 });
+});
+
+test('calibração usa a confiança de cada tentativa e ignora brancos e confiança ausente', () => {
+  const first = at('08', '00');
+  const last = at('08', '02');
+  const answers = { q1: { ultimaMarcada: 'E', atualizadoEm: last, conf: 3, hist: [
+    { m: 'C', ok: true, em: first, c: 3 },
+    { m: 'C', ok: true, em: at('08', '01') },
+    { m: 'B', em: at('08', '01'), c: 3 },
+    { m: 'E', ok: false, em: last },
+  ] } };
+  const pf = analyze(answers);
+  assert.deepEqual(certaintyAccuracy(pf.attemptsByDay['2026-11-15']), { correct: 1, total: 2, rate: 50 });
 });
 
 test('remissão para treinar usa exatamente as questões ativas vinculadas', () => {
