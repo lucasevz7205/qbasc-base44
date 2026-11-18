@@ -2,6 +2,7 @@ import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
 import { adaptStudy } from './qb-real-model.js';
+import { STUDY_ACTIVITIES, mergeStudyClockRecord, studyTimeTotal } from './study-clock.js';
 import { ganSourcePassages } from './gan-grounding.js';
 import { buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion } from './gan-queue.js';
 import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect } from './account-boundary';
@@ -47,10 +48,10 @@ async function loadDocuments(entities, collection) {
   return out;
 }
 
-async function write(entities, collection, id, data, skipExisting = false) {
+async function write(entities, collection, id, data, skipExisting = false, merge) {
   const prior = await unique(entities, collection, id);
   if (prior && skipExisting) return false;
-  const value = { ...data, id };
+  const value = { ...(prior && merge ? merge(await decode(entities, prior), data) : data), id };
   // Reserved fragment markers belong to storage, not to imported data.
   delete value._claudeParts;
   delete value.fragmentId;
@@ -167,6 +168,44 @@ export const writePersonalStudy = createServerFn({ method: 'POST' })
     const profile = await requireAccount(entities, id);
     if (profile.status !== 'active') throw new Error('Acesso ao espaço de estudo indisponível.');
     return write(entities, workspaceCollection(id, data.collection), data.id, data.value);
+  });
+
+const clockTime = z.number().int().min(0).max(25 * 60 * 60 * 1000);
+const clockRecord = z.object({
+  id: z.string().max(48),
+  sessionId: z.uuid(),
+  date: z.iso.date(),
+  startedAt: z.number().int().min(0).max(8640000000000000),
+  time: z.object(Object.fromEntries(Object.keys(STUDY_ACTIVITIES).map(kind => [kind, clockTime]))).strict(),
+}).strict().refine(row => row.id === row.sessionId + ':' + row.date && studyTimeTotal(row.time) > 0);
+
+async function studyClockAccess(context) {
+  const user = context.user;
+  const id = accountId.parse(user.id);
+  const entities = context.getBase44().asServiceRole.entities;
+  if (user.role !== 'admin' && (user.role !== 'user' || (await requireAccount(entities, id)).status !== 'active')) {
+    throw new Error('Acesso ao espaço de estudo indisponível.');
+  }
+  return { entities, collection: 'qbasc-tempo:' + id };
+}
+
+export const listStudyClockRecords = createServerFn({ method: 'GET' })
+  .middleware([requireUser])
+  .handler(async ({ context }) => {
+    const { entities, collection } = await studyClockAccess(context);
+    return loadDocuments(entities, collection);
+  });
+
+export const saveStudyClockRecords = createServerFn({ method: 'POST' })
+  .middleware([requireUser])
+  .validator(z.array(clockRecord).min(1).max(20))
+  .handler(async ({ context, data }) => {
+    const { entities, collection } = await studyClockAccess(context);
+    const saved = [];
+    for (const record of data) {
+      saved.push(await write(entities, collection, record.id, record, false, mergeStudyClockRecord));
+    }
+    return saved;
   });
 
 export const listStudyAccounts = createServerFn({ method: 'GET' })
