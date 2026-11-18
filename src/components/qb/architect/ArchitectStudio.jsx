@@ -6,6 +6,7 @@ import { FeynmanLab } from '@/components/qb/architect/FeynmanLab';
 import { CornellNotebook } from '@/components/qb/architect/CornellNotebook';
 import { ScannerFlashcards } from '@/components/qb/architect/ScannerFlashcards';
 import StudyClock from '@/components/qb/study/StudyClock';
+import { useStudyActivity } from '@/lib/StudyClockContext';
 import { useAuth } from '@/lib/AuthContext';
 import { tutorHistory } from '@/lib/tutor-history';
 
@@ -45,6 +46,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   const tools = personal ? available.filter(item => item.id !== 'cornell' && item.id !== 'cards') : available;
   const requestedTool = toolProp || toolState;
   const tool = clockOnly ? 'study-clock' : tools.some(item => item.id === requestedTool) ? requestedTool : 'socratico';
+  useStudyActivity('tutor', open && tool !== 'study-clock' ? mode : null);
   const setTool = t => { setToolState(t); onToolChange && onToolChange(t); };
   React.useEffect(() => {
     if (!open || mode === 'inline') return;
