@@ -88,7 +88,9 @@ test("curadoria só consulta Gemini sob autorização e não faz fallback pago",
   const fn = service.slice(start, end);
   assert.ok(start > 0 && end > start);
   assert.match(fn, /\.middleware\(\[requireUser\]\)/);
-  assert.match(fn, /context.user\?\.role !== "admin"/);
+  assert.match(fn, /context\.user\.role !== "admin"/);
+  assert.match(fn, /personal && data\.kind !== "question"/);
+  assert.match(fn, /preparePersonalQuestionEditorial\(context, data\.content\.id\)/);
   assert.match(fn, /invokeGeminiTutor/);
   assert.match(fn, /parseEditorialSuggestion/);
   assert.doesNotMatch(fn, /Core\.InvokeLLM|\.create\(|\.update\(|save\(/);
