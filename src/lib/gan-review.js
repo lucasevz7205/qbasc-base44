@@ -59,6 +59,7 @@ export function ganReviewEntries(node, result, forReview) {
   return items.map(item => ({
     item,
     node,
+    reviewId: result.reviewId,
     record: saved.get(item.id),
     status: saved.has(item.id) ? 'saved' : forReview ? 'pending' : 'report',
   }));
