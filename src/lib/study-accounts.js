@@ -2,10 +2,12 @@ import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
 import { requireUser } from '@/lib/auth-middleware';
 import { adaptStudy } from './qb-real-model.js';
+import { compareEditorialVersions, editorialId, makeEditorialEntry } from './editorial-overrides.js';
+import { itemFromDisplayedQuestion, questionQualityProblems } from './item-quality.js';
 import { STUDY_ACTIVITIES, mergeStudyClockRecord, studyTimeTotal } from './study-clock.js';
 import { ganSourcePassages } from './gan-grounding.js';
 import { buildGanSource, buildGanQuestionRecord, isApprovedGanQuestion } from './gan-queue.js';
-import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect } from './account-boundary';
+import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect, canReformulateQuestions } from './account-boundary';
 
 const accountId = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
 const documentId = z.string().min(1).max(160).refine(id => !['__proto__', 'prototype', 'constructor'].includes(id));
@@ -130,6 +132,75 @@ export async function requireArchitectAccess(context) {
   if (!canUseArchitect(user, profile)) throw new Error('O Arquiteto ainda não está liberado para esta conta.');
   return profile;
 }
+
+async function personalQuestionEditorialScope(context, questionId) {
+  const { user } = context;
+  if (user?.role !== 'user') throw new Error('Acesso à curadoria individual indisponível.');
+  const id = accountId.parse(user.id);
+  const entities = context.getBase44().asServiceRole.entities;
+  const profile = await requireAccount(entities, id);
+  if (!canReformulateQuestions(user, profile)) throw new Error('Acesso à curadoria individual indisponível.');
+  const target = documentId.parse(questionId);
+  const stored = await unique(entities, workspaceCollection(id, 'questoes'), target);
+  if (!stored) throw new Error('A questão não pertence ao seu espaço de estudo.');
+  const original = await decode(entities, stored);
+  const collection = workspaceCollection(id, 'curadoria');
+  const prefix = editorialId('question', target) + ':v';
+  const rows = await pageAll(entities.ClaudeDocument, { collection, legacy_id: { $regex: '^' + prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') } });
+  const versions = (await Promise.all(rows.map(row => decode(entities, row))))
+    .filter(entry => entry.kind === 'question' && entry.targetId === target && entry.status === 'aprovada')
+    .sort(compareEditorialVersions);
+  const { QB_DATA } = adaptStudy({ questoes: [original], curadoria: versions }, user);
+  const question = QB_DATA.questionBank[0];
+  if (!question) throw new Error('Questão inválida para curadoria.');
+  return { entities, collection, question, previous: versions[0] || null };
+}
+
+export async function preparePersonalQuestionEditorial(context, questionId) {
+  const { question, previous } = await personalQuestionEditorialScope(context, questionId);
+  const original = question.raw;
+  return {
+    content: { id: question.id, ...itemFromDisplayedQuestion(question), origin: question.origin, node: original.mapaNoId },
+    topicLabel: String(original.capNome || original.cap || original.topico || 'Assunto').slice(0, 300),
+    baseRevision: previous?.id ?? null,
+  };
+}
+
+const personalEditorialApproval = z.object({
+  questionId: documentId,
+  baseRevision: z.string().max(250).nullable(),
+  issue: z.enum(['formulacao', 'gabarito', 'fundamentacao', 'desatualizacao', 'outro']),
+  note: z.string().max(500),
+  proposal: z.object({
+    parecer: z.string().max(1500),
+    replacement: z.object({
+      statement: z.string().trim().min(1).max(4000),
+      key: z.enum(['C', 'E']),
+      explanation: z.string().trim().min(1).max(6500),
+      basis: z.string().max(2000),
+      mecanismo: z.string().trim().min(1).max(4),
+      trechoDecisivo: z.string().max(400),
+      correcaoMinima: z.string().trim().min(1).max(600),
+    }).strict(),
+  }).strict(),
+}).strict();
+
+export const approvePersonalQuestionEditorial = createServerFn({ method: 'POST' })
+  .middleware([requireUser])
+  .validator(personalEditorialApproval)
+  .handler(async ({ context, data }) => {
+    const { entities, collection, question, previous } = await personalQuestionEditorialScope(context, data.questionId);
+    if ((previous?.id ?? null) !== data.baseRevision) {
+      throw new Error('A questão já tem uma versão mais recente. Gere uma nova proposta.');
+    }
+    const entry = makeEditorialEntry({ kind: 'question', content: question, proposal: data.proposal, previous, issue: data.issue, note: data.note });
+    const { problems } = questionQualityProblems(entry.replacement);
+    if (problems.length) throw new Error(problems[0].message);
+    // An independent ID keeps both approved versions when two tabs save concurrently.
+    const saved = await write(entities, collection, entry.id + ':' + crypto.randomUUID(), entry, true);
+    if (!saved) throw new Error('Não foi possível registrar a nova versão.');
+    return saved;
+  });
 
 export const loadPersonalStudy = createServerFn({ method: 'POST' })
   .middleware([requireUser])
