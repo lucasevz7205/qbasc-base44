@@ -490,6 +490,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   box-shadow: 0 8px 20px -10px rgba(8, 10, 15, .9);
   transition: border-color var(--dur-base), background-color var(--dur-base), opacity var(--dur-slow);
 }
+.qb-mm__node-content { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; min-width: 0; }
+.qb-mm__node-label { white-space: normal; overflow-wrap: anywhere; }
 .qb-mm__node:hover { border-color: var(--qb-gold); background: var(--surface-hover); }
 .qb-mm__node:focus-visible { outline: none; box-shadow: var(--ring-focus); }
 .qb-mm__node[aria-selected="true"] { border-color: var(--qb-gold-bright); box-shadow: var(--glow-gold); }
