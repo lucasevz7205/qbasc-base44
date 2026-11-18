@@ -299,14 +299,28 @@ export default function MindMapCanvas({
     if (p) setPan({ x: -p.x * zoom - off.x, y: -p.y * zoom - off.y });
   };
 
-  const adjustZoom = (delta) => {
+  const adjustZoom = React.useCallback((delta) => {
     setUserZoom((prev) => {
       const next = Math.max(0.45, Math.min(2.6, Math.round((prev + delta) * 100) / 100));
       const ratio = next / prev;
       setPan((p) => ({ x: p.x * ratio, y: p.y * ratio }));
       return next;
     });
-  };
+  }, []);
+
+  React.useEffect(() => {
+    const canvas = wrapRef.current;
+    if (view !== 'map' || !canvas) return;
+
+    const onWheel = (event) => {
+      event.preventDefault();
+      if (event.deltaY !== 0) adjustZoom(event.deltaY < 0 ? 0.14 : -0.14);
+    };
+
+    // Cancel page scrolling while the wheel is used to zoom this canvas.
+    canvas.addEventListener('wheel', onWheel, { passive: false });
+    return () => canvas.removeEventListener('wheel', onWheel);
+  }, [view, adjustZoom]);
 
   const toolbar = (
     <div style={{ position: 'absolute', top: 12, right: 12, display: 'flex', gap: 8, alignItems: 'center', zIndex: 2 }}>
@@ -393,7 +407,7 @@ export default function MindMapCanvas({
       );
     };
     return (
-      <div className="qb-panel qb-panel--sunken" style={{ position: 'relative', height, overflow: 'auto', padding: '64px 16px 16px', ...style }}>
+      <div className="qb-panel qb-panel--sunken" style={{ position: 'relative', height, overflow: 'auto', overscrollBehavior: 'contain', padding: '64px 16px 16px', ...style }}>
         {toolbar}
         <ul role="tree" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
           {tree.root && <Row id={tree.root} depth={0} />}
@@ -412,6 +426,7 @@ export default function MindMapCanvas({
         position: 'relative',
         height,
         overflow: 'hidden',
+        overscrollBehavior: 'contain',
         padding: 0,
         touchAction: 'none',
         cursor: drag.current ? 'grabbing' : 'grab',
@@ -420,11 +435,6 @@ export default function MindMapCanvas({
         backgroundSize: `100% 100%,${gridStep}px ${gridStep}px`,
         backgroundPosition: `0 0,${pan.x + off.x}px ${pan.y + off.y}px`,
         ...style,
-      }}
-      onWheel={(e) => {
-        e.preventDefault();
-        const delta = e.deltaY < 0 ? 0.14 : -0.14;
-        adjustZoom(delta);
       }}
       onPointerDown={(e) => {
         if (e.target.closest('button')) return;
