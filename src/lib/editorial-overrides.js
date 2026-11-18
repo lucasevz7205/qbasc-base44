@@ -11,6 +11,12 @@ export function editorialId(kind, id) {
   return kind + ":" + String(id);
 }
 
+export function compareEditorialVersions(a, b) {
+  return Number(b.version || 0) - Number(a.version || 0)
+    || String(b.atualizadoEm || '').localeCompare(String(a.atualizadoEm || ''))
+    || String(b.id || '').localeCompare(String(a.id || ''));
+}
+
 export function applyEditorialOverlays(questions, cards, entries) {
   const overrides = new Map();
   for (const entry of Array.isArray(entries) ? entries : []) {
@@ -18,7 +24,7 @@ export function applyEditorialOverlays(questions, cards, entries) {
     if (!entry.targetId || !entry.replacement || !String(entry.id || "").startsWith(editorialId(entry.kind, entry.targetId) + ":v")) continue;
     const key = editorialId(entry.kind, entry.targetId);
     const previous = overrides.get(key);
-    if (!previous || Number(entry.version || 0) > Number(previous.version || 0)) overrides.set(key, entry);
+    if (!previous || compareEditorialVersions(entry, previous) < 0) overrides.set(key, entry);
   }
   return {
     questions: questions.map(q => {
