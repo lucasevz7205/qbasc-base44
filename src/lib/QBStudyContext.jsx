@@ -79,7 +79,7 @@ function startQuestionRound(bank, selection = {}) {
 }
 
 export function QBStudyProvider({ children }) {
-  const { QB_DATA, QB_EDITAL, QB_PLAN, architectAccess } = useRealStudy();
+  const { QB_DATA, QB_EDITAL, QB_PLAN, architectAccess, accountId } = useRealStudy();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -524,7 +524,7 @@ export function QBStudyProvider({ children }) {
 
   return (
     <QBStudyContext.Provider value={value}>
-      <StudyClockProvider onOpen={openClock}>
+      <StudyClockProvider key={accountId} accountId={accountId} onOpen={openClock}>
         {children}
         {activeView !== 'welcome' && <ArchitectLayer ui={layerUi} setUi={setUi} />}
       </StudyClockProvider>
