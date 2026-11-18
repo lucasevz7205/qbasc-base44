@@ -46,7 +46,7 @@ export default function DashboardView({ go, openArchitect }) {
               { id: 'study', label: 'Estudo', icon: 'book-open', meta: 'Mapas e cartões' },
               { id: 'simulado', label: 'Simulado', icon: 'graduation-cap', meta: QB_SIM.next.date ? M.fmtDate(QB_SIM.next.date) : 'Sem data' },
               { id: 'performance', label: 'Desempenho', icon: 'chart-column', meta: M.pct(tot.accuracy) + ' acertos' },
-              ...(architectAccess ? [{ id: 'architect', label: 'O Arquiteto', icon: 'sparkles', meta: 'Tutoria' }] : []),
+              ...(architectAccess ? [{ id: 'architect', label: 'O Arquiteto', icon: 'astrolabe', meta: 'Tutoria' }] : []),
             ]} />
         </Panel>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
