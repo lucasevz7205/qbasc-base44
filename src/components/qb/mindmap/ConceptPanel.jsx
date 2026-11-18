@@ -25,6 +25,8 @@ export default function ConceptPanel({
   onReview,
   reviewCount,
   onGenerateGan,
+  onGenerateFlashcards,
+  flashcardsLoading = false,
   ganLoading = false,
   ganUnavailable = false,
   ganError = '',
@@ -35,6 +37,9 @@ export default function ConceptPanel({
   style,
 }) {
   const tone = mastery && mastery.state;
+  const [generationOpen, setGenerationOpen] = React.useState(false);
+  const optionsId = React.useId();
+  const generating = ganLoading || flashcardsLoading;
   return (
     <aside className="qb-panel" aria-label={`Conceito: ${title}`} style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
       {returnTo && (
@@ -110,13 +115,23 @@ export default function ConceptPanel({
             </div>
           </section>
         )}
-        {(onReview || onGenerateGan) && (
+        {(onReview || onGenerateGan || onGenerateFlashcards) && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <H>Revisão ativa</H>
-            {onGenerateGan && (
-              <Button variant="primary" icon="sparkles" loading={ganLoading} disabled={ganLoading || ganUnavailable} onClick={onGenerateGan} fullWidth>
-                {ganLoading ? 'Confronto GAN (Gerador × Discriminador Cego)…' : 'Gerar questões GAN deste nó'}
-              </Button>
+            {(onGenerateGan || onGenerateFlashcards) && (
+              <>
+                <Button icon="astrolabe" iconRight={generationOpen ? 'chevron-up' : 'chevron-down'}
+                  aria-expanded={generationOpen} aria-controls={optionsId} loading={generating}
+                  disabled={ganUnavailable || generating} onClick={() => setGenerationOpen(value => !value)} fullWidth>
+                  {generating ? 'Gerando…' : 'Gerar'}
+                </Button>
+                <div id={optionsId} hidden={!generationOpen}>
+                  <div style={{ display: 'grid', gap: 8 }}>
+                    {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating || ganUnavailable} onClick={onGenerateGan} fullWidth>Questões</Button>}
+                    {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating || ganUnavailable} onClick={onGenerateFlashcards} fullWidth>Flashcards</Button>}
+                  </div>
+                </div>
+              </>
             )}
             {ganError && (
               <div role="alert" style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--state-incorrect-bg)', border: '1px solid rgba(238,138,124,.4)', font: '400 13px/1.45 var(--font-body)', color: 'var(--state-incorrect)' }}>
