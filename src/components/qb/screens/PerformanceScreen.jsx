@@ -7,7 +7,7 @@ import { Badge } from '@/components/qb/core/Badge';
 import { PerformanceMetricCard } from '@/components/qb/performance/PerformanceMetricCard';
 import { PerformanceTrendChart } from '@/components/qb/performance/PerformanceTrendChart';
 import { PerformancePriorityPanel } from '@/components/qb/performance/PerformancePriorityPanel';
-import StudyTimePanel, { useStudyTimeRecords } from '@/components/qb/performance/StudyTimePanel';
+import StudyTimeMetric, { useStudyTimeRecords } from '@/components/qb/performance/StudyTimePanel';
 import { PerformancePeriodSelector } from '@/components/qb/performance/PerformancePeriodSelector';
 import { SubjectPerformanceExplorer } from '@/components/qb/performance/SubjectPerformanceExplorer';
 import '@/components/qb/performance/performance.css';
@@ -16,7 +16,7 @@ import { SelectField } from '@/components/qb/data/SelectField';
 import { Icon } from '@/components/qb/core/Icon';
 import { QB_METRICS } from '@/lib/qb-data';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { groupResponsesByTopic } from '@/lib/daily-question-performance';
+import { certaintyAccuracy, groupResponsesByTopic } from '@/lib/daily-question-performance';
 import { buildPerformanceNodes, calendarBuckets, recurringTopicErrors } from '@/lib/performance-v4';
 import { reviewDay, scheduledReviewQueues } from '@/lib/spaced-review';
 
@@ -123,8 +123,8 @@ function Daily({ go }) {
         <PerformancePeriodSelector mode="day" value={{ date }} min={firstDate} max={today} today={today} onChange={value => setDate(value.date)} />
         {scopeFilters(QB_EDITAL.subjects, subjectId, topicId, setSubjectId, setTopicId)}
       </Panel>
-      <StudyTimePanel data={studyTime} from={date} />
       <PerformanceMetrics stats={d} tasks={tasks} cards={PF.cardsByDay[date] || 0} go={go}
+        calibration={certaintyAccuracy(responses)} studyTime={studyTime} from={date}
         comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. ' + M.fmtDate(prev.date) } : null} />
       <div className="qb-performance-v4-panes">
         <PerformanceTrendChart style={{ flex: '3 1 480px' }} subtitle={'Treino até ' + M.fmtDate(date)} data={series} />
@@ -172,7 +172,9 @@ function priorityItems(days, data, subjects, records, subjectId, topicId, go) {
 
 const formatDelta = delta => (delta > 0 ? '+' : '') + delta;
 
-function PerformanceMetrics({ stats, tasks, cards, go, comparison }) {
+const calibrationValue = ({ correct, total, rate }) => total ? QB_METRICS.pct(rate) + ' (' + correct + ' de ' + total + ')' : '—';
+
+function PerformanceMetrics({ stats, tasks, cards, go, comparison, calibration, studyTime, from, to }) {
   const { n, correct, wrong, blank, valid, accuracy, net } = stats;
   const done = tasks.filter(task => task.status === 'done').length;
   return <div className="qb-performance-v4-grid">
@@ -181,11 +183,12 @@ function PerformanceMetrics({ stats, tasks, cards, go, comparison }) {
       breakdown={[{ label: 'acertos', value: correct, tone: 'correct' }, { label: 'erros', value: wrong, tone: 'incorrect' }, { label: 'em branco', value: blank }]} />
     <PerformanceMetricCard label="Taxa de acerto" icon="target" tone="correct" state={valid ? 'ok' : 'empty'}
       stateText="Sem respostas válidas" value={QB_METRICS.pct(accuracy)} detail={correct + ' de ' + valid + ' válidas'} comparison={comparison}
-      formula="Acertos ÷ (acertos + erros)" method="Respostas em branco entram no volume, mas ficam fora da taxa de acerto." />
+      formula="Acertos ÷ (acertos + erros)"
+      method={'Respostas em branco entram no volume e ficam fora da taxa de acerto.' +
+        (calibration.total ? ' Acerto nas respostas com certeza · ' + calibrationValue(calibration) + '.' : '')} />
     <PerformanceMetricCard label="Nota líquida" icon="scale" tone="gold" state={n ? 'ok' : 'empty'} value={formatDelta(net)}
       formula="+1 acerto · −1 erro · 0 branco" />
-    <PerformanceMetricCard label="Calibração da confiança" icon="circle-help" state="pending"
-      formula="Aguardando fórmula formal e registros compatíveis." />
+    <StudyTimeMetric data={studyTime} from={from} to={to} />
     <PerformanceMetricCard label="Tarefas concluídas" icon="calendar" state={tasks.length ? 'ok' : 'empty'} stateText="Sem tarefas planejadas"
       value={done} unit={'de ' + tasks.length} formula="Planejamento do período · todas as matérias" action={{ label: 'Abrir planejamento', onClick: () => go('plan', 'semana') }} />
     <PerformanceMetricCard label="Flashcards avaliados" icon="layers" state={cards ? 'ok' : 'empty'} stateText="Sem avaliações registradas"
@@ -246,6 +249,8 @@ function Historic({ go }) {
   }), countAttempts([])));
   const current = sum(days);
   const prior = sum(previous);
+  const calibration = certaintyAccuracy(responses);
+  const priorCalibration = certaintyAccuracy(previous.flatMap(day => day.attempts));
   const buckets = calendarBuckets(days, group, P.addDays);
   const previousBuckets = calendarBuckets(previous, group, P.addDays);
   const toPoint = rows => {
@@ -270,8 +275,8 @@ function Historic({ go }) {
         {scopeFilters(E.subjects, subjectId, topicId, setSubjectId, setTopicId)}
       </Panel>
       {!validRange ? <EmptyState compact title="Intervalo inválido" description="Selecione de 1 a 90 dias, até a data de hoje." /> : <>
-        <StudyTimePanel data={studyTime} from={start} to={end} />
         <PerformanceMetrics stats={current} tasks={tasks} cards={cards} go={go}
+          calibration={calibration} studyTime={studyTime} from={start} to={end}
           comparison={delta !== null ? { delta, label: formatDelta(delta) + ' p.p. vs. período anterior' } : null} />
         <div className="qb-performance-v4-panes">
           <PerformanceTrendChart style={{ flex: '3 1 480px' }} data={points} previous={prior.valid ? previousPoints : null}
@@ -287,10 +292,15 @@ function Historic({ go }) {
         <div className="qb-performance-v4-panes">
           <Panel padding={14} style={{ flex: '3 1 480px', minWidth: 0 }}>
             <h2 className="qb-overline">Período atual × anterior</h2>
-            {!prior.valid ? <EmptyState compact title="Sem período anterior comparável" /> :
+            {!prior.valid ? <>
+              <EmptyState compact title="Sem período anterior comparável" />
+              {calibration.total > 0 && <p className="qb-study-time-caption">Calibração da confiança · {calibrationValue(calibration)}</p>}
+            </> :
               <div style={{ overflowX: 'auto' }}><table className="qb-table">
                 <thead><tr><th>Indicador</th><th>Anterior</th><th>Atual</th></tr></thead>
-                <tbody>{[['Itens julgados', prior.n, current.n], ['Respostas válidas', prior.valid, current.valid], ['Taxa de acerto', M.pct(prior.accuracy), M.pct(current.accuracy)], ['Nota líquida', formatDelta(prior.net), formatDelta(current.net)]].map(([label, before, now]) =>
+                <tbody>{[['Itens julgados', prior.n, current.n], ['Respostas válidas', prior.valid, current.valid], ['Taxa de acerto', M.pct(prior.accuracy), M.pct(current.accuracy)], ['Nota líquida', formatDelta(prior.net), formatDelta(current.net)],
+                  ...(calibration.total || priorCalibration.total ? [['Calibração da confiança', calibrationValue(priorCalibration), calibrationValue(calibration)]] : []),
+                ].map(([label, before, now]) =>
                   <tr key={label}><th scope="row">{label}</th><td>{before}</td><td>{now}</td></tr>)}</tbody>
               </table></div>}
           </Panel>
@@ -314,7 +324,7 @@ const METHOD = [
   ['scroll-text', 'Cobertura do edital', 'tópicos com status diferente de "Não iniciado" ÷ total de tópicos previstos. Não usa acertos.'],
   ['book-open', 'Status de estudo', 'Não iniciado · Em estudo · Revisando · Dominado. Informação de progresso, independente da faixa de acertos do mapa de calor.'],
   ['grid-3x3', 'Faixas do mapa de calor', '< 60% · 60–74% · 75–84% · 85–89% · ≥ 90% · sem respostas. Calculadas pela taxa de acertos do tópico.'],
-  ['circle-help', 'Certeza calibrada', 'Pendente: a definição não consta nos arquivos. Quando definida, comparará confiança declarada com acerto observado — nunca deve ser confundida com a taxa de acertos.'],
+  ['circle-help', 'Calibração da confiança', 'Acertos nas respostas com confiança 3 (certeza) ÷ respostas válidas com essa confiança. Usa o acerto registrado na tentativa e mostra a amostra junto ao percentual.'],
   ['split', 'Limites das comparações', 'Treino, revisão e simulado são séries separadas. Amostras com menos de 10 (gráficos) ou 20 (tabelas) respostas são sinalizadas. Indicadores de estudo não são diagnósticos.'],
 ];
 
