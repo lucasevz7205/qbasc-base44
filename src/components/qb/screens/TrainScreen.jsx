@@ -115,7 +115,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
       <PageHeader
         overline="Treinar · questões CEBRASPE (Certo/Errado)"
         title="Treinar"
-        description="Escolha a matéria e o assunto no anel; cada assunto abre quatro ações com o contexto preservado."
+        description="Escolha uma matéria e um assunto para treinar."
       />
       <details ref={reviewRef} id="qb-scheduled-review" className="qb-panel qb-train-fold">
         <summary>Revisão espaçada <small>{reviews.questions.ids.length + reviews.flashcards.ids.length} disponíveis · {scopeLabel}</small></summary>
@@ -144,6 +144,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             subjects={E.subjects}
             value={sel}
             onChange={setSel}
+            allowRandomTraining
             pending={pendingByTopic}
             linkInfo={linkInfo}
             onAction={i => {
