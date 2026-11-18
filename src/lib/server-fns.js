@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
-import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages } from "@/lib/study-accounts";
+import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { callGanGemini } from "@/lib/gan-providers";
@@ -173,8 +173,10 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
   .middleware([requireUser])
   .validator(EditorialSuggestionSchema)
   .handler(async ({ data, context }) => {
-    if (context.user?.role !== "admin") throw new Error("Acesso editorial restrito ao administrador do QBAsc.");
-    const c = data.content;
+    const personal = context.user.role !== "admin";
+    if (personal && data.kind !== "question") throw new Error("Acesso editorial restrito à reformulação de questões.");
+    const workspace = personal ? await preparePersonalQuestionEditorial(context, data.content.id) : null;
+    const c = workspace?.content ?? data.content;
     if (data.kind === "question" && (!c.statement || !c.key)) throw new Error("Questão inválida para curadoria.");
     if (data.kind === "flashcard" && (!c.front || !c.back)) throw new Error("Flashcard inválido para curadoria.");
     const prompt = [
@@ -200,7 +202,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
           ].join("\n")
         : "Em replacement, informe uma frente direta, um verso conciso e a referência.",
       `Tipo: ${data.kind === "question" ? "questão CEBRASPE C/E" : "flashcard"}`,
-      `Assunto: ${data.topicLabel}`,
+      `Assunto: ${workspace?.topicLabel ?? data.topicLabel}`,
       `Problema: ${data.issue}`,
       `Observação do estudante: ${data.note || "Nenhuma"}`,
       `ID de origem: ${c.id}; Nó: ${c.node || "não vinculado"}`,
@@ -219,7 +221,7 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
     if (data.kind === "flashcard") {
       proposal.replacement.front = stripFlashcardContext(proposal.replacement.front, data.subjectName, data.topicLabel);
     }
-    return proposal;
+    return workspace ? { ...proposal, baseRevision: workspace.baseRevision } : proposal;
   });
 
 const FlashcardCorrectionSchema = z.object({
