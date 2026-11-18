@@ -123,7 +123,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
         aria-label={(expanded ? "Recolher" : "Expandir") + " curadoria da " + label}
         style={{ display: "flex", alignItems: "center", gap: 11, background: "transparent", border: 0,
           color: "var(--qb-ivory)", cursor: "pointer", width: "100%", textAlign: "left", padding: "9px 2px", minHeight: 44 }}>
-        <Icon name="sparkles" size={18} color="var(--qb-gold)" />
+        <Icon name="astrolabe" size={24} color="var(--qb-gold)" />
         <span style={{ flex: 1, minWidth: 0 }}>
           <strong style={{ font: "600 15px/1.4 var(--font-body)" }}>O Arquiteto · Reformular {label}</strong>
           {itemGaps.length > 0 && <span style={{ display: "block", font: "400 12px/1.4 var(--font-body)", color: "var(--state-incorrect, #efa69d)" }}>
