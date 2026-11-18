@@ -67,7 +67,7 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
         onClick={() => setExpanded(v => !v)}
         style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", width: "100%", minHeight: 44,
           textAlign: "left", border: 0, color: "var(--text-primary)", background: "transparent", cursor: "pointer", padding: "8px 2px" }}>
-        <Icon name="sparkles" size={20} color="var(--qb-gold)" />
+        <Icon name="astrolabe" size={24} color="var(--qb-gold)" />
         <span style={{ flex: 1, minWidth: 160, display: "flex", flexDirection: "column", gap: 5 }}>
           <strong style={{ font: "var(--type-h3)", color: "var(--text-primary)" }}>O Arquiteto · Correção ativa</strong>
           <span style={{ font: "400 13px/1.5 var(--font-body)", color: "var(--text-muted)" }}>
@@ -96,7 +96,7 @@ export default function FlashcardCorrection({ card, topicLabel, onSuggestion }) 
           <span style={{ color: "var(--text-muted)", font: "400 12px/1.5 var(--font-body)" }}>
             Ao corrigir, sua resposta e o conteúdo do cartão são enviados à API Gemini.
           </span>
-          <Button type="submit" icon="sparkles" loading={pending} disabled={pending || attempt.trim().length < 8}>
+          <Button type="submit" icon="astrolabe" loading={pending} disabled={pending || attempt.trim().length < 8}>
             {pending ? "Corrigindo…" : "Corrigir com O Arquiteto"}
           </Button>
         </div>
