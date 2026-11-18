@@ -16,7 +16,8 @@ const hooks = registerHooks({
     return next(specifier, context);
   },
 });
-const { preparePersonalMapGan, prepareGanSourcePassages } = await import('../src/lib/study-accounts.js');
+const { preparePersonalMapGan, prepareGanSourcePassages, approvePersonalMapGan, savePersonalNodeFlashcard } = await import('../src/lib/study-accounts.js');
+const { adaptStudy } = await import('../src/lib/qb-real-model.js');
 hooks.deregister();
 
 function fixture() {
@@ -40,7 +41,7 @@ function fixture() {
   return { db, context, add };
 }
 
-test('GAN individual usa o nó registrado na conta, salva aprovadas no acervo próprio e rejeita acesso cruzado', async () => {
+test('GAN individual usa o nó da própria conta e guarda propostas até a aprovação humana', async () => {
   const { db, context } = fixture();
   const input = { topicId: 'lucas-t', targetNodeId: 'lucas-t::importacao::0.0', targetNodeLabel: 'falsificado', sourceContext: 'falsificado' };
   const gan = await preparePersonalMapGan(context, input);
@@ -50,15 +51,45 @@ test('GAN individual usa o nó registrado na conta, salva aprovadas no acervo pr
   assert.doesNotMatch(JSON.stringify(gan.data), /falsificado|outro/);
   await assert.rejects(preparePersonalMapGan(context, { ...input, topicId: 'outro-t' }), /não pertence/);
   await assert.rejects(preparePersonalMapGan(context, { ...input, targetNodeId: 'outro-t::importacao::0.0' }), /não pertence/);
-  const records = await gan.persist([
-    { id: 'gan-ok', statusConfronto: 'aprovada_gan', enunciado: 'Enunciado', gabarito: 'C', mapaNoId: input.targetNodeId },
-    { id: 'gan-blocked', statusConfronto: 'divergencia_bloqueada' },
+  const questionId = 'gan-00000000-0000-4000-8000-000000000001';
+  const reviewId = await gan.stage([
+    { id: questionId, statusConfronto: 'divergencia_bloqueada', enunciado: 'Versão automática', gabarito: 'E', mapaNoId: input.targetNodeId },
   ]);
-  assert.deepEqual(records.map(row => row.id), ['gan-ok']);
-  assert.equal(records[0].mapaNoId, input.targetNodeId);
+  assert.equal(db.filter(row => row.collection.endsWith('questoes')).length, 0);
+  const draft = {
+    statement: 'A administração deve observar as normas que regem seus atos.',
+    key: 'C', mecanismo: 'V1', explanation: 'Essa é a regra geral.', trechoDecisivo: 'A administração observa as normas.',
+    correcaoMinima: 'A administração pode ignorar em regra as normas.',
+  };
+  const data = { topicId: input.topicId, targetNodeId: input.targetNodeId, questionId, reviewId, draft };
+  await assert.rejects(approvePersonalMapGan({ context: { ...context, user: { role: 'user', id: 'outro' } },
+    data: { ...data, topicId: 'outro-t', targetNodeId: 'outro-t::importacao::0.0' } }), /não pertence/);
+  const record = await approvePersonalMapGan({ context, data });
+  assert.deepEqual(await approvePersonalMapGan({ context, data }), record);
+  assert.equal(record.id, questionId);
+  assert.equal(record.mapaNoId, input.targetNodeId);
+  assert.equal(record.statusConfronto, 'aprovada_manual');
   assert.deepEqual(db.filter(row => row.collection.endsWith('questoes')).map(row => [row.collection, row.legacy_id]), [
-    ['qbasc-conta:lucas:questoes', 'gan-ok'],
+    ['qbasc-conta:lucas:questoes', questionId],
   ]);
+});
+
+test('flashcard aprovado pertence ao nó e à conta, com gravação idempotente', async () => {
+  const { db, context } = fixture();
+  const targetNodeId = 'lucas-t::importacao::0.0';
+  const input = {
+    topicId: 'lucas-t', targetNodeId, cardId: 'node-card-00000000-0000-4000-8000-000000000001',
+    front: 'Que regra o nó apresenta?', back: 'A regra documentada no resumo.',
+  };
+  await assert.rejects(savePersonalNodeFlashcard({ context, data: { ...input, targetNodeId: 'outro-t::importacao::0.0' } }), /não pertence/);
+  const record = await savePersonalNodeFlashcard({ context, data: input });
+  assert.deepEqual(await savePersonalNodeFlashcard({ context, data: input }), record);
+  const own = collection => db.filter(row => row.collection === 'qbasc-conta:lucas:' + collection)
+    .map(row => ({ ...JSON.parse(row.payload_json), id: row.legacy_id }));
+  const { QB_DATA } = adaptStudy({ edital: own('edital'), revisao: own('revisao') });
+  assert.equal(QB_DATA.flashcards[0].node, targetNodeId);
+  assert.equal(QB_DATA.flashcards[0].id, input.cardId);
+  assert.equal(db.filter(row => row.legacy_id === input.cardId).length, 1);
 });
 
 test('GAN individual recusa conta suspensa', async () => {
