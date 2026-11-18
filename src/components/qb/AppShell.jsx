@@ -19,7 +19,7 @@ export const NAV = (late = 0) => [
 ];
 
 export const TOOLS = [
-  { id: 'socratico', label: 'O Arquiteto', icon: 'sparkles' },
+  { id: 'socratico', label: 'O Arquiteto', icon: 'astrolabe' },
   { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
   { id: 'cards', label: 'Scanner de material', icon: 'scan-line' },
