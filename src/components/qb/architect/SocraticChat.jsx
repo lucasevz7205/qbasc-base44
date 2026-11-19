@@ -66,8 +66,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
     if (topic) tutorHistory.rememberTopic(accountId, topic.id);
     const priorHistory = tutorHistory.read(accountId, key)
       .filter(m => m.role === 'user' || m.role === 'tutor')
-      .slice(-10)
-      .map(m => ({ role: m.role, text: m.text.slice(0, 3000) }));
+      .slice(-4)
+      .map(m => ({ role: m.role, text: m.text.slice(0, 1200) }));
 
     push({ role: 'user', text: cleanText });
     try {

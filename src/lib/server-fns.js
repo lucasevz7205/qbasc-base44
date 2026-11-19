@@ -85,8 +85,8 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const profile = await requireArchitectAccess(context);
     const historyBlock = (data.history || [])
-      .slice(-10)
-      .map((m) => `${m.role === "user" ? "Estudante" : "O Arquiteto"}: ${m.text}`)
+      .slice(-4)
+      .map((m) => `${m.role === "user" ? "Estudante" : "O Arquiteto"}: ${m.text.slice(0, 1200)}`)
       .join("\n\n");
 
     const personalMode = data.mode === "banca"
