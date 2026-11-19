@@ -3,6 +3,7 @@ import { useServerFn } from '@tanstack/react-start';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 import { Badge } from '@/components/qb/core/Badge';
+import { FeynmanNodePicker } from '@/components/qb/architect/FeynmanNodePicker';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { FEYNMAN_SCOPE_LIMITS as scopeLimits, feynmanMapGroups } from '@/lib/feynman-scope';
@@ -64,23 +65,12 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
 
   return (
     <div style={{ display: 'grid', gap: 16, ...style }}>
-      <div style={{ display: 'flex', alignItems: 'end', flexWrap: 'wrap', gap: 12 }}>
-        <StudyTopicPicker label="Matéria e assunto do Feynman" subjects={subjects} value={topicId}
-          onSelect={onTopicChange} style={{ flex: '1 1 360px' }} />
+      <div className="qb-feynman-scope">
+        <StudyTopicPicker label="Matéria e assunto" subjects={subjects} value={topicId}
+          onSelect={onTopicChange} style={{ display: 'grid' }} />
         {groups.length > 0 ? (
-          <label style={{ display: 'grid', gap: 4, flex: '1 1 260px', minWidth: 0 }}>
-            <span className="qb-overline">Nó do mapa mental</span>
-            <select className="qb-select" value={node?.id || ''} onChange={e => onNodeChange?.(e.target.value || undefined)}
-              style={{ width: '100%', minWidth: 0, minHeight: 48, textOverflow: 'ellipsis' }}>
-              <option value="">Assunto inteiro</option>
-              {groups.map(group => <optgroup key={group.id} label={group.title}>
-                {group.nodes.map(option => <option key={option.id} value={option.id}>
-                  {option.label}{option.path.length > 1 && ' · ' + option.path.slice(0, -1).join(' › ')}
-                </option>)}
-              </optgroup>)}
-            </select>
-          </label>
-        ) : topicId && <p style={{ flex: '1 1 260px', color: 'var(--text-muted)' }}>Este assunto ainda não tem mapa mental. A avaliação pode cobrir o assunto inteiro.</p>}
+          <FeynmanNodePicker key={topicId} groups={groups} node={node} onChange={onNodeChange} />
+        ) : topicId && <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>Este assunto ainda não tem mapa mental. A avaliação pode cobrir o assunto inteiro.</p>}
       </div>
       {!topicId ? <p>Selecione uma matéria e um assunto para começar.</p> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 16 }}>
