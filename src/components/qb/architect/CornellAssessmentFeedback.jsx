@@ -18,7 +18,7 @@ function Citation({ citation }) {
   </details>;
 }
 
-export function CornellAssessmentFeedback({ analysis, answer, confidence, onAnswer, onConfidence, onCheck, busy, disabled, attempt, id }) {
+export function CornellAssessmentFeedback({ analysis, answer, confidence, onAnswer, onConfidence, onCheck, busy, disabled, stale, attempt, id }) {
   const responseChanged = attempt && (attempt.resposta !== answer.trim() || attempt.confianca !== confidence);
   return <section className="qb-cornell-assessment" aria-label="Avaliação pedagógica do Arquiteto">
     <header className="qb-cornell-assessment__header">
@@ -67,7 +67,7 @@ export function CornellAssessmentFeedback({ analysis, answer, confidence, onAnsw
           <label key={value}><input type="radio" name={id + '-confidence'} value={value} checked={confidence === value}
             onChange={() => onConfidence(value)} />{label}</label>)}</div>
       </fieldset>
-      <Button variant="secondary" icon="list-checks" disabled={disabled || answer.trim().length < 10 || !confidence} loading={busy} onClick={onCheck}>Avaliar minha resposta</Button>
+      <Button variant="secondary" icon="list-checks" disabled={disabled || stale || answer.trim().length < 10 || !confidence} loading={busy} onClick={onCheck}>Avaliar minha resposta</Button>
       {responseChanged && <p role="status">A resposta ou a confiança foi alterada. Avalie novamente para atualizar o comentário.</p>}
       {!responseChanged && <section aria-label="Resultado do teste de compreensão">
         <h4>{resultLabels[analysis.avaliacaoResposta.resultado]}</h4>

@@ -64,6 +64,30 @@ export function cornellPlainText(value = '') {
   return value.startsWith(PREFIX) ? plainFromOps(readCornellRich(value).ops) : value;
 }
 
+export function editCornellPlainText(value, text) {
+  if (!value.startsWith(PREFIX)) return text;
+  const { ops } = readCornellRich(value);
+  const previous = plainFromOps(ops);
+  if (previous === text) return value;
+
+  let start = 0;
+  const commonLength = Math.min(previous.length, text.length);
+  while (start < commonLength && previous[start] === text[start]) start++;
+  let suffixLength = 0;
+  while (suffixLength < commonLength - start && previous.at(-suffixLength - 1) === text.at(-suffixLength - 1)) suffixLength++;
+
+  const before = [];
+  const after = [];
+  let offset = 0;
+  for (const op of ops) {
+    if (offset < start) before.push({ ...op, insert: op.insert.slice(0, start - offset) });
+    const afterStart = previous.length - suffixLength - offset;
+    if (afterStart < op.insert.length) after.push({ ...op, insert: op.insert.slice(Math.max(0, afterStart)) });
+    offset += op.insert.length;
+  }
+  return writeCornellRich({ ops: [...before, { insert: text.slice(start, text.length - suffixLength) }, ...after] });
+}
+
 export function writeCornellRich(delta) {
   const doc = asDocument(delta.ops);
   const plain = plainFromOps(doc.ops);

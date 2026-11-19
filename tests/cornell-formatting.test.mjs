@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cornellPlainText, readCornellRich, writeCornellRich } from '../src/lib/cornell-rich.js';
+import { cornellPlainText, editCornellPlainText, readCornellRich, writeCornellRich } from '../src/lib/cornell-rich.js';
 import { cornellPairTitle, readCornellPairs } from '../src/lib/cornell-pairs.js';
 
 test('texto legado mantém espaços, quebras e caracteres literais ao carregar e salvar', () => {
@@ -41,4 +41,18 @@ test('itálico fica restrito ao trecho selecionado e permanece após recarregar'
   assert.deepEqual(reloaded, delta);
   assert.equal(writeCornellRich(reloaded), stored);
   assert.equal(cornellPlainText(stored), 'Texto normal termo.');
+});
+
+test('editar no campo simples preserva a formatação dos trechos que não mudaram', () => {
+  const stored = writeCornellRich({ ops: [
+    { insert: 'Regra', attributes: { bold: true } },
+    { insert: ' anterior\nOutro item' },
+    { insert: '\n', attributes: { list: 'ordered' } },
+  ] });
+  const edited = editCornellPlainText(stored, 'Regra atual\nOutro item');
+  assert.equal(cornellPlainText(edited), 'Regra atual\nOutro item');
+  const ops = readCornellRich(edited).ops;
+  assert.deepEqual(ops[0], { insert: 'Regra', attributes: { bold: true } });
+  assert.deepEqual(ops.at(-1), { insert: '\n', attributes: { list: 'ordered' } });
+  assert.equal(editCornellPlainText('Nota', 'Nota simples'), 'Nota simples');
 });

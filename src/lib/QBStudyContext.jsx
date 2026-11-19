@@ -250,7 +250,7 @@ export function QBStudyProvider({ children }) {
           ? { ok: true, view: 'questions', note: n + (n === 1 ? ' questão' : ' questões') }
           : { ok: false, reason: 'no-questions' };
       }
-      if (i.action === 'review') {
+      if (i.action === 'review' || i.action === 'flashcards') {
         const n = QB_DATA.flashcards.filter(f => f.topicId === t.id).length;
         return n
           ? { ok: true, view: 'flashcards', note: n + (n === 1 ? ' cartão' : ' cartões') }
@@ -394,7 +394,7 @@ export function QBStudyProvider({ children }) {
         return;
       }
       setBackTo(from);
-      if (intent.action === 'review') {
+      if (r.view === 'flashcards') {
         go('flashcards', { topicId: intent.topicId });
         return;
       }

@@ -84,6 +84,8 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, stu
   const [showHistory, setShowHistory] = React.useState(false);
   const [verificationOpen, setVerificationOpen] = React.useState(null);
   const verificationId = React.useId();
+  const editorRegion = React.useRef(null);
+  const verificationRegion = React.useRef(null);
   const [versions, setVersions] = React.useState([]);
   const [restore, setRestore] = React.useState(null);
   const [recoverLocal, setRecoverLocal] = React.useState(false);
@@ -283,6 +285,11 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, stu
   const verificationDisabled = disabled || state.identity !== identity || !ownerId;
   const syncStatus = state.loaded && !state.offline && !state.error && (state.dirty || saving)
     ? 'Sincronização pendente' : state.status;
+
+  React.useEffect(() => {
+    if (verificationOpen) verificationRegion.current?.focus();
+  }, [verificationOpen]);
+
   return (
     <section aria-label="Quadro do Cornell" style={{ display: 'flex', flexDirection: 'column', gap: 13, minWidth: 0 }}>
       <div className="qb-panel qb-panel--sunken" style={{ padding: '12px 16px', border: '1px solid rgba(208,179,134,.35)', borderRadius: 14 }}>
@@ -324,11 +331,7 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, stu
           onClick={() => setVerificationOpen(open => !open)}>
           Verificação do Arquiteto
         </Button>}>
-        <div className="qb-train-fold__body">
-          {verificationOpen !== null && <section id={verificationId} aria-label="Verificação do Arquiteto" hidden={!verificationOpen}>
-            <CornellVerification key={identity} topicId={studyTopicId} paired={paired}
-              draft={draft} readCompanion={readCompanion} disabled={verificationDisabled} />
-          </section>}
+        <section className="qb-train-fold__body" ref={editorRegion} tabIndex={-1} aria-label="Editar anotações do Cornell">
           {paired ? <CornellLinkedBoard pairs={linkedPairs} notesHidden={hide} disabled={disabled}
             onChange={value => edit({ notes: JSON.stringify(value) })} /> : <>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
@@ -358,8 +361,17 @@ function CornellDocument({ topicId, topicLabel, flushRef, switching, paired, stu
               value={draft.summary} onChange={value => edit({ summary: value })}
               disabled={disabled} placeholder="Resuma em 2–3 frases, com suas palavras" />
           </div>
-        </div>
+        </section>
         </CornellFormatting>
+        {verificationOpen !== null && <section id={verificationId} ref={verificationRegion} tabIndex={-1}
+          aria-label="Verificação do Arquiteto" hidden={!verificationOpen} style={{ padding: '0 10px 14px' }}>
+          <CornellVerification key={identity} topicId={studyTopicId} paired={paired}
+            draft={draft} readCompanion={readCompanion} disabled={verificationDisabled} />
+          <Button size="sm" variant="secondary" icon="notebook-pen" style={{ marginTop: 8 }} onClick={() => {
+            setHide(false);
+            editorRegion.current?.focus();
+          }}>Voltar às anotações</Button>
+        </section>}
       </div>
       <p role="status" title={syncStatus} style={{ font: '500 12px/1.4 var(--font-body)', color: state.error ? 'var(--state-incorrect)' : 'var(--qb-gold)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {syncStatus}

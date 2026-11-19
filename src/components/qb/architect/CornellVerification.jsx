@@ -132,7 +132,7 @@ export function CornellVerification({ topicId, draft, paired, readCompanion, dis
       {error && <p role="alert">{error}</p>}
       {stale && <p role="status">O caderno, as fontes ou o acervo mudaram. Verifique novamente para atualizar o parecer.</p>}
       {completed?.analysis && <CornellAssessmentFeedback analysis={completed.analysis} id={id} answer={answer} confidence={confidence}
-        onAnswer={setAnswer} onConfidence={setConfidence} onCheck={checkAnswer} busy={answerBusy} disabled={disabled || busy || Boolean(stale)} attempt={completed.attempt} />}
+        onAnswer={setAnswer} onConfidence={setConfidence} onCheck={checkAnswer} busy={answerBusy} disabled={disabled || busy} stale={Boolean(stale)} attempt={completed.attempt} />}
       {completed && <details><summary>Comparação local de trechos e cobertura</summary><div className="qb-cornell-verification__feedback" aria-label="Comparação local do caderno">
         <div className="qb-overline">Indícios locais · comparação por termos e trechos</div>
         {completed.feedback.relations.length > 0 && <div>

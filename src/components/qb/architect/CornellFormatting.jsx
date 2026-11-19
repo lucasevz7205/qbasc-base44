@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bold, Highlighter, IndentDecrease, IndentIncrease, Italic, List, ListOrdered, Palette, Strikethrough, Underline } from 'lucide-react';
 import { Button } from '@/components/qb/core/Button';
-import { CORNELL_FORMATS, CORNELL_HIGHLIGHTS, CORNELL_INK, cornellContentOps, cornellPlainText, readCornellRich, writeCornellRich } from '@/lib/cornell-rich';
+import { CORNELL_FORMATS, CORNELL_HIGHLIGHTS, CORNELL_INK, cornellContentOps, cornellPlainText, editCornellPlainText, readCornellRich, writeCornellRich } from '@/lib/cornell-rich';
 import 'react-quill-new/dist/quill.core.css';
 import './cornell-formatting.css';
 
@@ -141,7 +141,6 @@ export function CornellRichEditor({ value, onChange, label, placeholder, disable
         modules: { toolbar: false, history: { userOnly: true } },
         placeholder,
       });
-      editor.current = quill;
       quill.root.setAttribute('role', 'textbox');
       quill.root.setAttribute('aria-multiline', 'true');
       quill.root.setAttribute('aria-label', latest.current.label);
@@ -159,6 +158,7 @@ export function CornellRichEditor({ value, onChange, label, placeholder, disable
       };
       quill.on('selection-change', selection);
       quill.on('text-change', change);
+      editor.current = quill;
       cleanup = () => {
         quill.off('selection-change', selection);
         quill.off('text-change', change);
@@ -183,8 +183,9 @@ export function CornellRichEditor({ value, onChange, label, placeholder, disable
     <div id={id} style={{ minWidth: 0 }}>
       <div className="qb-textarea qb-cornell-editor" ref={host} hidden={!ready} style={{ height, minHeight: height }} />
       {!ready && <textarea className="qb-textarea" style={{ height, minHeight: height }} aria-label={label}
-        value={cornellPlainText(value)} readOnly disabled={disabled} placeholder={placeholder} />}
-      {failed && <p role="alert">O editor de formatação não carregou. Reabra o Cornell para tentar novamente.</p>}
+        value={cornellPlainText(value)} readOnly={!failed} disabled={disabled} placeholder={placeholder}
+        onChange={event => onChange(editCornellPlainText(value, event.target.value))} />}
+      {failed && <p role="status">Editor de formatação indisponível. Você pode editar o texto neste campo.</p>}
     </div>
   );
 }

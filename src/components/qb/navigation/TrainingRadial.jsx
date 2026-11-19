@@ -6,7 +6,8 @@ export const TRAINING_ACTIONS = [
   { id: 'train', label: 'Treinar', icon: 'target', hint: 'Questões deste assunto' },
   { id: 'train-random', action: 'train', randomOrder: true, label: 'Treinar aleatório', icon: 'shuffle', hint: 'Questões deste assunto em ordem aleatória' },
   { id: 'mindmap', label: 'Mapa Mental', icon: 'network', hint: 'Mapa do assunto' },
-  { id: 'review', label: 'Revisão Ativa', icon: 'layers', hint: 'Revisão deste assunto' },
+  { id: 'review', label: 'Revisão Ativa', icon: 'calendar-days', hint: 'Revisão deste assunto' },
+  { id: 'flashcards', label: 'Flashcards', icon: 'layers', hint: 'Baralho deste assunto' },
   { id: 'architect', label: 'O Arquiteto', icon: 'astrolabe', hint: 'Tutor com este contexto' },
 ];
 const rate = (c, w) => (c + w ? (c / (c + w)) * 100 : null);
