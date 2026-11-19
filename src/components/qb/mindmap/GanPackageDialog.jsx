@@ -2,8 +2,8 @@ import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/qb/core/Button';
 
-const PACKAGE_LIMIT = 8;
-const NODE_LIMIT = 6;
+const PACKAGE_LIMIT = 20;
+const NODE_LIMIT = 20;
 
 export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGenerate, onDistribute }) {
   const [counts, setCounts] = React.useState(() => ({ [initialNode.id]: 4 }));

@@ -708,7 +708,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     const discRes = await callGanGemini({
       ...gemini,
       prompt: discriminatorPrompt,
-      timeoutMs: 120000,
+
       schema: {
         type: "object",
         properties: {

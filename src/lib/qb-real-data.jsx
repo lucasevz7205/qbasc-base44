@@ -1,3 +1,4 @@
+import { MapGenerationProvider } from './map-generation';
 import React from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '@/lib/AuthContext';
@@ -122,7 +123,7 @@ export function RealStudyGate({children}) {
       action={<><Button disabled={query.isFetching} onClick={() => query.refetch()}>Verificar acesso</Button><Button variant="secondary" onClick={auth.logout}>Sair</Button></>} />;
   }
   if(!model)return <Gate title="Carregando seu progresso de estudo…"/>;
-  return <RealStudyContext.Provider value={{...model,save,importMap:async data=>cacheStudyDocument('revisao',await importPersonalMap({data})),savePersonalQuestionRevision,saveNodeFlashcard,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile),questionEditorialAccess:canReformulateQuestions(user, profile)}}>{children}</RealStudyContext.Provider>;
+  return <RealStudyContext.Provider value={{...model,save,importMap:async data=>cacheStudyDocument('revisao',await importPersonalMap({data})),savePersonalQuestionRevision,saveNodeFlashcard,refresh,cacheGanQuestions,accountId:user.id,logout:auth.logout,isAdmin:admin,architectAccess:canUseArchitect(user, profile),questionEditorialAccess:canReformulateQuestions(user, profile)}}><MapGenerationProvider key={user.id}>{children}</MapGenerationProvider></RealStudyContext.Provider>;
 }
 function Gate({title,detail,action}) {
   return <main style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24}}>

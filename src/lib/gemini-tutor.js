@@ -72,7 +72,7 @@ export async function invokeGeminiTutor({
     throw new Error("Modelo Gemini inválido. Verifique QB_GEMINI_MODEL.");
   }
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  const timeout = timeoutMs == null ? undefined : setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetchGeminiWithRetry(
       fetchImpl,

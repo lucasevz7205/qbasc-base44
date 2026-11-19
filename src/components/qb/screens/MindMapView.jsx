@@ -1,3 +1,4 @@
+import { useMapGeneration } from '@/lib/map-generation';
 import { MapImport } from '@/components/qb/mindmap/MapImport';
 import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
@@ -44,18 +45,13 @@ export default function MindMapView({
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const approvePersonalGanFn = useServerFn(approvePersonalMapGan);
   const generateFlashcardsFn = useServerFn(generateMindMapFlashcards);
-  const [flashcardsLoading, setFlashcardsLoading] = React.useState(false);
-  const [flashcardReviews, setFlashcardReviews] = React.useState({});
   const [flashcardReviewOpen, setFlashcardReviewOpen] = React.useState(false);
   const flashcardFocus = React.useRef(null);
-  const [ganLoading, setGanLoading] = React.useState(false);
-  const [ganError, setGanError] = React.useState('');
   const [ganPackageNode, setGanPackageNode] = React.useState(null);
-  const [ganReviews, setGanReviews] = React.useState({});
   const [ganReviewOpen, setGanReviewOpen] = React.useState(false);
   const ganReviewFocus = React.useRef(null);
   const ganReviewButton = React.useRef(null);
-  const ganTask = React.useRef(null);
+  const { flashcardsLoading, setFlashcardsLoading, flashcardReviews, setFlashcardReviews, ganLoading, setGanLoading, ganError, setGanError, ganReviews, setGanReviews, ganTask, setNotice } = useMapGeneration();
   const [mapMaximized, setMapMaximized] = React.useState(false);
   const [showPanelInMax, setShowPanelInMax] = React.useState(true);
 
@@ -126,14 +122,12 @@ export default function MindMapView({
     setGanReviews(current => ({ ...current, [mapId]: {
       id: entries[0].item.id, anchor, entries, manual: true,
     } }));
-    if (entries.some(entry => entry.status === 'pending')) setGanReviewOpen(true);
+
   };
   React.useEffect(() => {
     setGanReviewOpen(false);
     setGanPackageNode(null);
-    return () => {
-      if (ganTask.current) ganTask.current.discard = true;
-    };
+
   }, [mapId, isRadialOpen]);
 
   const generateNode = async (target, count, extraContext) => {
@@ -389,6 +383,7 @@ export default function MindMapView({
     const task = { discard: false };
     ganTask.current = task;
     setFlashcardsLoading(true);
+    setNotice('Gerando flashcards de ' + node.label + '. Você pode sair do mapa.');
     setGanError('');
     try {
       const data = isAdmin
@@ -397,13 +392,13 @@ export default function MindMapView({
       const result = await generateFlashcardsFn({ data });
       if (task.discard) return;
       if (!result.cards?.length) {
-        setGanError('O nó não retornou flashcards para revisar.');
+        setNotice('O nó ' + node.label + ' não retornou flashcards para revisar.');
         return;
       }
       setFlashcardReviews(current => ({ ...current, [node.id]: result.cards }));
-      setFlashcardReviewOpen(true);
+      setNotice(result.cards.length + ' flashcards de ' + node.label + ' prontos para revisar no mapa.');
     } catch (err) {
-      if (!task.discard) setGanError(err?.message || 'Não foi possível gerar flashcards.');
+      if (!task.discard) setNotice(err?.message || 'Não foi possível gerar flashcards.');
     } finally {
       ganTask.current = null;
       setFlashcardsLoading(false);
@@ -426,6 +421,7 @@ export default function MindMapView({
     const task = { discard: false };
     ganTask.current = task;
     setGanLoading(true);
+    setNotice('Gerando questões de ' + chosen.title + '. Você pode sair do mapa.');
     setGanError('');
 
     try {
@@ -453,7 +449,8 @@ export default function MindMapView({
       let failure = '';
       let saveFailures = 0;
       const requested = batches.reduce((sum, batch) => sum + batch.count, 0);
-      for (const {target,count} of batches) {
+      const parts = batches.flatMap(({ target, count }) => Array.from({length: Math.ceil(count / 4)}, (_, i) => ({ target, count: Math.min(4, count - 4 * i) })));
+      for (const {target,count} of parts) {
         if (task.discard) return;
         try {
           const res = await generateNode(target, count, additionalContext);
@@ -465,10 +462,11 @@ export default function MindMapView({
       }
       if (task.discard) return;
       newGanReview(entries, node);
+      setNotice(entries.length + ' de ' + requested + ' questões geradas · ' + chosen.title + (failure ? '. ' + failure : '') + (saveFailures ? '. Confira as gravações pendentes no mapa.' : ''));
       if (failure || entries.length < requested) setGanError(entries.length + ' de ' + requested + ' questões geradas. ' + failure);
       if (saveFailures) setGanError(previous => [previous, 'Parte das gravações automáticas falhou. Confira as questões na revisão.'].filter(Boolean).join(' '));
     } catch (err) {
-      if (!task.discard) setGanError(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
+      if (!task.discard) setNotice(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
     } finally {
       ganTask.current = null;
       setGanLoading(false);
