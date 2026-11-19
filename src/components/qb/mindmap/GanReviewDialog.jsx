@@ -134,7 +134,7 @@ export function GanReviewDialog({ review, open, onOpenChange, returnFocus, fallb
             <Dialog.Close asChild><Button variant="secondary" icon="x">Fechar</Button></Dialog.Close>
           </header>
           <div className="qb-gan-review__list">
-            {review.entries.map(entry => {
+            {review.entries.filter(entry => !(entry.status === "saved" && entry.item.statusConfronto === "aprovada_gan")).map(entry => {
               const { item, node, record, status } = entry;
               const draft = drafts[item.id] || ganReviewDraft(item);
               const quality = status === 'pending' ? ganReviewQuality(draft, questionBank, item.id) : null;
