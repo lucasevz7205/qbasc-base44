@@ -6,7 +6,7 @@ import { Badge } from '@/components/qb/core/Badge';
 import { FeynmanNodePicker } from '@/components/qb/architect/FeynmanNodePicker';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { FEYNMAN_SCOPE_LIMITS as scopeLimits, feynmanMapGroups } from '@/lib/feynman-scope';
+import { FEYNMAN_AUDIENCES, FEYNMAN_SCOPE_LIMITS as scopeLimits, feynmanMapGroups } from '@/lib/feynman-scope';
 import { evaluateFeynmanExplanation } from '@/lib/server-fns';
 
 function FeedbackItem({ ok, children }) {
@@ -25,7 +25,9 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
   const node = groups.flatMap(group => group.nodes).find(option => option.id === nodeId);
   const focus = node?.label || topicLabel;
   const parent = node?.path.at(-2);
-  const scopeKey = JSON.stringify([topicId, node?.id]);
+  const [audience, setAudience] = React.useState('exam');
+  const profile = FEYNMAN_AUDIENCES[audience];
+  const scopeKey = JSON.stringify([topicId, node?.id, audience]);
   const [attempts, setAttempts] = React.useState({});
   const [busyKey, setBusyKey] = React.useState(null);
   const lock = React.useRef(false);
@@ -51,7 +53,7 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
             path: node.path.slice(-scopeLimits.path).map(label => label.slice(0, scopeLimits.node)),
             summary: QB_DATA.concepts[node.id]?.summary?.slice(0, scopeLimits.summary),
           } }),
-          explanation: clean,
+          audience, explanation: clean,
         },
       });
       updateAttempt({ fb: res });
@@ -72,15 +74,23 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
           <FeynmanNodePicker key={topicId} groups={groups} node={node} onChange={onNodeChange} />
         ) : topicId && <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)' }}>Este assunto ainda não tem mapa mental. A avaliação pode cobrir o assunto inteiro.</p>}
       </div>
+      {topicId && <div style={{ display: 'grid', gap: 6, justifyItems: 'start' }}>
+        <span className="qb-overline">Para quem você vai explicar?</span>
+        <div className="qb-seg" role="group" aria-label="Público da explicação" style={{ flexWrap: 'wrap' }}>
+          {Object.entries(FEYNMAN_AUDIENCES).map(([id, option]) => (
+            <button type="button" className="qb-seg__opt" key={id} aria-pressed={audience === id} onClick={() => setAudience(id)}>{option.label}</button>
+          ))}
+        </div>
+      </div>}
       {!topicId ? <p>Selecione uma matéria e um assunto para começar.</p> : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 16 }}>
           <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>1 · Explique com suas palavras</span>
             <p style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)', margin: 0 }}>
-              Explique <strong style={{ color: 'var(--text-primary)' }}>{focus}</strong> para alguém que está tendo o primeiro contato com o assunto.
+              Explique <strong style={{ color: 'var(--text-primary)' }}>{focus}</strong> para {profile.listener}.
             </p>
             <ol style={{ margin: 0, paddingInlineStart: 20, font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
-              <li>Defina a ideia central com palavras simples.</li>
+              <li>{profile.guide}</li>
               <li>{parent ? <>Mostre como ela se relaciona com <strong>{parent}</strong>.</> : 'Explique como funciona ou faça um contraste com um conceito que se confunde com ela.'}</li>
               <li>Dê um exemplo concreto e mostre como ele ilustra a ideia.</li>
             </ol>
@@ -90,7 +100,7 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
               value={text}
               onChange={e => updateAttempt({ text: e.target.value, fb: null, error: null })}
               readOnly={busy}
-              placeholder="Comece pela ideia central, evite jargões sem explicação e inclua um exemplo prático…"
+              placeholder={profile.guide}
               aria-label="Sua explicação"
               maxLength={5000}
             />

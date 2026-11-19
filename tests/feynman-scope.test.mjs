@@ -72,5 +72,11 @@ test('avaliações por nó recebem o recorte e a referência sem excluir o forma
   assert.ok(prompts[1].includes(JSON.stringify({ assunto: data.topicLabel })));
   await assert.rejects(evaluateFeynmanExplanation({ context, data: { ...data, node: { ...node, summary: 'x'.repeat(FEYNMAN_SCOPE_LIMITS.summary + 1) } } }));
   await assert.rejects(evaluateFeynmanExplanation({ context: {}, data }), /Sessão obrigatória/);
-  assert.equal(prompts.length, 2);
+  assert.match(prompts[1], /colega de estudo iniciante/);
+  for (const [audience, expected] of [['child', 'criança curiosa de 10 anos'], ['exam', 'banca avaliadora Cebraspe']]) {
+    await evaluateFeynmanExplanation({ context, data: { ...data, audience } });
+    assert.ok(prompts.at(-1).includes(expected));
+  }
+  await assert.rejects(evaluateFeynmanExplanation({ context, data: { ...data, audience: 'outro' } }));
+  assert.equal(prompts.length, 4);
 });
