@@ -1,4 +1,4 @@
-import {MapImport} from '../mindmap/MapImport';
+import { MapImport } from '@/components/qb/mindmap/MapImport';
 import React from 'react';
 import { useServerFn } from '@tanstack/react-start';
 import { MindMapCanvas } from '@/components/qb/mindmap/MindMapCanvas';

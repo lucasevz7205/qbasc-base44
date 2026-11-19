@@ -1,4 +1,4 @@
-import './map-import.css';
+import '@/components/qb/mindmap/map-import.css';
 import {Icon} from '@/components/qb/core/Icon';
 import {IconButton} from '@/components/qb/core/IconButton';
 import React,{useRef,useState} from 'react';
