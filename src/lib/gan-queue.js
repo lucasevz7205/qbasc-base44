@@ -167,7 +167,11 @@ async function processGanNode({ node, chosen, generate, save, onReview, out }) {
     const count = Array.isArray(res.questoes) ? res.questoes.length : aprovadas.length + res.bloqueadas.length;
     if (!count) return ganTransportFailure;
     onReview(node, res);
-    out.paraRevisao = (out.paraRevisao || 0) + count;
+    const saved = res.registros?.length || 0;
+    out.aprovadas += saved;
+    out.geradas = (out.geradas || 0) + count;
+    out.paraRevisao = (out.paraRevisao || 0) + count - saved;
+    out.falhasGravacao = (out.falhasGravacao || 0) + (res.falhasGravacao || 0);
     return null;
   }
   const persisted = new Set(Array.isArray(res.registros) ? res.registros.map(r => r?.id) : []);

@@ -8,7 +8,7 @@ import { itemFromDisplayedQuestion, questionQualityProblems } from './item-quali
 import { STUDY_ACTIVITIES, mergeStudyClockRecord, studyTimeTotal } from './study-clock.js';
 import { ganSourcePassages } from './gan-grounding.js';
 import { buildGanSource, buildGanQuestionRecord } from './gan-queue.js';
-import { approveGanReview } from './gan-review.js';
+import { approveGanReview, canAutoApproveGan } from './gan-review.js';
 import { buildNodeFlashcardRecord } from './node-flashcards.js';
 import { ACCOUNT_COLLECTION, IMPORTABLE, PERSONAL_WRITE, READABLE, workspaceCollection, bankQuestion, resetImportedDocument, canUseArchitect, canReformulateQuestions } from './account-boundary';
 
@@ -117,6 +117,33 @@ async function personalMapScope(context, request) {
 
 const draftsCollection = id => 'qbasc-rascunhos-gan:' + id;
 const mapTarget = z.object({ topicId: documentId, targetNodeId: z.string().min(1).max(250) });
+
+export async function saveAutoApprovedMapGan(context, request, items, personal) {
+  const candidates = items.filter(item => canAutoApproveGan(item, request.targetNodeId));
+  if (!candidates.length) return { registros: [], falhasGravacao: 0 };
+  const { user } = context;
+  const entities = personal ? context.getBase44().asServiceRole.entities : admin(context);
+  const collection = personal ? workspaceCollection(accountId.parse(user.id), 'questoes') : 'questoes';
+  const bank = (await loadDocuments(entities, collection)).map(q => ({ id: q.id, statement: q.enunciado }));
+  const chosen = { topicId: request.topicId, title: request.topicTitle };
+  const node = { id: request.targetNodeId, label: request.targetNodeLabel };
+  const registros = [];
+  let falhasGravacao = 0;
+  for (const item of candidates) {
+    if (!canAutoApproveGan(item, node.id, bank)) continue;
+    try {
+      const record = buildGanQuestionRecord(item, { chosen, node, queue: request.queue });
+      const saved = await write(entities, collection, record.id, record, true);
+      if (saved) {
+        registros.push(saved);
+        bank.push({ id: saved.id, statement: saved.enunciado });
+      } else falhasGravacao += 1;
+    } catch {
+      falhasGravacao += 1;
+    }
+  }
+  return { registros, falhasGravacao };
+}
 
 export async function preparePersonalMapGan(context, request) {
   const { id, entities, chosen, node, concepts } = await personalMapScope(context, request);

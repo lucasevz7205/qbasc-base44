@@ -29,6 +29,17 @@ export function ganReviewQuality(draft, questionBank = [], currentId) {
   return { problems, warnings };
 }
 
+export function canAutoApproveGan(item, targetNodeId, questionBank = []) {
+  return item.statusConfronto === 'aprovada_gan'
+    && item.mapaNoId === targetNodeId
+    && item.blindKeyMatch === true
+    && item.veredictoDiscriminador === 'APROVADA'
+    && Number.isFinite(item.ganScore) && item.ganScore > 90 && item.ganScore <= 100
+    && item.fundamentacaoCega?.verificacao === 'trecho_localizado'
+    && Boolean(text(item.comentario))
+    && !ganReviewQuality(ganReviewDraft(item), questionBank, item.id).problems.length;
+}
+
 export function approveGanReview(item, draft, questionBank = []) {
   const { problems } = ganReviewQuality(draft, questionBank, item.id);
   if (problems.length) throw new Error(problems[0].message);

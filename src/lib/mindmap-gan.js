@@ -86,7 +86,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       1200,
     );
     const rawScore = disc?.scoreRealismo ?? disc?.score;
-    const ganScore = Number.isFinite(rawScore) ? Math.max(0, Math.min(100, Math.round(rawScore))) : null;
+    const ganScore = Number.isFinite(rawScore) && rawScore >= 0 && rawScore <= 100 ? rawScore : null;
     const motivosConfronto = [];
 
     const validKeys = ["C", "E"];
@@ -102,6 +102,7 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
     const refinedKey = asText(refined?.gabarito, 10).toUpperCase();
     const hasValidRefined = refined && refinedStatement.length >= 25 && validKeys.includes(refinedKey);
 
+    if (options.targetNodeId && requestedNodeId !== options.targetNodeId) motivosConfronto.push("O item não aponta para o nó solicitado.");
     if (!blindKeyMatch) motivosConfronto.push("Os gabaritos do gerador e do julgamento cego divergem ou estão incompletos.");
     if (discVerdict === "REJEITADA") motivosConfronto.push("O julgamento cego recomendou rejeitar o item.");
     if (ganScore === null) motivosConfronto.push("O julgamento cego não retornou um escore válido.");
