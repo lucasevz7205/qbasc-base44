@@ -1,9 +1,25 @@
 import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 import { routeTree } from "./routeTree.gen";
-import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary";
+import { DefaultCatchBoundary, isModuleImportError, reloadOnceForModuleError } from "@/components/DefaultCatchBoundary";
 import { NotFound } from "@/components/NotFound";
 import { createQueryClient } from "@/lib/query-client";
+
+if (typeof window !== "undefined") {
+  window.addEventListener("vite:preloadError", (event) => {
+    event.preventDefault();
+    reloadOnceForModuleError();
+  });
+  window.addEventListener(
+    "unhandledrejection",
+    (event) => {
+      if (isModuleImportError(event?.reason) && reloadOnceForModuleError()) {
+        event.preventDefault();
+      }
+    },
+    true,
+  );
+}
 
 export function getRouter() {
   const queryClient = createQueryClient();
