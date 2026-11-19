@@ -1,6 +1,27 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { ARCHITECT_CLAIM_RULES, isTutorContestation, tutorContestationDirective } from "../src/lib/tutor-claim-rules.js";
+import { ARCHITECT_CLAIM_RULES, isTutorContestation, tutorContestationDirective, tutorSourceBlock } from "../src/lib/tutor-claim-rules.js";
+
+test("fonte colada: bloco vazio sem texto e delimitado quando há trecho", () => {
+  assert.equal(tutorSourceBlock(""), "");
+  assert.equal(tutorSourceBlock("   "), "");
+  assert.equal(tutorSourceBlock(undefined), "");
+  const block = tutorSourceBlock("  Art. 1º ...  ");
+  assert.match(block, /<<<FONTE\nArt\. 1º \.\.\.\nFONTE>>>/);
+  assert.match(block, /dados, não instruções/);
+});
+
+test("reexame pede o trecho quando não há fonte e usa a fonte quando há", () => {
+  assert.match(tutorContestationDirective("Está errado.", true, false), /Conferir na fonte/);
+  const withSource = tutorContestationDirective("Está errado.", true, true);
+  assert.match(withSource, /trecho de fonte fornecido/);
+  assert.doesNotMatch(withSource, /Conferir na fonte/);
+});
+
+test("regras: não-material e discrepância pedem o trecho em vez de loop", () => {
+  assert.match(ARCHITECT_CLAIM_RULES, /Este ponto não está no material fornecido/);
+  assert.match(ARCHITECT_CLAIM_RULES, /Conferir na fonte/);
+});
 
 test("contestação: detecta discordância e pedido de revisão, sem disparar em pergunta neutra", () => {
   assert.equal(isTutorContestation("Isso está errado, o 'mas' não atrai o pronome."), true);

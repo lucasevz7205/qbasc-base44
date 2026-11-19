@@ -15,7 +15,7 @@ import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
 import { stripFlashcardContext } from "@/lib/flashcard-standard";
 import { continueTutorConversation } from "@/lib/tutor-continuation";
 import { FEYNMAN_AUDIENCES, FEYNMAN_SCOPE_LIMITS } from "@/lib/feynman-scope";
-import { ARCHITECT_CLAIM_RULES, tutorContestationDirective } from "@/lib/tutor-claim-rules";
+import { ARCHITECT_CLAIM_RULES, tutorContestationDirective, tutorSourceBlock } from "@/lib/tutor-claim-rules";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -51,6 +51,7 @@ const TutorInputSchema = z.object({
   subjectName: z.string().max(200).optional(),
   topicLabel: z.string().min(1).max(300),
   userMessage: z.string().min(1).max(3000),
+  sourceText: z.string().max(6000).optional(),
   provider: z.enum(["gemini", "base44"]).optional(),
   history: z
     .array(
@@ -108,7 +109,8 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       historyBlock
         ? "Continue a conversa diretamente. Pule cumprimentos, saudações e apresentações, mesmo após uma mudança de modo pedagógico."
         : "Na primeira resposta, um cumprimento breve é opcional.",
-      tutorContestationDirective(data.userMessage, Boolean(historyBlock)),
+      tutorContestationDirective(data.userMessage, Boolean(historyBlock), Boolean(data.sourceText?.trim())),
+      tutorSourceBlock(data.sourceText),
       `Mensagem/solicitação atual do estudante:\n${data.userMessage}`,
       "Responda em português (pt-BR), em texto fluido e bem estruturado (máximo de 2 a 3 parágrafos curtos ou tópicos objetivos).",
     ]

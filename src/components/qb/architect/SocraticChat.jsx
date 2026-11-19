@@ -37,6 +37,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const [listening, setListening] = React.useState(false);
   const [voiceNotice, setVoiceNotice] = React.useState(null);
   const [ask, setAsk] = React.useState(false);
+  const [sourceOpen, setSourceOpen] = React.useState(false);
+  const [sourceDraft, setSourceDraft] = React.useState('');
   const listRef = React.useRef(null);
   const recRef = React.useRef(null);
   const msgs = React.useSyncExternalStore(tutorHistory.subscribe, () => tutorHistory.read(accountId, key), () => EMPTY_TUTOR_HISTORY);
@@ -57,8 +59,9 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
 
   const push = message => tutorHistory.append(accountId, key, message);
 
-  const answer = async (kind, userText) => {
+  const answer = async (kind, userText, source = '') => {
     const cleanText = (userText || '').trim();
+    const cleanSource = (source || '').trim();
     if (!cleanText || !tutorHistory.begin(accountId, key)) return;
     if (topic) tutorHistory.rememberTopic(accountId, topic.id);
     const priorHistory = tutorHistory.read(accountId, key)
@@ -74,6 +77,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           subjectName: subj?.name,
           topicLabel: tLabel,
           userMessage: cleanText,
+          sourceText: cleanSource || undefined,
           provider,
           history: priorHistory,
         },
@@ -86,6 +90,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
         text: err?.message || 'Não foi possível gerar a resposta da IA agora.',
         retryKind: kind,
         retryText: cleanText,
+        retrySource: cleanSource,
       });
     } finally {
       tutorHistory.finish(accountId, key);
@@ -95,8 +100,11 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const send = () => {
     const t = text.trim();
     if (!t || busy) return;
+    const src = sourceDraft.trim();
     setText('');
-    answer(mode, t);
+    setSourceDraft('');
+    setSourceOpen(false);
+    answer(mode, t, src);
   };
 
   const toggleVoiceInput = () => {
@@ -202,7 +210,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           {msgs.map((m, i) => m.role === 'user'
             ? <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-end', background: 'var(--surface)', border: '1px solid rgba(208,179,134,.5)', color: 'var(--text-primary)', borderBottomRightRadius: 4, whiteSpace: 'pre-wrap' }}>{m.text}</div>
             : m.role === 'error'
-              ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
+              ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText, m.retrySource || '')}>Tentar novamente</Button></div>
               : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface-sunken)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
                   <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
                 </div>)}
@@ -216,7 +224,20 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           <button className="qb-iconbtn qb-iconbtn--sm" style={{ marginLeft: 'auto' }} aria-label="Fechar aviso" onClick={() => setVoiceNotice(null)}><Icon name="x" size={14} /></button>
         </div>
       )}
+      {sourceOpen && (
+        <div className="qb-panel qb-panel--sunken" style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <label htmlFor={transcriptId + '-fonte'} className="qb-overline">Trecho da fonte (lei, edital ou aula)</label>
+          <textarea id={transcriptId + '-fonte'} className="qb-input" rows={3} maxLength={6000} value={sourceDraft}
+            onChange={event => setSourceDraft(event.target.value)}
+            placeholder="Cole aqui o trecho que confirma ou contradiz a afirmação do Arquiteto. Ele é enviado junto com a sua próxima mensagem." />
+          <small style={{ color: 'var(--text-muted)' }}>{sourceDraft.trim() ? 'Trecho pronto para a próxima mensagem.' : 'Sem trecho, o Arquiteto não conferirá a afirmação com texto.'}</small>
+        </div>
+      )}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        <button className="qb-chip" aria-expanded={sourceOpen} onClick={() => setSourceOpen(value => !value)} disabled={busy}>
+          <Icon name="book-open" size={14} />
+          Conferir na fonte
+        </button>
         {QUICK.map(([k, ic, l]) => (
           <button key={k} className="qb-chip" onClick={() => quick(k)} disabled={busy} style={k === 'voz' && listening ? { borderColor: 'var(--qb-gold-bright)', color: 'var(--qb-gold-bright)' } : undefined}>
             <Icon name={ic} size={14} />
