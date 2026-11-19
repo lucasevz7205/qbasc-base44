@@ -18,7 +18,7 @@ import { mechanismOptionList } from '@/lib/cebraspe-v1-taxonomy';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
-function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
+function SessionSummary({ answers, go, qs, ganBatch, scheduledReview, concept, onReturn }) {
   const [showItems, setShowItems] = React.useState(false);
   const answered = qs.filter(q => answers[q.id]?.revealed);
   const right = answered.filter(q => answers[q.id].answer === (answers[q.id].keyAtAnswer || q.key)).length;
@@ -78,7 +78,9 @@ function SessionSummary({ answers, go, qs, ganBatch, scheduledReview }) {
             Voltar ao nó no mapa mental
           </Button>
         )}
-        {!scheduledReview && <Button variant={ganBatch?.originNodeId ? 'secondary' : 'primary'} iconRight="arrow-right" onClick={() => go('flashcards', { topicId: ganBatch?.topicId })}>
+        {concept && <Button icon="network" onClick={onReturn}>Voltar ao conceito</Button>}
+        {!scheduledReview && (!concept || concept.cardIds.length > 0) && <Button variant={ganBatch?.originNodeId || concept ? 'secondary' : 'primary'} iconRight="arrow-right"
+          onClick={() => go('flashcards', concept ? { topicId: concept.topicId, cardIds: concept.cardIds, concept } : { topicId: ganBatch?.topicId })}>
           Seguir para flashcards
         </Button>}
         <Button variant="secondary" icon="chart-column" onClick={() => go('performance', 'diaria')}>Ver desempenho diário</Button>
@@ -314,7 +316,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
               <Button onClick={concept ? returnFromQuestions : () => go('train')}>{concept ? 'Voltar ao conceito' : 'Voltar a Treinar'}</Button>
             </Panel>
           ) : done ? (
-            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} scheduledReview={scheduledReview} />
+            <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} scheduledReview={scheduledReview} concept={concept} onReturn={returnFromQuestions} />
           ) : excluded ? (
             <Panel>
               <p>Esta questão foi excluída do banco ativo.</p>

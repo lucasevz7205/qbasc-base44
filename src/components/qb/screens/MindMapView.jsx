@@ -304,7 +304,7 @@ export default function MindMapView({
     p = nodes.find(n => n.id === p.parent);
   }
   const review = conceptReviewItems(chosen, node.id, D.questionBank, D.flashcards);
-  const concept = { nodeId: node.id, label: node.label, topicId: chosen.topicId };
+  const concept = { nodeId: node.id, label: node.label, topicId: chosen.topicId, cardIds: review.cardIds };
   const reviewQuestions = () => go('questions', { topicId: chosen.topicId, questionIds: review.questionIds, filter: 'all', concept });
   const reviewCards = () => go('flashcards', { topicId: chosen.topicId, cardIds: review.cardIds, concept });
   const qn = review.questionIds.length;
@@ -509,7 +509,7 @@ export default function MindMapView({
             icon="target"
             onClick={reviewQuestions}
           >
-            {qn} {qn > 1 ? 'questões' : 'questão'} {review.includesChildren ? 'neste ramo' : 'deste nó'}
+            {qn} {qn > 1 ? 'questões vinculadas' : 'questão vinculada'}
           </Button>
         ) : (
           <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>

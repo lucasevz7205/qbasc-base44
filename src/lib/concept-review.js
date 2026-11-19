@@ -48,7 +48,7 @@ export function conceptReviewItems(map, nodeId, questions, flashcards) {
     includesChildren ||= nested.size > 0;
     return [...new Set([...direct, ...nested])];
   }
-  const questionIds = selectedIds(questions.filter(q => q.statusConfronto !== 'divergencia_bloqueada'));
+  const questionIds = selectedIds(questions.filter(q => (q.statusConfronto ?? q.raw?.statusConfronto) !== 'divergencia_bloqueada'));
   const cardIds = selectedIds(flashcards);
   return { questionIds, cardIds, includesChildren };
 }
