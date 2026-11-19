@@ -1,3 +1,4 @@
+import { stripFlashcardContext } from './flashcard-standard.js';
 import { conceptLabelKey, indexConceptRemissions, matchLegacyConcept } from './concept-review.js';
 import {parseImport,importResult} from './map-import.js';
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
@@ -191,6 +192,12 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));
+  const cleanCards = curated.cards.map(card => {
+    const topic = topics[card.topicId];
+    const subject = subjects[topic?.subjectId];
+    const front = stripFlashcardContext(card.front, subject?.name, [topic?.title, card.tema], card.topicId);
+    return front === card.front ? card : { ...card, front };
+  });
   const activeQuestions = curated.questions.filter(q=>!excludedQuestionIds.has(q.id));
   const statusRank={'not-started':0,studying:1,reviewing:2,mastered:3};
   for(const t of Object.values(topics)){
@@ -255,6 +262,6 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const next=tasks.find(t=>t.type==='simulado'&&t.date>=today&&t.status!=='done');
   const displayName=user?.full_name||user?.name||'Conta administradora';
   const displaySubjects=Object.values(subjects);
-  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:curated.cards,questionBank:activeQuestions,excludedQuestionIds,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
+  const QB_DATA={user:{name:displayName,initials:displayName.split(/\s+/).slice(0,2).map(s=>s[0]).join('')},exam,questions:curated.questions,flashcards:cleanCards,questionBank:activeQuestions,excludedQuestionIds,mapNodes,mindMaps,concepts,studySubjects:displaySubjects,roots,masteryText:{},answers,reviews};
   return {QB_DATA,QB_EDITAL:{subjects:displaySubjects.map(s=>({...s,topics:s.topics.filter(t=>!t.foraEdital)})).filter(s=>s.topics.length),groupTitles:{},blocks},QB_PLAN:{today,weekday,weekStart,addDays:shift,weeks,tasks,archivedTasks,...settings},QB_PERF:{attemptsByDay,days:Object.values(dates).sort((a,b)=>a.date.localeCompare(b.date)),today:{flashcards:cardsByDay[today]??0,rounds:roundsByDay[today]??0},cardsByDay,roundsByDay,review:{...review,n:review.correct+review.wrong+review.blank}},QB_SIM:{profile:exam,next:{date:next?.date||'',label:next?next.date.split('-').reverse().join('/'):'Sem data agendada'},objective:{items:examBlocks.flatMap(b=>b.subjects).reduce((n,s)=>n+s.planned,0),minutes:num(config.obj?.min)},discursive:{minutes:num(config.disc?.min),minLines:20,maxLines:50},scoring:{correct:1,wrong:-1,blank:0},blocks:examBlocks,items:examItems,history},records};
 }

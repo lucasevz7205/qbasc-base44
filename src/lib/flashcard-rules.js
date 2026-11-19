@@ -2,7 +2,7 @@
 // Fonte única: usada na geração a partir de material e na revisão editorial de cartões.
 export const FLASHCARD_RULES = [
   "PADRÃO DE CARTÃO (obrigatório; o cartão deve passar no teste do leitor frio: quem estudou o tópico, mas não viu o mapa, sabe exatamente o que responder).",
-  "1. FRENTE sem prefixo de matéria e assunto: o app já mostra os dois no cabeçalho do cartão. Comece direto pela pergunta e coloque o recorte necessário dentro dela. Não escreva 'Matéria · tópico:' na frente; se o cartão original já trouxer esse prefixo, mantenha-o como está.",
+  "1. FRENTE sem prefixo de matéria e assunto: o app já mostra os dois no cabeçalho do cartão. Comece direto pela pergunta e coloque o recorte necessário dentro dela. Não escreva 'Matéria · tópico:' na frente; guarde matéria e tópico nos metadados e remova o prefixo da pergunta.",
   "2. UMA resposta definida por cartão (número, prazo, artigo, nome, termo, conjunto curto e fechado). Proibido 'explique', 'comente', 'fale sobre'.",
   "3. UM conceito por cartão. Se a afirmação tem duas ideias, gere dois cartões.",
   "4. Pista no enunciado: diga o recorte; se for para classificar, liste as opções na própria frente. Prefira lacunas ('___') a 'cite'.",

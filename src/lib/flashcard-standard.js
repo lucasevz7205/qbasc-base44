@@ -6,24 +6,33 @@ function normalized(text) {
   return label(text).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
 }
 
-// O app já mostra matéria e assunto no cabeçalho do cartão. Esta função tira da frente o prefixo
-// "Matéria · assunto:" (gravado em cartões antigos) só na exibição; o dado e o progresso não mudam.
-export function stripFlashcardContext(front, subject, topics) {
+// Remove cabeçalhos legados sem consumir citações ou instruções da pergunta.
+export function stripFlashcardContext(front, subject, topics, topicId = '') {
   if (typeof front !== 'string') return front;
-  const matter = label(subject);
-  const list = (Array.isArray(topics) ? topics : [topics]).map(label).filter(Boolean);
-  if (!matter || !list.length) return front;
-  const question = front.trim();
-  for (const focus of list) {
-    const prefix = matter + ' · ' + focus + ':';
-    const length = Array.from(prefix).length;
-    const start = Array.from(question).slice(0, length).join('');
-    if (normalized(start) === normalized(prefix)) {
-      const rest = question.slice(start.length).trimStart();
-      if (rest.length >= 12) return rest;
-    }
+  const titles = (Array.isArray(topics) ? topics : [topics]).map(normalized).filter(Boolean);
+  const subjectKey = normalized(subject);
+  const codeKey = text => normalized(text).replace(/[.\s_-]+/g, '-');
+  const knownCode = codeKey(topicId);
+  let question = front.trim();
+  while (true) {
+    const separator = question.match(/^([^:·\n]{1,120})\s*·\s*/u);
+    const head = separator ? separator[1].trim() : '';
+    const code = head.match(/^([\p{L}]{2,8})[ -]+\d+(?:[.-]\d+)*$/u);
+    const namedSubject = !!subjectKey && normalized(head) === subjectKey;
+    const codedSubject = code && (knownCode ? codeKey(head) === knownCode : code[1] === code[1].toUpperCase());
+    if (!namedSubject && !codedSubject) break;
+    const tail = question.slice(separator[0].length);
+    const boundaries = [...tail.matchAll(/:/g)];
+    // Prefira o título completo: há assuntos cujo nome contém dois-pontos.
+    const exact = boundaries.filter(m => titles.includes(normalized(tail.slice(0, m.index)))).at(-1);
+    const boundary = exact || boundaries[0];
+    if (!boundary) break;
+    const descriptor = tail.slice(0, boundary.index).trim();
+    const rest = tail.slice(boundary.index + 1).trimStart();
+    if (!rest || !descriptor || descriptor.length > 180 || /[?\n]/.test(descriptor)) break;
+    question = rest;
   }
-  return front;
+  return question;
 }
 
 export function contextualFlashcardFront(front, subject, topic) {
