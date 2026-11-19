@@ -117,7 +117,7 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
 
     const provider = profile ? "gemini" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
-      const result = await invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt });
+      const result = await invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt, timeoutMs: 60000 });
       return { ...result, reply: continueTutorConversation(result.reply, Boolean(historyBlock)) };
     }
     const base44 = context.getBase44();
