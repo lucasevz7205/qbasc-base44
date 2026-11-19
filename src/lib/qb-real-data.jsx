@@ -12,8 +12,20 @@ const RealStudyContext = React.createContext(null);
 const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise','justificativas'];
 async function loadRealData() {
   const results = {};
-  for (let i=0;i<collections.length;i+=3) {
-    await Promise.all(collections.slice(i,i+3).map(async c => { results[c] = await listClaudeCollection(c); }));
+  // Apenas leituras podem ser repetidas; falhas temporárias não devem parecer perda de progresso.
+  for (const collection of collections) {
+    let lastError;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        results[collection] = await listClaudeCollection(collection);
+        lastError = null;
+        break;
+      } catch (error) {
+        lastError = error;
+        if (attempt < 2) await new Promise(resolve => setTimeout(resolve, 500 * (attempt + 1)));
+      }
+    }
+    if (lastError) throw new Error('Falha ao ler ' + collection + ': ' + String(lastError?.message || 'erro de leitura').slice(0, 180));
   }
   if (!results.edital.length || !results.questoes.length) throw new Error('O edital ou o banco de questões da migração não está disponível.');
   return results;
@@ -102,7 +114,7 @@ export function RealStudyGate({children}) {
   if(auth.authError?.type==='user_not_registered')return <Gate title="Esta conta não tem acesso ao QBAsc" action={<Button onClick={auth.navigateToLogin}>Entrar com outra conta</Button>}/>;
   if(auth.authError)return <Gate title="Falha ao verificar sua conta" detail="Recarregue para iniciar outra verificação ou volte à tela de entrada." action={<><Button onClick={()=>window.location.reload()}>Tentar novamente</Button><Button variant="secondary" onClick={auth.navigateToLogin}>Ir para o login</Button></>}/>;
   if(!user)return <Gate title="Quebrando a Banca" detail="Entre com sua conta para acessar o ambiente de estudo." action={<Button onClick={auth.navigateToLogin}>Entrar</Button>}/>;
-  if(query.isError)return <Gate title="Não foi possível carregar seu progresso" detail="Confira a conexão e tente novamente." action={<Button onClick={()=>query.refetch()}>Tentar novamente</Button>}/>;
+  if(query.isError)return <Gate title="Não foi possível carregar seu progresso" detail={query.error?.message || 'Falha ao consultar os dados. Seus registros permanecem preservados.'} action={<Button disabled={query.isFetching} onClick={()=>query.refetch()}>{query.isFetching ? 'Consultando…' : 'Tentar novamente'}</Button>}/>;
   if (!admin && profile && profile.status !== 'active') {
     const suspended = profile.status === 'suspended';
     return <Gate title={suspended ? 'Acesso suspenso' : 'Aguardando ativação'}
