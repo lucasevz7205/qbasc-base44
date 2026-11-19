@@ -835,6 +835,62 @@ button, input, select, textarea { font: inherit; color: inherit; }
   border-radius: var(--radius-card);
   background: var(--surface);
 }
+.qb-gan-package__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface-sunken);
+}
+.qb-gan-package__row[data-selected="true"] {
+  border-color: var(--border-strong);
+  background: var(--qb-navy-raised);
+}
+.qb-gan-package__node {
+  font: var(--type-label);
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+.qb-gan-package__stepper {
+  display: grid;
+  grid-template-columns: var(--touch-min) 2.25rem var(--touch-min);
+  align-items: stretch;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--qb-navy-deep);
+}
+.qb-gan-package__stepper .qb-btn {
+  width: 100%;
+  height: var(--touch-min);
+  padding: 0;
+  border-radius: var(--radius-xs);
+}
+.qb-gan-package__stepper .qb-btn:focus-visible { z-index: 1; }
+.qb-gan-package__count {
+  display: grid;
+  place-items: center;
+  border-inline: 1px solid var(--border);
+  font: var(--fw-semibold) var(--fs-label)/1 var(--font-mono);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.qb-gan-package__row[data-selected="true"] .qb-gan-package__count { color: var(--accent-hero); }
+.qb-gan-package__footer, .qb-gan-package__actions { flex-wrap: wrap; }
+.qb-gan-package__actions { display: flex; gap: var(--space-2); }
+.qb-gan-package__total { font: var(--type-label); }
+.qb-gan-package__total strong {
+  font: var(--fw-semibold) var(--fs-label)/1 var(--font-mono);
+  color: var(--text-accent);
+}
+.qb-gan-package__total[data-over-limit="true"] strong { color: var(--state-incorrect); }
+@media (max-width: 360px) {
+  .qb-gan-package__row { grid-template-columns: minmax(0, 1fr); }
+  .qb-gan-package__stepper { justify-self: start; }
+}
+
 .qb-gan-review__badges,
 .qb-gan-review__actions {
   display: flex;

@@ -9,11 +9,19 @@ export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGen
   const [counts, setCounts] = React.useState(() => ({ [initialNode.id]: 4 }));
   const allocations = nodes.flatMap(target => counts[target.id] ? [{ target, count: counts[target.id] }] : []);
   const total = allocations.reduce((sum, row) => sum + row.count, 0);
+  const exceedsLimit = total > PACKAGE_LIMIT;
+
+  function changeCount(nodeId, delta) {
+    setCounts(current => ({
+      ...current,
+      [nodeId]: Math.min(NODE_LIMIT, Math.max(0, (current[nodeId] || 0) + delta)),
+    }));
+  }
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="qb-gan-review__overlay" />
-        <Dialog.Content className="qb-panel qb-panel--ornate qb-gan-review">
+        <Dialog.Content className="qb-panel qb-panel--ornate qb-gan-review qb-gan-package">
           <header className="qb-gan-review__header">
             <div>
               <Dialog.Title>Gerar questões com O Arquiteto</Dialog.Title>
@@ -22,26 +30,32 @@ export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGen
             <Dialog.Close asChild><Button size="sm" variant="secondary" icon="x" aria-label="Fechar gerador" /></Dialog.Close>
           </header>
           <div className="qb-gan-review__list">
-            {nodes.map(node => (
-              <label className="qb-gan-review__item" key={node.id}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-3)' }}>
-                <span>{node.label}</span>
-                <select value={counts[node.id] || 0} aria-label={'Questões para ' + node.label}
-                  onChange={event => {
-                    const value = Number(event.target.value);
-                    setCounts(current => ({ ...current, [node.id]: value }));
-                  }}>
-                  {Array.from({ length: NODE_LIMIT + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}
-                </select>
-              </label>
-            ))}
+            {nodes.map(node => {
+              const count = counts[node.id] || 0;
+              return (
+                <div className="qb-gan-package__row" key={node.id} data-selected={count > 0}>
+                  <span className="qb-gan-package__node">{node.label}</span>
+                  <div className="qb-gan-package__stepper" role="group" aria-label={'Quantidade de questões para ' + node.label}>
+                    <Button size="sm" variant="ghost" icon="minus" disabled={count === 0}
+                      aria-label={'Diminuir quantidade para ' + node.label} onClick={() => changeCount(node.id, -1)} />
+                    <span className="qb-gan-package__count">{count}</span>
+                    <Button size="sm" variant="ghost" icon="plus" disabled={count === NODE_LIMIT}
+                      aria-label={'Aumentar quantidade para ' + node.label} onClick={() => changeCount(node.id, 1)} />
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <footer className="qb-gan-review__footer">
-            <span role="status">{total} de {PACKAGE_LIMIT} questões no pacote</span>
-            {onDistribute && <Button variant="secondary" onClick={onDistribute}>Distribuir 20 pelos ramos</Button>}
-            <Button disabled={!total || total > PACKAGE_LIMIT} onClick={() => onGenerate(allocations)}>
-              Gerar pacote
-            </Button>
+          <footer className="qb-gan-review__footer qb-gan-package__footer">
+            <span className="qb-gan-package__total" role="status" data-over-limit={exceedsLimit}>
+              <strong>{total} / {PACKAGE_LIMIT}</strong> questões no pacote
+            </span>
+            <div className="qb-gan-package__actions">
+              {onDistribute && <Button variant="secondary" onClick={onDistribute}>Distribuir 20 pelos ramos</Button>}
+              <Button disabled={!total || exceedsLimit} onClick={() => onGenerate(allocations)}>
+                Gerar pacote
+              </Button>
+            </div>
           </footer>
         </Dialog.Content>
       </Dialog.Portal>
