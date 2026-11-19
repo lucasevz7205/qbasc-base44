@@ -44,3 +44,20 @@ test('remissões editoriais exigem nó e título correspondentes e não resolvem
   assert.equal(index.questoes.has('invalida'), false);
   assert.equal(index.questoes.has('outro'), false);
 });
+
+test('itens legados respeitam matéria, assunto e ambiguidades de conceito', async () => {
+  const { matchLegacyConcept } = await import('../src/lib/concept-review.js');
+  const makeMap = (topicId, names) => ({ topicId, nodes: [
+    { id: topicId, label: topicId },
+    ...names.map((label, i) => ({ id: topicId + i, parent: topicId, label })),
+  ] });
+  const maps = [
+    makeMap('ti-1', ['Rede local', 'Rede local virtual', 'Firewall']),
+    makeMap('da-1', ['Licitação', 'Delegação']),
+  ];
+  const topics = indexConceptRemissions(maps, []);
+  assert.equal(matchLegacyConcept(topics.get('ti-1'), '', 'O que é rede local virtual?'), 'ti-11');
+  assert.equal(matchLegacyConcept(topics.get('da-1'), 'Licitação', ''), 'da-10');
+  assert.equal(matchLegacyConcept(topics.get('da-1'), '', 'O que é firewall?'), undefined);
+  assert.equal(matchLegacyConcept(topics.get('da-1'), '', 'Compare licitação e delegação.'), undefined);
+});
