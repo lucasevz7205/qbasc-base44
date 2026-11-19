@@ -464,7 +464,7 @@ export function QBStudyProvider({ children }) {
   const q = (currentQId && session.customQuestions?.[currentQId]) || QB_DATA.questions.find(x => x.id === currentQId);
   const layerUi =
     activeView === 'questions' && q && !ui.ctx
-      ? { ...ui, ctx: { subjectId: q.subjectId, topicId: q.topicId, origin: 'questão ' + q.code } }
+      ? { ...ui, ctx: { subjectId: q.subjectId, topicId: q.topicId, nodeId: q.node, origin: 'questão ' + q.code } }
       : ui;
 
   const value = React.useMemo(

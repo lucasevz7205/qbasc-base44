@@ -60,6 +60,10 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
     subjects.find(s => s.topics.some(t => t.id === topicPreference)) || (!personal && subjects.find(s => s.id === 'da')) || subjects[0];
   const topic = subj?.topics.find(t => t.id === topicPreference) || subj?.topics[0];
   const tLabel = topic ? (subj.short || subj.name) + ' ' + topic.num + (topic.title ? ' · ' + topic.title : '') : 'o tópico';
+  const changeTopic = ({ subjectId, topicId }) => {
+    tutorHistory.rememberTopic(accountId, topicId);
+    onContextChange?.({ ...context, subjectId, topicId, nodeId: topicId === topic?.id ? context.nodeId : undefined });
+  };
   const panel = (
     <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
       style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
@@ -80,12 +84,11 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
       {!clockOnly && <div className={dock ? 'qb-architect-dock-tools' : undefined} style={{ padding: dock ? '8px 10px 0' : '12px 16px 0' }}><Tabs label="Ferramentas do Arquiteto" items={tools} value={tool} onChange={setTool} /></div>}
       <div style={{ padding: dock ? 10 : 16, minHeight: 0, minWidth: 0, overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         {tool === 'socratico' && <SocraticChat accountId={accountId} subjects={subjects} subjectId={subj && subj.id} topicId={topic && topic.id} onContextChange={(s, t) => onContextChange && onContextChange({ ...context, subjectId: s, topicId: t })} origin={context.origin} compact={dock} personal={personal} style={{ flex: 1, minHeight: dock ? 320 : 460 }} />}
-        {tool === 'feynman' && <FeynmanLab topicLabel={tLabel} personal={personal} />}
+        {tool === 'feynman' && <FeynmanLab subjects={subjects} subjectName={subj?.name} topicId={topic?.id}
+          topicLabel={topic?.title || tLabel} nodeId={context.nodeId} personal={personal} onTopicChange={changeTopic}
+          onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
-          onTopicChange={({ subjectId, topicId }) => {
-            tutorHistory.rememberTopic(accountId, topicId);
-            onContextChange?.({ ...context, subjectId, topicId });
-          }} />}
+          onTopicChange={changeTopic} />}
         {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} deck={deck} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>
