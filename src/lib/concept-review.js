@@ -1,4 +1,4 @@
-const labelKey = value => typeof value === 'string'
+export const conceptLabelKey = value => typeof value === 'string'
   ? value.normalize('NFC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('pt-BR')
   : '';
 
@@ -9,7 +9,7 @@ export function indexConceptRemissions(mindMaps, revisions) {
     topics.set(map.topicId, topic);
     for (const node of map.nodes) {
       topic.ids.set(node.id, node);
-      const key = labelKey(node.label);
+      const key = conceptLabelKey(node.label);
       topic.labels.set(key, topic.labels.has(key) ? null : node.id);
     }
   }
@@ -19,7 +19,7 @@ export function indexConceptRemissions(mindMaps, revisions) {
     if (!topic) continue;
     for (const link of doc.links) {
       const node = topic.ids.get(link.nodeId);
-      if (!node || labelKey(node.label) !== labelKey(link.label)) continue;
+      if (!node || conceptLabelKey(node.label) !== conceptLabelKey(link.label)) continue;
       for (const kind of ['questoes', 'cartoes']) {
         if (!Array.isArray(link[kind])) continue;
         for (const id of link[kind]) {

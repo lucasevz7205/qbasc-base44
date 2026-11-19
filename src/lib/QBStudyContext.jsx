@@ -336,14 +336,15 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder } = arg || {};
-          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder }));
+          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder, concept } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder, concept }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
         setCards({
           idx: 0, flipped: false, ratings: [], topicId: arg?.topicId, sessionId: crypto.randomUUID(),
           ...(arg?.scheduledReview ? { scheduledReview: true } : {}),
+          ...(arg?.concept ? { concept: arg.concept, scopeCardIds: [...new Set(arg.cardIds || [])] } : {}),
           ...(arg?.scheduledReview || Array.isArray(arg?.cardIds) ? { queue: [...new Set(arg.cardIds || [])] } : {}),
         });
       }

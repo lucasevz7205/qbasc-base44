@@ -20,7 +20,8 @@ import { useStudyActivity, useStudyCompletion } from '@/lib/StudyClockContext';
 
 export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
   const {QB_DATA:D,QB_PLAN,save,isAdmin}=useRealStudy();
-  const fullDeck = D.flashcards.filter(f => !cards.topicId || f.topicId === cards.topicId);
+  const scope = cards.scopeCardIds ? new Set(cards.scopeCardIds) : null;
+  const fullDeck = D.flashcards.filter(f => (!cards.topicId || f.topicId === cards.topicId) && (!scope || scope.has(f.id)));
   const mode = cards.filter || 'all';
   const byId = new Map(fullDeck.map(c => [c.id, c]));
   const deck = cards.queue ? cards.queue.map(id => byId.get(id)).filter(Boolean) : fullDeck;
@@ -32,7 +33,10 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
   const topicId = cards.topicId || card?.topicId;
   const subject = D.studySubjects?.find(item => item.topics.some(topic => topic.id === topicId));
   const topic = subject?.topics.find(item => item.id === topicId);
-  const topicLabel = topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : 'Seus cartões';
+  const topicLabel = cards.concept?.label || (topic ? [topic.num, topic.title].filter(Boolean).join(' · ') : 'Seus cartões');
+  const returnFromCards = () => cards.concept
+    ? go('map', { node: cards.concept.nodeId, topicId: cards.concept.topicId })
+    : go(backTo || 'dashboard');
   const node = D.mapNodes.find(n => n.id === card?.node);
   const parent = node && D.mapNodes.find(n => n.id === node.parent);
   const [error,setError]=React.useState('');
@@ -67,11 +71,11 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <BrandHeader variant="compact" floating={false} onExit={() => go(backTo || 'dashboard')}>
+      <BrandHeader variant="compact" floating={false} onExit={returnFromCards}>
         <span className="qb-overline">Revisão espaçada</span>
         <span style={{ font: '600 20px/1.25 var(--font-serif)', color: 'var(--text-primary)', overflowWrap: 'anywhere' }}>{topicLabel}</span>
       </BrandHeader>
-      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={() => go(backTo || 'dashboard')} />
+      <StudySessionHeader subject={subject?.name || 'Flashcards'} topic={topicLabel} unit="Cartão" current={Math.min(idx + 1, deck.length)} total={deck.length} onBack={returnFromCards} />
       <main style={{ width: '100%', maxWidth: 720, margin: '0 auto', padding: '40px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         {!cards.scheduledReview && <div>
           <div className="qb-seg" role="group" aria-label="Filtrar flashcards" style={{ flexWrap: 'wrap' }}>
@@ -84,7 +88,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
         </div>}
         {error&&<p role="alert">{error}</p>}
         {!done && ratings.at(-1) === 'errei' && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei voltou ao fim da fila e ficou marcado para amanhã.</p>}
-        {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{cards.scheduledReview ? <Button onClick={() => go('train')}>Voltar a Treinar</Button> : fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={()=>go('edital')}>Voltar ao edital</Button>}</Panel> : done ? (
+        {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{cards.scheduledReview ? <Button onClick={() => go('train')}>Voltar a Treinar</Button> : fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={cards.concept ? returnFromCards : () => go('edital')}>{cards.concept ? 'Voltar ao conceito' : 'Voltar ao edital'}</Button>}</Panel> : done ? (
           <Panel variant="ornate" padding={32} style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
             <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(D.reviews).length/200,1)} size={110} rule="Rumo a 200 flashcards revisados" />
             <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -93,7 +97,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
               <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcações “Errei” geraram repetições nesta sessão.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
                 {cards.scheduledReview ? <Button icon="target" onClick={() => go('train')}>Voltar a Treinar</Button> : <>
-                  <Button icon="house" onClick={() => go('dashboard')}>Voltar ao início</Button>
+                  <Button icon={cards.concept ? 'network' : 'house'} onClick={cards.concept ? returnFromCards : () => go('dashboard')}>{cards.concept ? 'Voltar ao conceito' : 'Voltar ao início'}</Button>
                   <Button variant="secondary" icon="rotate-ccw" onClick={() => pickFilter(mode)}>Revisar de novo</Button>
                 </>}
               </div>

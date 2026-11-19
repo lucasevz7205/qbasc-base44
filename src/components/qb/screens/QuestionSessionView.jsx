@@ -100,6 +100,9 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
 
   const { idx, answers, focus, ganBatch } = session;
   const scheduledReview = !!session.selection?.scheduledReview;
+  const concept = session.selection?.concept;
+  const origin = concept || (ganBatch?.originNodeId ? { nodeId: ganBatch.originNodeId, topicId: ganBatch.topicId } : null);
+  const returnFromQuestions = () => origin ? go('map', { node: origin.nodeId, topicId: origin.topicId }) : go(backTo || 'dashboard');
   const [ganBannerDismissed, setGanBannerDismissed] = React.useState(false);
   React.useEffect(() => {
     setGanBannerDismissed(false);
@@ -281,20 +284,20 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!focus && (
-        <BrandHeader variant="compact" floating={false} onExit={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}>
+        <BrandHeader variant="compact" floating={false} onExit={returnFromQuestions}>
           <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : session.selection?.randomOrder ? 'Treino aleatório' : 'Sessão de questões'}</span>
-          <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{q?.chapter || 'Treinar'}</span>
+          <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{concept?.label || q?.chapter || 'Treinar'}</span>
         </BrandHeader>
       )}
       <StudySessionHeader
         subject={q?.subject || 'Questões'}
-        topic={q?.chapter || ''}
+        topic={concept?.label || q?.chapter || ''}
         current={done ? 0 : roundProgress.position}
         total={roundProgress.total}
         completed={roundProgress.completed}
         focusMode={focus}
         onToggleFocus={() => patch({ focus: !focus })}
-        onBack={() => (ganBatch?.originNodeId ? go('map', { node: ganBatch.originNodeId, topicId: ganBatch.topicId }) : go(backTo || 'dashboard'))}
+        onBack={returnFromQuestions}
       />
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main key={stageKey} ref={stageRef} tabIndex={-1} data-current-question={done ? undefined : questionId} style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -308,7 +311,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           {!session.questionIds ? <p role="status">Preparando questões…</p> : !qs.length ? (
             <Panel>
               <p>{session.selection?.filter === 'wrong' ? 'Nenhuma questão errada nesta seleção.' : session.selection?.filter === 'unseen' ? 'Nenhuma questão inédita nesta seleção.' : 'Sem questões para esta seleção.'}</p>
-              <Button onClick={() => go('train')}>Voltar a Treinar</Button>
+              <Button onClick={concept ? returnFromQuestions : () => go('train')}>{concept ? 'Voltar ao conceito' : 'Voltar a Treinar'}</Button>
             </Panel>
           ) : done ? (
             <SessionSummary key={session.sessionId} answers={answers} go={go} qs={qs.filter(item => answers[item.id]?.revealed || !QB_DATA.excludedQuestionIds.has(item.id))} ganBatch={ganBatch} scheduledReview={scheduledReview} />

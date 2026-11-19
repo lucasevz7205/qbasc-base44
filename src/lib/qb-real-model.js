@@ -1,4 +1,4 @@
-import { indexConceptRemissions } from './concept-review.js';
+import { conceptLabelKey, indexConceptRemissions } from './concept-review.js';
 import {parseImport,importResult} from './map-import.js';
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-feedback';
@@ -140,8 +140,7 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
     const explicit = topic.ids.has(reference) ? reference : aliases[topicId]?.[reference];
     if (topic.ids.has(explicit)) return explicit;
     if (reverse && topic.ids.has(reverse)) return reverse;
-    const label = typeof theme === 'string' ? theme.normalize('NFC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('pt-BR') : '';
-    return topic[kind].get(id) || (!reference && topic.labels.get(label)) || roots[topicId];
+    return topic[kind].get(id) || (!reference && topic.labels.get(conceptLabelKey(theme))) || roots[topicId];
   };
   const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
   for(const card of uniqueCards){
