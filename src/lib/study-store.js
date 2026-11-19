@@ -26,7 +26,7 @@ export function diffDays(startDay, endDay) {
   return Math.round((b - a) / 86400000);
 }
 
-async function fetchAll(entity, filter, order = "created_date") {
+async function fetchAll(entity, filter, order = "id") {
   const pageSize = 500;
   const rows = [];
   for (let skip = 0; skip < 50000; skip += pageSize) {
@@ -54,7 +54,7 @@ export async function listClaudeCollection(collection) {
   const fragments = await fetchAll(
     base44.entities.ClaudeDocumentPart,
     { collection },
-    "part"
+    "id"
   );
   const byId = new Map();
   for (const part of fragments) {
@@ -65,11 +65,21 @@ export async function listClaudeCollection(collection) {
   return rows.map((row) => {
     const value = JSON.parse(row.payload_json);
     if (!value._claudeParts) return { ...value, id: row.legacy_id };
-    const pieces = (byId.get(row.legacy_id) || [])
-      .sort((a, b) => a.part - b.part)
-      .slice(0, value._claudeParts);
+    // A paginação deve usar id (único), nunca part (repetido em todos os documentos).
+    // Conferimos a sequência antes de reconstruir para evitar JSON truncado silenciosamente.
+    const pieces = (byId.get(value.fragmentId || row.legacy_id) || [])
+      .sort((a, b) => a.part - b.part);
+    const expected = Number(value._claudeParts);
+    if (pieces.length !== expected || pieces.some((piece, index) => piece.part !== index)) {
+      throw new Error('Fragmentos incompletos na revisão/documento ' + row.legacy_id +
+        ': esperados ' + expected + ', encontrados ' + pieces.length);
+    }
     const fullJson = pieces.map((p) => p.payload_chunk).join("");
-    return { ...JSON.parse(fullJson), id: row.legacy_id };
+    try {
+      return { ...JSON.parse(fullJson), id: row.legacy_id };
+    } catch (error) {
+      throw new Error('JSON inválido no documento ' + row.legacy_id + ': ' + error.message);
+    }
   });
 }
 
