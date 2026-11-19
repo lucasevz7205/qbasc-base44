@@ -58,7 +58,7 @@ test('avaliações por nó recebem o recorte e a referência sem excluir o forma
   const context = { user: { role: 'admin' }, getBase44: () => ({
     asServiceRole: { integrations: { Core: { InvokeLLM: async ({ prompt }) => {
       prompts.push(prompt);
-      return { clarityScore: 85 };
+      return { clarityScore: 85, modelAnswer: "Imagine duas regras para o mesmo jogo." };
     } } } },
   }) };
   const data = { topicLabel: 'Poderes e relações entre poderes', explanation: 'O controle compara a lei com o parâmetro constitucional.' };
@@ -66,6 +66,8 @@ test('avaliações por nó recebem o recorte e a referência sem excluir o forma
 
   const result = await evaluateFeynmanExplanation({ context, data: { ...data, subjectLabel: 'Ciência política', node } });
   assert.equal(result.clarityScore, 85);
+  assert.equal(result.modelAnswer, "Imagine duas regras para o mesmo jogo.");
+  assert.match(prompts[0], /modelAnswer/);
   assert.ok(prompts[0].includes(JSON.stringify({ materia: 'Ciência política', assunto: data.topicLabel, no: node })));
   assert.match(prompts[0], /Avalie o nó escolhido, sem exigir cobertura de outros ramos/);
   await evaluateFeynmanExplanation({ context, data });

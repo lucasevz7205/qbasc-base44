@@ -291,6 +291,7 @@ const FeynmanFeedbackSchema = z.object({
   exampleFeedback: z.string(),
   gaps: z.array(z.string()).max(3),
   nextStep: z.string(),
+  modelAnswer: z.string().trim().min(1),
 });
 
 export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
@@ -321,6 +322,7 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
       "- hasConcreteExample: true se o aluno incluiu um exemplo prático ou aplicação concreta.",
       "- exampleFeedback: comentário sobre o exemplo usado (ou sugestão de um exemplo curto caso falte).",
       "- gaps: lista de até 3 omissões ou imprecisões importantes para o recorte escolhido.",
+      "- modelAnswer: escreva uma resposta completa em português, diretamente na voz de quem explica ao público escolhido. Responda sobre o conceito selecionado, use um exemplo concreto apropriado ao público e corrija as lacunas relevantes da tentativa. Use um ou dois parágrafos, sem notas ao aluno.",
       "- nextStep: recomendação prática em 1 frase sobre o que ajustar na reescrita.",
     ].join("\n\n");
 
@@ -356,6 +358,7 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
           exampleFeedback: { type: "string" },
           gaps: { type: "array", items: { type: "string" } },
           nextStep: { type: "string" },
+          modelAnswer: { type: "string", minLength: 1 },
         },
         required: [
           "clarityScore",
@@ -369,10 +372,12 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
           "exampleFeedback",
           "gaps",
           "nextStep",
+          "modelAnswer",
         ],
       },
     });
 
+    if (!res?.modelAnswer?.trim()) throw new Error("A avaliação veio sem a resposta-modelo. Tente novamente.");
     return {
       words,
       ...res,

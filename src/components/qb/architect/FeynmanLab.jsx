@@ -106,7 +106,7 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
             />
             {personal && <small style={{ color: 'var(--text-muted)' }}>Ao avaliar, o Gemini recebe sua explicação e o recorte selecionado.</small>}
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <Button icon="sparkles" loading={busy} disabled={text.trim().length < 20 || busyKey !== null} onClick={evaluate}>
+              <Button icon="astrolabe" loading={busy} disabled={text.trim().length < 20 || busyKey !== null} onClick={evaluate}>
                 Avaliar com IA
               </Button>
               <Button variant="ghost" disabled={busy} onClick={() => updateAttempt({ text: '', fb: null, error: null })}>
@@ -135,18 +135,6 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
               </p>
             ) : fb ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  <FeedbackItem ok={fb.isAdequateLength}>
-                    <strong>{fb.words} palavras:</strong> {fb.lengthFeedback}
-                  </FeedbackItem>
-                  <FeedbackItem ok={!fb.jargonDetected?.length}>
-                    {fb.jargonDetected?.length
-                      ? `Jargão detectado (${fb.jargonDetected.join(', ')}): ${fb.jargonFeedback}`
-                      : fb.jargonFeedback || 'Linguagem acessível e sem jargão excessivo.'}
-                  </FeedbackItem>
-                  <FeedbackItem ok={fb.sentenceClarityOk}>{fb.sentenceFeedback}</FeedbackItem>
-                  <FeedbackItem ok={fb.hasConcreteExample}>{fb.exampleFeedback}</FeedbackItem>
-                </ul>
                 {Array.isArray(fb.gaps) && fb.gaps.length > 0 && (
                   <div style={{ paddingTop: 8, borderTop: '1px solid var(--divider)', display: 'flex', flexDirection: 'column', gap: 6 }}>
                     <span className="qb-overline" style={{ color: 'var(--state-attention)' }}>Pontos técnicos para reforçar</span>
@@ -162,6 +150,22 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
                     <strong>Próximo passo:</strong> {fb.nextStep}
                   </p>
                 )}
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <FeedbackItem ok={fb.isAdequateLength}>
+                    <strong>{fb.words} palavras:</strong> {fb.lengthFeedback}
+                  </FeedbackItem>
+                  <FeedbackItem ok={!fb.jargonDetected?.length}>
+                    {fb.jargonDetected?.length
+                      ? `Jargão detectado (${fb.jargonDetected.join(', ')}): ${fb.jargonFeedback}`
+                      : fb.jargonFeedback || 'Linguagem acessível e sem jargão excessivo.'}
+                  </FeedbackItem>
+                  <FeedbackItem ok={fb.sentenceClarityOk}>{fb.sentenceFeedback}</FeedbackItem>
+                  <FeedbackItem ok={fb.hasConcreteExample}>{fb.exampleFeedback}</FeedbackItem>
+                </ul>
+                <section style={{ borderTop: '1px solid var(--divider)', paddingTop: 12 }}>
+                  <h3 className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Resposta-modelo · {profile.label}</h3>
+                  <p style={{ whiteSpace: 'pre-line', font: '400 14px/1.5 var(--font-body)', color: 'var(--text-primary)' }}>{fb.modelAnswer}</p>
+                </section>
               </div>
             ) : null}
           </section>
