@@ -2,13 +2,35 @@ export const conceptLabelKey = value => typeof value === 'string'
   ? value.normalize('NFC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('pt-BR')
   : '';
 
+function searchable(value) {
+  return conceptLabelKey(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// A legacy item can name its concept in its theme or in the prompt itself.
+export function matchLegacyConcept(topic, theme, prompt) {
+  for (const value of [theme, prompt]) {
+    const words = searchable(value);
+    if (!words) continue;
+    const matches = topic.phrases.filter(({ phrase }) => (' ' + words + ' ').includes(' ' + phrase + ' '));
+    const specific = matches.filter(candidate => !matches.some(other =>
+      other !== candidate && (' ' + other.phrase + ' ').includes(' ' + candidate.phrase + ' ') && other.phrase !== candidate.phrase));
+    if (specific.length === 1) return specific[0].id;
+    if (specific.length) return undefined;
+  }
+}
+
 export function indexConceptRemissions(mindMaps, revisions) {
   const topics = new Map();
   for (const map of mindMaps) {
-    const topic = topics.get(map.topicId) || { ids: new Map(), labels: new Map(), questoes: new Map(), cartoes: new Map() };
+    const topic = topics.get(map.topicId) || { phrases: [], ids: new Map(), labels: new Map(), questoes: new Map(), cartoes: new Map() };
     topics.set(map.topicId, topic);
     for (const node of map.nodes) {
       topic.ids.set(node.id, node);
+      const phrase = searchable(node.label.replace(/^\s*\d+(?:\.\d+)*[.)\s-]+/, ''));
+      if (node.parent && phrase.length >= 5 && !/^(conceito|regra geral|resumo|exemplos?|aplicacao|fundamento|definicao|introducao)$/.test(phrase)) {
+        topic.phrases.push({ id: node.id, phrase });
+      }
       const key = conceptLabelKey(node.label);
       topic.labels.set(key, topic.labels.has(key) ? null : node.id);
     }
