@@ -15,6 +15,7 @@ import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
 import { stripFlashcardContext } from "@/lib/flashcard-standard";
 import { continueTutorConversation } from "@/lib/tutor-continuation";
 import { FEYNMAN_AUDIENCES, FEYNMAN_SCOPE_LIMITS } from "@/lib/feynman-scope";
+import { ARCHITECT_CLAIM_RULES, tutorContestationDirective } from "@/lib/tutor-claim-rules";
 
 export const getServerTime = createServerFn({ method: "GET" }).handler(async () => ({
   now: new Date().toISOString(),
@@ -102,10 +103,12 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       `Diretriz pedagógica atual: ${(profile && personalMode) || MODE_INSTRUCTIONS[data.mode]}`,
       profile ? "Diferencie explicação, inferência e afirmação documentada. Quando faltar base para conferir uma regra, indique a necessidade de consultar a fonte original." : CEBRASPE_V1_TUTOR_RULES,
       !profile && ["banca", "armadilhas"].includes(data.mode) ? CEBRASPE_V1_GENERATION_RULES : "",
+      ARCHITECT_CLAIM_RULES,
       historyBlock ? `Histórico recente da conversa:\n${historyBlock}` : "",
       historyBlock
         ? "Continue a conversa diretamente. Pule cumprimentos, saudações e apresentações, mesmo após uma mudança de modo pedagógico."
         : "Na primeira resposta, um cumprimento breve é opcional.",
+      tutorContestationDirective(data.userMessage, Boolean(historyBlock)),
       `Mensagem/solicitação atual do estudante:\n${data.userMessage}`,
       "Responda em português (pt-BR), em texto fluido e bem estruturado (máximo de 2 a 3 parágrafos curtos ou tópicos objetivos).",
     ]
