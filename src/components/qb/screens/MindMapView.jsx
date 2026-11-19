@@ -21,7 +21,7 @@ import { approvePersonalMapGan } from '@/lib/study-accounts';
 import { buildNodeFlashcardRecord } from '@/lib/node-flashcards';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
-import { findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
+import { centralGanRound, findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -727,7 +727,8 @@ export default function MindMapView({
           returnFocus={flashcardFocus} onApprove={approveFlashcard} onDiscard={id => updateFlashcard(id, { status: 'discarded' })}
           onStudy={cardIds => { setFlashcardReviewOpen(false); go('flashcards', { topicId: chosen.topicId, cardIds }); }} />}
         {ganPackageNode && <GanPackageDialog key={ganPackageNode.id} nodes={nodes} initialNode={ganPackageNode}
-          open onOpenChange={open => { if (!open) setGanPackageNode(null); }} onGenerate={handleGenerateGan} />}
+          open onOpenChange={open => { if (!open) setGanPackageNode(null); }} onGenerate={handleGenerateGan}
+          onDistribute={ganPackageNode.id === chosen.id ? () => handleGenerateGan(centralGanRound(nodes, chosen.id, D.questionBank || [])) : undefined} />}
         {ganReview && <GanReviewDialog key={ganReview.id} review={ganReview} open={ganReviewOpen} onOpenChange={setGanReviewOpen}
           returnFocus={ganReviewFocus} fallbackFocus={ganReviewButton} questionBank={D.questionBank} onApprove={approveGanEntry}
           onDiscard={entry => setReviewEntry(entry, { status: 'discarded' })} onTrain={trainGanReview} />}

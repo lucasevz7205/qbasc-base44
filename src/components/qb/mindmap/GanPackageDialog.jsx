@@ -5,7 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 const PACKAGE_LIMIT = 8;
 const NODE_LIMIT = 6;
 
-export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGenerate }) {
+export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGenerate, onDistribute }) {
   const [counts, setCounts] = React.useState(() => ({ [initialNode.id]: 4 }));
   const allocations = nodes.flatMap(target => counts[target.id] ? [{ target, count: counts[target.id] }] : []);
   const total = allocations.reduce((sum, row) => sum + row.count, 0);
@@ -38,6 +38,7 @@ export function GanPackageDialog({ nodes, initialNode, open, onOpenChange, onGen
           </div>
           <footer className="qb-gan-review__footer">
             <span role="status">{total} de {PACKAGE_LIMIT} questões no pacote</span>
+            {onDistribute && <Button variant="secondary" onClick={onDistribute}>Distribuir 20 pelos ramos</Button>}
             <Button disabled={!total || total > PACKAGE_LIMIT} onClick={() => onGenerate(allocations)}>
               Gerar pacote
             </Button>

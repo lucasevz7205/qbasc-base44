@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
-import { approveGanReview, ganReviewDraft, ganReviewEntries, ganReviewQuality } from '../src/lib/gan-review.js';
+import { approveGanReview, canAutoApproveGan, ganReviewDraft, ganReviewEntries, ganReviewQuality } from '../src/lib/gan-review.js';
 import { buildGanQuestionRecord, isApprovedGanQuestion, runGanQueue } from '../src/lib/gan-queue.js';
 
 const node = { id: 'n', label: 'Governança' };
@@ -97,4 +97,18 @@ test('lote administrativo entrega candidatos para revisão e adia a gravação',
   assert.equal(reviews[0].status, 'pending');
   assert.equal(reviews[0].record, undefined);
   assert.equal(ganReviewEntries(node, result, false)[0].status, 'report');
+});
+
+test('aprovação automática exige escore acima de 90, nó exato e trecho verificado', () => {
+  const blind = { ...rejection, veredicto: 'APROVADA', gabaritoDiscriminador: 'E', falhasDetectadas: [] };
+  const result = normalizeGanConfrontation([candidate], [{ ...blind, scoreRealismo: 90.1 }], map);
+  const item = { ...result.questoes[0], fundamentacaoCega: { verificacao: 'trecho_localizado' } };
+  assert.equal(canAutoApproveGan(item, 'n'), true);
+  assert.equal(canAutoApproveGan({ ...item, ganScore: 90 }, 'n'), false);
+  assert.equal(canAutoApproveGan(item, 'outro'), false);
+  assert.equal(canAutoApproveGan({ ...item, fundamentacaoCega: undefined }, 'n'), false);
+  assert.equal(canAutoApproveGan({ ...item, statusConfronto: 'refinada_gan' }, 'n'), false);
+  assert.equal(canAutoApproveGan(item, 'n', [{ id: 'preexistente', statement: item.enunciado }]), false);
+  const wrongNode = normalizeGanConfrontation([{ ...candidate, mapaNoId: 'fora' }], [{ ...blind, scoreRealismo: 97 }], map, { targetNodeId: 'n' });
+  assert.equal(canAutoApproveGan({ ...wrongNode.questoes[0], fundamentacaoCega: item.fundamentacaoCega }, 'n'), false);
 });

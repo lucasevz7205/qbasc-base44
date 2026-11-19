@@ -36,6 +36,8 @@ export function canAutoApproveGan(item, targetNodeId, questionBank = []) {
     && item.veredictoDiscriminador === 'APROVADA'
     && Number.isFinite(item.ganScore) && item.ganScore > 90 && item.ganScore <= 100
     && item.fundamentacaoCega?.verificacao === 'trecho_localizado'
+    && !item.fundamentacaoCega.limitacao
+    && !item.falhasDetectadas?.length
     && Boolean(text(item.comentario))
     && !ganReviewQuality(ganReviewDraft(item), questionBank, item.id).problems.length;
 }
