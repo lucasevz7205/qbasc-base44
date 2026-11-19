@@ -66,14 +66,6 @@ export function ganFailureLabel(failure) {
   return (stageLabels[failure.etapa] || stageLabels.servidor) + ' · ' + failure.mensagem;
 }
 
-export const ganTransportFailure = {
-  etapa: 'servidor', codigo: 'servidor-falhou', mensagem: defaultMessages.servidor,
-};
-
-export const ganStorageFailure = {
-  etapa: 'gravacao', codigo: 'gravacao-falhou', mensagem: defaultMessages.gravacao,
-};
-
 export function assertGanJudgments(judgments, count) {
   if (!Array.isArray(judgments) || judgments.length !== count ||
       judgments.some(j => !Number.isInteger(j?.index) || j.index < 0 || j.index >= count) ||

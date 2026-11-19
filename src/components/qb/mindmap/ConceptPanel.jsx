@@ -28,7 +28,6 @@ export default function ConceptPanel({
   onGenerateFlashcards,
   flashcardsLoading = false,
   ganLoading = false,
-  ganUnavailable = false,
   ganError = '',
   onOpenGanReview,
   returnTo,
@@ -122,13 +121,13 @@ export default function ConceptPanel({
               <>
                 <Button icon="astrolabe" iconRight={generationOpen ? 'chevron-up' : 'chevron-down'}
                   aria-expanded={generationOpen} aria-controls={optionsId} loading={generating}
-                  disabled={ganUnavailable || generating} onClick={() => setGenerationOpen(value => !value)} fullWidth>
+                  onClick={() => setGenerationOpen(value => !value)} fullWidth>
                   {generating ? 'Gerando…' : 'Gerar'}
                 </Button>
                 <div id={optionsId} hidden={!generationOpen}>
                   <div style={{ display: 'grid', gap: 8 }}>
-                    {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating || ganUnavailable} onClick={onGenerateGan} fullWidth>Escolher quantidade de questões</Button>}
-                    {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating || ganUnavailable} onClick={onGenerateFlashcards} fullWidth>Flashcards</Button>}
+                    {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating} onClick={onGenerateGan} fullWidth>Escolher quantidade de questões</Button>}
+                    {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating} onClick={onGenerateFlashcards} fullWidth>Flashcards</Button>}
                   </div>
                 </div>
               </>

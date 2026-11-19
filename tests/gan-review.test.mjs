@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
 import { approveGanReview, canAutoApproveGan, ganReviewDraft, ganReviewEntries, ganReviewQuality } from '../src/lib/gan-review.js';
-import { buildGanQuestionRecord, isApprovedGanQuestion, runGanQueue } from '../src/lib/gan-queue.js';
+import { buildGanQuestionRecord } from '../src/lib/gan-queue.js';
 
 const node = { id: 'n', label: 'Governança' };
 const map = { nodes: [node] };
@@ -66,7 +66,6 @@ test('validação manual pode aprovar um item divergente e preserva o diagnósti
   assert.equal(record.gabaritoDiscriminador, 'C');
   assert.equal(record.gabarito, 'E');
   assert.ok(record.tags.includes('Aprovada em revisão manual'));
-  assert.equal(isApprovedGanQuestion(approved), false, 'a aprovação manual não é uma aprovação automática');
 });
 
 test('aprovação manual exige o portão de qualidade e detecta duplicação no banco', () => {
@@ -101,20 +100,16 @@ test('revisão GAN aprova questão com comentário vazio, curto ou repetido', ()
   }
 });
 
-test('lote administrativo entrega candidatos para revisão e adia a gravação', async () => {
+test('lote mantém propostas pendentes e identifica as questões já gravadas', () => {
   const result = normalizeGanConfrontation([candidate], [rejection], map);
-  const reviews = [];
-  const report = await runGanQueue({
-    chosen, pending: [node], generate: async () => result,
-    save: async () => assert.fail('A fila em revisão não pode gravar antes da decisão.'),
-    onReview: (target, batch) => reviews.push(...ganReviewEntries(target, batch, true)),
-  });
-  assert.equal(report.paraRevisao, 1);
-  assert.equal(report.aprovadas, 0);
-  assert.equal(report.erros, 0);
-  assert.equal(reviews[0].status, 'pending');
-  assert.equal(reviews[0].record, undefined);
+  const [pending] = ganReviewEntries(node, result, true);
+  assert.equal(pending.status, 'pending');
+  assert.equal(pending.record, undefined);
   assert.equal(ganReviewEntries(node, result, false)[0].status, 'report');
+  const record = buildGanQuestionRecord(approveGanReview(pending.item, ganReviewDraft(pending.item)), { chosen, node });
+  const [saved] = ganReviewEntries(node, { ...result, registros: [record] }, true);
+  assert.equal(saved.status, 'saved');
+  assert.equal(saved.record, record);
 });
 
 test('aprovação automática exige escore acima de 90, nó exato e trecho verificado', () => {

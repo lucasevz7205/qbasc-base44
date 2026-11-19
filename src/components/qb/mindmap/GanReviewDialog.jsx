@@ -150,7 +150,7 @@ export function GanReviewDialog({ review, open, onOpenChange, returnFocus, fallb
                     {status === 'saved' && <Badge tone="correct">Gravada</Badge>}
                     {status === 'discarded' && <Badge>Descartada</Badge>}
                   </div>
-                  {review.queue && <p className="qb-overline">{node.label}</p>}
+                  {node.id !== review.anchor.id && <p className="qb-overline">{node.label}</p>}
                   <p className="qb-gan-review__statement">{record?.enunciado || draft.statement || 'Enunciado ausente.'}</p>
                   <p className="qb-gan-review__recommendation">Recomendação da IA · {verdicts[item.veredictoDiscriminador] || 'Sem recomendação'}</p>
                   <details className="qb-gan-review__details">

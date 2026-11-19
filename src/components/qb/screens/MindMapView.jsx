@@ -21,7 +21,7 @@ import { approvePersonalMapGan } from '@/lib/study-accounts';
 import { buildNodeFlashcardRecord } from '@/lib/node-flashcards';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
-import { centralGanRound, findNodesWithoutQuestions, runGanQueue, buildGanSource, buildGanQuestionRecord, GAN_QUEUE_MIN_QUESTIONS, GAN_QUEUE_MAX_NODES_PER_RUN } from '@/lib/gan-queue';
+import { centralGanRound, buildGanSource, buildGanQuestionRecord } from '@/lib/gan-queue';
 
 export default function MindMapView({
   topicId: topicIdProp,
@@ -40,7 +40,7 @@ export default function MindMapView({
   radialOpen: radialOpenProp,
   setRadialOpen: setRadialOpenProp,
 }) {
-  const { QB_DATA: D, QB_EDITAL: E, save, importMap, isAdmin, accountId, cacheGanQuestions, saveNodeFlashcard } = useRealStudy();
+  const { QB_DATA: D, QB_EDITAL: E, save, importMap, isAdmin, cacheGanQuestions, saveNodeFlashcard } = useRealStudy();
   const generateGanFn = useServerFn(generateMindMapGanQuestions);
   const approvePersonalGanFn = useServerFn(approvePersonalMapGan);
   const generateFlashcardsFn = useServerFn(generateMindMapFlashcards);
@@ -55,19 +55,7 @@ export default function MindMapView({
   const [ganReviewOpen, setGanReviewOpen] = React.useState(false);
   const ganReviewFocus = React.useRef(null);
   const ganReviewButton = React.useRef(null);
-  const [queueRunning, setQueueRunning] = React.useState(false);
-  const [queueProgress, setQueueProgress] = React.useState(null);
-  const [queueReport, setQueueReport] = React.useState(null);
-  const queueAutoKey = 'qb-gan-auto:' + accountId;
-  const [queueAuto, setQueueAutoState] = React.useState(() => {
-    try { return localStorage.getItem(queueAutoKey) === '1'; } catch { return false; }
-  });
   const ganTask = React.useRef(null);
-  const queueAutoDone = React.useRef(new Set());
-  const setQueueAuto = value => {
-    setQueueAutoState(value);
-    try { localStorage.setItem(queueAutoKey, value ? '1' : '0'); } catch { /* ignore */ }
-  };
   const [mapMaximized, setMapMaximized] = React.useState(false);
   const [showPanelInMax, setShowPanelInMax] = React.useState(true);
 
@@ -126,11 +114,6 @@ export default function MindMapView({
   }, [node?.id, isRadialOpen]);
   const flashcardReview = flashcardReviews[node?.id];
 
-  // Fila do Arquiteto: nós-folha com resumo e menos de 2 questões vinculadas.
-  const ganPending = React.useMemo(
-    () => chosen ? findNodesWithoutQuestions({ nodes, concepts: D.concepts || {}, questionBank: D.questionBank || [], rootId: chosen.id }) : [],
-    [chosen, nodes, D.concepts, D.questionBank],
-  );
   const mapId = chosen?.id;
   const ganReview = ganReviews[mapId];
   const ganReviewPending = Boolean(ganReview?.entries.some(entry => entry.status === 'pending'));
@@ -138,75 +121,30 @@ export default function MindMapView({
     ganReviewFocus.current = event.currentTarget;
     setGanReviewOpen(true);
   }, []);
-  const newGanReview = React.useCallback((entries, anchor, queue, open) => {
-    if (!entries.length) return false;
+  const newGanReview = (entries, anchor) => {
+    if (!entries.length) return;
     setGanReviews(current => ({ ...current, [mapId]: {
-      id: entries[0].item.id, anchor, queue, entries, manual: true,
+      id: entries[0].item.id, anchor, entries, manual: true,
     } }));
-    if (open && entries.some(entry => entry.status === 'pending')) setGanReviewOpen(true);
-    return true;
-  }, [mapId]);
+    if (entries.some(entry => entry.status === 'pending')) setGanReviewOpen(true);
+  };
   React.useEffect(() => {
     setGanReviewOpen(false);
     setGanPackageNode(null);
-    setQueueReport(null);
-    setQueueProgress(null);
     return () => {
-      if (ganTask.current) {
-        ganTask.current.stop = true;
-        ganTask.current.discard = true;
-      }
+      if (ganTask.current) ganTask.current.discard = true;
     };
   }, [mapId, isRadialOpen]);
 
-  const generateNode = React.useCallback(async (target, queue, extraContext = '', count = 4) => {
+  const generateNode = async (target, count, extraContext) => {
     const data = isAdmin
       ? buildGanSource({ chosen, nodes, concepts: D.concepts, node: target, count, subjectName: subj?.name })
-      : { topicId: chosen.topicId, targetNodeId: target.id, count, queue };
+      : { topicId: chosen.topicId, targetNodeId: target.id, count };
     if (isAdmin && extraContext) data.sourceContext = [data.sourceContext, extraContext].filter(Boolean).join('\n\n').slice(0, 7500);
     const result = await generateGanFn({ data });
     if (result?.registros?.length) await cacheGanQuestions(result.registros);
     return result;
-  }, [isAdmin, chosen, nodes, D.concepts, subj?.name, generateGanFn, cacheGanQuestions]);
-
-  const runQueue = React.useCallback(async event => {
-    if (!chosen || isRadialOpen || ganTask.current) return;
-    if (ganReviewPending) {
-      if (event) openGanReview(event);
-      return;
-    }
-    if (!ganPending.length) return;
-    if (event) ganReviewFocus.current = event.currentTarget;
-    const entries = [];
-    const task = { stop: false, discard: false };
-    ganTask.current = task;
-    setQueueRunning(true);
-    setQueueReport(null);
-    try {
-      const report = await runGanQueue({
-        chosen,
-        pending: ganPending,
-        generate: target => generateNode(target, true),
-        onReview: (target, result) => entries.push(...ganReviewEntries(target, result, true)),
-        shouldStop: () => task.stop,
-        onProgress: setQueueProgress,
-      });
-      if (!task.discard) {
-        setQueueReport(report);
-        newGanReview(entries, { id: chosen.id, label: chosen.title }, true, Boolean(event));
-      }
-    } finally {
-      ganTask.current = null;
-      setQueueRunning(false);
-      setQueueProgress(null);
-    }
-  }, [chosen, isRadialOpen, ganPending, generateNode, ganReviewPending, openGanReview, newGanReview]);
-
-  React.useEffect(() => {
-    if (!queueAuto || !mapId || isRadialOpen || ganTask.current || ganReviewPending || !ganPending.length || queueAutoDone.current.has(mapId)) return;
-    queueAutoDone.current.add(mapId);
-    runQueue();
-  }, [queueAuto, mapId, isRadialOpen, ganReviewPending, ganPending.length, queueRunning, ganLoading, runQueue]);
+  };
 
   const handleSelectTopic = nextTopicId => {
     const nextSubj = allSubjects.find(s => s.topics.some(t => t.id === nextTopicId));
@@ -383,7 +321,7 @@ export default function MindMapView({
     let saved;
     if (isAdmin) {
       const item = approveGanReview(entry.item, draft, D.questionBank);
-      const record = buildGanQuestionRecord(item, { chosen, node: entry.node, queue: ganReview.queue });
+      const record = buildGanQuestionRecord(item, { chosen, node: entry.node });
       saved = await save('questoes', record.id, record);
     } else {
       saved = await approvePersonalGanFn({ data: {
@@ -445,7 +383,7 @@ export default function MindMapView({
       setFlashcardReviewOpen(true);
       return;
     }
-    const task = { stop: false, discard: false };
+    const task = { discard: false };
     ganTask.current = task;
     setFlashcardsLoading(true);
     setGanError('');
@@ -482,11 +420,10 @@ export default function MindMapView({
   const handleGenerateGan = async batches => {
     if (ganTask.current) return;
     setGanPackageNode(null);
-    const task = { stop: false, discard: false };
+    const task = { discard: false };
     ganTask.current = task;
     setGanLoading(true);
     setGanError('');
-    setQueueReport(null);
 
     try {
       let additionalContext = '';
@@ -514,9 +451,9 @@ export default function MindMapView({
       let saveFailures = 0;
       const requested = batches.reduce((sum, batch) => sum + batch.count, 0);
       for (const {target,count} of batches) {
-        if (task.stop) return;
+        if (task.discard) return;
         try {
-          const res = await generateNode(target, false, additionalContext, count);
+          const res = await generateNode(target, count, additionalContext);
           if (task.discard) return;
           if (res?.falha) { failure = ganFailureLabel(res.falha); break; }
           entries.push(...ganReviewEntries(target,res || {},true).slice(0,count));
@@ -524,7 +461,7 @@ export default function MindMapView({
         } catch (err) { failure = err.message || 'Falha na geração.'; break; }
       }
       if (task.discard) return;
-      newGanReview(entries,node,false,true);
+      newGanReview(entries, node);
       if (failure || entries.length < requested) setGanError(entries.length + ' de ' + requested + ' questões geradas. ' + failure);
       if (saveFailures) setGanError(previous => [previous, 'Parte das gravações automáticas falhou. Confira as questões na revisão.'].filter(Boolean).join(' '));
     } catch (err) {
@@ -534,6 +471,20 @@ export default function MindMapView({
       setGanLoading(false);
     }
   };
+
+  const ganActionLabel = ganReviewPending ? 'Revisar questões GAN' : 'Gerar questões com O Arquiteto';
+  const ganActions = <>
+    <Button size="sm" icon="list-checks" disabled={ganLoading || flashcardsLoading} ref={ganReviewButton}
+      aria-haspopup="dialog" aria-label={ganActionLabel} onClick={openGanPackage}>
+      {mapMaximized ? <span className="qb-map-full-header__action-text">{ganReviewPending ? 'Revisar questões' : 'Gerar questões'}</span> : ganActionLabel}
+    </Button>
+    {!ganReviewPending && ganReview?.entries.some(entry => entry.status === 'saved') && (
+      <Button size="sm" variant="secondary" icon="target" aria-label="Treinar pacote"
+        disabled={ganLoading || flashcardsLoading} onClick={trainGanReview}>
+        {mapMaximized ? <span className="qb-map-full-header__action-text">Treinar pacote</span> : 'Treinar pacote'}
+      </Button>
+    )}
+  </>;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -546,9 +497,7 @@ export default function MindMapView({
         <span style={{ flex: 1 }} />
         {!mapMaximized && <>
           <StudyClockControls />
-          <Button size="sm" icon="list-checks" disabled={ganLoading || queueRunning} aria-haspopup="dialog" onClick={openGanPackage}>
-            Gerar questões com O Arquiteto
-          </Button>
+          {ganActions}
         </>}
         {qn > 0 ? (
           <Button
@@ -605,10 +554,7 @@ export default function MindMapView({
             </div>
             <div className="qb-map-full-header__actions">
               <StudyClockControls />
-              <Button size="sm" icon="list-checks" disabled={ganLoading || queueRunning} aria-haspopup="dialog"
-                aria-label="Gerar questões com O Arquiteto" onClick={openGanPackage}>
-                <span className="qb-map-full-header__action-text">Gerar questões</span>
-              </Button>
+              {ganActions}
               {sessionReturn && (
                 <Button size="sm" variant="secondary" icon="corner-up-left" aria-label={sessionReturn.label}
                   title={sessionReturn.label} onClick={sessionReturn.onReturn}>
@@ -636,48 +582,6 @@ export default function MindMapView({
                 <span className="qb-map-full-header__action-text">Reduzir tela</span>
               </Button>
             </div>
-          </div>
-        )}
-        {(ganPending.length > 0 || queueRunning || queueReport || ganReview) && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', padding: '8px 12px', marginBottom: 10 }}>
-            <Badge tone="gold">Fila do Arquiteto</Badge>
-            <span style={{ fontSize: 13 }}>
-              {queueRunning && queueProgress
-                ? `Gerando e confrontando ${queueProgress.atual} de ${queueProgress.total}: ${queueProgress.no}`
-                : queueReport
-                  ? `${chosen.title} · ${queueReport.geradas || 0} geradas · ${queueReport.aprovadas} salvas automaticamente · ${queueReport.paraRevisao || 0} para revisar · ${queueReport.erros + (queueReport.falhasGravacao || 0)} falhas`
-                  : `${ganPending.length} nó(s) deste mapa com menos de ${GAN_QUEUE_MIN_QUESTIONS} questões.`}
-            </span>
-            {ganReview && !queueReport && (
-              <span role="status">{chosen.title} · {ganReview.entries.length} geradas · {ganReview.entries.filter(entry => entry.status === 'saved' && entry.item.statusConfronto === 'aprovada_gan').length} salvas automaticamente</span>
-            )}
-            {ganReviewPending && (
-              <Button size="sm" variant="primary" icon="list-checks" ref={ganReviewButton} aria-haspopup="dialog" onClick={openGanReview}>
-                Revisar questões GAN
-              </Button>
-            )}
-            {ganReview && !ganReviewPending && ganReview.entries.some(entry => entry.status === 'saved') && (
-              <Button size="sm" variant="secondary" icon="target" onClick={trainGanReview}>Treinar pacote</Button>
-            )}
-            {!queueRunning && ganPending.length > 0 && !ganReviewPending && (
-              <Button size="sm" variant="secondary" icon="network" disabled={ganLoading} onClick={runQueue}>
-                {`Gerar pendentes (até ${GAN_QUEUE_MAX_NODES_PER_RUN} nós)`}
-              </Button>
-            )}
-            {queueRunning && (
-              <Button size="sm" variant="secondary" icon="x" onClick={() => { if (ganTask.current) ganTask.current.stop = true; }}>Parar</Button>
-            )}
-            <label style={{ fontSize: 12, display: 'flex', gap: 6, alignItems: 'center' }}>
-              <input type="checkbox" checked={queueAuto} onChange={e => setQueueAuto(e.target.checked)} />
-              Gerar ao abrir mapa novo
-            </label>
-            {queueReport?.falhas?.length > 0 && (
-              <ul role="status" style={{ flexBasis: '100%', margin: 0, paddingInlineStart: 20, fontSize: 13, color: 'var(--text-secondary)', overflowWrap: 'anywhere', maxHeight: '18dvh', overflowY: 'auto' }}>
-                {queueReport.falhas.map((failure, index) => (
-                  <li key={index}><strong>{failure.no}</strong> · {ganFailureLabel(failure)}</li>
-                ))}
-              </ul>
-            )}
           </div>
         )}
         {ganError && <p role="alert" className="qb-gan-review__problems">{ganError}</p>}
@@ -714,8 +618,7 @@ export default function MindMapView({
               onGenerateFlashcards={handleGenerateFlashcards}
               flashcardsLoading={flashcardsLoading}
               ganLoading={ganLoading}
-              ganUnavailable={queueRunning}
-              onOpenGanReview={ganReviewPending && ganReview?.anchor.id === node.id && !ganReview.queue ? openGanReview : undefined}
+              onOpenGanReview={ganReviewPending && ganReview.anchor.id === node.id ? openGanReview : undefined}
               returnTo={sessionReturn ? undefined : returnTo?.label}
               onReturn={onReturn}
               style={mapMaximized ? { height: '100%' } : { flex: '1 1 340px', maxWidth: 420, height: 620 }}
