@@ -32,14 +32,14 @@ export function overlapWithStatement(explanation, statement) {
  * Confere um item. `problems` bloqueiam o salvamento; `warnings` apenas avisam.
  * item: { statement, key, explanation, basis, mecanismo, correcaoMinima, trechoDecisivo }
  */
-export function questionQualityProblems(item = {}, { checkComment = true } = {}) {
+export function questionQualityProblems(item = {}, { checkComment = true, checkFalsification = true } = {}) {
   const problems = [];
   const warnings = [];
   const key = clean(item.key).toUpperCase();
   const code = clean(item.mecanismo).toUpperCase();
   if (!code) problems.push({ code: "mecanismo_ausente", message: "Falta o mecanismo de falsificação (F1–F10 para item Errado, V1–V4 para item Certo)." });
   else if (!mechanismForKey(code, key)) problems.push({ code: "mecanismo_incompativel", message: "O mecanismo " + code + " não combina com o gabarito " + (key || "?") + ": F só em item Errado, V só em item Certo." });
-  if (clean(item.correcaoMinima).length < 15) {
+  if ((key !== "C" || checkFalsification) && clean(item.correcaoMinima).length < 15) {
     problems.push({ code: "correcao_minima_ausente", message: key === "C"
       ? "Falta mostrar como o item seria falsificado: a menor alteração que o tornaria Errado, com o código F."
       : "Falta a correção mínima: a versão correta do item, por extenso." });

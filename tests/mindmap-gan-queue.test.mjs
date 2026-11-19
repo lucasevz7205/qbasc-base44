@@ -59,7 +59,7 @@ test('GAN individual usa o nó da própria conta e guarda propostas até a aprov
   const draft = {
     statement: 'A administração deve observar as normas que regem seus atos.',
     key: 'C', mecanismo: 'V1', explanation: 'Essa é a regra geral.', trechoDecisivo: 'A administração observa as normas.',
-    correcaoMinima: 'A administração pode ignorar em regra as normas.',
+    correcaoMinima: '',
   };
   const data = { topicId: input.topicId, targetNodeId: input.targetNodeId, questionId, reviewId, draft };
   await assert.rejects(approvePersonalMapGan({ context: { ...context, user: { role: 'user', id: 'outro' } },
@@ -69,6 +69,7 @@ test('GAN individual usa o nó da própria conta e guarda propostas até a aprov
   assert.equal(record.id, questionId);
   assert.equal(record.mapaNoId, input.targetNodeId);
   assert.equal(record.statusConfronto, 'aprovada_manual');
+  assert.equal(record.correcaoMinima, '');
   assert.deepEqual(db.filter(row => row.collection.endsWith('questoes')).map(row => [row.collection, row.legacy_id]), [
     ['qbasc-conta:lucas:questoes', questionId],
   ]);

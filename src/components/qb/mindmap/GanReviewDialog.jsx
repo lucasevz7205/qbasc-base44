@@ -68,7 +68,7 @@ function ReviewFields({ draft, onChange, quality, busy }) {
       <label>Trecho decisivo da fonte
         <textarea rows={2} maxLength={400} value={draft.trechoDecisivo} onChange={e => onChange('trechoDecisivo', e.target.value)} />
       </label>
-      <label>Correção mínima
+      <label>{draft.key === 'C' ? 'Como o item poderia ficar errado (opcional)' : 'Correção mínima'}
         <textarea rows={2} maxLength={600} value={draft.correcaoMinima} onChange={e => onChange('correcaoMinima', e.target.value)} />
       </label>
       <label>Comentário e fundamentação (opcional)

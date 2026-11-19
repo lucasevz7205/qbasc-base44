@@ -14,6 +14,12 @@ const candidate = {
   correcaoMinima: 'A competência decisória pertence ao dirigente da instituição.',
   trechoDecisivo: 'Compete ao dirigente decidir.',
 };
+const correctCandidate = {
+  ...candidate,
+  enunciado: 'A competência decisória para executar o orçamento pertence ao dirigente da instituição.',
+  gabarito: 'C', mecanismo: 'V1',
+  correcaoMinima: 'Atribuir a competência decisória à unidade consultiva (F3).',
+};
 const rejection = {
   index: 0, veredicto: 'REJEITADA', scoreRealismo: 54, gabaritoDiscriminador: 'C',
   falhasDetectadas: ['Possível ambiguidade'], criticaAdversaria: 'Confira o alcance da competência no regulamento.',
@@ -71,6 +77,18 @@ test('aprovação manual exige o portão de qualidade e detecta duplicação no 
   assert.throws(() => approveGanReview(item, draft, [{ id: 'outro', statement: draft.statement.toUpperCase() }]), /Já existe/);
 });
 
+test('revisão manual grava item Certo com a falsificação vazia ou breve', () => {
+  const [item] = normalizeGanConfrontation([correctCandidate], [rejection], map).bloqueadas;
+  for (const correcaoMinima of ['', 'Item correto.']) {
+    const draft = { ...ganReviewDraft(item), correcaoMinima };
+    assert.deepEqual(ganReviewQuality(draft).problems, []);
+    const record = buildGanQuestionRecord(approveGanReview(item, draft), { chosen, node });
+    assert.equal(record.statusConfronto, 'aprovada_manual');
+    assert.equal(record.gabarito, 'C');
+    assert.equal(record.correcaoMinima, correcaoMinima);
+  }
+});
+
 test('revisão GAN aprova questão com comentário vazio, curto ou repetido', () => {
   const [item] = normalizeGanConfrontation([candidate], [rejection], map).bloqueadas;
   const draft = ganReviewDraft(item);
@@ -109,6 +127,10 @@ test('aprovação automática exige escore acima de 90, nó exato e trecho verif
   assert.equal(canAutoApproveGan({ ...item, fundamentacaoCega: undefined }, 'n'), false);
   assert.equal(canAutoApproveGan({ ...item, statusConfronto: 'refinada_gan' }, 'n'), false);
   assert.equal(canAutoApproveGan(item, 'n', [{ id: 'preexistente', statement: item.enunciado }]), false);
+  const correctResult = normalizeGanConfrontation([correctCandidate], [{ ...blind, scoreRealismo: 97, gabaritoDiscriminador: 'C' }], map);
+  const trueItem = { ...correctResult.questoes[0], fundamentacaoCega: item.fundamentacaoCega };
+  assert.equal(canAutoApproveGan(trueItem, 'n'), true);
+  assert.equal(canAutoApproveGan({ ...trueItem, correcaoMinima: 'Item correto.' }, 'n'), false);
   const wrongNode = normalizeGanConfrontation([{ ...candidate, mapaNoId: 'fora' }], [{ ...blind, scoreRealismo: 97 }], map, { targetNodeId: 'n' });
   assert.equal(canAutoApproveGan({ ...wrongNode.questoes[0], fundamentacaoCega: item.fundamentacaoCega }, 'n'), false);
 });

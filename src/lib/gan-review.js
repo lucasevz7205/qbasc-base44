@@ -15,9 +15,9 @@ export function ganReviewDraft(item) {
   };
 }
 
-export function ganReviewQuality(draft, questionBank = [], currentId) {
+export function ganReviewQuality(draft, questionBank = [], currentId, { checkFalsification = false } = {}) {
   const statement = statementKey(draft.statement);
-  const { problems, warnings } = questionQualityProblems(draft, { checkComment: false });
+  const { problems, warnings } = questionQualityProblems(draft, { checkComment: false, checkFalsification });
   if (statement.length < 20) {
     problems.unshift({ code: 'enunciado_curto', message: 'Escreva um enunciado completo com pelo menos 20 caracteres.' });
   } else if (questionBank.some(row => row.id !== currentId && statementKey(row.statement) === statement)) {
@@ -39,7 +39,7 @@ export function canAutoApproveGan(item, targetNodeId, questionBank = []) {
     && !item.fundamentacaoCega.limitacao
     && !item.falhasDetectadas?.length
     && Boolean(text(item.comentario))
-    && !ganReviewQuality(ganReviewDraft(item), questionBank, item.id).problems.length;
+    && !ganReviewQuality(ganReviewDraft(item), questionBank, item.id, { checkFalsification: true }).problems.length;
 }
 
 export function approveGanReview(item, draft, questionBank = []) {
