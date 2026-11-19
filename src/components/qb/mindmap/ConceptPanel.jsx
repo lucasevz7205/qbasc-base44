@@ -22,8 +22,11 @@ export default function ConceptPanel({
   connections = [],
   sources = [],
   onNavigate,
-  onReview,
-  reviewCount,
+  onReviewQuestions,
+  onReviewCards,
+  questionCount = 0,
+  flashcardCount = 0,
+  reviewIncludesChildren = false,
   onGenerateGan,
   onGenerateFlashcards,
   flashcardsLoading = false,
@@ -38,6 +41,9 @@ export default function ConceptPanel({
   const tone = mastery && mastery.state;
   const [generationOpen, setGenerationOpen] = React.useState(false);
   const optionsId = React.useId();
+  const reviewOptionsId = React.useId();
+  const [reviewNode, setReviewNode] = React.useState(null);
+  const reviewOpen = reviewNode === nodeId;
   const generating = ganLoading || flashcardsLoading;
   return (
     <aside className="qb-panel" aria-label={`Conceito: ${title}`} style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
@@ -114,7 +120,7 @@ export default function ConceptPanel({
             </div>
           </section>
         )}
-        {(onReview || onGenerateGan || onGenerateFlashcards) && (
+        {(onReviewQuestions || onReviewCards || onGenerateGan || onGenerateFlashcards) && (
           <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <H>Revisão ativa</H>
             {(onGenerateGan || onGenerateFlashcards) && (
@@ -142,10 +148,26 @@ export default function ConceptPanel({
                 Ver revisão GAN deste nó
               </Button>
             )}
-            {onReview && (
-              <Button variant="secondary" icon="layers" onClick={onReview} fullWidth>
-                {reviewCount ? `Revisar ${reviewCount} flashcards deste conceito` : 'Revisar este conceito'}
-              </Button>
+            {(onReviewQuestions || onReviewCards) && (
+              <>
+                <Button variant="secondary" icon="layers" iconRight={reviewOpen ? 'chevron-up' : 'chevron-down'}
+                  aria-expanded={reviewOpen} aria-controls={reviewOptionsId}
+                  onClick={() => setReviewNode(reviewOpen ? null : nodeId)} fullWidth>
+                  Revisar este conceito
+                </Button>
+                <div id={reviewOptionsId} hidden={!reviewOpen}>
+                  <div style={{ display: 'grid', gap: 8 }}>
+                    {reviewIncludesChildren && <small style={{ color: 'var(--text-muted)' }}>Inclui itens vinculados aos sub-ramos.</small>}
+                    <Button variant="secondary" icon="layers" disabled={!flashcardCount} onClick={onReviewCards} fullWidth>
+                      Flashcards ({flashcardCount})
+                    </Button>
+                    <Button variant="secondary" icon="list-checks" disabled={!questionCount} onClick={onReviewQuestions} fullWidth>
+                      Questões ({questionCount})
+                    </Button>
+                    {!flashcardCount && !questionCount && <small style={{ color: 'var(--text-muted)' }}>Este conceito ainda não tem itens vinculados.</small>}
+                  </div>
+                </div>
+              </>
             )}
           </section>
         )}

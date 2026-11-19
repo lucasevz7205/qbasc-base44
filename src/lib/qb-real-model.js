@@ -1,3 +1,4 @@
+import { indexConceptRemissions } from './concept-review.js';
 import {parseImport,importResult} from './map-import.js';
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-feedback';
@@ -108,7 +109,7 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);
-      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
+      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),tema:c.tema,nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
     });
   }
   for(const entry of source('revisao').filter(d=>d.kind==='markdown-map').sort((a,b)=>a.created.localeCompare(b.created)||a.id.localeCompare(b.id))){
@@ -132,10 +133,19 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
     mapNodes.push(...next.nodes);
     for(const n of next.nodes)(aliases[entry.topico]??={})[n.id]=n.id;
   }
+  const remissions = indexConceptRemissions(mindMaps, source('revisao'));
+  const resolveNode = (topicId, kind, id, reference, theme, reverse) => {
+    const topic = remissions.get(topicId);
+    if (!topic) return undefined;
+    const explicit = topic.ids.has(reference) ? reference : aliases[topicId]?.[reference];
+    if (topic.ids.has(explicit)) return explicit;
+    if (reverse && topic.ids.has(reverse)) return reverse;
+    const label = typeof theme === 'string' ? theme.normalize('NFC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('pt-BR') : '';
+    return topic[kind].get(id) || (!reference && topic.labels.get(label)) || roots[topicId];
+  };
   const uniqueCards=[...new Map(flashcards.map(c=>[c.id,c])).values()];
   for(const card of uniqueCards){
-    const ownNode = mapByTopic[card.topicId]?.nodes.some(node => node.id === card.nodeRef);
-    card.node=ownNode ? card.nodeRef : aliases[card.topicId]?.[card.nodeRef]||roots[card.topicId];
+    card.node=resolveNode(card.topicId, 'cartoes', card.id, card.nodeRef, card.tema);
     if(topics[card.topicId]) topics[card.topicId].resources.cards++;
   }
   const isRetained = r => {
@@ -172,10 +182,10 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
       }
     }
     const rawNodeRef = q.mapaNoId??q.no??q.node??q.mapaNo;
-    const exactNode = mapNodes.some(n=>n.id===rawNodeRef) ? rawNodeRef : aliases[topic?.id]?.[rawNodeRef];
     const referencedNodes = questionNodeLinks.get(q.id)?.filter(link => link.topicId === topic?.id) || [];
     const uniqueReferences = [...new Set(referencedNodes.map(link => link.id))];
-    const resolvedNode = exactNode || (uniqueReferences.length === 1 ? uniqueReferences[0] : roots[topic?.id]);
+    const resolvedNode = resolveNode(topic?.id, "questoes", q.id, rawNodeRef, uniqueReferences.length ? null : q.tema,
+      uniqueReferences.length === 1 ? uniqueReferences[0] : undefined);
     const trap = resolveQuestionTrap(q, keyOf(q.gabarito), mechanisms);
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, trap?.code ? trap.name : null].filter(Boolean);
     questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});

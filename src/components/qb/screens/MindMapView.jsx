@@ -15,6 +15,7 @@ import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
+import { conceptReviewItems } from '@/lib/concept-review';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapFlashcards, generateMindMapGanQuestions } from '@/lib/server-fns';
 import { approvePersonalMapGan } from '@/lib/study-accounts';
@@ -36,7 +37,6 @@ export default function MindMapView({
   onReturn,
   sessionReturn,
   go,
-  dispatch,
   radialOpen: radialOpenProp,
   setRadialOpen: setRadialOpenProp,
 }) {
@@ -303,8 +303,11 @@ export default function MindMapView({
     path.unshift(p.label);
     p = nodes.find(n => n.id === p.parent);
   }
-  const card = D.flashcards.filter(f => f.node === node.id || (node.id === chosen.id && f.topicId === chosen.topicId)).length;
-  const qn = D.questionBank.filter(q => q.node === node.id || (node.id === chosen.id && q.topicId === chosen.topicId)).length;
+  const review = conceptReviewItems(chosen, node.id, D.questionBank, D.flashcards);
+  const concept = { nodeId: node.id, label: node.label, topicId: chosen.topicId };
+  const reviewQuestions = () => go('questions', { topicId: chosen.topicId, questionIds: review.questionIds, filter: 'all', concept });
+  const reviewCards = () => go('flashcards', { topicId: chosen.topicId, cardIds: review.cardIds, concept });
+  const qn = review.questionIds.length;
 
   const setReviewEntry = (entry, update) => {
     setGanReviews(current => {
@@ -504,15 +507,9 @@ export default function MindMapView({
             size="sm"
             variant="secondary"
             icon="target"
-            onClick={() =>
-              dispatch
-                ? node.id === chosen.id
-                  ? dispatch({ action: 'train', subjectId: subj?.id, topicId: chosen.topicId }, 'study')
-                  : dispatch({ action: 'node-questions', subjectId: subj?.id, topicId: chosen.topicId, nodeId: node.id }, 'study')
-                : go('questions', { topicId: chosen.topicId })
-            }
+            onClick={reviewQuestions}
           >
-            {qn} {qn > 1 ? 'questões deste nó' : 'questão deste nó'}
+            {qn} {qn > 1 ? 'questões' : 'questão'} {review.includesChildren ? 'neste ramo' : 'deste nó'}
           </Button>
         ) : (
           <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
@@ -612,8 +609,11 @@ export default function MindMapView({
               connections={c.connections || []}
               sources={c.sources || []}
               onNavigate={setSelected}
-              reviewCount={card || undefined}
-              onReview={() => go('flashcards', { topicId: chosen.topicId })}
+              questionCount={review.questionIds.length}
+              flashcardCount={review.cardIds.length}
+              reviewIncludesChildren={review.includesChildren}
+              onReviewQuestions={reviewQuestions}
+              onReviewCards={reviewCards}
               onGenerateGan={openGanPackage}
               onGenerateFlashcards={handleGenerateFlashcards}
               flashcardsLoading={flashcardsLoading}
