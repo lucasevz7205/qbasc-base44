@@ -3,8 +3,7 @@ import { ArchitectStudio } from '@/components/qb/architect/ArchitectStudio';
 import { useRealStudy } from '@/lib/qb-real-data';
 
 export default function TutorView({ context, onContextChange, tool, onToolChange }) {
-  const { QB_DATA, QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
-  const deck = QB_DATA.flashcards.filter(f=>!context?.topicId||f.topicId===context.topicId).slice(0,30).map(f => ({ front: f.front, back: f.back }));
+  const { QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
   if (!architectAccess) return <p>O Arquiteto ainda não está liberado para esta conta.</p>;
   return (
     <ArchitectStudio
@@ -16,7 +15,6 @@ export default function TutorView({ context, onContextChange, tool, onToolChange
       onContextChange={onContextChange}
       tool={tool}
       onToolChange={onToolChange}
-      deck={deck}
     />
   );
 }

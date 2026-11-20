@@ -29,6 +29,7 @@ export default function ConceptPanel({
   reviewIncludesChildren = false,
   onGenerateGan,
   onGenerateFlashcards,
+  hasPendingFlashcards = false,
   flashcardsLoading = false,
   ganLoading = false,
   ganError = '',
@@ -133,7 +134,10 @@ export default function ConceptPanel({
                 <div id={optionsId} hidden={!generationOpen}>
                   <div style={{ display: 'grid', gap: 8 }}>
                     {onGenerateGan && <Button variant="secondary" icon="list-checks" disabled={generating} onClick={onGenerateGan} fullWidth>Escolher quantidade de questões</Button>}
-                    {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating} onClick={onGenerateFlashcards} fullWidth>Flashcards</Button>}
+                    {onGenerateFlashcards && <Button variant="secondary" icon="layers" disabled={generating} onClick={onGenerateFlashcards}
+                      aria-haspopup={hasPendingFlashcards ? 'dialog' : undefined} fullWidth>
+                      {hasPendingFlashcards ? 'Revisar flashcards pendentes' : 'Gerar e gravar flashcards'}
+                    </Button>}
                   </div>
                 </div>
               </>

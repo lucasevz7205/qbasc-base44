@@ -3,6 +3,8 @@ import test from 'node:test';
 import { registerHooks } from 'node:module';
 import { URL } from 'node:url';
 import { centralGanRound } from '../src/lib/gan-queue.js';
+import { saveGeneratedNodeFlashcards } from '../src/lib/node-flashcards.js';
+import { conceptReviewItems } from '../src/lib/concept-review.js';
 
 const hooks = registerHooks({
   resolve(specifier, context, next) {
@@ -91,6 +93,37 @@ test('flashcard aprovado pertence ao nó e à conta, com gravação idempotente'
   assert.equal(QB_DATA.flashcards[0].node, targetNodeId);
   assert.equal(QB_DATA.flashcards[0].id, input.cardId);
   assert.equal(db.filter(row => row.legacy_id === input.cardId).length, 1);
+});
+
+test('geração grava cartões no assunto e no nó e mantém falhas com o mesmo ID para nova tentativa', async () => {
+  const { db, context } = fixture();
+  const topicId = 'lucas-t';
+  const targetNodeId = 'lucas-t::importacao::0.0';
+  const cards = [2, 3].map(index => ({
+    id: 'node-card-00000000-0000-4000-8000-00000000000' + index,
+    front: 'Qual é a regra do nó ' + index + '?',
+    back: 'A regra consta no resumo.',
+  }));
+  const saveCard = (cardId, front, back) =>
+    savePersonalNodeFlashcard({ context, data: { cardId, front, back, topicId, targetNodeId } });
+
+  const results = await saveGeneratedNodeFlashcards(cards, (id, front, back) => {
+    if (id === cards[0].id) throw new Error('Falha temporária');
+    return saveCard(id, front, back);
+  });
+  assert.equal(results[0].saveError, 'Falha temporária');
+  assert.equal(results[0].id, cards[0].id);
+  assert.equal(results[1].status, 'saved');
+  assert.deepEqual(db.filter(row => row.legacy_id.startsWith('node-card-')).map(row => row.legacy_id), [cards[1].id]);
+  await saveCard(results[0].id, results[0].front, results[0].back);
+
+  const own = collection => db.filter(row => row.collection === 'qbasc-conta:lucas:' + collection)
+    .map(row => ({ ...JSON.parse(row.payload_json), id: row.legacy_id }));
+  const { QB_DATA } = adaptStudy({ edital: own('edital'), revisao: own('revisao') });
+  const deck = QB_DATA.flashcards.filter(card => card.topicId === topicId);
+  assert.deepEqual(deck.map(card => card.id).sort(), cards.map(card => card.id));
+  const map = QB_DATA.mindMaps.find(item => item.topicId === topicId);
+  assert.deepEqual(conceptReviewItems(map, targetNodeId, [], deck).cardIds.sort(), cards.map(card => card.id));
 });
 
 test('GAN individual recusa conta suspensa', async () => {

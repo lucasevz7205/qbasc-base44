@@ -26,7 +26,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[4], label: 'Sessão' },
 ];
 
-export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, deck = [], clockOnly = false, personal = false, style }) {
+export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, clockOnly = false, personal = false, style }) {
   const dock = mode === 'dock';
   const modal = mode === 'modal';
   const headingRef = React.useRef(null);
@@ -89,7 +89,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={changeTopic} />}
-        {tool === 'cards' && <ScannerFlashcards topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} deck={deck} />}
+        {tool === 'cards' && <ScannerFlashcards key={topic?.id} topicId={topic?.id} topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>

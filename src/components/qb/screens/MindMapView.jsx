@@ -20,7 +20,7 @@ import { conceptReviewItems } from '@/lib/concept-review';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapFlashcards, generateMindMapGanQuestions } from '@/lib/server-fns';
 import { approvePersonalMapGan } from '@/lib/study-accounts';
-import { buildNodeFlashcardRecord } from '@/lib/node-flashcards';
+import { buildNodeFlashcardRecord, saveGeneratedNodeFlashcards } from '@/lib/node-flashcards';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
 import { centralGanRound, buildGanSource, buildGanQuestionRecord } from '@/lib/gan-queue';
@@ -109,6 +109,7 @@ export default function MindMapView({
     setFlashcardReviewOpen(false);
   }, [node?.id, isRadialOpen]);
   const flashcardReview = flashcardReviews[node?.id];
+  const hasPendingFlashcards = Boolean(flashcardReview?.some(item => !item.status));
 
   const mapId = chosen?.id;
   const ganReview = ganReviews[mapId];
@@ -362,21 +363,22 @@ export default function MindMapView({
     }));
   };
 
-  const approveFlashcard = async (cardId, front, back) => {
+  const persistFlashcard = (cardId, front, back) => {
     const data = { cardId, topicId: chosen.topicId, targetNodeId: node.id, front, back };
-    if (isAdmin) {
-      const record = buildNodeFlashcardRecord({ ...data, nodeLabel: node.label });
-      await save('revisao', record.id, record);
-    } else {
-      await saveNodeFlashcard(data);
-    }
-    updateFlashcard(cardId, { front, back, status: 'saved' });
+    if (!isAdmin) return saveNodeFlashcard(data);
+    const record = buildNodeFlashcardRecord({ ...data, nodeLabel: node.label });
+    return save('revisao', record.id, record);
+  };
+
+  const approveFlashcard = async (cardId, front, back) => {
+    await persistFlashcard(cardId, front, back);
+    updateFlashcard(cardId, { front, back, status: 'saved', saveError: undefined });
   };
 
   const handleGenerateFlashcards = async event => {
     if (ganTask.current) return;
     flashcardFocus.current = event.currentTarget;
-    if (flashcardReview?.some(item => !item.status)) {
+    if (hasPendingFlashcards) {
       setFlashcardReviewOpen(true);
       return;
     }
@@ -391,12 +393,20 @@ export default function MindMapView({
         : { topicId: chosen.topicId, targetNodeId: node.id, count: 4 };
       const result = await generateFlashcardsFn({ data });
       if (task.discard) return;
-      if (!result.cards?.length) {
-        setNotice('O nó ' + node.label + ' não retornou flashcards para revisar.');
+      if (!result?.cards?.length) {
+        setNotice('O nó ' + node.label + ' não retornou flashcards.');
         return;
       }
-      setFlashcardReviews(current => ({ ...current, [node.id]: result.cards }));
-      setNotice(result.cards.length + ' flashcards de ' + node.label + ' prontos para revisar no mapa.');
+      const cards = await saveGeneratedNodeFlashcards(result.cards, (...args) => {
+        if (task.discard) throw new Error('A sessão foi encerrada.');
+        return persistFlashcard(...args);
+      });
+      if (task.discard) return;
+      const saved = cards.filter(card => card.status === 'saved').length;
+      const pending = saved < cards.length;
+      if (pending) setFlashcardReviews(current => ({ ...current, [node.id]: cards }));
+      setNotice(saved + ' de ' + cards.length + ' flashcards gravados em ' + node.label + '.'
+        + (pending ? ' Use “Revisar flashcards pendentes” no nó para tentar de novo.' : ''));
     } catch (err) {
       if (!task.discard) setNotice(err?.message || 'Não foi possível gerar flashcards.');
     } finally {
@@ -614,6 +624,7 @@ export default function MindMapView({
               onReviewCards={reviewCards}
               onGenerateGan={openGanPackage}
               onGenerateFlashcards={handleGenerateFlashcards}
+              hasPendingFlashcards={hasPendingFlashcards}
               flashcardsLoading={flashcardsLoading}
               ganLoading={ganLoading}
               onOpenGanReview={ganReviewPending && ganReview.anchor.id === node.id ? openGanReview : undefined}

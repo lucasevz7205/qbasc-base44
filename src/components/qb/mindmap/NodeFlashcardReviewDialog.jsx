@@ -65,7 +65,9 @@ export function NodeFlashcardReviewDialog({ cards, nodeLabel, open, onOpenChange
                   <textarea rows={3} maxLength={1200} value={draft.back} onChange={event => change(card, 'back', event.target.value)} />
                 </label>
               </fieldset>
-              {error?.id === card.id && <p role="alert">{error.message}</p>}
+              {!card.status && (error?.id === card.id || card.saveError) && (
+                <p role="alert">{error?.id === card.id ? error.message : card.saveError}</p>
+              )}
               {!card.status && <div className="qb-gan-review__badges">
                 <Button size="sm" icon="check" loading={saving === card.id}
                   disabled={locked || draft.front.trim().length < 12 || !draft.back.trim()}

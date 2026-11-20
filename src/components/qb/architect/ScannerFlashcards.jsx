@@ -6,15 +6,16 @@ import { Button } from '@/components/qb/core/Button';
 import { Flashcard } from '@/components/qb/flashcards/Flashcard';
 import { extractMaterialText, generateFlashcardsFromMaterial } from '@/lib/server-fns';
 import { stripFlashcardContext } from '@/lib/flashcard-standard';
+import { useRealStudy } from '@/lib/qb-real-data';
 
 const SAMPLE = 'O fiscal do contrato acompanha a execução, anota ocorrências em registro próprio e determina o que for necessário à regularização de faltas ou defeitos observados (Lei 14.133/2021, art. 117). O gestor do contrato coordena as atividades relacionadas à fiscalização técnica, administrativa e setorial, bem como os atos preparatórios à instrução processual.';
 
-export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico', subjectName, topicName, style }) {
+export default function ScannerFlashcards({ topicId, topicLabel = 'o tópico', subjectName, topicName, style }) {
+  const { QB_DATA, save } = useRealStudy();
   const extractTextFn = useServerFn(extractMaterialText);
   const generateCardsFn = useServerFn(generateFlashcardsFromMaterial);
 
   const [tab, setTab] = React.useState('cards');
-  const [customCards, setCustomCards] = React.useState([]);
   const [i, setI] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
   const [rated, setRated] = React.useState([]);
@@ -22,10 +23,11 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
   const [drafts, setDrafts] = React.useState([]);
   const [uploading, setUploading] = React.useState(false);
   const [generating, setGenerating] = React.useState(false);
+  const [saving, setSaving] = React.useState(null);
   const [error, setError] = React.useState(null);
   const fileRef = React.useRef(null);
 
-  const fullDeck = React.useMemo(() => [...customCards, ...deck], [customCards, deck]);
+  const fullDeck = React.useMemo(() => QB_DATA.flashcards.filter(card => card.topicId === topicId), [QB_DATA.flashcards, topicId]);
   const card = fullDeck[i % Math.max(1, fullDeck.length)];
 
   const handleFileChange = async e => {
@@ -47,7 +49,7 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
 
   const handleGenerateCards = async () => {
     const clean = (scan || '').trim();
-    if (clean.length < 20 || generating) return;
+    if (!topicId || clean.length < 20 || generating || saving) return;
     setGenerating(true);
     setError(null);
     try {
@@ -60,12 +62,7 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
         },
       });
       setDrafts(
-        (res?.cards || []).map((c, k) => ({
-          front: c.front,
-          back: c.back,
-          ok: false,
-          k,
-        })),
+        (res?.cards || []).map(({ front, back }) => ({ id: 'scanner-card-' + crypto.randomUUID(), front, back })),
       );
     } catch (err) {
       setError(err?.message || 'Não foi possível gerar os flashcards com IA.');
@@ -74,20 +71,24 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
     }
   };
 
-  const toggleApproveDraft = k => {
-    setDrafts(prev =>
-      prev.map((item, idx) => {
-        if (idx !== k) return item;
-        const nextOk = !item.ok;
-        if (nextOk) {
-          setCustomCards(cards => {
-            if (cards.some(c => c.front === item.front && c.back === item.back)) return cards;
-            return [{ front: item.front, back: item.back }, ...cards];
-          });
-        }
-        return { ...item, ok: nextOk };
-      }),
-    );
+  const approveDraft = async draft => {
+    if (!topicId || saving || draft.ok) return;
+    const front = stripFlashcardContext(draft.front, subjectName, [topicName, topicLabel], topicId);
+    const back = draft.back.trim();
+    if (!front || !back) return;
+    setSaving(draft.id);
+    setError(null);
+    try {
+      await save('revisao', draft.id, {
+        topico: topicId,
+        cartoes: [{ id: draft.id, q: front, a: back, src: 'O Arquiteto · Scanner IA' }],
+      });
+      setDrafts(current => current.map(card => card.id === draft.id ? { ...card, ok: true } : card));
+    } catch (err) {
+      setError(err?.message || 'Não foi possível gravar o flashcard.');
+    } finally {
+      setSaving(null);
+    }
   };
 
   return (
@@ -175,13 +176,13 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
                   Revise o texto antes de gerar: a IA criará perguntas e respostas diretamente a partir deste trecho.
                 </span>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  <Button size="sm" icon="sparkles" loading={generating} disabled={scan.trim().length < 20 || generating} onClick={handleGenerateCards}>
+                  <Button size="sm" icon="sparkles" loading={generating} disabled={!topicId || scan.trim().length < 20 || generating || Boolean(saving)} onClick={handleGenerateCards}>
                     Gerar cartões com IA
                   </Button>
-                  <Button size="sm" variant="secondary" icon="upload" disabled={uploading || generating} onClick={() => fileRef.current?.click()}>
+                  <Button size="sm" variant="secondary" icon="upload" disabled={uploading || generating || Boolean(saving)} onClick={() => fileRef.current?.click()}>
                     Trocar arquivo
                   </Button>
-                  <Button size="sm" variant="ghost" disabled={generating} onClick={() => { setScan(null); setDrafts([]); setError(null); }}>
+                  <Button size="sm" variant="ghost" disabled={generating || Boolean(saving)} onClick={() => { setScan(null); setDrafts([]); setError(null); }}>
                     Descartar
                   </Button>
                 </div>
@@ -192,14 +193,15 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
             <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>2 · Revisão dos cartões gerados</span>
             {!drafts.length ? (
               <p style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-muted)' }}>
-                Os cartões criados pela IA aparecem aqui para edição e aprovação. Ao aprovar um cartão, ele entra imediatamente no baralho 3D.
+                Os cartões criados pela IA aparecem aqui para edição e aprovação. Ao aprovar um cartão, ele é gravado no baralho do assunto.
               </p>
             ) : (
               drafts.map((d, k) => (
-                <div key={k} className="qb-panel qb-panel--sunken" style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div key={d.id} className="qb-panel qb-panel--sunken" style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <input
                     className="qb-input"
                     value={d.front}
+                    disabled={d.ok || Boolean(saving)}
                     onChange={e => setDrafts(x => x.map((y, j) => (j === k ? { ...y, front: e.target.value } : y)))}
                     aria-label={'Frente do cartão ' + (k + 1)}
                   />
@@ -207,6 +209,7 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
                     className="qb-textarea"
                     style={{ minHeight: 60 }}
                     value={d.back}
+                    disabled={d.ok || Boolean(saving)}
                     onChange={e => setDrafts(x => x.map((y, j) => (j === k ? { ...y, back: e.target.value } : y)))}
                     aria-label={'Verso do cartão ' + (k + 1)}
                   />
@@ -214,9 +217,11 @@ export default function ScannerFlashcards({ deck = [], topicLabel = 'o tópico',
                     size="sm"
                     variant={d.ok ? 'primary' : 'secondary'}
                     icon={d.ok ? 'check' : 'plus'}
-                    onClick={() => toggleApproveDraft(k)}
+                    disabled={d.ok || Boolean(saving) || generating || !d.front.trim() || !d.back.trim()}
+                    loading={saving === d.id}
+                    onClick={() => approveDraft(d)}
                   >
-                    {d.ok ? 'Aprovado no baralho 3D' : 'Aprovar cartão'}
+                    {d.ok ? 'Gravado no assunto' : 'Aprovar e gravar'}
                   </Button>
                 </div>
               ))

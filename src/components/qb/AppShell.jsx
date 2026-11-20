@@ -116,14 +116,10 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
 }
 
 export function ArchitectLayer({ ui, setUi }) {
-  const { QB_DATA, QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
+  const { QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
   const mode = ui.studio.mode === 'modal' ? 'modal' : 'dock';
-  const deck = QB_DATA.flashcards
-    .filter(f => !ctx.topicId || f.topicId === ctx.topicId)
-    .slice(0, 30)
-    .map(f => ({ front: f.front, back: f.back }));
   return (
     <>
       {architectAccess && <ArchitectLauncher
@@ -142,7 +138,6 @@ export function ArchitectLayer({ ui, setUi }) {
         subjects={E.subjects}
         context={ctx}
         onContextChange={c => setUi({ ctx: c })}
-        deck={deck}
       />}
       <ToastStack toasts={ui.toasts} onDismiss={id => setUi({ toasts: ui.toasts.filter(x => x.id !== id) })} />
     </>
