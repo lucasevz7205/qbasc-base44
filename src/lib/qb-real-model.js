@@ -66,7 +66,11 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const excludedQuestionIds = new Set(source('questoes_excluidas').map(q=>q.id));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   const questionNodeLinks = new Map();
-  for(const d of [...source('revisao'), ...DC_8_2_REVISAO.filter(k => !source('revisao').some(d => d.topico === k.topico))]){
+  const revisions = source('revisao');
+  const chamberKit = user?.role === 'admin'
+    ? DC_8_2_REVISAO.filter(kit => !revisions.some(revision => revision.topico === kit.topico))
+    : [];
+  for(const d of [...revisions, ...chamberKit]){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
     const topic=topics[topicId];
     if(topic)topic.resources.revision.push(...arr(d.itens));
