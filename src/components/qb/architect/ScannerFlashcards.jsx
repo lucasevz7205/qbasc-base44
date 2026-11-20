@@ -79,10 +79,12 @@ export default function ScannerFlashcards({ topicId, topicLabel = 'o tópico', s
     setSaving(draft.id);
     setError(null);
     try {
-      await save('revisao', draft.id, {
-        topico: topicId,
-        cartoes: [{ id: draft.id, q: front, a: back, src: 'O Arquiteto · Scanner IA' }],
-      });
+      if (!fullDeck.some(card => card.front === front && card.back === back)) {
+        await save('revisao', draft.id, {
+          topico: topicId,
+          cartoes: [{ id: draft.id, q: front, a: back, src: 'O Arquiteto · Scanner IA' }],
+        });
+      }
       setDrafts(current => current.map(card => card.id === draft.id ? { ...card, ok: true } : card));
     } catch (err) {
       setError(err?.message || 'Não foi possível gravar o flashcard.');
