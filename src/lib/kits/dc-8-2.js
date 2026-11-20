@@ -42,7 +42,7 @@ const ramos = sections.filter(section => /^R[1-8] · /.test(section)).map(sectio
   return readBranch(title, lines);
 });
 
-const cartoes = Array.from(cartoesMd.matchAll(/^P: (.+)\r?\nR: (.+) \((RCCN, .+)\)\r?$/gm),
+const cartoes = Array.from(cartoesMd.matchAll(/^P: (.+)\r?\n(?:Antes de virar: .+\r?\n)?R: (.+)\r?\nFonte: (RCCN, .+)\r?$/gm),
   ([, q, a, src]) => ({ q, a, src }));
 
 export const DC_8_2_REVISAO = [{ id: 'dc-8-2.mapa', topico: 'dc-8-2', mapa: { centro, x, src, ramos }, cartoes }];
