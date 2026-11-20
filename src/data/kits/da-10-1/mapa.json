@@ -1,0 +1,434 @@
+{
+  "topico": "da-10-1",
+  "materia": "Direito Administrativo e Administração Pública",
+  "centro": "Licitação pública (Lei 14.133/2021)",
+  "ramos": [
+    {
+      "cor": 1,
+      "f": [
+        {
+          "id": "r1.1",
+          "n": "ponte necessidade ↔ fornecedor",
+          "t": "Procedimento administrativo",
+          "x": {
+            "e": "Sequência de atos formais e encadeados que termina na escolha do contratado."
+          }
+        },
+        {
+          "id": "r1.2",
+          "n": "direta, autárquica, fundacional",
+          "t": "Quem se submete",
+          "x": {
+            "e": "Administração direta, autárquica e fundacional de União, estados, DF e municípios, além dos fundos especiais e demais entidades controladas por eles.",
+            "trap": "Dizer que empresas públicas e sociedades de economia mista seguem a 14.133."
+          }
+        },
+        {
+          "id": "r1.3",
+          "n": "EP e SEM → Lei 13.303",
+          "t": "Estatais ficam fora",
+          "x": {
+            "e": "Empresas públicas (EP) e sociedades de economia mista (SEM) seguem a Lei 13.303/2016 (Lei das Estatais); da 14.133 só lhes aplica a parte penal (art. 178).",
+            "src": "Lei 14.133/2021, art. 1º, § 1º"
+          }
+        },
+        {
+          "id": "r1.4",
+          "n": "crédito, dívida pública; concessão e PPP = lei específica",
+          "t": "Exclusões expressas",
+          "x": {
+            "e": "Não se aplica a operações de crédito e à gestão da dívida pública, nem a contratações com normas próprias. Concessões, permissões e PPP seguem leis específicas, com a 14.133 aplicada subsidiariamente.",
+            "src": "Lei 14.133/2021, arts. 3º e 186"
+          }
+        },
+        {
+          "id": "r1.5",
+          "n": "revogada 30/12/2023 · vedada combinação",
+          "t": "Transição da Lei 8.666",
+          "x": {
+            "e": "A Lei 8.666/1993 foi revogada em 30/12/2023. Durante a transição era vedado combinar os dois regimes, e contratos firmados pela lei antiga continuam regidos por ela até o fim (ultratividade).",
+            "src": "Lei 14.133/2021, arts. 191 e 193"
+          }
+        },
+        {
+          "id": "r1.6",
+          "n": "normas gerais = privativa da União",
+          "t": "Competência para legislar",
+          "x": {
+            "e": "A União edita normas GERAIS de licitação (competência privativa, CF, art. 22, XXVII); estados, DF e municípios podem editar normas específicas que não contrariem as gerais."
+          }
+        }
+      ],
+      "id": "r1",
+      "t": "Conceito e abrangência",
+      "x": {
+        "e": "Licitação é o procedimento administrativo que faz a ponte entre uma necessidade da Administração e o terceiro que pode supri-la, escolhendo a proposta mais vantajosa com isonomia. A Lei 14.133/2021 (Nova Lei de Licitações, NLLC) define quem se submete a ela e o que fica de fora.",
+        "src": "Lei 14.133/2021, arts. 1º a 3º"
+      }
+    },
+    {
+      "cor": 2,
+      "f": [
+        {
+          "id": "r2.1",
+          "n": "ciclo de vida > preço nominal",
+          "t": "Proposta mais vantajosa",
+          "x": {
+            "e": "Não é o menor preço bruto: considera o ciclo de vida do objeto (manutenção, energia, durabilidade, descarte).",
+            "trap": "Igualar “mais vantajosa” a “mais barata”."
+          }
+        },
+        {
+          "id": "r2.2",
+          "n": "vedado favoritismo",
+          "t": "Isonomia e justa competição",
+          "x": {
+            "e": "Tratar igualmente os licitantes e proibir cláusulas que restrinjam a competição sem justificativa."
+          }
+        },
+        {
+          "id": "r2.3",
+          "n": "orçamento acima do mercado",
+          "t": "Sobrepreço",
+          "x": {
+            "e": "Preço ORÇADO ou contratado expressivamente superior aos praticados no mercado. É risco, ainda não é dano."
+          }
+        },
+        {
+          "id": "r2.4",
+          "n": "dano efetivo",
+          "t": "Superfaturamento",
+          "x": {
+            "e": "DANO EFETIVO ao patrimônio público, por exemplo pagamento por serviço não executado ou medição a maior.",
+            "trap": "Trocar sobrepreço (preço) por superfaturamento (dano)."
+          }
+        },
+        {
+          "id": "r2.5",
+          "n": "abaixo do custo real",
+          "t": "Inexequível",
+          "x": {
+            "e": "Preço tão baixo que não cobre os custos reais dos insumos; a proposta não se sustenta."
+          }
+        },
+        {
+          "id": "r2.6",
+          "n": "poder de compra indutor",
+          "t": "Inovação e desenvolvimento sustentável",
+          "x": {
+            "e": "A licitação usa o poder de compra do Estado para induzir inovação e desenvolvimento nacional sustentável, com critérios ambientais (licitações verdes) e margem de preferência para produtos nacionais."
+          }
+        }
+      ],
+      "id": "r2",
+      "t": "Objetivos e conceitos",
+      "x": {
+        "e": "O art. 11 lista quatro objetivos do processo licitatório. Eles explicam por que a lei olha o ciclo de vida, protege a competição e combate preço irreal.",
+        "src": "Lei 14.133/2021, arts. 6º e 11"
+      }
+    },
+    {
+      "cor": 3,
+      "f": [
+        {
+          "id": "r3.1",
+          "n": "LIMPE",
+          "t": "Os 5 da CF, art. 37",
+          "x": {
+            "e": "Legalidade, impessoalidade, moralidade, publicidade e eficiência (LIMPE)."
+          }
+        },
+        {
+          "id": "r3.2",
+          "n": "ETP, plano anual",
+          "t": "Planejamento",
+          "x": {
+            "e": "Contratar com base em estudo prévio, evitando improviso, desperdício e urgência fabricada."
+          }
+        },
+        {
+          "id": "r3.3",
+          "n": "mesmo agente ≠ funções simultâneas",
+          "t": "Segregação de funções",
+          "x": {
+            "e": "É vedado designar o mesmo agente para atuar ao mesmo tempo em funções sujeitas a riscos, como elaborar o edital e fiscalizar o contrato."
+          }
+        },
+        {
+          "id": "r3.4",
+          "n": "lei interna",
+          "t": "Vinculação ao edital",
+          "x": {
+            "e": "O edital é a lei interna da licitação: obriga a Administração e os licitantes."
+          }
+        },
+        {
+          "id": "r3.5",
+          "n": "sem critério fora do edital",
+          "t": "Julgamento objetivo",
+          "x": {
+            "e": "Julgar só pelos critérios previstos no edital, sem preferência pessoal."
+          }
+        },
+        {
+          "id": "r3.6",
+          "n": "PNCP",
+          "t": "Transparência e motivação",
+          "x": {
+            "e": "Atos divulgados de forma clara, e decisões sempre fundamentadas (motivação obrigatória)."
+          }
+        },
+        {
+          "id": "r3.7",
+          "n": "rol amplo",
+          "t": "Outros do rol",
+          "x": {
+            "e": "Interesse público, probidade, igualdade, eficácia, segurança jurídica, razoabilidade, competitividade, proporcionalidade, celeridade, economicidade e desenvolvimento nacional sustentável."
+          }
+        }
+      ],
+      "id": "r3",
+      "t": "Princípios (art. 5º)",
+      "x": {
+        "e": "O art. 5º repete os cinco da CF, art. 37 (legalidade, impessoalidade, moralidade, publicidade, eficiência) e acrescenta princípios próprios das licitações, além das disposições da LINDB.",
+        "src": "Lei 14.133/2021, art. 5º"
+      }
+    },
+    {
+      "cor": 4,
+      "f": [
+        {
+          "id": "r4.1",
+          "n": "7 fases",
+          "t": "Ordem das fases",
+          "x": {
+            "e": "Preparatória → divulgação do edital → propostas e lances → julgamento → habilitação → recursal → homologação."
+          }
+        },
+        {
+          "id": "r4.2",
+          "n": "habilitação antes = exceção motivada",
+          "t": "Inversão de fases",
+          "x": {
+            "e": "A habilitação pode vir ANTES das propostas, mediante ato motivado e previsão no edital.",
+            "src": "Lei 14.133/2021, art. 17, § 1º"
+          }
+        },
+        {
+          "id": "r4.3",
+          "n": "presencial só motivada",
+          "t": "Forma eletrônica",
+          "x": {
+            "e": "Preferencial. A presencial é admitida se motivada, com sessão registrada em ata e gravada em áudio e vídeo.",
+            "src": "Lei 14.133/2021, art. 17, § 2º"
+          }
+        }
+      ],
+      "id": "r4",
+      "t": "Fases e forma",
+      "x": {
+        "e": "O processo segue fases em ordem legal. A habilitação vem DEPOIS do julgamento, ao contrário da lei antiga, mas a ordem pode ser invertida por ato motivado.",
+        "src": "Lei 14.133/2021, art. 17"
+      }
+    },
+    {
+      "cor": 5,
+      "f": [
+        {
+          "id": "r5.1",
+          "n": "comuns · menor preço / maior desconto",
+          "t": "Pregão",
+          "x": {
+            "e": "Para bens e serviços COMUNS (padrões de desempenho definidos objetivamente no edital), incluindo serviços comuns de engenharia. Critério: menor preço ou maior desconto. Não serve para serviços técnicos especializados intelectuais nem obras."
+          }
+        },
+        {
+          "id": "r5.2",
+          "n": "especiais e obras · 5 critérios",
+          "t": "Concorrência",
+          "x": {
+            "e": "Para bens e serviços especiais, obras e serviços de engenharia. Critérios: menor preço, maior desconto, melhor técnica ou conteúdo artístico, técnica e preço, maior retorno econômico."
+          }
+        },
+        {
+          "id": "r5.3",
+          "n": "trabalho técnico/científico/artístico",
+          "t": "Concurso",
+          "x": {
+            "e": "Escolha de trabalho técnico, científico ou artístico. Critério: melhor técnica ou conteúdo artístico; o vencedor recebe prêmio ou remuneração."
+          }
+        },
+        {
+          "id": "r5.4",
+          "n": "maior lance · sem habilitação",
+          "t": "Leilão",
+          "x": {
+            "e": "Alienação de imóveis ou de móveis inservíveis ou legalmente apreendidos. Critério: maior lance. Não tem fase de habilitação formal.",
+            "src": "Lei 14.133/2021, art. 31"
+          }
+        },
+        {
+          "id": "r5.5",
+          "n": "inovação · comissão de 3 · sigilo",
+          "t": "Diálogo competitivo",
+          "x": {
+            "e": "Para obras, serviços e compras que envolvam inovação tecnológica ou soluções complexas que a Administração não consegue definir sozinha. Ela dialoga com licitantes pré-selecionados e depois pede propostas finais. Conduzido por comissão de no mínimo 3 servidores efetivos ou empregados públicos; as soluções de cada licitante ficam em sigilo.",
+            "src": "Lei 14.133/2021, art. 32"
+          }
+        }
+      ],
+      "id": "r5",
+      "t": "Modalidades (art. 28)",
+      "x": {
+        "e": "São CINCO: pregão, concorrência, concurso, leilão e diálogo competitivo. É vedado criar outras ou combiná-las. Tomada de preços e convite deixaram de existir.",
+        "src": "Lei 14.133/2021, arts. 28 a 32",
+        "trap": "Citar tomada de preços ou convite como modalidades vigentes."
+      }
+    },
+    {
+      "cor": 6,
+      "f": [
+        {
+          "id": "r6.1",
+          "n": "vedada preferência de marca",
+          "t": "Fornecedor exclusivo",
+          "x": {
+            "e": "Só um fornecedor pode entregar o bem ou serviço. É vedada a preferência por marca."
+          }
+        },
+        {
+          "id": "r6.2",
+          "n": "empresário exclusivo permanente",
+          "t": "Artista consagrado",
+          "x": {
+            "e": "Profissional do setor artístico, contratado direto ou por empresário EXCLUSIVO; a exclusividade deve ser permanente e contínua, não restrita a um evento ou local.",
+            "src": "Lei 14.133/2021, art. 74, II e § 2º"
+          }
+        },
+        {
+          "id": "r6.3",
+          "n": "vedado para publicidade",
+          "t": "Serviço técnico com notória especialização",
+          "x": {
+            "e": "Serviços técnicos especializados de natureza predominantemente intelectual, prestados por profissional ou empresa de notória especialização. É VEDADA para serviços de publicidade e divulgação, e vedada a subcontratação.",
+            "trap": "Dizer que publicidade pode ser contratada por inexigibilidade."
+          }
+        },
+        {
+          "id": "r6.4",
+          "n": "todos os aptos",
+          "t": "Credenciamento",
+          "x": {
+            "e": "A Administração convoca todos os interessados que cumprirem requisitos padronizados; como todos podem ser contratados, não há competição."
+          }
+        },
+        {
+          "id": "r6.5",
+          "n": "localização torna necessária",
+          "t": "Imóvel singular",
+          "x": {
+            "e": "Compra ou locação de imóvel cujas características de instalação e localização tornem necessária sua escolha."
+          }
+        }
+      ],
+      "id": "r6",
+      "t": "Contratação direta: inexigibilidade",
+      "x": {
+        "e": "Inexigível = a competição é INVIÁVEL, por fato ou por direito. O rol do art. 74 é EXEMPLIFICATIVO: outras situações de inviabilidade também cabem.",
+        "src": "Lei 14.133/2021, art. 74"
+      }
+    },
+    {
+      "cor": 7,
+      "f": [
+        {
+          "id": "r7.1",
+          "n": "100 mil / 50 mil (valores da lei)",
+          "t": "Em razão do valor",
+          "x": {
+            "e": "Inciso I: obras, serviços de engenharia e manutenção de veículos, abaixo de R$ 100 mil na lei (R$ 130.984,20 em 2026). Inciso II: compras e outros serviços, abaixo de R$ 50 mil na lei (R$ 65.492,11 em 2026).",
+            "ex": "Valores atualizados pelo Decreto 12.807/2025 para 2026.",
+            "trap": "A banca costuma cobrar o valor da lei; leia se o item fala em valor atualizado."
+          }
+        },
+        {
+          "id": "r7.2",
+          "n": "preferencialmente · 3 dias úteis",
+          "t": "Aviso prévio de 3 dias úteis",
+          "x": {
+            "e": "Nas dispensas por valor, a contratação será PREFERENCIALMENTE precedida de aviso em sítio oficial por no mínimo 3 dias úteis, para receber propostas adicionais.",
+            "src": "Lei 14.133/2021, art. 75, § 3º",
+            "trap": "Seu mapa diz “obrigatório”; a lei diz “preferencialmente”."
+          }
+        },
+        {
+          "id": "r7.3",
+          "n": "< 1 ano · mesmas condições",
+          "t": "Licitação deserta ou fracassada",
+          "x": {
+            "e": "Deserta: ninguém apareceu. Fracassada: não houve proposta válida. Cabe dispensa se a licitação foi feita há menos de 1 ano e mantidas as condições do edital."
+          }
+        },
+        {
+          "id": "r7.4",
+          "n": "1 ano · sem prorrogação",
+          "t": "Emergência ou calamidade",
+          "x": {
+            "e": "Para evitar prejuízo ou descontinuidade de serviço público. Só as parcelas concluíveis em até 1 ano; vedada prorrogação e vedada recontratação da mesma empresa para a mesma emergência.",
+            "src": "Lei 14.133/2021, art. 75, VIII"
+          }
+        },
+        {
+          "id": "r7.5",
+          "n": "defesa, sítio, intervenção",
+          "t": "Guerra e crises institucionais",
+          "x": {
+            "e": "Guerra, estado de defesa, estado de sítio, intervenção federal ou grave perturbação da ordem."
+          }
+        },
+        {
+          "id": "r7.6",
+          "n": "a lei manda não licitar",
+          "t": "Licitação dispensada (art. 76)",
+          "x": {
+            "e": "Alienação de bens. Imóveis: dação em pagamento, doação ou venda a órgão público, permuta, regularização fundiária. Móveis: doação para interesse social, permuta entre órgãos, venda de ações em bolsa. Exige justificativa e avaliação prévia."
+          }
+        },
+        {
+          "id": "r7.7",
+          "n": "processo instruído, não informal",
+          "t": "Formalidades (art. 72)",
+          "x": {
+            "e": "Toda contratação direta é instruída com: DFD e, se for o caso, ETP, análise de riscos, TR ou projeto; estimativa de despesa; parecer jurídico e técnico; prova de recursos orçamentários; comprovação da habilitação; razão da escolha do contratado; justificativa de preço; autorização da autoridade; divulgação em sítio oficial (PNCP)."
+          }
+        }
+      ],
+      "id": "r7",
+      "t": "Contratação direta: dispensa",
+      "x": {
+        "e": "Dispensável = a competição é POSSÍVEL, mas a lei autoriza não licitar; a Administração pode licitar se quiser (discricionário). Rol TAXATIVO (art. 75). Licitação DISPENSADA (art. 76) é diferente: a própria lei manda não licitar.",
+        "src": "Lei 14.133/2021, arts. 75 e 76"
+      }
+    },
+    {
+      "cor": 8,
+      "f": [
+        {
+          "id": "r8.1",
+          "n": "não são modalidades",
+          "t": "São 5",
+          "x": {
+            "e": "Credenciamento, pré-qualificação, PMI, SRP e registro cadastral.",
+            "trap": "Chamar SRP de modalidade."
+          }
+        }
+      ],
+      "id": "r8",
+      "t": "Procedimentos auxiliares",
+      "x": {
+        "e": "Ferramentas que apoiam licitações e contratações, sem serem modalidades: credenciamento, pré-qualificação, procedimento de manifestação de interesse (PMI), sistema de registro de preços (SRP) e registro cadastral.",
+        "src": "Lei 14.133/2021, art. 78"
+      }
+    }
+  ]
+}

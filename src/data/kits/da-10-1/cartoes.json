@@ -1,0 +1,179 @@
+[
+  {
+    "id": "da101-c01",
+    "no": "r1.3",
+    "tema": "Abrangência",
+    "pergunta": "A Lei 14.133/2021 se aplica às empresas públicas e sociedades de economia mista? Que lei rege as licitações delas?",
+    "resposta": [
+      "Não (só a parte penal, art. 178).",
+      "Lei 13.303/2016."
+    ],
+    "fonte": "Art. 1º, § 1º"
+  },
+  {
+    "id": "da101-c02",
+    "no": "r1.5",
+    "tema": "Abrangência",
+    "pergunta": "Em que data a Lei 8.666/1993 foi revogada?",
+    "resposta": [
+      "30/12/2023."
+    ],
+    "fonte": "Art. 193"
+  },
+  {
+    "id": "da101-c03",
+    "no": "r2",
+    "tema": "Objetivos",
+    "pergunta": "A Lei 14.133/2021 distingue sobrepreço (art. 6º, LVI) de superfaturamento (art. 6º, LVII). Classifique cada situação: (a) o orçamento da licitação fixa o preço de um serviço muito acima dos preços de referência do mercado; (b) a Administração paga por uma etapa da obra que não foi executada.",
+    "resposta": [
+      "(a) Sobrepreço: \"preço orçado para licitação ou contratado em valor expressivamente superior aos preços referenciais de mercado\" (inciso LVI). É um vício de preço, que pode existir antes de qualquer pagamento.",
+      "(b) Superfaturamento: \"dano provocado ao patrimônio da Administração\" (inciso LVII), por exemplo pela medição de quantidades maiores que as executadas. Exige prejuízo efetivo, isto é, pagamento indevido."
+    ],
+    "fonte": "Lei 14.133/2021, art. 6º, LVI e LVII"
+  },
+  {
+    "id": "da101-c04",
+    "no": "r2.1",
+    "tema": "Objetivos",
+    "pergunta": "Proposta mais vantajosa considera só o preço nominal ou também o ___ do objeto?",
+    "resposta": [
+      "Ciclo de vida."
+    ],
+    "fonte": "Art. 11, I"
+  },
+  {
+    "id": "da101-c05",
+    "no": "r4.1",
+    "tema": "Fases",
+    "pergunta": "Pela regra da Lei 14.133, a habilitação vem antes ou depois do julgamento das propostas?",
+    "resposta": [
+      "Depois (inversão só por ato motivado)."
+    ],
+    "fonte": "Art. 17"
+  },
+  {
+    "id": "da101-c06",
+    "no": "r5",
+    "tema": "Modalidades",
+    "pergunta": "Quais são as CINCO modalidades de licitação da Lei 14.133?",
+    "resposta": [
+      "Pregão.",
+      "Concorrência.",
+      "Concurso.",
+      "Leilão.",
+      "Diálogo competitivo."
+    ],
+    "fonte": "Art. 28"
+  },
+  {
+    "id": "da101-c07",
+    "no": "r5",
+    "tema": "Modalidades",
+    "pergunta": "Qual modalidade? (a) bens comuns; (b) obra de engenharia; (c) trabalho artístico com prêmio; (d) venda de imóvel; (e) solução inovadora complexa.",
+    "resposta": [
+      "(a) Pregão.",
+      "(b) Concorrência.",
+      "(c) Concurso.",
+      "(d) Leilão.",
+      "(e) Diálogo competitivo."
+    ],
+    "fonte": "Arts. 29 a 32"
+  },
+  {
+    "id": "da101-c08",
+    "no": "r5.5",
+    "tema": "Modalidades",
+    "pergunta": "Diálogo competitivo: a comissão tem no mínimo quantos membros? Eles precisam ser de que tipo?",
+    "resposta": [
+      "3.",
+      "Servidores efetivos ou empregados públicos."
+    ],
+    "fonte": "Art. 32, § 1º, XI"
+  },
+  {
+    "id": "da101-c09",
+    "no": "r5.4",
+    "tema": "Modalidades",
+    "pergunta": "Qual o critério de julgamento do leilão? Ele tem fase de habilitação?",
+    "resposta": [
+      "Maior lance.",
+      "Não."
+    ],
+    "fonte": "Art. 31"
+  },
+  {
+    "id": "da101-c10",
+    "no": "r6",
+    "tema": "Contratação direta",
+    "pergunta": "Inexigibilidade ou dispensa? (a) competição inviável; (b) competição possível, mas a lei autoriza não licitar.",
+    "resposta": [
+      "(a) Inexigibilidade.",
+      "(b) Dispensa."
+    ],
+    "fonte": "Arts. 74 e 75"
+  },
+  {
+    "id": "da101-c11",
+    "no": "r6",
+    "tema": "Contratação direta",
+    "pergunta": "O rol de inexigibilidade (art. 74) é taxativo ou exemplificativo? E o de dispensa (art. 75)?",
+    "resposta": [
+      "Art. 74: exemplificativo.",
+      "Art. 75: taxativo."
+    ],
+    "fonte": "Arts. 74 e 75"
+  },
+  {
+    "id": "da101-c12",
+    "no": "r6.3",
+    "tema": "Contratação direta",
+    "pergunta": "Serviços de publicidade e divulgação podem ser contratados por inexigibilidade (notória especialização)?",
+    "resposta": [
+      "Não: é vedado."
+    ],
+    "fonte": "Art. 74, III"
+  },
+  {
+    "id": "da101-c13",
+    "no": "r7.1",
+    "tema": "Contratação direta",
+    "pergunta": "Dispensa por valor (valores da lei): obras e serviços de engenharia abaixo de R$ ___; compras e outros serviços abaixo de R$ ___.",
+    "resposta": [
+      "100 mil.",
+      "50 mil."
+    ],
+    "fonte": "Art. 75, I e II"
+  },
+  {
+    "id": "da101-c14",
+    "no": "r7.4",
+    "tema": "Contratação direta",
+    "pergunta": "Dispensa por emergência: as parcelas devem ser concluídas em no máximo ___; a prorrogação é permitida?",
+    "resposta": [
+      "1 ano.",
+      "Não."
+    ],
+    "fonte": "Art. 75, VIII"
+  },
+  {
+    "id": "da101-c15",
+    "no": "r7.3",
+    "tema": "Contratação direta",
+    "pergunta": "Licitação deserta ou fracassada permite dispensa se realizada há menos de ___ e mantidas as ___ do edital.",
+    "resposta": [
+      "1 ano.",
+      "Condições."
+    ],
+    "fonte": "Art. 75, III"
+  },
+  {
+    "id": "da101-c16",
+    "no": "r8.1",
+    "tema": "Procedimentos",
+    "pergunta": "O sistema de registro de preços (SRP) é modalidade de licitação ou procedimento auxiliar?",
+    "resposta": [
+      "Procedimento auxiliar."
+    ],
+    "fonte": "Art. 78"
+  }
+]
