@@ -5,6 +5,7 @@ import { applyEditorialOverlays } from '@/lib/editorial-overrides';
 import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-feedback';
 import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
 import { PLAN_SETTINGS_ID, planSettings } from '@/lib/plan-settings';
+import { DC_8_2_REVISAO } from '@/lib/kits/dc-8-2';
 
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
@@ -65,7 +66,7 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   const excludedQuestionIds = new Set(source('questoes_excluidas').map(q=>q.id));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   const questionNodeLinks = new Map();
-  for(const d of source('revisao')){
+  for(const d of [...source('revisao'), ...DC_8_2_REVISAO.filter(k => !source('revisao').some(d => d.topico === k.topico))]){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
     const topic=topics[topicId];
     if(topic)topic.resources.revision.push(...arr(d.itens));
