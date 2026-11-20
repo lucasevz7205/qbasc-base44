@@ -1,5 +1,4 @@
-import mapaMd from '@/data/kits/dc-8-2/mapa.md?raw';
-import cartoesMd from '@/data/kits/dc-8-2/cartoes.md?raw';
+import { MAPA_MD as mapaMd, CARTOES_MD as cartoesMd } from './dc-8-2-data.js';
 
 function fillGroupDetails(node) {
   node.ramos.forEach(fillGroupDetails);
