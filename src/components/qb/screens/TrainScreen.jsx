@@ -50,7 +50,7 @@ export function MissingLink({ missing, onBack, go }) {
 }
 
 export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp, sel: selProp, setSel: setSelProp }) {
-  const { QB_EDITAL, QB_PLAN, QB_DATA, records } = useRealStudy();
+  const { QB_EDITAL, QB_PLAN, QB_DATA, records, isAdmin } = useRealStudy();
   const ctx = useQBStudy();
   const E = QB_EDITAL;
   const sel = selProp || ctx.trainSel;
@@ -249,10 +249,10 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
         <summary>Laboratório de mecanismos e pegadinhas</summary>
         <div className="qb-train-fold__body"><PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
       </details>
-      <details className="qb-panel qb-train-fold">
+      {isAdmin && <details className="qb-panel qb-train-fold">
         <summary>Acervo de pegadinhas</summary>
         <div className="qb-train-fold__body"><AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
-      </details>
+      </details>}
     </div>
   );
 }
