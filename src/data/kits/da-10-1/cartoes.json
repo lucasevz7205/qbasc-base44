@@ -336,5 +336,500 @@
       65
     ],
     "tema": "Fase preparatória e contratação direta"
+  },
+  {
+    "id": "da-10-1-c01",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3",
+    "pergunta": "Além das normas da LINDB, o que a Lei 14.133 manda observar na aplicação?",
+    "resposta": [
+      "Os princípios expressos do art. 5º"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º (texto a conferir; ver pendências do mapa)",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c02",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1",
+    "pergunta": "Qual é o tema comum dos princípios que orientam a conduta de quem conduz a contratação?",
+    "resposta": [
+      "Conduta do agente público e o interesse que a contratação serve"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c03",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.1",
+    "pergunta": "Qual princípio limita a Administração a agir somente nos limites da lei?",
+    "resposta": [
+      "Legalidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c04",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.2",
+    "pergunta": "Qual princípio afasta favorecimento pessoal de quem decide?",
+    "resposta": [
+      "Impessoalidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c05",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.3",
+    "pergunta": "Qual princípio é o padrão ético amplo da conduta do agente e da Administração no procedimento?",
+    "resposta": [
+      "Moralidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c06",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.4",
+    "pergunta": "Qual princípio exige honestidade no exercício da função e no uso dos recursos públicos?",
+    "resposta": [
+      "Probidade administrativa"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c07",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.5",
+    "pergunta": "A quem a licitação serve, segundo o princípio do interesse público?",
+    "resposta": [
+      "À coletividade, e não ao interesse particular do agente ou de um licitante"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c08",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.2",
+    "pergunta": "Como se chama o princípio que manda tratar todos os licitantes do mesmo modo?",
+    "resposta": [
+      "Igualdade na disputa (isonomia)"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c09",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.2.1",
+    "pergunta": "Em quais fases do procedimento vale o tratamento isonômico aos licitantes?",
+    "resposta": [
+      "Todas as fases"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º; ligação com art. 11, II",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c10",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3",
+    "pergunta": "Quais dois princípios tratam da abertura das informações e da fundamentação das decisões?",
+    "resposta": [
+      "Transparência",
+      "Motivação"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c11",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3.1",
+    "pergunta": "Qual princípio trata do acesso amplo às informações do procedimento?",
+    "resposta": [
+      "Transparência"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c12",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3.2",
+    "pergunta": "Quais razões uma decisão administrativa precisa explicitar para ser motivada?",
+    "resposta": [
+      "Razões de fato e de direito"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º (dispositivo específico a conferir)",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c13",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4",
+    "pergunta": "Quais dois princípios tornam as regras do certame estáveis e obrigatórias?",
+    "resposta": [
+      "Vinculação ao edital",
+      "Segurança jurídica"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c14",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.1",
+    "pergunta": "A que ficam presos a Administração e os licitantes, quanto às regras do certame?",
+    "resposta": [
+      "Às regras do edital"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c15",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.2",
+    "pergunta": "Qual princípio garante regras estáveis e previsíveis que o interessado pode conhecer antes de participar?",
+    "resposta": [
+      "Segurança jurídica"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c16",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.3",
+    "pergunta": "Qual princípio exige exigências e decisões adequadas ao fim buscado, sem excesso?",
+    "resposta": [
+      "Razoabilidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c17",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.4",
+    "pergunta": "Qual princípio compara o meio exigido com o objetivo, para que nenhuma exigência seja maior que a necessária?",
+    "resposta": [
+      "Proporcionalidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c18",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5",
+    "pergunta": "Como se chama o grupo de princípios voltados ao resultado da contratação e ao uso dos recursos?",
+    "resposta": [
+      "Resultado, eficiência e custo"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c19",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.1",
+    "pergunta": "Qual princípio trata do melhor uso dos meios e dos recursos no procedimento, isto é, do modo de agir?",
+    "resposta": [
+      "Eficiência"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c20",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.2",
+    "pergunta": "Qual princípio trata do resultado efetivamente alcançado pela contratação?",
+    "resposta": [
+      "Eficácia"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c21",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.3",
+    "pergunta": "Qual princípio trata da melhor relação entre custo e benefício?",
+    "resposta": [
+      "Economicidade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c22",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.4",
+    "pergunta": "Qual princípio exige procedimento sem atrasos desnecessários e dentro dos prazos legais?",
+    "resposta": [
+      "Celeridade"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c23",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.5",
+    "pergunta": "Qual princípio do art. 5º liga a contratação a critérios econômicos, sociais e ambientais?",
+    "resposta": [
+      "Desenvolvimento nacional sustentável"
+    ],
+    "fonte": "Lei 14.133/2021, art. 5º; art. 11, IV (alcance a conferir)",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c24",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.6",
+    "pergunta": "Onde estão, no mapa principal, os princípios de planejamento, publicidade e competitividade?",
+    "resposta": [
+      "Em r2.1.1 e r2.1.2 do mapa principal"
+    ],
+    "fonte": "Mapa principal (r2.1), referência cruzada",
+    "tema": "Princípios expressos do art. 5º (lista completa)"
+  },
+  {
+    "id": "da-10-1-c25",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r4.1.4",
+    "pergunta": "Qual modalidade escolhe trabalho técnico, científico ou artístico, com cessão dos direitos patrimoniais ao vencedor?",
+    "resposta": [
+      "Concurso"
+    ],
+    "fonte": "Lei 14.133/2021, art. 6º, XXXIX; art. 28, III; art. 30",
+    "tema": "Concurso"
+  },
+  {
+    "id": "da-10-1-c26",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4",
+    "pergunta": "Qual critério define a dispensa de licitação do art. 75, I e II?",
+    "resposta": [
+      "Valor da contratação"
+    ],
+    "fonte": "Lei 14.133/2021, art. 75, I e II",
+    "tema": "Dispensa por valor (art. 75, I e II)"
+  },
+  {
+    "id": "da-10-1-c27",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.1",
+    "pergunta": "Qual inciso do art. 75 trata de obras e serviços de engenharia?",
+    "resposta": [
+      "Inciso I"
+    ],
+    "fonte": "Lei 14.133/2021, art. 75, I",
+    "tema": "Dispensa por valor (art. 75, I e II)"
+  },
+  {
+    "id": "da-10-1-c28",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.2",
+    "pergunta": "Em qual portal eletrônico nacional a contratação por valor deve ser divulgada previamente?",
+    "resposta": [
+      "PNCP (Portal Nacional de Contratações Públicas)"
+    ],
+    "fonte": "Lei 14.133/2021, art. 75, § 3º (prazo a conferir)",
+    "tema": "Dispensa por valor (art. 75, I e II)"
+  },
+  {
+    "id": "da-10-1-c29",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.3",
+    "pergunta": "O que a lei proíbe quando a Administração divide a despesa para caber no limite de valor?",
+    "resposta": [
+      "Fracionamento da despesa"
+    ],
+    "fonte": "Lei 14.133/2021, art. 75, § 1º (texto a conferir)",
+    "tema": "Dispensa por valor (art. 75, I e II)"
+  },
+  {
+    "id": "da-10-1-c30",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3",
+    "pergunta": "Quais são as três categorias de contratação sem disputa estudadas neste bloco?",
+    "resposta": [
+      "Inexigível",
+      "Dispensável",
+      "Dispensada (termo a verificar)"
+    ],
+    "fonte": "Lei 14.133/2021, arts. 74 e 75; termo 'dispensada' a verificar",
+    "tema": "Classificação: inexigível, dispensável e dispensada"
+  },
+  {
+    "id": "da-10-1-c31",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.1",
+    "pergunta": "Em qual categoria a competição é inviável?",
+    "resposta": [
+      "Inexigível"
+    ],
+    "fonte": "Lei 14.133/2021, art. 74, caput",
+    "tema": "Classificação: inexigível, dispensável e dispensada"
+  },
+  {
+    "id": "da-10-1-c32",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.2",
+    "pergunta": "Em qual categoria a competição é possível, mas a lei autoriza não licitar?",
+    "resposta": [
+      "Dispensável"
+    ],
+    "fonte": "Lei 14.133/2021, art. 75, caput",
+    "tema": "Classificação: inexigível, dispensável e dispensada"
+  },
+  {
+    "id": "da-10-1-c33",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.3",
+    "pergunta": "Qual termo a apostila do projeto usa para casos previstos em lei sem exigência de licitação?",
+    "resposta": [
+      "Licitação dispensada (termo da apostila; dispositivo a verificar)"
+    ],
+    "fonte": "Pesquisa pré-kit, trecho 69 (D Adm, Licitações parte 2, p. 68)",
+    "tema": "Classificação: inexigível, dispensável e dispensada"
+  },
+  {
+    "id": "da-10-1-c34",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6",
+    "pergunta": "Qual é o objetivo central da licitação?",
+    "resposta": [
+      "Selecionar a proposta mais vantajosa para a contratação"
+    ],
+    "fonte": "Lei 14.133/2021, art. 11, I (reconstrução do conceito; ver pendências)",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c35",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6",
+    "pergunta": "Quais administrações estão sujeitas às normas gerais de licitação?",
+    "resposta": [
+      "Administrações diretas, autárquicas e fundacionais",
+      "Da União, dos Estados, do DF e dos Municípios"
+    ],
+    "fonte": "Lei 14.133/2021, art. 1º",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c36",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6",
+    "pergunta": "Nas contratações diretas, que tipo de processo é exigido, mesmo sem competição?",
+    "resposta": [
+      "Processo de contratação direta, formal"
+    ],
+    "fonte": "Lei 14.133/2021, arts. 72, 74 e 75",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c37",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.1",
+    "pergunta": "Qual é a natureza formal do procedimento licitatório?",
+    "resposta": [
+      "Administrativo, formal e seriado"
+    ],
+    "fonte": "Mapa principal (r6.1); Lei 14.133/2021, art. 1º (conferir a definição)",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c38",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.2",
+    "pergunta": "Qual objetivo do art. 11 evita sobrepreço e superfaturamento?",
+    "resposta": [
+      "Evitar sobrepreço e superfaturamento"
+    ],
+    "fonte": "Lei 14.133/2021, art. 11, III",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c39",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.3",
+    "pergunta": "Qual etapa antecede a licitação e é o planejamento da contratação?",
+    "resposta": [
+      "Fase preparatória (planejamento)"
+    ],
+    "fonte": "Lei 14.133/2021, art. 18",
+    "tema": "Conceito e finalidade da licitação pública"
+  },
+  {
+    "id": "da-10-1-c40",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+    "pergunta": "Quantos procedimentos auxiliares o art. 78 da Lei 14.133 lista?",
+    "resposta": [
+      "Cinco"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, I a V",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c41",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+    "pergunta": "Qual procedimento auxiliar admite todos os interessados que atendam aos requisitos?",
+    "resposta": [
+      "Credenciamento"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, I",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c42",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+    "pergunta": "Qual procedimento auxiliar faz a avaliação de requisitos antes da licitação?",
+    "resposta": [
+      "Pré-qualificação"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, II",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c43",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+    "pergunta": "Qual procedimento auxiliar serve para o cadastro de fornecedores em procedimentos futuros?",
+    "resposta": [
+      "Registro cadastral"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, V",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c44",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.1",
+    "pergunta": "Quem é admitido no credenciamento, e com qual condição?",
+    "resposta": [
+      "Todos os interessados que atendem aos requisitos, sem disputa entre eles"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, I",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c45",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.2",
+    "pergunta": "Quando ocorre a avaliação dos requisitos na pré-qualificação?",
+    "resposta": [
+      "Antes da licitação"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, II",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c46",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.3",
+    "pergunta": "O que os particulares apresentam no procedimento de manifestação de interesse?",
+    "resposta": [
+      "Estudos, soluções e projetos"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, III",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c47",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.4",
+    "pergunta": "Qual procedimento auxiliar registra preços para contratações futuras e frequentes?",
+    "resposta": [
+      "Sistema de registro de preços"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, IV",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c48",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.5",
+    "pergunta": "Qual procedimento auxiliar mantém cadastro de fornecedores para uso futuro?",
+    "resposta": [
+      "Registro cadastral"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, V",
+    "tema": "Procedimentos auxiliares (art. 78)"
+  },
+  {
+    "id": "da-10-1-c49",
+    "no": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+    "pergunta": "Qual procedimento auxiliar ouve particulares para subsidiar a preparação de uma contratação?",
+    "resposta": [
+      "Procedimento de manifestação de interesse"
+    ],
+    "fonte": "Lei 14.133/2021, art. 78, III",
+    "tema": "Procedimentos auxiliares (art. 78)"
   }
 ]

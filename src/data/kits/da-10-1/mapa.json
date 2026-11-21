@@ -887,6 +887,438 @@
           ]
         }
       ]
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3",
+      "t": "Princípios expressos do art. 5º (lista completa)",
+      "origem": "inédito Claude",
+      "refs": [],
+      "x": {
+        "e": "Art. 5º enumera 22 princípios expressos, que devem ser observados na aplicação da lei, além das normas da LINDB (Decreto-Lei nº 4.657/1942). Os nós r2.3.1 a r2.3.5 cobrem 17 princípios; os outros cinco já estão em r2.1.1 e r2.1.2 e são listados em r2.3.6 como referência cruzada."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1",
+          "t": "Conduta do agente público",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Princípios que orientam a conduta de quem conduz a contratação e o interesse que ela serve (art. 5º)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.1",
+              "t": "Legalidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "A Administração só age nos limites da lei (art. 5º). No certame, a lei e o edital definem o que pode ser feito."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.2",
+              "t": "Impessoalidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Tratamento sem favorecimento pessoal: o ato é da Administração, não do agente que o pratica (art. 5º). Afasta escolhas motivadas por simpatia ou interesse próprio.",
+                "d": "Impessoalidade trata de quem decide e de quem é favorecido; legalidade trata do limite da competência."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.3",
+              "t": "Moralidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Conduta ética do agente e da Administração ao longo do procedimento (art. 5º).",
+                "d": "Moralidade é o padrão ético amplo; probidade (r2.3.1.4) é a honestidade específica no trato da função e do dinheiro público."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.4",
+              "t": "Probidade administrativa",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Honestidade no exercício da função e no uso dos recursos públicos (art. 5º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.1.5",
+              "t": "Interesse público",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "A licitação serve à coletividade, e não ao interesse particular do agente ou de um licitante (art. 5º)."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.2",
+          "t": "Igualdade na disputa",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Princípio que garante que todos os licitantes sejam tratados do mesmo modo (art. 5º)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.2.1",
+              "t": "Igualdade (isonomia)",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Tratamento isonômico a todos os licitantes em todas as fases do procedimento (art. 5º). Liga-se ao objetivo do art. 11, II, já detalhado em r1.1."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3",
+          "t": "Transparência e motivação",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Princípios de abertura e de fundamentação das decisões (art. 5º)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3.1",
+              "t": "Transparência",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Abertura das informações do procedimento para acesso e controle (art. 5º).",
+                "d": "Transparência é o princípio amplo de acesso à informação; publicidade (r2.1.2) é a divulgação formal dos atos. Ambos aparecem no art. 5º."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.3.2",
+              "t": "Motivação",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "As decisões da Administração devem ter fundamento explícito, com as razões de fato e de direito (art. 5º). O dispositivo específico de cada decisão deve ser conferido no texto (ver pendências)."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4",
+          "t": "Vinculação e previsibilidade",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Princípios que tornam as regras do certame estáveis e obrigatórias para todos (art. 5º)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.1",
+              "t": "Vinculação ao edital",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "A Administração e os licitantes ficam presos às regras do edital; o que não está nele não serve para julgar (art. 5º).",
+                "d": "Vinculação ao edital trata das regras do certame; julgamento objetivo (r2.1.2) trata de como o critério é aplicado, sem subjetividade."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.2",
+              "t": "Segurança jurídica",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Regras estáveis e previsíveis, que o interessado pode conhecer antes de participar (art. 5º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.3",
+              "t": "Razoabilidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Exigências e decisões adequadas ao fim buscado, sem excesso (art. 5º).",
+                "d": "Razoabilidade é adequação ao fim e bom senso; proporcionalidade (r2.3.4.4) compara o meio exigido com o resultado pretendido."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.4.4",
+              "t": "Proporcionalidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Equilíbrio entre a exigência e o objetivo: nenhuma exigência deve ser maior do que a necessária (art. 5º)."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5",
+          "t": "Resultado, eficiência e custo",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Princípios voltados ao resultado da contratação e ao uso dos recursos (art. 5º)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.1",
+              "t": "Eficiência",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Melhor uso dos meios e dos recursos no procedimento (art. 5º).",
+                "d": "Eficiência é o modo de agir (como); eficácia (r2.3.5.2) é o resultado alcançado; economicidade (r2.3.5.3) é o custo."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.2",
+              "t": "Eficácia",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "A contratação deve atingir o resultado pretendido (art. 5º). Eficácia não garante economia: uma contratação pode ser eficaz e custar caro."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.3",
+              "t": "Economicidade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Melhor relação entre custo e benefício (art. 5º). Não é o mesmo que menor preço: a lei manda olhar o ciclo de vida do objeto (art. 11, I, detalhado em r1.1.1).",
+                "d": "Economicidade não se confunde com menor preço; o critério de julgamento é outro nó do mapa (r4.2)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.4",
+              "t": "Celeridade",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "Procedimento sem atrasos desnecessários e dentro dos prazos legais (art. 5º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.5.5",
+              "t": "Desenvolvimento nacional sustentável",
+              "origem": "inédito Claude",
+              "refs": [],
+              "x": {
+                "e": "A contratação deve promover o desenvolvimento nacional sustentável (art. 5º), objetivo também listado no art. 11, IV (ver r1.1). O alcance dos critérios econômicos, sociais e ambientais deve ser conferido no texto (ver pendências)."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r2.3.6",
+          "t": "Referências cruzadas: princípios já em r2.1",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Planejamento e segregação de funções estão em r2.1.1; publicidade, julgamento objetivo e competitividade estão em r2.1.2. Os cinco fazem parte dos 22 princípios do art. 5º e não são repetidos aqui."
+          },
+          "f": []
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r4.1.4",
+      "t": "Concurso",
+      "origem": "inédito Claude",
+      "refs": [],
+      "x": {
+        "e": "Modalidade para escolha de trabalho técnico, científico ou artístico, entre quaisquer interessados, com critério de melhor técnica ou conteúdo artístico e cessão dos direitos patrimoniais ao vencedor (art. 6º, XXXIX). Está no rol do art. 28, III. As regras estão no art. 30, que exige regulamento próprio com a qualificação exigida, as diretrizes de apresentação do trabalho, as formas de avaliação e o prêmio ou remuneração (a lista exata de incisos do art. 30 deve ser verificada). Serve para escolher um trabalho intelectual ou artístico, e não para contratar execução de obra ou fornecimento de bens.",
+        "d": "Concurso x concorrência: a concorrência (art. 28, II) contrata bens, serviços ou obras pelo critério de preço ou técnica, com habilitação; o concurso escolhe um trabalho intelectual, com regulamento próprio e cessão de direitos. Concurso x pregão: o pregão é para bens e serviços comuns (r4.1.1)."
+      },
+      "f": []
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4",
+      "t": "Dispensa por valor (art. 75, I e II)",
+      "origem": "inédito Claude",
+      "refs": [],
+      "x": {
+        "e": "Dispensa de licitação em razão do valor, nas hipóteses do art. 75, I (obras e serviços de engenharia) e II (outros serviços e compras). Valor vigente: verificar em decreto atualizado. Detalhes nos filhos r5.2.4.1 a r5.2.4.3."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.1",
+          "t": "Hipóteses por valor",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Inciso I: obras e serviços de engenharia. Inciso II: outros serviços e compras (art. 75). Valor vigente: verificar em decreto atualizado.",
+            "d": "Inciso I (engenharia) x inciso II (demais serviços e compras): limites distintos, sempre conforme o decreto vigente. Trocar um pelo outro é pegadinha provável."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.2",
+          "t": "Aviso mínimo de divulgação",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "A contratação por valor deve ser divulgada previamente em meio eletrônico, no Portal Nacional de Contratações Públicas (PNCP), pelo prazo mínimo previsto no art. 75, § 3º. Número de dias: verificar no texto da lei."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.2.4.3",
+          "t": "Fracionamento da despesa",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "O art. 75, § 1º trata da soma das despesas para verificar o limite de valor (verificar o texto). A regra impede dividir a contratação em partes para caber na faixa de dispensa por valor."
+          },
+          "f": []
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3",
+      "t": "Classificação: inexigível, dispensável e dispensada",
+      "origem": "inédito Claude",
+      "refs": [],
+      "x": {
+        "e": "Três categorias de contratação sem disputa, com fundamentos diferentes. Art. 72 (processo de contratação direta, comum às hipóteses de inexigibilidade e dispensa; ver r5.2.1). Art. 73 (responsabilidade solidária). Art. 74 (inexigível). Art. 75 (dispensável). Art. 76: verificar (ver pendências)."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.1",
+          "t": "Inexigível",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Hipótese em que a competição é inviável (art. 74, caput). As hipóteses estão no art. 74, I a V (ver r5.2.2)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.2",
+          "t": "Dispensável",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Hipótese em que a competição é possível, mas a lei autoriza não licitar (art. 75, caput). Exemplos: dispensa por valor (r5.2.4) e por emergência (r5.2.3).",
+            "d": "Inexigível: não há como competir. Dispensável: há como competir, mas a lei autoriza não licitar. É a diferença central para o item que troca as duas."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r5.3.3",
+          "t": "Dispensada (dispositivo a verificar)",
+          "origem": "inédito Claude",
+          "refs": [],
+          "x": {
+            "e": "Termo que aparece no material do projeto (pesquisa pré-kit, trecho 69, apostila de licitações parte 2, p. 68) para casos previstos em lei sem exigência de licitação. Não há cópia da Lei 14.133 nesta revisão para confirmar o dispositivo. Pela minha leitura, o art. 76 trata de alienação de bens, e não de classificação de contratação direta. Verificar antes de atribuir o termo a esse artigo."
+          },
+          "f": []
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6",
+      "t": "Conceito e finalidade da licitação pública",
+      "x": {
+        "e": "Licitação é o procedimento administrativo prévio pelo qual a Administração seleciona a proposta mais vantajosa para contratar, com competição e igualdade entre os interessados. O conceito é reconstruído a partir do art. 1º (normas gerais de licitação e contratação), do art. 2º (objetos abrangidos) e do art. 11 (objetivos). Não há definição expressa nos dispositivos consultados (ver pendências)."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.1",
+          "t": "Conceito de licitação",
+          "x": {
+            "e": "Procedimento administrativo, formal e seriado, que antecede a contratação e tem por fim escolher a melhor proposta. O art. 1º aplica as normas gerais às administrações diretas, autárquicas e fundacionais da União, dos Estados, do Distrito Federal e dos Municípios.",
+            "d": "Licitação (procedimento que escolhe o contratado) não se confunde com contratação direta: nas hipóteses de inexigibilidade e dispensa a lei afasta a competição (arts. 74 e 75), mas o processo continua formal (art. 72)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.2",
+          "t": "Finalidade do procedimento",
+          "x": {
+            "e": "A finalidade está no art. 11: selecionar a proposta mais vantajosa, assegurar tratamento isonômico e justa competição, evitar sobrepreço e superfaturamento e incentivar a inovação e o desenvolvimento nacional sustentável. Os quatro objetivos são detalhados em r1.1 do mapa principal e não se repetem aqui."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r6.3",
+          "t": "Relação entre licitação e contratação",
+          "x": {
+            "e": "A licitação é o meio regular de a Administração contratar o objeto que a lei abrange (art. 2º). O planejamento (art. 18) antecede a licitação; depois da fase de julgamento e habilitação segue a homologação (art. 17) e, em seguida, a contratação. A contratação direta é exceção, nas hipóteses dos arts. 74 e 75 (ver r5.3)."
+          },
+          "f": []
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7",
+      "t": "Procedimentos auxiliares (art. 78)",
+      "x": {
+        "e": "Art. 78 lista cinco procedimentos auxiliares das licitações e das contratações: credenciamento, pré-qualificação, procedimento de manifestação de interesse, sistema de registro de preços e registro cadastral. Não são modalidades: as modalidades são as do art. 28 (pregão, concorrência, concurso, leilão e diálogo competitivo; ver r4.1).",
+        "d": "Modalidade (art. 28) é o formato da disputa que leva à escolha do contratado. Procedimento auxiliar (art. 78) é instrumento de apoio: qualifica, cadastra, registra preços ou ouve o mercado, e pode ou não preceder uma licitação."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.1",
+          "t": "Credenciamento",
+          "x": {
+            "e": "Chamamento em que todos os interessados que atendem aos requisitos são admitidos, sem disputa entre eles (art. 78, I). Também aparece como hipótese de inexigibilidade (art. 74, IV; ver r5.3.1)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.2",
+          "t": "Pré-qualificação",
+          "x": {
+            "e": "Avaliação prévia dos requisitos dos interessados, feita antes da licitação, para que só os qualificados disputem depois (art. 78, II)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.3",
+          "t": "Procedimento de manifestação de interesse",
+          "x": {
+            "e": "Chamamento público de particulares para apresentar estudos, soluções e projetos que subsidiem a Administração na preparação de uma contratação (art. 78, III)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.4",
+          "t": "Sistema de registro de preços",
+          "x": {
+            "e": "Conjunto de procedimentos para registrar preços de forma formal, para contratações futuras e frequentes. O registro não obriga a Administração a contratar (art. 78, IV). O regime detalhado está em artigos posteriores (verificar no texto)."
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-da-10.1-licitacao-publica-2026-11-21-r7.5",
+          "t": "Registro cadastral",
+          "x": {
+            "e": "Cadastro de fornecedores mantido pela Administração para uso em procedimentos futuros (art. 78, V). O regime detalhado está em artigos posteriores (verificar no texto)."
+          },
+          "f": []
+        }
+      ]
     }
   ],
   "fontesCentral": {
@@ -1301,6 +1733,7 @@
         "secao": "p.20",
         "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
       }
-    }
+    },
+    "KIT-ARR-DA-10.1-licitacao-publica-2026-11-21": {}
   }
 }
