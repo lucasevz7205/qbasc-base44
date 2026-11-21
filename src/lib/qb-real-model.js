@@ -6,6 +6,7 @@ import { indexQuestionMechanisms, resolveQuestionTrap } from '@/lib/question-fee
 import { dailyQuestionPerformance } from '@/lib/daily-question-performance';
 import { PLAN_SETTINGS_ID, planSettings } from '@/lib/plan-settings';
 import { DC_8_2_REVISAO } from '@/lib/kits/dc-8-2';
+import { loadCentralKits } from '@/lib/kits/central-kits';
 
 const arr = x => Array.isArray(x) ? x : [];
 const str = x => Array.isArray(x) ? x.map(str).filter(Boolean).join('\n') : typeof x === 'string' ? x : '';
@@ -41,7 +42,7 @@ const zero = () => ({correct:0,wrong:0,blank:0});
 const keyOf = x => String(x??'').trim().toUpperCase();
 const chapterKey = x => keyOf(x);
 export { day as studyDate };
-export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
+export function adaptStudy(records, user, now = new Date(), { examName, centralKitModules } = {}) {
   const today = day(now);
   const source = key => arr(records[key]);
   const topics = Object.create(null), subjects = Object.create(null), capTopic = Object.create(null);
@@ -62,15 +63,25 @@ export function adaptStudy(records, user, now = new Date(), { examName } = {}) {
   }
   const pointLists = Object.fromEntries(source('pontos').map(p=>[p.topico||p.id,arr(p.itens)]));
   const answers = Object.fromEntries(source('respostas').map(r=>[r.qid??r.id,r]));
+  const centralKits = loadCentralKits(centralKitModules);
   const rawQuestions = Object.fromEntries(source('questoes').map(q=>[q.id,q]));
+  for (const q of centralKits.questions) {
+    if (q?.id && !rawQuestions[q.id] && (user?.role === 'admin' || topics[q.topico ?? q.topicId])) {
+      rawQuestions[q.id] = q;
+    }
+  }
   const excludedQuestionIds = new Set(source('questoes_excluidas').map(q=>q.id));
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   const questionNodeLinks = new Map();
   const revisions = source('revisao');
+  const knownRevisionTopics = new Set(revisions.map(revision => revision.topico).filter(Boolean));
+  const localRevisions = centralKits.revisions.filter(kit =>
+    !knownRevisionTopics.has(kit.topico) && (user?.role === 'admin' || topics[kit.topico])
+  );
   const chamberKit = user?.role === 'admin'
-    ? DC_8_2_REVISAO.filter(kit => !revisions.some(revision => revision.topico === kit.topico))
+    ? DC_8_2_REVISAO.filter(kit => !knownRevisionTopics.has(kit.topico) && !localRevisions.some(local => local.topico === kit.topico))
     : [];
-  for(const d of [...revisions, ...chamberKit]){
+  for(const d of [...revisions, ...localRevisions, ...chamberKit]){
     const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
     const topic=topics[topicId];
     if(topic)topic.resources.revision.push(...arr(d.itens));
