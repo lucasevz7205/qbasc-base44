@@ -44,12 +44,12 @@ export default function Flashcard({
   );
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, ...style }}>
-      <div className="qb-flash" style={{ height }}>
-        <div className={`qb-flash__inner ${flipped ? 'is-flipped' : ''}`}>
+      <div className="qb-flash" style={{ minHeight: height }}>
+        <div className={`qb-flash__inner ${flipped ? 'is-flipped' : ''}`} style={{ minHeight: height }}>
           <section className="qb-flash__face" style={face} aria-hidden={flipped}>
             <Head label="Frente" />
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-              <div style={{ font: '600 clamp(23px,2.6vw,32px)/1.3 var(--font-serif)', color: 'var(--text-primary)', maxWidth: '30ch' }}>
+            <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', overflowY: 'auto' }}>
+              <div style={{ font: '600 clamp(19px,2.2vw,28px)/1.35 var(--font-serif)', color: 'var(--text-primary)', maxWidth: '34ch', width: '100%' }}>
                 {typeof front === 'string' ? <ChatMarkdown text={front} /> : front}
               </div>
             </div>
