@@ -82,7 +82,7 @@ export default function QuestionCard({
           {[board, year].filter(Boolean).join(' · ')}
         </Badge>
         {editorial && <Badge tone="attention" icon={null}>Reformulada · não é item original</Badge>}
-        {tags.map((t) => (
+        {revealed && tags.map((t) => (
           <Badge key={t} tone="neutral" icon={null}>
             {t}
           </Badge>
