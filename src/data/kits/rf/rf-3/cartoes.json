@@ -1,0 +1,238 @@
+[
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c01",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.1",
+    "pergunta": "Cite o princípio do manual de comunicação da Câmara, citado pela apostila, que trata a IA como apoio e não como substituição.",
+    "resposta": [
+      "Complementaridade e não substituição"
+    ],
+    "fonte": "Etapa 18, p. 234 (manual não conferido no texto primário)",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c02",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.2",
+    "pergunta": "Cite duas métricas de transcrição de sessões citadas pela apostila.",
+    "resposta": [
+      "WER (taxa de erro de palavras)",
+      "Tempo de reconhecimento",
+      "Acurácia da diarização",
+      "Volume de transcrições assistidas"
+    ],
+    "explicacao": "A apostila lista quatro métricas no caso de uso da Câmara dos Deputados (caso 022 da UIP); basta citar duas.",
+    "fonte": "Etapa 18, p. 234",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c03",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.3",
+    "pergunta": "Quais são os dois modos de sumarização?",
+    "resposta": [
+      "Extrativa: seleciona frases do próprio texto",
+      "Abstrativa: gera texto novo"
+    ],
+    "fonte": "Etapa 18, p. 234",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c04",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.4",
+    "pergunta": "Para que serve a indexação?",
+    "resposta": [
+      "Atribuir rótulos (assunto, orador, tipo de fala, data) que permitem encontrar o documento depois"
+    ],
+    "fonte": "Etapa 18, p. 235",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c05",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.5",
+    "pergunta": "Quais são os três modos de busca?",
+    "resposta": [
+      "Por metadados",
+      "Lexical, no texto integral",
+      "Semântica, pelo sentido"
+    ],
+    "fonte": "Etapa 18, p. 236",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c06",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.6",
+    "pergunta": "De que texto devem partir o resumo, o índice e a busca?",
+    "resposta": [
+      "Do texto com redação final"
+    ],
+    "fonte": "Etapa 18, p. 237",
+    "tema": "Aplicações de IA em parlamentos"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c07",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.1",
+    "pergunta": "Em que a busca lexical e a busca semântica diferem?",
+    "resposta": [
+      "A lexical casa palavras",
+      "A semântica casa sentidos, por embeddings"
+    ],
+    "fonte": "Etapa 19, p. 245-246",
+    "tema": "Sistemas de busca semântica em acervos parlamentares"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c08",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.2",
+    "pergunta": "Quais são as três etapas do preparo do acervo?",
+    "resposta": [
+      "Dividir em trechos (chunking)",
+      "Gerar um vetor por trecho",
+      "Guardar em índice vetorial"
+    ],
+    "fonte": "Etapa 19, p. 246",
+    "tema": "Sistemas de busca semântica em acervos parlamentares"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c09",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.3",
+    "pergunta": "O que é o BM25?",
+    "resposta": [
+      "Método lexical de referência que pondera frequência do termo, raridade no acervo e tamanho do documento"
+    ],
+    "fonte": "Etapa 19, p. 247",
+    "tema": "Sistemas de busca semântica em acervos parlamentares"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c10",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.4",
+    "pergunta": "Quais são as três etapas da geração aumentada por recuperação?",
+    "resposta": [
+      "Recuperar",
+      "Aumentar o contexto com os trechos",
+      "Gerar a resposta"
+    ],
+    "fonte": "Etapa 19, p. 248",
+    "tema": "Sistemas de busca semântica em acervos parlamentares"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c11",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.5",
+    "pergunta": "Por que a busca em acervo parlamentar tende a ser híbrida?",
+    "resposta": [
+      "Porque o texto tem identificadores exatos: números, siglas e nomes"
+    ],
+    "fonte": "Etapa 19, p. 249",
+    "tema": "Sistemas de busca semântica em acervos parlamentares"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c12",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.1",
+    "pergunta": "O que a ata em sentido estrito registra?",
+    "resposta": [
+      "O que foi feito, em sinopse"
+    ],
+    "fonte": "RICD art. 97 (conferido); Etapa 20, p. 258",
+    "tema": "Geração automática de atas e resumos de sessões"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c13",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.2",
+    "pergunta": "Quantos incisos o art. 63 do RICD exige no conteúdo da ata de comissão?",
+    "resposta": [
+      "Cinco (I a V)"
+    ],
+    "fonte": "RICD art. 63, parágrafo único (conferido)",
+    "tema": "Geração automática de atas e resumos de sessões"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c14",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.3",
+    "pergunta": "Qual é o produto da IA na geração de atas?",
+    "resposta": [
+      "Minuta ou proposta, validada por servidor"
+    ],
+    "fonte": "Etapa 20, p. 260",
+    "tema": "Geração automática de atas e resumos de sessões"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c15",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.4",
+    "pergunta": "O que é ancoragem?",
+    "resposta": [
+      "Ligar cada afirmação do texto gerado ao trecho da fonte que a sustenta"
+    ],
+    "fonte": "Etapa 20, p. 262",
+    "tema": "Geração automática de atas e resumos de sessões"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c16",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.5",
+    "pergunta": "Qual critério de avaliação responde à pergunta: falta algo importante no resumo?",
+    "resposta": [
+      "Cobertura"
+    ],
+    "fonte": "Etapa 20, p. 262",
+    "tema": "Geração automática de atas e resumos de sessões"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c17",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.1",
+    "pergunta": "Qual a diferença entre modelo multilíngue e monolíngue?",
+    "resposta": [
+      "Multilíngue: treinado com muitos idiomas",
+      "Monolíngue: treinado com um só"
+    ],
+    "fonte": "Etapa 21, p. 270",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c18",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.2",
+    "pergunta": "Cite dois modelos multilíngues de texto da apostila.",
+    "resposta": [
+      "mBERT",
+      "XLM-R"
+    ],
+    "fonte": "Etapa 21, p. 271",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c19",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.3",
+    "pergunta": "Qual modelo de fala multilíngue a apostila cita como referência?",
+    "resposta": [
+      "Whisper, com quase cem idiomas"
+    ],
+    "fonte": "Etapa 21, p. 272",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c20",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.4",
+    "pergunta": "Quais são as duas vias de especialização de um modelo?",
+    "resposta": [
+      "Treinar do zero na língua",
+      "Continuar o pré-treino de um modelo pronto"
+    ],
+    "fonte": "Etapa 21, p. 271",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c21",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.5",
+    "pergunta": "O que decide a escolha de um modelo para um acervo específico?",
+    "resposta": [
+      "Medição no próprio material, com teste no acervo"
+    ],
+    "fonte": "Etapa 21, p. 273",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  },
+  {
+    "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c22",
+    "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.6",
+    "pergunta": "Qual modelo de fala a apostila diz que a Câmara usa?",
+    "resposta": [
+      "Whisper large-v3"
+    ],
+    "fonte": "Etapa 21, p. 273",
+    "explicacao": "Citação da apresentação do Derep feita pela apostila (p. 273); não conferida no texto primário.",
+    "tema": "Modelos de IA multilíngues e especializados em português"
+  }
+]

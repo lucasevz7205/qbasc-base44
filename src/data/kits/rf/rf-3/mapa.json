@@ -1,0 +1,257 @@
+{
+  "topico": "rf-3",
+  "materia": "rf",
+  "centro": "IA Aplicada no Contexto Parlamentar",
+  "ramos": [
+    {
+      "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1",
+      "cor": 1,
+      "x": {
+        "e": "Quatro aplicações que formam uma fila: transcrever, sumarizar, indexar e buscar. Cada etapa herda os acertos e os erros da anterior, por isso a revisão humana do texto vem antes de tudo.",
+        "src": "Etapa 18 (3.1), p. 233-237"
+      },
+      "t": "Aplicações de IA em parlamentos",
+      "f": [
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.1",
+          "x": {
+            "e": "Parlamentos produzem muita fala pública que precisa virar registro. A IA aparece como apoio, com decisão humana ao final, princípio que o manual de comunicação da Câmara lista como complementaridade e não substituição.",
+            "src": "Etapa 18, p. 233-234 (manual citado pela apostila, não conferido)"
+          },
+          "t": "Panorama e princípio comum"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.2",
+          "x": {
+            "e": "Transforma a fala em texto, com marcação de orador e de tempo. Mede-se por WER (taxa de erro de palavras) e por acurácia da diarização, que é separar quem fala.",
+            "src": "Etapa 18, p. 234"
+          },
+          "t": "Transcrição de sessões"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.3",
+          "x": {
+            "e": "Produz texto curto que conserva o essencial de um texto longo. Pode ser extrativa, quando copia frases do próprio texto, ou abstrativa, quando gera texto novo com outras palavras.",
+            "ex": "Resumo de sessão feito com frases copiadas dos discursos é extrativo.",
+            "trap": "Sumarização não recebe áudio: a entrada é texto longo.",
+            "src": "Etapa 18, p. 234-235"
+          },
+          "t": "Sumarização"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.4",
+          "x": {
+            "e": "Atribui ao documento rótulos (assunto, orador, tipo de fala, data) que permitem achá-lo depois. Sem índice, o acervo existe, mas não se acha nada nele.",
+            "trap": "Indexação rotula o documento; busca o localiza. São etapas distintas (Etapa 18, p. 237).",
+            "src": "Etapa 18, p. 235-236"
+          },
+          "t": "Indexação"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.5",
+          "x": {
+            "e": "Recupera documentos ou trechos que respondem a uma consulta. Há três modos: por metadados (filtra pelos rótulos da indexação), lexical (procura palavras no texto integral) e semântica (procura pelo sentido).",
+            "src": "Etapa 18, p. 236-237"
+          },
+          "t": "Busca"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.6",
+          "x": {
+            "e": "Cada etapa depende da anterior: erro de transcrição vira erro de resumo, de índice e de busca. Um nome mal grafado não é indexado e não aparece na busca.",
+            "trap": "O resumo, o índice e a busca devem partir do texto com redação final (Etapa 18, p. 237).",
+            "src": "Etapa 18, p. 237"
+          },
+          "t": "A fila e seus elos"
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2",
+      "cor": 2,
+      "x": {
+        "e": "Recuperação por sentido em acervos de documentos parlamentares, com embeddings, índice vetorial, busca híbrida e geração aumentada por recuperação (RAG). A busca semântica devolve trechos; a RAG devolve texto escrito a partir deles.",
+        "src": "Etapa 19 (3.2), p. 245-257"
+      },
+      "t": "Sistemas de busca semântica em acervos parlamentares",
+      "f": [
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.1",
+          "x": {
+            "e": "A busca lexical casa palavras e falha com sinônimos e paráfrases. A busca semântica casa sentidos, usando embeddings, que são vetores numéricos que representam o significado de um texto.",
+            "trap": "Busca semântica não é busca de palavras-chave.",
+            "src": "Etapa 19, p. 245-246"
+          },
+          "t": "Da busca por palavras à busca por sentido"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.2",
+          "x": {
+            "e": "O preparo do acervo, feito antes, divide os documentos em trechos, gera um vetor por trecho e guarda os vetores em índice vetorial. A consulta, a cada busca, gera o vetor da pergunta e pega os trechos mais próximos por similaridade.",
+            "trap": "Documento novo não aparece na busca semântica enquanto não for vetorizado e indexado.",
+            "src": "Etapa 19, p. 246-247"
+          },
+          "t": "Como funciona"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.3",
+          "x": {
+            "e": "Vetor esparso, quase todo zeros, é a base do BM25, método lexical de referência, que estima a relevância equilibrando três fatores: a frequência do termo no documento, a raridade do termo no acervo e o tamanho do documento. Vetor denso, quase todo preenchido, vem de rede neural. A busca híbrida roda as duas e funde os resultados, porque as falhas são complementares.",
+            "src": "Etapa 19, p. 247-248"
+          },
+          "t": "Busca lexical, densa e híbrida"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.4",
+          "x": {
+            "e": "Recupera trechos, coloca-os no contexto do modelo e gera a resposta com base neles. A definição consta da Portaria DG nº 227/2025, art. 2º, IX. A RAG reduz a alucinação, que é a resposta fictícia e convincente, mas não a elimina: pode falhar na recuperação e na geração.",
+            "trap": "RAG não é sinônimo de busca semântica: a busca devolve trechos, a RAG acrescenta a geração.",
+            "src": "Etapa 19, p. 248 (definição transcrita na apostila; a Portaria DG nº 227/2025 não foi lida no original)"
+          },
+          "t": "Geração aumentada por recuperação (RAG)"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.5",
+          "x": {
+            "e": "Três traços do acervo trazem consequências próprias. Identificadores exatos (números, siglas, nomes) pedem busca lexical e, por isso, a busca precisa ser híbrida. Metadados ricos (orador, partido, UF, data, fase da sessão) permitem combinar a busca semântica com filtros. O valor de registro exige que a resposta cite sessão, data e orador, para conferência. A busca pública da Câmara é por metadados e texto integral; RAG sobre o acervo de discursos é plano declarado.",
+            "src": "Etapa 19, p. 249-250 (plano declarado, conforme apresentação do Derep citada pela apostila)"
+          },
+          "t": "O que muda em um acervo parlamentar"
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3",
+      "cor": 3,
+      "x": {
+        "e": "Diferença entre ata, registro integral e resumo, o caminho pelo qual a IA gera uma minuta e os riscos e controles desse processo. A validação humana é o controle que não se dispensa, pela primazia da decisão humana (Etapa 20, p. 262).",
+        "src": "Etapa 20 (3.3), p. 258-269"
+      },
+      "t": "Geração automática de atas e resumos de sessões",
+      "f": [
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.1",
+          "x": {
+            "e": "O registro integral reproduz o que foi dito, por extenso. A ata em sentido estrito registra o que foi feito, em sinopse (art. 97 do RICD). O resumo traz o essencial do que cada orador disse.",
+            "ex": "A ata diz que houve votação; o registro integral diz o que cada deputado falou.",
+            "trap": "Ata em sentido estrito (art. 97) não é o registro integral; a ata publicada no Diário (art. 98) traz os discursos por extenso (RICD art. 98, § 1º).",
+            "src": "RICD arts. 97 e 98, § 1º (conferidos); Etapa 20, p. 258-259"
+          },
+          "t": "Três documentos que não se confundem"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.2",
+          "x": {
+            "e": "Dados objetivos, como presenças, pauta e resultado de votação, vêm dos sistemas oficiais, e não da fala. A ata de comissão, pelo art. 63, parágrafo único, tem cinco incisos: data, hora e local; presentes e ausentes; resumo do expediente; matérias distribuídas; proposições apreciadas e conclusões. Não há discursos por extenso.",
+            "trap": "Pedir a um modelo o resultado de uma votação lendo a transcrição cria um risco desnecessário (Etapa 20, p. 260).",
+            "src": "RICD art. 63, parágrafo único, I a V (conferido); Etapa 20, p. 259-260"
+          },
+          "t": "Conteúdo da ata e origem dos dados"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.3",
+          "x": {
+            "e": "O percurso tem cinco passos: texto de partida, reunião de dados objetivos, extração dos fatos, redação no padrão da Casa e validação pelo servidor. O produto é uma minuta ou proposta, não a ata.",
+            "trap": "A minuta pode nascer da máquina; o documento é de quem o aprova e assina (Etapa 20, p. 262).",
+            "src": "Etapa 20, p. 260-262"
+          },
+          "t": "Como a IA gera atas e resumos"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.4",
+          "x": {
+            "e": "Riscos: alucinação, omissão, distorção, desproporção, atribuição errada e enquadramento. Controles: ancoragem na fonte (ligar cada afirmação ao trecho que a sustenta), dados oficiais, modelo de documento fixo, extração antes da redação, instrução de neutralidade e conferência de proporção, validação por servidor e identificação do uso de IA. O quadro de controles é organização deste material (Etapa 20, p. 262).",
+            "ex": "Escrever que um deputado 'votará contra' quando a fala dizia 'votará contra, salvo se aprovada a emenda' é distorção.",
+            "src": "Etapa 20, p. 261-262"
+          },
+          "t": "Riscos e controles"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.5",
+          "x": {
+            "e": "Critérios: fidelidade (o que o texto afirma está na fonte), cobertura (o essencial está no texto), proporção, atribuição e forma. Fidelidade e cobertura puxam para lados opostos, e métricas automáticas não bastam.",
+            "src": "Etapa 20, p. 262"
+          },
+          "t": "Como avaliar"
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4",
+      "cor": 4,
+      "x": {
+        "e": "Três eixos de um modelo (língua, variante e domínio), exemplos de modelos de texto e de fala para o português, critérios de escolha e a prática declarada da Câmara.",
+        "src": "Etapa 21 (3.4), p. 270-277"
+      },
+      "t": "Modelos de IA multilíngues e especializados em português",
+      "f": [
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.1",
+          "x": {
+            "e": "Modelo multilíngue é treinado com muitos idiomas; monolíngue, com um só. Especializar na língua usa dados em português; especializar no domínio usa dados de um assunto, como o legislativo. O terceiro eixo é a variedade da língua: português do Brasil, português europeu ou ambos. Os três eixos são independentes.",
+            "trap": "Língua e domínio não são o mesmo eixo de especialização.",
+            "src": "Etapa 21, p. 270-272"
+          },
+          "t": "Os conceitos"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.2",
+          "x": {
+            "e": "Multilíngues: mBERT e XLM-R, este pré-treinado com textos de 100 idiomas. Em português: BERTimbau, pré-treinado com o corpus brWaC; Albertina; PTT5; Sabiá. Os nomes mudam depressa; o que tende a ser cobrado é a categoria (Etapa 21, p. 271).",
+            "src": "Etapa 21, p. 271 (referências citadas pela apostila)"
+          },
+          "t": "Modelos de texto"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.3",
+          "x": {
+            "e": "Whisper é multilíngue, com quase cem idiomas; seu acerto em português acompanha quanto português havia no treino. O wav2vec 2.0 multilíngue pode ser ajustado ao português com o corpus CORAA, de fala brasileira espontânea.",
+            "trap": "Whisper não é modelo só de português.",
+            "src": "Etapa 21, p. 272"
+          },
+          "t": "Modelos de fala"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.4",
+          "x": {
+            "e": "Treinar do zero na língua, com custo alto, ou continuar o pré-treino de um modelo pronto, em geral centrado no inglês, com textos em português, com custo menor. Os modelos Sabiá seguem a segunda via.",
+            "src": "Etapa 21, p. 271"
+          },
+          "t": "Duas vias de especialização"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.5",
+          "x": {
+            "e": "Critérios: tarefa, língua e variante, domínio, tamanho e custo, controle dos dados, manutenção e evidência. A última linha decide: o que vale para um acervo específico só o teste nesse acervo responde.",
+            "trap": "Especializado não é sempre melhor, e o maior modelo também não é sempre o melhor.",
+            "src": "Etapa 21, p. 272-273; critérios apresentados como organização deste material (Etapa 21, p. 272)"
+          },
+          "t": "Como escolher"
+        },
+        {
+          "id": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r4.6",
+          "x": {
+            "e": "A Câmara usa o Whisper large-v3 e lista a adaptação ao domínio legislativo como projeto iniciado; mantém recursos próprios para texto jurídico, do projeto Ulysses. Avaliação comparativa própria da Câmara não foi localizada em fonte confiável.",
+            "src": "Etapa 21, p. 273-274 (apresentação do Derep citada pela apostila, não conferida)"
+          },
+          "t": "Na prática da Câmara"
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "Indexação e busca semântica são etapas diferentes: o índice rotula, a busca semântica acha pelo sentido.",
+      "de": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.4",
+      "para": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.1"
+    },
+    {
+      "rotulo": "A ancoragem da ata e a RAG tratam o mesmo risco: resposta sem trecho de origem.",
+      "de": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r3.4",
+      "para": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r2.4"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21": {}
+  }
+}
