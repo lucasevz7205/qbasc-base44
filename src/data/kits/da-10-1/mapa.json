@@ -429,6 +429,878 @@
         "e": "Ferramentas que apoiam licitações e contratações, sem serem modalidades: credenciamento, pré-qualificação, procedimento de manifestação de interesse (PMI), sistema de registro de preços (SRP) e registro cadastral.",
         "src": "Lei 14.133/2021, art. 78"
       }
+    },
+    {
+      "id": "kit-20261121t103807-2845-r1",
+      "t": "Objetivos e abrangência da Lei 14.133/2021",
+      "refs": [
+        5,
+        6,
+        7,
+        26,
+        27
+      ],
+      "x": {
+        "e": "Fundamentos da lei geral: o que a licitação busca e a quem a lei se aplica. O art. 11 fixa quatro objetivos do processo licitatório e liga a licitação à governança das contratações. O art. 1º estende a lei às administrações diretas, autárquicas e fundacionais de todos os entes, inclusive ao Legislativo e ao Judiciário quando exercem função administrativa. As estatais seguem a Lei 13.303/2016, salvo quanto aos crimes (art. 178)."
+      },
+      "f": [
+        {
+          "id": "kit-20261121t103807-2845-r1.1",
+          "t": "Objetivos do processo licitatório",
+          "refs": [
+            5,
+            6
+          ],
+          "x": {
+            "e": "Os quatro objetivos do art. 11 e a regra de governança do parágrafo único. Objetivos do art. 11: (1) selecionar a proposta que gere o resultado mais vantajoso, inclusive quanto ao ciclo de vida do objeto; (2) assegurar tratamento isonômico e justa competição; (3) evitar sobrepreço, preços manifestamente inexequíveis e superfaturamento; (4) incentivar a inovação e o desenvolvimento nacional sustentável. O parágrafo único atribui à alta administração a governança das contratações."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r1.1.1",
+              "t": "Resultado mais vantajoso e ciclo de vida do objeto",
+              "refs": [
+                5,
+                6
+              ],
+              "x": {
+                "e": "Mais vantajoso não é sinônimo de mais barato: a lei exige olhar o ciclo de vida do objeto. O ciclo de vida abrange manutenção, consumo e descarte. A lei admite critérios como melhor técnica e técnica e preço, então o item que diga que a licitação busca só o menor preço está errado. O art. 11 também manda evitar o sobrepreço; superfaturamento é dano ao patrimônio na execução; o preço inexequível leva à desclassificação da proposta (art. 59, III)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r1.1.2",
+              "t": "Governança das contratações pela alta administração",
+              "refs": [
+                6
+              ],
+              "x": {
+                "e": "A alta administração responde pela governança das contratações (art. 11, parágrafo único). Ela deve implementar processos e estruturas, inclusive de gestão de riscos e controles internos. Com isso busca alcançar os objetivos da licitação, promover um ambiente íntegro e confiável, alinhar as contratações ao planejamento estratégico e às leis orçamentárias e promover eficiência, efetividade e eficácia."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-20261121t103807-2845-r1.2",
+          "t": "Âmbito de aplicação",
+          "refs": [
+            6,
+            7,
+            26,
+            27
+          ],
+          "x": {
+            "e": "Quem se submete à lei, o que ela abrange e o que fica fora. A lei vale para as administrações diretas, autárquicas e fundacionais da União, dos Estados, do DF e dos Municípios (art. 1º). O art. 2º lista o que ela abrange e o art. 3º o que ela não abrange."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r1.2.1",
+              "t": "Entes e Poderes abrangidos",
+              "refs": [
+                6,
+                26,
+                27,
+                7
+              ],
+              "x": {
+                "e": "A lei alcança todos os entes e também Legislativo e Judiciário quando em função administrativa. Isso inclui a Câmara quando compra e contrata, e abrange também fundos especiais. A lei se aplica, entre outros, a alienação e concessão de direito real de uso de bens, compra (inclusive por encomenda), locação, concessão e permissão de uso de bens públicos e prestação de serviços (art. 2º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r1.2.2",
+              "t": "Estatais e contratos excluídos",
+              "refs": [
+                7,
+                26
+              ],
+              "x": {
+                "e": "Estatais têm regime próprio; certos contratos ficam fora da lei geral. Empresas públicas, sociedades de economia mista e suas subsidiárias seguem a Lei 13.303/2016. A única ressalva é o art. 178 (crimes em licitações e contratos), que as alcança (art. 1º, § 1º). O art. 3º exclui contratos de operação de crédito e de gestão de dívida pública e contratações sujeitas a legislação própria."
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-20261121t103807-2845-r2",
+      "t": "Princípios e agentes da contratação",
+      "refs": [
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "x": {
+        "e": "Princípios do art. 5º e agentes que conduzem o processo (arts. 7º e 8º). O art. 5º traz 22 princípios expressos. Os agentes são designados pela autoridade máxima, e a segregação de funções protege a integridade do processo."
+      },
+      "f": [
+        {
+          "id": "kit-20261121t103807-2845-r2.1",
+          "t": "Princípios expressos",
+          "refs": [
+            9,
+            10,
+            14
+          ],
+          "x": {
+            "e": "A banca cobra a literalidade do art. 5º, trocando um princípio pelo conceito de outro. O art. 5º lista 22 princípios expressos, entre eles planejamento, transparência, segregação de funções, competitividade e celeridade. Adjudicação compulsória, formalismo moderado e sigilo das propostas são tratados como implícitos pela doutrina. Antes de aceitar 'previsto expressamente no art. 5º', confira contra a lista."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r2.1.1",
+              "t": "Segregação de funções e planejamento",
+              "refs": [
+                9,
+                14
+              ],
+              "x": {
+                "e": "Planejamento é método prévio; segregação de funções impede acúmulo de funções de risco. Planejamento: contratar com estudo prévio, substituindo o improviso por método e alinhando a contratação ao plano anual e ao orçamento. Não se confunde com motivação. Segregação de funções: o mesmo agente não deve acumular funções sujeitas a risco, como elaborar o edital e fiscalizar o contrato. Exemplo: quem elaborou o termo de referência não deve julgar as propostas nem fiscalizar o contrato. A lei consagra a segregação, nunca a 'unificação' ou 'concentração' de funções."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r2.1.2",
+              "t": "Publicidade e sigilo temporário das propostas",
+              "refs": [
+                9,
+                10
+              ],
+              "x": {
+                "e": "A publicidade tem exceção temporária: o conteúdo das propostas é sigiloso até a abertura. O sigilo vale até a respectiva abertura (art. 13, parágrafo único, I). O orçamento estimado pode ser sigiloso, de forma justificada (art. 24). Fora disso os atos são públicos, ressalvada a informação cujo sigilo seja imprescindível à segurança da sociedade e do Estado (art. 13). Outros princípios cobrados: julgamento objetivo (critérios previstos no edital, sem gosto pessoal) e competitividade (ampliar a disputa), que a banca confunde entre si, e vinculação ao edital."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-20261121t103807-2845-r2.2",
+          "t": "Agentes da contratação",
+          "refs": [
+            12,
+            13,
+            26
+          ],
+          "x": {
+            "e": "Quem pode ser designado e quais as figuras de condução do certame. A autoridade máxima promove a gestão por competências e designa agentes que sejam, preferencialmente, servidores efetivos ou empregados públicos dos quadros permanentes (art. 7º, I). O agente de contratação responde individualmente por seus atos, salvo se induzido a erro pela equipe de apoio. O art. 8º exige que o agente de contratação seja escolhido entre servidores efetivos ou empregados públicos dos quadros permanentes."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r2.2.1",
+              "t": "Agente de contratação, pregoeiro e comissão",
+              "refs": [
+                12,
+                13
+              ],
+              "x": {
+                "e": "Agente, pregoeiro, comissão e equipe de apoio têm papéis e responsabilidades distintos. Equipe de apoio (art. 8º, § 1º): auxilia o agente. Comissão de contratação (art. 8º, § 2º): no mínimo 3 membros; pode substituir o agente em licitações de bens ou serviços especiais, e os membros respondem solidariamente, salvo quem registrar posição divergente em ata. Pregoeiro (art. 8º, § 5º): nome do agente no pregão. Comissão do diálogo competitivo (art. 32, § 1º, XI): pelo menos 3 servidores efetivos ou empregados permanentes. Em licitações de bens ou serviços especiais é possível contratar assessoria especializada por prazo determinado, mas quem decide é o agente público (art. 8º, § 4º)."
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-20261121t103807-2845-r3",
+      "t": "Fases, prazos e impugnações",
+      "refs": [
+        15,
+        16,
+        23,
+        24
+      ],
+      "x": {
+        "e": "Sequência das fases do art. 17, prazos mínimos e instrumentos de questionamento. O processo licitatório segue sete fases em sequência. Os prazos de divulgação variam com o objeto e o critério. Impugnação, recurso e pedido de reconsideração têm prazos próprios."
+      },
+      "f": [
+        {
+          "id": "kit-20261121t103807-2845-r3.1",
+          "t": "Fases do processo licitatório",
+          "refs": [
+            15,
+            16,
+            23,
+            24
+          ],
+          "x": {
+            "e": "Art. 17 da Lei 14.133/2021 e os mecanismos de defesa dos interessados. As fases são: preparatória, divulgação do edital, propostas e lances, julgamento, habilitação, recursal e homologação."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r3.1.1",
+              "t": "Sequência das fases e inversão julgamento-habilitação",
+              "refs": [
+                15,
+                16
+              ],
+              "x": {
+                "e": "A regra da lei nova é julgar primeiro e habilitar depois. Só se examinam os documentos de habilitação do licitante mais bem classificado. A inversão só ocorre com ato motivado e previsão no edital, de modo que a habilitação não pode anteceder o julgamento por simples decisão discricionária do agente. A forma eletrônica é preferencial; a presencial exige motivação, ata e gravação em áudio e vídeo (art. 17, § 2º). Prazos mínimos entre edital e propostas (art. 55): bens por menor preço ou maior desconto, 8 dias úteis; bens nos demais critérios, 15; serviços comuns e obras e serviços comuns de engenharia, por menor preço ou maior desconto, 10; serviços especiais e obras e serviços especiais de engenharia, pelos mesmos critérios, 25; contratação integrada, 60; semi-integrada e demais casos de serviços e obras, 35; leilão, 15; técnica e preço, melhor técnica ou conteúdo artístico, 35. Todos esses prazos são em dias úteis. Modo de disputa (art. 56): aberto, fechado ou combinado. Encerradas as fases e os recursos, a autoridade superior decide (art. 71)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r3.1.2",
+              "t": "Impugnação, recurso e efeito suspensivo",
+              "refs": [
+                23,
+                24
+              ],
+              "x": {
+                "e": "Prazos de impugnação e recurso e o efeito suspensivo por força de lei. Impugnação ou pedido de esclarecimento (art. 164): qualquer pessoa, até 3 dias úteis antes da abertura; resposta em até 3 dias úteis, limitada ao último dia útil anterior à abertura. Recurso (art. 165, I): 3 dias úteis; a autoridade pode reconsiderar em 3 dias úteis ou encaminhar à superior, que decide em até 10 dias úteis. Pedido de reconsideração (art. 165, II): 3 dias úteis. Recurso e pedido de reconsideração têm efeito suspensivo por lei (art. 168). Contra sanções: recurso em 15 dias úteis para advertência, multa e impedimento (art. 166); apenas reconsideração, em 15 dias úteis, para declaração de inidoneidade (art. 167)."
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-20261121t103807-2845-r4",
+      "t": "Modalidades e critérios de julgamento",
+      "refs": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "x": {
+        "e": "Cinco modalidades (formato da disputa) e seis critérios de julgamento (régua da escolha). Modalidade é o formato; critério é a régua. Tomada de preços e convite deixaram de existir: a modalidade depende da natureza do objeto, não do valor. Registro de preços, credenciamento, pré-qualificação, PMI e registro cadastral são procedimentos auxiliares, não modalidades."
+      },
+      "f": [
+        {
+          "id": "kit-20261121t103807-2845-r4.1",
+          "t": "Modalidades",
+          "refs": [
+            17,
+            18,
+            19,
+            20,
+            26
+          ],
+          "x": {
+            "e": "Pregão, concorrência, concurso, leilão e diálogo competitivo (art. 28). São vedadas a criação de outras modalidades e a combinação das existentes."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r4.1.1",
+              "t": "Pregão e concorrência",
+              "refs": [
+                17,
+                18
+              ],
+              "x": {
+                "e": "Pregão para o comum; concorrência para o especial e para obras e serviços de engenharia. Pregão: obrigatório para bens e serviços comuns, inclusive serviços comuns de engenharia, com especificações usuais de mercado e critério de menor preço ou maior desconto (arts. 6º, XLI, e 29). Não serve para serviços técnicos especializados de natureza predominantemente intelectual nem para obras e serviços de engenharia, exceto os comuns (art. 29, parágrafo único). Concorrência (art. 6º, XXXVIII): bens e serviços especiais e obras e serviços comuns e especiais de engenharia."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r4.1.2",
+              "t": "Diálogo competitivo",
+              "refs": [
+                19,
+                20
+              ],
+              "x": {
+                "e": "Modalidade para quando a administração conhece o problema, mas não a melhor solução. Cabe para objeto que envolva inovação tecnológica ou técnica, impossibilidade de satisfazer a necessidade sem adaptar soluções de mercado e impossibilidade de definir com precisão as especificações técnicas (art. 32, I), ou quando for necessário definir os meios e alternativas para satisfazer a necessidade (art. 32, II). Os diálogos ocorrem com licitantes pré-selecionados por critérios objetivos; a administração não revela as soluções de um licitante aos demais sem o consentimento dele. Encerrados os diálogos, abre-se prazo não inferior a 60 dias úteis para a proposta final. A comissão tem ao menos 3 servidores efetivos ou empregados públicos permanentes."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r4.1.3",
+              "t": "Leilão",
+              "refs": [
+                26
+              ],
+              "x": {
+                "e": "O leilão usa o maior lance. Pode ser conduzido por leiloeiro ou servidor designado."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-20261121t103807-2845-r4.2",
+          "t": "Critérios de julgamento",
+          "refs": [
+            20,
+            21,
+            28
+          ],
+          "x": {
+            "e": "A régua do art. 33 para escolher a proposta vencedora. Critério de julgamento não se confunde com modalidade: o primeiro é a régua, a segunda é o formato. Há 6 critérios (art. 33), contra 5 modalidades (art. 28) e 5 procedimentos auxiliares (art. 78)."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r4.2.1",
+              "t": "Os seis critérios e o cabimento de técnica e preço",
+              "refs": [
+                20,
+                21,
+                28
+              ],
+              "x": {
+                "e": "Os seis critérios do art. 33 e as hipóteses em que técnica e preço pode ser escolhido. Critérios: menor preço, maior desconto, melhor técnica ou conteúdo artístico, técnica e preço, maior lance (leilão) e maior retorno econômico (contrato de eficiência). Técnica e preço (art. 36, § 1º) é escolhido quando o ETP demonstrar que a qualidade técnica acima dos requisitos mínimos é relevante, nas licitações para: serviços técnicos especializados predominantemente intelectuais (preferencialmente); serviços dependentes de tecnologia sofisticada e de domínio restrito; bens e serviços especiais de TIC; obras e serviços especiais de engenharia; objetos que admitam soluções alternativas e variações de execução. Não é obrigatório em TIC: depende de o ETP demonstrar essa relevância."
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-20261121t103807-2845-r5",
+      "t": "Fase preparatória e contratação direta",
+      "refs": [
+        45,
+        48,
+        49,
+        50,
+        51,
+        52,
+        55,
+        56,
+        58,
+        60,
+        61,
+        65
+      ],
+      "x": {
+        "e": "Planejamento da contratação (art. 18) e as duas portas de contratação sem licitação (arts. 72 a 75). Antes de licitar, o órgão planeja: PCA, ETP e termo de referência (ou projetos, nas obras). Quando contrata sem licitação, o processo continua formal (art. 72)."
+      },
+      "f": [
+        {
+          "id": "kit-20261121t103807-2845-r5.1",
+          "t": "Planejamento: PCA, ETP e termo de referência (tópico associado ao item 10.7)",
+          "assoc_item": "10.7",
+          "refs": [
+            45,
+            48,
+            49,
+            50,
+            51,
+            52,
+            65
+          ],
+          "x": {
+            "e": "A fase preparatória alinha a contratação ao plano anual e ao orçamento. ETP e TR correspondem ao item 10.7 do edital, conforme a ficha do capítulo. A ficha da etapa 16 cita o item 10.7 como 'Estudo Técnico Preliminar e Termo de Referência'. O ETP é a primeira etapa do planejamento e diz se vale contratar e qual a melhor solução. O termo de referência vem depois e se apoia nele. O processo segue ao órgão de assessoramento jurídico, que faz o controle prévio de legalidade por parecer (art. 53)."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r5.1.1",
+              "t": "Plano de contratações anual",
+              "refs": [
+                48,
+                65
+              ],
+              "x": {
+                "e": "Elaborar o PCA é faculdade; divulgar e observar o que foi elaborado é dever. Os órgãos responsáveis pelo planejamento do ente poderão, na forma de regulamento, elaborar o PCA, para racionalizar as contratações, alinhar ao planejamento estratégico e subsidiar as leis orçamentárias (art. 12, VII). O plano elaborado deve ser divulgado e mantido à disposição do público em sítio eletrônico oficial e será observado na realização de licitações e na execução dos contratos (art. 12, § 1º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r5.1.2",
+              "t": "Estudo técnico preliminar (associado ao item 10.7)",
+              "assoc_item": "10.7",
+              "refs": [
+                45,
+                49,
+                50,
+                51
+              ],
+              "x": {
+                "e": "O ETP caracteriza o interesse público e a melhor solução; tem 13 elementos, 5 obrigatórios. Definição: art. 6º, XX; elementos: art. 18, § 1º. São obrigatórios (§ 2º) necessidade (I), quantidades com memórias de cálculo (IV), estimativa de valor (VI), justificativas para o parcelamento ou não (VIII) e posicionamento conclusivo sobre a adequação (XIII), mnemônico NQVPC. Os outros podem faltar, desde que justificadamente. Levantamento de mercado (V) e previsão no PCA (II) não são obrigatórios. Condições de solidez, segurança e durabilidade e prazo de entrega pertencem ao anteprojeto (art. 6º, XXIV), não ao ETP. Em obras e serviços comuns de engenharia, demonstrada a inexistência de prejuízo, basta o TR ou o projeto básico (art. 18, § 3º)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r5.1.3",
+              "t": "Termo de referência (associado ao item 10.7)",
+              "assoc_item": "10.7",
+              "refs": [
+                45,
+                51,
+                52
+              ],
+              "x": {
+                "e": "O TR define o objeto de bens e serviços e se fundamenta no ETP. Art. 6º, XXIII: inclui definição do objeto (natureza, quantitativos, prazo e prorrogação), fundamentação com referência ao ETP, descrição da solução considerado o ciclo de vida, requisitos, modelo de execução, modelo de gestão, critérios de medição e pagamento, forma e critérios de seleção do fornecedor e estimativa do valor."
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-20261121t103807-2845-r5.2",
+          "t": "Contratação direta",
+          "refs": [
+            55,
+            56,
+            58,
+            60,
+            61,
+            65
+          ],
+          "x": {
+            "e": "Inexigibilidade (competição inviável) e dispensa (competição possível, mas a lei autoriza não licitar). A instrução do processo vale para ambas (art. 72). O rol de inexigibilidade é exemplificativo ('em especial')."
+          },
+          "f": [
+            {
+              "id": "kit-20261121t103807-2845-r5.2.1",
+              "t": "Instrução do processo e responsabilidade solidária",
+              "refs": [
+                55,
+                56
+              ],
+              "x": {
+                "e": "Art. 72 exige um conjunto de documentos; art. 73 prevê a responsabilidade solidária. O processo é instruído com documento de formalização de demanda (sempre) e, se for o caso, ETP, análise de riscos, TR e projetos; estimativa de despesa; parecer jurídico e pareceres técnicos; compatibilidade orçamentária; comprovação de habilitação; razão da escolha do contratado; justificativa de preço; e autorização da autoridade. Razão da escolha e justificativa de preço são obrigatórias, e três documentos isolados não bastam. Na contratação direta indevida com dolo, fraude ou erro grosseiro, o contratado e o agente público respondem solidariamente pelo dano ao erário (art. 73)."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r5.2.2",
+              "t": "Inexigibilidade e notória especialização",
+              "refs": [
+                56,
+                58,
+                61
+              ],
+              "x": {
+                "e": "Art. 74: a competição é impossível; mnemônico EANCI. As hipóteses são: fornecedor exclusivo, artista consagrado, serviços técnicos especializados com notória especialização, credenciamento e imóvel singular (art. 74, I a V). Publicidade e divulgação nunca são contratadas por inexigibilidade, nem com notória especialização, e seguem a Lei 12.232/2010, com licitação. Notória especialização (art. 74, § 3º) é o conceito no campo da especialidade, decorrente de desempenho anterior, estudos, experiência, equipe técnica e outros requisitos, que permite inferir que o trabalho é essencial e reconhecidamente adequado ao objeto. Notória especialização aparece também no art. 75, XIII, como dispensa, quando o profissional compõe a comissão que avalia propostas técnicas."
+              },
+              "f": []
+            },
+            {
+              "id": "kit-20261121t103807-2845-r5.2.3",
+              "t": "Dispensa por emergência",
+              "refs": [
+                60,
+                61,
+                65
+              ],
+              "x": {
+                "e": "Art. 75, VIII: por até 1 ano, sem prorrogação nem recontratação da mesma empresa. A emergência ou calamidade pública autoriza a dispensa, mas o processo continua formal: a lei manda observar os valores de mercado, adotar as providências para concluir o processo licitatório e apurar a responsabilidade de quem deu causa à emergência, se ela for fabricada por falta de planejamento (art. 75, § 6º). O contrato dura no máximo 1 ano, vedadas a prorrogação e a recontratação da mesma empresa. Outras hipóteses de dispensa: guerra, estado de defesa, estado de sítio, intervenção federal ou grave perturbação da ordem (VII); medicamentos para doenças raras definidas pelo Ministério da Saúde (IV, m)."
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "fontesCentral": {
+    "KIT-20261121T103807-2845": {
+      "1": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.1",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "2": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.1",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "3": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.2",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "4": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.2",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "5": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.3",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "6": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.3",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "7": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.4",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "8": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.4",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "9": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.5",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "10": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.5",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "11": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.6",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "12": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.6",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "13": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.7",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "14": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.7",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "15": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.8",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "16": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.8",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "17": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.9",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "18": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.9",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "19": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.10",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "20": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.10",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "21": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.11",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "22": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.11",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "23": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.12",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "24": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.12",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "25": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.13",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "26": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.13",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "27": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.14",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "28": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.14",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "29": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.15",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "30": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.15",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "31": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.16",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "32": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.16",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "33": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.17",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "34": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.17",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "35": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.18",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "36": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.18",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "37": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.19",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "38": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.19",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "39": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.20",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "40": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.20",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "41": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.21",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "42": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 15 · Licitação I_ conceito, princípios, agentes, fases e modalidades.pdf",
+        "secao": "p.21",
+        "sha256": "0b1e79e72bc8c8583121f5146eb10256292534bf002e201f77ef190da0d4c354"
+      },
+      "43": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.1",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "44": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.1",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "45": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.2",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "46": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.2",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "47": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.3",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "48": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.3",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "49": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.4",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "50": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.4",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "51": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.5",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "52": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.5",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "53": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.6",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "54": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.6",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "55": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.7",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "56": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.7",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "57": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.8",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "58": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.8",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "59": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.9",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "60": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.9",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "61": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.10",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "62": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.10",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "63": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.11",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "64": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.11",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "65": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.12",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "66": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.12",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "67": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.13",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "68": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.13",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "69": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.14",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "70": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.14",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "71": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.15",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "72": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.15",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "73": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.16",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "74": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.16",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "75": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.17",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "76": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.17",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "77": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.18",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "78": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.18",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "79": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.19",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "80": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.19",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "81": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.20",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      },
+      "82": {
+        "arquivo": "D Adm/Legislativo Facilitado/Direito Administrativo · Etapa 16 · Licitação II_ dispensa, inexigibilidade, ETP e termo de referência.pdf",
+        "secao": "p.20",
+        "sha256": "7376882f23ec6071583539192125ba5183c507d062c6e6f7eaff53658c05d286"
+      }
+    }
+  }
 }
