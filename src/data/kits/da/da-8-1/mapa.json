@@ -1,0 +1,494 @@
+{
+  "topico": "da-8-1",
+  "materia": "da",
+  "centro": "🏛️ 8.1 Nova Governança Pública (New Public Governance)",
+  "ramos": [
+    {
+      "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1",
+      "cor": "azul",
+      "t": "Conceito e Paradigma da NPG",
+      "n": "Estado plural, redes de serviços, coordenação e valor público",
+      "x": {
+        "e": "Bloco conceitual que define a Nova Governança Pública (New Public Governance — NPG) como evolução além do gerencialismo (NPM). Em vez de o Estado atuar fechado na alta burocracia ou restrito a modelos tradicionais de mercado, a NPG promove redes de serviços e arranjos institucionais colaborativos com múltiplos atores na formulação e implementação de políticas públicas voltadas à efetividade e ao valor público.",
+        "src": "3.2 Reformas Administrativas, cap. 3.11 (q. 4001945083, p. 59-60); Redes de cooperação (tópico 8.2), Parte A e Parte B; da-8.json, R4",
+        "trap": "Não confundir a NPG com ruptura total da lógica gerencial da NPM nem com enfraquecimento do papel coordenador do Estado."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.1",
+          "t": "Conceito e emergência pós-NPM",
+          "n": "Modelo participativo em rede com foco em valor e coordenação",
+          "x": {
+            "e": "A Nova Governança Pública (NPG) é um paradigma pós-burocrático que surgiu após a Nova Gestão Pública (New Public Management — NPM), mantendo a lógica gerencial e incorporando lições aprendidas da NPM, mas focando em valor, coordenação, colaboração, participação, redes e arranjos colaborativos. Emerge como opção aos tradicionais modelos de mercado e de justiça social, promovendo a expansão de redes de serviços cujos beneficiários participam da formulação das políticas públicas a eles direcionadas.",
+            "ex": "Políticas públicas articuladas por meio de conselhos, arranjos federativos e parcerias com o terceiro setor, preservando metas gerenciais de desempenho.",
+            "src": "3.2 Reformas Administrativas, cap. 3.11 (q. 4001945083, p. 59-60)",
+            "trap": "A NPG não elimina a lógica gerencial: ela mantém elementos centrais da NPM, deslocando o eixo para coordenação, colaboração, participação e arranjos colaborativos."
+          },
+          "caixa": {
+            "titulo": "Núcleo do paradigma NPG",
+            "itens": [
+              "Paradigma pós-burocrático que preserva lições da NPM",
+              "Foco em valor, coordenação, colaboração e arranjos colaborativos",
+              "Expansão de redes de serviços públicos",
+              "Participação dos beneficiários na formulação das políticas"
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.2",
+          "t": "Estado plural e inserção social",
+          "n": "Pluralidade de atores interdependentes e múltiplos processos decisórios",
+          "x": {
+            "e": "Na NPG, o Estado passa a ser plural, coordenando múltiplos atores públicos e privados interdependentes na entrega de serviços públicos. Simultaneamente, a governança pública expande e aperfeiçoa os meios de interlocução e de administração dos conflitos de interesses entre vários agentes em diversas etapas do ciclo da política pública, aumentando a capacidade de inserção do Estado na sociedade e rompendo com a tradição de governo fechado e enclausurado na alta burocracia governamental.",
+            "ex": "Programas sociais e sistemas nacionais (como Bolsa Família, Minha Casa Minha Vida e SUS) em que União, estados, municípios, bancos, empresas privadas e conselhos atuam conjuntamente.",
+            "src": "da-8.json, R4; Redes de cooperação (tópico 8.2), Parte A (p. 2-3) e Parte B (p. 5-6); 8.3 Governabilidade, Governança e Accountability, seção 8.2 (p. 8)",
+            "trap": "Estado plural NÃO significa Estado fraco ou ausente: o Estado continua exercendo liderança e funções essenciais indelegáveis."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.3",
+          "t": "Articulação e coordenação de processos",
+          "n": "Da gestão setorial fragmentada para relações e arranjos interinstitucionais",
+          "x": {
+            "e": "Enquanto o modelo tradicional burocrático volta-se para seus próprios processos internos e o modelo setorial atua de modo fragmentado, a governança contemporânea enfatiza a articulação entre instituições e a coordenação de processos. Segundo o Decreto nº 9.203/2017 (art. 4º, IV e X) e a literatura de redes (Fleury; Pires e Gomide), gerir em rede exige definir formalmente funções e responsabilidades dos arranjos institucionais, administrar a interação, negociar consensos, distribuir recursos e construir decisões coletivas entre diferentes níveis e esferas.",
+            "src": "Redes de cooperação (tópico 8.2), Parte A (Desafios da gestão de redes, p. 4) e Parte B (Arranjos institucionais, p. 5-6); Decreto nº 9.203/2017, art. 4º, IV e X (9. Decreto 9.203, p. 5)",
+            "trap": "Na gestão de redes, o gestor deixa de ser mero executor hierárquico de planos internos e passa a atuar como negociador e articulador de consensos."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.4",
+          "t": "Efetividade e valor público",
+          "n": "Impacto real na sociedade acima da mera eficiência de custos",
+          "x": {
+            "e": "O critério último de sucesso na governança pública contemporânea ultrapassa a mera conformidade formal dos procedimentos (burocracia) e a redução de custos a qualquer preço (Gerencialismo Puro), voltando-se para a efetividade — o impacto real que transforma a realidade social — e para o valor público, definido no Decreto nº 9.203/2017 como os produtos e resultados gerados, preservados ou entregues que representem respostas efetivas e úteis às necessidades ou demandas de interesse público.",
+            "src": "da-8.json, R3 (Eficiência, Eficácia, Efetividade); 2.1 Modelos de Administração Pública, seção 2.6 (p. 37); Decreto nº 9.203/2017, art. 2º, II (9. Decreto 9.203, p. 4)",
+            "trap": "A banca costuma trocar eficiência (foco interno nos meios/custos) e eficácia (atingimento de metas/fins) por efetividade (impacto externo transformador)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.4a",
+              "t": "Eficiência × Eficácia × Efetividade",
+              "n": "Meios/custos (interno) × Fins/metas (externo) × Impacto/transformação",
+              "x": {
+                "e": "Eficiência significa fazer bem, utilizando os recursos disponíveis da melhor maneira possível, com foco interno nos meios e custos. Eficácia significa fazer a coisa certa, atingindo os objetivos e metas traçados, com foco externo nos fins. Efetividade relaciona-se ao impacto das ações desenvolvidas, alcançando resultados que alteram e transformam a realidade social (foco externo nos impactos/benefícios gerados).",
+                "src": "da-8.json, R3; 2.1 Modelos de Administração Pública, seção 2.6 (p. 37-38)",
+                "trap": "Efetividade não está relacionada ao controle da legalidade nem à mera economia de insumos."
+              }
+            },
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.4b",
+              "t": "Valor público (Decreto 9.203/2017)",
+              "n": "Produtos e resultados efetivos que alteram a realidade dos destinatários",
+              "x": {
+                "e": "Valor público corresponde aos produtos e resultados gerados, preservados ou entregues pelas atividades de uma organização que representem respostas efetivas e úteis às necessidades ou às demandas de interesse público e modifiquem aspectos do conjunto da sociedade ou de alguns grupos específicos reconhecidos como destinatários legítimos de bens e serviços públicos.",
+                "src": "Decreto nº 9.203/2017, art. 2º, II (9. Decreto 9.203, p. 4)",
+                "trap": "Valor público não se restringe ao retorno financeiro do aparato estatal: exige respostas efetivas e úteis que modifiquem aspectos da sociedade ou de destinatários legítimos."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2",
+      "cor": "verde",
+      "t": "Evolução Histórica e Coordenação",
+      "n": "Hierarquia (Burocracia) → Mercado (NPM) → Redes (NPG), com coexistência",
+      "x": {
+        "e": "Este ramo organiza a trajetória histórica dos modelos de gestão pública e seus mecanismos centrais de coordenação: da administração patrimonialista (dominação tradicional) à burocracia weberiana (hierarquia), desta ao gerencialismo/NPM (mercado) e, por fim, à Nova Governança Pública (redes). Os modelos teóricos se sucedem no tempo por predominância, mas coexistem até hoje sem que qualquer deles tenha sido inteiramente abandonado.",
+        "src": "da-8.json, R1–R4 e Q12; Redes de cooperação (tópico 8.2), Parte A (p. 2); 2.1 Modelos de Administração Pública",
+        "trap": "Qualquer assertiva que afirme que um modelo 'substituiu inteiramente' ou 'existiu de forma exclusiva' está errada."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.1",
+          "t": "Burocracia Weberiana (Hierarquia)",
+          "n": "Dominação racional-legal, meritocracia e conformidade formal",
+          "x": {
+            "e": "Surge na segunda metade do século XIX, na época do Estado liberal, para combater a corrupção e o nepotismo do patrimonialismo (modelo baseado na dominação tradicional e marcado pela confusão entre res publica e res principis). Idealizada por Max Weber com base na dominação racional-legal, estrutura-se pela hierarquia funcional, impessoalidade, meritocracia, profissionalização, formalidade e legalidade das normas.",
+            "src": "da-8.json, R1 e R2; 2.1 Modelos de Administração Pública, seções 2.4 e 2.5",
+            "trap": "O modelo burocrático weberiano é originalmente positivo; o excesso de formalismo e a rigidez são disfunções práticas, não características ideais."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.1a",
+              "t": "Hierarquia e controle a priori",
+              "n": "Autoridade vertical, desconfiança prévia e controle dos meios",
+              "x": {
+                "e": "Na administração pública tradicional/burocrática, o mecanismo de coordenação é a hierarquia (estrutura verticalizada) e os controles administrativos são sempre realizados a priori (antes do acontecimento do ato), partindo de uma desconfiança prévia nos administradores públicos e nos cidadãos. Com isso, o modelo tornou-se autorreferido, voltado para si mesmo e para o controle dos seus próprios processos (meios).",
+                "src": "da-8.json, R2 e Q05–Q06; Redes de cooperação (tópico 8.2), Parte A (p. 2)",
+                "trap": "Controle a priori é marca da burocracia; controle a posteriori (por resultados) é marca do modelo gerencial."
+              }
+            },
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.1b",
+              "t": "Características × Disfunções",
+              "n": "Impessoalidade e mérito (modelo ideal) ≠ excesso de formalismo (disfunção)",
+              "x": {
+                "e": "São princípios e características da burocracia weberiana: meritocracia, profissionalização, especialização, padronização, previsibilidade, hierarquia funcional, impessoalidade, legalidade, formalidade nas comunicações e divisão do trabalho. Já o excesso de formalismo, o excesso de papel, a resistência a mudanças, o apego extremo às normas, o excesso de rigidez e a despersonalização dos relacionamentos são disfunções da burocracia.",
+                "src": "da-8.json, R2 e Q07; 2.1 Modelos de Administração Pública, seção 2.5",
+                "trap": "O Cebraspe atribui 'excesso de rigidez e formalismo' como característica da burocracia weberiana idealizada para induzir o candidato ao erro."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.2",
+          "t": "Nova Gestão Pública / NPM (Mercado)",
+          "n": "Competição administrada, eficiência e controle a posteriori",
+          "x": {
+            "e": "Surge na segunda metade do século XX, em meio à crise fiscal e do Estado de Bem-Estar Social, inspirada na administração de empresas privadas. Adota o mercado e a competição administrada como mecanismo de coordenação, desloca o controle dos processos para os resultados (a posteriori) e busca eficiência e qualidade sem representar um rompimento absoluto com a burocracia (preservando meritocracia, carreiras e avaliação de desempenho).",
+            "src": "da-8.json, R3 e Q08–Q09; 2.1 Modelos de Administração Pública, seção 2.6 (p. 32-36); Redes de cooperação (tópico 8.2), Parte A (p. 2)",
+            "trap": "O gerencialismo não rompeu totalmente com a burocracia — conserva critérios de mérito, carreiras e avaliação sistemática."
+          },
+          "f": [
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.2a",
+              "t": "Princípios privados e competição",
+              "n": "Descentralização, flexibilização, quebra de monopólio e foco em resultados",
+              "x": {
+                "e": "A Nova Administração Pública (NAP/NPM) consiste em um conjunto de doutrinas que pretendia aplicar princípios gerenciais das empresas privadas ao setor público. Baseia-se na confiança (ainda que limitada), na descentralização das decisões, na horizontalização de estruturas, na flexibilização com controle de resultados a posteriori e na criação de competição entre unidades e prestadores para aumentar a eficiência.",
+                "src": "da-8.json, R3; 2.1 Modelos de Administração Pública, seção 2.6 (p. 32-36); 3.2 Reformas Administrativas (q. 4000040198 e q. 4002272360)",
+                "trap": "A administração gerencial inspirou-se na administração de empresas privadas, mas não pode ser confundida integralmente com ela dadas as peculiaridades do setor público."
+              }
+            },
+            {
+              "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.2b",
+              "t": "Os 3 estágios da NAP",
+              "n": "Gerencialismo Puro → Consumerism → PSO (precursor da participação)",
+              "x": {
+                "e": "Dentro da Nova Administração Pública (NAP/NPM), identificam-se três estágios: Gerencialismo Puro (redução de custos a qualquer preço e foco na eficiência; usuário visto como contribuinte/taxpayer, financiador do sistema), Consumerism (qualidade, efetividade e satisfação; usuário visto como cliente-usuário e estímulo à concorrência) e Public Service Orientation — PSO (cidadania, equidade, accountability e participação popular; usuário visto como cidadão titular de direitos e deveres).",
+                "src": "da-8.json, R3 e Q10–Q11; 2.1 Modelos de Administração Pública, seção 2.6 (p. 36, 39-42)",
+                "trap": "No Consumerism o objetivo principal da descentralização é aumentar a satisfação do cliente; no PSO é facilitar e promover a participação popular."
+              },
+              "tabela": {
+                "cab": [
+                  "Estágio da NAP",
+                  "Foco principal",
+                  "Visão do usuário",
+                  "Objetivo da descentralização"
+                ],
+                "linhas": [
+                  [
+                    "Gerencialismo Puro",
+                    "Eficiência e redução de custos",
+                    "Contribuinte (taxpayer)",
+                    "Reduzir gastos e tamanho do aparato"
+                  ],
+                  [
+                    "Consumerism",
+                    "Qualidade e efetividade",
+                    "Cliente-usuário",
+                    "Aumentar a satisfação do cliente"
+                  ],
+                  [
+                    "PSO (Public Service Orientation)",
+                    "Cidadania, equidade e accountability",
+                    "Cidadão",
+                    "Facilitar e promover a participação popular"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.3",
+          "t": "Nova Governança Pública (Redes)",
+          "n": "Sequência hierarquia → mercado → redes (Miller/Fleury)",
+          "x": {
+            "e": "Na Nova Governança Pública (NPG), a rede é o mecanismo central de coordenação, sucedendo a hierarquia (administração tradicional) e o mercado (Nova Gestão Pública). Para Miller, citado por Sonia Fleury (2005), as redes são um terceiro tipo de estrutura social, distinto do mercado e da hierarquia, em que atores públicos e privados se ligam por objetivos comuns e por relações horizontais de interdependência.",
+            "src": "Redes de cooperação (tópico 8.2), Parte A (p. 2-3); da-8.json, R4 e DA-8-1-Q01",
+            "trap": "Redes não são uma variante de hierarquia com chefe único nem de mercado puro: constituem um terceiro tipo de estrutura social policêntrica."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.4",
+          "t": "Coexistência e Estado Neoweberiano",
+          "n": "Modelos se sobrepõem por predominância, sem extinção absoluta",
+          "x": {
+            "e": "Os modelos teóricos de administração pública coexistiram e ainda coexistem até hoje: nenhum existiu de forma exclusiva e nenhum substituiu inteiramente o outro, ocorrendo sucessão com predominância. Entre os paradigmas pós-burocráticos que surgiram após o declínio da NPM como modelo global, além da NPG, destaca-se o Estado Neoweberiano (NWS — Pollitt e Bouckaert, 2004), que atualiza e adapta o paradigma weberiano reafirmando a autoridade do Estado e revalorizando princípios burocráticos com a adoção seletiva de ferramentas gerenciais da NPM.",
+            "src": "da-8.json, Q12 (Stefan Fantini, n12 §2.3); 3.2 Reformas Administrativas, cap. 3.11 (q. 4001945083 e q. 4001987407, p. 59-60)",
+            "trap": "Não confundir Estado Neoweberiano (adaptação do paradigma weberiano + ferramentas seletivas da NPM) com NPG (foco em redes, colaboração e participação dos beneficiários), embora ambos sejam pós-burocráticos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3",
+      "cor": "roxo",
+      "t": "Fundamentos Teóricos e Estruturais",
+      "n": "Redes vs. Teoria da Agência; wicked problems e arranjos pós-NPM",
+      "x": {
+        "e": "Reúne os fundamentos teóricos e os fatores estruturais que explicam a governança pública contemporânea e a formação de redes: o contraste entre o Conflito de Agência (Principal-Agente) e a cooperação por confiança e capital social nas redes (Fleury/Börzel), a complexidade dos problemas públicos desestruturados (wicked problems), a necessidade de coordenação diante da descentralização e os limites operacionais das redes.",
+        "src": "Redes de cooperação (tópico 8.2), Parte A e Parte B (p. 2-6); 8.3 Governabilidade, Governança e Accountability, seção 8.2 (p. 10-12); 12. 12. Políticas Públicas (p. 8-10)",
+        "trap": "Não confundir os papéis na Teoria da Agência no setor público (cidadão é o principal; político/gestor é o agente) nem supor que problemas complexos têm solução única definitiva."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.1",
+          "t": "Teoria da Agência vs. Redes de Cooperação",
+          "n": "Conflito Principal-Agente e assimetria ≠ confiança e troca de recursos",
+          "x": {
+            "e": "Segundo o Referencial Básico de Governança do TCU, a origem da governança associa-se à separação entre propriedade e gestão e à Teoria da Agência (Conflito Principal-Agente): diante da assimetria de informação (o agente possui mais informações que o principal), o agente pode buscar maximizar benefícios próprios em detrimento do principal (no setor público, o principal é a sociedade/cidadãos e os agentes são governos, políticos e altos gestores). Já na teoria das redes (Fleury e Börzel), organizações atuam como nódulos em relações não hierárquicas baseadas em interdependência, confiança, valores compartilhados, geração de capital social e troca de recursos para metas comuns.",
+            "src": "8.3 Governabilidade, Governança e Accountability, seção 8.2 (p. 10-12); Redes de cooperação (tópico 8.2), Parte A (p. 2-3)",
+            "trap": "No setor público, segundo a Teoria da Agência, o 'principal' é a sociedade/cidadãos e os 'agentes' são os governos, políticos e altos gestores — nunca o inverso."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.2",
+          "t": "Problemas complexos (Wicked Problems)",
+          "n": "Desestruturados, instáveis e sem solução única ou definitiva",
+          "x": {
+            "e": "Uma das razões centrais para o surgimento das redes é a complexidade crescente dos problemas públicos, que exigem mais atores e recursos para serem enfrentados (Fleury; Peters). Na literatura de políticas públicas (Capella; Head), destacam-se os wicked problems: problemas desestruturados, mal definidos, instáveis, interligados a diversos outros problemas e que não possuem formulação definitiva nem solução correta ('certo ou errado', apenas 'melhores ou piores') ou definitiva.",
+            "ex": "Ações de proteção às crianças, uso de drogas/álcool/tabaco, planejamento de transporte urbano, superação de desigualdades de populações indígenas e sustentabilidade ambiental/mudança climática (Head, 2008, citado por Capella).",
+            "src": "12. 12. Políticas Públicas, seção Problema Público / Wicked Problems (Capella; Peters; Head, p. 8-10); Redes de cooperação (tópico 8.2), Parte A (p. 3)",
+            "trap": "Wicked problems NÃO admitem solução correta/definitiva nem teste prévio para transpor soluções de um caso para outro."
+          },
+          "caixa": {
+            "titulo": "6 características dos Wicked Problems (Capella)",
+            "itens": [
+              "Ausência de formulação definitiva (sujeitos a contestação)",
+              "Impossibilidade de solução definitiva (não são resolvidos de vez)",
+              "Inexistência de solução correta (apenas melhores ou piores)",
+              "Impossibilidade de testar soluções previamente (cada caso é único)",
+              "Interligação a outros problemas (ações geram efeitos imprevistos)",
+              "Instabilidade (múltiplas definições por grupos sociais)"
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.3",
+          "t": "Descentralização e arranjos institucionais",
+          "n": "Fragmentação da autoridade exige coordenação horizontal, vertical e social",
+          "x": {
+            "e": "A descentralização fragmenta a autoridade e exige novas formas de coordenação (Fleury); no Brasil, a CF/1988 descentralizou políticas sociais para municípios que muitas vezes carecem de capacidade técnica e financeira (Abrucio, Grin e Demarco), podendo gerar desigualdade de resultados (Lotta e Vaz). Para dar ao Estado capacidade de execução e romper com o modelo hierárquico, fragmentado e setorial, formam-se arranjos institucionais complexos (Pires e Gomide — regras específicas que definem como atores se coordenam numa política), combinando coordenação horizontal (entre setores do mesmo governo), coordenação vertical (entre União, estados e municípios) e interação com a sociedade civil.",
+            "ex": "Bolsa Família e Minha Casa Minha Vida, com bancos e empresas privadas na implementação; SUS; intersetorialidade entre saúde e assistência social.",
+            "src": "Redes de cooperação (tópico 8.2), Parte A (p. 3) e Parte B (p. 5-6, Pires e Gomide; Abrucio, Grin e Demarco; Lotta e Vaz); 8.3 Governabilidade, Governança e Accountability, seção 8.2 (Agenda Nacional de Gestão Pública, p. 21)",
+            "trap": "Não confundir ambiente institucional (regras gerais do sistema político, econômico e social) com arranjo institucional (regras específicas de cada política que dão capacidade de execução), nem coordenação horizontal com vertical."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.4",
+          "t": "Características e limites das redes",
+          "n": "5 marcas das redes (Fleury/Börzel) e 6 limites operacionais",
+          "x": {
+            "e": "Além da complexidade dos problemas e da descentralização, as redes surgiram pela democratização, pela globalização e pelos limites do governo central somados ao crescimento do terceiro setor e da ação social empresarial. Caracterizam-se por interdependência (sem hierarquia), horizontalidade (membros semiautônomos), policentrismo (gestão não exclusiva de um ator), confiança/valores compartilhados (capital social) e flexibilidade. Contudo, apresentam seis limites: accountability difícil, lentidão para construir consenso, responsabilidade diluída, instabilidade (saída de ator), exclusão e poder desigual.",
+            "src": "Redes de cooperação (tópico 8.2), Parte A (p. 3-4, Fleury e Börzel); da-8.json, R5",
+            "trap": "A estrutura policêntrica e horizontal da rede NÃO elimina a desigualdade de poder entre seus membros nem torna a accountability mais simples."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4",
+      "cor": "laranja",
+      "t": "Estado, Cidadão e Valor Público",
+      "n": "Estado-rede articulador, cidadão participante, resultados e legitimidade",
+      "x": {
+        "e": "Analisa a reconfiguração dos papéis na Nova Governança Pública: o Estado transforma-se em articulador e coordenador de redes sem se enfraquecer (Estado-rede); os beneficiários e cidadãos atuam ativamente na formulação e controle das políticas; e a governança orienta-se pela geração de valor público, impactos sociais (outcomes) e fortalecimento da legitimidade democrática.",
+        "src": "Redes de cooperação (tópico 8.2), Parte A (p. 4); 3.2 Reformas Administrativas, cap. 3.11 (p. 59-60); 8.3 Governabilidade, Governança e Accountability; Decreto nº 9.203/2017",
+        "trap": "Atuar em rede não significa abdicar das funções essenciais do Estado nem enfraquecer a autoridade pública."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.1",
+          "t": "Estado-rede e papel coordenador",
+          "n": "Castells e Fleury: o Estado se transforma e dirige em rede, não se enfraquece",
+          "x": {
+            "e": "Castells propõe o conceito de Estado-rede, marcado por subsidiariedade, flexibilidade, coordenação, participação cidadã, transparência e aprendizagem contínua. A liderança governamental na articulação de atores públicos e privados demonstra que o Estado se transforma, e não que se enfraquece: ele continua dirigindo, agora em rede. Fleury alerta que as redes não são solução universal e que funções essenciais, como garantir direitos sociais e regular, não podem ser totalmente delegadas à rede (regra também expressa no art. 4º, III, da Lei 11.079/2004 quanto à indelegabilidade da regulação, jurisdição e poder de polícia).",
+            "src": "Redes de cooperação (tópico 8.2), Parte A (p. 4, Castells e Fleury) e Parte C (p. 9); da-8.json, R4 e DA-8-1-Q02",
+            "trap": "A banca afirma que o surgimento do Estado-rede provoca o enfraquecimento do Estado e a perda de suas funções essenciais de coordenação — afirmação falsa."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.2",
+          "t": "Cidadão ativo e participação dos beneficiários",
+          "n": "Supera o administrado (Burocracia), o contribuinte (Puro) e o cliente (Consumerism)",
+          "x": {
+            "e": "A evolução dos modelos altera a relação entre Estado e indivíduo: na burocracia autorreferida, o indivíduo é mero administrado sujeito a controles prévios; no Gerencialismo Puro, é visto apenas como contribuinte/financiador (taxpayer); no Consumerism, é tratado como cliente-usuário consumidor de serviços; já no PSO (que resgata a cidadania ativa, equidade e participação popular) e na Nova Governança Pública (NPG), os cidadãos e beneficiários participam ativamente da formulação das políticas públicas a eles direcionadas, do controle social e de redes colaborativas.",
+            "src": "3.2 Reformas Administrativas, cap. 3.11 (q. 4001945083, p. 59-60); 2.1 Modelos de Administração Pública, seção 2.6 (p. 39-42); da-8.json, R3",
+            "trap": "Tratar o usuário exclusivamente como 'cliente' é marca do Consumerism (NPM), que não garante isonomia; o PSO e a NPG tratam o indivíduo como cidadão e participante ativo."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.3",
+          "t": "Produtos (outputs) × Resultados e Impactos",
+          "n": "Articulação para entregar valor público e impactos de longo prazo",
+          "x": {
+            "e": "No modelo lógico de políticas públicas (Sousa) e na política de governança federal (Decreto nº 9.203/2017), distinguem-se insumos (recursos), processos (ações), produtos (entregas imediatas ou outputs), resultados (mudanças sobre as causas do problema) e impactos (mudanças sociais de longo prazo alinhadas à efetividade). O Decreto nº 9.203/2017 (art. 4º, I e IV) determina direcionar ações para resultados para a sociedade e articular instituições e coordenar processos entre níveis e esferas do setor público para gerar, preservar e entregar valor público.",
+            "src": "Decreto nº 9.203/2017, art. 2º, II e art. 4º, I e IV (9. Decreto 9.203, p. 4-5); 12. 12. Políticas Públicas, seção 12.8 Modelo Lógico (p. 96)",
+            "trap": "Não confundir produtos/outputs (bens ou serviços entregues imediatamente pelo processo) com resultados e impactos sociais efetivos."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.4",
+          "t": "Legitimidade, governabilidade e accountability",
+          "n": "Boa governança fortalece legitimidade, mas redes têm accountability difícil",
+          "x": {
+            "e": "Segundo o Banco Mundial e o TCU, a legitimidade amplia o controle para além da mera legalidade, verificando se o interesse público e o bem comum foram alcançados (nem sempre o que é legal é legítimo). Uma governança eficiente aumenta a legitimidade e fortalece a governabilidade (e uma governança fraca pode comprometê-la ao gerar desconfiança e resistência popular e legislativa), embora governança e governabilidade não se confundam. Nas redes de cooperação, apesar da definição mais democrática de prioridades, a presença de muitos participantes públicos e privados torna a responsabilidade diluída e a accountability mais difícil.",
+            "src": "8.3 Governabilidade, Governança e Accountability, seções 8.2 (p. 14), 8.3 (p. 32-33) e 8.8 (q. 4001991600 e q. 4001852448, p. 68, 85-86); Redes de cooperação (tópico 8.2), Parte A (p. 4)",
+            "trap": "Governança fraca pode comprometer a governabilidade, mas governabilidade e governança não são sinônimos; e as redes dificultam, em vez de simplificar, a accountability."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5",
+      "cor": "vermelho",
+      "t": "Matrizes Comparativas e Armadilhas",
+      "n": "Quadros de síntese e pegadinhas clássicas do Cebraspe",
+      "x": {
+        "e": "Consolida o tópico 8.1 em matrizes de contraste rápido para revisão de prova — comparando Burocracia, NPM e NPG, diferenciando Governo, Governabilidade, Governança e Gestão Pública, contrastando NPM, NPG e Estado Neoweberiano, e isolando as cinco armadilhas mais exploradas pelo Cebraspe.",
+        "src": "da-8.json; 8.3 Governabilidade, Governança e Accountability; 3.2 Reformas Administrativas; Redes de cooperação (tópico 8.2); 2.1 Modelos de Administração Pública",
+        "trap": "Em prova, o Cebraspe mistura colunas dessas matrizes (ex.: atribuir coordenação por redes à NPM ou dizer que governança e gestão pública são conceitos indistinguíveis)."
+      },
+      "f": [
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5.1",
+          "t": "Matriz: Burocracia × NPM × NPG",
+          "n": "Fundamento, foco, coordenação, visão do indivíduo e critério de sucesso",
+          "x": {
+            "e": "Quadro comparativo que sintetiza os três modelos (Administração Tradicional/Burocrática, Nova Gestão Pública/NPM e Nova Governança Pública/NPG) segundo as dimensões cobradas nas fontes do curso: fundamento teórico, foco organizacional, mecanismo de coordenação, visão do usuário/cidadão e critério central de avaliação e controle.",
+            "src": "da-8.json, R2–R4; Redes de cooperação (tópico 8.2), Parte A (p. 2-4); 2.1 Modelos de Administração Pública (p. 32-42); 3.2 Reformas Administrativas (p. 59-60); 8.3 Governabilidade, Governança e Accountability (p. 8-12)",
+            "trap": "Atenção à evolução: Hierarquia (Burocracia) → Mercado (NPM) → Redes (NPG); e Administrado (Burocracia) → Contribuinte/Cliente (NPM) → Cidadão participante (PSO/NPG)."
+          },
+          "tabela": {
+            "cab": [
+              "Dimensão",
+              "Burocracia (Tradicional)",
+              "Nova Gestão Pública (NPM)",
+              "Nova Governança Pública (NPG)"
+            ],
+            "linhas": [
+              [
+                "Fundamento teórico",
+                "Dominação racional-legal (Weber)",
+                "Princípios gerenciais privados e Teoria da Agência",
+                "Teoria das redes (Fleury/Börzel) e Estado-rede (Castells)"
+              ],
+              [
+                "Foco de atuação",
+                "Autorreferido nos processos internos",
+                "Desempenho, descentralização e competição",
+                "Articulação interinstitucional e arranjos colaborativos"
+              ],
+              [
+                "Mecanismo de coordenação",
+                "Hierarquia",
+                "Mercado e competição administrada",
+                "Redes policêntricas, confiança e cooperação"
+              ],
+              [
+                "Visão do indivíduo",
+                "Administrado submetido a normas",
+                "Contribuinte (Puro) ou cliente-usuário (Consumerism)",
+                "Cidadão ativo e beneficiário participante"
+              ],
+              [
+                "Controle e sucesso",
+                "Conformidade legal e controle a priori dos meios",
+                "Eficiência, metas e controle a posteriori de resultados",
+                "Efetividade, valor público e gestão adaptativa em rede"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5.2",
+          "t": "Governo × Governabilidade × Governança × Gestão",
+          "n": "Condução política (governo) ≠ apoio político (governabilidade) ≠ direção (governança) ≠ execução (gestão)",
+          "x": {
+            "e": "Governo é o elemento condutor do Estado responsável por administrar suas funções e tomar decisões políticas. Governabilidade é a capacidade política de governar, resultante do binômio legitimidade democrática do Estado + legitimidade política do Governo (apoio do povo e do Poder Legislativo) e das condições sistêmicas de exercício do poder (intermediação de interesses, coalizões). Governança pública é o braço instrumental/operacional da governabilidade e exerce função direcionadora: conjunto de mecanismos de liderança, estratégia e controle para avaliar, direcionar e monitorar a gestão. Gestão pública exerce função realizadora: planejar operações, executar planos e controlar indicadores e riscos.",
+            "src": "2.1 Modelos de Administração Pública, seção 2.1 (p. 4-5, 10); 8.3 Governabilidade, Governança e Accountability, seções 8.1, 8.2, 8.3, 8.7 e 8.8 (p. 4-8, 30-33, 59-63, 67, 78, 85)",
+            "trap": "Governança pública (função direcionadora: avaliar, direcionar e monitorar) e gestão pública (função realizadora: planejar, executar e controlar) NÃO são conceitos indistinguíveis nem intercambiáveis (Cebraspe ANM 2025)."
+          },
+          "tabela": {
+            "cab": [
+              "Conceito",
+              "Natureza",
+              "Núcleo / Atividades básicas"
+            ],
+            "linhas": [
+              [
+                "Governo",
+                "Elemento condutor do Estado",
+                "Conduz politicamente o Estado para concretizar suas funções"
+              ],
+              [
+                "Governabilidade",
+                "Capacidade e sustentação política",
+                "Legitimidade democrática + legitimidade política (apoio popular e do Legislativo; intermediação de interesses)"
+              ],
+              [
+                "Governança Pública",
+                "Função direcionadora (braço instrumental)",
+                "Avaliar, direcionar e monitorar a gestão via mecanismos de liderança, estratégia e controle"
+              ],
+              [
+                "Gestão Pública",
+                "Função realizadora",
+                "Planejar operações, executar planos e controlar indicadores de eficácia/eficiência e riscos"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5.3",
+          "t": "NPM × NPG × Estado Neoweberiano",
+          "n": "Continuidades gerenciais e diferenças entre os paradigmas pós-burocráticos",
+          "x": {
+            "e": "Tanto a Nova Governança Pública (NPG) quanto o Estado Neoweberiano (NWS — Pollitt e Bouckaert, 2004) são paradigmas pós-burocráticos surgidos após a NPM que preservam elementos gerenciais da NPM. A NPG mantém a lógica gerencial e incorpora lições da NPM, mas foca em valor, coordenação, colaboração, redes de serviços e participação dos beneficiários na formulação das políticas. O Estado Neoweberiano (NWS), por sua vez, consiste em uma adaptação/atualização do paradigma weberiano, combinando reafirmação da autoridade do Estado e revalorização de princípios burocráticos (impessoalidade, meritocracia) com a adoção seletiva de ferramentas gerenciais da NPM (foco em resultados e orientação para o cidadão como membro de uma coletividade).",
+            "src": "3.2 Reformas Administrativas, cap. 3.11 (FGV 2025, q. 4001945083 e q. 4001987407, p. 59-60)",
+            "trap": "Não afirmar que o NWS ou a NPG são completamente opostos à burocracia ou à NPM, nem confundir o foco em redes participativas (NPG) com a atualização da autoridade burocrática weberiana (NWS)."
+          }
+        },
+        {
+          "id": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5.4",
+          "t": "Top 5 Armadilhas Cebraspe em 8.1",
+          "n": "Resumo de defesa rápida contra inversões da banca",
+          "x": {
+            "e": "Reúne as cinco distorções mais frequentes em provas sobre Nova Governança Pública, redes e evolução dos modelos: (1) dizer que as redes enfraquecem o Estado ou retiram sua função coordenadora; (2) dizer que redes são estruturas hierárquicas com centro único ou que eliminam a desigualdade de poder; (3) dizer que redes tornam a accountability mais clara e simples; (4) dizer que um modelo administrativo substituiu inteiramente ou rompeu totalmente com o anterior; (5) confundir governança (direcionadora/instrumental) com gestão (realizadora) ou com governabilidade (capacidade política e intermediação de interesses).",
+            "src": "Redes de cooperação (tópico 8.2), p. 4, 13-14; da-8.json, Q08, Q12–Q16; 8.3 Governabilidade, Governança e Accountability, q. 4001991590, q. 4002263246 e q. 4001852448",
+            "trap": "Desconfie imediatamente de assertivas que afirmem que a rede 'simplifica a prestação de contas', 'elimina o poder desigual', 'enfraquece o Estado' ou que um modelo 'rompeu com todos os princípios' do anterior."
+          },
+          "caixa": {
+            "titulo": "Vacinas contra pegadinhas do Cebraspe",
+            "itens": [
+              "Rede NÃO enfraquece o Estado → Estado se transforma e retém funções essenciais indelegáveis",
+              "Rede NÃO é hierarquia com centro único → é policêntrica e horizontal (mas persiste poder desigual)",
+              "Rede NÃO simplifica accountability → torna mais difícil (responsabilidade diluída entre muitos atores)",
+              "Modelo novo NÃO extingue o anterior → há coexistência com predominância, sem ruptura total",
+              "Governança (avaliar/direcionar/monitorar) ≠ Gestão (planejar/executar/controlar) ≠ Governabilidade (legitimidade/apoio político)"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "O Estado plural (r1.2) materializa-se pela interdependência entre atores públicos e privados em redes policêntricas (r3.4).",
+      "de": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r1.2",
+      "para": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.4"
+    },
+    {
+      "rotulo": "A NPG adota redes como coordenação (r2.3), mas preserva lições gerenciais da NPM como paradigma pós-burocrático (r5.3).",
+      "de": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r2.3",
+      "para": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r5.3"
+    },
+    {
+      "rotulo": "Problemas complexos e wicked problems sem fronteiras claras (r3.2) exigem arranjos institucionais de coordenação horizontal e vertical (r3.3).",
+      "de": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.2",
+      "para": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r3.3"
+    },
+    {
+      "rotulo": "O Estado-rede transforma-se e mantém papel articulador sem se enfraquecer (r4.1), mas enfrenta o limite de accountability difícil (r4.4).",
+      "de": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.1",
+      "para": "kit-arr-da-8.1-nova-governanca-publica-2026-11-22-r4.4"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-DA-8.1-nova-governanca-publica-2026-11-22": {}
+  }
+}
