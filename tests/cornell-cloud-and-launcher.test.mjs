@@ -83,7 +83,8 @@ test("Cornell Gemini não usa InvokeLLM Base44", () => {
   assert.ok(from >= 0 && to > from);
   assert.match(fn, /\.middleware\(\[requireUser\]\)/);
   assert.match(fn, /context\.user\?\.role !== "admin"/);
-  assert.match(fn, /invokeGeminiTutor/);
+  assert.match(fn, /invokeArchitectGemini/);
+  assert.match(fn, /task: "cornell-cues"/);
   assert.match(fn, /parseCornellGemini/);
   assert.match(fn, /apiKey: architectKey\(\)/);
   assert.match(src, /const architectKey = .*namedArchitectKey\(\)/);

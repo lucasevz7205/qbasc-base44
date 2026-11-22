@@ -5,10 +5,56 @@
  */
 export const DEFAULT_TUTOR_GEMINI_MODEL = "gemini-3.5-flash-lite";
 
-export class GeminiUnavailableError extends Error {
-  constructor() {
-    super("O Gemini está temporariamente indisponível (HTTP 503). Tente novamente em alguns minutos.");
+/**
+ * Erro da API Gemini com status HTTP e código estável, usados pelo roteador
+ * de modelos e pelo monitoramento. A mensagem nunca repete o payload remoto.
+ */
+export class GeminiHttpError extends Error {
+  constructor(message, { status = null, code = "http" } = {}) {
+    super(message);
+    this.name = "GeminiHttpError";
+    this.status = status;
+    this.code = code;
   }
+}
+
+export class GeminiUnavailableError extends GeminiHttpError {
+  constructor() {
+    super("O Gemini está temporariamente indisponível (HTTP 503). Tente novamente em alguns minutos.", { status: 503, code: "unavailable" });
+    this.name = "GeminiUnavailableError";
+  }
+}
+
+export class GeminiModelNotFoundError extends GeminiHttpError {
+  constructor(model) {
+    super(`Modelo Gemini "${model}" não encontrado para esta chave (HTTP 404). A Base44 não será acionada como fallback.`, { status: 404, code: "not_found" });
+    this.name = "GeminiModelNotFoundError";
+    this.model = model;
+  }
+}
+
+export class GeminiQuotaError extends GeminiHttpError {
+  constructor(model) {
+    super(
+      `Limite de uso do Gemini atingido${model ? ` no modelo ${model}` : ""} (HTTP 429). Tente novamente após conferir as cotas. Nenhuma outra chave, projeto ou crédito Base44 foi usado.`,
+      { status: 429, code: "quota" },
+    );
+    this.name = "GeminiQuotaError";
+  }
+}
+
+export class GeminiTimeoutError extends GeminiHttpError {
+  constructor() {
+    super("Tempo limite do Gemini excedido. Nenhum fallback com créditos Base44 foi realizado.", { status: null, code: "timeout" });
+    this.name = "GeminiTimeoutError";
+  }
+}
+
+function usageFrom(data) {
+  const usage = data?.usageMetadata;
+  if (!usage || typeof usage !== "object") return null;
+  const count = value => (Number.isFinite(value) ? value : null);
+  return { inputTokens: count(usage.promptTokenCount), outputTokens: count(usage.candidatesTokenCount) };
 }
 
 const GEMINI_RETRY_DELAYS_MS = [1000, 2000];
@@ -97,19 +143,20 @@ export async function invokeGeminiTutor({
     );
     // Não repassar payload de erro da API: pode conter conteúdo de solicitação.
     if (!response.ok) {
+      try { await response.body?.cancel(); } catch { /* corpo já consumido ou indisponível */ }
       if (response.status === 400 || response.status === 401 || response.status === 403) {
-        throw new Error("Gemini recusou a requisição. Verifique a chave, o modelo e as permissões do projeto.");
+        throw new GeminiHttpError("Gemini recusou a requisição. Verifique a chave, o modelo e as permissões do projeto.", { status: response.status, code: "refused" });
       }
+      if (response.status === 404) throw new GeminiModelNotFoundError(model);
       if (response.status === 503) throw new GeminiUnavailableError();
-      if (response.status === 429) {
-        throw new Error("Limite de uso do Gemini atingido. Tente novamente após conferir as cotas.");
-      }
-      throw new Error(`Falha na API Gemini (HTTP ${response.status}). A Base44 não será acionada como fallback.`);
+      if (response.status === 429) throw new GeminiQuotaError(model);
+      throw new GeminiHttpError(`Falha na API Gemini (HTTP ${response.status}). A Base44 não será acionada como fallback.`, { status: response.status, code: "http" });
     }
     const data = await response.json();
+    const usage = usageFrom(data);
     const candidate = data?.candidates?.[0];
     if (expectsJson && candidate?.finishReason === "MAX_TOKENS") {
-      throw new Error("O Gemini interrompeu a resposta antes de concluir. Tente novamente.");
+      throw new GeminiHttpError("O Gemini interrompeu a resposta antes de concluir. Tente novamente.", { status: 200, code: "truncated" });
     }
     const reply = (candidate?.content?.parts || [])
       .filter(part => !part?.thought && typeof part?.text === "string")
@@ -117,13 +164,11 @@ export async function invokeGeminiTutor({
       .join(expectsJson ? "" : "\n")
       .trim();
     if (!reply) {
-      throw new Error("O Gemini não retornou texto. Nenhum fallback com créditos Base44 foi realizado.");
+      throw new GeminiHttpError("O Gemini não retornou texto. Nenhum fallback com créditos Base44 foi realizado.", { status: 200, code: "empty" });
     }
-    return { reply: expectsJson ? reply : reply.slice(0, 12000), provider: "gemini" };
+    return { reply: expectsJson ? reply : reply.slice(0, 12000), provider: "gemini", model, usage };
   } catch (error) {
-    if (controller.signal.aborted) {
-      throw new Error("Tempo limite do Gemini excedido. Nenhum fallback com créditos Base44 foi realizado.");
-    }
+    if (controller.signal.aborted) throw new GeminiTimeoutError();
     throw error;
   } finally {
     clearTimeout(timeout);

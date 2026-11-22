@@ -3,7 +3,8 @@ import { z } from "zod";
 import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
-import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
+import { invokeArchitectGemini, describeArchitectModels, resolveArchitectModels, MODEL_PREFERENCES } from "@/lib/gemini-router";
+import { architectTelemetry } from "@/lib/gemini-telemetry";
 import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-diagnostics";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
@@ -50,6 +51,7 @@ const TutorInputSchema = z.object({
   topicLabel: z.string().min(1).max(300),
   userMessage: z.string().min(1).max(3000),
   provider: z.enum(["gemini", "base44"]).optional(),
+  modelPreference: z.enum(MODEL_PREFERENCES).optional(),
   history: z
     .array(
       z.object({
@@ -62,7 +64,9 @@ const TutorInputSchema = z.object({
 });
 
 const namedArchitectKey = () => secrets.get("Arquiteto")?.trim() || secrets.get("ARQUITETO")?.trim();
-const architectModel = () => secrets.get("QB_GEMINI_MODEL")?.trim() || DEFAULT_TUTOR_GEMINI_MODEL;
+// Modelos autorizados do Arquiteto: gemini-2.5-flash e gemini-2.5-flash-lite,
+// substituíveis só pelos segredos QB_GEMINI_FLASH_MODEL e QB_GEMINI_LITE_MODEL.
+const architectModels = () => resolveArchitectModels(name => secrets.get(name));
 const architectKey = () => namedArchitectKey() || secrets.get("GEMINI_API_KEY")?.trim();
 
 function invokeBase44StudyAI(context, prompt, schema) {
@@ -77,11 +81,25 @@ export const getArchitectProviderStatus = createServerFn({ method: "GET" })
   .handler(async ({ context }) => {
     await requireArchitectAccess(context);
     const canUseGemini = context.user.role === "admin";
+    if (!canUseGemini) return { geminiConfigured: false, defaultProvider: "base44", model: null };
+    const apiKey = architectKey();
+    // models.list roda aqui no servidor; a chave não sai do backend.
+    const routing = await describeArchitectModels({ apiKey, models: architectModels() });
     return {
-      geminiConfigured: canUseGemini && Boolean(architectKey()),
+      geminiConfigured: canUseGemini && Boolean(apiKey),
       defaultProvider: canUseGemini && secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
-      model: canUseGemini ? architectModel() : null,
+      model: "auto",
+      defaultModelPreference: "auto",
+      routing,
     };
+  });
+
+/** Registros operacionais do roteador (instância atual), só para o administrador. */
+export const getArchitectModelTelemetry = createServerFn({ method: "GET" })
+  .middleware([requireUser])
+  .handler(async ({ context }) => {
+    if (context.user?.role !== "admin") throw new Error("Registros do roteador reservados à conta administradora.");
+    return architectTelemetry.summary();
   });
 
 export const askArchitectTutor = createServerFn({ method: "POST" })
@@ -121,7 +139,17 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
 
     const provider = context.user.role !== "admin" ? "base44" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
-      const result = await invokeGeminiTutor({ apiKey: architectKey(), model: architectModel(), prompt });
+      // Sem fallback para a Base44: falhas do Gemini chegam ao estudante.
+      const result = await invokeArchitectGemini({
+        apiKey: architectKey(),
+        models: architectModels(),
+        prompt,
+        task: "tutor",
+        mode: data.mode,
+        userMessage: data.userMessage,
+        historyLength: (data.history || []).length,
+        preference: data.modelPreference || "auto",
+      });
       return { ...result, reply: continueTutorConversation(result.reply, Boolean(historyBlock)) };
     }
     const res = await invokeBase44StudyAI(context, prompt);
@@ -259,10 +287,11 @@ export const correctFlashcardWithArchitect = createServerFn({ method: "POST" })
       data.basis ? `Fonte indicada pelo cartão: ${data.basis}` : "Sem base documental informada; não acrescente referências externas.",
       `Tentativa do estudante:\n${data.attempt}`,
     ].filter(Boolean).join("\n\n");
-    // Correção solicitada usa exclusivamente Gemini; nunca InvokeLLM como fallback.
-    return invokeGeminiTutor({
+    // Correção solicitada usa exclusivamente Gemini (Flash no Automático); nunca InvokeLLM como fallback.
+    return invokeArchitectGemini({
       apiKey: architectKey(),
-      model: architectModel(),
+      models: architectModels(),
+      task: "flashcard-correction",
       prompt,
     });
   });
@@ -388,9 +417,10 @@ export const generateCornellCues = createServerFn({ method: "POST" })
     ].join("\n\n");
 
     // Gemini externo, mediante ação explícita. Não há fallback para créditos Base44.
-    const result = await invokeGeminiTutor({
+    const result = await invokeArchitectGemini({
       apiKey: architectKey(),
-      model: architectModel(),
+      models: architectModels(),
+      task: "cornell-cues",
       prompt,
     });
     return parseCornellGemini(result.reply);
@@ -423,8 +453,8 @@ export const assessCornellNotebook = createServerFn({ method: "POST" })
   .validator(CornellAssessmentInputSchema)
   .handler(async ({ data, context }) => {
     if (context.user?.role !== "admin") throw new Error("Acesso ao caderno Cornell reservado à conta administradora.");
-    const result = await invokeGeminiTutor({
-      apiKey: architectKey(), model: architectModel(),
+    const result = await invokeArchitectGemini({
+      apiKey: architectKey(), models: architectModels(), task: "cornell-assessment",
       prompt: cornellAssessmentPrompt(data), responseJsonSchema: CORNELL_ASSESSMENT_SCHEMA,
       maxOutputTokens: 6000, timeoutMs: 90000,
     });
