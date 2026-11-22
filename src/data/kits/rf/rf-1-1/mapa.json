@@ -1,0 +1,516 @@
+{
+  "topico": "rf-1-1",
+  "materia": "rf",
+  "centro": "🗣️ 1.1 Reconhecimento Automático de Fala (ASR)",
+  "ramos": [
+    {
+      "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1",
+      "cor": "azul",
+      "t": "Conceito, Escopo e Dificuldades do ASR",
+      "n": "Mapeamento probabilístico áudio → texto; fronteiras e 4 dimensões de dificuldade",
+      "x": {
+        "e": "Reconhecimento Automático de Fala (ASR) é a tarefa de mapear um sinal acústico em uma sequência de palavras ('o que foi dito?'). Trata-se de um problema probabilístico com escopo estreito (não identifica quem falou nem extrai significado), cuja dificuldade varia segundo quatro dimensões: vocabulário, estilo de fala, canal/ruído e sotaque/falante.",
+        "ex": "Um discurso lido na tribuna com microfone próximo é cenário fácil; um debate espontâneo em comissão com apartes é cenário difícil.",
+        "trap": "Atribuir ao ASR puro funções de tarefas vizinhas, como identificar o orador (diarização/locutor), pontuar automaticamente ou interpretar a intenção da frase.",
+        "src": "Etapa 02 — Cap. 1.1, seções 1.1.1 e 1.1.2 (p. 25–26); Prof. Vinicius Borges, seção 1.1 (p. 4–5)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.1",
+          "t": "Definição e Natureza Probabilística",
+          "n": "STT: áudio → sequência de palavras mais provável (minúsculas, sem pontuação)",
+          "x": {
+            "e": "O ASR (Automatic Speech Recognition), também chamado de Speech-to-Text (STT), recebe números que descrevem a vibração do ar e compara hipóteses para devolver a sequência de palavras mais provável. Nos sistemas clássicos, a saída crua vem em minúsculas e sem pontuação, pois pontuação e capitalização constituem etapa própria (Cap. 1.5).",
+            "ex": "Ao ouvir 'conserto do carro', o sistema avalia também 'concerto do carro' e escolhe a primeira por maior probabilidade no uso da língua.",
+            "trap": "Afirmar que o núcleo do reconhecedor clássico já entrega o texto pontuado, capitalizado e com certeza determinística.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26); Prof. Vinicius Borges, seção 1.1 (p. 4)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.2",
+          "t": "Fronteiras: ASR × Tarefas Vizinhas",
+          "n": "ASR ('o que foi dito?') ≠ Diarização ≠ Locutor ≠ Compreensão ≠ TTS",
+          "tabela": {
+            "cab": [
+              "Tarefa",
+              "Pergunta que responde",
+              "Escopo e distinção"
+            ],
+            "linhas": [
+              [
+                "ASR / STT",
+                "O que foi dito?",
+                "Converte sinal acústico de fala em sequência de palavras"
+              ],
+              [
+                "Diarização de falantes",
+                "Quem falou quando?",
+                "Segmenta turnos com rótulos anônimos (Falante 1, 2...); sem cadastro prévio"
+              ],
+              [
+                "Reconhecimento de locutor",
+                "De quem é esta voz? / É quem diz ser?",
+                "Identificação (1:N) ou verificação (1:1); exige cadastro prévio de vozes"
+              ],
+              [
+                "Compreensão de fala",
+                "O que a frase significa?",
+                "Extrai sentido/intenção do que foi dito; extensão além do ASR"
+              ],
+              [
+                "Síntese de fala (TTS)",
+                "Como transformar texto em voz?",
+                "Caminho inverso (Text-to-Speech), ex.: leitor de tela"
+              ]
+            ]
+          },
+          "x": {
+            "e": "A definição de ASR é estreita de propósito: responde apenas ao que foi dito. Diarização separa quem falou quando (rótulos anônimos); reconhecimento de locutor identifica ou autentica uma voz cadastrada; compreensão de linguagem extrai o significado; e síntese de fala (TTS) executa o trajeto inverso (texto → voz).",
+            "ex": "Em uma sessão da Câmara, o ASR gera as palavras do discurso, enquanto a diarização marca onde termina a fala de um parlamentar e começa a de outro.",
+            "trap": "Trocar o papel do ASR pelo da diarização ('quem falou') ou pelo da compreensão automática de fala ('o que a frase significa').",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26); Prof. Vinicius Borges, seção 1.1 e resumo (p. 4–5, 54)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3",
+          "t": "Quatro Dimensões de Dificuldade",
+          "n": "Vocabulário · Estilo de fala · Canal/ruído · Sotaque/falante",
+          "x": {
+            "e": "Jurafsky e Martin apontam quatro dimensões de variação que tornam o ASR mais fácil ou mais difícil: tamanho do vocabulário (ex.: 11 dígitos com ~0,5% de WER histórica vs. 64.000+ palavras em conversa telefônica com ~20%), estilo de fala, canal/ruído e sotaque/falante.",
+            "ex": "Fala lida de jornal (5 mil a 20 mil palavras) registrou ~3% de WER histórica, contra ~10% em noticiário de rádio/TV (64 mil+ palavras).",
+            "trap": "Confundir os percentuais históricos de referência com limites atuais absolutos, ou supor que vocabulário amplo e conversa espontânea têm erro menor.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3a",
+              "t": "Estilo de Fala e Alinhamento Temporal",
+              "n": "Fala lida/isolada (fácil) × fala contínua/espontânea (difícil; 1 s ≈ 100 quadros)",
+              "x": {
+                "e": "Palavras isoladas e fala lida são mais fáceis de reconhecer; fala contínua e conversa espontânea trazem hesitações, frases truncadas, apartes e variação na duração dos sons (vogais alongadas ou ritmo acelerado). Em 1 segundo de áudio há cerca de 100 quadros para apenas 10 a 15 letras, sem fronteiras acústicas fixas entre palavras.",
+                "ex": "Na Câmara dos Deputados, a WER varia de 8% (cenários controlados/lidos) a 50% (debates espontâneos e apartes), com média divulgada de 25%.",
+                "trap": "Afirmar que a fala espontânea é mais fácil de reconhecer por soar mais natural ao ser humano, invertendo a conclusão.",
+                "src": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32); Prof. Vinicius Borges, seção 1.2 (p. 12)"
+              }
+            },
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3b",
+              "t": "Canal, Ruído e Taxa de Amostragem",
+              "n": "ASR padrão: 16 kHz × telefonia: 8 kHz; ruído multiplica WER por 2 a 4×",
+              "x": {
+                "e": "Microfone próximo em ambiente silencioso favorece o reconhecimento; microfone distante e ruído de fundo degradam o sinal (ruído de automóvel multiplicou a WER por 2 a 4×). Na captação digital, o padrão em ASR é amostragem de 16 kHz (16 mil medições/s), enquanto a telefonia tradicional usa 8 kHz, perdendo frequências agudas e prejudicando consoantes fricativas.",
+                "ex": "Sons de 's' e 'x' aparecem nas frequências agudas do espectrograma e sofrem maior perda em ligações telefônicas a 8 kHz.",
+                "trap": "Inverter as taxas dizendo que a telefonia usa 16 kHz e por isso é cenário mais favorável que os 8 kHz do ASR padrão.",
+                "src": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26); Prof. Vinicius Borges, seção 1.1 e questões (p. 5, 65–66)"
+              }
+            },
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3c",
+              "t": "Locutor: Independente × Dependente e Homófonos",
+              "n": "Independente reconhece vozes inéditas; sotaque forte multiplica WER por 3 a 4×",
+              "x": {
+                "e": "Sistema independente de locutor (speaker-independent) reconhece a fala de pessoas nunca ouvidas no treino — requisito essencial no Parlamento, onde os oradores se renovam —, ao contrário do sistema dependente de locutor, ajustado a um falante específico. Sotaques pouco representados elevam o erro (3 a 4× em sotaque estrangeiro forte), e homófonos empatam na pronúncia, dependendo do contexto.",
+                "ex": "A Câmara registrou WER maior em vozes femininas; e homófonos como 'sessão', 'cessão' e 'seção' empatam no som.",
+                "trap": "Definir sistema independente de locutor como aquele que só reconhece adequadamente as vozes presentes nos dados de treinamento.",
+                "src": "Etapa 02 — Cap. 1.1, seções 1.1.2, 1.1.3, 1.1.10 e Na prática da Câmara (p. 26–27, 31–32)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2",
+      "cor": "verde",
+      "t": "Formulação Probabilística e Pipeline Clássico",
+      "n": "Regra de Bayes no canal ruidoso e os 5 blocos modulares independentes",
+      "x": {
+        "e": "O ASR clássico formula o reconhecimento pela metáfora do canal ruidoso (regra de Bayes) e organiza o sistema em uma linha de montagem modular com cinco blocos: extração de características, modelo acústico, léxico de pronúncia, modelo de linguagem e decodificador.",
+        "ex": "A separação dos blocos permite atualizar o léxico e o modelo de linguagem para termos regimentais sem refazer o modelo acústico.",
+        "trap": "Trocar o papel e os dados de treinamento entre o modelo acústico e o modelo de linguagem, ou supor que o decodificador avalia todas as frases sem poda.",
+        "src": "Etapa 02 — Cap. 1.1, seções 1.1.3 e 1.1.4 (p. 26–28); Prof. Vinicius Borges, seção 1.1 (p. 5–7)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.1",
+          "t": "Canal Ruidoso e Regra de Bayes",
+          "n": "Ŵ = arg max_W P(O|W) × P(W) — acústico × linguagem",
+          "x": {
+            "e": "Pela metáfora do canal ruidoso (noisy channel), o áudio O é tratado como versão ruidosa da frase original W. A regra de Bayes busca a frase Ŵ que maximiza o produto de P(O|W) — verossimilhança acústica, calculada pelo modelo acústico — por P(W) — probabilidade a priori da sequência na língua, calculada pelo modelo de linguagem (com fator de escala calibrado na implementação).",
+            "ex": "Em 'está aberta a ___ deliberativa', 'sessão', 'cessão' e 'seção' empatam em P(O|W); o modelo de linguagem desempata via P(W) em favor de 'sessão'.",
+            "trap": "Inverter a equação dizendo que o modelo acústico calcula P(W) e o modelo de linguagem calcula P(O|W).",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2",
+          "t": "Os 5 Blocos do Pipeline Modular",
+          "n": "Extração → Modelo Acústico + Léxico + LM → Decodificador",
+          "caixa": {
+            "titulo": "Linha de Montagem Clássica (5 Blocos)",
+            "itens": [
+              "1. Extração de características: áudio → vetores por quadro (cálculo fixo, sem treino)",
+              "2. Modelo acústico: vetores → verossimilhança por fone (aprende com áudio transcrito)",
+              "3. Léxico de pronúncia: palavra ↔ sequência de fones; delimita o vocabulário",
+              "4. Modelo de linguagem (LM): palavras → probabilidade da sequência (aprende só com texto)",
+              "5. Decodificador: combina os três blocos acima e busca a melhor frase (não aprende; busca)"
+            ]
+          },
+          "x": {
+            "e": "Cada bloco do pipeline clássico responde a uma pergunta distinta e usa fonte própria: a extração e o decodificador são algoritmos fixos; o modelo acústico aprende com áudio transcrito; o léxico vem de dicionários de pronúncia; e o modelo de linguagem aprende com texto puro. A independência dos blocos é a base da adaptação modular de vocabulário.",
+            "ex": "Para incluir o nome de um novo programa governamental no sistema clássico, basta atualizar o léxico e o modelo de linguagem.",
+            "trap": "Afirmar que o modelo de linguagem é treinado com áudio transcrito ou que todos os cinco blocos passam por treinamento estatístico.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27–28); Prof. Vinicius Borges, seção 1.1 (p. 6–8)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2a",
+              "t": "Extração de Características: MFCC e Log-Mel",
+              "n": "Quadros de 25 ms a cada 10 ms → espectrograma log-Mel ou ~39 MFCC",
+              "x": {
+                "e": "O sinal amostrado é fatiado em quadros (frames) de ~25 milissegundos, tomados a cada 10 milissegundos. A transformada de Fourier decompõe as frequências formando o espectrograma; ajustado à audição humana na escala Mel gera o espectrograma log-Mel (entrada típica dos modelos neurais atuais) ou coeficientes MFCC (~39 números com energia e variação, usuais nos sistemas clássicos).",
+                "ex": "No espectrograma, vogais aparecem como faixas horizontais de energia (formantes), enquanto consoantes como 's' formam manchas nas frequências agudas.",
+                "trap": "Dizer que a extração de características converte diretamente cada quadro do áudio em uma palavra para depois o modelo acústico corrigir.",
+                "src": "Etapa 02 — Cap. 1.1, seção 1.1.4 e item 9 (p. 27, 35, 37); Prof. Vinicius Borges, seção 1.1 (p. 5–6)"
+              }
+            },
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2b",
+              "t": "Modelo Acústico, Léxico e Modelo de Linguagem",
+              "n": "Acústico (fones) · Léxico (palavra ↔ fones) · LM N-grama (texto)",
+              "x": {
+                "e": "O modelo acústico calcula a verossimilhança de cada vetor pertencer a fones ou partes de fones. O léxico de pronúncia lista as palavras admitidas e sua decomposição em fones, ligando sons às palavras e delimitando o vocabulário fechado. O modelo de linguagem (tradicionalmente N-gramas, como trigramas e quadrigramas) estima a probabilidade de uma palavra dadas as N−1 anteriores.",
+                "ex": "O léxico informa que 'táxi' corresponde à sequência de fones /ˈtak.si/; se uma palavra faltar no léxico, o decodificador clássico não consegue escrevê-la.",
+                "trap": "Atribuir ao léxico de pronúncia a função de estimar a probabilidade de sequências de palavras (papel do modelo de linguagem).",
+                "src": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 6–7)"
+              }
+            },
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2c",
+              "t": "Decodificador: Viterbi, Busca em Feixe e Treliça",
+              "n": "Busca com poda (beam search); treliça de palavras gera escore de confiança",
+              "x": {
+                "e": "Como o número de frases possíveis é imenso, o decodificador não faz busca exaustiva: usa o algoritmo de Viterbi acelerado por poda (pruning), geralmente como busca em feixe (beam search), descartando hipóteses muito inferiores à melhor (com risco de eliminar a correta). Além da melhor frase, pode entregar N melhores hipóteses ou uma treliça de palavras (word lattice), base para o escore de confiança.",
+                "ex": "A probabilidade posterior extraída da treliça aponta ao revisor quais palavras da ata preliminar merecem conferência prioritária.",
+                "trap": "Afirmar que o decodificador avalia exaustivamente todas as frases possíveis, ou confundir o decodificador de busca clássico (Viterbi/feixe) com o decodificador neural de um Transformer.",
+                "src": "Etapa 02 — Cap. 1.1, seções 1.1.4, 1.1.10 e item 4 (p. 28, 31, 35, 37)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3",
+      "cor": "roxo",
+      "t": "Evolução das Gerações e Arquiteturas ASR",
+      "n": "Dos sistemas restritos ao HMM-GMM (1ª), Híbrido DNN-HMM (2ª) e End-to-End (3ª)",
+      "x": {
+        "e": "A história do ASR partiu de protótipos de vocabulário mínimo (décadas de 1950–1960), consolidou-se na 1ª geração estatística HMM-GMM, evoluiu para a 2ª geração híbrida DNN-HMM (rede neural na avaliação acústica) e alcançou a 3ª geração End-to-End (rede única do áudio ao texto, usada hoje na Câmara).",
+        "ex": "Mesmo com a Câmara usando Whisper large-v3 (End-to-End) desde 2026, o vocabulário clássico (modelo acústico, léxico, LM e decodificador) continua cobrado em prova.",
+        "trap": "Chamar o sistema híbrido DNN-HMM de end-to-end só porque ele utiliza rede neural profunda.",
+        "src": "Etapa 02 — Cap. 1.1, seções 1.1.1, 1.1.5, 1.1.6, 1.1.10 e Na prática da Câmara (p. 25, 28–29, 31–32); Prof. Vinicius Borges, seção 1.1 (p. 8)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.1",
+          "t": "Primeiros Marcos até a Era Estatística",
+          "n": "Audrey 1952 (dígitos/1 locutor) → Shoebox 1962 → HMM (anos 70/80) → Siri 2011",
+          "x": {
+            "e": "Os sistemas pioneiros reconheciam pouquíssimas palavras de um único locutor: Audrey (Bell Labs, 1952, dígitos de um locutor) e IBM Shoebox (1962, 16 palavras entre dígitos e comandos). Nos anos 1970 e 1980 os Modelos Ocultos de Markov tornaram-se o padrão estatístico, chegando ao ditado contínuo em PC (Dragon NaturallySpeaking, 1997) e aos assistentes de voz (Siri, 2011).",
+            "ex": "A transição dos sistemas restritos dos anos 1950 para o padrão estatístico HMM permitiu sair de dezenas de palavras para grande vocabulário.",
+            "trap": "Supor que protótipos da década de 1950 já faziam transcrição contínua de vocabulário aberto independente de locutor.",
+            "src": "Prof. Vinicius Borges, seção 1.1 — Linha do tempo resumida (p. 8)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2",
+          "t": "1ª Geração: Modelos Estatísticos HMM-GMM",
+          "n": "HMM (tempo e duração) + GMM (ajuste do quadro ao estado)",
+          "x": {
+            "e": "Na 1ª geração, o modelo acústico combina HMM e GMM. Na fala, cada fone é tipicamente modelado por três estados (início, meio e fim), cujas transições avançam ou repetem o mesmo estado para acomodar durações variáveis. É 'oculto' porque o sistema observa apenas os vetores de áudio e precisa inferir a sequência de estados/fones.",
+            "ex": "Repetir o mesmo estado no HMM permite modelar uma vogal pronunciada de forma mais longa sem quebrar o reconhecimento.",
+            "trap": "Inverter os papéis dizendo que as gaussianas modelam a sucessão temporal e o HMM mede a semelhança acústica do quadro.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2a",
+              "t": "HMM × GMM, Treino Embutido e Alinhamento Forçado",
+              "n": "Pauta (HMM) × Ouvido (GMM); alinhamento automático no treino",
+              "x": {
+                "e": "O HMM ('a pauta') modela a sucessão e a duração variável dos sons no tempo; a GMM ('o ouvido') usa combinações ponderadas de curvas gaussianas para medir a probabilidade de um estado emitir cada quadro. O treino embutido (embedded training) aprende apenas com áudio e transcrição, sem marcar à mão onde começa cada fone; quando o texto já é conhecido e só faltam os tempos, aplica-se o alinhamento forçado (forced alignment).",
+                "ex": "O alinhamento forçado é usado posteriormente nos editores de transcrição (Cap. 2.6) para sincronizar o texto revisado ao áudio.",
+                "trap": "Afirmar que o treinamento de um modelo acústico HMM-GMM exige que um humano marque manualmente o início e o fim de cada fone no áudio.",
+                "src": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.3",
+          "t": "2ª Geração: Sistemas Híbridos DNN-HMM",
+          "n": "DNN substitui a GMM no som; HMM, léxico e LM permanecem",
+          "x": {
+            "e": "A partir de 2010/2012 (Hinton et al., 2012), redes neurais profundas (DNN) substituíram as misturas de gaussianas (GMM) para avaliar o ajuste entre vários quadros de áudio e os estados do HMM, reduzindo expressivamente a taxa de erro. Mantém o nome 'híbrido' porque une rede neural para o som e HMM para o tempo, conservando léxico, modelo de linguagem e decodificador separados.",
+            "ex": "Uma DNN recebe uma janela de vários quadros de coeficientes e devolve probabilidades sobre os estados do HMM.",
+            "trap": "Dizer que nos híbridos DNN-HMM a rede neural substituiu o HMM ou eliminou o léxico de pronúncia e o modelo de linguagem separados.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29); Prof. Vinicius Borges, seção 1.1 (p. 7–8)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.4",
+          "t": "Comparativo: HMM-GMM × DNN-HMM × End-to-End",
+          "n": "Modularidade clássica/híbrida × rede única áudio→texto (subpalavras)",
+          "tabela": {
+            "cab": [
+              "Componente",
+              "HMM-GMM",
+              "Híbrido DNN-HMM",
+              "End-to-End (Cap. 1.2)"
+            ],
+            "linhas": [
+              [
+                "Avaliação do som",
+                "GMM",
+                "Rede neural profunda (DNN)",
+                "Uma única rede neural"
+              ],
+              [
+                "Estrutura temporal",
+                "HMM",
+                "HMM",
+                "Aprendida pela própria rede"
+              ],
+              [
+                "Léxico de pronúncia",
+                "Separado",
+                "Separado",
+                "Não há léxico separado"
+              ],
+              [
+                "Modelo de linguagem",
+                "Separado",
+                "Separado",
+                "Em regra embutido (pode ter externo)"
+              ],
+              [
+                "Decodificador",
+                "Sim (Viterbi / feixe)",
+                "Sim (Viterbi / feixe)",
+                "Busca mais simples"
+              ]
+            ]
+          },
+          "x": {
+            "e": "Nos modelos End-to-End (3ª geração: CTC, RNN-T, atenção/Whisper), uma única rede neural treinada com pares de áudio e texto substitui as etapas intermediárias, eliminando o léxico de pronúncia separado e adotando tokens de subpalavra. Contudo, as duas perguntas centrais (sustentação sonora e plausibilidade linguística) e a métrica WER permanecem, e surgem riscos como alucinações.",
+            "ex": "A Câmara adotou ASR em 2023 via serviço da Microsoft (Azure) e, desde 2026, utiliza o Whisper large-v3 (modelo End-to-End).",
+            "trap": "Supor que um modelo End-to-End dispensa qualquer pré-processamento acústico (o Whisper ainda calcula espectrograma log-Mel) ou elimina erros em nomes raros.",
+            "src": "Etapa 02 — Cap. 1.1, seções 1.1.1, 1.1.6, 1.1.10 e Na prática da Câmara (p. 25, 29, 31–32); Prof. Vinicius Borges, seção 1.1 (p. 11–12)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4",
+      "cor": "laranja",
+      "t": "Vocabulário, OOV e Fontes de Erro no Parlamento",
+      "n": "OOV com efeito cascata, remédios lexicais/subpalavras e 5 famílias de erro",
+      "x": {
+        "e": "Em sessões e reuniões parlamentares, palavras fora do vocabulário (OOV) — sobretudo nomes próprios e siglas — desencadeiam erros em cascata nos vizinhos, somando-se às cinco famílias de fontes de erro (acústica, do falante, de estilo, linguística e do sistema).",
+        "ex": "Um aparte fora do microfone com sobrenome inédito e sotaque pouco treinado reúne quatro fontes de erro em dois segundos.",
+        "trap": "Confundir OOV com baixa confiança ou trecho inaudível, ou imaginar que cada OOV causa exatamente um único erro na contagem da WER.",
+        "src": "Etapa 02 — Cap. 1.1, seções 1.1.7, 1.1.8 e Na prática da Câmara (p. 29–30, 32)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.1",
+          "t": "Palavras Fora do Vocabulário (OOV) e Efeito Cascata",
+          "n": "Ausente do léxico → substituição por som parecido + contaminação dos vizinhos",
+          "x": {
+            "e": "Palavra fora do vocabulário (OOV, out-of-vocabulary) é a que foi pronunciada, mas não consta do vocabulário finito do sistema clássico. Como não pode ser escrita, provoca dois efeitos: substituição por palavra(s) conhecida(s) de som semelhante e contaminação dos vizinhos, pois o modelo de linguagem passa a prever a continuação a partir de um contexto errado — custando mais de um erro na WER.",
+            "ex": "O sobrenome incomum de um depoente ausente do léxico vira duas palavras comuns parecidas e ainda faz o verbo seguinte sair errado (3 erros por 1 OOV).",
+            "trap": "Afirmar que cada OOV resulta em exatamente uma substituição isolada sem afetar as palavras adjacentes.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.7 (p. 29–30)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.2",
+          "t": "Origens Parlamentares, Distinções e Remédios",
+          "n": "Entidades nomeadas/siglas; inclusão no léxico/LM ou subpalavras (E2E)",
+          "caixa": {
+            "titulo": "Não confunda (Seção 1.1.7)",
+            "itens": [
+              "OOV: palavra ausente do vocabulário do sistema",
+              "Palavra de baixa confiança: palavra que está no vocabulário, mas foi reconhecida com escore baixo",
+              "Trecho inaudível: áudio em que nem um ouvinte humano distingue o que foi dito"
+            ]
+          },
+          "x": {
+            "e": "A principal origem de OOV são entidades nomeadas: sobrenomes de deputados recém-empossados, siglas de partidos novos, programas governamentais e estrangeirismos. Os remédios incluem: no sistema clássico, adicionar a palavra ao léxico e ao LM sem retreinar o modelo acústico; usar listas lexicais e vocabulários legislativos (como faz a Câmara); e nos modelos E2E, empregar tokens de subpalavra (vocabulário aberto), que reduzem o problema sem zerar erros em nomes raros.",
+            "ex": "A Câmara trata erros sistemáticos de nomes próprios com roteiros, listas lexicais e vocabulários do domínio legislativo.",
+            "trap": "Confundir OOV com palavra reconhecida com baixo escore de confiança (que existe no léxico) ou com trecho inaudível.",
+            "src": "Etapa 02 — Cap. 1.1, seções 1.1.7, 1.1.10 e Na prática da Câmara (p. 29–32)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.3",
+          "t": "Cinco Famílias de Fontes de Erro",
+          "n": "Acústica · Do falante · De estilo · Linguística · Do sistema → S, D ou I",
+          "tabela": {
+            "cab": [
+              "Família",
+              "Exemplos em sessões e reuniões",
+              "Evidência da fonte"
+            ],
+            "linhas": [
+              [
+                "Acústica",
+                "Ruído de plenário, microfone distante/desligado, áudio comprimido com perda",
+                "Ruído pode multiplicar a WER por 2 a 4×"
+              ],
+              [
+                "Do falante",
+                "Sotaque pouco representado, fala muito rápida, perfil pouco presente no treino",
+                "Sotaque forte multiplica WER por 3 a 4×; Câmara mediu WER maior em vozes femininas"
+              ],
+              [
+                "De estilo",
+                "Fala espontânea, hesitações, frases truncadas, apartes e falas sobrepostas",
+                "Conversa entre pessoas é mais difícil que fala lida"
+              ],
+              [
+                "Linguística",
+                "OOV, nomes próprios, siglas, números, jargão regimental, homófonos",
+                "Principal foco de listas lexicais e reforço de termos"
+              ],
+              [
+                "Do sistema",
+                "Descompasso treino × uso, poda descartando hipótese certa, alucinação autorregressiva",
+                "Alucinação em trechos de silêncio gera inserções"
+              ]
+            ]
+          },
+          "x": {
+            "e": "As causas de erro agrupam-se em cinco famílias que frequentemente se somam no ambiente parlamentar. Na saída transcrita, qualquer uma dessas causas se manifesta em exatamente três formas contadas pela WER: substituição (palavra trocada), omissão/deleção (palavra omitida) ou inserção (palavra escrita sem ter sido dita).",
+            "ex": "A Câmara observou na prática alterações indesejadas, contrações, repetições e alucinações em suas transcrições automáticas.",
+            "trap": "Reduzir os erros de ASR a causas acústicas ou ignorar falhas internas do sistema (como a poda no decodificador clássico e a alucinação em modelos autorregressivos).",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.8 e Na prática da Câmara (p. 30, 32)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5",
+      "cor": "vermelho",
+      "t": "Avaliação: WER, Alinhamento e Limites Práticos",
+      "n": "WER = (S+D+I)÷N; sem teto em 100%; normalização; limites na taquigrafia",
+      "x": {
+        "e": "A WER (Word Error Rate) mede a proporção de erros em relação a uma transcrição de referência humana usando distância mínima de edição. Embora seja a métrica padrão da área, pode ultrapassar 100%, exige normalização idêntica entre sistemas e apresenta cinco limitações severas para a taquigrafia parlamentar.",
+        "ex": "Na Câmara, a revisão humana de todo o texto gerado pela IA continua obrigatória, entregando ganho de produtividade próximo de 20%.",
+        "trap": "Afirmar que a WER tem teto de 100%, dispensa referência, atribui peso maior a erros graves ou equivale ao escore de confiança.",
+        "src": "Etapa 02 — Cap. 1.1, seção 1.1.9 e Na prática da Câmara (p. 30–32); Prof. Vinicius Borges, seção 1.1 (p. 9–10)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.1",
+          "t": "Fórmula e Procedimento da WER",
+          "n": "5 passos: referência → normalização idêntica → alinhamento mínimo → (S+D+I) ÷ N",
+          "x": {
+            "e": "O cálculo da WER segue cinco passos (implementados tradicionalmente na ferramenta sclite do NIST): (1) obter transcrição de referência humana; (2) normalizar hipótese e referência de modo idêntico (minúsculas, pontuação, grafia de números); (3) alinhar pela distância mínima de edição; (4) contar substituições (S), omissões (D) e inserções (I); (5) dividir S+D+I por N, o total de palavras da referência.",
+            "ex": "Em referência de 50 palavras com 4 substituições, 1 omissão e 5 inserções: WER = (4+1+5) ÷ 50 = 20%; e a hipótese terá 50 − 1 + 5 = 54 palavras.",
+            "trap": "Dividir pelo total de palavras da hipótese em vez de N da referência, ou comparar a WER de dois fornecedores sem a mesma normalização ('dois mil e vinte e seis' vs. '2026').",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.9 e item 18 (p. 30, 36–37); Prof. Vinicius Borges, seção 1.1 (p. 9–10)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+          "t": "Por que a WER pode passar de 100%",
+          "n": "Inserções (I) aumentam o numerador sem alterar N; '100% − WER' ≠ acurácia",
+          "x": {
+            "e": "O numerador soma S, D e I, mas o denominador N conta apenas as palavras da transcrição de referência. Como as inserções (inclusive palavras alucinadas em trechos de silêncio) aumentam o numerador sem alterar N, a WER não tem teto em 100%. Por rigor matemático, '100% menos a WER' não representa a acurácia do sistema.",
+            "ex": "Referência de 4 palavras ('declaro encerrada a sessão') com 6 palavras inventadas ao final no silêncio gera 6 inserções: WER = 6 ÷ 4 = 150%.",
+            "trap": "Concluir que, por ser expressa em percentual, a WER varia no máximo entre 0% e 100%.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 e #VamosPraticar (p. 9–11)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.3",
+          "t": "Cinco Limites da WER na Taquigrafia",
+          "n": "Peso igual (erro trivial = erro grave) · referência · normalização · média · só palavras",
+          "x": {
+            "e": "Cinco limitações impedem que WER baixa equivalha a registro oficial fiel: (1) todos os erros têm o mesmo peso (errar 'de' custa o mesmo que trocar 'não' ou o número de um projeto/autor); (2) depende da qualidade da referência; (3) oscila conforme a normalização; (4) a média esconde variações extremas (na Câmara, média de 25% oculta faixa de 8% a 50%); (5) avalia só palavras, sem medir quem falou (DER) nem formatação.",
+            "ex": "Uma transcrição com excelente WER de 2% pode ter errado exatamente o sobrenome do autor do requerimento ou invertido o sentido de uma votação.",
+            "trap": "Afirmar que a WER pondera a gravidade semântica dos erros, dando peso maior a nomes próprios, negações e números.",
+            "src": "Etapa 02 — Cap. 1.1, seção 1.1.9 e Na prática da Câmara (p. 31–32)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.4",
+          "t": "Métricas Irmãs × Escore de Confiança",
+          "n": "SER (sentença), CER (caractere), RTF (velocidade) ≠ Escore de confiança",
+          "tabela": {
+            "cab": [
+              "Critério",
+              "WER",
+              "Escore de Confiança"
+            ],
+            "linhas": [
+              [
+                "Quem calcula",
+                "Avaliador externo",
+                "Próprio sistema ASR"
+              ],
+              [
+                "Precisa de referência?",
+                "Sim (obrigatória)",
+                "Não (dispensa referência)"
+              ],
+              [
+                "Quando existe",
+                "Depois, em testes e auditorias",
+                "Na hora, junto com a transcrição"
+              ],
+              [
+                "Para que serve",
+                "Medir a qualidade do sistema",
+                "Apontar trechos duvidosos ao revisor"
+              ]
+            ]
+          },
+          "x": {
+            "e": "Métricas complementares incluem: SER (Sentence Error Rate, proporção de sentenças com ao menos 1 erro — mais severa que a WER), CER (Character Error Rate, baseada em caracteres, útil em línguas sem separação clara entre palavras) e RTF (Real-Time Factor, tempo de processamento ÷ duração do áudio, exigindo RTF < 1 em tempo real). Já o escore de confiança vem da treliça do sistema na hora e dispensa referência.",
+            "ex": "Uma sentença de 20 palavras com apenas 1 palavra errada gera WER de 5% na frase, mas SER de 100% para aquela sentença.",
+            "trap": "Afirmar que o escore de confiança é uma 'WER calculada palavra a palavra' e que por isso também depende de transcrição de referência.",
+            "src": "Etapa 02 — Cap. 1.1, seções 1.1.4, 1.1.9, 1.1.10 e item 20 (p. 28, 31, 36–37); Prof. Vinicius Borges, seção 1.1 (p. 10)"
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "Homófonos empatam na verossimilhança acústica P(O|W) e são desempatados pelo modelo de linguagem P(W).",
+      "de": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3c",
+      "para": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.1"
+    },
+    {
+      "rotulo": "O léxico fechado do pipeline clássico define o vocabulário e causa erros OOV com contaminação dos vizinhos quando falta uma palavra.",
+      "de": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2b",
+      "para": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.1"
+    },
+    {
+      "rotulo": "Os modelos End-to-End substituem o léxico fechado por tokens de subpalavra (vocabulário aberto), reduzindo OOV sem zerar erros em nomes raros.",
+      "de": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.4",
+      "para": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.2"
+    },
+    {
+      "rotulo": "A treliça de palavras gerada pelo decodificador produz o escore de confiança na hora, enquanto a WER exige transcrição de referência posterior.",
+      "de": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2c",
+      "para": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.4"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-RF-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22": {}
+  }
+}

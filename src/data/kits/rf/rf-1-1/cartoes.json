@@ -1,0 +1,241 @@
+[
+  {
+    "id": "rf-1-1-c01",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.1",
+    "tema": "Definição e Natureza Probabilística",
+    "pergunta": "O que entrega o núcleo de um sistema clássico de ASR ao receber o sinal acústico e o que fica para etapas posteriores?",
+    "resposta": [
+      "Entrega a sequência de palavras mais provável em minúsculas",
+      "Pontuação e capitalização ficam de fora (etapas próprias posteriores)"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26)"
+  },
+  {
+    "id": "rf-1-1-c02",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.2",
+    "tema": "Fronteiras: ASR × Tarefas Vizinhas",
+    "pergunta": "Qual pergunta específica cada uma destas quatro tarefas responde: ASR, diarização de falantes, reconhecimento de locutor e síntese de fala (TTS)?",
+    "resposta": [
+      "ASR: o que foi dito?",
+      "Diarização: quem falou quando? (com rótulos anônimos)",
+      "Reconhecimento de locutor: de quem é esta voz? (1:N) ou é quem diz ser? (1:1)",
+      "TTS: como transformar texto em voz?"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25); Prof. Vinicius Borges, seção 1.1 (p. 4–5, 54)"
+  },
+  {
+    "id": "rf-1-1-c03",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3",
+    "tema": "Quatro Dimensões de Dificuldade",
+    "pergunta": "Quais são as quatro dimensões de variação que definem a dificuldade do reconhecimento de fala segundo Jurafsky e Martin?",
+    "resposta": [
+      "Tamanho do vocabulário",
+      "Estilo de fala (isolada/lida × contínua/espontânea)",
+      "Canal e ruído",
+      "Sotaque e perfil do falante"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)"
+  },
+  {
+    "id": "rf-1-1-c04",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3a",
+    "tema": "Estilo de Fala e Alinhamento Temporal",
+    "pergunta": "Entre fala lida e fala espontânea em comissão, qual gera maior taxa de erro e qual faixa de variação da WER foi divulgada pela Câmara?",
+    "resposta": [
+      "A fala espontânea gera maior erro (hesitações, truncamentos e sobreposições)",
+      "Faixa na Câmara: de 8% (cenário controlado) a 50% (debate espontâneo)",
+      "Média divulgada na Câmara: 25%"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32)"
+  },
+  {
+    "id": "rf-1-1-c05",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3b",
+    "tema": "Canal, Ruído e Taxa de Amostragem",
+    "pergunta": "Qual é a taxa de amostragem padrão em ASR, qual é a usada na telefonia tradicional e que tipo de som é prejudicado nesta última?",
+    "resposta": [
+      "Padrão em ASR: 16 kHz (16 mil medições por segundo)",
+      "Telefonia tradicional: 8 kHz",
+      "Prejuízo nos 8 kHz: perda das frequências agudas, dificultando consoantes fricativas (como 's' e 'x')"
+    ],
+    "fonte": "Prof. Vinicius Borges, seção 1.1 e questões comentadas (p. 5–6, 65–66)"
+  },
+  {
+    "id": "rf-1-1-c06",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3c",
+    "tema": "Locutor: Independente × Dependente e Homófonos",
+    "pergunta": "O que diferencia um sistema independente de locutor de um sistema dependente de locutor, e qual é necessário no Parlamento?",
+    "resposta": [
+      "Independente de locutor: reconhece a fala de pessoas nunca ouvidas no treino",
+      "Dependente de locutor: ajustado especificamente para a voz de um falante",
+      "No Parlamento exige-se o independente de locutor (oradores mudam a cada legislatura)"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.2 e 1.1.10 (p. 26, 31)"
+  },
+  {
+    "id": "rf-1-1-c07",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.1",
+    "tema": "Canal Ruidoso e Regra de Bayes",
+    "pergunta": "Na fórmula fundamental do ASR via regra de Bayes, o que medem os dois termos multiplicados e qual deles desempata homófonos como 'sessão' e 'cessão'?",
+    "resposta": [
+      "P(O|W): verossimilhança acústica ('soa como o áudio?'), calculada pelo modelo acústico",
+      "P(W): probabilidade a priori da sequência de palavras, calculada pelo modelo de linguagem",
+      "O modelo de linguagem P(W) desempata homófonos pelo contexto"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)"
+  },
+  {
+    "id": "rf-1-1-c08",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2a",
+    "tema": "Extração de Características: MFCC e Log-Mel",
+    "pergunta": "Como a extração de características fatia o sinal de áudio no tempo e quais são as duas representações espectrais principais citadas nas fontes?",
+    "resposta": [
+      "Fatia em quadros (frames) de cerca de 25 ms, com novo quadro a cada 10 ms",
+      "MFCC: vetores compactos (~39 números) comuns nos sistemas clássicos",
+      "Espectrograma log-Mel: entrada típica dos modelos neurais atuais"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 5–6)"
+  },
+  {
+    "id": "rf-1-1-c09",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2b",
+    "tema": "Modelo Acústico, Léxico e Modelo de Linguagem",
+    "pergunta": "Com que tipo de dado aprende o modelo acústico, com que dado aprende o modelo de linguagem e qual é a função do léxico de pronúncia?",
+    "resposta": [
+      "Modelo acústico: aprende com áudio acompanhado de transcrição",
+      "Modelo de linguagem: aprende apenas com texto (sem áudio)",
+      "Léxico de pronúncia: lista palavras com seus fones e delimita o vocabulário"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27)"
+  },
+  {
+    "id": "rf-1-1-c10",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2c",
+    "tema": "Decodificador: Viterbi, Busca em Feixe e Treliça",
+    "pergunta": "Como o decodificador clássico reduz o espaço de busca em vez de testar todas as frases possíveis, e qual é a desvantagem dessa estratégia?",
+    "resposta": [
+      "Usa o algoritmo de Viterbi acelerado por poda (pruning), geralmente como busca em feixe (beam search)",
+      "Descarta a cada passo hipóteses muito piores que a melhor",
+      "Desvantagem: a poda pode eliminar a hipótese correta"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 28)"
+  },
+  {
+    "id": "rf-1-1-c11",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2a",
+    "tema": "HMM × GMM, Treino Embutido e Alinhamento Forçado",
+    "pergunta": "Em um modelo acústico HMM-GMM, qual peça cuida da dimensão temporal, qual avalia o ajuste do quadro acústico e por que o HMM se chama 'oculto'?",
+    "resposta": [
+      "HMM: modela a sucessão e a duração variável dos fones no tempo",
+      "GMM: mede o ajuste entre um quadro de áudio e um estado",
+      "Oculto: o sistema observa apenas o áudio (vetores) e precisa inferir os estados/fones"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)"
+  },
+  {
+    "id": "rf-1-1-c12",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2a",
+    "tema": "HMM × GMM, Treino Embutido e Alinhamento Forçado",
+    "pergunta": "Qual é a diferença entre treino embutido (embedded training) e alinhamento forçado (forced alignment)?",
+    "resposta": [
+      "Treino embutido: ajusta o modelo acústico com áudio e transcrição alinhando automaticamente, sem marcação manual de fones",
+      "Alinhamento forçado: o texto já é conhecido e o processo descobre os tempos exatos em que cada palavra/fone ocorre no áudio"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)"
+  },
+  {
+    "id": "rf-1-1-c13",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.3",
+    "tema": "2ª Geração: Sistemas Híbridos DNN-HMM",
+    "pergunta": "Nos sistemas híbridos DNN-HMM, qual componente do modelo clássico é substituído pela rede neural profunda e quais componentes permanecem?",
+    "resposta": [
+      "Substituído: a mistura de gaussianas (GMM) na avaliação acústica dos estados",
+      "Permanece: o HMM para modelar a estrutura temporal",
+      "Permanecem separados: léxico de pronúncia, modelo de linguagem e decodificador"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29)"
+  },
+  {
+    "id": "rf-1-1-c14",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.4",
+    "tema": "Comparativo: HMM-GMM × DNN-HMM × End-to-End",
+    "pergunta": "O que desaparece como blocos separados na passagem para modelos End-to-End e qual modelo dessa geração a Câmara adotou desde 2026?",
+    "resposta": [
+      "Desaparecem o léxico de pronúncia separado e o decodificador clássico de três fontes",
+      "Uma única rede neural vai do áudio ao texto usando tokens de subpalavra",
+      "Modelo adotado na Câmara desde 2026: Whisper large-v3"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.6, 1.1.10 e Na prática da Câmara (p. 29, 31–32)"
+  },
+  {
+    "id": "rf-1-1-c15",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.1",
+    "tema": "Palavras Fora do Vocabulário (OOV) e Efeito Cascata",
+    "pergunta": "Quais são as duas consequências típicas quando um orador diz uma palavra fora do vocabulário (OOV) em um sistema clássico?",
+    "resposta": [
+      "Substituição por palavra ou sequência de palavras conhecidas de som parecido",
+      "Contaminação das palavras vizinhas, pois o modelo de linguagem prevê mal a partir do contexto errado",
+      "Uma única OOV costuma causar mais de um erro na WER"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.7 (p. 29)"
+  },
+  {
+    "id": "rf-1-1-c16",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.2",
+    "tema": "Origens Parlamentares, Distinções e Remédios",
+    "pergunta": "Como se distinguem OOV, palavra de baixa confiança e trecho inaudível, e qual é a limitação das subpalavras nos modelos End-to-End?",
+    "resposta": [
+      "OOV: ausente do vocabulário do sistema",
+      "Baixa confiança: consta do vocabulário, mas teve escore baixo",
+      "Inaudível: áudio em que nem um ouvinte humano distingue o que foi dito",
+      "Subpalavras (E2E) reduzem o problema de OOV, mas nomes raros seguem sujeitos a erro"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.7 e 1.1.10 (p. 29–31)"
+  },
+  {
+    "id": "rf-1-1-c17",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.3",
+    "tema": "Cinco Famílias de Fontes de Erro",
+    "pergunta": "Quais são as cinco famílias de causas de erro em ASR e de que três formas todo erro aparece na saída medida pela WER?",
+    "resposta": [
+      "Cinco famílias: acústica, do falante, de estilo, linguística e do sistema",
+      "Três formas na saída: substituição (troca), omissão/deleção e inserção"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)"
+  },
+  {
+    "id": "rf-1-1-c18",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+    "tema": "Por que a WER pode passar de 100%",
+    "pergunta": "Qual é a fórmula da WER, o que significa N e por que a taxa pode ultrapassar 100%?",
+    "resposta": [
+      "Fórmula: WER = (S + D + I) ÷ N",
+      "N: número de palavras da transcrição de referência (não da hipótese)",
+      "Passa de 100% porque inserções (I), como alucinações em silêncio, aumentam o numerador sem aumentar N"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 (p. 9–10)"
+  },
+  {
+    "id": "rf-1-1-c19",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.3",
+    "tema": "Cinco Limites da WER na Taquigrafia",
+    "pergunta": "Cite três limitações da WER que explicam por que uma WER baixa não garante um registro parlamentar fiel.",
+    "resposta": [
+      "Todos os erros pesam igual (errar preposição pesa o mesmo que trocar 'não' ou nome próprio)",
+      "Depende da qualidade da referência e da normalização adotada",
+      "A média esconde variações extremas (8% a 50% na Câmara) e não avalia diarização (DER) nem formatação"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 e Na prática da Câmara (p. 31–32)"
+  },
+  {
+    "id": "rf-1-1-c20",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.4",
+    "tema": "Métricas Irmãs × Escore de Confiança",
+    "pergunta": "O que diferencia a WER do escore de confiança quanto a quem calcula, exigência de referência e finalidade prática?",
+    "resposta": [
+      "WER: calculada depois por avaliador externo, exige referência, mede a qualidade do sistema",
+      "Escore de confiança: calculado na hora pelo próprio sistema (da treliça), dispensa referência, aponta trechos duvidosos ao revisor"
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.4 e 1.1.9 (p. 28, 31)"
+  }
+]
