@@ -74,20 +74,25 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
   const mapNodes=[], mindMaps=[], concepts={}, flashcards=[], roots={}, aliases={}, mapByTopic=Object.create(null);
   const questionNodeLinks = new Map();
   const revisions = source('revisao');
-  const knownRevisionTopics = new Set(revisions.map(revision => revision.topico).filter(Boolean));
+  const revisionTopic = d => d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
+  const mapBranches = map => arr(map?.ramos ?? map?.children ?? map?.nos);
+  const hasMap = map => Boolean(map?.centro || mapBranches(map).length);
+  const storedMapTopics = new Set(revisions.filter(d =>
+    hasMap(d.mapa || d.root) || (d.kind === 'markdown-map' && d.mode === 'new')
+  ).map(revisionTopic));
   const localRevisions = centralKits.revisions.filter(kit =>
-    !knownRevisionTopics.has(kit.topico) && (user?.role === 'admin' || topics[kit.topico])
+    !storedMapTopics.has(kit.topico) && (user?.role === 'admin' || topics[kit.topico])
   );
   const chamberKit = user?.role === 'admin'
-    ? DC_8_2_REVISAO.filter(kit => !knownRevisionTopics.has(kit.topico) && !localRevisions.some(local => local.topico === kit.topico))
+    ? DC_8_2_REVISAO.filter(kit => !storedMapTopics.has(kit.topico) && !localRevisions.some(local => local.topico === kit.topico))
     : [];
-  for(const d of [...revisions, ...localRevisions, ...chamberKit]){
-    const topicId = d.topico || String(d.id).replace(/\.(mapa|cartoes)$/,'');
+  for(const d of [...localRevisions, ...chamberKit, ...revisions]){
+    const topicId = revisionTopic(d);
     const topic=topics[topicId];
     if(topic)topic.resources.revision.push(...arr(d.itens));
     const map=d.mapa || d.root;
-    const branch=arr(map?.ramos??map?.children??map?.nos);
-    if(map && (branch.length || map.centro)){
+    const branch=mapBranches(map);
+    if(hasMap(map)){
       const existingMap = mapByTopic[topicId];
       const root = existingMap ? existingMap.id : topicId+'::'+d.id;
       const title = existingMap ? existingMap.title : (str(map.centro??map.titulo??map.t)||topics[topicId]?.title||topicId);
