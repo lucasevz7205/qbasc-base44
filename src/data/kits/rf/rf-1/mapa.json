@@ -1,0 +1,424 @@
+{
+  "topico": "rf-1",
+  "centro": "🎙️ 1. Reconhecimento de Fala e Transcrição de Áudio (Fundamentos e Pipeline)",
+  "ramos": [
+    {
+      "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1",
+      "t": "Sinal Sonoro, Digitalização e Representação Espectral",
+      "cor": "azul",
+      "n": "Onda analógica → amostragem + quantização → quadros → espectrograma log-Mel / MFCC",
+      "x": {
+        "e": "Descreve como a voz humana (onda contínua de pressão do ar convertida em sinal elétrico analógico pelo microfone) é transformada em números pela conversão analógico-digital e convertida em representações de frequência que os modelos de ASR conseguem ler.",
+        "trap": "Sistemas neurais modernos não leem apenas a forma de onda bruta por acaso: a maioria, como o Whisper, converte o áudio em espectrograma log-Mel antes de alimentar a rede.",
+        "src": "Etapa 01 — Cap. 0, seções 0.1 e 0.2 (p. 8-11); Aula Bloco 1, p. 5-6"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.1",
+          "t": "Amostragem, Taxa em Hz e Teorema de Nyquist",
+          "n": "16 kHz em ASR captura até 8 kHz (metade da taxa) · Acima do limite ocorre aliasing",
+          "x": {
+            "e": "Amostragem (sampling) é medir a amplitude da onda sonora a intervalos regulares no eixo do tempo. A taxa de amostragem (sampling rate) indica o número de medidas por segundo em hertz (Hz). Como cada ciclo da onda exige ao menos duas medidas, a frequência máxima representada é a metade da taxa (frequência de Nyquist); frequências acima desse limite são distorcidas pelo fenômeno chamado aliasing. Aumentar a taxa de um arquivo já gravado não recupera frequências que não foram captadas.",
+            "ex": "Telefonia tradicional usa 8 kHz (banda estreita, capta até 4 kHz); microfones de ASR usam 16 kHz (banda larga, capta até 8 kHz); CD de áudio usa 44,1 kHz (capta até 22,05 kHz, cobrindo a audição humana de 20 a 20.000 Hz).",
+            "trap": "O Cebraspe afirma que um áudio a 16 kHz representa frequências de até 16 kHz, ou que converter uma gravação de 8 kHz para 16 kHz melhora a informação acústica original.",
+            "src": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)"
+          },
+          "tabela": {
+            "cab": [
+              "Taxa de amostragem",
+              "Frequência máxima (Nyquist)",
+              "Uso típico"
+            ],
+            "linhas": [
+              [
+                "8.000 Hz",
+                "4.000 Hz",
+                "Fala telefônica (banda estreita)"
+              ],
+              [
+                "16.000 Hz",
+                "8.000 Hz",
+                "Fala por microfone / padrão usual em ASR (banda larga)"
+              ],
+              [
+                "44.100 Hz",
+                "22.050 Hz",
+                "CD de áudio (cobre audição humana de 20 a 20.000 Hz)"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+          "t": "Quantização, Profundidade de Bits, Canais e Compressão",
+          "n": "N bits = 2^N níveis · WAV = formato · FLAC = sem perda · MP3/Opus = com perda",
+          "x": {
+            "e": "Quantização é arredondar cada amostra contínua para um valor inteiro dentro de um conjunto finito definido pela profundidade de bits (N bits = 2^N valores: 8 bits = 256; 16 bits = 65.536), gerando erro de quantização (menor quanto mais bits). Canais são fluxos independentes (mono, estéreo, multicanal; em plenário, um canal por microfone facilita identificar oradores). Formato (container, como WAV) é a embalagem com cabeçalho; codificação (codec, como PCM linear) define como as amostras viram bits; compressão sem perda (FLAC) reduz tamanho mantendo o áudio idêntico, enquanto compressão com perda (MP3, Opus, AMR) descarta informação de modo irreversível.",
+            "ex": "Áudio mono a 16 kHz e 16 bits consome 256.000 bits/s (32 kB/s), cerca de 115 MB por hora ou 460 MB por sessão de 4 horas.",
+            "trap": "Trocar amostragem (tempo) por quantização (amplitude), chamar WAV de codificação sem perda (WAV é formato e pode não conter PCM), ou afirmar que compressão com perda não afeta o ASR.",
+            "src": "Etapa 01 — Cap. 0, seções 0.1.3 a 0.1.5 (p. 9-10)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.3",
+          "t": "Janelamento, Transformada de Fourier, Espectrograma e Formantes",
+          "n": "Quadros de 25 ms a cada 10 ms · Vogais = formantes horizontais · s/x = manchas agudas",
+          "x": {
+            "e": "A forma de onda mostra apenas amplitude ao longo do tempo (quando há som e sua intensidade), sem revelar quais frequências o compõem. Para captar mudanças rápidas da fala, o áudio é fatiado em janelas curtas sobrepostas chamadas quadros (frames) — no Whisper, janelas de 25 ms tomadas a cada 10 ms. Em cada quadro, a transformada de Fourier decompõe o som em suas frequências; lado a lado, formam o espectrograma (tempo × frequência × cor/intensidade), análogo a uma partitura. Nele, vogais surgem como faixas horizontais de energia chamadas formantes, e consoantes como 's' e 'x' surgem como manchas nas frequências agudas.",
+            "trap": "Confundir forma de onda (amplitude × tempo) com espectrograma (frequência × tempo × energia), ou afirmar que a transformada de Fourier atua sem janelamento prévio em fala contínua.",
+            "src": "Etapa 01 — Cap. 0, seções 0.2.1 e 0.2.2 (p. 10); Aula Bloco 1, p. 5-6"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.4",
+          "t": "Escala Mel, Espectrograma log-Mel e MFCC",
+          "n": "log-Mel = entrada do Whisper (80 ou 128 canais) · MFCC = log-Mel + DCT (sistemas clássicos)",
+          "x": {
+            "e": "O ouvido humano percebe frequências de forma não linear, distinguindo melhor diferenças entre sons graves do que entre agudos. A escala Mel é uma escala perceptual que reflete essa audição; aplicando um banco de filtros triangulares Mel e depois o logaritmo às energias de cada faixa, obtém-se o espectrograma log-Mel (entrada padrão de modelos neurais como o Whisper: 80 canais no original e 128 canais no large-v3 usado pela Câmara). Os MFCC (coeficientes cepstrais na escala Mel) dão um passo além ao aplicar a transformada discreta do cosseno (DCT) ao log-Mel, gerando vetores compactos (~39 números por quadro) típicos de sistemas clássicos (HMM-GMM).",
+            "trap": "Dizer que os MFCC são extraídos diretamente da forma de onda no domínio do tempo (eles passam antes pela transformada de Fourier, filtros Mel e logaritmo), ou que modelos end-to-end como o Whisper dispensam qualquer pré-processamento espectral.",
+            "src": "Etapa 01 — Cap. 0, seções 0.2.3 e 0.2.4 (p. 10-11); Aula Bloco 1, p. 6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2",
+      "t": "Fundamentos de Aprendizado de Máquina e Redes Neurais para Áudio",
+      "cor": "verde",
+      "n": "Treino (ajuste de pesos) vs. Inferência · Supervisão fraca vs. autossupervisão · Transformer",
+      "x": {
+        "e": "Explica como os modelos de fala e linguagem são funções com milhões ou bilhões de parâmetros (pesos) ajustados com dados (treino) e aplicados a áudios inéditos (inferência), comparando os três paradigmas de supervisão, o efeito de mudanças de domínio acústico e a transição das redes recorrentes para a arquitetura Transformer.",
+        "trap": "Trocar os paradigmas de aprendizado entre wav2vec 2.0 (autossupervisionado) e Whisper (fracamente supervisionado), ou confundir treino com inferência.",
+        "src": "Etapa 01 — Cap. 0, seções 0.3 e 0.4 (p. 11-12); Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.1",
+          "t": "Parâmetros, Treino, Inferência e Descompasso de Domínio",
+          "n": "Treino ajusta pesos com exemplos · Descompasso treino × uso real eleva taxa de erro",
+          "x": {
+            "e": "Um modelo é uma função matemática dotada de pesos (weights) ajustáveis. Treinar consiste em ajustar esses pesos a partir de exemplos para capturar padrões; inferência é usar o modelo já treinado em dados novos (como o áudio de uma sessão plenária). Quando há descompasso entre os dados de treino e o uso real — por exemplo, treinar em fala lida limpa e aplicar em debate espontâneo com ruído, reverberação ou sotaques e vozes pouco representadas — o desempenho cai e a WER sobe.",
+            "ex": "Na Câmara dos Deputados, o Derep registrou WER média de 25% variando de 8% a 50% conforme o contexto (Plenário vs. comissões e audiências públicas) e WER maior em vozes femininas.",
+            "trap": "Afirmar que na fase de inferência o modelo ajusta seus pesos continuamente em tempo real, ou que bom desempenho em fala lida garante baixa taxa de erro em debates parlamentares espontâneos.",
+            "src": "Etapa 01 — Cap. 0, seção 0.3.1 (p. 11) e Na prática da Câmara (p. 16); Etapa 02 — seção 1.1.8 (p. 30)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.2",
+          "t": "Supervisão, Pré-treino Auto-supervisionado e Ajuste Fino",
+          "n": "wav2vec 2.0: 53 mil h sem rótulo + 10 min transcritos · Whisper: 680 mil h supervisão fraca",
+          "x": {
+            "e": "O aprendizado supervisionado usa pares áudio-transcrição revisados por humanos (confiável, mas caro: até 400 h de trabalho por 1 h de fala rotulada por fones). O autossupervisionado usa apenas áudio bruto no pré-treino (mascara trechos e prevê o conteúdo escondido, como no wav2vec 2.0 com 53 mil h sem rótulo), exigindo depois ajuste fino (fine-tuning) supervisionado com poucos dados transcritos (ex.: 10 minutos). O fracamente supervisionado treina em enorme escala com rótulos imperfeitos da internet (ex.: Whisper original com 680 mil h).",
+            "trap": "Atribuir supervisão fraca ao wav2vec 2.0 ou autossupervisão ao Whisper, ou afirmar que o pré-treino autossupervisionado dispensa qualquer etapa posterior com dados transcritos para gerar texto.",
+            "src": "Etapa 01 — Cap. 0, seções 0.3.2 e 0.3.3 (p. 11); Aula Bloco 1, p. 15-16"
+          },
+          "tabela": {
+            "cab": [
+              "Forma de aprendizado",
+              "Dados de treino",
+              "Exemplo em fala",
+              "Ponto forte e limite"
+            ],
+            "linhas": [
+              [
+                "Supervisionado",
+                "Áudio com transcrição revisada",
+                "Ajuste fino em fala parlamentar",
+                "Rótulos confiáveis / caro e pouco volume"
+              ],
+              [
+                "Autossupervisionado",
+                "Só áudio bruto no pré-treino",
+                "wav2vec 2.0, HuBERT, XLS-R",
+                "Aproveita áudio sem rótulo / exige ajuste fino rotulado depois"
+              ],
+              [
+                "Fracamente supervisionado",
+                "Áudio com rótulos imperfeitos em massa",
+                "Whisper (680 mil h / large-v3)",
+                "Escala e diversidade / herda erros dos rótulos"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.3",
+          "t": "Redes Recorrentes vs. Transformer e Autoatenção (Self-Attention)",
+          "n": "Transformer: apenas atenção, sem recorrência · Autoatenção relaciona posições em paralelo",
+          "x": {
+            "e": "Até 2017 predominavam redes recorrentes, que processam a sequência um passo de cada vez e dificultam a paralelização e relações de longa distância. O Transformer (Vaswani et al.) baseia-se exclusivamente em mecanismos de atenção, sem recorrência e sem convoluções, permitindo paralelizar e acelerar o treinamento. A autoatenção (self-attention) relaciona todas as posições de uma mesma sequência para ponderar o contexto — ligando pronomes a referentes no texto ou resolvendo uma sílaba abafada pelo restante da frase no áudio.",
+            "trap": "Afirmar que o Transformer utiliza camadas recorrentes passo a passo na sua arquitetura básica, ou confundir autoatenção (dentro da sequência) com busca em feixe.",
+            "src": "Etapa 01 — Cap. 0, seção 0.4.2 (p. 11-12)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.4",
+          "t": "Codificador (Encoder) e Decodificador Autorregressivo (Decoder)",
+          "n": "Encoder lê tudo · Decoder gera token a token apoiado no que já gerou",
+          "x": {
+            "e": "No Transformer completo (como o Whisper), o codificador (encoder) lê toda a sequência de entrada (espectrograma log-Mel) e gera representações ricas. O decodificador (decoder) gera os tokens de saída um por vez, de modo autorregressivo: a cada passo consulta a representação do codificador e todos os tokens que ele próprio já gerou. Nem todo modelo usa as duas metades: o wav2vec 2.0 combina extrator convolucional com apenas um codificador Transformer.",
+            "trap": "Dizer que o decodificador do Transformer gera toda a transcrição simultaneamente em um único passo (ele é autorregressivo, o que garante fluência, mas abre brecha para alucinações).",
+            "src": "Etapa 01 — Cap. 0, seção 0.4.3 (p. 12); Aula Bloco 1, p. 14-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3",
+      "t": "Unidades Textuais, Representação Semântica e Riscos Generativos",
+      "cor": "roxo",
+      "n": "Tokens subpalavras (BPE) · LLM vs. ML clássico · Embeddings · Alucinação em silêncio",
+      "x": {
+        "e": "Cobre como o texto é quebrado e representado numericamente pelos modelos (tokens, LLMs e embeddings), como a tokenização por subpalavras mitiga o problema clássico de palavras fora do vocabulário (OOV) e por que modelos autorregressivos sofrem de alucinação.",
+        "trap": "Igualar token a palavra completa, confundir LLM gerador com modelo de linguagem estatístico do ASR clássico, ou confundir alucinação com troca acústica comum.",
+        "src": "Etapa 01 — Cap. 0, seção 0.5 (p. 12-13); Etapa 02 — seção 1.1.7 (p. 29)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.1",
+          "t": "Tokenização por Subpalavras (BPE) e Mitigação de OOV",
+          "n": "Token = palavra, subpalavra ou caractere · BPE no Whisper compõe palavras inéditas",
+          "x": {
+            "e": "Token é a menor unidade de linguagem lida e escrita pelo modelo; uma palavra longa como 'inconstitucionalidade' é dividida em vários tokens conforme o tokenizador. O Whisper usa BPE (byte-pair encoding) com vocabulário multilíngue refeito para reduzir fragmentação fora do inglês. Nos sistemas clássicos com léxico fechado, palavras ausentes eram OOV (out of vocabulary): impossíveis de reconhecer, trocadas por som parecido e contaminando palavras vizinhas na WER. O uso de subpalavras nos modelos end-to-end permite compor palavras novas (vocabulário aberto), mitigando o OOV, embora nomes raros ainda sofram erros.",
+            "trap": "Afirmar que cada token corresponde necessariamente a uma palavra, ou que o uso de subpalavras elimina por completo os erros em nomes próprios e siglas raras.",
+            "src": "Etapa 01 — Cap. 0, seção 0.5.1 (p. 12); Etapa 02 — seção 1.1.7 (p. 29); Aula Bloco 1, p. 11"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.2",
+          "t": "LLM de Uso Geral vs. Modelo de Linguagem Clássico",
+          "n": "LLM gera continuação natural via prompt e janela de contexto · ML clássico estima P(W)",
+          "x": {
+            "e": "LLM (large language model) é uma rede neural profunda treinada com enormes volumes de texto para gerar continuação natural a partir de um prompt, respeitando sua janela de contexto (máximo de tokens considerados de uma vez), executando sumarização, tradução e revisão. Não se confunde com o modelo de linguagem do ASR clássico (tipicamente N-gramas), que estima a probabilidade a priori P(W) de uma sequência de palavras para desempatar homófonos como 'sessão', 'cessão' e 'seção'.",
+            "trap": "Afirmar que o modelo de linguagem clássico é treinado com áudio transcrito (ele aprende apenas com texto) ou confundi-lo com um LLM generativo de propósito geral.",
+            "src": "Etapa 01 — Cap. 0, seção 0.5.2 (p. 12); Etapa 02 — seções 1.1.3 e 1.1.4 (p. 26-27)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.3",
+          "t": "Embeddings e Similaridade Semântica e Acústica",
+          "n": "Sentido ou voz parecida → vetores numéricos próximos · Usados em busca semântica e diarização",
+          "x": {
+            "e": "Embedding é um vetor numérico denso que representa o conteúdo de modo que semelhança de significado ou característica vire proximidade geométrica. Não se restringe a palavras isoladas: existem embeddings para frases, documentos (base da busca semântica no Bloco 3) e trechos de áudio (embeddings de locutor como i-vectors, x-vectors e ECAPA-TDNN que capturam timbre e ressonância na diarização).",
+            "ex": "Os vetores de 'sessão deliberativa' e 'votação em Plenário' ficam próximos no espaço vetorial; o vetor de 'sessão de fotos' fica distante.",
+            "trap": "Restringir o conceito de embeddings apenas a palavras individuais, ignorando sua aplicação a frases, documentos inteiros e assinaturas vocais na diarização.",
+            "src": "Etapa 01 — Cap. 0, seção 0.5.3 (p. 13); Aula Bloco 1, p. 25"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.4",
+          "t": "Alucinação em Modelos de Fala e Texto",
+          "n": "Erro comum distorce o dito · Alucinação inventa texto fluente em silêncio ou ruído",
+          "x": {
+            "e": "Alucinação é a geração de conteúdo plausível, porém falso ou sem apoio na entrada (definida na Portaria DG nº 227/2025, art. 2º, VIII, da Câmara). No ASR, difere da troca fonética (que distorce o que foi falado): alucinar é inventar frases inteiras não ditas, como 'Obrigado por assistir'. Ocorre com maior frequência em decodificadores autorregressivos (como o Whisper) durante pausas longas, silêncio ou ruído, quando o modelo segue o que é estatisticamente provável como texto. Estudo citado na apostila encontrou alucinações em ~1% das transcrições do Whisper (38% com dano explícito).",
+            "trap": "Definir alucinação como qualquer erro de transcrição, ou afirmar que modelos CTC sem decodificador autorregressivo alucinam frases inteiras com a mesma facilidade que o Whisper.",
+            "src": "Etapa 01 — Cap. 0, seção 0.5.4 (p. 13) e Na prática da Câmara (p. 16); Aula Bloco 1, p. 16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4",
+      "t": "Arquitetura Geral do Pipeline de Transcrição Parlamentar (Bloco 1)",
+      "cor": "laranja",
+      "n": "Captação → ASR (1.1–1.3) → Diarização (1.4) → Formatação (1.5) → Adaptação PT-BR (1.6) → API/Revisão",
+      "x": {
+        "e": "Integra os oito tópicos do Bloco 1 no fluxo real da Taquigrafia Parlamentar da Câmara dos Deputados: da captação do áudio e reconhecimento automático de fala (clássico, end-to-end e LLMs nativos) à diarização, pontuação/ITN, adaptação ao português brasileiro, operação em streaming ou lote, APIs e revisão humana obrigatória.",
+        "trap": "Achar que o núcleo do ASR sozinho entrega falantes identificados, pontuação impecável e ata pronta sem pós-processamento nem revisão humana.",
+        "src": "Etapa 02 — Cap. 1.1 (p. 24-38); Aula Bloco 1 (Prof. Vinícius Borges, p. 3-44)"
+      },
+      "caixa": {
+        "titulo": "Encadeamento do Bloco 1 na Câmara",
+        "itens": [
+          "1.1–1.3 ASR/E2E/Áudio Nativo: 'O que foi dito?'",
+          "1.4 Diarização de Falantes: 'Quem falou quando?'",
+          "1.5 Pontuação, Truecasing e ITN: Formatação para leitura",
+          "1.6–1.8 PT-BR, Streaming/Lote, APIs e Revisão Humana (Derep)"
+        ]
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.1",
+          "t": "ASR Clássico, End-to-End e LLMs Multimodais de Áudio Nativo",
+          "n": "HMM-GMM → DNN-HMM → End-to-End (CTC, RNN-T, AED/Whisper) → LLM Áudio Nativo",
+          "x": {
+            "e": "O ASR responde estritamente 'o que foi dito?'. Evoluiu em três gerações: (1) Clássica HMM-GMM (extração MFCC + modelo acústico GMM-HMM + léxico de pronúncia + modelo de linguagem N-grama + decodificador Viterbi/feixe); (2) Híbrida DNN-HMM (rede neural substitui apenas a GMM, mantendo HMM, léxico, ML e decodificador); (3) End-to-end (rede única do áudio ao texto com otimização conjunta, sem léxico separado: CTC com símbolo branco, RNN-T para streaming, AED/Whisper com atenção). Acima estão os LLMs multimodais de áudio nativo, que processam som diretamente via adaptador ou codec neural sem cascata ASR→LLM→TTS, preservando prosódia e emoção.",
+            "trap": "Chamar o híbrido DNN-HMM de modelo end-to-end, inverter funções de HMM (tempo) e GMM (som), ou dizer que a cascata preserva pistas paralinguísticas melhor que o áudio nativo.",
+            "src": "Etapa 02 — seções 1.1.1 a 1.1.6 (p. 25-29); Aula Bloco 1, p. 6-22"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2",
+          "t": "Diarização de Falantes (1.4) e Tarefas Vizinhas",
+          "n": "Diarização = rótulos anônimos sem cadastro · Identificação (1:N) e Verificação (1:1) exigem cadastro",
+          "x": {
+            "e": "Diarização responde 'quem falou quando?', segmentando o áudio em trechos com rótulos anônimos (Falante A, B...) sem exigir cadastro prévio. Seu pipeline clássico segue: VAD (detecção de atividade de voz) → segmentação → embeddings de locutor → agrupamento (clustering) → ressegmentação; falas sobrepostas (apartes) demandam modelos neurais como EEND ou pyannote.audio. Distingue-se de identificação de locutor (1:N, escolhe entre cadastrados), verificação de locutor (1:1, autentica identidade) e separação de fontes (isola áudios limpos no problema do coquetel).",
+            "trap": "Atribuir à diarização pura a identificação nominal imediata do deputado sem cadastro/informação externa, ou confundi-la com verificação (1:1) e separação de fontes.",
+            "src": "Etapa 02 — seção 1.1.1 (p. 25); Aula Bloco 1, p. 23-28"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.3",
+          "t": "Pontuação Automática, Capitalização e Normalização Inversa (1.5)",
+          "n": "Saída crua é minúscula/sem pontuação · ITN: 'cinquenta reais' → 'R$ 50' · Limpa remove disfluências",
+          "x": {
+            "e": "O núcleo clássico do ASR entrega palavras em minúsculas, sem pontuação e com números por extenso. O pós-processamento envolve: pontuação automática (classificação tipo BERT somada a pistas prosódicas, ou direta em modelos E2E como Whisper), capitalização/truecasing (maiúsculas em nomes próprios, siglas e cargos como 'Senhor Presidente') e normalização inversa de texto — ITN (converte forma falada em escrita padronizada, ex.: 'artigo quinto' → 'art. 5º', caminho inverso à normalização do TTS). Na edição, a transcrição literal (verbatim) preserva disfluências ('éé', repetições), enquanto a transcrição limpa as remove, aproximando-se das notas taquigráficas.",
+            "trap": "Inverter a direção da ITN (dizer que ela transforma 'R$ 50' em 'cinquenta reais', tarefa que pertence ao TTS), ou confundir transcrição literal com transcrição limpa.",
+            "src": "Etapa 02 — seção 1.1.1 (p. 25); Aula Bloco 1, p. 28-32"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.4",
+          "t": "Desafios do Português Brasileiro e Escada de Adaptação (1.6)",
+          "n": "Desigualdade de dados no treino · Escada: lista de frases → prompt → ML personalizado → fine-tuning",
+          "x": {
+            "e": "O português brasileiro sofre com menor proporção de dados no treino (cerca de 2/3 do Whisper original eram em inglês; bases em PT-BR incluem CORAA e Common Voice), grande diversidade de sotaques regionais, homófonos ('sessão/cessão/seção') e, no ambiente parlamentar, vocabulário regimental, sobrenomes de deputados, siglas, reverberação e apartes. A escada de adaptação ao domínio vai do mais barato ao mais custoso: (1) lista de frases/reforço (biasing), (2) prompts de contexto (como no Whisper), (3) modelo de linguagem personalizado (usa só acervo de texto, como notas taquigráficas), e (4) ajuste fino acústico (exige pares áudio+texto), apoiados por pós-correção por LLM.",
+            "trap": "Afirmar que um acervo apenas de notas taquigráficas antigas (sem áudio) serve para fazer ajuste fino acústico (ele serve para modelo de linguagem personalizado).",
+            "src": "Aula Bloco 1, p. 33-39; Etapa 02 — Na prática da Câmara (p. 32)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.5",
+          "t": "Streaming vs. Lote, Ferramentas/APIs e Revisão Humana (1.7–1.8)",
+          "n": "Parciais mudam; finais são fixos · Câmara usa Whisper large-v3 no Escriba com revisão obrigatória",
+          "x": {
+            "e": "Na transcrição em lote (batch, requisições REST), o arquivo inteiro é processado depois com contexto completo e maior precisão (atas e acervos). No streaming/tempo real (pacotes de 20–100 ms por WebSocket, gRPC ou WebRTC), resultados parciais (interim) mudam conforme chega mais áudio, enquanto resultados finais tornam-se definitivos após o endpointing (detecção de fim de fala via VAD); há dilema entre mais lookahead (precisão) e menor latência. Ferramentas do edital incluem Whisper (pesos abertos licença MIT ou API), Google STT, Azure AI Speech e AWS Transcribe. Na Câmara (Derep), após iniciar com Azure (2023), usa-se Whisper large-v3 via API no sistema Escriba (ganho de ~20% de produtividade), com revisão humana obrigatória pelos analistas.",
+            "trap": "Afirmar que resultados parciais no streaming são definitivos, que lote usa WebSocket/WebRTC em vez de REST, ou que o ASR dispensa a revisão humana nas notas taquigráficas.",
+            "src": "Etapa 01 — Na prática da Câmara (p. 16); Etapa 02 — p. 32; Aula Bloco 1, p. 39-44"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5",
+      "t": "Métricas de Avaliação da Transcrição e Diarização",
+      "cor": "vermelho",
+      "n": "WER/CER (texto) · DER (falantes/tempo) · RTF/Latência (velocidade/espera)",
+      "x": {
+        "e": "Reúne as cinco métricas fundamentais para avaliar sistemas de transcrição e diarização parlamentar: WER e CER (exatidão textual), DER (atribuição temporal de falantes), RTF e latência (desempenho temporal), destacando suas fórmulas, limites práticos e impacto direto na revisão taquigráfica.",
+        "trap": "Achar que WER tem teto de 100%, que WER mede atribuição de orador, ou que RTF < 1 garante baixa latência ao vivo.",
+        "src": "Etapa 01 — Cap. 0, seção 0.6 (p. 13-15); Etapa 02 — seção 1.1.9 (p. 30-31)"
+      },
+      "tabela": {
+        "cab": [
+          "Métrica",
+          "O que avalia",
+          "Fórmula / Unidade",
+          "Pode passar de 100%?"
+        ],
+        "linhas": [
+          [
+            "WER",
+            "Palavras da transcrição",
+            "(S + D + I) / N palavras da referência",
+            "Sim (por muitas inserções)"
+          ],
+          [
+            "CER",
+            "Caracteres da transcrição",
+            "(S + D + I) / N caracteres da referência",
+            "Sim (por inserções)"
+          ],
+          [
+            "DER",
+            "Quem falou quando (tempo)",
+            "(Falso alarme + Fala perdida + Confusão) / Tempo de fala ref.",
+            "Sim (por falso alarme excessivo)"
+          ],
+          [
+            "RTF",
+            "Velocidade vs. duração do áudio",
+            "Tempo de processamento / Duração do áudio (razão)",
+            "Não é %; > 1 indica mais lento que o áudio"
+          ],
+          [
+            "Latência",
+            "Espera entre fala e exibição",
+            "Tempo em segundos ou milissegundos",
+            "Não se aplica"
+          ]
+        ]
+      },
+      "f": [
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1",
+          "t": "WER (Word Error Rate) e Seus Limites",
+          "n": "WER = (S + D + I) / N (referência) · Pode ultrapassar 100% · Pesos iguais para todos os erros",
+          "x": {
+            "e": "A WER compara a saída do sistema (hipótese) com a transcrição correta humana (referência) por alinhamento de distância mínima de edição, somando substituições (S), deleções/omissões (D) e inserções (I) e dividindo pelo total de palavras da referência (N). Como inserções sobem o numerador sem alterar N, a WER pode ultrapassar 100% (ex.: alucinações em silêncio). Limites críticos: (1) exige referência humana; (2) depende de normalização idêntica (maiúsculas, pontuação, números); (3) atribui peso igual a um artigo e a um nome próprio ou negação ('não'); (4) médias escondem variações amplas (8% a 50% na Câmara); (5) avalia apenas palavras, não quem falou.",
+            "ex": "Em 4 palavras de referência ('declaro encerrada a sessão'), 6 palavras alucinadas geram 6 inserções: WER = 6 / 4 = 150%.",
+            "trap": "Colocar o total de palavras da hipótese no denominador N, afirmar que a WER tem limite máximo de 100%, ou dizer que ela pondera a gravidade semântica dos erros.",
+            "src": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.2",
+          "t": "SER e Escore de Confiança vs. WER",
+          "n": "SER = % de sentenças com ≥1 erro · Escore de confiança dispensa referência e guia o revisor",
+          "x": {
+            "e": "A SER (sentence error rate) mede a proporção de sentenças que contêm ao menos um erro — sendo bem mais severa que a WER. Já o escore de confiança (confidence score) é calculado pelo próprio sistema em tempo real a partir da probabilidade posterior de cada palavra na saída/treliça, sem precisar de transcrição de referência humana, servindo para destacar trechos duvidosos ao revisor humano (enquanto a WER só é medida a posteriori em testes/auditorias com referência).",
+            "trap": "Confundir escore de confiança com uma 'WER palavra a palavra', ou dizer que o escore de confiança depende de transcrição de referência.",
+            "src": "Etapa 02 — seção 1.1.9 (p. 31) e seção 1.1.4 (p. 27)"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.3",
+          "t": "CER (Character Error Rate) e Quase Acertos",
+          "n": "Fórmula em caracteres · Essencial para morfologia, acentos, nomes próprios e línguas sem espaços",
+          "x": {
+            "e": "A CER aplica a mesma lógica de substituições, deleções e inserções dividida pelo total de caracteres da referência. É preferida em idiomas sem fronteira clara entre palavras (como o chinês) e revela 'quase acertos' morfológicos, de acentuação ou de grafia de nomes próprios que a WER penaliza integralmente como erro de palavra inteira.",
+            "ex": "Transcrever 'Plenario' no lugar de 'Plenário' resulta em WER de 100% (1 palavra errada em 1), mas em CER de apenas 12,5% (1 caractere errado em 8).",
+            "trap": "Supor que WER de 100% implica necessariamente CER de 100%, ignorando a utilidade da CER para medir proximidade ortográfica em nomes próprios.",
+            "src": "Etapa 01 — Cap. 0, seção 0.6.2 (p. 14); Aula Bloco 1, p. 10"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.4",
+          "t": "DER (Diarization Error Rate) e Atribuição de Falas",
+          "n": "DER = (Falso alarme + Fala perdida + Confusão) / Tempo de fala · Independe da WER",
+          "x": {
+            "e": "A DER avalia 'quem falou quando?' medindo tempo (não palavras): soma três parcelas — falso alarme (marcou fala onde não havia), fala perdida (havia fala não marcada) e confusão de falante (atribuiu fala ao orador errado) — dividindo pelo tempo total de fala da referência. Os dois primeiros dependem muito da VAD; o terceiro, dos embeddings e do agrupamento. Costuma admitir tolerância nas fronteiras (collar, ex.: 0,25 s) e pode ultrapassar 100%. WER e DER são independentes: um sistema pode ter WER zero e errar o parlamentar que falou (DER alta).",
+            "ex": "Em 600 s de fala numa audiência pública com 12 s de falso alarme, 18 s de fala perdida e 30 s de confusão, DER = 60 / 600 = 10%.",
+            "trap": "Dizer que WER baixa garante atribuição correta dos oradores na ata, ou que a DER mede quantidade de palavras atribuídas ao falante errado em vez de duração temporal.",
+            "src": "Etapa 01 — Cap. 0, seção 0.6.3 (p. 14); Aula Bloco 1, p. 26-27"
+          }
+        },
+        {
+          "id": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.5",
+          "t": "RTF, Latência e Impacto na Revisão Taquigráfica",
+          "n": "RTF = proc. / duração (< 1 é mais rápido) · Latência = atraso percebido · Revisão humana é insubstituível",
+          "x": {
+            "e": "O RTF (real-time factor) divide o tempo de processamento pela duração do áudio: RTF < 1 significa processar mais rápido que a fala dura (ex.: na Câmara, ~2 min 10 s para 4 min de áudio dá RTF ≈ 0,54). Latência é o atraso entre a palavra dita e sua exibição no texto. Ter RTF ≤ 1 é condição necessária para tempo real, mas não garante baixa latência (que depende também do tamanho dos blocos e do lookahead). Na revisão taquigráfica, nenhuma métrica substitui a conferência humana: uma WER baixa (ex.: 2%) pode ocultar erro crítico em nome, número ou negação ('não'), além de alucinações e troca de falantes.",
+            "trap": "Afirmar que quanto maior o RTF mais rápido o sistema, ou que RTF menor que 1 garante baixa latência em legendagem ao vivo.",
+            "src": "Etapa 01 — Cap. 0, seções 0.6.4 e 0.6.5 (p. 14-15) e Na prática da Câmara (p. 16); Etapa 02 — p. 31"
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "Gravação multicanal (um canal por microfone no plenário) simplifica drasticamente a diarização e reduz confusão de falantes.",
+      "de": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+      "para": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2"
+    },
+    {
+      "rotulo": "O decodificador autorregressivo gera fluência ao prever o próximo token, mas favorece alucinações em trechos de silêncio ou ruído.",
+      "de": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.4",
+      "para": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.4"
+    },
+    {
+      "rotulo": "Palavras fora do vocabulário (OOV), sobretudo nomes de deputados e siglas regimentais, exigem subpalavras e a escada de adaptação do domínio.",
+      "de": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.1",
+      "para": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.4"
+    },
+    {
+      "rotulo": "Na fórmula da WER, frases inteiras alucinadas contam como inserções (I) e podem fazer a taxa ultrapassar 100%.",
+      "de": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.4",
+      "para": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-RF-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22": {}
+  }
+}
