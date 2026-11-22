@@ -1,0 +1,468 @@
+{
+  "topico": "lp-2",
+  "materia": "lp",
+  "centro": "📚 2. Reconhecimento de Tipos e Gêneros Textuais",
+  "ramos": [
+    {
+      "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1",
+      "cor": 1,
+      "t": "Distinção: Tipos Textuais × Gêneros Textuais",
+      "n": "Tipo = MODO linguístico limitado · Gênero = O QUE é o texto na vida social",
+      "x": {
+        "e": "Base conceitual do tópico: separa o plano estrutural-linguístico (tipo textual) do plano sociointeracional e comunicativo (gênero textual). Todo texto concreto pertence a um gênero que mobiliza uma ou mais tipologias como ferramentas internas, sendo classificado tipologicamente pelo critério de predominância alinhado à finalidade principal.",
+        "ex": "A crônica (gênero) mobiliza predominantemente a narração (tipo); a receita culinária (gênero) mobiliza a injunção (tipo).",
+        "trap": "Trocar tipo por gênero (chamar blog, e-mail ou notícia de 'tipo textual', ou chamar injunção e narração de 'gênero textual').",
+        "src": "Aula 11, seções 11.1 e 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 7-10"
+      },
+      "tabela": [
+        [
+          "Tipos Textuais (MODO)",
+          [
+            "Conjunto limitado/fechado (poucas categorias teóricas)",
+            "Definidos por traços linguísticos internos (tempos verbais, léxico, sintaxe)",
+            "Exemplos: narração, descrição, dissertação (expositiva/argumentativa), injunção"
+          ]
+        ],
+        [
+          "Gêneros Textuais (O QUE)",
+          [
+            "Conjunto aberto/ilimitado e histórico (novas situações criam novos gêneros)",
+            "Definidos por função social, propósito comunicativo, suporte e estilo",
+            "Exemplos: notícia, crônica, ata, parecer, projeto de lei, receita, e-mail, blog"
+          ]
+        ]
+      ],
+      "f": [
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.1",
+          "t": "Tipos textuais: traços internos e conjunto limitado",
+          "n": "Sequências teóricas abstratas · poucas categorias",
+          "x": {
+            "e": "Tipo textual (ou tipologia textual) refere-se à estrutura e ao modo de apresentação interna do texto, definido pela presença de traços linguísticos predominantes (vocabulário, tempos verbais, relações lógicas e construções frasais) e pela finalidade discursiva. Os tipos principais formam um conjunto pequeno e fechado: narração, descrição, dissertação (subdividida em expositiva e argumentativa) e injunção (a aula de Linguística registra cinco categorias ao separar exposição e argumentação; na literatura de Marcuschi também se menciona diálogo/predição em classificações ampliadas).",
+            "ex": "Narrar = contar história (pretérito perfeito); Descrever = caracterizar estaticamente (adjetivos e imperfeito); Dissertar = expor ideias/teses (presente atemporal); Injungir = instruir/prescrever (imperativo/infinitivo).",
+            "trap": "Afirmar que as tipologias textuais se dividem em 'primárias e secundárias' (pegadinha FEPESE) ou que o tipo textual exige sempre linguagem culta.",
+            "src": "Aula 11, seções 11.1 e 11.2, p. 3-6; Linguística Aula 3, p. 10"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.2",
+          "t": "Gêneros textuais: função social e conjunto aberto",
+          "n": "Realizações concretas · tríade de Bakhtin (tema, estilo, composição)",
+          "x": {
+            "e": "Gênero textual (ou gênero do discurso, em Bakhtin) é a realização concreta de um texto através de enunciados 'relativamente estáveis' marcados por três elementos indissolúveis na esfera comunicativa: conteúdo temático (assunto), estilo verbal (escolhas lexicais e sintáticas) e construção composicional (estrutura). Por responderem às necessidades históricas dos falantes e aos novos suportes (como a Internet), os gêneros são dinâmicos e formam um conjunto aberto e ilimitado: romance, fábula, crônica, notícia, ata, boletim de ocorrência, receita culinária, manual, tutorial, site, blog, chat, e-mail e lista de compras. O nível de linguagem (formal ou informal) varia conforme o gênero.",
+            "ex": "A fábula é gênero narrativo alegórico curto com animais personificados e moral final; o site, o blog, o chat e o e-mail são gêneros surgidos com a Internet.",
+            "trap": "Tratar gêneros digitais recentes (site, blog, chat, e-mail) como 'novas tipologias textuais' ou exigir norma culta obrigatória para todo tipo ou gênero.",
+            "src": "Aula 11, seção 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 4-10"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.3",
+          "t": "Relação funcional: tipologia a serviço do gênero",
+          "n": "Tipologia auxilia o gênero (nunca o inverso)",
+          "x": {
+            "e": "As tipologias textuais funcionam como ferramentas estruturais e linguísticas essenciais a serviço dos gêneros textuais. Um gênero concreto (por exemplo, uma crônica ou um manual) escolhe e combina modos de organização tipológica (narração, descrição, injunção, dissertação) para cumprir sua função social.",
+            "ex": "Em questão de concurso (FEPESE/2020), a assertiva correta estabelece que 'as tipologias textuais são ferramentas essenciais a serviço dos gêneros textuais'.",
+            "trap": "Inverter a relação de instrumentalidade dizendo que 'os gêneros textuais são formas de comunicação a serviço das tipologias textuais'.",
+            "src": "Aula 11, seção 11.2, questão FEPESE 4000737539, p. 5-6"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.4",
+          "t": "Heterogeneidade tipológica e tipo predominante",
+          "n": "Textos reais são híbridos · vale a finalidade principal",
+          "x": {
+            "e": "Raramente um texto real é inteiramente puro ou fiel a um único tipo textual. Na prática, os textos mesclam sequências narrativas, descritivas, expositivas, argumentativas e injuntivas simultaneamente. A classificação tipológica do texto inteiro (ou de um parágrafo isolado) baseia-se na predominância ou prevalência de um tipo, em coerência com sua finalidade comunicativa principal.",
+            "ex": "Uma dissertação expositivo-informativa sobre ação policial pode conter um breve relato narrativo de um crime sem deixar de ser predominantemente dissertativa.",
+            "trap": "Classificar todo o texto como 'narrativo' por causa de uma única frase histórica no passado, ou como 'descritivo' apenas por apresentar dados, exemplos ou características.",
+            "src": "Aula 11, seções 11.1 (p. 3), 11.4 (p. 26) e 11.6 (p. 35, 70-72)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2",
+      "cor": 2,
+      "t": "Tipologia Narrativa e Seus Elementos",
+      "n": "Dinâmica no tempo · antes/depois · 5 elementos · 3 narradores · 3 discursos",
+      "x": {
+        "e": "A narração tem por finalidade contar uma história, retratando acontecimentos reais ou imaginários que se sucedem em um lapso temporal (de modo linear ou não linear). Sua marca essencial é a dinamicidade: há mudança de estado, progressão temporal e relação de anterioridade e posterioridade, estruturadas por cinco elementos e três modalidades de reprodução de falas.",
+        "trap": "Confundir qualquer sequência de informações ou lembranças sem progressão de fatos como narração, ou confundir narrador-personagem (1ª pessoa) com narrador onisciente (3ª pessoa).",
+        "src": "Aula 11, seção 11.3, p. 6-25"
+      },
+      "f": [
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.1",
+          "t": "Dinamicidade, sequência temporal e ritmo",
+          "n": "Mudança de estado · explícita ou implícita · linear ou não",
+          "x": {
+            "e": "A narração é dinâmica porque articula ações sucessivas em relação de antes e depois. O tempo verbal predominante é o pretérito perfeito (ações concluídas), podendo alternar-se com o pretérito imperfeito ou com o presente (para aproximar os fatos do momento da narração). A passagem do tempo pode ser explícita (advérbios 'antes'/'depois', orações temporais 'quando voltou'/'ao entrar') ou implícita (conjunção aditiva 'e' em 'desligou o fogo e gritou', indicando sucessão). Pode seguir cronologia irregular: tempo psicológico (na consciência do narrador) ou flashback (de trás para frente). Quanto ao ritmo, divide-se em narrativa direta (rápida, focada no desfecho: piadas, anedotas, tirinhas) e narrativa indireta (lenta, com digressões, devaneios, pausas descritivas e subnarrativas: Memórias Póstumas de Brás Cubas, Dom Quixote).",
+            "ex": "Exemplo da aula: 'João deixou uma panela de feijão no fogo e foi à padaria... Desligou o fogo e gritou' — verbos no pretérito perfeito e 'e' indicando sucessão temporal.",
+            "trap": "Supor que toda narração exige ordem cronológica estritamente linear ou que só usa pretérito perfeito.",
+            "src": "Aula 11, seção 11.3, p. 7-8; Linguística Aula 3, p. 17-18"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.2",
+          "t": "Os cinco elementos estruturais da narrativa",
+          "n": "Narrador · Enredo · Tempo · Espaço · Personagens",
+          "x": {
+            "e": "Toda narrativa articula cinco elementos: (1) Narrador (quem conta); (2) Enredo (o quê — encadeamento lógico e causal de eventos a partir de um fato inicial, passando por conflito/desarmonia, clímax e desfecho; eventos desconexos sem causalidade não formam enredo); (3) Tempo (quando — cronológico ou psicológico); (4) Espaço/Lugar (onde ocorrem as ações); e (5) Personagens (quem — seres humanos ou entidades personificadas, divididos em principais, como protagonista [conduz a ação] e antagonista [cria obstáculos], e secundários).",
+            "ex": "Em 'O menino Crapiúna' (Jorge Amado), o internato é o espaço; o aluno é o narrador-protagonista; o clímax ocorre quando o padre Cabral retorna com as redações corrigidas.",
+            "trap": "Reduzir enredo a uma lista solta de acontecimentos desconexos (falta relação de causalidade e unidade lógica) ou chamar qualquer ser mencionado de protagonista.",
+            "src": "Aula 11, seção 11.3, p. 7-8; Linguística Aula 3, p. 11, 18-19"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.3",
+          "t": "Tipos de narrador (foco narrativo)",
+          "n": "Personagem (1ª p.) · Observador (3ª p.) · Onisciente (3ª p.)",
+          "x": {
+            "e": "Classifica o narrador conforme o grau de participação e conhecimento sobre a história e os personagens: 1ª pessoa (participa dos fatos) versus 3ª pessoa (não participa, variando entre visão externa limitada e conhecimento total).",
+            "trap": "Atribuir onisciência a um narrador-personagem de 1ª pessoa ou dizer que o narrador observador conhece os pensamentos íntimos dos personagens.",
+            "src": "Aula 11, seção 11.3, p. 9 e questão MP-TO/Camaçari, p. 23-24"
+          },
+          "f": [
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.3a",
+              "t": "Narrador personagem (1ª pessoa)",
+              "n": "Participa da história · visão subjetiva e parcial",
+              "x": {
+                "e": "Conta a história em primeira pessoa porque faz parte dela (como protagonista ou personagem). Relata apenas o que vive, vê ou ouve de outros personagens, de modo que sua narrativa vem impregnada por suas próprias opiniões, impressões e sentimentos.",
+                "ex": "Em 'Dias e dias' (Cebraspe 2024), Feliciana diz 'Eu o ouvi, fiz-lhe perguntas': é narradora-personagem em 1ª pessoa, não onisciente nem imparcial.",
+                "trap": "Confundir narrador-personagem com narrador onisciente ou atribuir-lhe imparcialidade típica de 3ª pessoa.",
+                "src": "Aula 11, seção 11.3, p. 9 e 23-24"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.3b",
+              "t": "Narrador observador (3ª pessoa)",
+              "n": "De fora · relato de testemunha apenas do visível",
+              "x": {
+                "e": "Narra em terceira pessoa sem participar da história, como se a assistisse de fora ('relato de uma testemunha'). Limita-se a relatar e descrever fatos e comportamentos externamente observáveis, sem acesso direto à mente ou às emoções internas dos personagens.",
+                "ex": "'...Ele andava calmamente, a rua estava escura... mas ele parecia não se importar' — o verbo 'parecia' mostra dedução externa, sem acesso à mente.",
+                "trap": "Confundir observador com onisciente por ambos usarem a 3ª pessoa.",
+                "src": "Aula 11, seção 11.3, p. 9; Linguística Aula 3, p. 12"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.3c",
+              "t": "Narrador onisciente (3ª pessoa)",
+              "n": "Onisciência total · pensamentos, emoções, passado e futuro",
+              "x": {
+                "e": "Não participa da narrativa (3ª pessoa), mas conhece tudo: não apenas os fatos visíveis, como também os pensamentos secretos, emoções, motivações, passado e futuro dos personagens — mesmo aquilo que os próprios personagens ignoram ('conhece a verdade da narrativa').",
+                "ex": "'Ele sofria como um tolo... Dizia para si mesmo... Mas no fundo, o idiota se obrigava a acreditar nesta imbecil fantasia.'",
+                "trap": "Dizer que o narrador onisciente narra em 1ª pessoa ou que desconhece a interioridade psicológica dos personagens.",
+                "src": "Aula 11, seção 11.3, p. 9; Linguística Aula 3, p. 13"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.4",
+          "t": "Modalidades de discurso do narrador",
+          "n": "Direto (literal) · Indireto (paráfrase) · Indireto livre (híbrido)",
+          "x": {
+            "e": "São os três modos de que o narrador dispõe para introduzir falas, pensamentos e emoções dos personagens na narrativa, variando quanto à literalidade, pontuação e interferência da voz do narrador.",
+            "trap": "Achar que dois-pontos sempre indicam discurso direto (podem introduzir enumeração, como na questão Quadrix) ou errar a transposição de tempos e dêiticos na passagem direto → indireto.",
+            "src": "Aula 11, seção 11.3, p. 10-15"
+          },
+          "f": [
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.4a",
+              "t": "Discurso direto (reprodução literal)",
+              "n": "1ª pessoa · verbos dicendi · dois-pontos, travessão ou aspas",
+              "x": {
+                "e": "Reproduz as exatas palavras do personagem (ipsis litteris), em primeira pessoa, mantendo alternância de falas. Usa verbos dicendi/declarativos (dizer, afirmar, replicar, indagar), pontuação isoladora (dois-pontos, travessão ou aspas) e sinais expressivos (exclamação, interrogação, interjeições). Produz efeito de objetividade, veracidade e credibilidade, permitindo ao leitor julgar a fala diretamente.",
+                "ex": "'— Por que veio tão tarde? perguntou-lhe Sofia...' (Quincas Borba, Machado de Assis).",
+                "trap": "Inferir automaticamente discurso direto só pela presença de dois-pontos sem verificar se há fala literal (pode ser enumeração).",
+                "src": "Aula 11, seção 11.3, p. 10, 14-15"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.4b",
+              "t": "Discurso indireto e conversão",
+              "n": "3ª pessoa · paráfrase · verbo dicendi + conjunção integrante",
+              "x": {
+                "e": "O narrador incorpora a fala do personagem à sua própria voz, em terceira pessoa, atuando como intérprete por meio de uma paráfrase (reescritura). Emprega verbos dicendi seguidos de oração subordinada substantiva com conjunção integrante ('que', 'quem', 'se'). Na conversão do direto para o indireto, mudam-se pronomes, advérbios de tempo/lugar e tempos verbais (ex.: 'amanhã aqui nesta' → 'no dia seguinte, ali naquela'; 'ontem' → 'no dia anterior'; presente → pretérito imperfeito; futuro do presente → futuro do pretérito).",
+                "ex": "'— Começo a estudar amanhã aqui nesta biblioteca — prometeu Maria.' → 'Maria prometeu que começaria a estudar no dia seguinte, ali mesmo naquela biblioteca.'",
+                "trap": "Na reescritura, manter advérbios dêiticos de 1ª pessoa ('amanhã', 'aqui', 'este') incompatíveis com o recorte do narrador em 3ª pessoa.",
+                "src": "Aula 11, seção 11.3, p. 10-14"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.4c",
+              "t": "Discurso indireto livre (híbrido)",
+              "n": "Fusão narrador + personagem · sem pontuação nem conjunção",
+              "x": {
+                "e": "Discurso híbrido com liberdade formal e sintática: as falas e pensamentos do personagem (de 1ª pessoa) surgem espontaneamente dentro da narração em 3ª pessoa, sem verbos de elocução (dicendi), sem conjunções integrantes e sem travessão ou aspas separadores. Narrador e personagem parecem falar em uníssono, exigindo narrador onisciente.",
+                "ex": "'...respondeu que não era nada. Perdera o costume de fazer discursos é o que era.' (Quincas Borba) ou 'Se uma cobra picasse seu Soronho... Que raiva!...' (Sagarana).",
+                "trap": "Confundir indireto livre com indireto comum (o indireto comum tem verbo dicendi + 'que') ou com direto (o direto isola a fala graficamente).",
+                "src": "Aula 11, seção 11.3, p. 11-12; Linguística Aula 3, p. 15-16"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.5",
+          "t": "Modalizadores e opinião do narrador/autor",
+          "n": "Advérbios, verbos e adjetivos revelam juízo de valor",
+          "x": {
+            "e": "Modalizadores são pistas linguísticas (advérbios como 'infelizmente', 'fatalmente', 'ainda', 'já'; verbos de modalidade como 'devia', 'poderia' ou semanticamente carregados como 'lutar'; adjetivos valorativos como 'maldito'; interjeições) que revelam a subjetividade, o viés afetivo ou o grau de certeza do narrador ou do autor. Aplicam-se tanto a narrativas (especialmente discurso indireto/indireto livre) quanto a dissertações argumentativas.",
+            "ex": "Em 'Pedro infelizmente não tinha chegado ainda, devia estar no maldito trânsito', 'infelizmente'/'maldito' mostram viés afetivo negativo, 'ainda' indica expectativa não cumprida e 'devia' marca probabilidade (sem certeza absoluta).",
+            "trap": "Generalizar que TODO adjetivo ou advérbio no texto indica juízo de valor subjetivo: muitos têm caráter puramente objetivo/situacional conforme o contexto.",
+            "src": "Aula 11, seção 11.3, p. 15-16"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3",
+      "cor": 3,
+      "t": "Tipologia Descritiva e Tipologia Injuntiva/Instrucional",
+      "n": "Descrição = retrato estático simultâneo · Injunção = comando/orientação de conduta",
+      "x": {
+        "e": "Reúne dois tipos textuais frequentemente contrastados com a narração e a dissertação: a Descrição, voltada à caracterização estática e simultânea de seres, objetos ou cenas; e a Injunção, voltada a orientar, ensinar ou obrigar o destinatário a executar ações ou seguir normas.",
+        "trap": "Confundir descrição com narração (quando há ações habituais/rotineiras sem sucessão temporal) ou achar que qualquer texto com dados/exemplos é descritivo.",
+        "src": "Aula 11, seções 11.4 (p. 26-31) e 11.5 (p. 32-33); Linguística Aula 3, seções 3.4 e 3.6"
+      },
+      "f": [
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.1",
+          "t": "Descrição: conceito, estaticidade e traços linguísticos",
+          "n": "Foto (simultaneidade) vs. filme (narração) · função subsidiária",
+          "x": {
+            "e": "Descrever é caracterizar e pormenorizar seres, objetos, imagens, cenas, situações ou sentimentos em uma 'pausa no tempo'. Diferencia-se da narração por apresentar aspectos ou ações simultâneas/habituais, sem progressão temporal nem relação de anterioridade e posterioridade ('a descrição está para uma foto, assim como a narração está para um filme'). Predominam adjetivos, locuções e orações adjetivas, verbos de ligação/estado e o pretérito imperfeito (era, fazia, estava, parecia) ou presente. É comum a estratégia 'do todo para os detalhes' e o uso subsidiário dentro de narrações ou dissertações (descrições puras são raras em prova). Predomina em anúncios de classificados, retratos, verbetes e partes de relatórios e manuais.",
+            "ex": "Na ilha de Heron: 'Sobre a imensa faixa de areia... despeja-se uma lua violácea... vegetação rasteira e os tufos de algas que brilham nas pedras'. No fragmento CGU (2021): parte da impressão geral ('aspecto de respeito') para detalhes ('face larga, grande nariz, pequenos olhos').",
+            "trap": "Classificar um texto dissertativo como descritivo apenas porque menciona dados, exemplos ou definições sem construir imagem detalhada (questões INSS/2022, MP-CE/2019 e EMAP/2018).",
+            "src": "Aula 11, seções 11.4 e 11.4.1, p. 26-31; Linguística Aula 3, p. 32-34"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.2",
+          "t": "Descrição objetiva vs. descrição subjetiva",
+          "n": "Adjetivo relacional/factual (não gradua) × qualificativo/opinativo",
+          "x": {
+            "e": "Na descrição objetiva, empregam-se adjetivos objetivos ou relacionais, isentos de opinião pessoal, que apenas constatam fatos e geralmente não aceitam gradação. Na descrição subjetiva, empregam-se adjetivos qualificativos ou subjetivos que expressam juízo de valor, podem ser graduados e são passíveis de discordância, impregnando o retrato com a impressão de quem descreve.",
+            "ex": "Objetiva: 'carro preto', 'homem japonês', 'doença degenerativa' (não se diz 'homem mais japonês'). Subjetiva: 'homem bonito', 'carro extravagante', 'aluno teimoso', 'lugar muito longe'.",
+            "trap": "Dizer que todo texto descritivo é puramente objetivo e isento de marcas pessoais do observador.",
+            "src": "Aula 11, seção 11.4, p. 26"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.3",
+          "t": "Injunção/Instrucional: finalidade e marcas verbais",
+          "n": "Imperativo · infinitivo impessoal · futuro/comandos genéricos",
+          "x": {
+            "e": "O texto injuntivo visa orientar, ensinar, interpelar, normatizar ou obrigar o leitor a realizar uma tarefa ou adotar um comportamento. Caracteriza-se por comandos neutros, genéricos e impessoais: predomínio de verbos no imperativo ('Dilua', 'Aplique', 'Utilize', 'Conecte'), no infinitivo impessoal para omitir o agente ('Passo 1, remover a embalagem; Passo 2, inserir CD') e, em textos normativos, construções genéricas no presente ou futuro do presente ('nenhuma criança será objeto...').",
+            "ex": "No guia da ABNT/SEBRAE (Cebraspe/APEX-Brasil 2021): 'Utilize o passo a passo sugerido neste guia e seja bem-sucedido...' — último parágrafo tipicamente injuntivo.",
+            "trap": "Confundir uma instrução imperativa passo a passo com narração de ações ou com propaganda puramente expositiva.",
+            "src": "Aula 11, seção 11.5, p. 32-33 e seção 11.6.1, p. 55; Linguística Aula 3, p. 44-46"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.4",
+          "t": "Injunção coercitiva/normativa vs. instrucional/orientadora",
+          "n": "Obrigar (leis, regimentos, contratos) × Ensinar/orientar (manuais, receitas)",
+          "x": {
+            "e": "Embora ambas componham o mesmo tipo injuntivo/prescritivo (finalidade de incidir sobre a conduta do destinatário), distinguem-se pelo caráter vinculante e pelos gêneros típicos: (1) Injunção coercitiva ou normativa: impõe deveres jurídicos ou regras obrigatórias com força normativa (leis, regulamentos, regimentos, contratos — ex.: ECA Lei 8.069/1990, 'Art. 4º É dever da família...'; 'Compete à autoridade judiciária disciplinar...'); (2) Injunção instrucional ou orientadora: ensina ou recomenda como executar um procedimento passo a passo, sem coerção estatal (receitas culinárias, manuais de instrução, tutoriais, guias e cartilhas).",
+            "ex": "Normativa: Lei 8.069/1990 (ECA, Linguística Aula 3, p. 45-46) e dispositivo da aula ('Compete à autoridade judiciária disciplinar...'). Instrucional: '3 truques para tirar as manchas mais difíceis' e 'Passo 01: Conecte o cabo...'.",
+            "trap": "Excluir leis e regulamentos do tipo injuntivo por não usarem verbos explícitos no modo imperativo (usam comandos genéricos e impessoais no presente ou futuro).",
+            "src": "Aula 11, seção 11.5, p. 32 e seção 11.6, p. 53; Linguística Aula 3, seção 3.6, p. 44-46"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4",
+      "cor": 4,
+      "t": "Tipologia Dissertativa: Expositiva vs. Argumentativa",
+      "n": "Ideias e relações lógicas · presente atemporal · informar × convencer",
+      "x": {
+        "e": "É o tipo textual mais cobrado pelo Cebraspe. Expõe ideias, conceitos, razões e abstrações por meio de relações lógicas sequenciadas, sem necessidade de progressão temporal, com uso predominante do presente do indicativo ('verdades universais'). Divide-se em Dissertação Expositiva (objetiva: explicar/informar) e Dissertação Argumentativa (subjetiva: defender tese e persuadir).",
+        "trap": "Confundir dissertação expositiva (que apenas informa e analisa sem defender tese) com dissertação argumentativa (que busca convencer o leitor de um ponto de vista).",
+        "src": "Aula 11, seção 11.6, p. 34-77; Linguística Aula 3, seção 3.5, p. 34-40"
+      },
+      "tabela": [
+        [
+          "Dissertação Expositiva",
+          [
+            "Finalidade: explicar, conceituar ou informar de modo neutro e impessoal",
+            "Sem defesa explícita de tese para persuadir (autor impessoal, leitor universal)",
+            "Subtipos: Expositiva pura (explicativa) e Expositivo-informativa (traz dado novo)"
+          ]
+        ],
+        [
+          "Dissertação Argumentativa",
+          [
+            "Finalidade: defender uma tese/opinião pessoal e convencer o leitor",
+            "Usa modalizadores, operadores argumentativos e estratégias de prova",
+            "Variante Polêmica: confronta e contrabalanceia pelo menos dois pontos de vista"
+          ]
+        ]
+      ],
+      "f": [
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.1",
+          "t": "Estrutura e traços da dissertação",
+          "n": "Introdução, desenvolvimento (tópico frasal único) e conclusão · presente atemporal",
+          "x": {
+            "e": "A dissertação apresenta conceitos abstratos e relações lógicas em macroestrutura tripartite: Introdução (recorte temático e, na argumentativa, apresentação branda da tese), Desenvolvimento (fundamentação em parágrafos, cada um centrado em um único argumento sintetizado no tópico frasal ou 'pequena tese') e Conclusão (retomada incisiva da ideia central, síntese ou proposta de solução). Como busca clareza, neutralidade aparente e atemporalidade, predomina o presente do indicativo ('a água ferve a 100 graus'). Alguns autores invertem a ordem, concluindo no início para justificar depois ou revelando a tese apenas ao final.",
+            "ex": "Na questão SEFAZ-AC (2024), a tese de que 'a tributação é elemento decisivo para garantir desenvolvimento e igualdade social' surge logo no segundo período da introdução.",
+            "trap": "Achar que a tese aparece obrigatoriamente na primeira frase ou que o tópico frasal só pode ocupar o primeiro período do parágrafo.",
+            "src": "Aula 11, seção 11.6, p. 34, 36-41, 56; Linguística Aula 3, p. 38-39"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.2",
+          "t": "Dissertação expositiva (pura e informativa)",
+          "n": "Impessoalidade e neutralidade · sem tese persuasiva · dado novo",
+          "x": {
+            "e": "Divide-se em dois subtipos: (1) Expositivo puro (ou explicativo): discute conceitos e saberes de forma impessoal, clara e atemporal, permitindo que o leitor forme sua própria opinião, sem pressupor novidade da informação (ex.: questões discursivas técnicas de Auditor/Analista, verbetes e textos didáticos); (2) Expositivo-informativo: visa acrescentar informação nova ao leitor (ex.: texto sobre envio do PLOA com criação de 50.946 cargos; textos sobre IPVA ou atividades de inteligência). Mesmo contendo dados estatísticos ou breves relatos no passado, sua finalidade predominante continua sendo informar.",
+            "ex": "Texto sobre diferenças entre Polícia Civil e Militar segundo a CF/1988 (PC-GO 2017): exposição neutra no presente do indicativo, sem defesa de tese.",
+            "trap": "Chamar texto expositivo-informativo de 'argumentativo' só por citar autoridades ou explicar consequências econômicas (como na questão CNMP 2023 e SEFAZ-RS 2018).",
+            "src": "Aula 11, seção 11.6, p. 34-35, 57, 62-63, 66-67, 76-77"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.3",
+          "t": "Dissertação argumentativa (e variante polêmica)",
+          "n": "Defesa de tese · persuasão · 3ª p. objetivante ou 1ª p. inclusiva ('nós')",
+          "x": {
+            "e": "Além de informar ou discutir um tema, defende explicitamente uma tese ou ponto de vista sobre assunto controverso, tendo como finalidade principal persuadir/convencer o leitor. Emprega linguagem clara e culta, modalizadores, operadores argumentativos e verbos semanticamente carregados. Pode usar a 3ª pessoa com presente do indicativo (para sugerir que opiniões são fatos objetivos) ou a 1ª pessoa do plural ('nós': 'nós aderimos, nossa vida', questão PGE-PE 2018) para incluir e aproximar o leitor. Na modalidade argumentativa polêmica, contrabalanceia pelo menos dois pontos de vista distintos.",
+            "ex": "Em CGE-CE (2019), o autor critica gastos desproporcionais com obras usando analogia dos jardins suspensos da Babilônia; em SEFIN Fortaleza (2023), contrapõe a visão ortodoxa do mercado financeiro.",
+            "trap": "Achar que o uso de 3ª pessoa ou a citação de opiniões alheias elimina o caráter argumentativo do texto.",
+            "src": "Aula 11, seção 11.6, p. 36, 53, 64-65, 68, 74"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.4",
+          "t": "Estratégias argumentativas e raciocínios lógicos",
+          "n": "Fórmulas de introdução · provas no desenvolvimento · dedução, indução e dialética",
+          "x": {
+            "e": "Para captar o leitor na introdução, a aula lista fórmulas como divisão (enumeração de aspectos), definição, citação, indagação, frases nominais, alusão histórica/literária, narração-pretexto e declaração inicial forte. No desenvolvimento, a tese é sustentada por exemplificação (concretiza ideia abstrata), dados estatísticos (credibilidade objetiva), testemunho de autoridade, causa e efeito, contraste/paralelo, enumeração/detalhamento, explicação/esclarecimento e citação de fato histórico. No plano lógico, os argumentos estruturam-se por: (a) Raciocínio dedutivo (silogismo: premissa maior geral + premissa menor → conclusão necessária ao caso particular); (b) Raciocínio indutivo (premissas particulares → generalização provável); e (c) Método dialético (tese → antítese contraposta → síntese conclusiva).",
+            "ex": "Silogismo da aula: 'Todos os cariocas são brasileiros' + 'João é carioca' → 'Logo, João é brasileiro.' Dialético: juventude para trabalho (tese) + sem lazer não vale a pena (antítese) → produzir sem abandonar lazer (síntese).",
+            "trap": "Trocar dedução (geral → particular) por indução (particular → geral) ou confundir exemplo comprobatório com mera digressão ilustrativa.",
+            "src": "Aula 11, seção 11.6, p. 37-52"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.5",
+          "t": "Operadores argumentativos e relações de sentido",
+          "n": "Conectivos (conjunções, advérbios, denotativas) orientam a argumentação",
+          "x": {
+            "e": "Operadores argumentativos (ou discursivos) são conjunções, advérbios e palavras denotativas que articulam ideias e marcam a orientação argumentativa do texto. Estabelecem relações lógicas de soma/adição ('e', 'ademais', 'além disso', 'não só... mas também'), oposição/concessão ('mas', 'porém', 'contudo', 'embora', 'ainda que'), causa/explicação ('porque', 'já que', 'pois'), conclusão ('portanto', 'logo', 'diante do exposto'), reforço ('até mesmo', 'inclusive'), comparação ('mais que', 'tão... como'), finalidade ('a fim de que'), conformidade ('segundo', 'conforme') e pressupostos ('já', 'ainda', 'agora').",
+            "ex": "No texto sobre Rubem Braga, 'conquanto' (concessão) e 'mas' (oposição) articulam o contraste entre a transitoriedade do gênero crônica e a perenidade de sua obra.",
+            "trap": "Ignorar o valor argumentativo de advérbios e palavras denotativas (inclusão, exclusão, realce, pressuposto) achando que só conjunções são operadores.",
+            "src": "Aula 11, seção 11.6, p. 46-47; Linguística Aula 3, p. 37-39"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5",
+      "cor": 5,
+      "t": "Gêneros Recorrentes no Cebraspe e Esferas Jornalística/Parlamentar",
+      "n": "Jornalismo (fato × opinião) · Oficiais/legislativos · Armadilhas Cebraspe",
+      "x": {
+        "e": "Consolida a aplicação prática do edital: diferencia os gêneros jornalísticos e literários mais cobrados (notícia, reportagem, artigo de opinião, editorial, manifesto, crônica), cruza gêneros oficiais e legislativos com seus tipos predominantes e sistematiza as três armadilhas recorrentes do Cebraspe.",
+        "trap": "Confundir notícia (exposição factual) com editorial (opinião institucional do veículo) ou com artigo de opinião (opinião assinada do autor).",
+        "src": "Aula 11, seções 11.2 a 11.6 (p. 3-77, 153); Linguística Aula 3, p. 21-26, 40-46"
+      },
+      "f": [
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.1",
+          "t": "Gêneros jornalísticos e híbridos (fato × opinião)",
+          "n": "Notícia · Reportagem · Editorial · Artigo de opinião · Crônica",
+          "x": {
+            "e": "Na esfera jornalística e literária cobrada em prova: (1) Notícia: expõe fato atual e objetivo de interesse público, com lide informativo no início (predomínio expositivo-informativo, podendo ter traços narrativos/descritivos); (2) Reportagem: apresenta informação/notícia apurada e ampliada com dados e depoimentos; (3) Artigo de opinião: texto assinado em que o autor se posiciona explicitamente sobre tema atual polêmico (1ª ou 3ª pessoa) para convencer (argumentativo); (4) Editorial: apresenta a visão crítica ou o ponto de vista institucional do próprio veículo de comunicação (sem assinatura individual); (5) Manifesto: manifestação pública de pessoa ou grupo que expõe ou alerta a sociedade sobre problema coletivo; (6) Crônica: gênero narrativo híbrido que transita entre jornalismo e literatura, partindo de fatos cotidianos aparentemente banais com tom intimista, humorístico, lírico ou irônico-crítico (geralmente 1ª pessoa e linguagem direta/informal).",
+            "ex": "Na questão Pref. Concórdia-SC (Linguística Aula 3, p. 43), o título factual e os dados do CAGED no 1º parágrafo identificam uma notícia; 'O ensino médio' na Gazeta do Povo (p. 41) exemplifica editorial; 'Pela emancipação masculina' (Aula 11, p. 17) é crônica narrativa de 3ª pessoa.",
+            "trap": "Confundir editorial (opinião do veículo) com artigo de opinião (opinião pessoal assinada), ou reduzir toda crônica à 1ª pessoa (há crônicas em 3ª pessoa, como 'Pela emancipação masculina', e em linguagem culta).",
+            "src": "Aula 11, p. 4, 17-19, 153; Linguística Aula 3, p. 24-26, 40-43"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.2",
+          "t": "Gêneros oficiais e legislativos × sequência predominante",
+          "n": "Leis/contratos (injuntivo) · Ata (narrativo/sinóptico) · Relatório/PL/Parecer/Ofício",
+          "x": {
+            "e": "Cruzamento entre gêneros da esfera oficial/parlamentar e suas sequências tipológicas segundo as fontes do curso: Leis, regulamentos e contratos têm predomínio injuntivo/normativo (comandos genéricos, impessoais e vinculantes, como o ECA e art. 1º da CF, combinados com dispositivos definidores/expositivos); Ata figura na Aula 11 (p. 3) entre os gêneros de base narrativa por registrar em sequência temporal o ocorrido em sessão ou reunião; Relatórios predominam na exposição/descrição de dados e fatos; Projeto de Lei (ex.: PLOA citado na Aula 11, p. 35) articula texto normativo-injuntivo (articulado) e justificativa expositivo-argumentativa. Para gêneros legislativos/administrativos listados no edital sem definição detalhada na Aula 11 (parecer, requerimento, ofício), aplica-se o mesmo critério funcional: parecer avalia e fundamenta (expositivo-argumentativo); requerimento e ofício formalizam solicitações ou comunicações oficiais (híbrido expositivo-injuntivo).",
+            "ex": "Aula 11, p. 3 inclui 'ata' na lista de gêneros do tipo narração; p. 32 inclui 'leis, regulamentos, contratos' no tipo injuntivo; Linguística Aula 3, p. 45-46 analisa a Lei 8.069/1990 (ECA) como gênero injuntivo.",
+            "trap": "Supor que todo documento oficial/jurídico é exclusivamente expositivo (ignorando o caráter injuntivo-normativo das leis) ou confundir ata (registro de ocorrências) com parecer (opinião técnica fundamentada).",
+            "src": "Aula 11, p. 3, 26, 32, 35; Linguística Aula 3, p. 44-46 (nota: parecer, requerimento e ofício sistematizados pelo critério funcional da aula)"
+          }
+        },
+        {
+          "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.3",
+          "t": "Pegadinhas clássicas do Cebraspe em tipologia",
+          "n": "3 armadilhas recorrentes de prova (F1, F3, F6)",
+          "caixa": true,
+          "x": {
+            "e": "Síntese das armadilhas reais observadas nas questões comentadas da Aula 11 (Cebraspe 2017–2024): todas exploram a confusão entre nível de análise (tipo × gênero), presença de sequências secundárias em textos híbridos ou fronteira entre informar e persuadir.",
+            "trap": "Cair em justificativas aparentemente verdadeiras ('menciona dados', 'relata um fato de 2004', 'caracteriza algo') que descrevem apenas trechos isolados e não o propósito predominante do texto.",
+            "src": "Aula 11, seções 11.2, 11.3.1, 11.4.1 e 11.6.1, p. 5-6, 20-31, 53-77"
+          },
+          "f": [
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.3a",
+              "t": "Pegadinha 1: Confundir gênero com tipo textual (F3)",
+              "n": "Blog/notícia ≠ tipo · injunção/narração ≠ gênero",
+              "x": {
+                "e": "A banca troca os planos: apresenta um gênero concreto (site, blog, chat, e-mail, notícia, ata) como se fosse 'tipo textual', ou inclui um tipo textual ('injunção', 'narração') em lista de gêneros textuais.",
+                "ex": "Questão FUNDATEC (p. 6): entre Propaganda, Notícia, Injunção e Lista de Compras, apenas 'Injunção' não é gênero (é tipo). Questão FEPESE (p. 5): site, blog, chat e e-mail são gêneros, não tipologias.",
+                "trap": "Aceitar rótulos como 'gênero dissertativo' ou 'tipo jornalístico' sem checar se o item designa o MODO organizacional (tipo) ou o TEXTO concreto social (gênero).",
+                "src": "Aula 11, seção 11.2, p. 5-6; seção 11.6.1, p. 73-74 (SEPLAD-DF 2023)"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.3b",
+              "t": "Pegadinha 2: Ignorar predominância em texto híbrido (F1/F6)",
+              "n": "Trecho pontual no passado ou com dados ≠ tipo predominante",
+              "x": {
+                "e": "O Cebraspe pega um texto predominantemente dissertativo que contém uma frase no passado (fato histórico) ou dados/características e afirma que o texto é 'predominantemente narrativo' ou 'predominantemente descritivo'. O critério decisivo é sempre a finalidade global do texto.",
+                "ex": "PC-SE 2018 (p. 69-70): texto sobre o DAGV só tinha 1 frase narrativa ('surgiu em 2004') — gabarito ERRADO para 'predomina tipologia narrativa'. INSS 2022 (p. 29-30): texto sobre trabalho de cuidado menciona dados e depoimentos com argumentos — ERRADO para 'descritivo'. EMAP 2018 (p. 72): texto sobre portos antigos é expositivo, não descritivo.",
+                "trap": "Deixar-se convencer pelo argumento verdadeiro do item ('menciona dados', 'detalha características', 'relata surgimento') quando a conclusão sobre o tipo predominante é falsa.",
+                "src": "Aula 11, seções 11.4.1 (p. 29-31) e 11.6.1 (p. 54, 69-72)"
+              }
+            },
+            {
+              "id": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.3c",
+              "t": "Pegadinha 3: Confundir exposição com argumentação (F3)",
+              "n": "Informar/analisar (expositivo) ≠ defender tese (argumentativo)",
+              "x": {
+                "e": "O Cebraspe afirma que um texto expositivo-informativo (que apenas apresenta dados, história institucional ou consequências lógicas sem tese persuasiva) é 'argumentativo', ou, inversamente, trata texto opinativo carregado de juízo de valor como meramente expositivo ou descritivo.",
+                "ex": "CNMP 2023 (p. 75-76): texto da Pesquisa FAPESP sobre o Poder Moderador mostra evolução histórica de modo informativo — ERRADO para 'predomina tipologia argumentativa'. SEFAZ-RS 2018 (p. 61-63): apresenta possíveis efeitos da política tributária sem tentar convencer — é expositivo/informativo, não argumentativo.",
+                "trap": "Confundir citação de opiniões de terceiros ou explicação de relações de causa/efeito em texto informativo com defesa de tese própria do autor.",
+                "src": "Aula 11, seção 11.6.1, p. 57-67, 73-77"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "A heterogeneidade tipológica explica a armadilha Cebraspe de tomar uma sequência secundária (narrativa ou descritiva) pelo tipo predominante.",
+      "de": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.4",
+      "para": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.3b"
+    },
+    {
+      "rotulo": "Os modalizadores linguísticos atuam tanto na voz do narrador quanto nos operadores da dissertação argumentativa para marcar o ponto de vista.",
+      "de": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.5",
+      "para": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.5"
+    },
+    {
+      "rotulo": "Descrição é pausa estática simultânea (foto); narração é progressão dinâmica com anterioridade e posterioridade (filme).",
+      "de": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.1",
+      "para": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.1"
+    },
+    {
+      "rotulo": "A dissertação expositivo-informativa sustenta a notícia e a reportagem, enquanto a argumentativa sustenta o editorial e o artigo de opinião.",
+      "de": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.2",
+      "para": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r5.1"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-LP-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22": {}
+  }
+}
