@@ -1,0 +1,440 @@
+[
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c01",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.1",
+    "pergunta": "Em quais três blocos se divide o Estatuto dos Congressistas na Constituição?",
+    "resposta": [
+      "Garantias (imunidades e foro)",
+      "Limites (vedações)",
+      "Consequências (perda ou manutenção do mandato)"
+    ],
+    "explicacao": "O conjunto preserva a independência do Legislativo (ADI 7.254).",
+    "fonte": "CF, arts. 53, 54, 55 e 56",
+    "tema": "Natureza, alcance e marcos"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c02",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.2",
+    "pergunta": "Por que o parlamentar não pode renunciar isoladamente às imunidades?",
+    "resposta": [
+      "Natureza institucional (ratione muneris)",
+      "Pertencem ao Legislativo, não à pessoa"
+    ],
+    "fonte": "CF, art. 53; Inq 510 (texto-fonte, l. 486)",
+    "tema": "Natureza, alcance e marcos"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c03",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.3",
+    "pergunta": "Que alcance tem a imunidade parlamentar sobre o coautor sem mandato?",
+    "resposta": [
+      "Nenhum: não se estende ao corréu"
+    ],
+    "fonte": "Súmula 245 do STF",
+    "tema": "Natureza, alcance e marcos"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c04",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.4",
+    "pergunta": "Qual é o limite territorial da imunidade material do vereador?",
+    "resposta": [
+      "Circunscrição do Município"
+    ],
+    "explicacao": "O vereador não tem imunidade formal.",
+    "fonte": "CF, art. 29, VIII",
+    "tema": "Natureza, alcance e marcos"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c05",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.5",
+    "pergunta": "A partir de qual marco valem o foro no STF e a imunidade à prisão?",
+    "resposta": [
+      "Expedição do diploma"
+    ],
+    "fonte": "CF, art. 53, §§ 1º e 2º",
+    "tema": "Natureza, alcance e marcos"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c06",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.1",
+    "pergunta": "Em quais esferas o parlamentar é inviolável por opiniões, palavras e votos?",
+    "resposta": [
+      "Civil",
+      "Penal"
+    ],
+    "fonte": "CF, art. 53, caput",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c07",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.2",
+    "pergunta": "Em que locais o nexo entre a fala e o mandato é presumido?",
+    "resposta": [
+      "Dentro da Casa: plenário, comissões e CPIs"
+    ],
+    "explicacao": "Fora da Casa, a proteção exige conexão com o mandato.",
+    "fonte": "CF, art. 53, caput (texto-fonte, l. 665)",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c08",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.3",
+    "pergunta": "Qual é o regime de responsabilidade civil do parlamentar cuja fala extrapola a imunidade?",
+    "resposta": [
+      "Pessoal, direta e exclusiva",
+      "Subjetiva",
+      "Sem responsabilidade do Estado"
+    ],
+    "fonte": "RE 632.115 (Tema 950), teses 1 e 2",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c09",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.4",
+    "pergunta": "Sobre o que o parlamentar não é obrigado a testemunhar?",
+    "resposta": [
+      "Informações recebidas ou prestadas em razão do mandato",
+      "Pessoas que lhe confiaram ou dele receberam informações"
+    ],
+    "fonte": "CF, art. 53, § 6º",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c10",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.5",
+    "pergunta": "De que depende a incorporação de parlamentar às Forças Armadas?",
+    "resposta": [
+      "Prévia licença da Casa respectiva"
+    ],
+    "explicacao": "Vale mesmo se ele for militar e ainda que em tempo de guerra.",
+    "fonte": "CF, art. 53, § 7º",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c11",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.6",
+    "pergunta": "Por qual quórum se suspendem imunidades parlamentares no estado de sítio?",
+    "resposta": [
+      "Dois terços dos membros da Casa"
+    ],
+    "fonte": "CF, art. 53, § 8º",
+    "tema": "Imunidade material e outras imunidades"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c12",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.1",
+    "pergunta": "Em que única hipótese o parlamentar pode ser preso desde o diploma?",
+    "resposta": [
+      "Flagrante de crime inafiançável"
+    ],
+    "fonte": "CF, art. 53, § 2º",
+    "tema": "Imunidade formal: prisão e sustação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c13",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.2",
+    "pergunta": "Por qual quórum a Casa resolve sobre a prisão em flagrante do parlamentar?",
+    "resposta": [
+      "Maioria absoluta (maioria de seus membros)"
+    ],
+    "explicacao": "O RICD fala em voto secreto; o STF exige voto nominal e aberto.",
+    "fonte": "CF, art. 53, § 2º; ADI 5.526",
+    "tema": "Imunidade formal: prisão e sustação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c14",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.3",
+    "pergunta": "Quando a cautelar diversa da prisão imposta a parlamentar é submetida à Casa?",
+    "resposta": [
+      "Quando impede, direta ou indiretamente, o exercício do mandato"
+    ],
+    "fonte": "ADI 5.526 (2017); CPP, art. 319",
+    "tema": "Imunidade formal: prisão e sustação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c15",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.4",
+    "pergunta": "Qual é o prazo para a Casa apreciar o pedido de sustação da ação penal?",
+    "resposta": [
+      "45 dias improrrogáveis",
+      "Contados do recebimento pela Mesa"
+    ],
+    "fonte": "CF, art. 53, § 4º",
+    "tema": "Imunidade formal: prisão e sustação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c16",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.5",
+    "pergunta": "O que a EC 35/2001 extinguiu no processo penal contra parlamentar?",
+    "resposta": [
+      "A licença prévia da Casa para processar"
+    ],
+    "explicacao": "Hoje o STF processa e a Casa pode sustar.",
+    "fonte": "CF, art. 53, § 3º (redação da EC 35/2001)",
+    "tema": "Imunidade formal: prisão e sustação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c17",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.1",
+    "pergunta": "Que tipo de ação o foro do parlamentar no STF alcança?",
+    "resposta": [
+      "Só infrações penais comuns"
+    ],
+    "explicacao": "Ação popular, improbidade e ações civis ficam fora.",
+    "fonte": "CF, art. 53, § 1º; art. 102, I, b",
+    "tema": "Foro por prerrogativa de função"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c18",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.2",
+    "pergunta": "Desde 2018, a que crimes se limita o foro dos parlamentares federais?",
+    "resposta": [
+      "Crimes cometidos no cargo e em razão dele"
+    ],
+    "fonte": "AP 937 QO (2018)",
+    "tema": "Foro por prerrogativa de função"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c19",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.3",
+    "pergunta": "Quem autoriza busca e apreensão nas dependências do Congresso Nacional?",
+    "resposta": [
+      "Exclusivamente o STF",
+      "Mesmo se o investigado não for parlamentar"
+    ],
+    "fonte": "ADPF 424 (2025)",
+    "tema": "Foro por prerrogativa de função"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c20",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.1",
+    "pergunta": "Qual é a exceção à proibição de contratar com entidades públicas desde o diploma?",
+    "resposta": [
+      "Contrato que obedece a cláusulas uniformes"
+    ],
+    "fonte": "CF, art. 54, I, a",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c21",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.2",
+    "pergunta": "Desde quando é vedado ao parlamentar patrocinar causa de entidade pública?",
+    "resposta": [
+      "Desde a posse"
+    ],
+    "fonte": "CF, art. 54, II, c",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c22",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.3",
+    "pergunta": "Qual é o alcance das vedações do mandato sobre o suplente não convocado?",
+    "resposta": [
+      "Nenhum: ele não está no exercício"
+    ],
+    "fonte": "MS 21.266; MS 33.952",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c23",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.4",
+    "pergunta": "Que fração de faltas às sessões ordinárias, por sessão legislativa, leva à perda do mandato?",
+    "resposta": [
+      "Terça parte",
+      "Salvo licença ou missão autorizada"
+    ],
+    "fonte": "CF, art. 55, III",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c24",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.5",
+    "pergunta": "Quais condutas a Constituição define como quebra de decoro, além dos casos do regimento?",
+    "resposta": [
+      "Abuso das prerrogativas",
+      "Percepção de vantagens indevidas"
+    ],
+    "fonte": "CF, art. 55, § 1º",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c25",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.6",
+    "pergunta": "Quem pode provocar a perda do mandato decidida pela Casa?",
+    "resposta": [
+      "Mesa da Casa",
+      "Partido político representado no Congresso Nacional"
+    ],
+    "fonte": "CF, art. 55, § 2º",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c26",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.7",
+    "pergunta": "Em quais causas de perda a Mesa apenas declara?",
+    "resposta": [
+      "Faltas à terça parte das sessões",
+      "Perda ou suspensão de direitos políticos",
+      "Decreto da Justiça Eleitoral"
+    ],
+    "fonte": "CF, art. 55, III a V e § 3º",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c27",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.8",
+    "pergunta": "Pelo texto da CF, quem decide a perda do mandato por condenação criminal transitada em julgado?",
+    "resposta": [
+      "A Casa, por maioria absoluta"
+    ],
+    "explicacao": "A jurisprudência oscilou; a letra da CF manda à Casa.",
+    "fonte": "CF, art. 55, VI e § 2º",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c28",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.9",
+    "pergunta": "Qual é o efeito da renúncia de parlamentar já submetido a processo que pode levar à perda do mandato?",
+    "resposta": [
+      "Efeitos suspensos até as deliberações finais"
+    ],
+    "fonte": "CF, art. 55, § 4º",
+    "tema": "Vedações e perda do mandato"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c29",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.1",
+    "pergunta": "Que escolha de remuneração tem o parlamentar investido em Ministro de Estado?",
+    "resposta": [
+      "Pode optar pela remuneração do mandato"
+    ],
+    "fonte": "CF, art. 56, § 3º",
+    "tema": "Licenças, suplência e afastamento"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c30",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.2",
+    "pergunta": "Qual licença constitucional tem limite de 120 dias por sessão legislativa?",
+    "resposta": [
+      "Interesse particular, sem remuneração"
+    ],
+    "explicacao": "A licença por doença não tem esse limite.",
+    "fonte": "CF, art. 56, II",
+    "tema": "Licenças, suplência e afastamento"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c31",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.3",
+    "pergunta": "Quem concede ao deputado a licença para missão temporária de caráter diplomático ou cultural?",
+    "resposta": [
+      "A Mesa"
+    ],
+    "explicacao": "As demais licenças são concedidas pelo Presidente.",
+    "fonte": "RICD, art. 235, I",
+    "tema": "Licenças, suplência e afastamento"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c32",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.4",
+    "pergunta": "Em que prazo a Mesa convoca o suplente de deputado?",
+    "resposta": [
+      "48 horas"
+    ],
+    "fonte": "RICD, art. 241",
+    "tema": "Licenças, suplência e afastamento"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c33",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.5",
+    "pergunta": "Quando se faz eleição para vaga sem suplente?",
+    "resposta": [
+      "Se faltarem mais de 15 meses para o fim do mandato"
+    ],
+    "fonte": "CF, art. 56, § 2º",
+    "tema": "Licenças, suplência e afastamento"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c34",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.1",
+    "pergunta": "Que expressão do nome do Capítulo VI do Título VII do RICD está desatualizada?",
+    "resposta": [
+      "\"Licença para instauração de processo criminal\""
+    ],
+    "explicacao": "O art. 249 foi revogado tacitamente pela EC 35/2001, que substituiu a licença pela sustação.",
+    "fonte": "RICD, Título VII, Capítulo VI; art. 249 (revogado)",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c35",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.2",
+    "pergunta": "Em quantos dias o deputado exonerado de cargo de Ministro deve reassumir o mandato?",
+    "resposta": [
+      "15 dias"
+    ],
+    "explicacao": "Não reassumir é falta de decoro.",
+    "fonte": "RICD, art. 230, § 3º",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c36",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.3",
+    "pergunta": "Que regra sobre imunidades do deputado investido em Ministro existe só no RICD?",
+    "resposta": [
+      "As imunidades subsistem"
+    ],
+    "explicacao": "Sem correspondente na CF; o STF diverge.",
+    "fonte": "RICD, art. 231, § 7º",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c37",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.4",
+    "pergunta": "Para quais serviços da Câmara o ex-deputado precisa de prévia autorização do Presidente?",
+    "resposta": [
+      "Reprografia",
+      "Processamento de dados"
+    ],
+    "fonte": "RICD, art. 234",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c38",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.5",
+    "pergunta": "Quando a renúncia expressa do deputado se torna efetiva e irretratável?",
+    "resposta": [
+      "Depois de lida no expediente ou disponibilizada no Diário da Câmara, o que ocorrer primeiro"
+    ],
+    "fonte": "RICD, art. 239",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c39",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.6",
+    "pergunta": "Qual norma rege o processo de perda do mandato por quebra de decoro na Câmara?",
+    "resposta": [
+      "Código de Ética e Decoro Parlamentar (Res. 25/2001)"
+    ],
+    "fonte": "RICD, art. 244",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c40",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.7",
+    "pergunta": "Em que prazo a CCJC dá parecer sobre a prisão em flagrante de deputado?",
+    "resposta": [
+      "72 horas"
+    ],
+    "fonte": "RICD, art. 251",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  },
+  {
+    "id": "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-c41",
+    "no": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.8",
+    "pergunta": "Qual é o quórum para a perda do mandato por quebra de decoro?",
+    "resposta": [
+      "Maioria absoluta, em votação ostensiva"
+    ],
+    "fonte": "CF, art. 55, § 2º (EC 76/2013)",
+    "tema": "RICD arts. 226 a 251 e comparação"
+  }
+]

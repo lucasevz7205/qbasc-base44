@@ -1,0 +1,626 @@
+{
+  "topico": "dc-6",
+  "materia": "dc",
+  "centro": "Estatuto dos Congressistas",
+  "ramos": [
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1",
+      "t": "Natureza, alcance e marcos",
+      "x": {
+        "e": "Estatuto dos Congressistas é o conjunto de normas constitucionais (CF, arts. 53 a 56) que garante a liberdade do parlamentar e a independência do Legislativo. Este ramo responde a três perguntas: o que o Estatuto é, a quem se aplica e desde quando vale (diploma ou posse).",
+        "src": "CF, arts. 53 a 56; arts. 27, § 1º, 29, VIII, e 32, § 3º"
+      },
+      "fonte": "CF, arts. 53 a 56; arts. 27, § 1º, 29, VIII, e 32, § 3º",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.1",
+          "t": "Conceito e três blocos",
+          "x": {
+            "e": "Estatuto é o conjunto de direitos, prerrogativas, impedimentos e incompatibilidades que preserva a independência do Legislativo (definição do STF, ADI 7.254). Divide-se em garantias (art. 53), limites (art. 54) e consequências (art. 55, quando se perde o mandato; art. 56, quando não se perde).",
+            "src": "CF, arts. 53 a 56 (conceito na ADI 7.254, citada no texto-fonte)"
+          },
+          "fonte": "CF, arts. 53 a 56 (conceito na ADI 7.254, citada no texto-fonte)",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "ADI 7.254 (2024)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.2",
+          "t": "Protege o mandato, não a pessoa",
+          "x": {
+            "e": "Prerrogativa institucional (ratione muneris, isto é, em razão do cargo) pertence ao Legislativo, e por isso o parlamentar não pode renunciar a ela isoladamente. Vale para quem exerce o mandato: não alcança ex-parlamentar. Imunidade e foro são coisas distintas: o afastamento para outro cargo (art. 56, I) faz cessar a imunidade, porque deixa a função que a justifica, mas o foro pode subsistir, conforme o nó r6.1.",
+            "src": "CF, art. 53; art. 56, I (Inq 510 e ADI 1.828-MC no texto-fonte)"
+          },
+          "fonte": "CF, art. 53; art. 56, I (Inq 510 e ADI 1.828-MC no texto-fonte)",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 510",
+            "ADI 1.828-MC"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.3",
+          "t": "Corréu e suplente",
+          "x": {
+            "e": "Corréu é quem pratica o crime junto com o parlamentar: não herda a imunidade (Súmula 245). Suplente é o substituto na lista: enquanto aguarda convocação tem só expectativa de direito; empossado, tem imunidades e foro no STF apenas durante o efetivo exercício.",
+            "src": "CF, art. 53, caput e § 1º; Súmula 245 do STF"
+          },
+          "fonte": "CF, art. 53, caput e § 1º; Súmula 245 do STF",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Súmula 245 do STF",
+            "AP 511 (2009)",
+            "Inq 2.453 AgR (2007)",
+            "Inq 2.421 AgR (2008)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.4",
+          "t": "Simetria: estaduais, distritais e vereadores",
+          "x": {
+            "e": "Simetria é a reprodução obrigatória do modelo federal nos Estados. Deputado estadual e distrital recebem o Estatuto (art. 27, § 1º; art. 32, § 3º); vereador só tem a imunidade material, limitada ao Município (art. 29, VIII), sem imunidade formal. Licença e perda do mandato são de reprodução obrigatória; a extensão automática tem freio quando usada para impunidade de organização criminosa.",
+            "src": "CF, arts. 27, § 1º, 29, VIII, e 32, § 3º"
+          },
+          "fonte": "CF, arts. 27, § 1º, 29, VIII, e 32, § 3º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "ADI 5.823 MC (2019)",
+            "ADI 7.253 (2023)",
+            "ADI 7.254 (2024)",
+            "Pet 15.926 REF (2026)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r1.5",
+          "t": "Marcos: diploma × posse",
+          "x": {
+            "e": "Diploma é o ato da Justiça Eleitoral que atesta a regularidade da eleição; posse é a entrada na Casa (1º de fevereiro). Desde o diploma valem foro, imunidade à prisão, possibilidade de sustação e as vedações do art. 54, I; desde a posse, as do art. 54, II.",
+            "src": "CF, art. 53, §§ 1º a 3º; art. 54, I e II"
+          },
+          "fonte": "CF, art. 53, §§ 1º a 3º; art. 54, I e II",
+          "verificacao": "fonte"
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2",
+      "t": "Imunidade material e outras imunidades",
+      "x": {
+        "e": "Imunidade material (também dita real ou substantiva) é a inviolabilidade por opiniões, palavras e votos. Este ramo traz ainda três imunidades curtas do art. 53: sigilo da fonte, incorporação às Forças Armadas e estado de sítio.",
+        "src": "CF, art. 53, caput e §§ 6º a 8º"
+      },
+      "fonte": "CF, art. 53, caput e §§ 6º a 8º",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.1",
+          "t": "Inviolabilidade: texto, esferas e tempo",
+          "x": {
+            "e": "Inviolável quer dizer que o parlamentar não responde, civil nem penalmente, pelo que disse no mandato; o texto fala em 'quaisquer' opiniões, mas o STF exige nexo com o mandato (Inq 1.024 QO). A proteção vale para o que foi dito durante o mandato, mesmo se a cobrança vier depois, e termina para novas manifestações quando o mandato acaba.",
+            "src": "CF, art. 53, caput"
+          },
+          "fonte": "CF, art. 53, caput",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 1.024 QO",
+            "AI 401.600",
+            "AC 3.883 AgR"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.2",
+          "t": "Nexo com o mandato",
+          "x": {
+            "e": "Nexo é a ligação entre a fala e a função parlamentar. Dentro da Casa (plenário, comissões, CPIs) o nexo é presumido; fora dela, só há proteção se houver conexão com o mandato. A imunidade não cobre ilícitos, e os excessos são tratados como quebra de decoro pela própria Casa.",
+            "src": "CF, art. 53, caput; art. 55, § 1º"
+          },
+          "fonte": "CF, art. 53, caput; art. 55, § 1º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 1.958",
+            "Inq 3.814",
+            "Inq 2.332 AgR",
+            "Pet 7.174",
+            "Inq 4.781 Ref (2021)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.3",
+          "t": "Responsabilidade civil: Tema 950",
+          "x": {
+            "e": "Tema 950 é a tese de repercussão geral do RE 632.115 (2025): a fala coberta pela imunidade exclui a responsabilidade civil objetiva do Estado (art. 37, § 6º). Quando a fala extrapola, responde só o parlamentar, de forma pessoal, direta, exclusiva e subjetiva, sem solidariedade com o Estado.",
+            "src": "CF, art. 53, caput, c/c art. 37, § 6º; RE 632.115 (Tema 950)"
+          },
+          "fonte": "CF, art. 53, caput, c/c art. 37, § 6º; RE 632.115 (Tema 950)",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "RE 632.115 (Tema 950, 2025)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.4",
+          "t": "Sigilo da fonte",
+          "x": {
+            "e": "Parlamentar não é obrigado a testemunhar sobre informações recebidas ou prestadas em razão do mandato, nem sobre as pessoas que lhe confiaram ou dele receberam informações. Só vale para o que veio do mandato: nos demais casos, o dever de testemunhar continua.",
+            "src": "CF, art. 53, § 6º"
+          },
+          "fonte": "CF, art. 53, § 6º",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.5",
+          "t": "Incorporação às Forças Armadas",
+          "x": {
+            "e": "Incorporar às Forças Armadas é convocar o parlamentar ao serviço militar. Depende de prévia licença da Casa respectiva, mesmo que ele seja militar e ainda que em tempo de guerra; a licença é da Casa, não do Presidente da República.",
+            "src": "CF, art. 53, § 7º"
+          },
+          "fonte": "CF, art. 53, § 7º",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r2.6",
+          "t": "Imunidades no estado de sítio",
+          "x": {
+            "e": "Estado de sítio (não de defesa). As imunidades subsistem; só podem ser suspensas pelo voto de dois terços da Casa, e apenas para atos praticados fora do recinto do Congresso e incompatíveis com a execução da medida.",
+            "src": "CF, art. 53, § 8º"
+          },
+          "fonte": "CF, art. 53, § 8º",
+          "verificacao": "fonte"
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3",
+      "t": "Imunidade formal: prisão e sustação",
+      "x": {
+        "e": "Imunidade formal (ou processual) protege o parlamentar quanto à prisão e quanto ao andamento do processo, e não quanto ao mérito do crime. Começa no diploma e depende, no processo, de deliberação da Casa.",
+        "src": "CF, art. 53, §§ 2º a 5º"
+      },
+      "fonte": "CF, art. 53, §§ 2º a 5º",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.1",
+          "t": "Prisão: só flagrante de crime inafiançável",
+          "x": {
+            "e": "Desde o diploma, o parlamentar só pode ser preso em flagrante de crime inafiançável (racismo, tortura, tráfico, terrorismo, hediondos, ação de grupos armados contra a ordem constitucional). Ficam vedadas preventiva, temporária, civil por dívida e flagrante de crime afiançável; não impede pena definitiva, inquérito nem cautelares diversas da prisão.",
+            "src": "CF, art. 53, § 2º; art. 5º, XLII a XLIV"
+          },
+          "fonte": "CF, art. 53, § 2º; art. 5º, XLII a XLIV",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 510"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.2",
+          "t": "Flagrante: a Casa resolve",
+          "x": {
+            "e": "Em flagrante de crime inafiançável, os autos vão à Casa em 24 horas e ela resolve sobre a prisão pelo voto da maioria de seus membros (maioria absoluta). O RICD ainda fala em voto secreto; o STF exige votação nominal e aberta. Divergência registrada, não resolvida: em prova, ler se a banca pede a letra do RICD ou o STF.",
+            "src": "CF, art. 53, § 2º; RICD, art. 251, I, b; precedente da Câmara de 10/04/2024"
+          },
+          "fonte": "CF, art. 53, § 2º; RICD, art. 251, I, b; precedente da Câmara de 10/04/2024",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "ADI 5.526",
+            "Inq 4.781 Ref"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.3",
+          "t": "Flagrante e cautelares na jurisprudência",
+          "x": {
+            "e": "Crime permanente é aquele cuja consumação se prolonga (CPP, art. 303), mantendo o agente em flagrante. O STF usou o art. 324, IV do CPP (presentes os motivos da preventiva, não há fiança) para afastar a afiançabilidade; e permite cautelares do art. 319 do CPP, levadas à Casa em 24 horas só se impedirem o exercício do mandato (multa e bloqueio não vão). HC 89.417 (2006) é a exceção de Rondônia: com 23 dos 24 deputados indiciados, o art. 53, § 2º, não foi aplicado de forma isolada dos princípios do sistema.",
+            "src": "CF, art. 53, § 2º; CPP, arts. 303, 319 e 324, IV"
+          },
+          "fonte": "CF, art. 53, § 2º; CPP, arts. 303, 319 e 324, IV",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 4.781 Ref (2021)",
+            "AC 4.039 Ref-MC (2015)",
+            "ADI 5.526 (2017)",
+            "AP 1.044 REF (2022)",
+            "HC 89.417 (2006)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.4",
+          "t": "Sustação do processo",
+          "x": {
+            "e": "Sustação é a suspensão do andamento da ação penal pela Casa. Recebida a denúncia, o STF dá ciência à Casa; por iniciativa de partido representado, e pela maioria absoluta, ela pode sustar até a decisão final, em 45 dias improrrogáveis contados do recebimento pela Mesa. A prescrição fica suspensa (não interrompida) enquanto durar o mandato, e só se susta ação por crime ocorrido após a diplomação. Sem deliberação em 45 dias (art. 53, § 4º), o processo segue: não há sustação tácita.",
+            "src": "CF, art. 53, §§ 3º a 5º"
+          },
+          "fonte": "CF, art. 53, §§ 3º a 5º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "AP 2.668 QO (2025)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r3.5",
+          "t": "EC 35/2001, corréus e titulares",
+          "x": {
+            "e": "A EC 35/2001 extinguiu a licença prévia: antes o STF só processava com autorização da Casa; agora processa e a Casa pode sustar. Corréu sem mandato é desmembrado se houve sustação; se não houve sustação, o STF decide caso a caso, conforme a conveniência da instrução (Súmula 704 admite a atração por conexão). Têm essa imunidade senador, deputado federal, estadual e distrital; vereador não.",
+            "src": "CF, art. 53, § 3º (redação da EC 35/2001), c/c art. 27, § 1º"
+          },
+          "fonte": "CF, art. 53, § 3º (redação da EC 35/2001), c/c art. 27, § 1º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 1.344 (2002)",
+            "AC 700 AgR (2005)",
+            "Súmula 704 do STF",
+            "AP 2.668 QO (2025)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4",
+      "t": "Foro por prerrogativa de função",
+      "x": {
+        "e": "Foro por prerrogativa de função é o direito de ser julgado originariamente por um tribunal em razão do cargo; para deputados federais e senadores, o STF (o deputado estadual é julgado pelo Tribunal de Justiça). Este ramo traz o texto, a evolução da jurisprudência (1999 a 2026) e as regras da investigação.",
+        "src": "CF, art. 53, § 1º; art. 102, I, b"
+      },
+      "fonte": "CF, art. 53, § 1º; art. 102, I, b",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.1",
+          "t": "Texto e alcance do foro",
+          "x": {
+            "e": "Desde a expedição do diploma, o parlamentar é julgado pelo STF nas infrações penais comuns, com acusação do Procurador-Geral da República. Não alcança ações não penais (ação popular, improbidade administrativa de ex-deputado, ação eleitoral não criminal); atos anteriores à prerrogativa continuam válidos; e o foro prevalece sobre a competência do júri.",
+            "src": "CF, art. 53, § 1º; art. 102, I, b"
+          },
+          "fonte": "CF, art. 53, § 1º; art. 102, I, b",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "AP 563",
+            "Pet 3.421 AgR",
+            "Rcl 13.286 MC",
+            "HC 91.593",
+            "HC 70.620"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.2",
+          "t": "Evolução do foro: 1999 a 2026",
+          "x": {
+            "e": "Em 1999 cancelou-se a Súmula 394 (o foro deixava de acompanhar quem saía do cargo); em 2010 a renúncia abusiva na véspera do julgamento não afastou o STF; em 2018 o foro encolheu para crime no cargo e em razão dele (AP 937 QO); em 2022 (Inq 4.342 QO), deputado eleito senador, ou o contrário, sem interrupção do mandato, mantém o foro no STF; em 2025 o foro do crime funcional passou a subsistir após a saída. Em 2026, balizas: cargos sucessivos (maior graduação, CPP art. 78, III) e crime em período eleitoral, em regra, sem foro.",
+            "src": "CF, art. 53, § 1º; CPP, art. 78, III"
+          },
+          "fonte": "CF, art. 53, § 1º; CPP, art. 78, III",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Inq 687 QO (1999)",
+            "AP 396 (2010)",
+            "AP 937 QO (2018)",
+            "Inq 4.342 QO (2022)",
+            "Inq 4.787 AgR-QO e HC 232.627 (2025)",
+            "HC 232.627 ED (2026)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r4.3",
+          "t": "Investigação e cautelares no Congresso",
+          "x": {
+            "e": "Parlamentar com foro só é indiciado com autorização do tribunal competente, e a Polícia Federal não abre inquérito de ofício contra parlamentar federal (Lei 8.038/1990). A prerrogativa do CPP, art. 221 (ajustar dia, hora e local do depoimento), é só de testemunha ou vítima; busca e outras cautelares probatórias nas dependências do Congresso ou em imóvel funcional exigem autorização exclusiva do STF, mesmo se o investigado não for parlamentar.",
+            "src": "CF, art. 53, § 1º; Lei 8.038/1990; CPP, arts. 13, II, e 221"
+          },
+          "fonte": "CF, art. 53, § 1º; Lei 8.038/1990; CPP, arts. 13, II, e 221",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "Pet 3.825 QO",
+            "Inq 2.839",
+            "ADPF 424 (2025)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5",
+      "t": "Vedações e perda do mandato",
+      "x": {
+        "e": "Vedações (ou incompatibilidades) são proibições do art. 54; perda é a extinção do mandato nas seis causas do art. 55. Infringir o art. 54 é, ele próprio, causa de perda.",
+        "src": "CF, arts. 54 e 55"
+      },
+      "fonte": "CF, arts. 54 e 55",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.1",
+          "t": "Vedações desde o diploma",
+          "x": {
+            "e": "Desde o diploma, o parlamentar não pode firmar ou manter contrato com pessoa jurídica de direito público, autarquia, empresa pública, sociedade de economia mista ou concessionária, salvo cláusulas uniformes (contrato de adesão igual para todos). Também não pode aceitar ou exercer cargo, função ou emprego remunerado, mesmo demissível ad nutum, nessas entidades.",
+            "src": "CF, art. 54, I, a e b"
+          },
+          "fonte": "CF, art. 54, I, a e b",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.2",
+          "t": "Vedações desde a posse",
+          "x": {
+            "e": "Desde a posse, não pode ser proprietário, controlador ou diretor de empresa que goze de favor decorrente de contrato com o poder público, nem nela exercer função remunerada. Também não pode ocupar cargo ad nutum (demissível livremente) nessas entidades, patrocinar causa de que elas sejam interessadas nem ser titular de mais de um cargo ou mandato público eletivo.",
+            "src": "CF, art. 54, II, a a d"
+          },
+          "fonte": "CF, art. 54, II, a a d",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.3",
+          "t": "Exceções ao alcance das vedações",
+          "x": {
+            "e": "A investidura em Ministro ou Secretário, autorizada pelo art. 56, I, não viola o art. 54. As restrições do mandato não se estendem ao suplente (que não está no exercício); suplente eleito prefeito não perde a suplência e, se convocado, renuncia ao mandato municipal.",
+            "src": "CF, arts. 54 e 56, I"
+          },
+          "fonte": "CF, arts. 54 e 56, I",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "MS 21.266",
+            "MS 33.952"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.4",
+          "t": "Seis causas de perda",
+          "x": {
+            "e": "Perde o mandato quem infringe o art. 54, tem procedimento incompatível com o decoro, falta a um terço das sessões ordinárias em cada sessão legislativa (sem licença ou missão autorizada), perde ou tem suspensos os direitos políticos, é alcançado por decreto da Justiça Eleitoral ou sofre condenação criminal transitada em julgado.",
+            "src": "CF, art. 55, I a VI"
+          },
+          "fonte": "CF, art. 55, I a VI",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.5",
+          "t": "Decoro parlamentar",
+          "x": {
+            "e": "Decoro é conceito aberto, preenchido pela Casa: o art. 55, § 1º aponta o abuso das prerrogativas e a percepção de vantagens indevidas, além dos casos do regimento. O Judiciário só controla o devido processo legal, não o mérito; reeleito pode ser cassado por atos do mandato anterior, e licença ou afastamento cautelar não travam a cassação. No MS 25.579 MC (2005), o licenciado para cargo do Executivo manteve o dever de observar vedações e decoro, mas a separação de Poderes impede, em princípio, processo de perda por atos com estrita vinculação à função no Executivo.",
+            "src": "CF, art. 55, II e § 1º"
+          },
+          "fonte": "CF, art. 55, II e § 1º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "STP 949 MC-REF (2023)",
+            "MS 25.917",
+            "MS 23.388",
+            "MS 34.327",
+            "MS 25.579 MC (2005)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.6",
+          "t": "Cassação: a Casa decide",
+          "x": {
+            "e": "Cassação é a perda por julgamento político entre os pares, nos incisos I (art. 54), II (decoro) e VI (condenação). A Casa decide por maioria absoluta, em votação ostensiva desde a EC 76/2013, mediante provocação da Mesa ou de partido representado no Congresso, assegurada ampla defesa.",
+            "src": "CF, art. 55, § 2º (EC 76/2013)"
+          },
+          "fonte": "CF, art. 55, § 2º (EC 76/2013)",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.7",
+          "t": "Extinção: a Mesa declara",
+          "x": {
+            "e": "Extinção é a perda automática nos incisos III (faltas), IV (direitos políticos) e V (Justiça Eleitoral): a Mesa apenas declara, de ofício ou por provocação de qualquer membro ou partido, com ampla defesa, em ato vinculado ao fato objetivo. Na hipótese de decisão da Justiça Eleitoral, a Presidência dá posse imediata ao suplente (MS 25.458). Troca de partido sem justa causa gera perda no sistema proporcional (deputados), não no majoritário (senador); a suspensão de direitos políticos por condenação criminal é hipótese do inciso VI.",
+            "src": "CF, art. 55, III a V e § 3º; art. 15, III"
+          },
+          "fonte": "CF, art. 55, III a V e § 3º; art. 15, III",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "MS 25.461",
+            "MS 25.458",
+            "MS 26.604",
+            "ADI 5.081"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.8",
+          "t": "Condenação criminal: vaivém do STF",
+          "x": {
+            "e": "Pelo texto, a condenação criminal transitada em julgado (inciso VI) é caso de decisão da Casa por maioria absoluta. O STF oscilou: 2012 (STF decreta, Mesa declara), 2013 (volta ao texto), 2017 e 2025 (1ª Turma: regime fechado sem trabalho externo viável, perda automática declarada pela Mesa) e 2018 (2ª Turma: não é automática). Divergência registrada, não resolvida: em prova, ver se pede a CF ou o STF.",
+            "src": "CF, art. 55, VI e §§ 2º e 3º"
+          },
+          "fonte": "CF, art. 55, VI e §§ 2º e 3º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "AP 470 (2012)",
+            "AP 565 (2013)",
+            "AP 694 (2017)",
+            "AP 996 (2018)",
+            "EP 149 REF (2025)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r5.9",
+          "t": "Renúncia durante o processo",
+          "x": {
+            "e": "Renúncia de parlamentar submetido a processo que possa levar à perda do mandato tem os efeitos suspensos até as deliberações finais (efeito político). Quem renuncia após representação ou petição capaz de abrir o processo fica inelegível pelo restante do mandato e pelos oito anos seguintes; é efeito distinto da renúncia abusiva às vésperas do julgamento, que não afasta a competência do STF (efeito processual).",
+            "src": "CF, art. 55, § 4º (ECR 6/1994); LC 64/1990, art. 1º, I, k"
+          },
+          "fonte": "CF, art. 55, § 4º (ECR 6/1994); LC 64/1990, art. 1º, I, k",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "AP 396"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6",
+      "t": "Licenças, suplência e afastamento",
+      "x": {
+        "e": "Art. 56 lista as hipóteses em que o parlamentar se afasta sem perder o mandato (cargo do Executivo, doença, interesse particular) e a consequente convocação do suplente (o substituto eleito na lista).",
+        "src": "CF, art. 56; RICD, arts. 235 a 237 e 241 a 243"
+      },
+      "fonte": "CF, art. 56; RICD, arts. 235 a 237 e 241 a 243",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.1",
+          "t": "Investidura em cargo do Executivo",
+          "x": {
+            "e": "Investido em Ministro de Estado, Governador de Território, Secretário de Estado, do DF, de Território ou de Prefeitura de Capital, ou chefe de missão diplomática temporária, não perde o mandato; pode optar pela remuneração do mandato (§ 3º). O RICD diz que as imunidades subsistem (art. 231, § 7º); a aula registra entendimento contrário do STF, sem precedente numerado. Divergência registrada, não resolvida. O licenciado segue sujeito a vedações e decoro. Foro do licenciado, divergência registrada, não resolvida: o MS 25.579 MC (2005) mantém o foro; a Pet 7.990 AgR (1ª T, 2020) afasta o foro se o delito não tem vínculo com o cargo atual; a tese de 2025 (Inq 4.787 AgR-QO) mantém o foro de crime no mandato e em razão dele.",
+            "src": "CF, art. 56, I e § 3º; art. 53, § 1º; RICD, art. 231, § 7º"
+          },
+          "fonte": "CF, art. 56, I e § 3º; art. 53, § 1º; RICD, art. 231, § 7º",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "MS 25.579 MC (2005)",
+            "Pet 7.990 AgR (2020)",
+            "Inq 4.787 AgR-QO"
+          ],
+          "jurisprudencia_nao_verificada": [
+            "STF (precedente não nomeado no texto-fonte)"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.2",
+          "t": "Licenças na Constituição",
+          "x": {
+            "e": "Licença por doença não tem limite de tempo no texto constitucional e não gera perda do mandato (acima de 120 dias convoca-se suplente). Licença para tratar de interesse particular é sem remuneração e vai até 120 dias por sessão legislativa; o limite do inciso II vale só para ela.",
+            "src": "CF, art. 56, II"
+          },
+          "fonte": "CF, art. 56, II",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "MS 34.064 MC"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.3",
+          "t": "Licenças no RICD",
+          "x": {
+            "e": "O RICD prevê quatro licenças: missão temporária de caráter diplomático ou cultural, tratamento de saúde, interesse particular (até 120 dias) e investidura nos cargos do art. 56, I. O Presidente concede, salvo a de missão, que cabe à Mesa; saúde e interesse particular não se concedem no recesso, salvo prorrogação da sessão legislativa ou convocação extraordinária (art. 235, § 2º). O pedido é requerimento fundamentado, lido na primeira sessão após o recebimento (§ 5º). A contagem da licença iniciada antes do fim de cada semiperíodo fica suspensa, salvo a licença-saúde em que assumiu suplente (§ 3º). Licenciado com assunção de suplente não reassume antes de findo o prazo, superior a 120 dias, da licença ou de suas prorrogações (§ 6º). Contraste: o chefe de missão diplomática (CF, art. 56, I) é investidura e chama suplente; a missão temporária de caráter diplomático ou cultural (RICD, art. 235, I) é licença concedida pela Mesa, sem suplente. Licença-saúde exige laudo de três médicos da Câmara; incapacidade civil absoluta (art. 237) exige junta de três médicos de fora, é aplicada pelo Plenário em sessão secreta e por maioria absoluta, e suspende o exercício sem perda da remuneração.",
+            "src": "RICD, arts. 235 a 237"
+          },
+          "fonte": "RICD, arts. 235 a 237",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.4",
+          "t": "Convocação do suplente",
+          "x": {
+            "e": "Convoca-se o suplente nos casos de vaga, de investidura em cargo do art. 56, I e de licença superior a 120 dias; no RICD, a Mesa convoca em 48 horas e a licença que chama suplente é só a de saúde com prazo original acima de 120 dias, sem somar períodos. O suplente pode recusar por escrito (a Mesa chama o seguinte), perde a suplência se não assumir em 30 dias prorrogáveis por igual período (art. 241, § 2º), ressalvadas a recusa, a doença comprovada e o estar investido em cargo do art. 56, I; e não pode ser membro da Mesa nem presidente ou vice de comissão, entre outros cargos. Na época das coligações proporcionais, convocava-se o suplente da coligação, na ordem da diplomação (MS 30.260 e 30.272); as coligações acabaram com a EC 97/2017.",
+            "src": "CF, art. 56, § 1º; RICD, arts. 241 e 243; art. 4º, § 6º, III"
+          },
+          "fonte": "CF, art. 56, § 1º; RICD, arts. 241 e 243; art. 4º, § 6º, III",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "MS 30.260 e 30.272"
+          ]
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r6.5",
+          "t": "Vaga sem suplente",
+          "x": {
+            "e": "Ocorrendo vaga sem suplente, faz-se eleição se faltarem mais de quinze meses para o fim do mandato; com quinze meses ou menos, a vaga fica aberta. Só quando faltam mais de 15 meses a Presidência comunica a vaga à Justiça Eleitoral (RICD, art. 242). Na ADI 5.525 (2019), o STF decidiu que lei não pode disciplinar a eleição para a vaga de senador de modo diferente do art. 56, § 2º. No caso de senador cassado, o STF exigiu novas eleições e não admitiu assunção interina do mais votado.",
+            "src": "CF, art. 56, § 2º; RICD, art. 242"
+          },
+          "fonte": "CF, art. 56, § 2º; RICD, art. 242",
+          "verificacao": "fonte",
+          "jurisprudencia": [
+            "ADI 5.525 (2019)",
+            "ADPF 643 e 644 (2023)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7",
+      "t": "RICD arts. 226 a 251 e comparação",
+      "x": {
+        "e": "Título VII do Regimento Interno da Câmara (RICD) trata Dos Deputados e repete, completa ou desatualiza a Constituição. Este ramo percorre os seis capítulos e fecha com o quadro de comparação CF × RICD e de quóruns.",
+        "src": "RICD, arts. 226 a 251"
+      },
+      "fonte": "RICD, arts. 226 a 251",
+      "verificacao": "fonte",
+      "f": [
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.1",
+          "t": "Seis capítulos do Título VII",
+          "x": {
+            "e": "Capítulos: I exercício do mandato (arts. 226 a 234), II licença (235 a 237), III vacância (238 a 240), IV convocação de suplente (241 a 243), V decoro (244; 245 a 248 revogados) e VI processo criminal (249 revogado, a 251). O nome do capítulo VI ainda fala em licença, que a EC 35/2001 extinguiu.",
+            "src": "RICD, arts. 226 a 251"
+          },
+          "fonte": "RICD, arts. 226 a 251",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.2",
+          "t": "Presença, direitos e comunicações",
+          "x": {
+            "e": "O Deputado deve apresentar-se à Casa na sessão legislativa ordinária ou extraordinária (art. 226) e tem direitos como propor, votar, usar a palavra e pedir informações a Ministro. A presença é registrada por lista ou registro eletrônico (art. 227). Gestante tem participação remota plena a partir da 30ª semana, ou antes com atestado (art. 227-A); o mesmo direito vale até 180 dias consecutivos após o início da licença-gestante (art. 227-A, parágrafo único). Há ainda ciência prévia para viagem ao exterior (art. 228), declaração de bens (art. 229; não apresentá-la é infração ao Código de Ética e Decoro Parlamentar) e comunicação escrita ao se afastar e ao reassumir (art. 230); exonerado do cargo do art. 56, I, o Deputado tem 15 dias para reassumir, sob pena de falta de decoro (art. 230, § 3º).",
+            "src": "RICD, arts. 226, 227, 227-A, 228, 229 e 230"
+          },
+          "fonte": "RICD, arts. 226, 227, 227-A, 228, 229 e 230",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.3",
+          "t": "Imunidades e vedações no art. 231",
+          "x": {
+            "e": "O art. 231 espelha o art. 53: § 1º (inviolabilidade, quase idêntico: não traz 'civil e penalmente' nem 'quaisquer'), § 2º (prisão), § 3º (licença para processar, revogado tacitamente pela EC 35/2001), § 4º (foro, sem o marco do diploma), §§ 5º e 6º (testemunho e Forças Armadas) e § 8º (vedações do art. 54, idêntico). O § 7º, imunidades subsistem para o Ministro, só existe no RICD e diverge do STF.",
+            "src": "RICD, art. 231, §§ 1º a 8º"
+          },
+          "fonte": "RICD, art. 231, §§ 1º a 8º",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.4",
+          "t": "Bancada, estado de sítio e ex-deputados",
+          "x": {
+            "e": "Art. 232: quem se desvincula da bancada perde os cargos que ocupava em razão dela. Art. 233: a suspensão de imunidades no estado de sítio é votada por dois terços em escrutínio secreto (a CF não diz que é secreto). Art. 234: ex-deputado tem livre acesso ao Plenário e serviços da Casa, com autorização prévia do Presidente só para reprografia e processamento de dados.",
+            "src": "RICD, arts. 232 a 234"
+          },
+          "fonte": "RICD, arts. 232 a 234",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.5",
+          "t": "Vacância, renúncia e rito da perda",
+          "x": {
+            "e": "Vagas decorrem só de falecimento, renúncia e perda do mandato (art. 238). Renúncia expressa é escrita, dirigida à Mesa, independe de aprovação e só se torna efetiva e irretratável depois de lida no expediente ou publicada no Diário; é tácita se o Deputado não presta compromisso ou o suplente convocado não se apresenta. Na perda por art. 54 ou condenação, a CCJC dá cinco sessões para defesa (com defensor dativo se faltar) e cinco para parecer.",
+            "src": "RICD, arts. 238 a 240"
+          },
+          "fonte": "RICD, arts. 238 a 240",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.6",
+          "t": "Decoro no RICD",
+          "x": {
+            "e": "O art. 244 apenas remete ao Código de Ética e Decoro Parlamentar (Res. 25/2001), que define as condutas e o processo disciplinar; os arts. 245 a 248, sobre processo por falta de decoro, foram revogados por essa resolução. A perda por decoro segue esse rito, e não o da CCJC do art. 240, § 3º.",
+            "src": "RICD, arts. 244 a 248"
+          },
+          "fonte": "RICD, arts. 244 a 248",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.7",
+          "t": "Flagrante e processo criminal no RICD",
+          "x": {
+            "e": "Art. 249 (licença para processar) foi revogado tacitamente; arts. 250 e 251 continuam valendo para o flagrante: autos à Casa em 24 horas, sob pena de responsabilidade da autoridade apurada pela Mesa; a CCJC fica com a custódia do preso e dá parecer em 72 horas; o Plenário decide até a sessão seguinte (a letra diz voto secreto, o STF exige aberto). A decisão é comunicada ao STF em duas sessões; em recesso (art. 251, parágrafo único), as atribuições da CCJC e do Plenário vão à Comissão Representativa só se o Regimento Comum assim dispuser; caso contrário, vão à Mesa ad referendum do Plenário.",
+            "src": "RICD, arts. 249 a 251"
+          },
+          "fonte": "RICD, arts. 249 a 251",
+          "verificacao": "fonte"
+        },
+        {
+          "id": "kit-arr-dc-6-estatuto-dos-congressistas-regime-juridi-2026-11-22-r7.8",
+          "t": "Comparação CF × RICD e quóruns",
+          "x": {
+            "e": "Selos de comparação: idêntico (art. 53, § 6º; art. 54), quase idêntico, o RICD complementa, texto diferente (decoro), só na CF (sustação, renúncia suspensa, opção pela remuneração) e só no RICD (§ 7º do art. 231, presença, licença, vacância). O RICD é de 1989 e foi adaptado só em parte à EC 35/2001 (Ato da Mesa 71/2005). Quóruns: prisão, cautelar e sustação, maioria absoluta; cassação, maioria absoluta ostensiva; sítio, dois terços; perda por faltas, direitos políticos e Justiça Eleitoral, sem votação (Mesa declara).",
+            "src": "CF, arts. 53 a 56; RICD, arts. 226 a 251"
+          },
+          "fonte": "CF, arts. 53 a 56; RICD, arts. 226 a 251",
+          "verificacao": "fonte"
+        }
+      ]
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-DC-6-estatuto-dos-congressistas-regime-juridi-2026-11-22": {}
+  }
+}
