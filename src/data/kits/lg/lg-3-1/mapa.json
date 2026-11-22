@@ -1,0 +1,606 @@
+{
+  "topico": "lg-3-1",
+  "materia": "lg",
+  "centro": "🧩 3.1 Compreensão Literal, Coesão e Coerência Textual",
+  "ramos": [
+    {
+      "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1",
+      "cor": 1,
+      "t": "Texto, Textualidade e os 7 Fatores",
+      "n": "2 centrados no texto (semânticos) + 5 centrados nos usuários (pragmáticos)",
+      "x": {
+        "e": "Textualidade é o conjunto de características que faz uma sequência linguística ser reconhecida como um texto, e não como um amontoado de frases soltas. Divide-se em dois fatores semânticos, centrados no texto (coesão e coerência), e cinco fatores pragmáticos, centrados nos usuários e no contexto comunicativo (intencionalidade, aceitabilidade, situacionalidade, informatividade e intertextualidade).",
+        "src": "Etapa 08, p. 10 e 12; Aula 5 (5.4), p. 33-52",
+        "trap": "Trocar fatores semânticos (coesão e coerência) por pragmáticos, ou isolar um fator dos demais nas questões de interpretação."
+      },
+      "f": [
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.1",
+          "t": "Texto como unidade situada (tipo × gênero)",
+          "n": "enunciado em prática social · predominância tipológica",
+          "x": {
+            "e": "As manifestações verbais ocorrem como textos situados em práticas sociodiscursivas (concepção de Bakhtin: conteúdo temático, estilo verbal e construção composicional). Tipo textual refere-se à forma linguística predominante (narração, argumentação, descrição, injunção e exposição), enquanto gênero textual refere-se à categoria social com função comunicativa específica e suporte próprio.",
+            "ex": "Uma ata ou notícia é gênero textual; nela predominam sequências narrativas, expositivas ou descritivas (tipos textuais).",
+            "src": "Aula 3 (3.1 e 3.2), p. 3-9",
+            "trap": "Inverter tipo textual e gênero textual, ou achar que um texto possui apenas um tipo textual puro sem mescla."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.2",
+          "t": "Fatores centrados no texto (semânticos)",
+          "n": "coesão (superfície) + coerência (sentido global)",
+          "x": {
+            "e": "Na classificação atribuída a Beaugrande e Dressler (1981) pela Etapa 08 e na divisão da Aula 5 (5.4), coesão e coerência são os dois fatores semânticos/centrados no texto. Embora classificada como critério centrado no texto, a coerência depende também dos processos cognitivos dos usuários na interação leitor-texto.",
+            "src": "Etapa 08, p. 10 e 12 (Divergência Teórica 4); Aula 5 (5.4), p. 33",
+            "trap": "Supor que 'centrado no texto' exclui a participação do leitor na construção da coerência (Divergência Teórica 4)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.2a",
+              "t": "Coesão: costura na superfície textual",
+              "n": "ligação visível entre palavras, frases e parágrafos",
+              "x": {
+                "e": "Diz respeito à disposição e à correta utilização das palavras e conectores que promovem a ligação visível no cotexto, fazendo com que a interpretação de um elemento dependa da de outro.",
+                "src": "Etapa 08 (3.1.2), p. 5-6; Aula 5 (5.1), p. 3",
+                "trap": "Reduzir a coesão apenas ao uso de conjunções, esquecendo pronomes, elipses, substituições e repetições."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.2b",
+              "t": "Coerência: unidade lógica de sentido",
+              "n": "articulação profunda · todo interpretável",
+              "x": {
+                "e": "Refere-se à articulação profunda da mensagem e às relações lógicas que fazem o texto formar um todo uno, harmônico e interpretável para quem o lê.",
+                "src": "Etapa 08 (3.1.3), p. 9; Aula 5 (5.1 e 5.2), p. 3-4",
+                "trap": "Definir coerência como 'uso correto de conectivos', confundindo-a com a coesão sequencial."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3",
+          "t": "Fatores centrados nos usuários (pragmáticos)",
+          "n": "intencionalidade · aceitabilidade · situacionalidade · informatividade · intertextualidade",
+          "x": {
+            "e": "São os cinco fatores pragmáticos voltados aos interlocutores (produtor e receptor), ao contexto de produção/recepção, ao conteúdo informativo e ao diálogo com outros textos. Na prática das questões, operam de modo articulado.",
+            "src": "Aula 5 (5.4), p. 33-52",
+            "trap": "Tratar a informatividade apenas como quantidade de dados ou confundir paráfrase com paródia na intertextualidade."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3a",
+              "t": "Intencionalidade e modalizadores discursivos",
+              "n": "objetivo do autor · epistêmicos, deônticos e afetivos",
+              "x": {
+                "e": "Intencionalidade é a pretensão do produtor do texto de alcançar um objetivo comunicativo junto ao leitor/ouvinte. Manifesta-se também pelos modalizadores discursivos: epistêmicos (valor de verdade: asseverativo = certeza, dubitável = dúvida, delimitador = limite), deônticos (obrigação/permissão) e afetivos (reação emotiva subjetiva ou intersubjetiva).",
+                "ex": "'Evidentemente' (epistêmico asseverativo), 'talvez' (dubitável), 'deve apresentar' (deôntico), 'infelizmente' (afetivo).",
+                "src": "Aula 5 (5.4), p. 33-36",
+                "trap": "Ignorar modalizadores dubitáveis ou delimitadores ('talvez', 'basicamente') e ler opinião modalizada como fato categórico."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3b",
+              "t": "Aceitabilidade: expectativa do receptor",
+              "n": "sentido prevalece sobre falhas gramaticais",
+              "x": {
+                "e": "Fator ligado à recepção pelo leitor/ouvinte, que espera receber uma configuração coerente, coesa e carregada de significado. Corresponde à forma e ao sentido, mas o sentido prevalece: um texto com desvios gramaticais pode ser aceitável se fizer sentido.",
+                "src": "Aula 5 (5.4), p. 36-37",
+                "trap": "Afirmar que qualquer erro gramatical anula automaticamente a aceitabilidade e a textualidade de um enunciado."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3c",
+              "t": "Situacionalidade: adequação texto-contexto",
+              "n": "público-alvo e situação de uso (Marcuschi)",
+              "x": {
+                "e": "Conforme Marcuschi (2008, p. 129) citado na aula, é a adequação do texto ao seu contexto e aos seus usuários. Liga-se diretamente à intencionalidade e à aceitabilidade, determinando o grau de tecnicidade ou acessibilidade da linguagem.",
+                "ex": "Normativa previdenciária usa linguagem técnico-jurídica para advogados; cartilha do INSS usa linguagem direta para o cidadão.",
+                "src": "Aula 5 (5.4), p. 37-40",
+                "trap": "Julgar um texto técnico inadequado sem considerar a situação comunicativa e o público destinatário."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3d",
+              "t": "Informatividade: informação × conteúdo × sentido",
+              "n": "dado usado ≠ tema central ≠ explícitos + implícitos",
+              "x": {
+                "e": "Refere-se às informações transmitidas pelo texto para captar a mensagem principal e secundária. A aula distingue: informação (dado ou conhecimento usado no texto), conteúdo (tema central) e sentido (informações explícitas somadas às implícitas e intenções).",
+                "ex": "Uma notícia e uma charge sobre violência em SP têm o mesmo conteúdo, mas trazem informações e sentidos distintos.",
+                "src": "Aula 5 (5.4), p. 40-44",
+                "trap": "Confundir o tema central (conteúdo) com os dados específicos (informações) ou reduzir sentido apenas ao explícito."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3e",
+              "t": "Intertextualidade: diálogo entre textos",
+              "n": "explícita × implícita · 6 formas principais",
+              "x": {
+                "e": "É a referência de um texto a outro para reafirmar, sustentar ou inverter/contestar sentidos. Pode ser explícita (autoria identificada) ou implícita (exige conhecimento de mundo). Formas na aula: citação (entre aspas com autoria), epígrafe (citação curta destacada no início), referência/alusão (indireta/vaga), paródia (recriação humorística ou irônica), paráfrase (reescrita que preserva o sentido) e tradução (outro idioma).",
+                "ex": "Expressão 'presente de grego' é alusão implícita à Guerra de Troia; 'Canção do Exílio às Avessas' de Jô Soares é paródia.",
+                "src": "Aula 5 (5.4), p. 45-52; Aula 3 (3.8), p. 54-61",
+                "trap": "Confundir paráfrase (que preserva o sentido sem ironia) com paródia (que inverte/ironiza o texto-fonte)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2",
+      "cor": 2,
+      "t": "Compreensão Literal × Interpretativa/Inferencial",
+      "n": "níveis de leitura · paráfrase fiel (R-Q-T-R-L) · extrapolação, redução e contradição",
+      "x": {
+        "e": "Compreensão literal é a identificação das informações expressas de modo explícito em trecho localizável (quem, o quê, quando, onde, quanto, sob que condição), sem depender de conhecimento externo ou intenção suposta. Como a banca raramente copia o texto, julgar itens literais exige conferir a paráfrase ponto a ponto contra os erros de extrapolação, redução e contradição.",
+        "src": "Etapa 08 (3.1.1), p. 4-5, 12-13; Aula 3 (3.9), p. 62-66",
+        "trap": "Achar que o item com palavras idênticas às do texto está certo por padrão — muitas vezes ele suprime um quantificador ou desloca uma restrição."
+      },
+      "f": [
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.1",
+          "t": "Os três níveis de leitura e fato × opinião",
+          "n": "literal (3.1) × interpretativa (3.6) × crítica (3.7)",
+          "tabela": [
+            [
+              "Literal (3.1)",
+              [
+                "O que o texto diz explicitamente (trecho localizável)",
+                "Comandos: 'De acordo com o texto', 'O texto informa que', 'Segundo o autor'"
+              ]
+            ],
+            [
+              "Interpretativa (3.6)",
+              [
+                "O que o texto dá a entender (implícitos, propósito, fato e opinião)",
+                "Comandos: 'Infere-se', 'Depreende-se', 'Subentende-se'"
+              ]
+            ],
+            [
+              "Crítica (3.7)",
+              [
+                "Qual conclusão o texto sustenta",
+                "Comandos: 'Conclui-se corretamente', 'É correto inferir'"
+              ]
+            ]
+          ],
+          "x": {
+            "e": "O edital organiza a leitura em três degraus didáticos (Divergência Teórica 3: na teoria textual toda leitura envolve alguma inferência, mas na prova trata-se como literal o que tem apoio direto em trecho localizável). A Aula 3 reforça que compreender é localizar o explícito (por paráfrase), interpretar é deduzir o pressuposto por pistas, e que é essencial separar fatos (objetivos, comprováveis) de opiniões (pessoais, mutáveis).",
+            "src": "Etapa 08 (3.1.1 e Divergência Teórica 3), p. 4 e 12; Aula 3 (3.9), p. 62 e 65-66",
+            "trap": "Validar opinião pessoal do leitor como dado do texto, ou exigir inferência distante quando o comando pede apenas compreensão literal."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2",
+          "t": "Paráfrase fiel e os 5 pontos (R-Q-T-R-L)",
+          "n": "método em 3 passos · uma única troca derruba o item",
+          "caixa": true,
+          "x": {
+            "e": "O item literal certo quase nunca é cópia; é uma paráfrase que muda as palavras conservando integralmente o conteúdo (como 'duas emendas não foram aprovadas' a partir de 'aprovou três das cinco'). Método em 3 passos: (1) ler o comando e dividir sujeito, ação e circunstâncias; (2) localizar o trecho no parágrafo/período; (3) conferir os cinco pontos R-Q-T-R-L (instrumento da apostila).",
+            "src": "Etapa 08 (3.1.1 e Mnemônicos), p. 4-5 e 15",
+            "trap": "Confiar na memória global do parágrafo sem checar cada um dos cinco pontos no período indicado."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2a",
+              "t": "Referentes e Quantificadores",
+              "n": "de quem se fala · todos, maioria, alguns, números",
+              "x": {
+                "e": "Referentes exigem conferir o sujeito ou objeto exato da ação e resolver pronomes corretamente (ex.: trocar 'a relatora' por 'a comissão'). Quantificadores exigem conferir termos de alcance como 'todos', 'alguns', 'a maioria', 'nenhum' e frações (ex.: omitir 'três das cinco' transforma em 'todas as emendas').",
+                "ex": "Em 'a maioria dos membros apoiou', não se pode parafrasear como 'unanimidade' nem como 'simples parcela'.",
+                "src": "Etapa 08 (3.1.1 e Não Confunda), p. 4 e 12",
+                "trap": "Repetir o vocabulário do texto trocando 'três das cinco' por 'as emendas' ou 'a maioria' por 'todos'."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2b",
+              "t": "Tempo, Modalidade e Restrições",
+              "n": "pretende/poderá ≠ fará · só, apenas, pelo menos, até",
+              "x": {
+                "e": "Tempo e modalidade checam se a ação ocorreu ou ocorrerá, se é real ou hipotética, obrigação ou possibilidade ('poderá recorrer' ≠ 'recorrerá'; 'pretende ampliar' ≠ 'será ampliado'). Restrições e condições checam termos como 'só', 'apenas', 'exceto', 'salvo', 'desde que', 'pelo menos' e 'até' — inclusive a posição do 'só', que altera quem sofre a restrição.",
+                "ex": "'Externos só podem consultar mediante agendamento' não diz que servidores estão dispensados de agendar.",
+                "src": "Etapa 08 (3.1.1 e Do Conceito ao Texto), p. 4 e 13",
+                "trap": "Ler intenção ou possibilidade ('pretende', 'poderá') como fato consumado ou certeza futura ('será', 'valerá')."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2c",
+              "t": "Relações lógicas na paráfrase",
+              "n": "causa, consequência, concessão, oposição e negação",
+              "x": {
+                "e": "Verifica se a paráfrase conservou o nexo lógico exato entre as orações (causa, consequência, oposição, concessão, condição) e o escopo das negações. Trocar uma relação concessiva ('embora') por causal ('porque') inverte o sentido literal mesmo mantendo as mesmas palavras principais.",
+                "src": "Etapa 08 (3.1.1), p. 4",
+                "trap": "Aceitar reescrita que troca relação de importância relativa ('mais do que X, é necessário Y') por exclusão ('e não X' — Questão 8 MME)."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.3",
+          "t": "Três erros clássicos: mais, menos, contrário",
+          "n": "extrapolação · redução · contradição/inversão",
+          "x": {
+            "e": "Todo erro de paráfrase recai em dizer mais, dizer menos ou dizer o contrário do texto-base. A tradição didática classifica-os em extrapolação, redução e contradição (inversão).",
+            "src": "Etapa 08 (3.1.1 e Não Confunda), p. 5 e 12",
+            "trap": "Confundir extrapolação com inferência autorizada (plausível ≠ literal) ou redução com síntese fiel."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.3a",
+              "t": "Extrapolação (diz mais que o texto)",
+              "n": "acrescenta dado ausente ≠ inferência autorizada",
+              "x": {
+                "e": "Ocorre quando a assertiva acrescenta informação que o texto não autoriza (ex.: dizer que as duas emendas restantes 'foram rejeitadas por inconstitucionalidade', ou trocar 'mitigação' por 'reverter os efeitos' na Questão 10 Petrobras). Difere da inferência autorizada, que extrai apenas o que o texto sustenta.",
+                "src": "Etapa 08, p. 4-5, 12 e 24",
+                "trap": "Marcar como certa uma afirmação verdadeira ou plausível no mundo real, mas ausente do texto ('plausível não é literal')."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.3b",
+              "t": "Redução (diz menos ou generaliza parte)",
+              "n": "corta restrição ≠ síntese fiel",
+              "x": {
+                "e": "Ocorre quando o item suprime uma condição/restrição essencial ou toma a parte pelo todo (ex.: transformar 'aprovou três das cinco emendas' em 'aprovou as emendas'; ou suprimir a condição de convergência na média da 3ª correção). Difere da síntese, que resume preservando o alcance do dito.",
+                "src": "Etapa 08, p. 5, 12 e 20",
+                "trap": "Tratar corte de condição ou quantificador como mera 'síntese resumida' do período."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.3c",
+              "t": "Contradição / inversão (diz o oposto)",
+              "n": "nega o explicitado ou inverte os termos",
+              "x": {
+                "e": "Ocorre quando a assertiva afirma o contrário do que está expresso no texto (ex.: 'aprovou por unanimidade' quando o texto disse 'por maioria', ou 'não têm acesso' quando têm 'mediante agendamento').",
+                "src": "Etapa 08, p. 5 e 13",
+                "trap": "Inverter sujeito e objeto, ou trocar restrição de modo ('só com agendamento') por proibição absoluta."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.4",
+          "t": "Pistas linguísticas e dever de registro literal",
+          "n": "alcance exato · RICD arts. 97 e 98, § 1º",
+          "x": {
+            "e": "Na prova, palavras pequenas como 'cerca de', 'pelo menos', 'até', 'só' e 'a maioria' definem o limite exato da proposição. Na prática da Câmara, a leitura literal é dever funcional do ARR: o RICD manda publicar os discursos 'por extenso' (art. 98, § 1º) e lavrar ata 'com a sinopse dos trabalhos' (art. 97), vedando dizer mais, menos ou o contrário do ocorrido.",
+            "src": "Etapa 08 (Do Conceito ao Texto e Na Prática da Câmara), p. 13-14",
+            "trap": "Tratar 'cerca de 4 mil' como 'exatamente 4 mil' ou 'pelo menos 2' como 'exatamente 2'."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3",
+      "cor": 3,
+      "t": "Coesão Textual: Conceito e Mecanismos",
+      "n": "superfície/cotexto · 3 listas · referencial (anáfora/catáfora/dêixis/elipse/substituição) × sequencial/recorrencial",
+      "x": {
+        "e": "Para Halliday e Hasan (1976), coesão é a ligação visível na superfície do texto (cotexto) que ocorre quando a interpretação de um elemento depende da interpretação de outro. O MRPR (item 3.4) descreve-a como o entrelaçamento de palavras, frases e parágrafos dando continuidade uns aos outros.",
+        "src": "Etapa 08 (3.1.2), p. 5-8; Aula 5 (5.3), p. 9-32",
+        "trap": "Confundir as listas de Halliday e Hasan (5), MRPR (4 exemplificativos) e Edital (4, trocando conjunção e coesão lexical por repetição)."
+      },
+      "f": [
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.1",
+          "t": "Conceito e comparação das três listas",
+          "n": "Halliday & Hasan (5) · MRPR 3.4 (4+) · Edital 3.4 (4)",
+          "tabela": [
+            [
+              "Halliday & Hasan (1976)",
+              [
+                "Referência, substituição, elipse, conjunção, coesão lexical (R-S-E-C-L)"
+              ]
+            ],
+            [
+              "MRPR, item 3.4 (2018)",
+              [
+                "'Alguns mecanismos': referência, substituição, elipse, uso de conjunção (lista exemplificativa; traz troca lexical em 'substituição')"
+              ]
+            ],
+            [
+              "Edital, subitem 3.4",
+              [
+                "Referência, substituição, elipse, repetição (conjunção e relações entre ideias ficam no subitem 3.3)"
+              ]
+            ]
+          ],
+          "x": {
+            "e": "As classificações recortam os mesmos fenômenos textuais de modos distintos (Divergência Teórica 2). Em itens que citam expressamente uma fonte, prevalece a lista daquela fonte. Atenção especial ao MRPR: o texto oficial diz 'Alguns mecanismos [...] são', não limitando os recursos a apenas quatro.",
+            "src": "Etapa 08 (3.1.2 e Divergência Teórica 2), p. 6, 12 e 18",
+            "trap": "Afirmar que o MRPR limita os mecanismos de coesão a quatro (Pegadinha 10) ou esquecer a coesão lexical na lista de Halliday e Hasan (Pegadinha 11)."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.2",
+          "t": "Famílias: Ingedore Koch × Leonor Fávero",
+          "n": "2 famílias (Koch) × 3 tipos (Fávero)",
+          "x": {
+            "e": "Ingedore Koch agrupa referência, substituição, elipse e coesão lexical sob 'coesão referencial' (mantém os mesmos seres/ideias em cena: 'de quem se continua falando?'), opondo-a à 'coesão sequencial' (faz o texto avançar, correspondendo em linhas gerais à conjunção: 'que relação há?'). Leonor Fávero (1991) divide em três tipos: referencial, recorrencial (repetições e paralelismos) e sequencial.",
+            "src": "Etapa 08 (3.1.2), p. 6-7 e 11; Aula 5 (5.3), p. 9-10",
+            "trap": "Atribuir a divisão tripartida (referencial, recorrencial, sequencial) a Koch, ou excluir a coesão lexical da coesão referencial de Koch."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3",
+          "t": "Coesão referencial e dêixis",
+          "n": "teste da substituição + concordância + função sintática",
+          "x": {
+            "e": "Um termo só se interpreta por relação com outro elemento, dentro do texto (endofórica: anáfora ou catáfora) ou fora dele (exofórica/dêitica). Para testar retomadas na prova, substitua o elemento coesivo pelo suposto referente: sentido, gênero, número e compatibilidade sintática devem fechar.",
+            "src": "Etapa 08, p. 6-8 e 24; Aula 5 (5.3), p. 10-22",
+            "trap": "Assumir que o pronome sempre retoma o substantivo imediatamente anterior (Pegadinha 6): em 'Ele perguntou a Pethlem', 'ele' retoma o sujeito Bonifácio, não o complemento Pethlem."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3a",
+              "t": "Anáfora × Catáfora (endofóricas)",
+              "n": "esse/isso retoma · este/isto antecipa · este × aquele",
+              "x": {
+                "e": "Anáfora retoma termo já mencionado antes no texto ('O Deputado... Ele'; 'esse', 'essa', 'isso'). Catáfora antecipa informação que virá em seguida ('O TCU apontou estas irregularidades: falta de assinatura...'; 'este', 'esta', 'isto' — bizu: catapulta lança para frente). Em enumeração de dois termos, 'este' retoma o mais próximo e 'aquele', o mais distante.",
+                "src": "Etapa 08, p. 6 e 12; Aula 5 (5.3), p. 12 e 16-19",
+                "trap": "Classificar 'estas irregularidades: ...' como anáfora (Pegadinha 12) ou inverter 'este' e 'aquele' em enumeração."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3b",
+              "t": "Dêixis ou coesão exofórica",
+              "n": "referência fora do texto (tempo, espaço, interlocutores)",
+              "x": {
+                "e": "Ocorre quando a referência para interpretar um termo está fora do texto, na situação de produção comunicativa (quem fala, com quem, onde, quando). Exemplos da aula: 'hoje', 'amanhã', 'aqui' (Brasil), 'nos' (população local) e demonstrativos espaciais/temporais situacionais ('neste final de semana').",
+                "src": "Aula 5 (5.3), p. 10-11 e 16-18",
+                "trap": "Tentar localizar no próprio cotexto o referente de um dêitico puramente situacional como 'amanhã' ou 'aqui' sem considerar o contexto de enunciação."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3c",
+              "t": "Artigo definido, advérbios e resumitivos",
+              "n": "especificação · aqui/lá · tudo isso / esse fato",
+              "x": {
+                "e": "O artigo definido ('o/a/os/as') indica que o referente já é conhecido/especificado por menção anterior. Advérbios ('lá', 'aqui') funcionam como anafóricos ou dêiticos. Termos resumitivos — pronomes indefinidos ou substantivos ('tudo isso', 'a rotina', 'essa mudança', 'esse fim') — sintetizam enunciados inteiros ou sequências de ações.",
+                "ex": "'Estudar, revisar, fazer questões: tudo isso é indispensável' (Aula 5); 'essa mudança' retoma 'ampliar o horário' (Etapa 08).",
+                "src": "Etapa 08, p. 13 e 23-24; Aula 5 (5.3), p. 14-15 e 22",
+                "trap": "Tomar artigo definido por pronome oblíquo (ou vice-versa) ao julgar retomada, ou atribuir termo resumitivo ('desse trabalho') ao resultado ('Indicador') em vez da pesquisa."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.4",
+          "t": "Substituição, elipse e coesão lexical",
+          "n": "troca gramatical/lexical · omissão recuperável",
+          "x": {
+            "e": "Mecanismos que evitam repetição desnecessária mantendo a continuidade referencial no texto, seja colocando outro item no lugar de um termo/oração, seja omitindo elemento recuperável, seja usando relações semânticas entre palavras.",
+            "src": "Etapa 08, p. 6, 12-13 e 24; Aula 5 (5.3), p. 22-23 e 28-29",
+            "trap": "Confundir referência (retomada do mesmo ser por pronome) com substituição ('fizeram o mesmo' no lugar de uma oração), ou elipse com erro gramatical de omissão."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.4a",
+              "t": "Substituição e coesão lexical",
+              "n": "sinônimos · hiperônimos/hipônimos · nominalização · sigla",
+              "x": {
+                "e": "Na substituição, um item ocupa o lugar de outro ou de uma oração ('Os governadores acataram; os prefeitos fizeram o mesmo'). Na coesão lexical (enquadrada em 'substituição lexical' pelo MRPR), usam-se sinônimos, hiperônimos/hipônimos ('FNDE' → 'autarquia', 'instituição'; 'cão' → 'animal'), nominalização ('ser aprovado' → 'essa aprovação'), adjetivação ('Rei' → 'Coroa') e sigla (regra da aula: primeiro o nome por extenso + sigla entre parênteses, depois só a sigla).",
+                "src": "Etapa 08, p. 6, 13 e 24; Aula 5 (5.3), p. 22-23 e 28-29",
+                "trap": "Usar a sigla antes do nome por extenso ou promover nominalização inadequada que altere o sentido original ('dos outros' → 'involuntários')."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.4b",
+              "t": "Elipse: omissão recuperável (zeugma)",
+              "n": "termo omitido recuperado pelo cotexto · marca por vírgula",
+              "x": {
+                "e": "Omissão de palavra, expressão ou verbo facilmente recuperável pelo contexto anterior, garantindo concisão sem perda de sentido (ex.: 'O decreto regulamenta os casos gerais; a portaria, os particulares', onde a vírgula marca a elipse de 'regulamenta'). Não se confunde com lacuna ou erro por omissão.",
+                "src": "Etapa 08 (3.1.2, Não Confunda e Do Conceito ao Texto), p. 6, 12 e 13",
+                "trap": "Considerar a vírgula vicária/elíptica como erro de pontuação entre sujeito e objeto, ou achar que a elipse quebra a coesão."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.5",
+          "t": "Coesão sequencial e recorrencial",
+          "n": "conectores · tempos verbais · reiteração · paralelismo",
+          "x": {
+            "e": "A coesão sequencial faz o texto avançar, estabelecendo relações lógicas entre orações, períodos e parágrafos (adição, oposição/adversidade, conclusão, explicação, causa, consequência, finalidade, tempo, condição, concessão, comparação, conformidade e proporcionalidade), além da correlação de tempos/modos verbais. A coesão recorrencial (Fávero / Aula 5) abrange a repetição intencional (reiteração enfática) e o paralelismo sintático (mesma estrutura gramatical para conteúdos distintos).",
+            "ex": "'Meu sonho é estudar, trabalhar e descansar' (paralelismo no infinitivo); 'Recordo... Recordo...' (reiteração enfática em Borges).",
+            "src": "Etapa 08, p. 6-7; Aula 5 (5.3), p. 23-28",
+            "trap": "Confundir conector aditivo ('ademais' = acrescenta argumento novo) com retomada/síntese (Questão 7 MME), ou 'pois' explicativo (antes do verbo) com 'pois' conclusivo (entre vírgulas no meio da oração)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4",
+      "cor": 4,
+      "t": "Coerência Textual: Conceito, Níveis e Princípios",
+      "n": "unidade, harmonia e lógica · 4 metarregras de Charolles · local × global (van Dijk)",
+      "x": {
+        "e": "Coerência é a propriedade pela qual o texto forma um todo interpretável, com unidade, harmonia e encadeamento lógico. Envolve a interação entre as pistas textuais e o conhecimento de mundo do leitor sob o princípio de interpretabilidade, devendo ser avaliada tanto no plano local (microestrutura) quanto no global (macroestrutura) e conforme a natureza narrativa, figurativa ou argumentativa do texto.",
+        "src": "Etapa 08 (3.1.3), p. 9-11; Aula 5 (5.2), p. 3-8",
+        "trap": "Buscar a coerência apenas na sucessão linear das frases, ignorando o contexto pragmático e o plano global do texto."
+      },
+      "f": [
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.1",
+          "t": "Conceito, interação e conhecimento de mundo",
+          "n": "unidade · harmonia · lógica · interpretabilidade (Charolles)",
+          "x": {
+            "e": "A Aula 5 sintetiza coerência em três palavras: unidade, harmonia e lógica. A Etapa 08 destaca três teses: (1) resulta da interação leitor-texto (Zambra, 2008), dependendo do conhecimento de mundo (ex.: 'O deputado pediu verificação. O painel foi aberto.'); (2) parte do princípio de interpretabilidade (atribuído a Michel Charolles): o leitor presume sentido e trabalha para construí-lo; (3) na prova, o texto não exige conhecimento técnico externo para ser coerente — se um item depender de algo ausente do texto, desconfie.",
+            "src": "Etapa 08 (3.1.3 e Divergência Teórica 4), p. 9-10 e 12; Aula 5 (5.2), p. 3-4",
+            "trap": "Achar que o texto é incoerente só porque exige inferência baseada no conhecimento compartilhado pelo público-alvo."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2",
+          "t": "Quatro metarregras de Charolles",
+          "n": "repetição · progressão · não contradição · relação",
+          "caixa": true,
+          "x": {
+            "e": "Michel Charolles formulou quatro condições (méta-règles) para que uma sequência seja percebida como coerente: repetição, progressão, não contradição e relação. Escrever com coerência exige equilibrar a primeira e a segunda: retomar o fio sem girar em círculos, avançando sem perder o tema.",
+            "src": "Etapa 08 (3.1.3 e Mnemônicos), p. 9, 11 e 15",
+            "trap": "Confundir a metarregra da repetição (fio condutor contínuo) com redundância viciosa (repetir sem acrescentar informação nova)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2a",
+              "t": "Repetição e Progressão (equilíbrio)",
+              "n": "retomar o fio condutor + acrescentar informação nova",
+              "x": {
+                "e": "Repetição (répétition): o texto retoma seus elementos mantendo um eixo temático contínuo (violação: cada frase trata de algo desconexo). Progressão (progression): o texto acrescenta informação nova e não gira em círculos (violação: 'O projeto é importante porque tem importância'). Só repetição trava o texto; só progressão o fragmenta.",
+                "src": "Etapa 08 (3.1.3 e Não Confunda), p. 9 e 12",
+                "trap": "Reduzir a metarregra da repetição à mera repetição lexical mecânica sem progressão temática."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2b",
+              "t": "Não contradição e Relação",
+              "n": "consistência interna + ligação no mundo do texto",
+              "x": {
+                "e": "Não contradição (non-contradiction): nada nega o que foi dito ou pressuposto antes (violação: aprovado por unanimidade e maioria contrária). Relação (relation): os fatos têm ligação entre si no mundo de que o texto fala (violação: 'O relator leu o voto. Os pássaros migram no inverno.'). Nota: na ficção/conto fantástico, a coerência mede-se dentro do mundo criado pelo próprio texto, não pelo mundo real.",
+                "src": "Etapa 08 (3.1.3 e Não Confunda), p. 9 e 12; Aula 5 (5.2), p. 5-6",
+                "trap": "Chamar de incoerente um texto ficcional ou fantástico apenas por contrariar leis do mundo real, quando não há contradição interna."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.3",
+          "t": "Coerência local × global (Teun van Dijk)",
+          "n": "microestrutura (frases vizinhas) × macroestrutura (todo)",
+          "x": {
+            "e": "Distinção de van Dijk (citada no Cap. 3.1 e detalhada no Cap. 6.1): coerência local (microestrutura) verifica-se entre frases ou sequências vizinhas ('Esta frase decorre da anterior?'; falha por conector errado ou salto sem ponte); coerência global (macroestrutura) verifica-se no texto inteiro ('Tudo serve ao mesmo tema e finalidade?'; falha por fuga do tema ou conclusão desconexa). Um texto pode ser localmente coerente e globalmente incoerente quando escrito sem plano.",
+            "src": "Etapa 08 (3.1.3 e Não Confunda), p. 9-10 e 12",
+            "trap": "Supor que a coerência entre períodos vizinhos garante automaticamente a coerência global do texto."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.4",
+          "t": "Coerência narrativa, figurativa e argumentativa",
+          "n": "tipos observados na Aula 5 · contradições específicas",
+          "x": {
+            "e": "A Aula 5 observa a coerência em três níveis conforme a construção textual: narrativa (sequência lógica de ações: esquecer a chave impede entrar em casa), figurativa (compatibilidade lógica entre figuras descritivas: festa animada × cara de sono dos convidados) e argumentativa (sequência lógica de argumentos para sustentar a tese: pedir medidas urgentes × propor reunião para daqui a 60 dias). Qualquer contradição — temporal, espacial, argumentativa ou de nível de formalidade — gera incoerência.",
+            "src": "Aula 5 (5.2), p. 4-8",
+            "trap": "Confundir quebra de coerência figurativa (elemento descritivo incompatível) com quebra narrativa (ação cronologicamente impossível)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5",
+      "cor": 5,
+      "t": "Coesão × Coerência e Armadilhas Cebraspe",
+      "n": "independência relativa · reescrita/conectores · ambiguidade (MRPR 11.6) · LC 95/98 e Discursiva",
+      "x": {
+        "e": "Bloco decisivo para prova objetiva e discursiva: coesão e coerência auxiliam-se na prática, mas são conceitos distintos com independência relativa (Beaugrande e Dressler). Reúne o diagnóstico das falhas de coesão/coerência, a ambiguidade em textos oficiais e as exigências normativas da Câmara.",
+        "src": "Etapa 08, p. 7, 9-15 e 25; Aula 5, p. 29-33 e 68",
+        "trap": "Achar que o emprego correto de conectores garante coerência ou que a ausência de conectores torna o texto incoerente."
+      },
+      "f": [
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.1",
+          "t": "Independência relativa (Beaugrande & Dressler)",
+          "n": "coesão não é necessária nem suficiente à coerência",
+          "tabela": [
+            [
+              "Coesão (superfície)",
+              [
+                "Palavras e conectores no cotexto",
+                "Pouco dependente do leitor; pode faltar em textos curtos sem prejuízo do sentido",
+                "Ajuda a construir a coerência"
+              ]
+            ],
+            [
+              "Coerência (sentido)",
+              [
+                "Ideias que se sustentam num todo",
+                "Muito dependente do leitor e contexto; não pode faltar (sem ela não há texto)",
+                "Pode existir sem conectores explícitos"
+              ]
+            ]
+          ],
+          "x": {
+            "e": "Tese de Beaugrande e Dressler (1981): a coesão NÃO é condição necessária nem suficiente da coerência (Divergência Teórica 1: Halliday e Hasan não separam tanto os conceitos e veem a coesão como necessária à textura; no ensino brasileiro e no Cebraspe, porém, prevalece a distinção de Beaugrande e Dressler). Item que diga que coesão 'garante' coerência ou que sem conectores não há coerência tende a ser errado.",
+            "src": "Etapa 08 (3.1.3 e Divergência Teórica 1), p. 9-10 e 12; Aula 5, p. 68",
+            "trap": "Marcar como certo o item que afirma ser a coesão 'condição necessária e suficiente' da coerência (Pegadinhas 7 e 8)."
+          },
+          "f": [
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.1a",
+              "t": "Texto coeso, mas incoerente",
+              "n": "tem conector e retomada, mas contradiz o sentido",
+              "x": {
+                "e": "Apresenta conectores e retomadas gramaticalmente corretos na superfície, porém viola a não contradição ou usa nexo incompatível com as ideias (ex.: 'O Plenário aprovou o projeto por unanimidade. Por isso, a maioria votou contra.' ou 'Chovia; portanto, a sessão começou no horário').",
+                "src": "Etapa 08 (3.1.2, 3.1.3 e Discursiva), p. 7, 9 e 25",
+                "trap": "Julgar o período coerente apenas pela presença de 'portanto' ou 'por isso' e pela correção sintática."
+              }
+            },
+            {
+              "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.1b",
+              "t": "Texto coerente sem conectores explícitos",
+              "n": "leitor constrói o nexo lógico pelo contexto",
+              "x": {
+                "e": "Sequência sem conjunções nem pronomes explícitos que mantém plena unidade de sentido porque o leitor infere a relação causal/temporal (ex.: 'Chuva forte. Acesso bloqueado. Sessão adiada.' ou 'Sessão suspensa. Falta de energia.').",
+                "src": "Etapa 08 (3.1.3, Itens 5 e Discursiva), p. 9, 17 e 25",
+                "trap": "Considerar o aviso ou parágrafo sem conectivos como 'não texto' ou 'incoerente' por ausência de marcas coesivas explícitas."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.2",
+          "t": "Pontuação, conectores e reescrita no Cebraspe",
+          "n": "vírgula elíptica · troca de conector · item duplo",
+          "x": {
+            "e": "O Cebraspe cobra coesão e coerência por troca de conector ('substituição de X por Y manteria a coerência/sentido'), supressão/deslocamento e reescrita com dois critérios juntos ('correção gramatical e coerência'). Basta um critério falhar para o item ser errado. Além disso, a pontuação contribui para a coesão, como a vírgula marcando elipse verbal ou separando 'pois' conclusivo.",
+            "ex": "Trocar 'contudo' (ressalva) por 'portanto' (conclusão) mantém a correção gramatical, mas destrói a coerência (Item 20, Etapa 08).",
+            "src": "Etapa 08, p. 13, 15, 20 e 24; Aula 5, p. 3 e 26",
+            "trap": "Achar que o item de reescrita está certo só porque está gramaticalmente perfeito (ou só porque manteve o sentido apesar de erro de concordância/impessoalidade como 'hajam')."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.3",
+          "t": "Ambiguidade referencial, estrutural e polissêmica",
+          "n": "MRPR 11.6 · posição de termos · duplo sentido",
+          "x": {
+            "e": "Ambiguidade é a possibilidade de mais de uma leitura. Na publicidade e no humor pode ser recurso estilístico, mas em textos dissertativos, acadêmicos e oficiais é falha grave. No MRPR (item 11.6), decorre em geral de pronome com mais de um antecedente na 3ª pessoa ('O Ministro comunicou a seu secretariado que ele seria exonerado'). Na Aula 5, divide-se em ambiguidade estrutural (posição de adjuntos/gerúndio como 'João foi atrás do táxi correndo' ou mau uso de 'esse/este') e polissêmica (duplo sentido lexical, como 'vendo' ou 'lançar').",
+            "src": "Etapa 08, p. 7 e 14; Aula 5 (5.3), p. 29-32",
+            "trap": "Não perceber que um pronome possessivo ('seu/sua') ou pessoal ('ele') ou um verbo no gerúndio no fim da frase pode ligar-se a dois referentes distintos."
+          }
+        },
+        {
+          "id": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.4",
+          "t": "Prática parlamentar: LC 95/1998 e Prova Discursiva",
+          "n": "mesmas palavras na lei · edital 9.8.4 e 9.8.5.1",
+          "x": {
+            "e": "Na redação legislativa, a LC nº 95/1998 (art. 11, II, alíneas b e c) manda expressar a mesma ideia pelas mesmas palavras, evitando sinonímia com propósito meramente estilístico e evitando palavras de duplo sentido: na lei, a repetição é o mecanismo coesivo preferido para preservar precisão jurídica. Na prova discursiva (Edital, 9.8.4 e 9.8.5.1, a), o candidato deve produzir texto dissertativo 'primando pela coerência e pela coesão', e a coerência global (apresentação, estrutura e desenvolvimento do tema) compõe a nota de conteúdo.",
+            "src": "Etapa 08 (Na Prática da Câmara e Discursiva), p. 14 e 25",
+            "trap": "Aplicar à redação de leis o conselho escolar de 'variar sempre o vocabulário com sinônimos', violando a LC nº 95/1998."
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "Coesão e coerência são os dois critérios centrados no texto, mas a coesão não é necessária nem suficiente para a coerência.",
+      "de": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.2",
+      "para": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.1"
+    },
+    {
+      "rotulo": "Conferir referentes na paráfrase literal (R-Q-T-R-L) depende de resolver corretamente anáforas, catáforas e elipses.",
+      "de": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2",
+      "para": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3"
+    },
+    {
+      "rotulo": "Substituir conector sequencial pelo de valor lógico errado gera quebra imediata de coerência local (microestrutura).",
+      "de": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.5",
+      "para": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.3"
+    },
+    {
+      "rotulo": "Textos comuns usam sinonímia/hiperonímia para evitar repetição; na lei (LC 95/1998), a repetição das mesmas palavras é preferida.",
+      "de": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.4",
+      "para": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.4"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-LG-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22": {}
+  }
+}

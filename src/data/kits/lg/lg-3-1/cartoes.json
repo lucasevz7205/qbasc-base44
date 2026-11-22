@@ -1,0 +1,235 @@
+[
+  {
+    "id": "lg-3-1-c01",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.1",
+    "tema": "Texto e Textualidade",
+    "pergunta": "O que distingue 'tipo textual' de 'gênero textual' segundo a concepção adotada nas aulas de apoio?",
+    "resposta": [
+      "Tipo textual: forma linguística predominante (narração, argumentação, descrição, injunção, exposição).",
+      "Gênero textual: prática social com função comunicativa, suporte, conteúdo temático, estilo verbal e construção composicional."
+    ],
+    "fonte": "Aula 3 (3.2), p. 4 e 9"
+  },
+  {
+    "id": "lg-3-1-c02",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.2",
+    "tema": "Texto e Textualidade",
+    "pergunta": "Como os sete fatores de textualidade dividem-se entre critérios centrados no texto (semânticos) e critérios centrados nos usuários (pragmáticos)?",
+    "resposta": [
+      "Centrados no texto (semânticos): coesão e coerência.",
+      "Centrados nos usuários (pragmáticos): intencionalidade, aceitabilidade, situacionalidade, informatividade e intertextualidade."
+    ],
+    "fonte": "Etapa 08, p. 10; Aula 5 (5.4), p. 33"
+  },
+  {
+    "id": "lg-3-1-c03",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3",
+    "tema": "Texto e Textualidade",
+    "pergunta": "Quais são as três classes de modalizadores discursivos ligados à intencionalidade e o que cada uma expressa?",
+    "resposta": [
+      "Epistêmica: avalia valor ou condição de verdade (asseverativo, dubitável, delimitador).",
+      "Deôntica: expressa obrigação ou permissão.",
+      "Afetiva: verbaliza reação emotiva (subjetiva ou intersubjetiva)."
+    ],
+    "fonte": "Aula 5 (5.4), p. 34-35"
+  },
+  {
+    "id": "lg-3-1-c04",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.1",
+    "tema": "Compreensão Literal × Interpretativa",
+    "pergunta": "Como o edital diferencia os três níveis de leitura (literal, interpretativa e crítica) pelos comandos típicos de prova?",
+    "resposta": [
+      "Literal (3.1): o que o texto diz explicitamente ('De acordo com o texto', 'Segundo o autor').",
+      "Interpretativa (3.6): implícitos, propósito e fato × opinião ('Infere-se', 'Depreende-se').",
+      "Crítica (3.7): conclusão sustentada pelo texto ('Conclui-se corretamente', 'É correto inferir')."
+    ],
+    "fonte": "Etapa 08 (3.1.1), p. 4; Aula 3 (3.9), p. 62"
+  },
+  {
+    "id": "lg-3-1-c05",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2",
+    "tema": "Compreensão Literal × Interpretativa",
+    "pergunta": "Quais são os cinco pontos de conferência (R-Q-T-R-L) usados para julgar se uma paráfrase literal conserva o conteúdo do texto?",
+    "resposta": [
+      "Referentes e Quantificadores.",
+      "Tempo e modalidade.",
+      "Restrições e condições.",
+      "Relações lógicas."
+    ],
+    "fonte": "Etapa 08 (3.1.1), p. 4 e 15"
+  },
+  {
+    "id": "lg-3-1-c06",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.3",
+    "tema": "Compreensão Literal × Interpretativa",
+    "pergunta": "Qual é a diferença entre 'extrapolação' e 'inferência autorizada', e entre 'redução' e 'síntese'?",
+    "resposta": [
+      "Extrapolação vai além do que o texto sustenta; inferência autorizada extrai apenas o que ele sustenta.",
+      "Redução corta restrição essencial ou toma a parte pelo todo; síntese conserva o alcance do que foi dito."
+    ],
+    "fonte": "Etapa 08, p. 5 e 12"
+  },
+  {
+    "id": "lg-3-1-c07",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.4",
+    "tema": "Compreensão Literal × Interpretativa",
+    "pergunta": "Na conferência de paráfrases literais, qual é o sentido exato de 'pelo menos dois', 'a maioria' e 'cerca de'?",
+    "resposta": [
+      "'Pelo menos dois': dois ou mais (não equivale a exatamente dois).",
+      "'A maioria': mais da metade (não é unanimidade nem simples parcela).",
+      "'Cerca de': valor aproximado (não equivale a número exato)."
+    ],
+    "fonte": "Etapa 08, p. 12-13 e 15"
+  },
+  {
+    "id": "lg-3-1-c08",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.1",
+    "tema": "Coesão Textual",
+    "pergunta": "Quais mecanismos integram a lista de Halliday e Hasan e o que muda nas listas do MRPR e do subitem 3.4 do edital?",
+    "resposta": [
+      "Halliday e Hasan (5): referência, substituição, elipse, conjunção e coesão lexical.",
+      "MRPR 3.4 (exemplificativa): cita os quatro primeiros ('alguns mecanismos').",
+      "Edital 3.4 (4): referência, substituição, elipse e repetição (relações lógicas vão para o 3.3)."
+    ],
+    "fonte": "Etapa 08 (3.1.2), p. 6 e 12"
+  },
+  {
+    "id": "lg-3-1-c09",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.2",
+    "tema": "Coesão Textual",
+    "pergunta": "Como Ingedore Koch e Leonor Fávero agrupam os tipos de coesão textual?",
+    "resposta": [
+      "Koch (2 famílias): referencial (mantém referentes em cena) × sequencial (faz o texto avançar).",
+      "Fávero (3 tipos): referencial, recorrencial (repetições e paralelismos) e sequencial."
+    ],
+    "fonte": "Etapa 08 (3.1.2), p. 6-7"
+  },
+  {
+    "id": "lg-3-1-c10",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.3",
+    "tema": "Coesão Textual",
+    "pergunta": "Qual é a regra textual dos demonstrativos 'esse/isso' versus 'este/isto' e de 'este' versus 'aquele' em enumerações?",
+    "resposta": [
+      "'Esse/essa/isso': função anafórica (retoma elemento já citado no texto).",
+      "'Este/esta/isto': função catafórica (antecipa informação que virá em seguida).",
+      "Em dois antecedentes: 'este' aponta para o mais próximo; 'aquele', para o mais distante."
+    ],
+    "fonte": "Aula 5 (5.3), p. 12 e 18-19; Etapa 08, p. 6"
+  },
+  {
+    "id": "lg-3-1-c11",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.4",
+    "tema": "Coesão Textual",
+    "pergunta": "Como se distinguem referência, substituição (incluindo troca lexical) e elipse como mecanismos coesivos?",
+    "resposta": [
+      "Referência: termo remete a outro elemento necessário à sua interpretação ('Ele', pronome relativo).",
+      "Substituição: item ou hiperônimo ocupa o lugar de outro termo ou oração ('fizeram o mesmo', 'FNDE' → 'autarquia').",
+      "Elipse: omissão de termo recuperável pelo contexto (frequentemente marcada por vírgula)."
+    ],
+    "fonte": "Etapa 08, p. 6, 13 e 24; Aula 5, p. 22-23"
+  },
+  {
+    "id": "lg-3-1-c12",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.5",
+    "tema": "Coesão Textual",
+    "pergunta": "Qual é a diferença entre repetição viciosa, coesão por reiteração e paralelismo sintático?",
+    "resposta": [
+      "Repetição viciosa: repete vocábulo sem função, tornando o texto pesado.",
+      "Reiteração: repetição intencional de termos para dar ênfase e manter o fio.",
+      "Paralelismo: uso da mesma estrutura sintática com conteúdos distintos."
+    ],
+    "fonte": "Etapa 08, p. 7; Aula 5 (5.3), p. 23-24"
+  },
+  {
+    "id": "lg-3-1-c13",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.1",
+    "tema": "Coerência Textual",
+    "pergunta": "Quais são as três palavras-chave da coerência na aula de apoio e o que define o princípio de interpretabilidade?",
+    "resposta": [
+      "Palavras-chave: unidade, harmonia e lógica.",
+      "Interpretabilidade (Charolles): o leitor supõe que o texto faz sentido e mobiliza seu conhecimento de mundo para encontrá-lo."
+    ],
+    "fonte": "Aula 5 (5.2), p. 3-4; Etapa 08 (3.1.3), p. 9-10"
+  },
+  {
+    "id": "lg-3-1-c14",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2",
+    "tema": "Coerência Textual",
+    "pergunta": "Quais são as quatro metarregras de coerência formuladas por Michel Charolles?",
+    "resposta": [
+      "Repetição (retomar elementos para manter fio condutor).",
+      "Progressão (acrescentar informação nova sem girar em círculos).",
+      "Não contradição (não negar o dito ou pressuposto antes).",
+      "Relação (ligação entre os fatos no mundo de que o texto fala)."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9"
+  },
+  {
+    "id": "lg-3-1-c15",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.3",
+    "tema": "Coerência Textual",
+    "pergunta": "Em que diferem coerência local e coerência global segundo Teun van Dijk, e qual falha é típica de cada nível?",
+    "resposta": [
+      "Coerência local (microestrutura): entre frases vizinhas; falha por conector errado ou salto sem ponte.",
+      "Coerência global (macroestrutura): no texto inteiro; falha por fuga do tema ou conclusão desconexa do desenvolvimento."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9-10"
+  },
+  {
+    "id": "lg-3-1-c16",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.4",
+    "tema": "Coerência Textual",
+    "pergunta": "Como se distinguem coerência narrativa, figurativa e argumentativa na análise textual?",
+    "resposta": [
+      "Narrativa: sequência lógica das ações e fatos na história.",
+      "Figurativa: compatibilidade lógica entre figuras descritivas de um cenário ou personagem.",
+      "Argumentativa: encadeamento lógico entre tese, argumentos e conclusão."
+    ],
+    "fonte": "Aula 5 (5.2), p. 4-8"
+  },
+  {
+    "id": "lg-3-1-c17",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.1",
+    "tema": "Coesão × Coerência e Armadilhas",
+    "pergunta": "Por que Beaugrande e Dressler afirmam que a coesão não é condição necessária nem suficiente para a coerência?",
+    "resposta": [
+      "Não é necessária: há textos sem conectores explícitos que são coerentes (o leitor constrói o nexo).",
+      "Não é suficiente: há textos com conectores e retomadas que são incoerentes por contradição interna."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9-10"
+  },
+  {
+    "id": "lg-3-1-c18",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.2",
+    "tema": "Coesão × Coerência e Armadilhas",
+    "pergunta": "Em itens Cebraspe que avaliam simultaneamente 'correção gramatical e coerência', o que acontece ao trocar um conector adversativo por um conclusivo?",
+    "resposta": [
+      "A frase pode continuar gramaticalmente correta.",
+      "Contudo, ocorre quebra de coerência local por alterar o nexo lógico entre as ideias.",
+      "O item torna-se errado, pois basta falhar um dos dois critérios."
+    ],
+    "fonte": "Etapa 08, p. 7, 15 e 20"
+  },
+  {
+    "id": "lg-3-1-c19",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.3",
+    "tema": "Coesão × Coerência e Armadilhas",
+    "pergunta": "Quais são as causas típicas de ambiguidade em textos dissertativos e oficiais segundo o MRPR e a aula de apoio?",
+    "resposta": [
+      "Referencial/estrutural (MRPR 11.6): pronome de 3ª pessoa com mais de um antecedente possível, ou má posição de adjunto/gerúndio.",
+      "Polissêmica: vocábulo com duplo sentido não desfeito pelo contexto."
+    ],
+    "fonte": "Etapa 08, p. 7 e 14; Aula 5 (5.3), p. 29-31"
+  },
+  {
+    "id": "lg-3-1-c20",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r5.4",
+    "tema": "Coesão × Coerência e Armadilhas",
+    "pergunta": "O que determinam a LC nº 95/1998 (para textos normativos) e o Edital da Câmara (para a prova discursiva) quanto à coesão e à coerência?",
+    "resposta": [
+      "LC nº 95/1998: expressar ideia repetida pelas mesmas palavras (sem sinonímia estilística) e evitar duplo sentido.",
+      "Edital (9.8.4 e 9.8.5.1, a): texto dissertativo primando pela coerência e pela coesão, com estrutura e desenvolvimento na nota de conteúdo."
+    ],
+    "fonte": "Etapa 08, p. 14"
+  }
+]
