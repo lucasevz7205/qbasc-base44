@@ -102,6 +102,28 @@ test('registros do Base44 têm precedência sobre kits locais e não são sobres
   assert.equal(daTopic.status, 'reviewing');
 });
 
+test('DA 8.1 mantém o mapa e os cartões do kit depois de gravar um flashcard de nó', () => {
+  const topicId = 'da-8-1';
+  const centralKitModules = readKitModulesFromDisk();
+  const records = {
+    edital: [{ id: topicId, sigla: 'DA', materia: 'Direito Administrativo', num: '8.1', titulo: 'Nova Governança Pública' }],
+    revisao: [],
+  };
+  const load = () => adaptStudy(records, { role: 'admin' }, new Date('2026-11-22T22:55:00Z'), { centralKitModules }).QB_DATA;
+  const before = load();
+  const map = before.mindMaps.find(entry => entry.topicId === topicId);
+  assert.equal(map.nodes.filter(node => node.parent !== null).length, 31);
+  const target = map.nodes.find(node => node.id === 'da-8-1::da-8-1.mapa::0.0.0');
+  assert.ok(target);
+  const cardId = 'node-card-e5258708-882c-41bf-b290-0a51ad41015f';
+  records.revisao.push({ id: cardId, topico: topicId, cartoes: [{ id: cardId, q: 'Qual é o paradigma posterior à NPM?', a: 'Nova Governança Pública.', mapaNoId: target.id }] });
+  const after = load();
+  assert.deepEqual(after.mindMaps.find(entry => entry.topicId === topicId), map);
+  const cards = after.flashcards.filter(card => card.topicId === topicId);
+  assert.equal(cards.length, 21);
+  assert.equal(cards.find(card => card.id === cardId)?.node, target.id);
+});
+
 test('central-kits usa import.meta.glob para empacotar src/data/kits no Vite', () => {
   const src = fs.readFileSync(new URL('../src/lib/kits/central-kits.js', import.meta.url), 'utf8');
   assert.match(src, /import\.meta\.glob\(['"]\.\.\/\.\.\/data\/kits\/\*\*\/\{mapa,cartoes,itens\}\.json['"]/);
