@@ -31,8 +31,18 @@ export function filterFlashcardDeck(deck, reviews, filter, today, studyDate) {
 export function advanceFlashcardSession(session, queue, rating, repeat) {
   const { idx } = session;
   const next = { ...session, flipped: false, ratings: [...session.ratings, rating] };
+  // Errei na passada principal: o cartão sai do baralho e vai para a fila de errados.
+  if (rating === 'errei' && !session.repescagem) {
+    return { ...next, idx: idx + 1, errados: [...(session.errados || []), queue[idx]] };
+  }
   if (!repeat) return { ...next, idx: idx + 1 };
   return { ...next, queue: [...queue.slice(0, idx), ...queue.slice(idx + 1), queue[idx]] };
+}
+
+// Quando o baralho acaba, os errados do dia viram a repescagem (na mesma sessão).
+export function enterRepescagem(session, total) {
+  if (session.repescagem || !session.errados?.length || session.idx < total) return session;
+  return { ...session, queue: session.errados, idx: 0, errados: [], repescagem: true, flipped: false };
 }
 
 export function extractFlashcardSuggestion(reply) {

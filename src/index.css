@@ -512,13 +512,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .qb-rate {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 4px; min-height: 60px; padding: 8px; border-radius: 12px; border: var(--border-hairline);
+  gap: 6px; min-height: 76px; padding: 8px; border-radius: 12px; border: var(--border-hairline);
   background: var(--surface-sunken); color: var(--qb-ivory); font: 600 14px/1.1 var(--font-body);
   cursor: pointer; transition: all var(--dur-base);
 }
 .qb-rate:hover { border-color: var(--qb-gold); background: var(--surface-hover); }
 .qb-rate:focus-visible { outline: none; box-shadow: var(--ring-focus); }
 .qb-rate small { font: 400 12px/1 var(--font-mono); color: var(--text-muted); }
+.qb-rate kbd { font: 500 11px/1 var(--font-mono); color: var(--text-muted); border: 1px solid rgba(208,179,134,.3); border-radius: 5px; padding: 3px 6px; }
 
 .qb-chip {
   white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; min-height: 34px;

@@ -11,7 +11,7 @@ import { useRealStudy } from '@/lib/qb-real-data';
 import { studyDate } from '@/lib/qb-real-model';
 import { flashcardWasRated, reviewDay } from '@/lib/spaced-review';
 import { flashcardOptions } from '@/lib/study-session-rules';
-import { FLASHCARD_FILTERS, advanceFlashcardSession, filterFlashcardDeck } from '@/lib/flashcard-review';
+import { FLASHCARD_FILTERS, advanceFlashcardSession, enterRepescagem, filterFlashcardDeck } from '@/lib/flashcard-review';
 import { ChatMarkdown } from '@/components/qb/tutor/ChatMarkdown';
 import { stripFlashcardContext } from '@/lib/flashcard-standard';
 import FlashcardStandardPanel from '@/components/qb/study/FlashcardStandardPanel';
@@ -63,7 +63,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
       await save('cartoes_aval',card.id,{...prev,k:card.id,atualizadoEm:at,nivel:nextLevel,intervalo:interval,prox:date,ult:r,hist:[...(Array.isArray(prev.hist)?prev.hist:[]),{em:at,v:r,int:interval,rev:flashcardWasRated(prev)}]});
       recordCompletion();
       setSuggestion(null);
-      setCards(c => c.sessionId === cards.sessionId ? advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat) : c);
+      setCards(c => c.sessionId === cards.sessionId ? enterRepescagem(advanceFlashcardSession(c, deck.map(item => item.id), r, option.repeat), deck.length) : c);
     }catch{setError('Falha ao salvar avaliação. Vire o cartão e tente novamente.');}
     finally{lock.current=false;setSaving(false);}
   };
@@ -87,14 +87,15 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
           {mode !== 'all' && <p style={{ color: 'var(--text-muted)', margin: '8px 0 0' }}>{FLASHCARD_FILTERS.find(f => f.id === mode)?.hint}</p>}
         </div>}
         {error&&<p role="alert">{error}</p>}
-        {!done && ratings.at(-1) === 'errei' && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei voltou ao fim da fila e ficou marcado para amanhã.</p>}
+        {!done && ratings.at(-1) === 'errei' && !cards.repescagem && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>O cartão marcado como Errei vai para a repescagem, depois do fim do baralho.</p>}
+        {!done && cards.repescagem && <p role="status" style={{ color: 'var(--text-muted)', margin: 0 }}>Repescagem: os cartões errados voltam até você acertar cada um.</p>}
         {!deck.length ? <Panel>{fullDeck.length ? 'Nenhum cartão neste filtro.' : 'Sem cartões para este tópico.'}{cards.scheduledReview ? <Button onClick={() => go('train')}>Voltar a Treinar</Button> : fullDeck.length ? <Button onClick={()=>pickFilter('all')}>Ver todos</Button> : <Button onClick={cards.concept ? returnFromCards : () => go('edital')}>{cards.concept ? 'Voltar ao conceito' : 'Voltar ao edital'}</Button>}</Panel> : done ? (
           <Panel variant="ornate" padding={32} style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
             <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(D.reviews).length/200,1)} size={110} rule="Rumo a 200 flashcards revisados" />
             <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Revisão concluída</span>
               <h1 style={{ font: 'var(--type-h1)' }}>{deck.length} {deck.length === 1 ? 'cartão revisado' : 'cartões revisados'}</h1>
-              <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcações “Errei” geraram repetições nesta sessão.</p>
+              <p style={{ font: 'var(--type-body)', color: 'var(--text-secondary)' }}>{ratings.filter(r => r === 'errei').length} marcações “Errei” foram para a repescagem nesta sessão.</p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 4 }}>
                 {cards.scheduledReview ? <Button icon="target" onClick={() => go('train')}>Voltar a Treinar</Button> : <>
                   <Button icon={cards.concept ? 'network' : 'house'} onClick={cards.concept ? returnFromCards : () => go('dashboard')}>{cards.concept ? 'Voltar ao conceito' : 'Voltar ao início'}</Button>

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { registerHooks } from 'node:module';
 import { flashcardOptions } from '../src/lib/study-session-rules.js';
-import { advanceFlashcardSession } from '../src/lib/flashcard-review.js';
+import { advanceFlashcardSession, enterRepescagem } from '../src/lib/flashcard-review.js';
 import { flashcardIsDue, questionReviewDate, reviewDay, scheduleReview, scheduledReviewQueues } from '../src/lib/spaced-review.js';
 
 const today = '2026-11-15';
@@ -50,18 +50,49 @@ test('registro de questões reage a erro, chute, dúvida e acerto com certeza', 
   assert.equal(second.proxRevisao, '2026-11-22');
 });
 
-test('cartões mantêm degraus importados, e Errei volta hoje e agenda amanhã', () => {
+test('cartões ajustam os degraus (Difícil recua 1) e Errei vai para repescagem após o baralho', () => {
+  const novo = flashcardOptions({}, today);
+  assert.deepEqual(
+    [novo.errei.label, novo.dificil.label, novo.bom.label, novo.facil.label],
+    ['Repescagem e amanhã', '1 dia', '3 dias', '7 dias'],
+  );
+  assert.equal(novo.dificil.level, 0);
+
   const rating = flashcardOptions({ intervalo: 7 }, today);
-  assert.deepEqual([rating.dificil.days, rating.bom.level, rating.facil.level], [7, 3, 4]);
+  assert.deepEqual([rating.dificil.level, rating.dificil.days, rating.bom.level, rating.facil.level], [1, 3, 3, 4]);
   assert.equal(rating.errei.date, '2026-11-16');
   assert.equal(rating.errei.repeat, true);
-  assert.deepEqual(advanceFlashcardSession({ idx: 0, ratings: [] }, ['a', 'b'], 'errei', rating.errei.repeat).queue, ['b', 'a']);
+
+  const level3 = flashcardOptions({ nivel: 3 }, '2026-11-22');
+  assert.deepEqual([level3.dificil.label, level3.bom.label, level3.facil.label], ['7 dias', '11 dias', '11 dias']);
+
+  let session = { idx: 0, ratings: [], queue: ['a', 'b', 'c'] };
+  session = advanceFlashcardSession(session, session.queue, 'errei', rating.errei.repeat);
+  assert.deepEqual(session.queue, ['a', 'b', 'c']);
+  assert.equal(session.idx, 1);
+  assert.deepEqual(session.errados, ['a']);
+  session = enterRepescagem(session, 3);
+  assert.equal(session.repescagem, undefined);
+
+  session = advanceFlashcardSession(session, session.queue, 'bom', false);
+  session = enterRepescagem(advanceFlashcardSession(session, session.queue, 'bom', false), 3);
+  assert.equal(session.repescagem, true);
+  assert.deepEqual(session.queue, ['a']);
+  assert.equal(session.idx, 0);
+  assert.deepEqual(session.errados, []);
+
+  const repescagemMulti = advanceFlashcardSession({ idx: 0, ratings: [], queue: ['a', 'b'], repescagem: true }, ['a', 'b'], 'errei', true);
+  assert.deepEqual(repescagemMulti.queue, ['b', 'a']);
+  assert.equal(repescagemMulti.idx, 0);
+  const doneRepescagem = advanceFlashcardSession(session, session.queue, 'bom', false);
+  assert.equal(doneRepescagem.idx, 1);
+
   assert.equal(flashcardIsDue(undefined, today), false);
   assert.equal(flashcardIsDue({ hist: [{ v: 'n' }] }, today), true);
   assert.equal(flashcardIsDue({ ult: 'bom', prox: '2026-11-16' }, today), false);
 });
 
-test('fila limita revisões do dia, prioriza atrasos e erros, intercala e mantém o escopo', () => {
+test('fila limita revisões do dia, prioriza atrasos e erros, intercala tópicos por matéria e mantém o escopo', () => {
   const q = (id, chapter, extra = {}) => ({ id, subjectId: 'da', topicId: chapter, response: { tentativas: 1, proxRevisao: previousDay }, ...extra });
   const questions = [
     q('a', 'da-1', { response: { tentativas: 1, proxRevisao: previousDay, noCaderno: true } }),
@@ -71,7 +102,7 @@ test('fila limita revisões do dia, prioriza atrasos e erros, intercala e manté
     q('unseen', 'da-1', { response: null }),
     q('out-of-level', 'da-2', { raw: { foraNivel: true } }),
   ];
-  const flashcards = ['x', 'y', 'new', 'future'].map(id => ({ id, topicId: 'da-1' }));
+  const flashcards = ['x', 'y', 'new', 'future'].map(id => ({ id, topicId: 'da-1', subjectId: 'da' }));
   const reviews = {
     x: { ult: 'errei', prox: today, nivel: 0 },
     y: { ult: 'bom', prox: previousDay, nivel: 2 },
@@ -85,4 +116,29 @@ test('fila limita revisões do dia, prioriza atrasos e erros, intercala e manté
   const limited = scheduledReviewQueues({ ...data, rounds });
   assert.deepEqual(limited.questions, { ids: ['a'], due: 3, postponed: 2 });
   assert.deepEqual(scheduledReviewQueues({ ...data, topicId: 'da-2' }).flashcards.ids, []);
+
+  const multi = scheduledReviewQueues({
+    questions: [
+      q('da1a', 'da-1'),
+      q('cp1a', 'cp-1', { subjectId: 'cp' }),
+      q('da2a', 'da-2'),
+      q('cp2a', 'cp-2', { subjectId: 'cp' }),
+      q('da1b', 'da-1'),
+    ],
+    flashcards: [
+      { id: 'fc-da1a', topicId: 'da-1', subjectId: 'da' },
+      { id: 'fc-cp1', topicId: 'cp-1', subjectId: 'cp' },
+      { id: 'fc-da2', topicId: 'da-2', subjectId: 'da' },
+      { id: 'fc-da1b', topicId: 'da-1', subjectId: 'da' },
+    ],
+    reviews: {
+      'fc-da1a': { ult: 'bom', prox: previousDay, nivel: 1 },
+      'fc-cp1': { ult: 'bom', prox: previousDay, nivel: 1 },
+      'fc-da2': { ult: 'bom', prox: previousDay, nivel: 1 },
+      'fc-da1b': { ult: 'bom', prox: previousDay, nivel: 1 },
+    },
+    today,
+  });
+  assert.deepEqual(multi.questions.ids, ['da1a', 'da2a', 'da1b', 'cp1a', 'cp2a']);
+  assert.deepEqual(multi.flashcards.ids, ['fc-da1a', 'fc-da2', 'fc-da1b', 'fc-cp1']);
 });

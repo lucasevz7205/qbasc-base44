@@ -55,7 +55,7 @@ export function flashcardIsDue(review, today) {
   return !next || next <= today;
 }
 
-function interleave(rows) {
+function interleaveTopics(rows) {
   const groups = new Map();
   for (const row of rows) {
     const group = groups.get(row.group) || [];
@@ -67,6 +67,17 @@ function interleave(rows) {
     for (const group of groups.values()) if (index < group.length) order.push(group[index]);
   }
   return order;
+}
+
+// Intercala tópicos dentro de cada matéria. As matérias saem em blocos, na ordem em que aparecem na fila.
+function interleave(rows) {
+  const subjects = new Map();
+  for (const row of rows) {
+    const subject = row.subject || '';
+    if (!subjects.has(subject)) subjects.set(subject, []);
+    subjects.get(subject).push(row);
+  }
+  return [...subjects.values()].flatMap(interleaveTopics);
 }
 
 export function scheduledReviewQueues({ questions, flashcards, reviews, rounds = [], today, subjectId, topicId, cardTopicIds, examDate }) {
@@ -82,7 +93,7 @@ export function scheduledReviewQueues({ questions, flashcards, reviews, rounds =
     if (history(response).some(item => item.rev && reviewDay(item.em) === today)) reviewedQuestions.add(question.id);
     if (question.raw?.foraNivel || (topicId && question.topicId !== topicId) || (subjectId && question.subjectId !== subjectId)) continue;
     const date = questionReviewDate(response, examDate);
-    if (date && date <= today) questionRows.push({ id: question.id, date, group: question.raw?.cap || question.topicId, priority: response.noCaderno ? 0 : 1 });
+    if (date && date <= today) questionRows.push({ id: question.id, date, group: question.raw?.cap || question.topicId, subject: question.subjectId, priority: response.noCaderno ? 0 : 1 });
   }
 
   let reviewedCards = 0;
@@ -93,7 +104,7 @@ export function scheduledReviewQueues({ questions, flashcards, reviews, rounds =
   for (const card of flashcards) {
     if ((topicId && card.topicId !== topicId) || (cardTopicIds && !cardTopicIds.has(card.topicId))) continue;
     const review = reviews[card.id];
-    if (flashcardIsDue(review, today)) cardRows.push({ id: card.id, date: reviewDay(review.prox) || '', group: card.topicId, priority: flashcardLevel(review) });
+    if (flashcardIsDue(review, today)) cardRows.push({ id: card.id, date: reviewDay(review.prox) || '', group: card.topicId, subject: card.subjectId, priority: flashcardLevel(review) });
   }
 
   const pick = (rows, alreadyDone) => {

@@ -138,9 +138,9 @@ export function flashcardOptions(previousReview, today) {
   const current = flashcardLevel(previousReview);
   return Object.fromEntries(RATINGS.map(rating => {
     const repeat = rating === 'errei';
-    const step = rating === 'facil' ? 2 : rating === 'bom' ? 1 : 0;
-    const level = repeat ? 0 : Math.min(REVIEW_INTERVALS.length - 1, current + step);
+    const step = rating === 'facil' ? 2 : rating === 'bom' ? 1 : rating === 'dificil' ? -1 : 0;
+    const level = repeat ? 0 : Math.max(0, Math.min(REVIEW_INTERVALS.length - 1, current + step));
     const { days, date } = scheduleReview(today, REVIEW_INTERVALS[level]);
-    return [rating, { level, days, date, label: repeat ? 'Nesta sessão e amanhã' : days === 1 ? '1 dia' : days + ' dias', repeat }];
+    return [rating, { level, days, date, label: repeat ? 'Repescagem e amanhã' : days === 1 ? '1 dia' : days + ' dias', repeat }];
   }));
 }

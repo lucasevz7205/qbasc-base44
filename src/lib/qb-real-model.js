@@ -126,7 +126,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);
-      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,front,back,basis:str(c.src??c.ref??c.fonte),tema:c.tema,nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
+      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,subjectId:topics[topicId]?.subjectId,front,back,basis:str(c.src??c.ref??c.fonte),tema:c.tema,nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
     });
   }
   for(const entry of source('revisao').filter(d=>d.kind==='markdown-map').sort((a,b)=>a.created.localeCompare(b.created)||a.id.localeCompare(b.id))){
