@@ -104,7 +104,7 @@ export default function FeynmanLab({ subjects, subjectName, topicId, topicLabel,
               aria-label="Sua explicação"
               maxLength={5000}
             />
-            {personal && <small style={{ color: 'var(--text-muted)' }}>Ao avaliar, o Gemini recebe sua explicação e o recorte selecionado.</small>}
+            {personal && <small style={{ color: 'var(--text-muted)' }}>Ao avaliar, a Base44 recebe sua explicação e o recorte selecionado.</small>}
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               <Button icon="astrolabe" loading={busy} disabled={text.trim().length < 20 || busyKey !== null} onClick={evaluate}>
                 Avaliar com IA

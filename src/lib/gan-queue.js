@@ -60,6 +60,7 @@ export function buildGanQuestionRecord(item, { chosen, node, queue = false }) {
     statusLabel,
     scoreLabel,
     item.provedorDiscriminador === 'gemini' && 'Geração e revisão pelo Gemini',
+    item.provedorDiscriminador === 'base44' && 'Geração e revisão pela Base44',
     item.provedorGerador === 'gpt' && 'Geração e revisão pelo GPT',
   ].filter(Boolean);
   return {

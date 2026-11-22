@@ -29,7 +29,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const tLabel = topic ? (topic.num + ' · ' + (topic.title || 'Tópico ' + topic.num)) : 'Tópico geral';
   const [settingsOpen, setSettingsOpen] = React.useState(false);
   const subjectKey = subj?.id ?? null;
-  const [provider, setProvider] = React.useState('gemini');
+  const [provider, setProvider] = React.useState('base44');
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
   const [transcriptExpanded, setTranscriptExpanded] = React.useState(false);
@@ -45,11 +45,12 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const setMode = value => tutorHistory.setMode(accountId, subjectKey, key, value);
 
   React.useEffect(() => {
+    if (personal) return;
     let mounted = true;
     statusFnRef.current().then(status => { if (mounted) setIntegrationStatus(status); })
       .catch(() => { if (mounted) setIntegrationStatus({ checkError: true }); });
     return () => { mounted = false; };
-  }, []);
+  }, [personal]);
 
   React.useEffect(() => {
     if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
@@ -74,12 +75,12 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           subjectName: subj?.name,
           topicLabel: tLabel,
           userMessage: cleanText,
-          provider,
+          provider: personal ? "base44" : provider,
           history: priorHistory,
         },
       });
       const modeBadge = MODES.find(x => x[0] === kind)?.[0] || mode;
-      push({ role: 'tutor', mode: modeBadge, provider, text: res?.reply || 'Não foi possível obter resposta.' });
+      push({ role: 'tutor', mode: modeBadge, provider: res?.provider || "base44", text: res?.reply || 'Não foi possível obter resposta.' });
     } catch (err) {
       push({
         role: 'error',
@@ -174,13 +175,13 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Provedor</span>
-          {personal ? <span>Gemini · Google</span> : <div className="qb-seg" role="group" aria-label="Provedor de IA do Arquiteto" style={{ flexWrap: 'wrap' }}>
+          {personal ? <span>Base44 · créditos</span> : <div className="qb-seg" role="group" aria-label="Provedor de IA do Arquiteto" style={{ flexWrap: 'wrap' }}>
             <button className="qb-seg__opt" aria-pressed={provider === 'gemini'} onClick={() => setProvider('gemini')} disabled={busy}>Gemini · API externa</button>
             <button className="qb-seg__opt" aria-pressed={provider === 'base44'} onClick={() => setProvider('base44')} disabled={busy}>Base44 · créditos</button>
           </div>}
-          <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
+          {!personal && <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
             {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.checkError ? 'Não foi possível verificar a chave' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
-          </span>
+          </span>}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Modo</span>
@@ -224,7 +225,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           </button>
         ))}
       </div>
-      {personal && <small style={{ color: 'var(--text-muted)' }}>Ao enviar, o Gemini usa a mensagem, o assunto selecionado e a conversa recente deste tópico.</small>}
+      {personal && <small style={{ color: 'var(--text-muted)' }}>Ao enviar, a Base44 usa a mensagem, o assunto selecionado e a conversa recente deste tópico.</small>}
       <form className="qb-arch-composer" onSubmit={event => { event.preventDefault(); send(); }}>
         <textarea className="qb-input qb-arch-composer__input" rows={1}
           value={text} maxLength={3000} aria-label="Mensagem ao Arquiteto"

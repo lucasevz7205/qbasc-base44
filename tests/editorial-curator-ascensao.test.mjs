@@ -81,7 +81,7 @@ test("curadoria não altera coleções originais nem cálculo do histórico", ()
   assert.match(qs, /record.gabaritoUsado = q.key/);
   assert.match(qs, /keyAtAnswer/);
 });
-test("curadoria só consulta Gemini sob autorização e não faz fallback pago", () => {
+test("curadoria consulta a Base44 após autorização e não grava a proposta", () => {
   const service = readFileSync(new URL("../src/lib/server-fns.js", import.meta.url), "utf8");
   const start = service.indexOf("export const proposeEditorialRevision");
   const end = service.indexOf("const FlashcardCorrectionSchema", start);
@@ -91,7 +91,7 @@ test("curadoria só consulta Gemini sob autorização e não faz fallback pago",
   assert.match(fn, /context\.user\.role !== "admin"/);
   assert.match(fn, /personal && data\.kind !== "question"/);
   assert.match(fn, /preparePersonalQuestionEditorial\(context, data\.content\.id\)/);
-  assert.match(fn, /invokeGeminiTutor/);
+  assert.match(fn, /invokeBase44StudyAI/);
   assert.match(fn, /parseEditorialSuggestion/);
-  assert.doesNotMatch(fn, /Core\.InvokeLLM|\.create\(|\.update\(|save\(/);
+  assert.doesNotMatch(fn, /invokeGeminiTutor|\.create\(|\.update\(|save\(/);
 });

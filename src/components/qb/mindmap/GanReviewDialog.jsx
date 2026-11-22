@@ -13,12 +13,14 @@ const verdicts = {
 
 const keyLabel = value => ({ C: 'Certo', E: 'Errado' })[value] || 'Sem gabarito';
 
+const providerLabel = provider => ({ base44: 'Base44', gemini: 'Gemini', gpt: 'GPT' })[provider] || 'Provedor não registrado';
+
 function Recommendation({ item }) {
   const issues = [...new Set([...(item.motivosConfronto || []), ...(item.falhasDetectadas || [])])];
   return (
     <div className="qb-gan-review__evidence">
-      <p><strong>Gerador:</strong> {item.provedorGerador === 'gpt' ? 'GPT' : 'Gemini'} · {keyLabel(item.gabaritoGerador)}</p>
-      <p><strong>Julgamento cego:</strong> {item.provedorDiscriminador === 'gemini' ? 'Gemini' : 'GPT'} · {keyLabel(item.gabaritoDiscriminador)}</p>
+      <p><strong>Gerador:</strong> {providerLabel(item.provedorGerador)} · {keyLabel(item.gabaritoGerador)}</p>
+      <p><strong>Julgamento cego:</strong> {providerLabel(item.provedorDiscriminador)} · {keyLabel(item.gabaritoDiscriminador)}</p>
       <p><strong>Recomendação:</strong> {verdicts[item.veredictoDiscriminador] || 'Sem recomendação'}</p>
       {item.criticaAdversaria && <p><strong>Parecer:</strong> {item.criticaAdversaria}</p>}
       {item.fundamentacaoCega && (

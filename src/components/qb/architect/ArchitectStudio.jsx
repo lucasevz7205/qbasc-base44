@@ -75,7 +75,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           {!dock && !clockOnly && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
         {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
-        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Gemini' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards'}><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Base44' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards'}><Icon name="sparkles" size={13} />IA Ativa</span>}
         {onClose && (dock
           ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}

@@ -155,7 +155,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
         <div style={{ display: "grid", gap: 16, paddingTop: 12, borderTop: "1px solid var(--divider)" }}>
           <p style={{ margin: 0, color: "var(--text-secondary)", font: "400 14px/1.55 var(--font-body)" }}>
             Identifique a falha. O Arquiteto propõe uma correção; você confere e decide se aplica.
-            Nenhuma alteração é automática. Serviço: Gemini (API externa).
+            Nenhuma alteração é automática. Serviço: Base44 (créditos de integração).
           </p>
           <fieldset style={{ border: 0, padding: 0, margin: 0, display: "grid", gap: 8 }}>
             <legend style={{ font: "600 13px/1.4 var(--font-body)", color: "var(--qb-gold)", marginBottom: 8 }}>O que precisa ser corrigido?</legend>

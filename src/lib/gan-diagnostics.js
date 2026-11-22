@@ -5,6 +5,8 @@ const stageLabels = {
   configuracao: 'Configuração do GAN',
   gemini: 'Gerador Gemini',
   'gemini-discriminador': 'Julgamento cego Gemini',
+  'base44-gerador': 'Gerador Base44',
+  'base44-discriminador': 'Julgamento cego Base44',
   confronto: 'Conferência do julgamento',
   gravacao: 'Gravação',
   servidor: 'Comunicação com o servidor',
@@ -15,6 +17,8 @@ const defaultMessages = {
   configuracao: 'Não foi possível ler a configuração do GAN.',
   gemini: 'Não foi possível obter uma resposta válida do Gemini.',
   'gemini-discriminador': 'Não foi possível obter o julgamento cego do Gemini.',
+  'base44-gerador': 'Não foi possível obter questões da Base44.',
+  'base44-discriminador': 'Não foi possível obter o julgamento cego da Base44.',
   confronto: 'Não foi possível confirmar o julgamento dos itens.',
   gravacao: 'A gravação das questões aprovadas não foi confirmada.',
   servidor: 'O servidor não devolveu o resultado do GAN. Confira a conexão e tente novamente.',
@@ -70,6 +74,6 @@ export function assertGanJudgments(judgments, count) {
   if (!Array.isArray(judgments) || judgments.length !== count ||
       judgments.some(j => !Number.isInteger(j?.index) || j.index < 0 || j.index >= count) ||
       new Set(judgments.map(j => j.index)).size !== count) {
-    throw new GanStepError('julgamentos-incompletos', 'O Gemini não retornou um julgamento único para cada questão. Nenhum item deste nó foi salvo.');
+    throw new GanStepError('julgamentos-incompletos', 'A IA não retornou um julgamento único para cada questão. Nenhum item deste nó foi salvo.');
   }
 }

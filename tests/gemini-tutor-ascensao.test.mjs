@@ -107,7 +107,7 @@ test("QBAsc mantém modos pedagógicos, acesso restrito e opção Gemini", () =>
   assert.match(source, /secrets\.get\("Arquiteto"\)/);
   assert.match(source, /secrets\.get\("ARQUITETO"\)/);
   assert.match(source, /return invokeGeminiTutor/);
-  assert.match(source, /base44\.asServiceRole\.integrations\.Core\.InvokeLLM\(\{ prompt \}\)/);
+  assert.match(source, /invokeBase44StudyAI\(context, prompt\)/);
 });
 test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
   const source = readFileSync(new URL("../src/lib/server-fns.js", import.meta.url), "utf8");
@@ -145,12 +145,12 @@ test("Interface oferece corrigir pelo Arquiteto e mantém classificação humana
 test("Chat explicita provedor antes de gastar créditos", () => {
   const tutor = readFileSync(new URL("../src/components/qb/architect/SocraticChat.jsx", import.meta.url), "utf8");
   const service = readFileSync(new URL("../src/lib/server-fns.js", import.meta.url), "utf8");
-  assert.match(tutor, /React\.useState\('gemini'\)/);
+  assert.match(tutor, /React\.useState\('base44'\)/);
   assert.match(tutor, /Gemini · API externa/);
   assert.match(tutor, /Base44 · créditos/);
-  assert.match(tutor, /provider,/);
+  assert.match(tutor, /provider: personal \? "base44" : provider/);
   assert.match(service, /getArchitectProviderStatus/);
-  assert.match(service, /geminiConfigured: Boolean/);
+  assert.match(service, /geminiConfigured: canUseGemini && Boolean/);
 });
 
 test("Gemini solicita JSON com o esquema e reúne as partes sem inserir uma quebra na resposta", async () => {

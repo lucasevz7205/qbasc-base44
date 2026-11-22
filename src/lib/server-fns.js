@@ -4,7 +4,6 @@ import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
-import { callGanGemini } from "@/lib/gan-providers";
 import { GanStepError, assertGanJudgments, withGanDiagnostics } from "@/lib/gan-diagnostics";
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
@@ -64,16 +63,24 @@ const TutorInputSchema = z.object({
 
 const namedArchitectKey = () => secrets.get("Arquiteto")?.trim() || secrets.get("ARQUITETO")?.trim();
 const architectModel = () => secrets.get("QB_GEMINI_MODEL")?.trim() || DEFAULT_TUTOR_GEMINI_MODEL;
-const architectKey = profile => namedArchitectKey() || (!profile ? secrets.get("GEMINI_API_KEY")?.trim() : undefined);
+const architectKey = () => namedArchitectKey() || secrets.get("GEMINI_API_KEY")?.trim();
+
+function invokeBase44StudyAI(context, prompt, schema) {
+  return context.getBase44().asServiceRole.integrations.Core.InvokeLLM({
+    prompt,
+    ...(schema && { response_json_schema: schema }),
+  });
+}
 
 export const getArchitectProviderStatus = createServerFn({ method: "GET" })
   .middleware([requireUser])
   .handler(async ({ context }) => {
-    const profile = await requireArchitectAccess(context);
+    await requireArchitectAccess(context);
+    const canUseGemini = context.user.role === "admin";
     return {
-      geminiConfigured: Boolean(architectKey(profile)),
-      defaultProvider: profile || secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
-      model: architectModel(),
+      geminiConfigured: canUseGemini && Boolean(architectKey()),
+      defaultProvider: canUseGemini && secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44",
+      model: canUseGemini ? architectModel() : null,
     };
   });
 
@@ -112,15 +119,14 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    const provider = profile ? "gemini" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
+    const provider = context.user.role !== "admin" ? "base44" : data.provider || (secrets.get("QB_TUTOR_PROVIDER") === "gemini" ? "gemini" : "base44");
     if (provider === "gemini") {
-      const result = await invokeGeminiTutor({ apiKey: architectKey(profile), model: architectModel(), prompt });
+      const result = await invokeGeminiTutor({ apiKey: architectKey(), model: architectModel(), prompt });
       return { ...result, reply: continueTutorConversation(result.reply, Boolean(historyBlock)) };
     }
-    const base44 = context.getBase44();
-    const res = await base44.asServiceRole.integrations.Core.InvokeLLM({ prompt });
+    const res = await invokeBase44StudyAI(context, prompt);
     const reply = typeof res === "string" ? res.trim() : JSON.stringify(res);
-    return { reply: continueTutorConversation(reply, Boolean(historyBlock)) };
+    return { reply: continueTutorConversation(reply, Boolean(historyBlock)), provider: "base44" };
   });
 
 /**
@@ -211,14 +217,8 @@ export const proposeEditorialRevision = createServerFn({ method: "POST" })
         ? `ENUNCIADO ORIGINAL: ${c.statement}\nGABARITO ORIGINAL: ${c.key}\nCOMENTÁRIO ORIGINAL: ${c.explanation || "ausente"}\nREFERÊNCIA ORIGINAL: ${c.basis || "ausente"}\nMECANISMO ORIGINAL: ${c.mecanismo || "ausente"}\nTRECHO DECISIVO ORIGINAL: ${c.trechoDecisivo || "ausente"}\nCORREÇÃO MÍNIMA ORIGINAL: ${c.correcaoMinima || "ausente"}\nORIGEM: ${c.origin || "não informada"}`
         : `FRENTE ORIGINAL: ${c.front}\nVERSO ORIGINAL: ${c.back}\nFONTE ORIGINAL: ${c.basis || "ausente"}`,
     ].filter(Boolean).join("\n\n");
-    const result = await invokeGeminiTutor({
-      apiKey: architectKey(),
-      model: architectModel(),
-      prompt,
-      responseJsonSchema: editorialResponseSchema(data.kind),
-      maxOutputTokens: 4096,
-    });
-    const proposal = parseEditorialSuggestion(result.reply, data.kind);
+    const result = await invokeBase44StudyAI(context, prompt, editorialResponseSchema(data.kind));
+    const proposal = parseEditorialSuggestion(typeof result === "string" ? result : JSON.stringify(result), data.kind);
     if (data.kind === "flashcard") {
       proposal.replacement.front = stripFlashcardContext(proposal.replacement.front, data.subjectName, data.topicLabel);
     }
@@ -326,21 +326,6 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
       "- nextStep: recomendação prática em 1 frase sobre o que ajustar na reescrita.",
     ].join("\n\n");
 
-    if (profile) {
-      const { reply } = await invokeGeminiTutor({
-        apiKey: architectKey(profile),
-        model: architectModel(),
-        prompt: prompt + "\n\nResponda exclusivamente com o objeto JSON solicitado.",
-        jsonReply: true,
-      });
-      try {
-        const json = reply.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
-        return { words, ...FeynmanFeedbackSchema.parse(JSON.parse(json)) };
-      } catch {
-        throw new Error("O Gemini devolveu uma avaliação incompleta. Tente novamente.");
-      }
-    }
-
     const base44 = context.getBase44();
     const res = await base44.asServiceRole.integrations.Core.InvokeLLM({
       prompt,
@@ -377,11 +362,9 @@ export const evaluateFeynmanExplanation = createServerFn({ method: "POST" })
       },
     });
 
-    if (!res?.modelAnswer?.trim()) throw new Error("A avaliação veio sem a resposta-modelo. Tente novamente.");
-    return {
-      words,
-      ...res,
-    };
+    const feedback = FeynmanFeedbackSchema.safeParse(res);
+    if (!feedback.success) throw new Error("A Base44 devolveu uma avaliação incompleta. Tente novamente.");
+    return { words, ...feedback.data };
   });
 
 const CornellInputSchema = z.object({
@@ -488,8 +471,10 @@ const GenerateFlashcardsSchema = z.object({
 });
 
 export const generateFlashcardsFromMaterial = createServerFn({ method: "POST" })
+  .middleware([requireUser])
   .validator(GenerateFlashcardsSchema)
   .handler(async ({ data, context }) => {
+    await requireArchitectAccess(context);
     const base44 = context.getBase44();
     const count = data.count || 4;
     const prompt = [
@@ -581,13 +566,10 @@ export const generateMindMapFlashcards = createServerFn({ method: 'POST' })
       'Um conceito por cartão. Use perguntas e respostas independentes. Sem evidência suficiente, devolva uma lista vazia.',
       'Material de apoio:\n' + material,
     ].join('\n\n');
-    const result = await callGanGemini({
-      apiKey: architectKey(), model: architectModel(), prompt,
-      schema: {
-        type: 'object', required: ['cards'], properties: {
-          cards: { type: 'array', items: { type: 'object', required: ['front', 'back'],
-            properties: { front: { type: 'string' }, back: { type: 'string' } } } },
-        },
+    const result = await invokeBase44StudyAI(context, prompt, {
+      type: 'object', required: ['cards'], properties: {
+        cards: { type: 'array', items: { type: 'object', required: ['front', 'back'],
+          properties: { front: { type: 'string' }, back: { type: 'string' } } } },
       },
     });
     const seen = new Set();
@@ -611,8 +593,6 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     const data = personal ? personal.data : GenerateMindMapGanSchema.parse(request);
     const sources = await prepareGanSourcePassages(context, data);
     const sourcePassages = JSON.stringify(sources);
-    stage("configuracao");
-    const gemini = { apiKey: architectKey(), model: architectModel() };
     const count = data.count || 4;
     const mapJson = JSON.stringify(data.mapa).slice(0, 12000);
     const pathText = Array.isArray(data.targetNodePath) && data.targetNodePath.length
@@ -637,49 +617,45 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    stage("gemini");
-    const draft = await callGanGemini({
-      ...gemini,
-      prompt: generatorPrompt,
-      schema: {
-        type: "object",
-        properties: {
-          questoes: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                mapaNoId: { type: "string" },
-                tema: { type: "string" },
-                enunciado: { type: "string" },
-                gabarito: { type: "string", enum: ["C", "E"] },
-                mecanismo: { type: "string" },
-                trechoDecisivo: { type: "string" },
-                comentario: { type: "string" },
-                correcaoMinima: { type: "string" },
-                teseGerador: { type: "string" },
-              },
-              required: [
-                "mapaNoId",
-                "tema",
-                "enunciado",
-                "gabarito",
-                "mecanismo",
-                "trechoDecisivo",
-                "comentario",
-                "correcaoMinima",
-                "teseGerador",
-              ],
+    stage("base44-gerador");
+    const draft = await invokeBase44StudyAI(context, generatorPrompt, {
+      type: "object",
+      properties: {
+        questoes: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              mapaNoId: { type: "string" },
+              tema: { type: "string" },
+              enunciado: { type: "string" },
+              gabarito: { type: "string", enum: ["C", "E"] },
+              mecanismo: { type: "string" },
+              trechoDecisivo: { type: "string" },
+              comentario: { type: "string" },
+              correcaoMinima: { type: "string" },
+              teseGerador: { type: "string" },
             },
+            required: [
+              "mapaNoId",
+              "tema",
+              "enunciado",
+              "gabarito",
+              "mecanismo",
+              "trechoDecisivo",
+              "comentario",
+              "correcaoMinima",
+              "teseGerador",
+            ],
           },
         },
-        required: ["questoes"],
       },
+      required: ["questoes"],
     });
 
     const candidateQuestions = Array.isArray(draft?.questoes) ? draft.questoes.slice(0, count) : [];
     if (!candidateQuestions.length) {
-      throw new GanStepError("gemini-sem-itens", "O Gemini não retornou questões para este nó.");
+      throw new GanStepError("base44-sem-itens", "A Base44 não retornou questões para este nó.");
     }
 
     // A segunda chamada começa sem histórico e recebe apenas os enunciados numerados e as fontes.
@@ -704,59 +680,54 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .filter(Boolean)
       .join("\n\n");
 
-    stage("gemini-discriminador");
-    const discRes = await callGanGemini({
-      ...gemini,
-      prompt: discriminatorPrompt,
-
-      schema: {
-        type: "object",
-        properties: {
-          julgamentos: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                index: { type: "integer", minimum: 0, maximum: blindItems.length - 1 },
-                gabaritoDiscriminador: { type: "string", enum: ["C", "E"] },
-                veredicto: { type: "string", enum: ["APROVADA", "REFINAR", "REJEITADA"] },
-                scoreRealismo: { type: "number", minimum: 0, maximum: 100 },
-                falhasDetectadas: { type: "array", items: { type: "string" } },
-                criticaAdversaria: { type: "string" },
-                fundamento: {
-                  type: "object",
-                  properties: {
-                    fonteId: { type: "string" },
-                    trecho: { type: "string" },
-                    explicacao: { type: "string" },
-                    limitacao: { type: "string" },
-                  },
-                  required: ["fonteId", "trecho", "explicacao", "limitacao"],
+    stage("base44-discriminador");
+    const discRes = await invokeBase44StudyAI(context, discriminatorPrompt, {
+      type: "object",
+      properties: {
+        julgamentos: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              index: { type: "integer", minimum: 0, maximum: blindItems.length - 1 },
+              gabaritoDiscriminador: { type: "string", enum: ["C", "E"] },
+              veredicto: { type: "string", enum: ["APROVADA", "REFINAR", "REJEITADA"] },
+              scoreRealismo: { type: "number", minimum: 0, maximum: 100 },
+              falhasDetectadas: { type: "array", items: { type: "string" } },
+              criticaAdversaria: { type: "string" },
+              fundamento: {
+                type: "object",
+                properties: {
+                  fonteId: { type: "string" },
+                  trecho: { type: "string" },
+                  explicacao: { type: "string" },
+                  limitacao: { type: "string" },
                 },
-                itemRefinado: {
-                  type: "object",
-                  properties: {
-                    enunciado: { type: "string" },
-                    gabarito: { type: "string", enum: ["C", "E"] },
-                    comentario: { type: "string" },
-                  },
-                  required: ["enunciado", "gabarito", "comentario"],
-                },
+                required: ["fonteId", "trecho", "explicacao", "limitacao"],
               },
-              required: [
-                "index",
-                "gabaritoDiscriminador",
-                "veredicto",
-                "scoreRealismo",
-                "falhasDetectadas",
-                "criticaAdversaria",
-                "fundamento",
-              ],
+              itemRefinado: {
+                type: "object",
+                properties: {
+                  enunciado: { type: "string" },
+                  gabarito: { type: "string", enum: ["C", "E"] },
+                  comentario: { type: "string" },
+                },
+                required: ["enunciado", "gabarito", "comentario"],
+              },
             },
+            required: [
+              "index",
+              "gabaritoDiscriminador",
+              "veredicto",
+              "scoreRealismo",
+              "falhasDetectadas",
+              "criticaAdversaria",
+              "fundamento",
+            ],
           },
         },
-        required: ["julgamentos"],
       },
+      required: ["julgamentos"],
     });
 
     stage("confronto");
@@ -770,11 +741,11 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
     });
     for (const item of result.questoes) {
       item.id = 'gan-' + crypto.randomUUID();
-      item.provedorGerador = "gemini";
-      item.provedorDiscriminador = "gemini";
+      item.provedorGerador = "base44";
+      item.provedorDiscriminador = "base44";
     }
-    result.provedorGerador = "gemini";
-    result.provedorDiscriminador = "gemini";
+    result.provedorGerador = "base44";
+    result.provedorDiscriminador = "base44";
     stage("gravacao");
     const reviewId = personal ? await personal.stage(result.questoes) : undefined;
     const saved = await saveAutoApprovedMapGan(context, { ...data, queue: request.queue }, result.questoes, personal)

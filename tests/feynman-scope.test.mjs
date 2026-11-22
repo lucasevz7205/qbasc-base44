@@ -58,7 +58,13 @@ test('avaliações por nó recebem o recorte e a referência sem excluir o forma
   const context = { user: { role: 'admin' }, getBase44: () => ({
     asServiceRole: { integrations: { Core: { InvokeLLM: async ({ prompt }) => {
       prompts.push(prompt);
-      return { clarityScore: 85, modelAnswer: "Imagine duas regras para o mesmo jogo." };
+      return {
+        clarityScore: 85, modelAnswer: "Imagine duas regras para o mesmo jogo.",
+        isAdequateLength: true, lengthFeedback: 'Adequado.', jargonDetected: [],
+        jargonFeedback: '', sentenceClarityOk: true, sentenceFeedback: '',
+        hasConcreteExample: false, exampleFeedback: 'Inclua um exemplo.',
+        gaps: [], nextStep: 'Inclua um exemplo.',
+      };
     } } } },
   }) };
   const data = { topicLabel: 'Poderes e relações entre poderes', explanation: 'O controle compara a lei com o parâmetro constitucional.' };

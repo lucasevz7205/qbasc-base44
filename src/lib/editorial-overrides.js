@@ -59,7 +59,7 @@ export function applyEditorialOverlays(questions, cards, entries) {
 }
 
 /**
- * Converte resposta do Gemini em proposta editável. Sem fallback inventado.
+ * Converte a resposta estruturada em proposta editável.
  */
 export function parseEditorialSuggestion(reply, kind) {
   const text = String(reply || "").trim();
@@ -192,6 +192,6 @@ export function makeEditorialEntry({ kind, content, proposal, previous, issue, n
     parecer: String(proposal.parecer || "").slice(0, 1300),
     original, replacement,
     // Documentos de versões anteriores permanecem imutáveis na coleção curadoria.
-    origem: "Curadoria aprovada pelo estudante · O Arquiteto/Gemini",
+    origem: "Curadoria aprovada pelo estudante · O Arquiteto/Base44",
   };
 }

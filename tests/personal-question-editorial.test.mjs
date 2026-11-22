@@ -26,7 +26,7 @@ const { outputFiles } = await build({
   stdin: {
     contents: `
       export { approvePersonalQuestionEditorial, loadPersonalStudy, preparePersonalQuestionEditorial, writePersonalStudy } from './src/lib/study-accounts.js';
-      export { proposeEditorialRevision } from './src/lib/server-fns.js';
+      export { askArchitectTutor, getArchitectProviderStatus, generateMindMapFlashcards, generateMindMapGanQuestions, proposeEditorialRevision } from './src/lib/server-fns.js';
     `,
     resolveDir: process.cwd(),
   },
@@ -35,7 +35,7 @@ const { outputFiles } = await build({
     builder.onLoad({ filter: /.*/, namespace: 'stub' }, ({ path }) => ({ contents: stubs[path], loader: 'js' }));
   } }],
 });
-const { approvePersonalQuestionEditorial, loadPersonalStudy, preparePersonalQuestionEditorial, writePersonalStudy, proposeEditorialRevision } =
+const { approvePersonalQuestionEditorial, loadPersonalStudy, preparePersonalQuestionEditorial, writePersonalStudy, askArchitectTutor, getArchitectProviderStatus, generateMindMapFlashcards, generateMindMapGanQuestions, proposeEditorialRevision } =
   await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
 
 const user = id => ({ id, role: 'user' });
@@ -58,7 +58,7 @@ const approval = {
   },
 };
 
-function fixture() {
+function fixture(invokeLLM) {
   let nextId = 0;
   const rows = [];
   const add = (collection, id, content) => rows.push({ collection, legacy_id: id, id: String(++nextId), payload_json: JSON.stringify(content) });
@@ -69,12 +69,18 @@ function fixture() {
     },
     async create(record) { rows.push({ ...record, id: String(++nextId) }); },
   };
-  for (const id of ['primo', 'novo', 'pendente']) add('qbasc-contas', id, { status: id === 'pendente' ? 'pending' : 'active' });
+  for (const id of ['primo', 'novo', 'pendente']) add('qbasc-contas', id, { status: id === 'pendente' ? 'pending' : 'active', architectEnabled: true });
   add(workspaceCollection('primo', 'questoes'), 'questao.1', { enunciado: 'Questão original particular do Primo.', gabarito: 'C', comentario: 'Comentário anterior do Primo.' });
   add(workspaceCollection('novo', 'questoes'), 'questao.1', { enunciado: 'Questão original particular do usuário novo.', gabarito: 'E', comentario: 'Comentário do outro usuário.' });
   add(workspaceCollection('novo', 'questoes'), 'exclusiva', { enunciado: 'Questão exclusiva do outro usuário.', gabarito: 'E' });
   add(workspaceCollection('primo', 'respostas'), 'questao.1', { ultimaMarcada: 'E', hist: [{ m: 'E', ok: false }] });
-  return { rows, context: id => ({ user: user(id), getBase44: () => ({ asServiceRole: { entities: { ClaudeDocument: mock } } }) }) };
+  add(workspaceCollection('primo', 'edital'), 'da-1', { materia: 'Direito Administrativo', titulo: 'Legalidade' });
+  add(workspaceCollection('primo', 'revisao'), 'da-1', { topico: 'da-1', mapa: { centro: 'Legalidade', ramos: [
+    { t: 'Atos administrativos', x: 'O princípio da legalidade rege os atos administrativos.' },
+  ] } });
+  return { rows, context: id => ({ user: user(id), getBase44: () => ({
+    asServiceRole: { entities: { ClaudeDocument: mock }, integrations: { Core: { InvokeLLM: invokeLLM } } },
+  }) }) };
 }
 
 test('curadoria de questões fica disponível para contas ativas sem permissão extra', () => {
@@ -84,17 +90,14 @@ test('curadoria de questões fica disponível para contas ativas sem permissão 
   assert.equal(canReformulateQuestions({ role: 'admin' }, null), true);
 });
 
-test('proposta pessoal usa apenas o item da própria conta e bloqueia acesso indevido antes de chamar Gemini', async t => {
-  const { context } = fixture();
-  const transport = t.mock.method(globalThis, 'fetch', async (url, options) => {
-    assert.match(String(url), /generativelanguage\.googleapis\.com/);
-    const prompt = JSON.parse(options.body).contents[0].parts[0].text;
+test('proposta pessoal usa Base44 e bloqueia acesso indevido antes de chamar a IA', async t => {
+  const transport = t.mock.fn(async ({ prompt, response_json_schema }) => {
+    assert.ok(response_json_schema.properties.replacement);
     assert.match(prompt, /Questão original particular do Primo/);
     assert.doesNotMatch(prompt, /Conteúdo falso do cliente|original particular do usuário novo/);
-    return { ok: true, json: async () => ({
-      candidates: [{ content: { parts: [{ text: JSON.stringify(approval.proposal) }] }, finishReason: 'STOP' }],
-    }) };
+    return approval.proposal;
   });
+  const { context } = fixture(transport);
   const data = { kind: 'question', issue: 'formulacao', topicLabel: 'Assunto', content: { id: 'questao.1', statement: 'Conteúdo falso do cliente.' } };
   await assert.rejects(proposeEditorialRevision({ context: context('primo'), data: { ...data, kind: 'flashcard' } }), /restrito/);
   await assert.rejects(proposeEditorialRevision({ context: context('primo'), data: { ...data, content: { id: 'exclusiva' } } }), /não pertence/);
@@ -103,6 +106,58 @@ test('proposta pessoal usa apenas o item da própria conta e bloqueia acesso ind
   const proposal = await proposeEditorialRevision({ context: context('primo'), data });
   assert.equal(proposal.baseRevision, null);
   assert.equal(proposal.replacement.statement, approval.proposal.replacement.statement);
+});
+
+test('conta pessoal usa Base44 mesmo se pedir Gemini diretamente', async t => {
+  const google = t.mock.method(globalThis, 'fetch', () => assert.fail('Conta pessoal chamou API externa'));
+  const base44 = t.mock.fn(async () => 'Resposta do Arquiteto.');
+  const { context } = fixture(base44);
+  const caller = context('primo');
+  const status = await getArchitectProviderStatus({ context: caller });
+  assert.deepEqual(status, { geminiConfigured: false, defaultProvider: 'base44', model: null });
+  const response = await askArchitectTutor({ context: caller, data: {
+    mode: 'socratico', topicLabel: 'Legalidade', userMessage: 'Qual é a regra?', provider: 'gemini',
+  } });
+  assert.equal(response.provider, 'base44');
+  assert.equal(base44.mock.callCount(), 1);
+  assert.equal(google.mock.callCount(), 0);
+});
+
+test('geração pelo mapa usa só Base44 e mantém o segundo julgamento cego', async t => {
+  const google = t.mock.method(globalThis, 'fetch', () => assert.fail('A geração chamou Gemini'));
+  const nodeId = 'da-1::da-1::0.0';
+  const statement = 'O princípio da legalidade rege os atos administrativos.';
+  const base44 = t.mock.fn(async ({ prompt, response_json_schema: schema }) => {
+    if (schema.properties.cards) return { cards: [{ front: 'Qual princípio rege os atos administrativos?', back: 'Legalidade.' }] };
+    if (schema.properties.questoes) return { questoes: [{
+      mapaNoId: nodeId, tema: 'Legalidade', enunciado: statement, gabarito: 'C', mecanismo: 'V1',
+      trechoDecisivo: statement, comentario: 'Certo. A Administração se vincula à legalidade.',
+      correcaoMinima: 'Excluir os atos administrativos do princípio (F3).', teseGerador: 'TESE-PRIVADA',
+    }] };
+    assert.ok(schema.properties.julgamentos);
+    assert.ok(prompt.includes(JSON.stringify(statement)));
+    assert.doesNotMatch(prompt, /TESE-PRIVADA|"gabarito": "C"/);
+    return { julgamentos: [{
+      index: 0, gabaritoDiscriminador: 'E', veredicto: 'REJEITADA', scoreRealismo: 30,
+      falhasDetectadas: ['Sem fonte original.'], criticaAdversaria: 'Item bloqueado.',
+      fundamento: { fonteId: '', trecho: '', explicacao: '', limitacao: 'Sem fonte original.' },
+    }] };
+  });
+  const { context } = fixture(base44);
+  const request = { topicId: 'da-1', targetNodeId: nodeId, count: 1 };
+  const adminRequest = { ...request, topicTitle: 'Legalidade', targetNodeLabel: 'Atos administrativos', mapa: {
+    nodes: [{ id: nodeId, label: 'Atos administrativos', summary: statement }],
+  } };
+  await assert.rejects(generateMindMapFlashcards({ context: context('novo'), data: request }), /não pertence/);
+  for (const [caller, data] of [[context('primo'), request], [{ ...context('primo'), user: { id: 'admin', role: 'admin' } }, adminRequest]]) {
+    assert.equal((await generateMindMapFlashcards({ context: caller, data })).cards.length, 1);
+    const generated = await generateMindMapGanQuestions({ context: caller, data });
+    assert.equal(generated.provedorGerador, 'base44');
+    assert.equal(generated.provedorDiscriminador, 'base44');
+    assert.deepEqual(generated.registros, []);
+  }
+  assert.equal(base44.mock.callCount(), 6);
+  assert.equal(google.mock.callCount(), 0);
 });
 
 test('aprovação pessoal salva uma versão privada, preserva o banco e impede propostas antigas e escritas diretas', async () => {
