@@ -106,7 +106,7 @@ test("QBAsc mantém modos pedagógicos, acesso restrito e opção Gemini", () =>
   assert.match(source, /secrets\.get\("QB_TUTOR_PROVIDER"\) === "gemini"/);
   assert.match(source, /secrets\.get\("Arquiteto"\)/);
   assert.match(source, /secrets\.get\("ARQUITETO"\)/);
-  assert.match(source, /return invokeGeminiTutor/);
+  assert.match(source, /return invokeArchitectGemini/);
   assert.match(source, /invokeBase44StudyAI\(context, prompt\)/);
 });
 test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
@@ -117,7 +117,8 @@ test("Correção do flashcard usa Gemini sem alterar SRS nem registros", () => {
   assert.ok(start > 0 && end > start);
   assert.match(block, /\.middleware\(\[requireUser\]\)/);
   assert.match(block, /context\.user\?\.role !== "admin"/);
-  assert.match(block, /invokeGeminiTutor/);
+  assert.match(block, /invokeArchitectGemini/);
+  assert.match(block, /task: "flashcard-correction"/);
   assert.match(block, /apiKey: architectKey\(\)/);
   assert.match(source, /const namedArchitectKey = .*secrets\.get\("Arquiteto"\)/);
   assert.match(block, /data\.front/);
@@ -187,4 +188,32 @@ test("Gemini sinaliza o limite de saída antes de tentar interpretar uma propost
       candidates: [{ finishReason: "MAX_TOKENS", content: { parts: [{ text: '{"front":"incom' }] } }],
     })),
   }), /interrompeu a resposta antes de concluir/);
+});
+
+
+test("Gemini devolve modelo e tokens informados pela API, e 404 tem erro próprio", async () => {
+  const ok = await invokeGeminiTutor({
+    apiKey: "teste", prompt: "teste", model: "gemini-2.5-flash-lite",
+    fetchImpl: async () => new Response(JSON.stringify({
+      candidates: [{ content: { parts: [{ text: "ok" }] } }],
+      usageMetadata: { promptTokenCount: 12, candidatesTokenCount: 3, totalTokenCount: 15 },
+    })),
+  });
+  assert.equal(ok.model, "gemini-2.5-flash-lite");
+  assert.deepEqual(ok.usage, { inputTokens: 12, outputTokens: 3 });
+  await assert.rejects(invokeGeminiTutor({
+    apiKey: "teste", prompt: "teste", model: "gemini-2.5-flash",
+    fetchImpl: async () => new Response("not found", { status: 404 }),
+  }), err => err.status === 404 && err.code === "not_found" && /não encontrado/.test(err.message));
+});
+
+test("Seletor do Arquiteto oferece Automático (padrão), Flash e Flash-Lite só no Gemini", () => {
+  const tutor = readFileSync(new URL("../src/components/qb/architect/SocraticChat.jsx", import.meta.url), "utf8");
+  assert.match(tutor, /React\.useState\('auto'\)/);
+  assert.match(tutor, /\['auto', 'Automático'/);
+  assert.match(tutor, /\['flash', 'Flash'/);
+  assert.match(tutor, /\['lite', 'Flash-Lite'/);
+  assert.match(tutor, /!personal && provider === 'gemini' \? \{ modelPreference \}/);
+  assert.match(tutor, /aria-label="Modelo Gemini do Arquiteto"/);
+  assert.doesNotMatch(tutor, /apiKey|x-goog-api-key|GEMINI_API_KEY/);
 });

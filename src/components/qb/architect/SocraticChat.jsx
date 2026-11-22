@@ -6,10 +6,21 @@ import { Button } from '@/components/qb/core/Button';
 import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { ConfirmDialog } from '@/components/qb/feedback/ConfirmDialog';
-import { askArchitectTutor, getArchitectProviderStatus } from '@/lib/server-fns';
+import { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry } from '@/lib/server-fns';
 import { DEFAULT_TUTOR_MODE, EMPTY_TUTOR_HISTORY, tutorHistory } from '@/lib/tutor-history';
 
 const MODES = [['socratico', 'Socrático'], ['feynman', 'Feynman'], ['banca', 'Banca CEBRASPE'], ['oral', 'Arguição oral']];
+const MODEL_OPTIONS = [
+  ['auto', 'Automático', 'Escolhe o modelo conforme a complexidade da tarefa'],
+  ['flash', 'Flash', 'Prioriza qualidade para raciocínio e correção'],
+  ['lite', 'Flash-Lite', 'Prioriza eficiência em tarefas simples'],
+];
+const modelAvailability = routing => {
+  if (!routing) return '';
+  if (routing.check === 'error') return ' · não foi possível listar os modelos';
+  if (routing.check !== 'ok') return '';
+  return ' · ' + routing.models.map(m => m.label + (m.available ? ' disponível' : ' indisponível')).join(' · ');
+};
 const QUICK = [['retencao', 'target', 'Testar retenção'], ['armadilhas', 'triangle-alert', 'Armadilhas da banca'], ['analogia', 'lightbulb', 'Analogia Feynman'], ['voz', 'mic', 'Arguição por voz']];
 
 const QUICK_PROMPTS = {
@@ -21,6 +32,7 @@ const QUICK_PROMPTS = {
 export default function SocraticChat({ accountId, subjects = [], subjectId, topicId, onContextChange, origin, compact = false, personal = false, style }) {
   const askTutor = useServerFn(askArchitectTutor);
   const getProviderStatus = useServerFn(getArchitectProviderStatus);
+  const getTelemetry = useServerFn(getArchitectModelTelemetry);
   const statusFnRef = React.useRef(getProviderStatus);
   const subj = subjects.find(s => s.id === subjectId) || subjects[0];
   const topic = subj && (subj.topics.find(t => t.id === topicId) || subj.topics[0]);
@@ -30,6 +42,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const [settingsOpen, setSettingsOpen] = React.useState(false);
   const subjectKey = subj?.id ?? null;
   const [provider, setProvider] = React.useState('base44');
+  const [modelPreference, setModelPreference] = React.useState('auto');
+  const [telemetry, setTelemetry] = React.useState(null);
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
   const [transcriptExpanded, setTranscriptExpanded] = React.useState(false);
@@ -76,11 +90,16 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           topicLabel: tLabel,
           userMessage: cleanText,
           provider: personal ? "base44" : provider,
+          ...(!personal && provider === 'gemini' ? { modelPreference } : {}),
           history: priorHistory,
         },
       });
       const modeBadge = MODES.find(x => x[0] === kind)?.[0] || mode;
-      push({ role: 'tutor', mode: modeBadge, provider: res?.provider || "base44", text: res?.reply || 'Não foi possível obter resposta.' });
+      push({
+        role: 'tutor', mode: modeBadge, provider: res?.provider || "base44", text: res?.reply || 'Não foi possível obter resposta.',
+        ...(res?.model ? { model: res.model } : {}),
+        ...(res?.routing?.fallbackFrom ? { fallbackFrom: res.routing.fallbackFrom } : {}),
+      });
     } catch (err) {
       push({
         role: 'error',
@@ -180,9 +199,23 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
             <button className="qb-seg__opt" aria-pressed={provider === 'base44'} onClick={() => setProvider('base44')} disabled={busy}>Base44 · créditos</button>
           </div>}
           {!personal && <span role="status" style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>
-            {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.checkError ? 'Não foi possível verificar a chave' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' : 'Gemini: chave não detectada neste aplicativo'}
+            {integrationStatus === null ? 'Verificando chave externa…' : integrationStatus.checkError ? 'Não foi possível verificar a chave' : integrationStatus.geminiConfigured ? 'Gemini: chave detectada' + modelAvailability(integrationStatus.routing) : 'Gemini: chave não detectada neste aplicativo'}
           </span>}
         </div>
+        {!personal && provider === 'gemini' && <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <span className="qb-overline">Modelo</span>
+          <div className="qb-seg" role="group" aria-label="Modelo Gemini do Arquiteto" style={{ flexWrap: 'wrap' }}>
+            {MODEL_OPTIONS.map(([value, label, hint]) => <button key={value} type="button" className="qb-seg__opt" title={hint} aria-pressed={modelPreference === value} onClick={() => setModelPreference(value)} disabled={busy}>{label}</button>)}
+          </div>
+          <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{MODEL_OPTIONS.find(o => o[0] === modelPreference)?.[2]}. Sem troca de chave nem créditos Base44 em caso de falha.</span>
+          {integrationStatus?.routing?.notice && <small style={{ flexBasis: '100%', color: 'var(--text-muted)' }}>{integrationStatus.routing.notice}</small>}
+          <details style={{ flexBasis: '100%', font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}
+            onToggle={event => { if (event.currentTarget.open) getTelemetry().then(setTelemetry).catch(() => setTelemetry({ error: true })); }}>
+            <summary style={{ cursor: 'pointer' }}>Registros do roteador (esta instância do servidor)</summary>
+            {telemetry === null ? 'Carregando…' : telemetry.error ? 'Não foi possível carregar os registros.' : !Object.keys(telemetry.models || {}).length ? 'Nenhuma chamada registrada desde o último reinício.' :
+              <ul style={{ margin: '6px 0 0', paddingLeft: 18 }}>{Object.entries(telemetry.models).map(([model, s]) => <li key={model}>{model}: {s.requests} chamadas, {s.errors} erros{Object.keys(s.errorsByCode).length ? ' (' + Object.entries(s.errorsByCode).map(([code, n]) => code + ' ' + n).join(', ') + ')' : ''}, média {s.avgDurationMs} ms, tokens {s.inputTokens} entrada / {s.outputTokens} saída</li>)}</ul>}
+          </details>
+        </div>}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <span className="qb-overline">Modo</span>
           <div className="qb-seg" role="group" aria-label="Modo pedagógico" style={{ flexWrap: 'wrap' }}>{MODES.map(([v, l]) => <button key={v} className="qb-seg__opt" aria-pressed={mode === v} onClick={() => setMode(v)}>{modeLabel(v, l)}</button>)}</div>
@@ -205,7 +238,7 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
             : m.role === 'error'
               ? <div key={i} role="alert" className="qb-arch-msg" style={{ alignSelf: 'flex-start', border: '1px solid rgba(238,138,124,.55)', background: 'rgba(238,138,124,.08)', color: 'var(--text-primary)', display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}><Icon name="circle-x" size={16} color="var(--state-incorrect)" />{m.text}<Button size="sm" variant="ghost" icon="rotate-ccw" onClick={() => answer(m.retryKind || mode, m.retryText)}>Tentar novamente</Button></div>
               : <div key={i} className="qb-arch-msg" style={{ alignSelf: 'flex-start', background: 'var(--surface-sunken)', border: 'var(--border-hairline)', color: 'var(--text-secondary)', borderBottomLeftRadius: 4 }}>
-                  <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' : 'Base44'}</p><ChatMarkdown text={m.text} />
+                  <p style={{ font: '600 11px/1 var(--font-body)', letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--qb-gold)' }}>O Arquiteto · {modeLabel(m.mode, (MODES.find(x => x[0] === m.mode) || MODES[0])[1])} · {m.provider === 'gemini' ? 'Gemini' + (m.model ? ' · ' + m.model : '') : 'Base44'}</p>{m.fallbackFrom && <small style={{ color: 'var(--text-muted)' }}>{m.fallbackFrom} indisponível nesta chave; resposta gerada por outro modelo autorizado.</small>}<ChatMarkdown text={m.text} />
                 </div>)}
           {busy && <div role="status" style={{ display: 'flex', alignItems: 'center', gap: 8, font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}><Icon name="loader-circle" size={16} className="qb-spin" />O Arquiteto está elaborando com IA…</div>}
         </div>
