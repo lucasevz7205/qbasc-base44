@@ -1,0 +1,396 @@
+[
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c01",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.1",
+    "pergunta": "No Tema 1.348, como o STF qualificou a imunidade do ITBI quando o sócio entrega bens para formar o capital social da empresa?",
+    "resposta": [
+      "Incondicionada"
+    ],
+    "explicacao": "O município não cobra ITBI nessa entrega, ainda que a empresa tenha atividade preponderantemente imobiliária.",
+    "fonte": "RE 1.495.108/SP (Tema 1.348) — informativo 1235, trecho 3",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c02",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.1.1",
+    "pergunta": "Segundo o Tema 1.348, a restrição ligada à atividade preponderante (compra e venda, locação ou arrendamento de imóveis) alcança quais operações societárias?",
+    "resposta": [
+      "Fusão, incorporação, cisão e extinção de pessoa jurídica"
+    ],
+    "explicacao": "Não alcança a integralização de capital; por isso os arts. 36 e 37 do CTN não foram recepcionados nessa parte.",
+    "fonte": "RE 1.495.108/SP (Tema 1.348) — informativo 1235, trechos 4 e 5",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c03",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.1.2",
+    "pergunta": "Quando o sócio entrega à sociedade um imóvel, até que montante a imunidade do ITBI o protege?",
+    "resposta": [
+      "Até o valor do capital social que está sendo integralizado",
+      "O excedente pode ser tributado"
+    ],
+    "explicacao": "O município ainda pode demonstrar simulação ou fraude à lei: incondicionada não significa ilimitada.",
+    "fonte": "RE 1.495.108/SP (Tema 1.348) — informativo 1235, trechos 4, 5 e 6",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c04",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.2",
+    "pergunta": "Na ADI 7.115/MA (Tema 745 aplicado), o ICMS sobre energia elétrica e serviços de comunicação não pode ultrapassar qual patamar?",
+    "resposta": [
+      "A alíquota geral (modal)"
+    ],
+    "explicacao": "No Maranhão, energia (consumo residencial acima de 500 kWh/mês) e comunicação pagavam 27%, contra 18% da geral.",
+    "fonte": "ADI 7.115/MA (Tema 745) — informativo 1235, trechos 7 e 8",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c05",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.2.1",
+    "pergunta": "Qual a natureza da adoção da seletividade do ICMS pelo estado, segundo a Constituição?",
+    "resposta": [
+      "Facultativa (a Constituição diz que o ICMS \"poderá\" ser seletivo)"
+    ],
+    "explicacao": "Se o estado a adotar, não pode tributar o essencial acima da alíquota geral.",
+    "fonte": "ADI 7.115/MA (Tema 745) — informativo 1235, trechos 8 e 9",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c06",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.2.2",
+    "pergunta": "Quais ações ficam ressalvadas da modulação dos efeitos de 2024?",
+    "resposta": [
+      "As ajuizadas até 05.02.2021"
+    ],
+    "explicacao": "Para os demais, a inconstitucionalidade produz efeitos a partir do exercício financeiro de 2024.",
+    "fonte": "ADI 7.115/MA — informativo 1235, trechos 7, 8 e 10",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c07",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.3",
+    "pergunta": "Na ADI 7.635/MA, qual foi o resultado quanto à subida da alíquota modal do ICMS maranhense de 20% para 22% e depois 23%?",
+    "resposta": [
+      "Constitucional (válida)"
+    ],
+    "explicacao": "A seletividade só impede tributar o essencial acima da alíquota geral; não exige alíquota reduzida.",
+    "fonte": "ADI 7.635/MA — informativo 1235, trechos 7, 8 e 9",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c08",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.4",
+    "pergunta": "No Tema 118, por que o valor do ISS foi excluído da base de cálculo do PIS e da COFINS?",
+    "resposta": [
+      "É ingresso transitório, sem definitividade, repassado ao município ou ao DF",
+      "Não é receita da empresa"
+    ],
+    "explicacao": "É o mesmo raciocínio do Tema 69, que já havia excluído o ICMS dessa base.",
+    "fonte": "RE 592.616/RS (Tema 118) — informativo 1236, trechos 19 e 20",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c09",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.5",
+    "pergunta": "Na ADI 7.918/AL, qual foi o resultado sobre a lei de Alagoas que revogou o \"ICMS Verde\"?",
+    "resposta": [
+      "Constitucional"
+    ],
+    "explicacao": "O ICMS Verde destinava 3% da cota-parte municipal conforme critérios de conservação ambiental.",
+    "fonte": "ADI 7.918/AL — informativo 1237, trecho 48",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c10",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.5.1",
+    "pergunta": "Da parcela do ICMS que pertence aos municípios, qual fatia mínima é distribuída pelo valor adicionado em cada território?",
+    "resposta": [
+      "65%"
+    ],
+    "explicacao": "Os municípios ficam com 25% do ICMS; até 35% da cota seguem lei estadual, com no mínimo 10 pontos percentuais por indicadores de educação.",
+    "fonte": "ADI 7.918/AL (CF, art. 158, IV, a, e § 1º, I e II) — informativo 1237, trechos 48, 49 e 50",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c11",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.5.2",
+    "pergunta": "Na ADI 7.918/AL, por que os municípios não podem exigir a manutenção do critério ambiental de repartição?",
+    "resposta": [
+      "O estado tem liberdade para definir o rateio da parte variável (até 35%)"
+    ],
+    "explicacao": "Não houve ofensa à vedação ao retrocesso, à autonomia municipal nem ao núcleo de proteção do art. 225.",
+    "fonte": "ADI 7.918/AL — informativo 1237, trechos 48, 49 e 50",
+    "tema": "Tributário"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c12",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1",
+    "pergunta": "No modelo federal de controle externo, a denominação \"auditor\" fica reservada a que tipo de cargo?",
+    "resposta": [
+      "Cargo de atividades técnicas de alta complexidade"
+    ],
+    "explicacao": "O nome do cargo tem de corresponder à natureza e à responsabilidade das atribuições.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 11 e 12",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c13",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.1",
+    "pergunta": "Na ADI 7.388/BA, qual alteração da lei baiana sobre o cargo de Agente de Controle Externo foi declarada inconstitucional?",
+    "resposta": [
+      "A troca do nome para \"Auditor de Contas Públicas\""
+    ],
+    "explicacao": "Havia no quadro carreira própria de auditoria, o que rompe a simetria com o modelo federal.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 10 e 11",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c14",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.2",
+    "pergunta": "Por que elevar a escolaridade de ingresso em cargo do Tribunal de Contas, sem mudar as atribuições, não ofende a Súmula Vinculante 43?",
+    "resposta": [
+      "Não há provimento derivado",
+      "Só mudam os requisitos para futuros ingressos"
+    ],
+    "explicacao": "Também foi válido restabelecer o cargo em extinção; a ADI foi apenas parcialmente procedente.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 10, 11 e 12",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c15",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.2",
+    "pergunta": "Qual prazo prescricional a Constituição do Amazonas deu ao Tribunal de Contas para julgar e apreciar contas, validado pelo STF?",
+    "resposta": [
+      "5 anos"
+    ],
+    "explicacao": "O termo inicial é a data do fato, salvo quando a irregularidade decorre de omissão na prestação de contas.",
+    "fonte": "ADI 7.508/AM — informativo 1237, trechos 39 e 40",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c16",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.3",
+    "pergunta": "Na ADI 7.443/ES, além do modelo do art. 130, qual vedação constitucional impediu estender ao MP de Contas o regime do MP comum?",
+    "resposta": [
+      "A vedação de vincular a remuneração de uma carreira à de outra"
+    ],
+    "explicacao": "A vedação de vinculação de regimes remuneratórios vale por simetria nos estados.",
+    "fonte": "ADI 7.443/ES (CF, art. 37, XIII) — informativo 1237, trechos 45 e 46",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c17",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.3.1",
+    "pergunta": "Quais autonomias faltam ao Ministério Público que atua junto ao Tribunal de Contas?",
+    "resposta": [
+      "Administrativa",
+      "Orçamentária"
+    ],
+    "explicacao": "É MP especial: vinculado ao Tribunal de Contas e não integra o MP comum.",
+    "fonte": "ADI 7.443/ES — informativo 1237, trechos 46 e 47",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c18",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.3.2",
+    "pergunta": "Em quais matérias a Constituição manda aplicar ao MP de Contas as regras do MP comum?",
+    "resposta": [
+      "Direitos",
+      "Vedações",
+      "Forma de investidura"
+    ],
+    "explicacao": "Não inclui remuneração; por isso o STF derrubou só essa palavra da lei capixaba.",
+    "fonte": "ADI 7.443/ES (CF, art. 130) — informativo 1237, trechos 46 e 47",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c19",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1",
+    "pergunta": "No Tema 1.308, o piso salarial nacional do magistério passou a alcançar, além dos efetivos, quais professores?",
+    "resposta": [
+      "Os contratados temporariamente na educação básica pública"
+    ],
+    "explicacao": "A modulação não retira o direito ao piso; só define desde quando ele é exigível.",
+    "fonte": "ARE 1.487.739 ED-segundos/PE (Tema 1.308) — informativo 1236, trechos 23 e 24",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c20",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.1",
+    "pergunta": "Para o ente que ainda não pagava o piso aos professores temporários, a partir de que data a obrigação vale?",
+    "resposta": [
+      "01.01.2027"
+    ],
+    "explicacao": "Quem já pagava não sofre cobrança retroativa; ficam ressalvadas as ações em curso até 16.04.2026 e a coisa julgada no mesmo sentido.",
+    "fonte": "ARE 1.487.739 ED-segundos/PE (Tema 1.308) — informativo 1236, trechos 23, 24 e 25",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c21",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.2",
+    "pergunta": "Sem reconhecer omissão, contradição ou obscuridade, com qual finalidade única o STF acolheu em parte os embargos no Tema 1.308?",
+    "resposta": [
+      "Modular os efeitos da tese"
+    ],
+    "explicacao": "A modulação protegeu o ato jurídico perfeito e a coisa julgada.",
+    "fonte": "ARE 1.487.739 ED-segundos/PE (Tema 1.308) — informativo 1236, trechos 24 e 25",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c22",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.2",
+    "pergunta": "Na ADI 7.469/SC, o que é devido ao policial penal pago por subsídio que, por interesse da Administração, não consegue tirar a folga compensatória no prazo legal?",
+    "resposta": [
+      "Pagamento do serviço extraordinário (hora extra)"
+    ],
+    "explicacao": "O subsídio veda adicionais pelo trabalho ordinário, não pelo extraordinário; a compensação por folga em 3 meses continua válida.",
+    "fonte": "ADI 7.469/SC — informativo 1236, trechos 26, 27 e 28",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c23",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.3",
+    "pergunta": "Na ADI 7.937 MC-Ref/PE, qual parâmetro foi mantido, por ora, como limite remuneratório único dos servidores de Pernambuco?",
+    "resposta": [
+      "O subsídio dos desembargadores do Tribunal de Justiça"
+    ],
+    "explicacao": "É medida cautelar referendada (cognição sumária), não julgamento de mérito.",
+    "fonte": "ADI 7.937 MC-Ref/PE (CF, art. 37, § 12) — informativo 1237, trechos 52, 53 e 54",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c24",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1",
+    "pergunta": "Na ADI 2.039/RS, qual espécie normativa a Constituição exige para alterar a lei orgânica e o estatuto do Ministério Público estadual?",
+    "resposta": [
+      "Lei complementar"
+    ],
+    "explicacao": "A alteração gaúcha foi feita por lei ordinária e caiu.",
+    "fonte": "ADI 2.039/RS (CF, art. 128, § 5º) — informativo 1237, trecho 42",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c25",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.1",
+    "pergunta": "Quais atos não corrigem o vício formal de lei ordinária que altera a organização do MP estadual?",
+    "resposta": [
+      "Aprovação por quórum qualificado",
+      "Sanção do governador"
+    ],
+    "explicacao": "O vício formal é insanável.",
+    "fonte": "ADI 2.039/RS — informativo 1237, trecho 43",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c26",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.2",
+    "pergunta": "Por que o Procurador-Geral de Justiça não pode tomar para si inquérito policial em andamento?",
+    "resposta": [
+      "Não há hierarquia entre membros do MP e autoridades policiais"
+    ],
+    "explicacao": "O PGJ também não pode receber prerrogativas de chefe de Poder.",
+    "fonte": "ADI 2.039/RS — informativo 1237, trechos 42 e 44",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c27",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.2",
+    "pergunta": "Na ADI 6.251/SP, qual poder da Administração fundamenta a criação dos NECRIMs dentro da Polícia Civil por decreto?",
+    "resposta": [
+      "Poder regulamentar"
+    ],
+    "explicacao": "Não cria cargo nem órgão; o juiz continua homologando o acordo, após ouvir o MP.",
+    "fonte": "ADI 6.251/SP — informativo 1235, trechos 13, 14, 15 e 16",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c28",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.3",
+    "pergunta": "Na ADI 7.781/SP, a que órgão a carreira de policial penal paulista pode ficar subordinada?",
+    "resposta": [
+      "Secretaria da Administração Penitenciária"
+    ],
+    "explicacao": "A Constituição não exige que as polícias respondam diretamente ao governador.",
+    "fonte": "ADI 7.781/SP — informativo 1236, trechos 29 e 30",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c29",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.1",
+    "pergunta": "Na ADI 7.635/MA, como o STF qualificou a pressa na votação da lei que elevou o ICMS?",
+    "resposta": [
+      "Matéria interna corporis, que não invalida a lei"
+    ],
+    "explicacao": "A exceção é a ofensa a regra constitucional específica.",
+    "fonte": "ADI 7.635/MA — informativo 1235, trecho 8",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c30",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.2",
+    "pergunta": "Segundo a ADI 7.508/AM, quais requisitos constitucionais a proposta de emenda à Constituição estadual precisa cumprir?",
+    "resposta": [
+      "Votação em dois turnos",
+      "Maioria qualificada"
+    ],
+    "explicacao": "Intervalo mínimo previsto só no regimento interno é interna corporis.",
+    "fonte": "ADI 7.508/AM — informativo 1237, trechos 40 e 41",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c31",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.3",
+    "pergunta": "Na ADI 7.937 MC-Ref/PE, de quem é a iniciativa sobre regime jurídico e remuneração dos servidores, ainda que a mudança venha por emenda à Constituição estadual?",
+    "resposta": [
+      "Do chefe do Poder Executivo (governador)"
+    ],
+    "explicacao": "Por isso foi suspensa a emenda parlamentar que liberava converter em dinheiro férias e licença-prêmio não gozadas.",
+    "fonte": "ADI 7.937 MC-Ref/PE — informativo 1237, trechos 51 e 52",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c32",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.4",
+    "pergunta": "Na ADI 6.336/DF, qual foi o resultado sobre a revogação, pela EC 103/2019, da contribuição reduzida de aposentados e pensionistas com doença incapacitante?",
+    "resposta": [
+      "Válida"
+    ],
+    "explicacao": "Não houve ofensa à isonomia, à dignidade humana nem à vedação ao retrocesso.",
+    "fonte": "ADI 6.336/DF (CF, art. 40, § 21, revogado) — informativo 1237, trechos 35 e 36",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c33",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.4.1",
+    "pergunta": "Segundo a ADI 6.336/DF, que tipo de não incidência tributária fica protegido do poder de reforma como cláusula pétrea?",
+    "resposta": [
+      "A desoneração ligada de forma inerente e indispensável a um direito fundamental"
+    ],
+    "explicacao": "A regra revogada era legítima, mas maior que o necessário para uma vida digna.",
+    "fonte": "ADI 6.336/DF (CF, art. 60, § 4º, IV) — informativo 1237, trechos 36 e 38",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c34",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.4.2",
+    "pergunta": "Revogada a regra constitucional, o legislador pode recriar benefício parecido para aposentados com doença incapacitante desde que observe quais princípios?",
+    "resposta": [
+      "Legalidade",
+      "Isonomia"
+    ],
+    "explicacao": "A revogação não suprimiu o núcleo essencial de direito fundamental (trecho 37).",
+    "fonte": "ADI 6.336/DF — informativo 1237, trechos 36 e 37",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c35",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.5",
+    "pergunta": "Na ADI 7.508/AM, como o STF classificou a fixação de prazo prescricional para o Tribunal de Contas, afastando a invasão de competência privativa da União?",
+    "resposta": [
+      "Matéria administrativa"
+    ],
+    "explicacao": "Sem lei federal, os estados podem preencher a lacuna; o STF apelou ao Congresso por uma lei nacional.",
+    "fonte": "ADI 7.508/AM — informativo 1237, trecho 40",
+    "tema": "Processo legislativo e competência"
+  }
+]
