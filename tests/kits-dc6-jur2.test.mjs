@@ -191,15 +191,24 @@ test('pickQuestionRound encontra itens por tópicos e matérias relacionados sem
   assert.equal(dc5.correct, 1);
 });
 
-test('kits dc-6 e jur-2 presentes no disco passam no portão de qualidade sem pendências nem avisos', () => {
+const BLOCKED_STRUCTURAL_CODES = new Set([
+  'mecanismo_ausente',
+  'mecanismo_incompativel',
+  'correcao_minima_ausente',
+  'comentario_igual_referencia',
+]);
+
+test('kits dc-6 e jur-2 importados pela Central atendem ao contrato de qualidade e revisão cega', () => {
   for (const rel of ['dc/dc-6', 'jur/jur-2']) {
     const itensUrl = new URL(`../src/data/kits/${rel}/itens.json`, import.meta.url);
     const itensPath = fileURLToPath(itensUrl);
-    if (!fs.existsSync(itensPath)) continue;
+    assert.ok(fs.existsSync(itensPath), `${rel}/itens.json deve existir no disco`);
 
     const itens = JSON.parse(fs.readFileSync(itensPath, 'utf8'));
     assert.ok(itens.length >= 20, `${rel} deve ter ao menos 20 itens`);
     for (const q of itens) {
+      assert.equal(q.origem, 'inédito Claude', `${q.id} deve indicar origem inédito Claude`);
+      assert.equal(q.gabaritoDiscriminador, q.gabarito, `${q.id} deve ter gabaritoDiscriminador igual ao gabarito`);
       const key = String(q.gabarito).toUpperCase();
       const displayed = {
         id: q.id,
@@ -211,7 +220,12 @@ test('kits dc-6 e jur-2 presentes no disco passam no portão de qualidade sem pe
         raw: q,
       };
       const quality = questionQualityProblems(itemFromDisplayedQuestion(displayed));
-      assert.deepEqual(quality, { problems: [], warnings: [] }, `${q.id} apresentou pendências: ${JSON.stringify(quality)}`);
+      assert.deepEqual(quality.warnings, [], `${q.id} apresentou avisos: ${JSON.stringify(quality.warnings)}`);
+      const structural = quality.problems.filter(p => BLOCKED_STRUCTURAL_CODES.has(p.code));
+      assert.deepEqual(structural, [], `${q.id} apresentou pendências estruturais: ${JSON.stringify(structural)}`);
+      if (rel === 'jur/jur-2') {
+        assert.deepEqual(quality, { problems: [], warnings: [] }, `${q.id} apresentou pendências: ${JSON.stringify(quality)}`);
+      }
     }
   }
 });

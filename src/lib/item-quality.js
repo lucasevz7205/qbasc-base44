@@ -15,7 +15,7 @@ const flat = text => clean(text).normalize("NFD").replace(/[̀-ͯ]/g, "")
 
 /** Frases completas (≥ 12 letras ou números), separadas por . ! ? ou … */
 export function sentenceCount(text) {
-  return clean(text).split(/(?<=[.!?…])\s+/)
+  return clean(text).split(/(?<=[.!?…]['"”’)]?)\s+/)
     .filter(part => part.replace(/[^\p{L}\p{N}]/gu, "").length >= 12).length;
 }
 

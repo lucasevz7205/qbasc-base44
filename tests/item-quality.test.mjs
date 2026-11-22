@@ -38,6 +38,8 @@ test("sem trecho decisivo só avisa", () => {
 test("sentenceCount ignora fragmentos curtos", () => {
   assert.equal(sentenceCount("Sim. Não. Art. 5."), 0);
   assert.equal(sentenceCount("A regra vale para todos os casos previstos. Há uma exceção expressa na lei."), 2);
+  assert.equal(sentenceCount("CF, art. 53, § 2º: 'Desde a expedição do diploma, não poderão ser presos.' Sem flagrante, a preventiva fica vedada."), 2);
+  assert.equal(sentenceCount("ADI 7.469/SC: “É inconstitucional impedir a remuneração do serviço extraordinário.” O subsídio não impede essa paga."), 2);
 });
 test("lista itens antigos fora do padrão", () => {
   const legacy = { id: "Q1", statement: good.statement, key: "C", explanation: "CF art. 62", basis: "CF art. 62", raw: {}, trap: undefined };
