@@ -7,6 +7,7 @@
 import { mechanismForKey } from "./cebraspe-v1-taxonomy.js";
 
 const clean = value => typeof value === "string" ? value.trim() : "";
+const firstNonEmpty = (...values) => values.map(clean).find(Boolean) || "";
 const wordsOf = text => new Set(clean(text).normalize("NFD").replace(/[̀-ͯ]/g, "")
   .toLowerCase().split(/[^a-z0-9]+/).filter(word => word.length > 3));
 const flat = text => clean(text).normalize("NFD").replace(/[̀-ͯ]/g, "")
@@ -69,8 +70,8 @@ export function itemFromDisplayedQuestion(question = {}) {
   return {
     statement: question.statement, key: question.key, explanation: question.explanation, basis: question.basis,
     mecanismo: question.trap && !question.trap.keyConflict && !question.trap.legacyConflict ? question.trap.code : "",
-    correcaoMinima: question.editorial?.correcaoMinima ?? raw.correcaoMinima,
-    trechoDecisivo: question.editorial?.trechoDecisivo ?? (raw.trechoDecisivo || question.trap?.evidence),
+    correcaoMinima: firstNonEmpty(question.editorial?.correcaoMinima, raw.correcaoMinima, raw.trap?.description, raw.vacina),
+    trechoDecisivo: firstNonEmpty(question.editorial?.trechoDecisivo, raw.trechoDecisivo, question.trap?.evidence, raw.evidencia),
   };
 }
 

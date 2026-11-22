@@ -100,3 +100,45 @@ test("a substituição atualiza os campos legados exibidos e guarda os originais
   assert.equal(updatedQuestion.trap.description, good.correcaoMinima);
   assert.deepEqual(backup.rawAnterior, raw);
 });
+
+test("item dos kits da Central com mecanismo, evidencia e vacina passa no diagnóstico sem correcaoMinima explícita", () => {
+  const kitRaw = {
+    id: "da-8-1-q21",
+    enunciado: "O Estado Neoweberiano combina reafirmação da autoridade estatal e adoção seletiva de ferramentas gerenciais.",
+    gabarito: "C",
+    mecanismo: "V1",
+    evidencia: "V1 (paráfrase fiel): descreveu com fidelidade o conceito de Estado Neoweberiano.",
+    vacina: "Estado Neoweberiano = atualização do modelo weberiano + adoção seletiva de elementos da NPM.",
+    comentario: "A assertiva está correta conforme a aula. O Estado Neoweberiano atualiza o modelo burocrático combinando princípios tradicionais e ferramentas gerenciais.",
+    ref: "3.2 Reformas Administrativas, p. 60",
+  };
+  const kitDisplayed = {
+    id: kitRaw.id,
+    statement: kitRaw.enunciado,
+    key: kitRaw.gabarito,
+    explanation: kitRaw.comentario,
+    basis: kitRaw.ref,
+    trap: { code: "V1", evidence: kitRaw.evidencia, vaccine: kitRaw.vacina },
+    raw: kitRaw,
+  };
+  assert.deepEqual(questionQualityProblems(itemFromDisplayedQuestion(kitDisplayed)), { problems: [], warnings: [] });
+});
+
+test("item com raw.trap.description (sem correcaoMinima) é reconhecido por itemFromDisplayedQuestion", () => {
+  const withTrapDescription = {
+    ...good,
+    trap: { code: "V1", evidence: good.trechoDecisivo },
+    raw: { trap: { description: good.correcaoMinima }, trechoDecisivo: good.trechoDecisivo },
+  };
+  assert.deepEqual(questionQualityProblems(itemFromDisplayedQuestion(withTrapDescription)), { problems: [], warnings: [] });
+});
+
+test("item legado sem correcaoMinima, raw.trap.description e raw.vacina continua reprovado mesmo com trap.vaccine genérico", () => {
+  const legacyWithGenericVaccine = {
+    ...good,
+    trap: { code: "V1", vaccine: "Vacina genérica do catálogo que não supre correção mínima autoral." },
+    raw: {},
+  };
+  const { problems } = questionQualityProblems(itemFromDisplayedQuestion(legacyWithGenericVaccine));
+  assert.ok(problems.some(p => p.code === "correcao_minima_ausente"));
+});

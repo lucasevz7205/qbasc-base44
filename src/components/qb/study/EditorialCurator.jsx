@@ -17,6 +17,15 @@ const ISSUES = [
   ["outro", "Outra divergência"],
 ];
 
+const GAP_LABELS = {
+  mecanismo_ausente: "mecanismo ausente",
+  mecanismo_incompativel: "mecanismo incompatível com o gabarito",
+  correcao_minima_ausente: "correção mínima / vacina ausente",
+  comentario_curto: "comentário curto",
+  comentario_igual_referencia: "comentário igual à referência",
+  comentario_repete_enunciado: "comentário repete o enunciado",
+};
+
 const Field = ({ title, value, onChange, rows = 3, readOnly = false }) => (
   <label style={{ display: "grid", gap: 6, minWidth: 0 }}>
     <span style={{ font: "600 13px/1.4 var(--font-body)", color: "var(--qb-gold)" }}>{title}</span>
@@ -134,7 +143,7 @@ export default function EditorialCurator({ kind, item, topicLabel, subjectName, 
         <span style={{ flex: 1, minWidth: 0 }}>
           <strong style={{ font: "600 15px/1.4 var(--font-body)" }}>O Arquiteto · Reformular {label}</strong>
           {itemGaps.length > 0 && <span style={{ display: "block", font: "400 12px/1.4 var(--font-body)", color: "var(--state-incorrect, #efa69d)" }}>
-            Fora do padrão: {itemGaps.length === 1 ? "1 pendência" : itemGaps.length + " pendências"} (mecanismo, correção mínima ou comentário). Peça uma reformulação.
+            Fora do padrão: {itemGaps.length === 1 ? "1 pendência" : itemGaps.length + " pendências"} ({itemGaps.map(p => GAP_LABELS[p.code] || p.code).join(", ")}). Peça uma reformulação.
           </span>}
           {previous && <span style={{ display: "block", font: "400 12px/1.4 var(--font-body)", color: "var(--qb-gold)" }}>
             Versão editorial {previous.version} aplicada · original preservado
