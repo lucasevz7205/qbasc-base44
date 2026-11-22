@@ -245,7 +245,7 @@ export function QBStudyProvider({ children }) {
       if (!s || !t) return { ok: false, reason: 'topic-not-found' };
       if (i.action === 'architect') return { ok: true, view: 'architect', note: 'Tutor contextualizado' };
       if (i.action === 'train') {
-        const n = QB_DATA.questionBank.filter(q => q.topicId === t.id).length;
+        const n = QB_DATA.questionBank.filter(q => q.topicId === t.id || q.relatedTopicIds?.includes(t.id)).length;
         return n
           ? { ok: true, view: 'questions', note: n + (n === 1 ? ' questão' : ' questões') }
           : { ok: false, reason: 'no-questions' };

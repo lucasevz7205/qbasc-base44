@@ -1,4 +1,4 @@
-const KIT_PATH_RE = /\/data\/kits\/(?:([a-z]{2})\/)?([a-z]{2}-[0-9]+[a-z]?(?:-[0-9]+[a-z]?)*)\/(mapa|cartoes|itens)\.json$/i;
+const KIT_PATH_RE = /\/data\/kits\/(?:([a-z]{2,4})\/)?([a-z]{2,4}-[0-9]+[a-z]?(?:-[0-9]+[a-z]?)*)\/(mapa|cartoes|itens)\.json$/i;
 
 // Vite transforma a chamada ao glob e fornece env. O Node direto não fornece env.
 const globKitModules = import.meta.env

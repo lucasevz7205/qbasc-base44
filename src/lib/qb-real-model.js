@@ -204,7 +204,9 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
       uniqueReferences.length === 1 ? uniqueReferences[0] : undefined, uniqueReferences.length ? undefined : q.enunciado);
     const trap = resolveQuestionTrap(q, keyOf(q.gabarito), mechanisms);
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, trap?.code ? trap.name : null].filter(Boolean);
-    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
+    const relatedTopicIds = [...new Set(arr(q.topicosRelacionados).filter(id => typeof id === 'string' && id !== topic?.id && topics[id]))];
+    const relatedSubjectIds = [...new Set(relatedTopicIds.map(id => topics[id]?.subjectId).filter(sid => sid && sid !== topic?.subjectId))];
+    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,...(relatedTopicIds.length?{relatedTopicIds}:{}),...(relatedSubjectIds.length?{relatedSubjectIds}:{}),chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));

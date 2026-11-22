@@ -39,8 +39,8 @@ export function pickQuestionRound(bank, { topicId, subjectId, nodeId, filter, qu
   const eligible = bank.filter(question =>
     (!selected || selected.has(question.id)) &&
     question.statusConfronto !== 'divergencia_bloqueada' &&
-    (!topicId || question.topicId === topicId) &&
-    (!subjectId || question.subjectId === subjectId) &&
+    (!topicId || question.topicId === topicId || Boolean(question.relatedTopicIds?.includes(topicId))) &&
+    (!subjectId || question.subjectId === subjectId || Boolean(question.relatedSubjectIds?.includes(subjectId))) &&
     (!nodeId || question.node === nodeId),
   );
   const conflicts = unique ? conflictingPrompts(eligible) : null;

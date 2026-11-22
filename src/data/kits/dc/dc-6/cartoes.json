@@ -1,0 +1,369 @@
+[
+  {
+    "id": "dc-6-c01",
+    "no": "kit-arr-dc-6-2026-11-22-r1.1",
+    "tema": "Natureza, Titularidade e Marcos Temporais",
+    "pergunta": "As imunidades parlamentares podem ser renunciadas expressamente pelo congressista e estendem-se ao corréu sem mandato?",
+    "resposta": [
+      "Não: as imunidades protegem o mandato, não a pessoa (ratione muneris)",
+      "É vedada a renúncia às imunidades, mesmo por declaração expressa (Inq 510)",
+      "A imunidade não se estende ao corréu sem essa prerrogativa (Súmula 245 STF)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 4–5, 16; Inq 510; Súmula 245 STF"
+  },
+  {
+    "id": "dc-6-c02",
+    "no": "kit-arr-dc-6-2026-11-22-r1.2",
+    "tema": "Natureza, Titularidade e Marcos Temporais",
+    "pergunta": "Quais prerrogativas e vedações começam na diplomação e quais exigem a posse do congressista?",
+    "resposta": [
+      "Desde a expedição do diploma: foro no STF (art. 53, § 1º), imunidade à prisão (art. 53, § 2º), crimes passíveis de sustação (art. 53, § 3º) e vedações do art. 54, I (contratar e aceitar cargo)",
+      "Desde a posse: vedações do art. 54, II (ser proprietário/diretor com favor público, ocupar cargo ad nutum, patrocinar causa e acumular mandato) e exercício do mandato (imunidade material)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 9, 155; CF arts. 53 e 54"
+  },
+  {
+    "id": "dc-6-c03",
+    "no": "kit-arr-dc-6-2026-11-22-r1.3",
+    "tema": "Natureza, Titularidade e Marcos Temporais",
+    "pergunta": "O suplente apenas diplomado possui imunidades parlamentares e foro no STF? E quando empossado em substituição?",
+    "resposta": [
+      "Enquanto aguarda convocação, o suplente NÃO tem imunidades nem foro no STF (AP 511)",
+      "Convocado e empossado (mesmo interinamente), adquire imunidades e foro enquanto durar o efetivo exercício, perdendo-os ao retorno do titular (Inq 2.421 AgR)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 17; AP 511; Inq 2.421 AgR"
+  },
+  {
+    "id": "dc-6-c04",
+    "no": "kit-arr-dc-6-2026-11-22-r1.3",
+    "tema": "Natureza, Titularidade e Marcos Temporais",
+    "pergunta": "Qual a divergência entre o RICD e o STF sobre as imunidades do parlamentar investido no cargo de Ministro de Estado (art. 56, I)?",
+    "resposta": [
+      "RICD art. 231, § 7º: afirma que as imunidades parlamentares 'subsistirão'",
+      "STF (e Cebraspe 2025): as imunidades NÃO acompanham o parlamentar no cargo do Executivo, mantendo-se porém sujeito às vedações e ao decoro (MS 25.579 MC)",
+      "Exonerado, tem 15 dias para reassumir, sob pena de falta de decoro (RICD art. 230, § 3º)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 18–25; RICD arts. 230 e 231, § 7º"
+  },
+  {
+    "id": "dc-6-c05",
+    "no": "kit-arr-dc-6-2026-11-22-r2.1",
+    "tema": "Imunidade Material e Tema 950",
+    "pergunta": "Que tipos de responsabilidade a imunidade material (art. 53, caput) afasta e qual sua diferença textual em relação ao RICD art. 231, § 1º?",
+    "resposta": [
+      "Afasta responsabilidade penal, civil, administrativa e política (salvo quebra de decoro julgada pela própria Casa) e até pedido de explicações em juízo (AC 3.883 AgR)",
+      "Protege para sempre o que foi dito durante o mandato (AI 401.600)",
+      "CF art. 53, caput traz 'civil e penalmente' e 'quaisquer' (EC 35/2001); RICD art. 231, § 1º manteve o texto de 1988 sem essas expressões"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 28–29; CF art. 53, caput; RICD art. 231, § 1º"
+  },
+  {
+    "id": "dc-6-c06",
+    "no": "kit-arr-dc-6-2026-11-22-r2.2",
+    "tema": "Imunidade Material e Tema 950",
+    "pergunta": "Como funciona o critério do nexo com o mandato para manifestações dentro e fora do recinto parlamentar?",
+    "resposta": [
+      "Dentro da Casa e comissões (inclusive CPIs): presume-se o nexo com o mandato (Inq 1.958), salvo ofensa manifestamente alheia à função (ex.: briga de vizinhança)",
+      "Fora da Casa (entrevistas, redes sociais, podcasts): exige prova de conexão in officio ou propter officium; sem vínculo funcional, o parlamentar responde civil e penalmente"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 27, 30–31, 46–47"
+  },
+  {
+    "id": "dc-6-c07",
+    "no": "kit-arr-dc-6-2026-11-22-r2.3",
+    "tema": "Imunidade Material e Tema 950",
+    "pergunta": "O que decidiu o STF no Tema 950 (RE 632.115, 2025) sobre a responsabilidade civil do Estado por falas de parlamentares?",
+    "resposta": [
+      "Se a fala está coberta pela imunidade material, configura excludente da responsabilidade civil objetiva do Estado (art. 37, § 6º, CF)",
+      "Se extrapolar os limites da imunidade, a responsabilização recai de forma pessoal, direta e exclusiva sobre o parlamentar, sob regime subjetivo (sem solidariedade nem regresso do Estado)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 32–33, 45, 47; Tema 950 STF"
+  },
+  {
+    "id": "dc-6-c08",
+    "no": "kit-arr-dc-6-2026-11-22-r3.1",
+    "tema": "Foro no STF, Inquérito e Busca no Congresso",
+    "pergunta": "Quais processos NÃO são atraídos pelo foro por prerrogativa de função do congressista no STF?",
+    "resposta": [
+      "Ações civis em geral (ex.: ação popular, ação de cobrança)",
+      "Ações de improbidade administrativa",
+      "Ações eleitorais de natureza não criminal (ex.: art. 22 da LC 64/1990)",
+      "Crimes praticados antes da diplomação ou sem relação com as funções do mandato (AP 937 QO)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 54–57; AP 937 QO"
+  },
+  {
+    "id": "dc-6-c09",
+    "no": "kit-arr-dc-6-2026-11-22-r3.2",
+    "tema": "Foro no STF, Inquérito e Busca no Congresso",
+    "pergunta": "Segundo a virada jurisprudencial de 2025 (Inq 4.787 AgR-QO e HC 232.627), o que acontece com o foro no STF após o parlamentar deixar o mandato por renúncia ou não reeleição?",
+    "resposta": [
+      "O foro no STF subsiste mesmo após o afastamento do cargo para crimes cometidos no mandato e em razão das funções",
+      "A competência permanece no STF ainda que o inquérito ou a ação penal seja instaurado depois de cessado o exercício do mandato"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 58–60; Inq 4.787 AgR-QO; HC 232.627"
+  },
+  {
+    "id": "dc-6-c10",
+    "no": "kit-arr-dc-6-2026-11-22-r3.2",
+    "tema": "Foro no STF, Inquérito e Busca no Congresso",
+    "pergunta": "Quais foram as três balizas fixadas pelo STF no HC 232.627 ED (2026) sobre a subsistência do foro por prerrogativa?",
+    "resposta": [
+      "Alcança todos os titulares de foro, inclusive cargos vitalícios (Judiciário, MP, TCs, Forças Armadas, diplomatas)",
+      "Em cargos sucessivos com condutas interligadas ou crimes permanentes, prevalece o órgão de maior graduação (CPP, art. 78, III)",
+      "Em regra não abrange crimes eleitorais 'a pretexto' do cargo, salvo delitos funcionais conexos de quem já detinha foro"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 61; HC 232.627 ED"
+  },
+  {
+    "id": "dc-6-c11",
+    "no": "kit-arr-dc-6-2026-11-22-r3.3",
+    "tema": "Foro no STF, Inquérito e Busca no Congresso",
+    "pergunta": "Quem pode autorizar busca e apreensão nas dependências do Congresso Nacional ou em imóvel funcional ocupado por parlamentar, inclusive quando o investigado é assessor sem mandato?",
+    "resposta": [
+      "Exclusivamente o Supremo Tribunal Federal (ADPF 424, j. 29/09/2025)",
+      "A competência exclusiva do STF vale mesmo que a pessoa diretamente investigada não detenha mandato parlamentar"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 63, 76–77; ADPF 424"
+  },
+  {
+    "id": "dc-6-c12",
+    "no": "kit-arr-dc-6-2026-11-22-r3.3",
+    "tema": "Foro no STF, Inquérito e Busca no Congresso",
+    "pergunta": "Parlamentar indiciado ou réu pode escolher dia, hora e local de seu interrogatório com base no art. 221 do CPP? E a PF pode instaurar inquérito de ofício contra ele?",
+    "resposta": [
+      "Não ao art. 221 do CPP: a prerrogativa de ajustar depoimento vale apenas para testemunha ou vítima, nunca para indiciado ou réu (Inq 2.839)",
+      "Não à instauração de ofício: abertura de inquérito e indiciamento contra congressista dependem de autorização do STF (Pet 3.825 QO)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 62; Inq 2.839; Pet 3.825 QO"
+  },
+  {
+    "id": "dc-6-c13",
+    "no": "kit-arr-dc-6-2026-11-22-r4.1",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Qual o rito e a divergência CF/STF × RICD no caso de prisão em flagrante de Deputado Federal por crime inafiançável?",
+    "resposta": [
+      "Autos remetidos em 24 horas à Câmara; Presidente despacha à CCJC, que custodia o preso e emite parecer prévio em 72 horas (RICD arts. 250–251)",
+      "Plenário decide na sessão seguinte por maioria absoluta (257 votos), avisando o STF em 2 sessões",
+      "Divergência de voto: o RICD art. 251, I, b prevê voto secreto, mas o STF impõe votação nominal e aberta (ADI 5.526; Inq 4.781)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 102, 106–107, 269; RICD arts. 250–251"
+  },
+  {
+    "id": "dc-6-c14",
+    "no": "kit-arr-dc-6-2026-11-22-r4.2",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Quando uma medida cautelar diversa da prisão (art. 319 CPP) precisa ser submetida à Casa Legislativa segundo a ADI 5.526?",
+    "resposta": [
+      "Apenas quando impossibilitar, direta ou indiretamente, o pleno exercício do mandato (ex.: afastamento do cargo) — remessa em 24h, maioria absoluta, voto aberto",
+      "Medidas como multa diária, bloqueio de contas ou desconto por descumprimento não impedem o mandato e não vão à Casa (AP 1.044 REF)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 108–109; ADI 5.526; AP 1.044 REF"
+  },
+  {
+    "id": "dc-6-c15",
+    "no": "kit-arr-dc-6-2026-11-22-r4.3",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Quais os requisitos e prazos da sustação do processo penal contra congressista após a EC 35/2001 (CF art. 53, §§ 3º–5º)?",
+    "resposta": [
+      "Sem licença prévia: recebida denúncia por crime ocorrido APÓS a diplomação, o STF apenas dá ciência à Casa",
+      "Iniciativa exclusiva de partido político representado na Casa",
+      "Prazo improrrogável de 45 dias do recebimento pela Mesa Diretora (silêncio = processo continua)",
+      "Deliberação por maioria absoluta, voto ostensivo; susta o andamento até a decisão final e SUSPENDE (não interrompe) a prescrição enquanto durar o mandato"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 81–87; AP 2.668 QO"
+  },
+  {
+    "id": "dc-6-c16",
+    "no": "kit-arr-dc-6-2026-11-22-r4.3",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Cabe sustação pela Câmara ou pelo Senado se a mesma ação penal reunir crimes cometidos antes e depois da diplomação (AP 2.668 QO)?",
+    "resposta": [
+      "Apenas em relação às infrações praticadas após a diplomação",
+      "Quanto aos crimes anteriores à diplomação, a ação penal prossegue normalmente, sem possibilidade de sustação (AP 2.668 QO, 2025)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 87, 95; AP 2.668 QO"
+  },
+  {
+    "id": "dc-6-c17",
+    "no": "kit-arr-dc-6-2026-11-22-r4.4",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Como funcionam a dispensa de testemunho, a incorporação às Forças Armadas e a suspensão das imunidades no estado de sítio (CF art. 53, §§ 6º–8º)?",
+    "resposta": [
+      "Testemunho (§ 6º): não são obrigados a depor sobre informações ou fontes ligadas ao exercício do mandato (nos demais fatos, testemunham normalmente)",
+      "Forças Armadas (§ 7º): incorporação, embora militares e ainda que em tempo de guerra, depende de prévia licença da Casa respectiva",
+      "Estado de sítio (§ 8º): imunidades subsistem, só podendo ser suspensas por 2/3 da Casa para atos praticados FORA do recinto do CN incompatíveis com a medida (RICD art. 233 acrescenta escrutínio secreto)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 127–130; CF art. 53, §§ 6º–8º; RICD art. 233"
+  },
+  {
+    "id": "dc-6-c18",
+    "no": "kit-arr-dc-6-2026-11-22-r4.4",
+    "tema": "Prisão, Cautelares, Sustação e Outras Imunidades",
+    "pergunta": "Compare a imunidade material, a imunidade formal e o foro de deputado estadual/distrital com os de vereador.",
+    "resposta": [
+      "Deputado estadual/distrital (arts. 27, § 1º e 32, § 3º): tem imunidade material sem limite territorial, imunidade formal (prisão/sustação decidida pela Assembleia) e foro no TJ",
+      "Vereador (art. 29, VIII): tem apenas imunidade material no exercício do mandato e na circunscrição do Município; NÃO tem imunidade formal nem foro constitucional"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 140–141"
+  },
+  {
+    "id": "dc-6-c19",
+    "no": "kit-arr-dc-6-2026-11-22-r5.1",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "Quais incompatibilidades do art. 54 vigoram desde a expedição do diploma e qual a única exceção contratual expressa?",
+    "resposta": [
+      "Firmar ou manter contrato com PJ de direito público, autarquia, empresa pública, SEM ou concessionária, salvo quando obedecer a cláusulas uniformes (contratos de adesão padrão)",
+      "Aceitar ou exercer cargo, função ou emprego remunerado, inclusive os demissíveis ad nutum, nessas entidades"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 153–155; CF art. 54, I"
+  },
+  {
+    "id": "dc-6-c20",
+    "no": "kit-arr-dc-6-2026-11-22-r5.1",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "Quais quatro proibições do art. 54, II passam a valer somente desde a posse (e não desde a diplomação)?",
+    "resposta": [
+      "Ser proprietário, controlador ou diretor de empresa que goze de favor contratual público (ou exercer nela função remunerada)",
+      "Ocupar cargo ou função demissível ad nutum nas entidades públicas/estatais/concessionárias do art. 54, I, a",
+      "Patrocinar causa em que seja interessada qualquer dessas entidades",
+      "Ser titular de mais de um cargo ou mandato público eletivo"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 153, 155, 157; CF art. 54, II"
+  },
+  {
+    "id": "dc-6-c21",
+    "no": "kit-arr-dc-6-2026-11-22-r5.2",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "No art. 55 da CF, quais incisos geram cassação pela Casa e quais geram declaração de extinção pela Mesa, e quem pode provocar cada rito?",
+    "resposta": [
+      "Cassação pela Casa (maioria absoluta, voto ostensivo): incisos I (art. 54), II (decoro) e VI (condenação criminal definitiva) — provocação exclusiva da Mesa ou de partido representado no CN",
+      "Extinção declarada pela Mesa: incisos III (faltar a 1/3 das sessões ordinárias por sessão legislativa), IV (perda/suspensão de direitos políticos) e V (Justiça Eleitoral) — provocação de ofício, por qualquer membro da Casa ou partido no CN"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 179; CF art. 55, §§ 2º–3º"
+  },
+  {
+    "id": "dc-6-c22",
+    "no": "kit-arr-dc-6-2026-11-22-r5.2",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "Qual o rito e os prazos previstos no RICD art. 240, § 3º para perda de mandato por infração ao art. 54 (inc. I) ou condenação criminal definitiva (inc. VI)?",
+    "resposta": [
+      "5 sessões para o Deputado oferecer defesa escrita e indicar provas (ou mais 5 sessões para defensor dativo nomeado pelo Presidente da CCJC)",
+      "5 sessões para instrução e parecer da CCJC (procedência com projeto de resolução ou arquivamento)",
+      "Inclusão na Ordem do Dia do Plenário para deliberação por maioria absoluta e voto ostensivo"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 240; RICD art. 240, § 3º"
+  },
+  {
+    "id": "dc-6-c23",
+    "no": "kit-arr-dc-6-2026-11-22-r5.3",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "Como o STF trata a perda do mandato por condenação criminal transitada em julgado (art. 55, VI) diante do cumprimento de pena em regime fechado?",
+    "resposta": [
+      "Pelo texto da CF (art. 55, § 2º) e AP 565 / AP 996, cabe à Casa decidir por maioria absoluta",
+      "Exceção jurisprudencial (AP 694; EP 149 REF, 1ª T, 2025): condenação definitiva em regime fechado sem trabalho externo compatível antes de completar 1/3 de faltas leva à perda determinada pelo Judiciário com ato vinculado/declaratório da Mesa"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 182–183"
+  },
+  {
+    "id": "dc-6-c24",
+    "no": "kit-arr-dc-6-2026-11-22-r5.3",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "Como operam a suspensão da renúncia na CF (art. 55, § 4º) e a sua eficácia formal no RICD (art. 239)?",
+    "resposta": [
+      "CF art. 55, § 4º: a renúncia de parlamentar submetido a processo que vise ou possa levar à perda do mandato fica com efeitos suspensos até as deliberações finais dos §§ 2º e 3º (se absolvido, a renúncia volta a valer)",
+      "RICD art. 239: renúncia expressa faz-se por escrito à Mesa, independe de aprovação da Câmara e só se torna efetiva e irretratável após lida no expediente ou disponibilizada no Diário da Câmara, o que ocorrer primeiro"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 178, 184, 239"
+  },
+  {
+    "id": "dc-6-c25",
+    "no": "kit-arr-dc-6-2026-11-22-r5.3",
+    "tema": "Vedações (Art. 54) e Perda do Mandato (Art. 55)",
+    "pergunta": "A perda do mandato por infidelidade partidária aplica-se tanto a deputados quanto a senadores? E ela aparece listada no art. 238 do RICD?",
+    "resposta": [
+      "Aplica-se apenas aos cargos do sistema proporcional (deputados — MS 26.604), NÃO aos do sistema majoritário (senadores — ADI 5.081)",
+      "O texto do RICD art. 238 lista apenas falecimento, renúncia e perda de mandato, não mencionando expressamente infidelidade partidária"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 181, 203–204, 239"
+  },
+  {
+    "id": "dc-6-c26",
+    "no": "kit-arr-dc-6-2026-11-22-r6.1",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "Qual a diferença entre 'chefe de missão diplomática temporária' (CF art. 56, I) e 'missão temporária de caráter diplomático ou cultural' (RICD art. 235, I)?",
+    "resposta": [
+      "Chefe de missão diplomática temporária (CF art. 56, I / RICD art. 235, IV): é investidura em cargo e CONVOCA suplente",
+      "Missão temporária de caráter diplomático ou cultural (RICD art. 235, I): é licença concedida pela Mesa (não apenas pelo Presidente) e NÃO consta no rol de convocação de suplente do art. 241"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 207, 221–222, 237"
+  },
+  {
+    "id": "dc-6-c27",
+    "no": "kit-arr-dc-6-2026-11-22-r6.2",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "Em que prazo a Mesa convoca o suplente e quando uma licença para tratamento de saúde gera convocação?",
+    "resposta": [
+      "Prazo de convocação pela Mesa: 48 horas (RICD art. 241)",
+      "Licença-saúde só convoca suplente quando o prazo ORIGINAL for superior a 120 dias, vedada a soma de períodos para atingir esse limite (duas licenças de 70 dias não convocam)",
+      "Licenciado com suplente em exercício não pode reassumir antes do término do prazo concedido (RICD art. 235, § 6º)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 208, 229–232, 237, 241"
+  },
+  {
+    "id": "dc-6-c28",
+    "no": "kit-arr-dc-6-2026-11-22-r6.2",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "O que ocorre se vagar o mandato sem suplente para assumir? E o segundo candidato mais votado pode assumir interinamente no caso de senador cassado?",
+    "resposta": [
+      "Faz-se nova eleição somente se faltarem MAIS de 15 meses para o término do mandato (CF art. 56, § 2º); com 15 meses ou menos, a vaga permanece aberta",
+      "Na ADPF 643 e ADPF 644, o STF decidiu que o segundo colocado não assume interinamente no Senado por ausência de previsão constitucional"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 206, 212"
+  },
+  {
+    "id": "dc-6-c29",
+    "no": "kit-arr-dc-6-2026-11-22-r6.3",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "Como o art. 227-A do RICD (Res. 2/2023) disciplina a participação remota de deputadas gestantes e após o parto?",
+    "resposta": [
+      "Permite participação plena e remota (presença e voto à distância) a partir da 30ª semana de gestação (ou antes com atestado médico)",
+      "Assegura o mesmo direito às deputadas que retornarem de licença à gestante até 180 dias consecutivos após o início da licença"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 235; RICD art. 227-A"
+  },
+  {
+    "id": "dc-6-c30",
+    "no": "kit-arr-dc-6-2026-11-22-r6.3",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "Qual a diferença de composição da junta médica entre a licença-saúde (RICD art. 236) e a verificação de incapacidade civil absoluta (RICD art. 237)?",
+    "resposta": [
+      "Licença-saúde (art. 236): laudo de 3 integrantes do corpo médico da própria Câmara",
+      "Incapacidade civil absoluta (art. 237): sentença de interdição ou laudo de junta de no mínimo 3 médicos NÃO pertencentes aos serviços da Câmara nem do Senado (se recusar o exame, Plenário em sessão secreta e maioria absoluta aplica a suspensão, mantendo a remuneração)"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 238, 277; RICD arts. 236–237"
+  },
+  {
+    "id": "dc-6-c31",
+    "no": "kit-arr-dc-6-2026-11-22-r6.3",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "Quais cargos e funções na Câmara dos Deputados são vedados ao suplente no exercício de substituição (RICD art. 243)?",
+    "resposta": [
+      "Membro da Mesa ou Suplente de Secretário",
+      "Presidente ou Vice-Presidente de Comissão",
+      "Procuradoria Parlamentar, Ouvidor-Geral/Substituto, Corregedor/Substituto, Procuradora da Mulher/Adjunta e Coordenadora-Geral dos Direitos da Mulher/Adjuntas"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 241; RICD art. 243"
+  },
+  {
+    "id": "dc-6-c32",
+    "no": "kit-arr-dc-6-2026-11-22-r6.3",
+    "tema": "Licenças, Suplência e Regras Exclusivas do RICD",
+    "pergunta": "A ausência de entrega da declaração de bens impede a posse do Deputado Federal? E que serviços os ex-deputados só usam mediante prévia autorização do Presidente?",
+    "resposta": [
+      "Declaração de bens (RICD art. 229): não impede a posse, mas a omissão configura infração ao Código de Ética e Decoro Parlamentar",
+      "Ex-deputados (RICD art. 234): têm acesso ao Plenário, biblioteca, arquivo e assistência médica, dependendo de prévia autorização do Presidente apenas reprografia e processamento de dados"
+    ],
+    "fonte": "Estatuto dos Congressistas, p. 236, 247–248; RICD arts. 229 e 234"
+  }
+]
