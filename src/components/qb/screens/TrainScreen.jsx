@@ -8,9 +8,11 @@ import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import AcervoPegadinhasV1 from '@/components/qb/study/AcervoPegadinhasV1';
+import ErrorNotebook from '@/components/qb/study/ErrorNotebook';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { reviewDay, scheduledReviewQueues } from '@/lib/spaced-review';
 import { questionTrainingProgress } from '@/lib/study-session-rules';
+import { buildErrorNotebook } from '@/lib/error-notebook';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
 export function MissingLink({ missing, onBack, go }) {
@@ -61,6 +63,10 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const reviewRef = React.useRef(null);
   const labRef = React.useRef(null);
   const radialRef = React.useRef(null);
+  const errorNotebook = React.useMemo(
+    () => buildErrorNotebook(QB_DATA.questionBank, QB_DATA.studySubjects?.length ? QB_DATA.studySubjects : E.subjects),
+    [QB_DATA.questionBank, QB_DATA.studySubjects, E.subjects],
+  );
   const openAndScroll = ref => {
     const target = ref.current;
     if (!target) return;
@@ -200,6 +206,19 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
               Abrir O Arquiteto
             </Button>
             <Button variant="secondary" onClick={() => openAndScroll(labRef)}>Explorar os 14 mecanismos</Button>
+            </div>
+          </details>
+          <details className="qb-panel qb-train-fold">
+            <summary>
+              Caderno de erros{' '}
+              <small>
+                {errorNotebook.totalQuestions
+                  ? `${errorNotebook.totalQuestions} ${errorNotebook.totalQuestions === 1 ? 'questão' : 'questões'} · ${errorNotebook.totalErrors} ${errorNotebook.totalErrors === 1 ? 'erro' : 'erros'}`
+                  : 'Sem erros registrados'}
+              </small>
+            </summary>
+            <div className="qb-train-fold__body">
+              <ErrorNotebook notebook={errorNotebook} go={go} />
             </div>
           </details>
         </div>
