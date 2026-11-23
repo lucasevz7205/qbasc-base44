@@ -731,6 +731,242 @@
           }
         }
       ]
+    },
+    {
+      "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7",
+      "t": "Liberdade e igualdade efetivas",
+      "refs": [
+        35,
+        42,
+        52
+      ],
+      "x": {
+        "e": "A proteção da liberdade envolve definir quando a sociedade pode limitar a conduta de uma pessoa e como resguardar minorias diante de maiorias. A democracia igualitária examina se os diferentes grupos têm condições de exercer os direitos que lhes são formalmente assegurados.",
+        "src": "3. Aula 02 - Ciência Política Câmara.pdf, pp. 12, 59 e 108."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.1",
+          "t": "Limites à coerção social",
+          "refs": [
+            35,
+            52
+          ],
+          "x": {
+            "e": "A tirania da maioria descreve o risco de grupos majoritários oprimirem minorias. O princípio do dano em John Stuart Mill fornece um critério para avaliar quando se justifica limitar a liberdade individual.",
+            "trap": "Tratar a aprovação pela maioria como garantia de respeito aos direitos das minorias.",
+            "src": "3. Aula 02 - Ciência Política Câmara.pdf, pp. 12 e 108."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.1.1",
+              "t": "Tirania da maioria",
+              "n": "Opressão dos direitos das minorias",
+              "refs": [
+                35,
+                52
+              ],
+              "x": {
+                "e": "A tirania da maioria, discutida por Tocqueville, é o risco de que um grupo majoritário use sua posição para restringir os direitos de grupos minoritários. O risco pode surgir mesmo sob um governo democrático.",
+                "src": "3. Aula 02 - Ciência Política Câmara.pdf, pp. 12 e 108."
+              }
+            },
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.1.2",
+              "t": "Princípio do dano",
+              "n": "Prevenção de dano a terceiros",
+              "refs": [
+                52
+              ],
+              "x": {
+                "e": "Para Mill, a possibilidade de uma conduta prejudicar outras pessoas justifica considerar uma restrição à liberdade de quem a pratica.",
+                "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 108."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.2",
+          "t": "Condições de democracia igualitária",
+          "refs": [
+            42
+          ],
+          "x": {
+            "e": "A democracia igualitária considera que desigualdades materiais e imateriais podem reduzir a capacidade de participação mesmo quando os direitos estão formalmente reconhecidos. A aula aponta três dimensões da igualdade efetiva: proteção das liberdades, distribuição de recursos e acesso ao poder.",
+            "trap": "Deduzir do reconhecimento formal de um direito que todos os grupos conseguem exercê-lo em condições equivalentes.",
+            "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 59."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.2.1",
+              "t": "Proteção igual das liberdades",
+              "n": "Garantias equivalentes entre grupos",
+              "refs": [
+                42
+              ],
+              "x": {
+                "e": "A proteção igual exige que as liberdades individuais sejam garantidas de maneira equivalente a integrantes de todos os grupos sociais. O critério inclui a proteção efetiva dos direitos reconhecidos formalmente.",
+                "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 59."
+              }
+            },
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r7.2.2",
+              "t": "Recursos e acesso ao poder",
+              "n": "Igualdade na distribuição e no acesso",
+              "refs": [
+                42
+              ],
+              "x": {
+                "e": "A distribuição igual de recursos entre grupos diz respeito aos meios de exercer direitos e participar. O acesso igual ao poder diz respeito à possibilidade de grupos e indivíduos influenciarem as decisões políticas.",
+                "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 59."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8",
+      "t": "Requisitos de participação popular",
+      "refs": [
+        13
+      ],
+      "x": {
+        "e": "A revisão de véspera destaca os requisitos numéricos para propor consultas populares e apresentar um projeto de iniciativa popular. A proposta de consulta passa pelo Congresso Nacional, enquanto o projeto de iniciativa popular de lei é apresentado à Câmara dos Deputados.",
+        "trap": "Usar o requisito de apoio parlamentar das consultas como se fosse um percentual de assinaturas do eleitorado.",
+        "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27. Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf, p. 9."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8.1",
+          "t": "Proposta parlamentar de consulta",
+          "refs": [
+            13
+          ],
+          "x": {
+            "e": "A revisão aponta um terço dos membros como requisito de apoio à proposta de plebiscito ou referendo. A decisão cabe ao Congresso Nacional, que convoca o plebiscito e autoriza o referendo.",
+            "trap": "Ler o requisito para apresentar a proposta como quórum de aprovação.",
+            "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27. Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf, p. 9, CF, art. 49, XV."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8.1.1",
+              "t": "Apoio mínimo à proposta",
+              "n": "Um terço dos membros",
+              "x": {
+                "e": "Um terço é a fração de membros indicada na revisão para apresentar a proposta de plebiscito ou referendo. O número se refere ao apoio exigido na apresentação.",
+                "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8.2",
+          "t": "Subscrição da iniciativa popular",
+          "refs": [
+            13
+          ],
+          "x": {
+            "e": "Subscrever um projeto significa assiná-lo em apoio à sua apresentação. O requisito combina uma proporção do eleitorado nacional com uma distribuição mínima entre estados.",
+            "trap": "Calcular o percentual mínimo de cada estado sobre o eleitorado nacional.",
+            "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27. Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf, p. 9, CF, art. 61, § 2º."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8.2.1",
+              "t": "Apoio nacional ao projeto",
+              "n": "Pelo menos 1% do eleitorado nacional",
+              "x": {
+                "e": "O requisito nacional mede as assinaturas de apoio em relação ao total de eleitores do país. A iniciativa popular de lei federal precisa alcançar pelo menos 1% desse eleitorado.",
+                "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27."
+              }
+            },
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r8.2.2",
+              "t": "Distribuição estadual das assinaturas",
+              "n": "Cinco estados, com 0,3% em cada",
+              "x": {
+                "e": "As assinaturas precisam estar distribuídas por pelo menos cinco estados. Em cada estado contado para esse mínimo, elas devem corresponder a pelo menos 0,3% de seu próprio eleitorado.",
+                "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 27."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9",
+      "t": "Preferências, opinião e agenda",
+      "refs": [
+        72
+      ],
+      "x": {
+        "e": "A formação de preferências políticas envolve tanto a influência de comportamentos coletivos quanto a circulação de informações. A revisão final distingue a visibilidade pública de um assunto da possibilidade de ele chegar a uma decisão institucional.",
+        "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 48. Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 22."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9.1",
+          "t": "Psicologia da multidão",
+          "x": {
+            "e": "Na exposição da Aula 02, Le Bon associa o comportamento de multidão à perda de autonomia do indivíduo e à maior influência de impulsos. Nessa leitura, pessoas fisicamente dispersas também podem reagir psicologicamente como uma multidão.",
+            "ex": "A aula cita leitores de jornal fisicamente separados.",
+            "trap": "Exigir a reunião física das pessoas para caracterizar a multidão psicológica.",
+            "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 48."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9.1.1",
+              "t": "Perda de vontade própria",
+              "n": "Maior suscetibilidade à influência da liderança",
+              "x": {
+                "e": "Na interpretação de Le Bon apresentada pela aula, a pessoa integrada psicologicamente à multidão tende a ceder a impulsos e a se deixar conduzir por dirigentes. A perda de vontade própria designa essa redução da autonomia de julgamento.",
+                "src": "3. Aula 02 - Ciência Política Câmara.pdf, p. 48."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9.2",
+          "t": "Visibilidade e acesso à decisão",
+          "refs": [
+            72
+          ],
+          "x": {
+            "e": "O agendamento trata da influência da mídia sobre os temas aos quais o público dá atenção. A revisão final também distingue o silêncio provocado pelo medo de isolamento e o controle da agenda que impede um tema de chegar à decisão.",
+            "trap": "Confundir a seleção dos assuntos em debate com a formação de uma posição específica sobre cada um deles.",
+            "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 22. Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf, p. 12, questão 64, confrontada com o padrão de resposta da Etapa 16."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9.2.1",
+              "t": "Espiral do silêncio",
+              "n": "Medo de isolamento social",
+              "refs": [
+                72
+              ],
+              "x": {
+                "e": "Na teoria de Noelle-Neumann, pessoas que percebem sua posição como minoritária podem evitar expressá-la por receio de isolamento. Com menos manifestações públicas dessa posição, ela parece ainda menos difundida.",
+                "trap": "Atribuir a espiral do silêncio a Habermas.",
+                "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, p. 22. Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf, p. 12, questão 64, confrontada com o padrão de resposta da Etapa 16."
+              }
+            },
+            {
+              "id": "kit-arr-cp-1-regimes-politicos-2026-11-22-2-r9.2.2",
+              "t": "Controle da agenda institucional",
+              "n": "Poder de impedir a deliberação",
+              "refs": [
+                72
+              ],
+              "x": {
+                "e": "Na segunda face do poder de Bachrach e Baratz, controlar a agenda permite impedir que um assunto seja submetido à decisão. O bloqueio produz efeito antes de qualquer votação sobre o mérito.",
+                "ex": "Uma proposta fica fora da pauta do plenário por meses.",
+                "src": "Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf, pp. 4 e 22."
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "ligacoes": [
@@ -761,6 +997,518 @@
     }
   ],
   "fontesCentral": {
-    "KIT-ARR-CP-1-regimes-politicos-2026-11-22": {}
+    "KIT-ARR-CP-1-regimes-politicos-2026-11-22": {},
+    "KIT-ARR-CP-1-regimes-politicos-2026-11-22-2": {
+      "1": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.1",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "2": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.1",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "3": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.2",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "4": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.3",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "5": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.3",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "6": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.4",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "7": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.5",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "8": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.5",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "9": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.6",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "10": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.7",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "11": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.7",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "12": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.8",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "13": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.9",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "14": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.10",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "15": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.10",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "16": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.11",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "17": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.12",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "18": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.12",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "19": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.13",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "20": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.14",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "21": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.15",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "22": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.15",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "23": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.16",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "24": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.17",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "25": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.17",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "26": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.18",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "27": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.19",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "28": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.19",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "29": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.20",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "30": {
+        "arquivo": "Ciência política/Etapa 04 · Cap. 3 · Regimes políticos — Ciência Política, Câmara 2026-2.pdf",
+        "secao": "p.21",
+        "sha256": "eddeef4006a722c8ec3904b1d93fc46b53ffbf7e384c728107f6af2909d1ab33"
+      },
+      "31": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.1",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "32": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.3",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "33": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.4",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "34": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.6",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "35": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.12",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "36": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.21",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "37": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.23",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "38": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.30",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "39": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.40",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "40": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.49",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "41": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.51",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "42": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.59",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "43": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.63",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "44": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.64",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "45": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.69",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "46": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.71",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "47": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.80",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "48": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.83",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "49": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.84",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "50": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.90",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "51": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.99",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "52": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.108",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "53": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.117",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "54": {
+        "arquivo": "Ciência política/3. Aula 02 - Ciência Política Câmara.pdf",
+        "secao": "p.125",
+        "sha256": "a64fabbff11529df9d18efd44eb06408a04a29c62d78b96b61aeb8885e7f6cc8"
+      },
+      "55": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "56": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.3",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "57": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.4",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "58": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.5",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "59": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.6",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "60": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.8",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "61": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.9",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "62": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.10",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "63": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.11",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "64": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.13",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "65": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.14",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "66": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.15",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "67": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.16",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "68": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.17",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "69": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.19",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "70": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.20",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "71": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.21",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "72": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.22",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "73": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.24",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "74": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.25",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "75": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.26",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "76": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.27",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "77": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.29",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "78": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.30",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "79": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "80": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "81": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.6",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "82": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.11",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "83": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.12",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "84": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.13",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "85": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.14",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "86": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.17",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "87": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.22",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "88": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.27",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "89": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.32",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "90": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.37",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "91": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.42",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "92": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.47",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "93": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.48",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "94": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.53",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "95": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.58",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "96": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.63",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "97": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.1",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "98": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.23",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "99": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.46",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "100": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.55",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "101": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.57",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "102": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.64",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      }
+    }
   }
 }
