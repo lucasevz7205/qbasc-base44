@@ -5,6 +5,7 @@ import { Button } from '@/components/qb/core/Button';
 export const TRAINING_ACTIONS = [
   { id: 'train', label: 'Treinar', icon: 'target', hint: 'Questões deste assunto' },
   { id: 'train-random', action: 'train', randomOrder: true, label: 'Treinar aleatório', icon: 'shuffle', hint: 'Questões deste assunto em ordem aleatória' },
+  { id: 'errors', label: 'Treinar erros', icon: 'rotate-ccw', hint: 'Até 20 questões erradas deste assunto' },
   { id: 'mindmap', label: 'Mapa Mental', icon: 'network', hint: 'Mapa do assunto' },
   { id: 'review', label: 'Revisão Ativa', icon: 'calendar-days', hint: 'Revisão deste assunto' },
   { id: 'flashcards', label: 'Flashcards', icon: 'layers', hint: 'Baralho deste assunto' },

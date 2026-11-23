@@ -215,7 +215,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
           await save('rodadas', 'qbasc-' + (session.sessionId || items[0].qid + '-' + Date.now()), {
             inicio: session.startedAt || new Date().toISOString(),
             fim: new Date().toISOString(),
-            modo: scheduledReview ? 'revisao-qbasc' : ganBatch ? 'gan-mapa-qbasc' : 'treino-qbasc',
+            modo: scheduledReview ? 'revisao-qbasc' : session.selection?.errorTraining ? 'treino-erros-qbasc' : ganBatch ? 'gan-mapa-qbasc' : 'treino-qbasc',
             itens: items,
             total: items.length,
             certos,
@@ -287,7 +287,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {!focus && (
         <BrandHeader variant="compact" floating={false} onExit={returnFromQuestions}>
-          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : session.selection?.randomOrder ? 'Treino aleatório' : 'Sessão de questões'}</span>
+          <span className="qb-overline">{ganBatch ? 'Sessão GAN · Mapa Mental' : scheduledReview ? 'Revisão espaçada · Questões' : session.selection?.errorTraining ? 'Caderno de erros · 20 questões' : session.selection?.randomOrder ? 'Treino aleatório' : 'Sessão de questões'}</span>
           <span style={{ font: '400 16px/1.2 var(--font-heading)', color: 'var(--text-primary)' }}>{concept?.label || q?.chapter || 'Treinar'}</span>
         </BrandHeader>
       )}
@@ -304,7 +304,7 @@ export default function QuestionSessionView({ session, setSession, go, backTo })
       <div style={{ position: 'relative', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <main key={stageKey} ref={stageRef} tabIndex={-1} data-current-question={done ? undefined : questionId} style={{ width: '100%', maxWidth: 820, margin: '0 auto', padding: '28px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {error && <p role="alert">{error}</p>}
-          {!ganBatch && !scheduledReview && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
+          {!ganBatch && !scheduledReview && !session.selection?.errorTraining && (!done && idx === 0 && !st.revealed || !qs.length) && session.questionIds && (
             <QuestionFilters value={session.selection?.filter} disabled={loading} onChange={filter => {
               setError('');
               go('questions', { ...session.selection, filter });
