@@ -10,7 +10,67 @@
       "Sistema de governo: Presidencialista",
       "Regime político: Democrático"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)"
+    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c01-a",
+      "cp-1-c01-b",
+      "cp-1-c01-c",
+      "cp-1-c01-d"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c01-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.1",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na organização política brasileira segundo a CF/88, qual é a forma de Estado adotada?",
+    "resposta": [
+      "Estado federado (federação)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)",
+    "derivedFrom": "cp-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c01-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.1",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na organização política brasileira segundo a CF/88, qual é a forma de governo adotada?",
+    "resposta": [
+      "República."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)",
+    "derivedFrom": "cp-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c01-c",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.1",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na organização política brasileira segundo a CF/88, qual é o sistema de governo adotado?",
+    "resposta": [
+      "Presidencialismo."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)",
+    "derivedFrom": "cp-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c01-d",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.1",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na organização política brasileira segundo a CF/88, qual é o regime político adotado?",
+    "resposta": [
+      "Regime democrático."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.1, p. 3); Aula 02 (3.5-3.7, p. 21, 36-37)",
+    "derivedFrom": "cp-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c02",
@@ -21,7 +81,39 @@
       "Puras (bem comum): monarquia, aristocracia e politeia",
       "Corrompidas (interesse próprio): tirania, oligarquia e democracia (ou demagogia)"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 3-4; Questão 10, p. 14, 17)"
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 3-4; Questão 10, p. 14, 17)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c02-a",
+      "cp-1-c02-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c02-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.2",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na tipologia de Aristóteles em Política, quais são as três formas puras (orientadas ao bem comum) de governo?",
+    "resposta": [
+      "Monarquia, aristocracia e politeia."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 3-4; Questão 10, p. 14, 17)",
+    "derivedFrom": "cp-1-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c02-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.2",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Na tipologia de Aristóteles em Política, quais são as três formas corrompidas (orientadas ao interesse próprio) de governo?",
+    "resposta": [
+      "Tirania, oligarquia e democracia (ou demagogia)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 3-4; Questão 10, p. 14, 17)",
+    "derivedFrom": "cp-1-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c03",
@@ -33,7 +125,41 @@
       "República: virtude (democrática) ou moderação (aristocrática)",
       "Monarquia: honra; Despotismo: medo"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 4; Questão 2, p. 13, 16)"
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 4; Questão 2, p. 13, 16)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c03-a",
+      "cp-1-c03-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c03-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.2",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "contraste",
+    "pergunta": "Em O espírito das leis de Montesquieu, qual é a diferença entre natureza do governo e princípio do governo?",
+    "resposta": [
+      "Natureza é quem governa; princípio é a paixão que move o governo."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 4; Questão 2, p. 13, 16)",
+    "derivedFrom": "cp-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c03-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r1.2",
+    "tema": "Conceito de Regime e Tipologias Clássicas",
+    "tipo": "factual",
+    "pergunta": "Para Montesquieu em O espírito das leis, qual paixão (princípio) move a república, a monarquia e o despotismo?",
+    "resposta": [
+      "República: virtude (democrática) ou moderação (aristocrática).",
+      "Monarquia: honra.",
+      "Despotismo: medo."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.1.2, p. 4; Questão 2, p. 13, 16)",
+    "derivedFrom": "cp-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c04",
@@ -67,7 +193,39 @@
       "Modelo adotado: democracia semidireta (ou mista)",
       "Instrumentos diretos: plebiscito, referendo e iniciativa popular de lei"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.2.2, p. 4-5; Questões 7-8, p. 14, 17); CF/88, art. 1º, parágrafo único, e art. 14"
+    "fonte": "Etapa 04 · Cap. 3 (3.2.2, p. 4-5; Questões 7-8, p. 14, 17); CF/88, art. 1º, parágrafo único, e art. 14",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c06-a",
+      "cp-1-c06-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c06-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r2.2",
+    "tema": "Democracia: História e Teorias",
+    "tipo": "factual",
+    "pergunta": "Qual modelo de democracia é adotado pela Constituição Federal de 1988?",
+    "resposta": [
+      "Democracia semidireta (ou mista)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.2, p. 4-5; Questões 7-8, p. 14, 17); CF/88, art. 1º, parágrafo único, e art. 14",
+    "derivedFrom": "cp-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c06-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r2.2",
+    "tema": "Democracia: História e Teorias",
+    "tipo": "factual",
+    "pergunta": "Quais são os três instrumentos constitucionais de exercício direto da soberania popular previstos no art. 14 da CF/88?",
+    "resposta": [
+      "Plebiscito, referendo e iniciativa popular de lei."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.2, p. 4-5; Questões 7-8, p. 14, 17); CF/88, art. 1º, parágrafo único, e art. 14",
+    "derivedFrom": "cp-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c07",
@@ -78,7 +236,39 @@
       "Método ou arranjo institucional em que elites disputam o poder de decidir por meio de luta competitiva pelos votos",
       "Papel do eleitor: escolher e substituir governos (não governar)"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.2.1, p. 4; Questão 5, p. 14, 17); Aula 02 (3.9, p. 46-47)"
+    "fonte": "Etapa 04 · Cap. 3 (3.2.1, p. 4; Questão 5, p. 14, 17); Aula 02 (3.9, p. 46-47)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c07-a",
+      "cp-1-c07-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c07-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r2.3",
+    "tema": "Democracia: História e Teorias",
+    "tipo": "factual",
+    "pergunta": "Como Joseph Schumpeter define a democracia em sua concepção procedimental?",
+    "resposta": [
+      "Método ou arranjo institucional em que elites disputam o poder de decidir por meio de luta competitiva pelos votos."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.1, p. 4; Questão 5, p. 14, 17); Aula 02 (3.9, p. 46-47)",
+    "derivedFrom": "cp-1-c07",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c07-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r2.3",
+    "tema": "Democracia: História e Teorias",
+    "tipo": "factual",
+    "pergunta": "Na concepção procedimental de democracia de Joseph Schumpeter, qual é o papel do eleitor?",
+    "resposta": [
+      "Escolher e substituir governos (não governar diretamente)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.1, p. 4; Questão 5, p. 14, 17); Aula 02 (3.9, p. 46-47)",
+    "derivedFrom": "cp-1-c07",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c08",
@@ -89,7 +279,39 @@
       "Democracia é o ideal inatingido; poliarquia são os regimes reais que mais se aproximam dele",
       "Condições: formular preferências, expressá-las e receber igual consideração do governo"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5); Aula 02 (3.9, p. 49, 51)"
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5); Aula 02 (3.9, p. 49, 51)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c08-a",
+      "cp-1-c08-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c08-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.1",
+    "tema": "Poliarquia de Robert Dahl",
+    "tipo": "contraste",
+    "pergunta": "Por que Robert Dahl distingue o conceito de “poliarquia” do conceito de “democracia”?",
+    "resposta": [
+      "Democracia é o ideal inatingido; poliarquia são os regimes reais que mais se aproximam dele."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5); Aula 02 (3.9, p. 49, 51)",
+    "derivedFrom": "cp-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c08-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.1",
+    "tema": "Poliarquia de Robert Dahl",
+    "tipo": "factual",
+    "pergunta": "Segundo Robert Dahl, quais são as três condições essenciais para a responsividade contínua do governo na poliarquia?",
+    "resposta": [
+      "Formular preferências, expressá-las e receber igual consideração do governo."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5); Aula 02 (3.9, p. 49, 51)",
+    "derivedFrom": "cp-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c09",
@@ -124,7 +346,53 @@
       "Direito de voto, elegibilidade e direito de líderes disputarem apoio",
       "Eleições livres e idôneas e instituições que vinculem políticas públicas ao voto"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Ponte com a área do cargo, p. 9; Questão 10, p. 14, 17)"
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Ponte com a área do cargo, p. 9; Questão 10, p. 14, 17)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c11-a",
+      "cp-1-c11-b",
+      "cp-1-c11-c"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c11-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.4",
+    "tema": "Poliarquia de Robert Dahl",
+    "tipo": "factual",
+    "pergunta": "Entre as garantias institucionais da poliarquia de Robert Dahl, qual se liga diretamente à imprensa livre?",
+    "resposta": [
+      "Fontes alternativas de informação."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Ponte com a área do cargo, p. 9; Questão 10, p. 14, 17)",
+    "derivedFrom": "cp-1-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c11-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.4",
+    "tema": "Poliarquia de Robert Dahl",
+    "tipo": "factual",
+    "pergunta": "Além de fontes alternativas de informação, quais três liberdades ou direitos políticos integram as garantias da poliarquia de Robert Dahl?",
+    "resposta": [
+      "Liberdade de formar e aderir a organizações, liberdade de expressão e direito de voto (além de elegibilidade e disputa por apoio)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Ponte com a área do cargo, p. 9; Questão 10, p. 14, 17)",
+    "derivedFrom": "cp-1-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c11-c",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.4",
+    "tema": "Poliarquia de Robert Dahl",
+    "tipo": "factual",
+    "pergunta": "Na poliarquia de Robert Dahl, que garantias institucionais asseguram que as decisões públicas reflitam o voto?",
+    "resposta": [
+      "Eleições livres e idôneas e instituições que vinculem as políticas públicas ao voto."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Ponte com a área do cargo, p. 9; Questão 10, p. 14, 17)",
+    "derivedFrom": "cp-1-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c12",
@@ -171,7 +439,53 @@
       "Proporcionalidade na representação e nos recursos",
       "Autonomia segmentar (não se baseia em democracia direta)"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.2.5, p. 6; Glossário, p. 20); Aula 02 (Questão 17, p. 87-89)"
+    "fonte": "Etapa 04 · Cap. 3 (3.2.5, p. 6; Glossário, p. 20); Aula 02 (Questão 17, p. 87-89)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c15-a",
+      "cp-1-c15-b",
+      "cp-1-c15-c"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c15-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r4.4",
+    "tema": "Modelos de Lijphart",
+    "tipo": "lacuna",
+    "pergunta": "Nos quatro pilares da democracia consociativa de Arend Lijphart, além de veto mútuo, proporcionalidade e autonomia segmentar, o quarto pilar é a ___.",
+    "resposta": [
+      "Grande coalizão entre elites dos segmentos."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.5, p. 6; Glossário, p. 20); Aula 02 (Questão 17, p. 87-89)",
+    "derivedFrom": "cp-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c15-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r4.4",
+    "tema": "Modelos de Lijphart",
+    "tipo": "factual",
+    "pergunta": "Na democracia consociativa de Arend Lijphart, qual pilar protege minorias contra decisões unilaterais da maioria?",
+    "resposta": [
+      "Veto mútuo."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.5, p. 6; Glossário, p. 20); Aula 02 (Questão 17, p. 87-89)",
+    "derivedFrom": "cp-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c15-c",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r4.4",
+    "tema": "Modelos de Lijphart",
+    "tipo": "factual",
+    "pergunta": "Na democracia consociativa de Arend Lijphart, o que garantem a proporcionalidade e a autonomia segmentar?",
+    "resposta": [
+      "Proporcionalidade na representação e nos recursos; autonomia segmentar para cada grupo (não se baseia em democracia direta)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.2.5, p. 6; Glossário, p. 20); Aula 02 (Questão 17, p. 87-89)",
+    "derivedFrom": "cp-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c16",
@@ -182,7 +496,39 @@
       "Combina ideologia e terror apoiados em movimentos de massas, destruindo inclusive grupos e laços da vida privada",
       "Depende da sociedade de massas e da técnica modernas (inexistente em experiências pré-modernas)"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6-7; Questões 19-20, p. 15, 18)"
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6-7; Questões 19-20, p. 15, 18)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c16-a",
+      "cp-1-c16-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c16-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r5.1",
+    "tema": "Regimes Não Democráticos e Híbridos",
+    "tipo": "factual",
+    "pergunta": "Como Hannah Arendt caracteriza o totalitarismo em relação à sociedade e à vida privada?",
+    "resposta": [
+      "Combina ideologia e terror apoiados em movimentos de massas, destruindo inclusive grupos e laços da vida privada."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6-7; Questões 19-20, p. 15, 18)",
+    "derivedFrom": "cp-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c16-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r5.1",
+    "tema": "Regimes Não Democráticos e Híbridos",
+    "tipo": "factual",
+    "pergunta": "Por que Hannah Arendt considera o totalitarismo um fenômeno exclusivo do século XX?",
+    "resposta": [
+      "Porque depende da sociedade de massas e da técnica modernas, inexistentes em experiências pré-modernas."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6-7; Questões 19-20, p. 15, 18)",
+    "derivedFrom": "cp-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c17",
@@ -195,7 +541,39 @@
       "Baixa mobilização política das massas",
       "Poder exercido por líder ou pequeno grupo em limites mal definidos, porém previsíveis"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6; Questão 22, p. 16, 18)"
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6; Questão 22, p. 16, 18)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c17-a",
+      "cp-1-c17-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c17-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r5.2",
+    "tema": "Regimes Não Democráticos e Híbridos",
+    "tipo": "contraste",
+    "pergunta": "Na tipologia de Juan Linz, como o autoritarismo se distingue do totalitarismo quanto ao pluralismo e à ideologia?",
+    "resposta": [
+      "Autoritarismo possui pluralismo político limitado (não responsável) e mentalidades genéricas, sem ideologia elaborada."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6; Questão 22, p. 16, 18)",
+    "derivedFrom": "cp-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c17-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r5.2",
+    "tema": "Regimes Não Democráticos e Híbridos",
+    "tipo": "contraste",
+    "pergunta": "Na tipologia de Juan Linz, como o autoritarismo se distingue do totalitarismo quanto à mobilização e aos limites do poder?",
+    "resposta": [
+      "Autoritarismo apresenta baixa mobilização de massas e poder exercido por líder ou pequeno grupo em limites mal definidos, porém previsíveis."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.3.1, p. 6; Questão 22, p. 16, 18)",
+    "derivedFrom": "cp-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c18",
@@ -229,7 +607,39 @@
       "Começou em 1974, com a Revolução dos Cravos em Portugal (não em 1989)",
       "Consolidação: quando a democracia se torna 'o único jogo na cidade'"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 7, p. 9; Item 16, p. 11-12)"
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 7, p. 9; Item 16, p. 11-12)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c20-a",
+      "cp-1-c20-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c20-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.2",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "factual",
+    "pergunta": "Quando e com qual evento começou a terceira onda de democratização segundo Samuel Huntington?",
+    "resposta": [
+      "Em 1974, com a Revolução dos Cravos em Portugal (e não em 1989)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 7, p. 9; Item 16, p. 11-12)",
+    "derivedFrom": "cp-1-c20",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c20-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.2",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "factual",
+    "pergunta": "Segundo Linz e Stepan, quando uma democracia pode ser considerada consolidada?",
+    "resposta": [
+      "Quando a democracia se torna “o único jogo na cidade”."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 7, p. 9; Item 16, p. 11-12)",
+    "derivedFrom": "cp-1-c20",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c21",
@@ -241,7 +651,39 @@
       "Tolerância mútua: reconhecer o adversário político como legítimo",
       "Reserva institucional (forbearance): não usar até o limite as prerrogativas legais"
     ],
-    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 8, p. 9; Item 15, p. 11-12)"
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 8, p. 9; Item 15, p. 11-12)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c21-a",
+      "cp-1-c21-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c21-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.3",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "factual",
+    "pergunta": "Para Levitsky e Ziblatt, qual é a forma mais comum de morte das democracias contemporâneas?",
+    "resposta": [
+      "Erosão gradual conduzida por governantes eleitos (raramente golpe militar clássico)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 8, p. 9; Item 15, p. 11-12)",
+    "derivedFrom": "cp-1-c21",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c21-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.3",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "factual",
+    "pergunta": "Quais são as duas normas informais que sustentam a democracia segundo Levitsky e Ziblatt?",
+    "resposta": [
+      "Tolerância mútua (reconhecer o adversário como legítimo) e reserva institucional ou forbearance (não usar até o limite as prerrogativas legais)."
+    ],
+    "fonte": "Etapa 04 · Cap. 3 (3.4, p. 7; Pegadinha 8, p. 9; Item 15, p. 11-12)",
+    "derivedFrom": "cp-1-c21",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c22",
@@ -253,7 +695,39 @@
       "Accountability horizontal: fiscalização mútua entre instituições públicas (ex.: TCU, CGU, MP)",
       "Bobbio: democracia é o 'governo do poder visível', em oposição ao segredo das autocracias"
     ],
-    "fonte": "Aula 02 (Questão 22, p. 98-99)"
+    "fonte": "Aula 02 (Questão 22, p. 98-99)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "cp-1-c22-a",
+      "cp-1-c22-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c22-a",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.4",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "contraste",
+    "pergunta": "Na teoria de Guillermo O’Donnell, qual é a diferença entre accountability vertical e accountability horizontal?",
+    "resposta": [
+      "Vertical: controle por cidadãos e imprensa (eleições, escrutínio público). Horizontal: fiscalização mútua entre instituições públicas (ex.: TCU, CGU, MP)."
+    ],
+    "fonte": "Aula 02 (Questão 22, p. 98-99)",
+    "derivedFrom": "cp-1-c22",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "cp-1-c22-b",
+    "no": "kit-arr-cp-1-regimes-politicos-2026-11-22-r6.4",
+    "tema": "Transições, Ondas e Erosão Democrática",
+    "tipo": "factual",
+    "pergunta": "Como Norberto Bobbio define a democracia quanto à transparência do poder?",
+    "resposta": [
+      "Como o “governo do poder visível”, em oposição ao segredo das autocracias."
+    ],
+    "fonte": "Aula 02 (Questão 22, p. 98-99)",
+    "derivedFrom": "cp-1-c22",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "cp-1-c23",

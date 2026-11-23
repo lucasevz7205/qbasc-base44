@@ -1,22 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { contextualFlashcardFront, stripFlashcardContext } from '../src/lib/flashcard-standard.js';
-import { FLASHCARD_RULES } from '../src/lib/flashcard-rules.js';
+import { contextualFlashcardFront, hasRedundantContextPrefix, normalizeFlashcardFront, stripFlashcardContext } from '../src/lib/flashcard-standard.js';
+import { FLASHCARD_CARD_TYPES, FLASHCARD_RULE_SPECS, FLASHCARD_RULES } from '../src/lib/flashcard-rules.js';
 
-test('a frente usa a matéria e o tópico reais e aceita títulos com dois-pontos', () => {
+test('a frente nunca adiciona prefixo duplicado de matéria e assunto (regra 1 sem contradição)', () => {
   const matter = 'Ciência Política';
   const topic = 'Poderes: relações e controle';
   const front = 'Qual é a função típica do Legislativo?';
-  const normalized = contextualFlashcardFront(front, matter, topic);
-  assert.equal(normalized, 'Ciência Política · Poderes: relações e controle: ' + front);
-  assert.equal(contextualFlashcardFront(normalized, matter, topic), normalized);
-  assert.equal(contextualFlashcardFront(front, '', topic), front);
+  const prefixed = 'Ciência Política · Poderes: relações e controle: ' + front;
+
+  assert.equal(contextualFlashcardFront(front, matter, topic), front);
+  assert.equal(contextualFlashcardFront(prefixed, matter, topic), front);
+  assert.equal(normalizeFlashcardFront(prefixed, matter, topic), front);
+  assert.equal(hasRedundantContextPrefix(prefixed, matter, topic), true);
+  assert.equal(hasRedundantContextPrefix(front, matter, topic), false);
 });
 
-test('o padrão compartilhado conserva o requisito de fidelidade ao material', () => {
-  assert.match(FLASHCARD_RULES, /Matéria · tópico:/);
-  assert.match(FLASHCARD_RULES, /UM conceito por cartão/);
-  assert.match(FLASHCARD_RULES, /use só o texto fornecido/);
+test('o padrão compartilhado enumera integralmente as 16 regras e não torna lacunas obrigatórias', () => {
+  assert.equal(FLASHCARD_RULE_SPECS.length, 16);
+  assert.deepEqual(FLASHCARD_CARD_TYPES, ['factual', 'contraste', 'aplicacao', 'lacuna']);
+  assert.match(FLASHCARD_RULES, /16\./);
+  assert.match(FLASHCARD_RULES, /lacunas não é obrigatória/i);
+  assert.match(FLASHCARD_RULES, /UM alvo de recuperação por cartão/);
+  assert.match(FLASHCARD_RULES, /use exclusivamente o texto-fonte acessível/i);
 });
 
 test('a frente conserva a pergunta e seus dois-pontos nos formatos importados', () => {

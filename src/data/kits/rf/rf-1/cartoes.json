@@ -8,7 +8,39 @@
       "Frequência máxima: 8 kHz (metade da taxa, pela frequência de Nyquist)",
       "Acima do limite ocorre aliasing (registro distorcido das frequências)"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c01-a",
+      "rf-1-c01-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c01-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.1",
+    "tema": "Digitalização e Nyquist",
+    "tipo": "factual",
+    "pergunta": "Qual é a frequência máxima de som que uma gravação digital a 16 kHz consegue representar (frequência de Nyquist)?",
+    "resposta": [
+      "8 kHz (metade da taxa de amostragem)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)",
+    "derivedFrom": "rf-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c01-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.1",
+    "tema": "Digitalização e Nyquist",
+    "tipo": "factual",
+    "pergunta": "Qual fenômeno ocorre na digitalização de áudio quando há frequências acima do limite de Nyquist?",
+    "resposta": [
+      "Aliasing (registro distorcido das frequências)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)",
+    "derivedFrom": "rf-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c02",
@@ -32,7 +64,39 @@
       "FLAC: compressão sem perda (áudio volta idêntico)",
       "MP3: compressão com perda irreversível (pode piorar a transcrição)"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.1.5 (p. 9-10)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.5 (p. 9-10)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c03-a",
+      "rf-1-c03-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c03-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+    "tema": "Quantização, Formato e Compressão",
+    "tipo": "contraste",
+    "pergunta": "Na digitalização de áudio, qual é a diferença entre WAV e PCM linear?",
+    "resposta": [
+      "WAV é um formato de arquivo (container) com cabeçalho; PCM linear é a codificação sem compressão e sem perda."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.5 (p. 9-10)",
+    "derivedFrom": "rf-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c03-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+    "tema": "Quantização, Formato e Compressão",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre FLAC e MP3 quanto à perda de dados e ao efeito no ASR?",
+    "resposta": [
+      "FLAC usa compressão sem perda (áudio volta idêntico); MP3 usa compressão com perda irreversível, podendo piorar a transcrição."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.1.5 (p. 9-10)",
+    "derivedFrom": "rf-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c04",
@@ -44,7 +108,39 @@
       "Vogais: faixas horizontais de energia (formantes)",
       "Consoantes 's' e 'x': manchas espalhadas nas frequências agudas"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.2.2 (p. 10); Aula Bloco 1 (p. 5-6)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.2.2 (p. 10); Aula Bloco 1 (p. 5-6)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c04-a",
+      "rf-1-c04-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c04-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.3",
+    "tema": "Espectrograma e Formantes",
+    "tipo": "factual",
+    "pergunta": "Quais parâmetros de janelamento o Whisper utiliza para gerar o espectrograma de áudio?",
+    "resposta": [
+      "Janelas (quadros) de 25 milissegundos, tomadas a cada 10 milissegundos."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.2.2 (p. 10); Aula Bloco 1 (p. 5-6)",
+    "derivedFrom": "rf-1-c04",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c04-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.3",
+    "tema": "Espectrograma e Formantes",
+    "tipo": "contraste",
+    "pergunta": "Como vogais e consoantes fricativas (“s”, “x”) aparecem visualmente em um espectrograma?",
+    "resposta": [
+      "Vogais: faixas horizontais de energia (formantes). Fricativas “s” e “x”: manchas espalhadas nas frequências agudas."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.2.2 (p. 10); Aula Bloco 1 (p. 5-6)",
+    "derivedFrom": "rf-1-c04",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c05",
@@ -67,7 +163,39 @@
       "Inferência: aplica o modelo pronto a áudios inéditos",
       "Descompasso (ruído, sotaque raro, fala espontânea) eleva a WER"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.3.1 (p. 11); Etapa 02 — seção 1.1.8 (p. 30)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.3.1 (p. 11); Etapa 02 — seção 1.1.8 (p. 30)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c06-a",
+      "rf-1-c06-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c06-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.1",
+    "tema": "Treino, Inferência e Domínio",
+    "tipo": "contraste",
+    "pergunta": "Em redes neurais para ASR, qual é a diferença entre treino e inferência?",
+    "resposta": [
+      "Treino: ajusta os pesos do modelo a partir de exemplos. Inferência: aplica o modelo pronto a áudios inéditos."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.3.1 (p. 11); Etapa 02 — seção 1.1.8 (p. 30)",
+    "derivedFrom": "rf-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c06-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.1",
+    "tema": "Treino, Inferência e Domínio",
+    "tipo": "factual",
+    "pergunta": "O que acontece com a WER de um modelo de ASR quando há descompasso de domínio entre os dados de treino e o uso real?",
+    "resposta": [
+      "A WER se eleva (ex.: diante de ruído, sotaque raro ou fala espontânea não vistos no treino)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.3.1 (p. 11); Etapa 02 — seção 1.1.8 (p. 30)",
+    "derivedFrom": "rf-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c07",
@@ -101,7 +229,39 @@
       "Codificador: lê a entrada inteira (ex.: espectrograma) e gera representações",
       "Decodificador autorregressivo: gera um token por vez, consultando o codificador e os tokens que já gerou"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.4.3 (p. 12)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.4.3 (p. 12)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c09-a",
+      "rf-1-c09-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c09-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.4",
+    "tema": "Encoder e Decoder",
+    "tipo": "factual",
+    "pergunta": "Na arquitetura Transformer para ASR, qual é o papel do codificador (encoder)?",
+    "resposta": [
+      "Ler a entrada inteira (ex.: espectrograma) e gerar representações internas."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.4.3 (p. 12)",
+    "derivedFrom": "rf-1-c09",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c09-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r2.4",
+    "tema": "Encoder e Decoder",
+    "tipo": "factual",
+    "pergunta": "Por que o decodificador (decoder) do Transformer é chamado de autorregressivo?",
+    "resposta": [
+      "Porque gera um token por vez, consultando o codificador e os tokens que ele próprio já gerou."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.4.3 (p. 12)",
+    "derivedFrom": "rf-1-c09",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c10",
@@ -112,7 +272,39 @@
       "OOV: palavra dita ausente do léxico fechado; é trocada por som parecido e contamina vizinhas",
       "Subpalavras (BPE): compõem palavras inéditas a partir de pedaços conhecidos (vocabulário aberto), reduzindo mas não eliminando erros em nomes raros"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.5.1 (p. 12); Etapa 02 — seção 1.1.7 (p. 29)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.1 (p. 12); Etapa 02 — seção 1.1.7 (p. 29)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c10-a",
+      "rf-1-c10-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c10-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.1",
+    "tema": "Tokens e Problema OOV",
+    "tipo": "factual",
+    "pergunta": "O que acontece no ASR clássico quando o falante pronuncia uma palavra fora do vocabulário (OOV)?",
+    "resposta": [
+      "Como a palavra não consta do léxico fechado, ela é trocada por outra de som parecido e contamina palavras vizinhas."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.1 (p. 12); Etapa 02 — seção 1.1.7 (p. 29)",
+    "derivedFrom": "rf-1-c10",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c10-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.1",
+    "tema": "Tokens e Problema OOV",
+    "tipo": "factual",
+    "pergunta": "Como a tokenização por subpalavras (como BPE) mitiga o problema de OOV nos modelos End-to-End?",
+    "resposta": [
+      "Compõe palavras inéditas a partir de pedaços conhecidos (vocabulário aberto), reduzindo — mas não eliminando — erros em nomes raros."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.1 (p. 12); Etapa 02 — seção 1.1.7 (p. 29)",
+    "derivedFrom": "rf-1-c10",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c11",
@@ -147,7 +339,39 @@
       "Alucinação: inventa palavras ou frases inteiras sem apoio no áudio",
       "Condição favorecedora: pausas longas, silêncio ou ruído (pouca evidência acústica)"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.5.4 (p. 13); Aula Bloco 1 (p. 16)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.4 (p. 13); Aula Bloco 1 (p. 16)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c13-a",
+      "rf-1-c13-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c13-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.4",
+    "tema": "Alucinação em ASR e LLM",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre erro comum de reconhecimento e alucinação em ASR?",
+    "resposta": [
+      "Erro comum distorce uma palavra dita por outra de som parecido; alucinação inventa palavras ou frases inteiras sem apoio no áudio."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.4 (p. 13); Aula Bloco 1 (p. 16)",
+    "derivedFrom": "rf-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c13-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r3.4",
+    "tema": "Alucinação em ASR e LLM",
+    "tipo": "factual",
+    "pergunta": "Qual condição do áudio favorece o surgimento de alucinações em decodificadores autorregressivos de ASR?",
+    "resposta": [
+      "Pausas longas, silêncio ou ruído (pouca evidência acústica)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.5.4 (p. 13); Aula Bloco 1 (p. 16)",
+    "derivedFrom": "rf-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c14",
@@ -158,7 +382,39 @@
       "DNN-HMM: rede neural substitui apenas a GMM, mantendo HMM, léxico, modelo de linguagem e decodificador separados",
       "LLM de áudio nativo: evita soma de latências, evita propagação de erros de transcrição e preserva tom/prosódia"
     ],
-    "fonte": "Etapa 02 — seção 1.1.6 (p. 29); Aula Bloco 1 (p. 18-22)"
+    "fonte": "Etapa 02 — seção 1.1.6 (p. 29); Aula Bloco 1 (p. 18-22)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c14-a",
+      "rf-1-c14-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c14-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.1",
+    "tema": "Gerações de ASR e Áudio Nativo",
+    "tipo": "contraste",
+    "pergunta": "Na arquitetura híbrida DNN-HMM, qual bloco é substituído pela rede neural em relação ao HMM-GMM clássico?",
+    "resposta": [
+      "Apenas a GMM; permanecem separados o HMM, o léxico, o modelo de linguagem e o decodificador."
+    ],
+    "fonte": "Etapa 02 — seção 1.1.6 (p. 29); Aula Bloco 1 (p. 18-22)",
+    "derivedFrom": "rf-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c14-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.1",
+    "tema": "Gerações de ASR e Áudio Nativo",
+    "tipo": "contraste",
+    "pergunta": "Quais são as três vantagens dos LLMs de áudio nativo sobre a cascata ASR → LLM → TTS?",
+    "resposta": [
+      "Evitam soma de latências, evitam propagação de erros de transcrição e preservam tom/prosódia."
+    ],
+    "fonte": "Etapa 02 — seção 1.1.6 (p. 29); Aula Bloco 1 (p. 18-22)",
+    "derivedFrom": "rf-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c15",
@@ -169,7 +425,39 @@
       "Diarização: responde 'quem falou quando?' com rótulos anônimos (Falante 1, 2...), sem cadastro prévio",
       "Identificação (1:N) e verificação (1:1): exigem cadastro prévio de vozes (escolher entre cadastrados ou validar identidade alegada)"
     ],
-    "fonte": "Aula Bloco 1 (p. 23-28)"
+    "fonte": "Aula Bloco 1 (p. 23-28)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c15-a",
+      "rf-1-c15-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c15-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2",
+    "tema": "Diarização e Tarefas Vizinhas",
+    "tipo": "factual",
+    "pergunta": "Qual pergunta a diarização de falantes responde e ela exige cadastro prévio de vozes?",
+    "resposta": [
+      "Responde “quem falou quando?” com rótulos anônimos (Falante 1, 2...), sem exigir cadastro prévio."
+    ],
+    "fonte": "Aula Bloco 1 (p. 23-28)",
+    "derivedFrom": "rf-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c15-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2",
+    "tema": "Diarização e Tarefas Vizinhas",
+    "tipo": "contraste",
+    "pergunta": "Como identificação (1:N) e verificação (1:1) de locutor se distinguem da diarização quanto ao cadastro prévio?",
+    "resposta": [
+      "Ambas exigem cadastro prévio de vozes (identificação escolhe entre cadastrados; verificação valida a identidade alegada)."
+    ],
+    "fonte": "Aula Bloco 1 (p. 23-28)",
+    "derivedFrom": "rf-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c16",
@@ -181,7 +469,39 @@
       "Transcrição literal (verbatim): mantém hesitações e repetições",
       "Transcrição limpa: remove disfluências sem alterar o conteúdo (próxima às notas taquigráficas)"
     ],
-    "fonte": "Aula Bloco 1 (p. 31-32)"
+    "fonte": "Aula Bloco 1 (p. 31-32)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c16-a",
+      "rf-1-c16-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c16-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.3",
+    "tema": "Pontuação, ITN e Disfluências",
+    "tipo": "factual",
+    "pergunta": "Qual é a função da normalização inversa de texto (ITN) no pós-processamento de ASR?",
+    "resposta": [
+      "Converter a forma falada (“cinquenta reais”, “artigo quinto”) para a escrita padronizada (“R$ 50”, “art. 5º”)."
+    ],
+    "fonte": "Aula Bloco 1 (p. 31-32)",
+    "derivedFrom": "rf-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c16-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.3",
+    "tema": "Pontuação, ITN e Disfluências",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre transcrição literal (verbatim) e transcrição limpa?",
+    "resposta": [
+      "Literal mantém hesitações e repetições; limpa remove disfluências sem alterar o conteúdo (mais próxima às notas taquigráficas)."
+    ],
+    "fonte": "Aula Bloco 1 (p. 31-32)",
+    "derivedFrom": "rf-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c17",
@@ -192,7 +512,39 @@
       "Escada: (1) lista de frases/biasing → (2) prompt → (3) modelo de linguagem personalizado → (4) ajuste fino acústico",
       "Acervo apenas textual (sem áudio): usado no 3º degrau (modelo de linguagem personalizado)"
     ],
-    "fonte": "Aula Bloco 1 (p. 37-39)"
+    "fonte": "Aula Bloco 1 (p. 37-39)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c17-a",
+      "rf-1-c17-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c17-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.4",
+    "tema": "Adaptação ao Português Parlamentar",
+    "tipo": "lacuna",
+    "pergunta": "Na escada de adaptação ao domínio parlamentar — (1) lista de frases/biasing → (2) prompt → (3) ___ → (4) ajuste fino acústico — qual degrau ocupa a 3ª posição?",
+    "resposta": [
+      "Modelo de linguagem personalizado."
+    ],
+    "fonte": "Aula Bloco 1 (p. 37-39)",
+    "derivedFrom": "rf-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c17-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.4",
+    "tema": "Adaptação ao Português Parlamentar",
+    "tipo": "aplicacao",
+    "pergunta": "Na escada de adaptação de ASR ao domínio parlamentar, qual degrau aproveita apenas acervos textuais de notas taquigráficas sem áudio?",
+    "resposta": [
+      "O 3º degrau: modelo de linguagem personalizado."
+    ],
+    "fonte": "Aula Bloco 1 (p. 37-39)",
+    "derivedFrom": "rf-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c18",
@@ -204,7 +556,39 @@
       "Finais: definitivos após o endpointing (detecção de fim de fala via VAD)",
       "Câmara (Derep): Whisper large-v3 via API integrado ao sistema Escriba, com revisão humana obrigatória"
     ],
-    "fonte": "Etapa 01 — Na prática da Câmara (p. 16); Aula Bloco 1 (p. 40-41)"
+    "fonte": "Etapa 01 — Na prática da Câmara (p. 16); Aula Bloco 1 (p. 40-41)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c18-a",
+      "rf-1-c18-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c18-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.5",
+    "tema": "Streaming, Lote e Prática da Câmara",
+    "tipo": "contraste",
+    "pergunta": "Em transcrição em tempo real (streaming), qual é a diferença entre resultados parciais (interim) e finais?",
+    "resposta": [
+      "Parciais são hipóteses provisórias que mudam com novos pacotes de áudio; finais tornam-se definitivos após o endpointing (via VAD)."
+    ],
+    "fonte": "Etapa 01 — Na prática da Câmara (p. 16); Aula Bloco 1 (p. 40-41)",
+    "derivedFrom": "rf-1-c18",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c18-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.5",
+    "tema": "Streaming, Lote e Prática da Câmara",
+    "tipo": "factual",
+    "pergunta": "Qual solução de ASR a Câmara dos Deputados (Derep) utiliza desde 2026?",
+    "resposta": [
+      "Whisper large-v3 via API integrado ao sistema Escriba, com revisão humana obrigatória."
+    ],
+    "fonte": "Etapa 01 — Na prática da Câmara (p. 16); Aula Bloco 1 (p. 40-41)",
+    "derivedFrom": "rf-1-c18",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c19",
@@ -215,7 +599,39 @@
       "WER = (S + D + I) / N: inserções (I) aumentam o numerador sem aumentar N (palavras da referência), podendo passar de 100%",
       "WER exige transcrição de referência humana; escore de confiança é estimado pelo próprio sistema sem referência"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)"
+    "fonte": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c19-a",
+      "rf-1-c19-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c19-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1",
+    "tema": "WER, CER e Escore de Confiança",
+    "tipo": "factual",
+    "pergunta": "Na fórmula WER = (S + D + I) / N, por que o valor pode ultrapassar 100%?",
+    "resposta": [
+      "Porque inserções (I) aumentam o numerador sem aumentar o denominador N (palavras da referência)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)",
+    "derivedFrom": "rf-1-c19",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c19-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1",
+    "tema": "WER, CER e Escore de Confiança",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre WER e escore de confiança quanto à necessidade de transcrição de referência?",
+    "resposta": [
+      "A WER exige transcrição de referência humana; o escore de confiança é estimado pelo próprio sistema sem referência."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)",
+    "derivedFrom": "rf-1-c19",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-c20",
@@ -226,6 +642,38 @@
       "DER (em tempo): (falso alarme + fala perdida + confusão de falante) / tempo total de fala da referência",
       "RTF < 1 indica processamento mais rápido que a duração do áudio (condição necessária), mas a latência depende também do tamanho dos pacotes e do lookahead"
     ],
-    "fonte": "Etapa 01 — Cap. 0, seções 0.6.3 a 0.6.5 (p. 14-15)"
+    "fonte": "Etapa 01 — Cap. 0, seções 0.6.3 a 0.6.5 (p. 14-15)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-c20-a",
+      "rf-1-c20-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c20-a",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.4",
+    "tema": "DER, RTF e Latência",
+    "tipo": "factual",
+    "pergunta": "Quais são os três componentes somados no numerador da métrica DER (Diarization Error Rate)?",
+    "resposta": [
+      "Falso alarme, fala perdida e confusão de falante (divididos pelo tempo total de fala da referência)."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seções 0.6.3 a 0.6.5 (p. 14-15)",
+    "derivedFrom": "rf-1-c20",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-c20-b",
+    "no": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.4",
+    "tema": "DER, RTF e Latência",
+    "tipo": "factual",
+    "pergunta": "Por que um fator de tempo real (RTF) menor que 1 não garante sozinho baixa latência em transcrição ao vivo?",
+    "resposta": [
+      "Porque RTF < 1 é condição necessária, mas a latência depende também do tamanho dos pacotes de áudio e do lookahead."
+    ],
+    "fonte": "Etapa 01 — Cap. 0, seções 0.6.3 a 0.6.5 (p. 14-15)",
+    "derivedFrom": "rf-1-c20",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   }
 ]

@@ -8,7 +8,39 @@
       "Entrega a sequência de palavras mais provável em minúsculas",
       "Pontuação e capitalização ficam de fora (etapas próprias posteriores)"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c01-a",
+      "rf-1-1-c01-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c01-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.1",
+    "tema": "Definição e Natureza Probabilística",
+    "tipo": "factual",
+    "pergunta": "O que entrega o núcleo de um sistema clássico de ASR ao receber o sinal acústico?",
+    "resposta": [
+      "A sequência de palavras mais provável em letras minúsculas."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26)",
+    "derivedFrom": "rf-1-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c01-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.1",
+    "tema": "Definição e Natureza Probabilística",
+    "tipo": "factual",
+    "pergunta": "No fluxo clássico de ASR, quais elementos textuais ficam fora do núcleo acústico-linguístico para etapas posteriores?",
+    "resposta": [
+      "Pontuação e capitalização."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25–26)",
+    "derivedFrom": "rf-1-1-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c02",
@@ -21,7 +53,39 @@
       "Reconhecimento de locutor: de quem é esta voz? (1:N) ou é quem diz ser? (1:1)",
       "TTS: como transformar texto em voz?"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25); Prof. Vinicius Borges, seção 1.1 (p. 4–5, 54)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25); Prof. Vinicius Borges, seção 1.1 (p. 4–5, 54)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c02-a",
+      "rf-1-1-c02-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c02-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.2",
+    "tema": "Fronteiras: ASR × Tarefas Vizinhas",
+    "tipo": "contraste",
+    "pergunta": "Qual pergunta específica respondem o ASR e a diarização de falantes?",
+    "resposta": [
+      "ASR: “o que foi dito?”. Diarização: “quem falou quando?” (com rótulos anônimos)."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25); Prof. Vinicius Borges, seção 1.1 (p. 4–5, 54)",
+    "derivedFrom": "rf-1-1-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c02-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.2",
+    "tema": "Fronteiras: ASR × Tarefas Vizinhas",
+    "tipo": "contraste",
+    "pergunta": "Qual pergunta específica respondem o reconhecimento de locutor e a síntese de fala (TTS)?",
+    "resposta": [
+      "Reconhecimento de locutor: “de quem é esta voz?” (1:N) ou “é quem diz ser?” (1:1). TTS: como transformar texto em voz."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.1 (p. 25); Prof. Vinicius Borges, seção 1.1 (p. 4–5, 54)",
+    "derivedFrom": "rf-1-1-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c03",
@@ -34,7 +98,39 @@
       "Canal e ruído",
       "Sotaque e perfil do falante"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c03-a",
+      "rf-1-1-c03-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c03-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3",
+    "tema": "Quatro Dimensões de Dificuldade",
+    "tipo": "lacuna",
+    "pergunta": "Nas quatro dimensões de dificuldade do ASR segundo Jurafsky e Martin — tamanho do vocabulário, canal/ruído, sotaque/perfil do falante e ___ — qual contrapõe fala lida a fala espontânea?",
+    "resposta": [
+      "Estilo de fala."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)",
+    "derivedFrom": "rf-1-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c03-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3",
+    "tema": "Quatro Dimensões de Dificuldade",
+    "tipo": "factual",
+    "pergunta": "Quais são os três fatores externos ao estilo de fala que agravam a dificuldade de um sistema de ASR (Jurafsky e Martin)?",
+    "resposta": [
+      "Tamanho do vocabulário, condições do canal/ruído e variação de sotaque/perfil do falante."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 (p. 26)",
+    "derivedFrom": "rf-1-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c04",
@@ -46,7 +142,39 @@
       "Faixa na Câmara: de 8% (cenário controlado) a 50% (debate espontâneo)",
       "Média divulgada na Câmara: 25%"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c04-a",
+      "rf-1-1-c04-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c04-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3a",
+    "tema": "Estilo de Fala e Alinhamento Temporal",
+    "tipo": "contraste",
+    "pergunta": "Entre fala lida e fala espontânea em comissão parlamentar, qual gera maior taxa de erro no ASR e por quê?",
+    "resposta": [
+      "A fala espontânea, devido a hesitações, truncamentos e sobreposições."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32)",
+    "derivedFrom": "rf-1-1-c04",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c04-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3a",
+    "tema": "Estilo de Fala e Alinhamento Temporal",
+    "tipo": "factual",
+    "pergunta": "Qual faixa de variação e média da taxa de erro de palavras (WER) foram divulgadas pela Câmara dos Deputados?",
+    "resposta": [
+      "De 8% (cenário controlado) a 50% (debate espontâneo), com média de 25%."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.2 e Na prática da Câmara (p. 26, 32)",
+    "derivedFrom": "rf-1-1-c04",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c05",
@@ -70,7 +198,39 @@
       "Dependente de locutor: ajustado especificamente para a voz de um falante",
       "No Parlamento exige-se o independente de locutor (oradores mudam a cada legislatura)"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.2 e 1.1.10 (p. 26, 31)"
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.2 e 1.1.10 (p. 26, 31)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c06-a",
+      "rf-1-1-c06-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c06-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3c",
+    "tema": "Locutor: Independente × Dependente e Homófonos",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre um sistema de ASR independente de locutor e um dependente de locutor?",
+    "resposta": [
+      "Independente: reconhece vozes nunca ouvidas no treino. Dependente: ajustado especificamente para a voz de um falante."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.2 e 1.1.10 (p. 26, 31)",
+    "derivedFrom": "rf-1-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c06-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r1.3c",
+    "tema": "Locutor: Independente × Dependente e Homófonos",
+    "tipo": "aplicacao",
+    "pergunta": "Por que o ambiente parlamentar exige um sistema de ASR independente de locutor?",
+    "resposta": [
+      "Porque os oradores mudam continuamente e a cada legislatura, impossibilitando treinar para cada voz."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.2 e 1.1.10 (p. 26, 31)",
+    "derivedFrom": "rf-1-1-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c07",
@@ -82,7 +242,39 @@
       "P(W): probabilidade a priori da sequência de palavras, calculada pelo modelo de linguagem",
       "O modelo de linguagem P(W) desempata homófonos pelo contexto"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c07-a",
+      "rf-1-1-c07-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c07-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.1",
+    "tema": "Canal Ruidoso e Regra de Bayes",
+    "tipo": "contraste",
+    "pergunta": "Na fórmula de Bayes do ASR clássico, o que medem os termos P(O|W) e P(W)?",
+    "resposta": [
+      "P(O|W): verossimilhança acústica (modelo acústico). P(W): probabilidade a priori da sequência de palavras (modelo de linguagem)."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)",
+    "derivedFrom": "rf-1-1-c07",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c07-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.1",
+    "tema": "Canal Ruidoso e Regra de Bayes",
+    "tipo": "aplicacao",
+    "pergunta": "Na fórmula de Bayes do ASR clássico, qual componente desempata homófonos como “sessão” e “cessão”?",
+    "resposta": [
+      "O modelo de linguagem P(W), pelo contexto da frase."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.3 (p. 26–27)",
+    "derivedFrom": "rf-1-1-c07",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c08",
@@ -94,7 +286,39 @@
       "MFCC: vetores compactos (~39 números) comuns nos sistemas clássicos",
       "Espectrograma log-Mel: entrada típica dos modelos neurais atuais"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 5–6)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 5–6)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c08-a",
+      "rf-1-1-c08-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c08-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2a",
+    "tema": "Extração de Características: MFCC e Log-Mel",
+    "tipo": "factual",
+    "pergunta": "Na extração de características do ASR, com qual duração e passo temporal o sinal de áudio é fatiado em quadros (frames)?",
+    "resposta": [
+      "Quadros de cerca de 25 ms, com novo quadro a cada 10 ms."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 5–6)",
+    "derivedFrom": "rf-1-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c08-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2a",
+    "tema": "Extração de Características: MFCC e Log-Mel",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença de uso entre MFCC e espectrograma log-Mel na extração de características em ASR?",
+    "resposta": [
+      "MFCC (vetores compactos, ~39 números) predomina nos sistemas clássicos; espectrograma log-Mel é a entrada típica dos modelos neurais atuais."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27); Prof. Vinicius Borges, seção 1.1 (p. 5–6)",
+    "derivedFrom": "rf-1-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c09",
@@ -106,7 +330,39 @@
       "Modelo de linguagem: aprende apenas com texto (sem áudio)",
       "Léxico de pronúncia: lista palavras com seus fones e delimita o vocabulário"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c09-a",
+      "rf-1-1-c09-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c09-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2b",
+    "tema": "Modelo Acústico, Léxico e Modelo de Linguagem",
+    "tipo": "contraste",
+    "pergunta": "Com qual tipo de dado é treinado o modelo acústico e com qual dado é treinado o modelo de linguagem no ASR clássico?",
+    "resposta": [
+      "Modelo acústico: áudio acompanhado de transcrição. Modelo de linguagem: apenas texto (sem áudio)."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27)",
+    "derivedFrom": "rf-1-1-c09",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c09-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2b",
+    "tema": "Modelo Acústico, Léxico e Modelo de Linguagem",
+    "tipo": "factual",
+    "pergunta": "Qual é a função do léxico de pronúncia em um sistema clássico de ASR?",
+    "resposta": [
+      "Listar as palavras com seus respectivos fones e delimitar o vocabulário do sistema."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27)",
+    "derivedFrom": "rf-1-1-c09",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c10",
@@ -118,7 +374,39 @@
       "Descarta a cada passo hipóteses muito piores que a melhor",
       "Desvantagem: a poda pode eliminar a hipótese correta"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 28)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 28)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c10-a",
+      "rf-1-1-c10-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c10-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2c",
+    "tema": "Decodificador: Viterbi, Busca em Feixe e Treliça",
+    "tipo": "factual",
+    "pergunta": "Como o decodificador clássico de ASR reduz o espaço de busca em vez de testar todas as frases possíveis?",
+    "resposta": [
+      "Usa o algoritmo de Viterbi acelerado por poda (pruning), geralmente como busca em feixe (beam search), descartando hipóteses muito piores."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 28)",
+    "derivedFrom": "rf-1-1-c10",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c10-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2c",
+    "tema": "Decodificador: Viterbi, Busca em Feixe e Treliça",
+    "tipo": "factual",
+    "pergunta": "Qual é a principal desvantagem da poda (beam search) no decodificador clássico de ASR?",
+    "resposta": [
+      "A poda pode eliminar prematuramente a hipótese correta."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 28)",
+    "derivedFrom": "rf-1-1-c10",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c11",
@@ -130,7 +418,39 @@
       "GMM: mede o ajuste entre um quadro de áudio e um estado",
       "Oculto: o sistema observa apenas o áudio (vetores) e precisa inferir os estados/fones"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c11-a",
+      "rf-1-1-c11-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c11-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2a",
+    "tema": "HMM × GMM, Treino Embutido e Alinhamento Forçado",
+    "tipo": "contraste",
+    "pergunta": "Em um modelo acústico HMM-GMM, qual é a diferença de função entre o HMM e a GMM?",
+    "resposta": [
+      "HMM modela a sucessão e a duração variável dos fones no tempo; GMM mede o ajuste entre um quadro de áudio e um estado."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)",
+    "derivedFrom": "rf-1-1-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c11-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.2a",
+    "tema": "HMM × GMM, Treino Embutido e Alinhamento Forçado",
+    "tipo": "factual",
+    "pergunta": "Por que o Modelo Oculto de Markov (HMM) usado em ASR é chamado de “oculto”?",
+    "resposta": [
+      "Porque o sistema observa apenas o áudio (vetores acústicos) e precisa inferir os estados/fones subjacentes."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.5 (p. 28)",
+    "derivedFrom": "rf-1-1-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c12",
@@ -153,7 +473,39 @@
       "Permanece: o HMM para modelar a estrutura temporal",
       "Permanecem separados: léxico de pronúncia, modelo de linguagem e decodificador"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c13-a",
+      "rf-1-1-c13-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c13-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.3",
+    "tema": "2ª Geração: Sistemas Híbridos DNN-HMM",
+    "tipo": "factual",
+    "pergunta": "Nos sistemas híbridos DNN-HMM de ASR, qual componente do modelo clássico é substituído pela rede neural profunda?",
+    "resposta": [
+      "A mistura de gaussianas (GMM) na avaliação acústica dos estados."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29)",
+    "derivedFrom": "rf-1-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c13-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.3",
+    "tema": "2ª Geração: Sistemas Híbridos DNN-HMM",
+    "tipo": "factual",
+    "pergunta": "Nos sistemas híbridos DNN-HMM de ASR, quais blocos clássicos continuam existindo separadamente?",
+    "resposta": [
+      "O HMM (estrutura temporal), o léxico de pronúncia, o modelo de linguagem e o decodificador."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.6 (p. 29)",
+    "derivedFrom": "rf-1-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c14",
@@ -165,7 +517,39 @@
       "Uma única rede neural vai do áudio ao texto usando tokens de subpalavra",
       "Modelo adotado na Câmara desde 2026: Whisper large-v3"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.6, 1.1.10 e Na prática da Câmara (p. 29, 31–32)"
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.6, 1.1.10 e Na prática da Câmara (p. 29, 31–32)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c14-a",
+      "rf-1-1-c14-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c14-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.4",
+    "tema": "Comparativo: HMM-GMM × DNN-HMM × End-to-End",
+    "tipo": "factual",
+    "pergunta": "Quais blocos separados do ASR clássico desaparecem nos modelos End-to-End?",
+    "resposta": [
+      "O léxico de pronúncia separado e o decodificador clássico de três fontes (uma única rede vai do áudio ao texto via tokens de subpalavra)."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.6, 1.1.10 e Na prática da Câmara (p. 29, 31–32)",
+    "derivedFrom": "rf-1-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c14-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r3.4",
+    "tema": "Comparativo: HMM-GMM × DNN-HMM × End-to-End",
+    "tipo": "factual",
+    "pergunta": "Qual modelo de ASR da geração End-to-End a Câmara dos Deputados adotou desde 2026?",
+    "resposta": [
+      "Whisper large-v3."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.6, 1.1.10 e Na prática da Câmara (p. 29, 31–32)",
+    "derivedFrom": "rf-1-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c15",
@@ -190,7 +574,39 @@
       "Inaudível: áudio em que nem um ouvinte humano distingue o que foi dito",
       "Subpalavras (E2E) reduzem o problema de OOV, mas nomes raros seguem sujeitos a erro"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.7 e 1.1.10 (p. 29–31)"
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.7 e 1.1.10 (p. 29–31)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c16-a",
+      "rf-1-1-c16-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c16-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.2",
+    "tema": "Origens Parlamentares, Distinções e Remédios",
+    "tipo": "contraste",
+    "pergunta": "Em ASR, qual é a diferença entre palavra OOV, palavra de baixa confiança e trecho inaudível?",
+    "resposta": [
+      "OOV: ausente do vocabulário. Baixa confiança: está no vocabulário, mas com escore baixo. Inaudível: nem um humano distingue no áudio."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.7 e 1.1.10 (p. 29–31)",
+    "derivedFrom": "rf-1-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c16-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.2",
+    "tema": "Origens Parlamentares, Distinções e Remédios",
+    "tipo": "factual",
+    "pergunta": "A tokenização por subpalavras nos modelos End-to-End elimina totalmente os erros em nomes próprios raros?",
+    "resposta": [
+      "Não; reduz o problema de OOV, mas nomes raros seguem sujeitos a erro."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seções 1.1.7 e 1.1.10 (p. 29–31)",
+    "derivedFrom": "rf-1-1-c16",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c17",
@@ -201,7 +617,39 @@
       "Cinco famílias: acústica, do falante, de estilo, linguística e do sistema",
       "Três formas na saída: substituição (troca), omissão/deleção e inserção"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c17-a",
+      "rf-1-1-c17-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c17-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.3",
+    "tema": "Cinco Famílias de Fontes de Erro",
+    "tipo": "lacuna",
+    "pergunta": "Entre as cinco famílias de causas de erro em ASR — acústica, do falante, de estilo, linguística e ___ — qual decorre do próprio modelo ou vocabulário?",
+    "resposta": [
+      "Do sistema."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)",
+    "derivedFrom": "rf-1-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c17-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r4.3",
+    "tema": "Cinco Famílias de Fontes de Erro",
+    "tipo": "factual",
+    "pergunta": "De quais três formas todo erro de ASR aparece na saída medida pela WER?",
+    "resposta": [
+      "Substituição (troca), omissão/deleção e inserção."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.8 (p. 30)",
+    "derivedFrom": "rf-1-1-c17",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c18",
@@ -213,7 +661,39 @@
       "N: número de palavras da transcrição de referência (não da hipótese)",
       "Passa de 100% porque inserções (I), como alucinações em silêncio, aumentam o numerador sem aumentar N"
     ],
-    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 (p. 9–10)"
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 (p. 9–10)",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "rf-1-1-c18-a",
+      "rf-1-1-c18-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c18-a",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+    "tema": "Por que a WER pode passar de 100%",
+    "tipo": "factual",
+    "pergunta": "Qual é a fórmula da taxa de erro de palavras (WER) em sistemas de ASR?",
+    "resposta": [
+      "WER = (S + D + I) ÷ N, onde N é o número de palavras da transcrição de referência (não da hipótese)."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 (p. 9–10)",
+    "derivedFrom": "rf-1-1-c18",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "rf-1-1-c18-b",
+    "no": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+    "tema": "Por que a WER pode passar de 100%",
+    "tipo": "factual",
+    "pergunta": "Por que a métrica WER pode ultrapassar 100%?",
+    "resposta": [
+      "Porque inserções (I), como alucinações em silêncio, aumentam o numerador sem aumentar o denominador N."
+    ],
+    "fonte": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 (p. 9–10)",
+    "derivedFrom": "rf-1-1-c18",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "rf-1-1-c19",

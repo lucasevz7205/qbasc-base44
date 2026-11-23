@@ -12,16 +12,25 @@
   {
     "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c02",
     "no": "kit-arr-rf-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-r1.2",
-    "pergunta": "Cite duas métricas de transcrição de sessões citadas pela apostila.",
+    "pergunta": "Cite até três métricas de desempenho usadas na transcrição de sessões da Câmara dos Deputados (caso 022 da UIP).",
     "resposta": [
-      "WER (taxa de erro de palavras)",
-      "Tempo de reconhecimento",
-      "Acurácia da diarização",
-      "Volume de transcrições assistidas"
+      "WER (taxa de erro de palavras), tempo de reconhecimento e acurácia da diarização (além do volume de transcrições assistidas)."
     ],
     "explicacao": "A apostila lista quatro métricas no caso de uso da Câmara dos Deputados (caso 022 da UIP); basta citar duas.",
     "fonte": "Etapa 18, p. 234",
-    "tema": "Aplicações de IA em parlamentos"
+    "tema": "Aplicações de IA em parlamentos",
+    "originalAnterior": {
+      "pergunta": "Cite duas métricas de transcrição de sessões citadas pela apostila.",
+      "resposta": [
+        "WER (taxa de erro de palavras)",
+        "Tempo de reconhecimento",
+        "Acurácia da diarização",
+        "Volume de transcrições assistidas"
+      ]
+    },
+    "tipo": "factual",
+    "reformuladoEm": "2026-11-23",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "KIT-ARR-RF-3-ia-aplicada-no-contexto-parlamentar-2026-11-21-c03",

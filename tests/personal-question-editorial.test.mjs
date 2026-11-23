@@ -128,7 +128,16 @@ test('geração pelo mapa usa só Base44 e mantém o segundo julgamento cego', a
   const nodeId = 'da-1::da-1::0.0';
   const statement = 'O princípio da legalidade rege os atos administrativos.';
   const base44 = t.mock.fn(async ({ prompt, response_json_schema: schema }) => {
-    if (schema.properties.cards) return { cards: [{ front: 'Qual princípio rege os atos administrativos?', back: 'Legalidade.' }] };
+    if (schema.properties.units) {
+      return { units: [{ unitId: 'u1', fact: statement, retrievalTarget: 'principio legalidade atos administrativos', recommendedType: 'factual', excerpt: statement }] };
+    }
+    if (schema.properties.cards) {
+      return { cards: [{ unitId: 'u1', cardType: 'factual', retrievalTarget: 'principio legalidade atos administrativos', front: 'Qual princípio rege os atos administrativos?', back: 'Legalidade.', sourceExcerpt: statement, mapaNoId: nodeId }] };
+    }
+    if (schema.properties.reviews) {
+      assert.doesNotMatch(prompt.split('TEXTO-BASE (DADOS):')[0], /"back"/);
+      return { reviews: [{ index: 0, recoveredAnswer: 'Legalidade.', alternativeAnswers: [], ambiguous: false, sourceSufficient: true, evidenceExcerpt: statement, limitation: '' }] };
+    }
     if (schema.properties.questoes) return { questoes: [{
       mapaNoId: nodeId, tema: 'Legalidade', enunciado: statement, gabarito: 'C', mecanismo: 'V1',
       trechoDecisivo: statement, comentario: 'Certo. A Administração se vincula à legalidade.',
@@ -156,7 +165,7 @@ test('geração pelo mapa usa só Base44 e mantém o segundo julgamento cego', a
     assert.equal(generated.provedorDiscriminador, 'base44');
     assert.deepEqual(generated.registros, []);
   }
-  assert.equal(base44.mock.callCount(), 6);
+  assert.equal(base44.mock.callCount(), 10);
   assert.equal(google.mock.callCount(), 0);
 });
 

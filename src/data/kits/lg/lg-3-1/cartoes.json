@@ -31,7 +31,39 @@
       "Deôntica: expressa obrigação ou permissão.",
       "Afetiva: verbaliza reação emotiva (subjetiva ou intersubjetiva)."
     ],
-    "fonte": "Aula 5 (5.4), p. 34-35"
+    "fonte": "Aula 5 (5.4), p. 34-35",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c03-a",
+      "lg-3-1-c03-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c03-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3",
+    "tema": "Texto e Textualidade",
+    "tipo": "factual",
+    "pergunta": "Quais são as três classes de modalizadores discursivos ligados à intencionalidade textual?",
+    "resposta": [
+      "Epistêmica, deôntica e afetiva."
+    ],
+    "fonte": "Aula 5 (5.4), p. 34-35",
+    "derivedFrom": "lg-3-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c03-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r1.3",
+    "tema": "Texto e Textualidade",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença de sentido entre modalização epistêmica, deôntica e afetiva?",
+    "resposta": [
+      "Epistêmica: valor de verdade (certeza/dúvida). Deôntica: obrigação ou permissão. Afetiva: reação emotiva."
+    ],
+    "fonte": "Aula 5 (5.4), p. 34-35",
+    "derivedFrom": "lg-3-1-c03",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c04",
@@ -56,7 +88,39 @@
       "Restrições e condições.",
       "Relações lógicas."
     ],
-    "fonte": "Etapa 08 (3.1.1), p. 4 e 15"
+    "fonte": "Etapa 08 (3.1.1), p. 4 e 15",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c05-a",
+      "lg-3-1-c05-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c05-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2",
+    "tema": "Compreensão Literal × Interpretativa",
+    "tipo": "factual",
+    "pergunta": "No roteiro R-Q-T-R-L de conferência de paráfrase literal, o que representam os três primeiros elementos (R, Q e T)?",
+    "resposta": [
+      "Referentes, Quantificadores e Tempo/modalidade."
+    ],
+    "fonte": "Etapa 08 (3.1.1), p. 4 e 15",
+    "derivedFrom": "lg-3-1-c05",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c05-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2",
+    "tema": "Compreensão Literal × Interpretativa",
+    "tipo": "factual",
+    "pergunta": "No roteiro R-Q-T-R-L de conferência de paráfrase literal, o que representam os dois últimos elementos (R e L)?",
+    "resposta": [
+      "Restrições/condições e Relações lógicas."
+    ],
+    "fonte": "Etapa 08 (3.1.1), p. 4 e 15",
+    "derivedFrom": "lg-3-1-c05",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c06",
@@ -91,7 +155,39 @@
       "MRPR 3.4 (exemplificativa): cita os quatro primeiros ('alguns mecanismos').",
       "Edital 3.4 (4): referência, substituição, elipse e repetição (relações lógicas vão para o 3.3)."
     ],
-    "fonte": "Etapa 08 (3.1.2), p. 6 e 12"
+    "fonte": "Etapa 08 (3.1.2), p. 6 e 12",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c08-a",
+      "lg-3-1-c08-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c08-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.1",
+    "tema": "Coesão Textual",
+    "tipo": "lacuna",
+    "pergunta": "Na classificação de coesão de Halliday e Hasan (5 mecanismos), além de referência, substituição, elipse e conjunção, o quinto mecanismo é a ___.",
+    "resposta": [
+      "Coesão lexical."
+    ],
+    "fonte": "Etapa 08 (3.1.2), p. 6 e 12",
+    "derivedFrom": "lg-3-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c08-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r3.1",
+    "tema": "Coesão Textual",
+    "tipo": "contraste",
+    "pergunta": "Como a lista de mecanismos de coesão do MRPR 3.4 difere do subitem 3.4 do edital?",
+    "resposta": [
+      "MRPR 3.4 cita exemplificativamente os quatro primeiros de Halliday e Hasan; o edital 3.4 lista referência, substituição, elipse e repetição (deixando relações lógicas no 3.3)."
+    ],
+    "fonte": "Etapa 08 (3.1.2), p. 6 e 12",
+    "derivedFrom": "lg-3-1-c08",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c09",
@@ -149,7 +245,39 @@
       "Palavras-chave: unidade, harmonia e lógica.",
       "Interpretabilidade (Charolles): o leitor supõe que o texto faz sentido e mobiliza seu conhecimento de mundo para encontrá-lo."
     ],
-    "fonte": "Aula 5 (5.2), p. 3-4; Etapa 08 (3.1.3), p. 9-10"
+    "fonte": "Aula 5 (5.2), p. 3-4; Etapa 08 (3.1.3), p. 9-10",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c13-a",
+      "lg-3-1-c13-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c13-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.1",
+    "tema": "Coerência Textual",
+    "tipo": "factual",
+    "pergunta": "Quais são as três palavras-chave que sintetizam o conceito de coerência textual?",
+    "resposta": [
+      "Unidade, harmonia e lógica."
+    ],
+    "fonte": "Aula 5 (5.2), p. 3-4; Etapa 08 (3.1.3), p. 9-10",
+    "derivedFrom": "lg-3-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c13-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.1",
+    "tema": "Coerência Textual",
+    "tipo": "factual",
+    "pergunta": "O que define o princípio de interpretabilidade formulado por Michel Charolles na coerência textual?",
+    "resposta": [
+      "O leitor supõe que o texto faz sentido e mobiliza seu conhecimento de mundo para encontrá-lo."
+    ],
+    "fonte": "Aula 5 (5.2), p. 3-4; Etapa 08 (3.1.3), p. 9-10",
+    "derivedFrom": "lg-3-1-c13",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c14",
@@ -162,7 +290,39 @@
       "Não contradição (não negar o dito ou pressuposto antes).",
       "Relação (ligação entre os fatos no mundo de que o texto fala)."
     ],
-    "fonte": "Etapa 08 (3.1.3), p. 9"
+    "fonte": "Etapa 08 (3.1.3), p. 9",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c14-a",
+      "lg-3-1-c14-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c14-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2",
+    "tema": "Coerência Textual",
+    "tipo": "contraste",
+    "pergunta": "Nas metarregras de coerência de Michel Charolles, o que exigem a repetição e a progressão?",
+    "resposta": [
+      "Repetição: retomar elementos para manter o fio condutor. Progressão: acrescentar informação nova sem girar em círculos."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9",
+    "derivedFrom": "lg-3-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c14-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.2",
+    "tema": "Coerência Textual",
+    "tipo": "contraste",
+    "pergunta": "Nas metarregras de coerência de Michel Charolles, o que exigem a não contradição e a relação?",
+    "resposta": [
+      "Não contradição: não negar o dito ou pressuposto antes. Relação: ligação entre os fatos no mundo de que o texto fala."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9",
+    "derivedFrom": "lg-3-1-c14",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c15",
@@ -173,7 +333,39 @@
       "Coerência local (microestrutura): entre frases vizinhas; falha por conector errado ou salto sem ponte.",
       "Coerência global (macroestrutura): no texto inteiro; falha por fuga do tema ou conclusão desconexa do desenvolvimento."
     ],
-    "fonte": "Etapa 08 (3.1.3), p. 9-10"
+    "fonte": "Etapa 08 (3.1.3), p. 9-10",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lg-3-1-c15-a",
+      "lg-3-1-c15-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c15-a",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.3",
+    "tema": "Coerência Textual",
+    "tipo": "contraste",
+    "pergunta": "Segundo Teun van Dijk, qual é a diferença entre coerência local e coerência global?",
+    "resposta": [
+      "Local (microestrutura): articulação entre frases vizinhas. Global (macroestrutura): unidade de sentido do texto inteiro."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9-10",
+    "derivedFrom": "lg-3-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lg-3-1-c15-b",
+    "no": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r4.3",
+    "tema": "Coerência Textual",
+    "tipo": "aplicacao",
+    "pergunta": "Na tipologia de Teun van Dijk, um conector errado entre frases vizinhas compromete a coerência local ou a global?",
+    "resposta": [
+      "Coerência local (microestrutura); já a fuga do tema ou conclusão desconexa compromete a coerência global (macroestrutura)."
+    ],
+    "fonte": "Etapa 08 (3.1.3), p. 9-10",
+    "derivedFrom": "lg-3-1-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lg-3-1-c16",

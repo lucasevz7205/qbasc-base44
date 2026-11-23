@@ -1,4 +1,5 @@
 import { stripFlashcardContext } from './flashcard-standard.js';
+import { stripLeadingEmoji, subjectIconName } from './subject-icons.js';
 import { conceptLabelKey, indexConceptRemissions, matchLegacyConcept } from './concept-review.js';
 import {parseImport,importResult} from './map-import.js';
 import { applyEditorialOverlays } from '@/lib/editorial-overrides';
@@ -36,7 +37,6 @@ const day = value => {
 };
 const shift = (d,n) => { const date = new Date(d+'T12:00:00Z'); date.setUTCDate(date.getUTCDate()+n); return date.toISOString().slice(0,10); };
 const explicitStatus = (v) => ({nao:'not-started', 'nao iniciado':'not-started', 'not-started':'not-started', studying:'studying', reviewing:'reviewing', mastered:'mastered', revisao:'reviewing',dominado:'mastered', revisando:'reviewing', revisado:'reviewing', estudado:'studying', estudo:'studying', 'em estudo':'studying', em_estudo:'studying', estudando:'studying', concluido:'mastered', concluida:'mastered'})[String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()];
-const icons = {lp:'feather',li:'globe',da:'building-2',dc:'landmark',ti:'database',lg:'languages',rf:'audio-lines',pl:'scroll-text',cp:'vote'};
 const blocks = {P1:'Conhecimentos básicos',P2:'Conhecimentos específicos'};
 const zero = () => ({correct:0,wrong:0,blank:0});
 const keyOf = x => String(x??'').trim().toUpperCase();
@@ -50,7 +50,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
   for (const e of [...source('edital')].sort((a,b)=>num(a.materiaOrdem)-num(b.materiaOrdem)||num(a.ordem)-num(b.ordem))) {
     if(!e.id || !e.materia) continue;
     const subjectId = String(e.sigla || e.id.split('-')[0]).toLowerCase();
-    const subject = subjects[subjectId] ??= {id:subjectId,name:e.materia,short:e.sigla||subjectId,block:e.prova,blockLabel:blocks[e.prova],icon:icons[subjectId]||'book-open',topics:[]};
+    const subject = subjects[subjectId] ??= {id:subjectId,name:e.materia,short:e.sigla||subjectId,block:e.prova,blockLabel:blocks[e.prova],icon:subjectIconName(subjectId),topics:[]};
     const t = {id:e.id,subjectId,num:String(e.num??''),title:e.titulo,known:!!e.titulo,status:'not-started',foraEdital:!!e.foraEdital,...zero()};
     topics[t.id]=t;
     progress[t.id]={manual:explicitStatus(e.status),tutory:e.tutoryIgnorar?null:e.tutory,answered:0,latestCorrect:0,errorsNotebook:0,retained:0};
@@ -95,7 +95,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
     if(hasMap(map)){
       const existingMap = mapByTopic[topicId];
       const root = existingMap ? existingMap.id : topicId+'::'+d.id;
-      const title = existingMap ? existingMap.title : (str(map.centro??map.titulo??map.t)||topics[topicId]?.title||topicId);
+      const title = existingMap ? existingMap.title : (stripLeadingEmoji(str(map.centro??map.titulo??map.t))||topics[topicId]?.title||topicId);
       const nodes = existingMap ? existingMap.nodes : [];
       const add=(v,parent,path)=>{
         if(!v || typeof v!=='object')return;
@@ -122,7 +122,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
         roots[topicId] ??= root;
         const subjectId = topic?.subjectId || String(topicId).split('-')[0].toLowerCase();
         const subjectName = subjects[subjectId]?.name || str(d.materia) || 'Matéria';
-        const mapEntry = {id:root,topicId,subjectId,subjectName,topicNum:topic?.num||'',topicTitle:topic?.title||title,title,nodes};
+        const mapEntry = {id:root,topicId,subjectId,subjectName,subjectIcon:subjectIconName(subjectId),topicNum:topic?.num||'',topicTitle:topic?.title||title,title,nodes};
         mapByTopic[topicId] = mapEntry;
         mindMaps.push(mapEntry);
         if(topic) topic.resources.maps.push({id:root,title});
@@ -130,8 +130,9 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
       }
     }
     arr(d.cartoes??d.cards).forEach((c,i)=>{
+      if(c?.arquivadoPorDivisao || c?.arquivadoPorDuplicacao) return;
       const front=str(c.q??c.frente??c.front??c.pergunta),back=str(c.a??c.verso??c.back??c.resposta);
-      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,subjectId:topics[topicId]?.subjectId,front,back,basis:str(c.src??c.ref??c.fonte),tema:c.tema,nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo});
+      if(front&&back)flashcards.push({id:c.id||topicId+'@'+i,topicId,subjectId:topics[topicId]?.subjectId,front,back,basis:str(c.src??c.ref??c.fonte),tema:c.tema,nodeRef:c.mapaNoId??c.no??c.node??c.mapaNo,...(c.derivedFrom?{derivedFrom:c.derivedFrom}:{})});
     });
   }
   for(const entry of source('revisao').filter(d=>d.kind==='markdown-map').sort((a,b)=>a.created.localeCompare(b.created)||a.id.localeCompare(b.id))){
@@ -211,7 +212,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
     const tags = Array.isArray(q.tags)&&q.tags.length ? q.tags : [q.tema||q.capNome, trap?.code ? trap.name : null].filter(Boolean);
     const relatedTopicIds = [...new Set(arr(q.topicosRelacionados).filter(id => typeof id === 'string' && id !== topic?.id && topics[id]))];
     const relatedSubjectIds = [...new Set(relatedTopicIds.map(id => topics[id]?.subjectId).filter(sid => sid && sid !== topic?.subjectId))];
-    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,...(relatedTopicIds.length?{relatedTopicIds}:{}),...(relatedSubjectIds.length?{relatedSubjectIds}:{}),chapter:q.capNome||q.cap,node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
+    questionBank.push({id:q.id,code:q.code||q.id,year:q.ano,tags,key:keyOf(q.gabarito),statement:q.enunciado,explanation:firstText(q.comentario,q.justificativa,q.explicacao),basis:str(q.ref),trap,origin:q.origem,topicId:topic?.id,subjectId:topic?.subjectId,subject:subjects[topic?.subjectId]?.name,subjectIcon:subjectIconName(topic?.subjectId),...(relatedTopicIds.length?{relatedTopicIds}:{}),...(relatedSubjectIds.length?{relatedSubjectIds}:{}),chapter:stripLeadingEmoji(q.capNome||q.cap),node:resolvedNode,response:r,raw:q,editorial:q.reformuladaPeloArquiteto?{version:num(q.versaoCuradoriaDireta),status:'sobrescrita',editedAt:q.curadoriaDiretaEm}:undefined});
   }
   // Curadoria só muda a apresentação/futuras tentativas. Histórico acima continua intacto.
   const curated = applyEditorialOverlays(questionBank, uniqueCards, source('curadoria'));

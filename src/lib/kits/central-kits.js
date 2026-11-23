@@ -1,3 +1,6 @@
+import { stripFlashcardContext } from '../flashcard-standard.js';
+import { stripLeadingEmoji } from '../subject-icons.js';
+
 const KIT_PATH_RE = /\/data\/kits\/(?:([a-z]{2,4})\/)?([a-z]{2,4}-[0-9]+[a-z]?(?:-[0-9]+[a-z]?)*)\/(mapa|cartoes|itens)\.json$/i;
 
 // Vite transforma a chamada ao glob e fornece env. O Node direto não fornece env.
@@ -7,6 +10,21 @@ const globKitModules = import.meta.env
 
 function unwrapModule(mod) {
   return mod && typeof mod === 'object' && 'default' in mod ? mod.default : mod;
+}
+
+function normalizeKitCard(card, { topico, materia, capNome }) {
+  if (!card || typeof card !== 'object') return null;
+  const frontField = typeof card.pergunta === 'string'
+    ? 'pergunta'
+    : typeof card.q === 'string'
+      ? 'q'
+      : typeof card.front === 'string'
+        ? 'front'
+        : null;
+  if (!frontField) return card;
+  const cleanFront = stripFlashcardContext(card[frontField], materia, [capNome, card.tema], topico);
+  if (cleanFront === card[frontField]) return card;
+  return { ...card, [frontField]: cleanFront };
 }
 
 export function loadCentralKits(modules = globKitModules) {
@@ -33,12 +51,18 @@ export function loadCentralKits(modules = globKitModules) {
 
   for (const cap of [...byChapter.keys()].sort()) {
     const entry = byChapter.get(cap);
-    const mapa = entry.mapa && !Array.isArray(entry.mapa) ? entry.mapa : null;
-    const cartoes = Array.isArray(entry.cartoes) ? entry.cartoes : [];
+    const rawMapa = entry.mapa && !Array.isArray(entry.mapa) ? entry.mapa : null;
+    const mapa = rawMapa && typeof rawMapa.centro === 'string'
+      ? { ...rawMapa, centro: stripLeadingEmoji(rawMapa.centro) }
+      : rawMapa;
+    const rawCartoes = Array.isArray(entry.cartoes) ? entry.cartoes : [];
     const itens = Array.isArray(entry.itens) ? entry.itens : [];
     const topico = String(mapa?.topico || cap).trim().toLowerCase();
     const materia = mapa?.materia || entry.materiaDir || undefined;
-    const capNome = mapa?.centro || cap;
+    const capNome = stripLeadingEmoji(mapa?.centro || '') || cap;
+    const cartoes = rawCartoes
+      .map(card => normalizeKitCard(card, { topico, materia, capNome }))
+      .filter(Boolean);
 
     if (mapa || cartoes.length) {
       revisions.push({

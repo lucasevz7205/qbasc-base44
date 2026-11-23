@@ -101,8 +101,9 @@ test('geração grava cartões no assunto e no nó e mantém falhas com o mesmo 
   const targetNodeId = 'lucas-t::importacao::0.0';
   const cards = [2, 3].map(index => ({
     id: 'node-card-00000000-0000-4000-8000-00000000000' + index,
-    front: 'Qual é a regra do nó ' + index + '?',
-    back: 'A regra consta no resumo.',
+    front: 'Qual é a regra constitucional de legalidade administrativa nº ' + index + '?',
+    back: 'A regra consta no resumo do tópico.',
+    approvedByUser: true,
   }));
   const saveCard = (cardId, front, back) =>
     savePersonalNodeFlashcard({ context, data: { cardId, front, back, topicId, targetNodeId } });

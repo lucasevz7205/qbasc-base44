@@ -8,7 +8,39 @@
       "Traços linguísticos internos predominantes (tempos verbais, vocabulário, sintaxe) e finalidade discursiva (MODO).",
       "Narração, descrição, injunção e dissertação (expositiva e argumentativa)."
     ],
-    "fonte": "Aula 11, seções 11.1 e 11.2, p. 3-6"
+    "fonte": "Aula 11, seções 11.1 e 11.2, p. 3-6",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c01-a",
+      "lp-2-c01-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c01-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.1",
+    "tema": "Tipos × Gêneros",
+    "tipo": "factual",
+    "pergunta": "O que define um tipo textual (tipologia textual) em Língua Portuguesa?",
+    "resposta": [
+      "Traços linguísticos internos predominantes (tempos verbais, vocabulário, sintaxe) e finalidade discursiva (MODO)."
+    ],
+    "fonte": "Aula 11, seções 11.1 e 11.2, p. 3-6",
+    "derivedFrom": "lp-2-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c01-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.1",
+    "tema": "Tipos × Gêneros",
+    "tipo": "lacuna",
+    "pergunta": "Entre os quatro grandes tipos textuais — narração, descrição, dissertação (expositiva e argumentativa) e ___ — qual instrui ou prescreve condutas?",
+    "resposta": [
+      "Injunção."
+    ],
+    "fonte": "Aula 11, seções 11.1 e 11.2, p. 3-6",
+    "derivedFrom": "lp-2-c01",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c02",
@@ -19,7 +51,39 @@
       "Enunciado concreto 'relativamente estável' definido por função social e pela tríade de Bakhtin: conteúdo temático, estilo verbal e construção composicional (O QUE).",
       "Novas situações comunicativas e suportes (como a Internet: site, blog, chat, e-mail) geram continuamente novos gêneros."
     ],
-    "fonte": "Aula 11, seção 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 4-10"
+    "fonte": "Aula 11, seção 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 4-10",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c02-a",
+      "lp-2-c02-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c02-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.2",
+    "tema": "Tipos × Gêneros",
+    "tipo": "factual",
+    "pergunta": "O que define um gênero textual segundo a tríade de Bakhtin?",
+    "resposta": [
+      "Enunciado concreto “relativamente estável” definido por função social e por conteúdo temático, estilo verbal e construção composicional (O QUE)."
+    ],
+    "fonte": "Aula 11, seção 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 4-10",
+    "derivedFrom": "lp-2-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c02-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r1.2",
+    "tema": "Tipos × Gêneros",
+    "tipo": "factual",
+    "pergunta": "Por que o conjunto de gêneros textuais é aberto e ilimitado?",
+    "resposta": [
+      "Porque novas situações comunicativas e suportes (como a Internet: site, blog, chat, e-mail) geram continuamente novos gêneros."
+    ],
+    "fonte": "Aula 11, seção 11.2, p. 3-6; Linguística Aula 3, seção 3.2, p. 4-10",
+    "derivedFrom": "lp-2-c02",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c03",
@@ -53,7 +117,39 @@
       "Implícita: conjunção aditiva 'e' indicando sucessão ('desligou o fogo e gritou').",
       "Direta: avanço rápido ao desfecho (piadas/tirinhas); Indireta: lenta, com digressões e pausas descritivas."
     ],
-    "fonte": "Aula 11, seção 11.3, p. 7-8"
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c05-a",
+      "lp-2-c05-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c05-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.1",
+    "tema": "Tipologia Narrativa",
+    "tipo": "factual",
+    "pergunta": "Como se marca linguisticamente (explícita e implicitamente) a passagem do tempo na tipologia narrativa?",
+    "resposta": [
+      "Explícita: pretérito perfeito, advérbios (“antes”, “depois”) e orações temporais. Implícita: conjunção aditiva “e” indicando sucessão."
+    ],
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "derivedFrom": "lp-2-c05",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c05-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.1",
+    "tema": "Tipologia Narrativa",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre narrativa direta e narrativa indireta?",
+    "resposta": [
+      "Direta: avanço rápido ao desfecho (piadas, tirinhas). Indireta: ritmo lento, com digressões e pausas descritivas."
+    ],
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "derivedFrom": "lp-2-c05",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c06",
@@ -64,7 +160,39 @@
       "Narrador, enredo, tempo, lugar/espaço e personagens.",
       "O enredo exige relação de causalidade e unidade lógica entre os eventos (fato inicial, conflito, clímax e desfecho)."
     ],
-    "fonte": "Aula 11, seção 11.3, p. 7-8"
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c06-a",
+      "lp-2-c06-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c06-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.2",
+    "tema": "Tipologia Narrativa",
+    "tipo": "lacuna",
+    "pergunta": "Nos cinco elementos da narrativa — narrador, tempo, lugar/espaço, personagens e ___ — qual organiza os eventos em cadeia causal?",
+    "resposta": [
+      "Enredo."
+    ],
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "derivedFrom": "lp-2-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c06-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r2.2",
+    "tema": "Tipologia Narrativa",
+    "tipo": "contraste",
+    "pergunta": "O que diferencia um enredo narrativo de um simples relato de fatos desconexos?",
+    "resposta": [
+      "O enredo exige relação de causalidade e unidade lógica entre os eventos (fato inicial, conflito, clímax e desfecho)."
+    ],
+    "fonte": "Aula 11, seção 11.3, p. 7-8",
+    "derivedFrom": "lp-2-c06",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c07",
@@ -121,7 +249,39 @@
       "Descrição: retrato estático de aspectos simultâneos ('pausa no tempo'/foto), sem progressão nem antes/depois.",
       "Predominam adjetivos, locuções/orações adjetivas, verbos de ligação/estado e pretérito imperfeito ou presente."
     ],
-    "fonte": "Aula 11, seção 11.4, p. 26"
+    "fonte": "Aula 11, seção 11.4, p. 26",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c11-a",
+      "lp-2-c11-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c11-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.1",
+    "tema": "Descrição e Injunção",
+    "tipo": "contraste",
+    "pergunta": "Como a tipologia descritiva se opõe à narrativa quanto ao eixo temporal?",
+    "resposta": [
+      "A descrição é um retrato estático de aspectos simultâneos (“pausa no tempo”), sem progressão nem relação de antes e depois."
+    ],
+    "fonte": "Aula 11, seção 11.4, p. 26",
+    "derivedFrom": "lp-2-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c11-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r3.1",
+    "tema": "Descrição e Injunção",
+    "tipo": "factual",
+    "pergunta": "Quais classes de palavras e tempos verbais predominam na tipologia descritiva?",
+    "resposta": [
+      "Adjetivos, locuções/orações adjetivas, verbos de ligação/estado e pretérito imperfeito ou presente."
+    ],
+    "fonte": "Aula 11, seção 11.4, p. 26",
+    "derivedFrom": "lp-2-c11",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c12",
@@ -166,7 +326,39 @@
       "O presente do indicativo marca atemporalidade e dá ao enunciado tom de verdade universal.",
       "Cada parágrafo de desenvolvimento deve tratar de uma única ideia/argumento central (tópico frasal)."
     ],
-    "fonte": "Aula 11, seção 11.6, p. 34, 40-41"
+    "fonte": "Aula 11, seção 11.6, p. 34, 40-41",
+    "arquivadoPorDivisao": true,
+    "substituidoPor": [
+      "lp-2-c15-a",
+      "lp-2-c15-b"
+    ],
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c15-a",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.1",
+    "tema": "Dissertação",
+    "tipo": "factual",
+    "pergunta": "Por que o presente do indicativo predomina na tipologia dissertativa?",
+    "resposta": [
+      "Porque marca atemporalidade e dá ao enunciado tom de verdade universal."
+    ],
+    "fonte": "Aula 11, seção 11.6, p. 34, 40-41",
+    "derivedFrom": "lp-2-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
+  },
+  {
+    "id": "lp-2-c15-b",
+    "no": "kit-arr-lp-2-reconhecimento-de-tipos-e-generos-textua-2026-11-22-r4.1",
+    "tema": "Dissertação",
+    "tipo": "factual",
+    "pergunta": "Qual regra organiza cada parágrafo de desenvolvimento de um texto dissertativo?",
+    "resposta": [
+      "Cada parágrafo deve desenvolver uma única ideia ou argumento central (tópico frasal)."
+    ],
+    "fonte": "Aula 11, seção 11.6, p. 34, 40-41",
+    "derivedFrom": "lp-2-c15",
+    "reformuladoLote": "flashcards-metodologia-2026-11-23"
   },
   {
     "id": "lp-2-c16",

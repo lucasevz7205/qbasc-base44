@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { URL } from 'node:url';
+import { URL, fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { registerHooks } from 'node:module';
@@ -19,7 +19,7 @@ hooks.deregister();
 
 function readKitModulesFromDisk() {
   const root = new URL('../src/data/kits/', import.meta.url);
-  const rootPath = path.resolve(root.pathname.replace(/^\/([A-Za-z]:)/, '$1'));
+  const rootPath = fileURLToPath(root);
   const modules = {};
 
   function walk(dir) {
@@ -45,7 +45,7 @@ test('central-kits carrega da-10-1 completo no adaptStudy preservando respostas 
   const daQuestions = loaded.questions.filter(q => q.topico === 'da-10-1');
 
   assert.ok(daRev, 'revisao da-10-1 deve existir');
-  assert.equal(daRev.cartoes.length, 77);
+  assert.equal(daRev.cartoes.filter(c => !c.arquivadoPorDivisao && !c.arquivadoPorDuplicacao).length, 83);
   assert.equal(daQuestions.length, 100);
 
   const records = {
@@ -67,9 +67,9 @@ test('central-kits carrega da-10-1 completo no adaptStudy preservando respostas 
 
   assert.ok(daMap, 'mapa da-10-1 deve ser carregado no QB_DATA.mindMaps');
   assert.equal(daMap.nodes.filter(n => n.parent !== null).length, 124);
-  assert.equal(daCards.length, 77);
+  assert.equal(daCards.length, 83);
   assert.equal(daBank.length, 100);
-  assert.equal(daTopic.resources.cards, 77);
+  assert.equal(daTopic.resources.cards, 83);
   assert.equal(daTopic.resources.questions, 100);
   assert.equal(daTopic.correct, 1);
   assert.equal(daBank.find(q => q.id === 'da101-01')?.response?.ultimaMarcada, 'E');
@@ -120,7 +120,7 @@ test('DA 8.1 mantém o mapa e os cartões do kit depois de gravar um flashcard d
   const after = load();
   assert.deepEqual(after.mindMaps.find(entry => entry.topicId === topicId), map);
   const cards = after.flashcards.filter(card => card.topicId === topicId);
-  assert.equal(cards.length, 21);
+  assert.equal(cards.length, 29);
   assert.equal(cards.find(card => card.id === cardId)?.node, target.id);
 });
 

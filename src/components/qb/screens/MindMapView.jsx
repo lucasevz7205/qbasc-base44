@@ -13,6 +13,8 @@ import { EmptyState } from '@/components/qb/data/EmptyState';
 import { Panel } from '@/components/qb/core/Panel';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
+import { Icon } from '@/components/qb/core/Icon';
+import { subjectIconName } from '@/lib/subject-icons';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
@@ -20,7 +22,7 @@ import { conceptReviewItems } from '@/lib/concept-review';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapFlashcards, generateMindMapGanQuestions } from '@/lib/server-fns';
 import { approvePersonalMapGan } from '@/lib/study-accounts';
-import { buildNodeFlashcardRecord, saveGeneratedNodeFlashcards } from '@/lib/node-flashcards';
+import { buildNodeFlashcardRecord, canPersistFlashcardCandidate } from '@/lib/node-flashcards';
 import { ganFailureLabel } from '@/lib/gan-diagnostics';
 import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
 import { centralGanRound, buildGanSource, buildGanQuestionRecord } from '@/lib/gan-queue';
@@ -109,7 +111,7 @@ export default function MindMapView({
     setFlashcardReviewOpen(false);
   }, [node?.id, isRadialOpen]);
   const flashcardReview = flashcardReviews[node?.id];
-  const hasPendingFlashcards = Boolean(flashcardReview?.some(item => !item.status));
+  const hasPendingFlashcards = Boolean(flashcardReview?.some(item => item.status !== 'saved' && item.status !== 'discarded'));
 
   const mapId = chosen?.id;
   const ganReview = ganReviews[mapId];
@@ -191,12 +193,15 @@ export default function MindMapView({
     </Button>
   );
 
+  const subjectIcon = subj?.icon || chosen?.subjectIcon || subjectIconName(subj?.id || chosen?.subjectId);
+
   const head = (
     <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flex: '1 1 280px' }}>
         <span className="qb-overline">{subj ? subj.name + ' · Mapa mental' : 'Estudo'}</span>
-        <h1 style={{ font: 'var(--type-h1)', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>
-          {chosen ? chosen.title : topic ? `${subj.short} ${topic.num}${topic.title ? ' · ' + topic.title : ''}` : 'Mapa mental'}
+        <h1 style={{ display: 'flex', alignItems: 'center', gap: 10, font: 'var(--type-h1)', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>
+          {subjectIcon && <Icon name={subjectIcon} size={24} color="var(--qb-gold)" />}
+          <span>{chosen ? chosen.title : topic ? `${subj.short} ${topic.num}${topic.title ? ' · ' + topic.title : ''}` : 'Mapa mental'}</span>
         </h1>
       </div>
       <MapImport topics={allSubjects.flatMap(s=>s.topics.map(t=>({id:t.id,label:s.name+' · '+t.title})))} maps={D.mindMaps.map(m=>({...m,active:m.id===chosen?.id}))} initial={topicId} onSave={importMap} onOpen={(tid,id)=>{handleSelectTopic(tid);setSelected(id)}}/>
@@ -359,20 +364,40 @@ export default function MindMapView({
   const updateFlashcard = (cardId, update) => {
     setFlashcardReviews(current => ({
       ...current,
-      [node.id]: current[node.id].map(item => item.id === cardId ? { ...item, ...update } : item),
+      [node.id]: (current[node.id] || []).map(item => item.id === cardId ? { ...item, ...update } : item),
     }));
   };
 
-  const persistFlashcard = (cardId, front, back) => {
-    const data = { cardId, topicId: chosen.topicId, targetNodeId: node.id, front, back };
+  const persistFlashcard = (cardId, front, back, candidate = {}) => {
+    const existingCards = D.flashcards
+      .filter(card => card.topicId === chosen.topicId && card.id !== cardId)
+      .map(card => ({ id: card.id, front: card.front, back: card.back }));
+    const gate = canPersistFlashcardCandidate(
+      { ...candidate, id: cardId, front, back, topicId: chosen.topicId, mapaNoId: node.id, approvedByUser: true },
+      { topicId: chosen.topicId, subjectName: subj?.name, topicTitle: chosen.title, targetNodeId: node.id, mapa: chosen, existingCards, requireNodeLink: true },
+    );
+    if (!gate.allowed) {
+      throw new Error(gate.reason || 'Este flashcard não passou na validação pedagógica.');
+    }
+    const cleanFront = gate.validation.normalizedFront;
+    const data = { cardId, topicId: chosen.topicId, targetNodeId: node.id, front: cleanFront, back: back.trim() };
     if (!isAdmin) return saveNodeFlashcard(data);
-    const record = buildNodeFlashcardRecord({ ...data, nodeLabel: node.label });
+    const record = buildNodeFlashcardRecord({
+      ...data,
+      nodeLabel: node.label,
+      subjectName: subj?.name,
+      topicTitle: chosen.title,
+      basis: candidate.basis || candidate.normativeRef || '',
+      cardType: candidate.cardType || gate.validation.cardType,
+      vigencia: candidate.vigencia || '',
+      evidence: candidate.validation?.evidence || null,
+    });
     return save('revisao', record.id, record);
   };
 
-  const approveFlashcard = async (cardId, front, back) => {
-    await persistFlashcard(cardId, front, back);
-    updateFlashcard(cardId, { front, back, status: 'saved', saveError: undefined });
+  const approveFlashcard = async (cardId, front, back, candidate) => {
+    await persistFlashcard(cardId, front, back, candidate);
+    updateFlashcard(cardId, { front, back, approvedByUser: true, status: 'saved', saveError: undefined, blockedReason: undefined });
   };
 
   const handleGenerateFlashcards = async event => {
@@ -382,31 +407,40 @@ export default function MindMapView({
       setFlashcardReviewOpen(true);
       return;
     }
+    const targetNodeSnapshot = { id: node.id, label: node.label };
     const task = { discard: false };
     ganTask.current = task;
     setFlashcardsLoading(true);
-    setNotice('Gerando flashcards de ' + node.label + '. Você pode sair do mapa.');
+    setNotice('Gerando e validando flashcards de ' + targetNodeSnapshot.label + '. Você pode sair do mapa; nada será gravado sem aprovação.');
     setGanError('');
     try {
+      const existingCards = D.flashcards
+        .filter(card => card.topicId === chosen.topicId)
+        .slice(0, 200)
+        .map(card => ({ id: card.id, front: card.front, back: card.back }));
       const data = isAdmin
-        ? buildGanSource({ chosen, nodes, concepts: D.concepts, node, subjectName: subj?.name })
+        ? { ...buildGanSource({ chosen, nodes, concepts: D.concepts, node, subjectName: subj?.name }), existingCards }
         : { topicId: chosen.topicId, targetNodeId: node.id, count: 4 };
       const result = await generateFlashcardsFn({ data });
       if (task.discard) return;
       if (!result?.cards?.length) {
-        setNotice('O nó ' + node.label + ' não retornou flashcards.');
+        setNotice(result?.pipeline?.message || ('O nó ' + targetNodeSnapshot.label + ' não retornou flashcards sustentados pela fonte.'));
         return;
       }
-      const cards = await saveGeneratedNodeFlashcards(result.cards, (...args) => {
-        if (task.discard) throw new Error('A sessão foi encerrada.');
-        return persistFlashcard(...args);
-      });
-      if (task.discard) return;
-      const saved = cards.filter(card => card.status === 'saved').length;
-      const pending = saved < cards.length;
-      if (pending) setFlashcardReviews(current => ({ ...current, [node.id]: cards }));
-      setNotice(saved + ' de ' + cards.length + ' flashcards gravados em ' + node.label + '.'
-        + (pending ? ' Use “Revisar flashcards pendentes” no nó para tentar de novo.' : ''));
+      const candidates = result.cards.map(card => ({
+        ...card,
+        status: 'pending',
+        approvedByUser: false,
+      }));
+      setFlashcardReviews(current => ({ ...current, [targetNodeSnapshot.id]: candidates }));
+      const approvedCount = result.summary?.approved ?? candidates.filter(c => c.validation?.status === 'approved').length;
+      const reviewCount = result.summary?.needs_review ?? candidates.filter(c => c.validation?.status === 'needs_review').length;
+      const rejectedCount = result.summary?.rejected ?? candidates.filter(c => c.validation?.status === 'rejected').length;
+      setNotice(
+        `${candidates.length} candidatos prontos para revisão em ${targetNodeSnapshot.label} `
+        + `(${approvedCount} triados, ${reviewCount} para revisar, ${rejectedCount} bloqueados). Nenhum cartão foi gravado automaticamente.`,
+      );
+      setFlashcardReviewOpen(true);
     } catch (err) {
       if (!task.discard) setNotice(err?.message || 'Não foi possível gerar flashcards.');
     } finally {
@@ -539,7 +573,7 @@ export default function MindMapView({
         {mapMaximized && (
           <div className="qb-map-full-header">
             <div className="qb-map-full-header__context">
-              <Badge tone="gold">{subj ? subj.short : 'Mapa'} {topic?.num || ''}</Badge>
+              <Badge tone="gold" icon={subjectIcon}>{subj ? subj.short : 'Mapa'} {topic?.num || ''}</Badge>
               <div className="qb-map-full-header__caption">
                 <strong title={chosen.title}>{chosen.title}</strong>
                 {node.id !== chosen.id && <small title={node.label}>{node.label}</small>}
@@ -597,6 +631,7 @@ export default function MindMapView({
         >
           <MindMapCanvas
             nodes={nodes}
+            rootIcon={subjectIcon}
             selectedId={node.id}
             onSelect={setSelected}
             defaultExpanded={expanded}
@@ -609,6 +644,7 @@ export default function MindMapView({
             <ConceptPanel
               nodeId={node.id}
               title={node.label}
+              titleIcon={node.id === chosen.id ? subjectIcon : undefined}
               path={path}
               performance={node.performance}
               summary={c.summary}
@@ -635,7 +671,8 @@ export default function MindMapView({
           )}
         </div>
         {flashcardReview && <NodeFlashcardReviewDialog key={flashcardReview[0].id} cards={flashcardReview}
-          nodeLabel={node.label} open={flashcardReviewOpen} onOpenChange={setFlashcardReviewOpen}
+          nodeLabel={node.label} topicId={chosen.topicId} subjectName={subj?.name || ''} topicTitle={chosen.title}
+          targetNodeId={node.id} open={flashcardReviewOpen} onOpenChange={setFlashcardReviewOpen}
           returnFocus={flashcardFocus} onApprove={approveFlashcard} onDiscard={id => updateFlashcard(id, { status: 'discarded' })}
           onStudy={cardIds => { setFlashcardReviewOpen(false); go('flashcards', { topicId: chosen.topicId, cardIds }); }} />}
         {ganPackageNode && <GanPackageDialog key={ganPackageNode.id} nodes={nodes} initialNode={ganPackageNode}
