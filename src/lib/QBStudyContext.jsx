@@ -62,7 +62,7 @@ const PATH_TO_VIEW = {
 const QBStudyContext = React.createContext(null);
 
 function startQuestionRound(bank, selection = {}) {
-  const order = selection.scheduledReview ? new Map((selection.questionIds || []).map((id, index) => [id, index])) : null;
+  const order = Array.isArray(selection.questionIds) ? new Map(selection.questionIds.map((id, index) => [id, index])) : null;
   const candidates = order ? bank.filter(q => order.has(q.id)).sort((a, b) => order.get(a.id) - order.get(b.id)) : bank;
   const ordered = pickQuestionRound(candidates, selection, { unique: true });
   return {
@@ -336,8 +336,8 @@ export function QBStudyProvider({ children }) {
             sessionId: crypto.randomUUID(),
           });
         } else {
-          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder, concept } = arg || {};
-          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, randomOrder, concept }));
+          const { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, errorTraining, randomOrder, concept } = arg || {};
+          setSession(startQuestionRound(QB_DATA.questionBank, { subjectId, topicId, nodeId, filter, questionIds, scheduledReview, errorTraining, randomOrder, concept }));
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {

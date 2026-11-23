@@ -5,6 +5,7 @@ import { Panel } from '@/components/qb/core/Panel';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
+import { SelectField } from '@/components/qb/data/SelectField';
 import { TrainingRadial } from '@/components/qb/navigation/TrainingRadial';
 import PegadinhasLab from '@/components/qb/study/PegadinhasLab';
 import AcervoPegadinhasV1 from '@/components/qb/study/AcervoPegadinhasV1';
@@ -13,6 +14,7 @@ import { useRealStudy } from '@/lib/qb-real-data';
 import { reviewDay, scheduledReviewQueues } from '@/lib/spaced-review';
 import { questionTrainingProgress } from '@/lib/study-session-rules';
 import { buildErrorNotebook } from '@/lib/error-notebook';
+import { errorTrainingPool, pickErrorTrainingRound, ERROR_TRAINING_LIMIT } from '@/lib/error-training';
 import { useQBStudy, QB_VIEW_LABEL, QB_NAV_REASONS } from '@/lib/QBStudyContext';
 
 export function MissingLink({ missing, onBack, go }) {
@@ -60,6 +62,8 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const dispatch = dispatchProp || ctx.dispatch;
   const { pendingByTopic, resolveIntent, missing, clearMissing } = ctx;
   const [filter, setFilter] = React.useState('all');
+  const [errorSubjectId, setErrorSubjectId] = React.useState('');
+  const [errorTopicId, setErrorTopicId] = React.useState('');
   const reviewRef = React.useRef(null);
   const labRef = React.useRef(null);
   const radialRef = React.useRef(null);
@@ -67,6 +71,15 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
     () => buildErrorNotebook(QB_DATA.questionBank, QB_DATA.studySubjects?.length ? QB_DATA.studySubjects : E.subjects),
     [QB_DATA.questionBank, QB_DATA.studySubjects, E.subjects],
   );
+  const availableErrorSubjects = E.subjects.filter(s => errorTrainingPool(QB_DATA.questionBank, { subjectId: s.id }).length);
+  const errorSubject = E.subjects.find(s => s.id === errorSubjectId);
+  const availableErrorTopics = (errorSubject?.topics || []).filter(t => errorTrainingPool(QB_DATA.questionBank, { subjectId: errorSubjectId, topicId: t.id }).length);
+  const errorPool = errorTrainingPool(QB_DATA.questionBank, { subjectId: errorSubjectId || undefined, topicId: errorTopicId || undefined });
+  const startErrorTraining = (subjectId = errorSubjectId, topicId = errorTopicId) => {
+    if (!subjectId || !topicId) return;
+    const questionIds = pickErrorTrainingRound(QB_DATA.questionBank, { subjectId, topicId, rounds: records.rodadas });
+    if (questionIds.length) go('questions', { subjectId, topicId, questionIds, filter: 'all', errorTraining: true });
+  };
   const openAndScroll = ref => {
     const target = ref.current;
     if (!target) return;
@@ -105,6 +118,10 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const accuracy = stats.valid ? correct / stats.valid : null;
 
   const linkInfo = (subjectId, topicId, action) => {
+    if (action === 'errors') {
+      const count = errorTrainingPool(QB_DATA.questionBank, { subjectId, topicId }).length;
+      return { available: count > 0, note: count ? `${Math.min(count, ERROR_TRAINING_LIMIT)} de ${count} questões com erro` : 'Nenhum erro registrado neste assunto' };
+    }
     if (action === 'review' && topicId === topic?.id && (reviews.questions.due || reviews.flashcards.due)) {
       return { available: true, note: reviews.questions.due + ' questões · ' + reviews.flashcards.due + ' flashcards a revisar' };
     }
@@ -140,6 +157,27 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           </div>
         </div>
       </details>
+      <section className="qb-panel qb-panel--ornate" aria-label="Treino do caderno de erros" style={{ padding: 'clamp(14px, 3vw, 24px)', display: 'grid', gap: 14 }}>
+        <div>
+          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Caderno de erros · Rodada direcionada</span>
+          <h2 style={{ font: 'var(--type-h2)', margin: '8px 0 4px' }}>Treino de erros</h2>
+          <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)', margin: 0 }}>Selecione matéria e assunto para refazer até 20 questões já erradas. A revisão espaçada permanece independente.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
+          <SelectField label="Matéria" value={errorSubjectId} options={[{ value: '', label: 'Selecione uma matéria' }, ...availableErrorSubjects.map(s => ({ value: s.id, label: s.name }))]}
+            onChange={value => { setErrorSubjectId(value); setErrorTopicId(''); }} />
+          <SelectField label="Assunto" value={errorTopicId} options={[{ value: '', label: 'Selecione um assunto' }, ...availableErrorTopics.map(t => ({ value: t.id, label: [t.num, t.title].filter(Boolean).join(' · ') || t.id }))]}
+            onChange={setErrorTopicId} />
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'space-between' }}>
+          <span style={{ font: 'var(--type-caption)', color: 'var(--text-secondary)' }} aria-live="polite">
+            {errorTopicId ? `${Math.min(errorPool.length, ERROR_TRAINING_LIMIT)} de ${errorPool.length} questões com erro nesta rodada` : 'Escolha um assunto para consultar a disponibilidade'}
+          </span>
+          <Button icon="rotate-ccw" disabled={!errorSubjectId || !errorTopicId || !errorPool.length} onClick={() => startErrorTraining()}>
+            Iniciar treino de erros
+          </Button>
+        </div>
+      </section>
       <details className="qb-panel qb-train-fold">
         <summary>Filtros da rodada</summary>
         <div className="qb-train-fold__body"><QuestionFilters value={filter} onChange={setFilter} /></div>
@@ -154,6 +192,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             pending={pendingByTopic}
             linkInfo={linkInfo}
             onAction={i => {
+              if (i.action === 'errors') { startErrorTraining(i.subjectId, i.topicId); return; }
               if (i.action === 'review' && (reviews.questions.due || reviews.flashcards.due)) {
                 openAndScroll(reviewRef);
               } else dispatch(i.action === 'train' ? { ...i, filter } : i, 'train');
