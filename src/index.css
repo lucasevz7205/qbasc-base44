@@ -587,6 +587,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* Select */
 .qb-select{appearance:none;-webkit-appearance:none;width:100%;min-height:var(--control-h-md);padding:0 40px 0 14px;border-radius:var(--radius-control);border:1px solid rgba(165,138,103,.5);background:var(--surface-sunken) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23D0B386' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--qb-ivory);font:400 15px/1.2 var(--font-body);cursor:pointer}
 .qb-select:hover{border-color:var(--qb-bronze)}
+.qb-select{color-scheme:dark;scrollbar-color:var(--qb-bronze) transparent;scrollbar-width:thin}
+.qb-select option{background:var(--surface-sunken);color:var(--qb-ivory)}
 .qb-select:focus{outline:none;border-color:var(--qb-gold-bright);box-shadow:0 0 0 3px rgba(242,199,110,.2)}
 .qb-check{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--text-secondary);font:500 14px/1.2 var(--font-body);cursor:pointer}
 .qb-check input{width:20px;height:20px;accent-color:var(--qb-gold);margin:0}

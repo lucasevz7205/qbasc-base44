@@ -157,12 +157,10 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           </div>
         </div>
       </details>
-      <section className="qb-panel qb-panel--ornate" aria-label="Treino do caderno de erros" style={{ padding: 'clamp(14px, 3vw, 24px)', display: 'grid', gap: 14 }}>
-        <div>
-          <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Caderno de erros · Rodada direcionada</span>
-          <h2 style={{ font: 'var(--type-h2)', margin: '8px 0 4px' }}>Treino de erros</h2>
-          <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)', margin: 0 }}>Selecione matéria e assunto para refazer até 20 questões já erradas. A revisão espaçada permanece independente.</p>
-        </div>
+      <details className="qb-panel qb-train-fold">
+        <summary>Treino de erros <small>{errorTopicId ? `${Math.min(errorPool.length, ERROR_TRAINING_LIMIT)} de ${errorPool.length} com erro` : 'Caderno de erros · até 20 questões'}</small></summary>
+        <div className="qb-train-fold__body">
+        <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)', margin: 0 }}>Escolha matéria e assunto para refazer até 20 questões já erradas. A revisão espaçada permanece independente.</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
           <SelectField label="Matéria" value={errorSubjectId} options={[{ value: '', label: 'Selecione uma matéria' }, ...availableErrorSubjects.map(s => ({ value: s.id, label: s.name }))]}
             onChange={value => { setErrorSubjectId(value); setErrorTopicId(''); }} />
@@ -177,7 +175,8 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             Iniciar treino de erros
           </Button>
         </div>
-      </section>
+        </div>
+      </details>
       <details className="qb-panel qb-train-fold">
         <summary>Filtros da rodada</summary>
         <div className="qb-train-fold__body"><QuestionFilters value={filter} onChange={setFilter} /></div>
