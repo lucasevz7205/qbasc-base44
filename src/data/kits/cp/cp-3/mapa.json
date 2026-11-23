@@ -1,0 +1,1135 @@
+{
+  "topico": "cp-3",
+  "materia": "cp",
+  "centro": "Representação política",
+  "ramos": [
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1",
+      "t": "Concepções clássicas da representação",
+      "refs": [
+        1,
+        4,
+        12,
+        74
+      ],
+      "x": {
+        "e": "Representar é tornar presente quem está ausente da decisão. Hobbes explica como alguém recebe autoridade para agir por outros. Rousseau reserva ao povo a decisão soberana. Burke defende a autonomia de julgamento do eleito.",
+        "trap": "Atribuir a Rousseau a autonomia parlamentar defendida por Burke.",
+        "src": "Etapa 06, pp. 1–3 e 8."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.1",
+          "t": "Autorização e soberania popular",
+          "refs": [
+            4,
+            12,
+            17,
+            74
+          ],
+          "x": {
+            "e": "Em Hobbes, a autorização permite que uma pessoa aja em nome de muitas. Em Rousseau, o povo pode confiar tarefas a comissários e conserva a decisão soberana.",
+            "src": "Etapa 06, pp. 1–2, 8 e 12."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.1.1",
+              "t": "Ator, autor e pessoa artificial",
+              "n": "Ator age em nome do autor",
+              "refs": [
+                4,
+                15,
+                17
+              ],
+              "x": {
+                "e": "O ator pratica o ato. O autor dá a autoridade para que o ato seja praticado em seu nome. A pessoa é artificial quando suas palavras e ações são consideradas de outrem. A autorização de um representante comum dá unidade à multidão.",
+                "trap": "Trocar quem pratica o ato com quem o autoriza.",
+                "src": "Etapa 06, p. 2."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.1.2",
+              "t": "Deputados como comissários",
+              "n": "Decisão definitiva cabe ao povo",
+              "refs": [
+                12,
+                17,
+                29,
+                74
+              ],
+              "x": {
+                "e": "Para Rousseau, os deputados desempenham funções que o povo lhes confia. A decisão soberana continua nas mãos do povo, cuja ratificação dá força definitiva à lei.",
+                "trap": "Atribuir ao comissário o poder de aprovar definitivamente a lei.",
+                "src": "Etapa 06, pp. 1, 8, 12 e 20."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.2",
+          "t": "Mandato livre e tradição representativa",
+          "refs": [
+            5,
+            12,
+            24,
+            74
+          ],
+          "x": {
+            "e": "No mandato livre, o eleito delibera com juízo próprio em nome da coletividade. No mandato imperativo, instruções dos eleitores vinculam o representante e seu descumprimento pode levar à destituição. Para Sieyès, a soberania pertence à nação, que se exprime por representantes.",
+            "trap": "Tomar a circunscrição eleitoral como limite de quem o parlamentar representa.",
+            "src": "Etapa 06, p. 3."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.2.1",
+              "t": "Juízo próprio em Burke",
+              "n": "Deliberação pelo interesse nacional",
+              "refs": [
+                12,
+                16,
+                28,
+                74
+              ],
+              "x": {
+                "e": "No discurso aos eleitores de Bristol, Burke defende que o parlamentar use seu próprio discernimento para deliberar pelo interesse da nação inteira, inclusive quando a preferência local aponta em outra direção.",
+                "ex": "O parlamentar pode votar em sentido diverso da preferência manifestada por seus eleitores.",
+                "trap": "Tratar a orientação dos eleitores como ordem vinculante em Burke.",
+                "src": "Etapa 06, pp. 3 e 8."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r1.2.2",
+              "t": "República e minorias",
+              "n": "Madison filtra facções. Mill inclui minorias.",
+              "refs": [
+                12
+              ],
+              "x": {
+                "e": "Para Madison, a deliberação por representantes eleitos pode refinar opiniões e conter os efeitos de grupos mobilizados por interesses próprios. Mill defende mecanismos para que minorias também obtenham representação.",
+                "trap": "Atribuir à república de Madison a decisão pessoal do povo reunido, característica da democracia pura.",
+                "src": "Etapa 06, p. 3."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2",
+      "t": "Dimensões da representação em Pitkin",
+      "refs": [
+        1,
+        11,
+        17,
+        29,
+        74
+      ],
+      "x": {
+        "e": "Pitkin distingue quatro critérios: como o poder é conferido e controlado, quem ocupa os cargos, que reconhecimento os representantes despertam e como atuam. A ação em favor dos representados é central para avaliar a qualidade da representação.",
+        "trap": "Classificar pela composição social uma situação sobre atuação parlamentar.",
+        "src": "Etapa 06, p. 1. Aula 04, p. 5."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.1",
+          "t": "Investidura e atuação do representante",
+          "refs": [
+            11,
+            19,
+            29,
+            71
+          ],
+          "x": {
+            "e": "A dimensão formalística considera o vínculo institucional que autoriza a atuação e permite cobrar seu exercício. A substantiva avalia como o representante usa o mandato diante dos interesses e demandas dos representados.",
+            "src": "Etapa 06, pp. 1 e 20."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.1.1",
+              "t": "Autorização e prestação de contas",
+              "n": "Dimensão formalística",
+              "refs": [
+                4,
+                19,
+                29
+              ],
+              "x": {
+                "e": "A autorização confere ao representante poder para atuar em nome de outros. A prestação de contas permite cobrar justificativas e responsabilização pelo exercício desse poder.",
+                "trap": "Deduzir a qualidade da atuação apenas da regularidade da escolha do representante.",
+                "src": "Etapa 06, pp. 1, 5 e 20."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.1.2",
+              "t": "Ação no interesse dos representados",
+              "n": "Dimensão substantiva",
+              "refs": [
+                1,
+                17,
+                29,
+                71
+              ],
+              "x": {
+                "e": "O critério é o que o representante faz em favor de quem representa. A atuação é responsiva quando o representante leva os interesses e as demandas dessas pessoas em conta ao decidir.",
+                "ex": "Uma comissão ajusta a proposta após ouvir demandas do grupo afetado.",
+                "trap": "Confundir defender interesses de um grupo com compartilhar suas características sociais.",
+                "src": "Etapa 06, p. 1. Aula 04, p. 5."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.2",
+          "t": "Semelhança social e aceitação",
+          "refs": [
+            11,
+            17,
+            29,
+            43
+          ],
+          "x": {
+            "e": "A representação descritiva compara as características dos representantes com as dos representados. A simbólica depende da crença pela qual os representados reconhecem alguém como expressão da coletividade.",
+            "src": "Etapa 06, p. 1."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.2.1",
+              "t": "Composição social da assembleia",
+              "n": "Dimensão descritiva",
+              "refs": [
+                17,
+                29,
+                43
+              ],
+              "x": {
+                "e": "Quanto mais a composição da assembleia se aproxima da composição da população nas características observadas, maior é sua semelhança descritiva.",
+                "ex": "Comparar a proporção de mulheres na assembleia com a proporção de mulheres na população.",
+                "trap": "Inferir pela semelhança quais interesses os eleitos defenderão.",
+                "src": "Etapa 06, pp. 1, 6 e 20."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r2.2.2",
+              "t": "Reconhecimento como símbolo coletivo",
+              "n": "Dimensão simbólica",
+              "refs": [
+                1,
+                17,
+                29
+              ],
+              "x": {
+                "e": "O vínculo surge quando os representados aceitam uma figura como expressão de sua comunidade. O critério é a crença dos representados nessa capacidade de simbolizar o grupo.",
+                "ex": "Uma figura pública é reconhecida como símbolo nacional.",
+                "src": "Etapa 06, pp. 1, 12 e 20."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r3",
+      "t": "Governo representativo em Bernard Manin",
+      "refs": [
+        6,
+        7,
+        13,
+        15
+      ],
+      "x": {
+        "e": "Manin situa a formação do governo representativo no século XVIII, como alternativa à democracia então conhecida. Quatro princípios caracterizam o regime. As três formas históricas diferem nos critérios de escolha e no vínculo com os eleitores.",
+        "trap": "Trocar a identidade de classe da democracia de partido pela personalização da democracia de público.",
+        "src": "Etapa 06, p. 4."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r3.1",
+          "t": "Princípios e métodos de escolha",
+          "refs": [
+            6,
+            7,
+            13,
+            14
+          ],
+          "x": {
+            "e": "Manin identifica eleições regulares, independência parcial dos governantes em relação aos eleitores, expressão política dos governados sem controle dos governantes e discussão das decisões públicas. A comparação com o sorteio ateniense evidencia o efeito seletivo da eleição.",
+            "trap": "Trocar eleição por sorteio na lista dos princípios.",
+            "src": "Etapa 06, p. 4."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r3.1.1",
+              "t": "Efeito aristocrático da eleição",
+              "n": "A eleição favorece candidatos percebidos como distintos",
+              "refs": [
+                6,
+                14,
+                15
+              ],
+              "x": {
+                "e": "Ao escolher, os eleitores tendem a favorecer pessoas que consideram distintas ou superiores. No sorteio ateniense, a seleção para o cargo ocorria por chance entre os elegíveis.",
+                "trap": "Atribuir ao sorteio o efeito seletivo associado à eleição.",
+                "src": "Etapa 06, pp. 4 e 9."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r3.2",
+          "t": "Metamorfoses do vínculo eleitoral",
+          "refs": [
+            7,
+            15,
+            17,
+            29,
+            50
+          ],
+          "x": {
+            "e": "No parlamentarismo oitocentista, o prestígio local dos notáveis sustenta a confiança pessoal. Na democracia de partido, programas, partidos de massa, identidade de classe e fidelidade partidária organizam o vínculo. Na democracia de público, ganham peso a imagem das lideranças, a mídia e o eleitor flutuante.",
+            "trap": "Interpretar parlamentarismo como sistema de governo em uma questão sobre as formas históricas de Manin.",
+            "src": "Etapa 06, p. 4."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r3.2.1",
+              "t": "Democracia de público",
+              "n": "Lideranças, mídia e eleitor flutuante",
+              "refs": [
+                7,
+                15,
+                17,
+                29
+              ],
+              "x": {
+                "e": "As lideranças se dirigem aos eleitores pela mídia, e sua imagem ganha peso na disputa. A figura do eleitor flutuante indica que sua escolha pode mudar entre eleições.",
+                "trap": "Associar a democracia de público à fidelidade estável a partidos de massa.",
+                "src": "Etapa 06, p. 4."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r4",
+      "t": "Mandato e fidelidade no Brasil",
+      "refs": [
+        7,
+        14,
+        18,
+        25,
+        27,
+        68
+      ],
+      "x": {
+        "e": "O mandato parlamentar admite juízo próprio e protege opiniões, palavras e votos mediante a inviolabilidade. A saída da legenda pode acarretar perda do mandato proporcional, observadas as exceções. O STF afastou essa consequência para os cargos majoritários.",
+        "trap": "Aplicar ao senador a consequência da desfiliação prevista para um deputado eleito pelo sistema proporcional.",
+        "src": "Etapa 06, pp. 4, 12 e 17."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r4.1",
+          "t": "Dupla representação no Congresso",
+          "refs": [
+            7,
+            24,
+            27
+          ],
+          "x": {
+            "e": "A Câmara representa o povo e elege seus membros pelo sistema proporcional. O Senado representa os estados e o Distrito Federal, com três senadores por unidade eleitos pelo princípio majoritário.",
+            "trap": "Inverter quem é representado em cada Casa.",
+            "src": "Etapa 06, pp. 4 e 19. CF, arts. 45 e 46."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r4.1.1",
+              "t": "Inviolabilidade parlamentar",
+              "n": "Proteção civil e penal",
+              "refs": [
+                7
+              ],
+              "x": {
+                "e": "A imunidade material protege deputados e senadores contra responsabilização civil e penal pelas opiniões, palavras e votos abrangidos pelo exercício do mandato.",
+                "ex": "Pronunciamento de um deputado em debate no Plenário.",
+                "src": "Etapa 06, p. 4. CF, art. 53, caput."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r4.2",
+          "t": "Desfiliação e preservação do mandato",
+          "refs": [
+            7,
+            14,
+            16,
+            18,
+            25,
+            68
+          ],
+          "x": {
+            "e": "Deputados federais, estaduais e distritais e vereadores podem perder o mandato por deixar o partido pelo qual foram eleitos. A anuência partidária ou a justa causa prevista em lei preserva o mandato. O STF afastou a perda por desfiliação para os cargos majoritários.",
+            "trap": "Confundir voto contrário à orientação partidária com desfiliação.",
+            "src": "Etapa 06, pp. 4, 12 e 17. CF, art. 17, § 6º. ADI 5081."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r4.2.1",
+              "t": "Janela partidária permanente",
+              "n": "Trinta dias antes do prazo de filiação",
+              "refs": [
+                20,
+                25
+              ],
+              "x": {
+                "e": "A janela se abre nos trinta dias que antecedem o prazo legal de filiação para concorrer à eleição que ocorre ao término do mandato vigente. A mudança de partido nesse intervalo é justa causa para preservar o mandato proporcional.",
+                "trap": "Usar a data de promulgação de uma emenda como marco da janela permanente.",
+                "src": "Etapa 06, pp. 14 e 17. Lei nº 9.096/1995, art. 22-A, III."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5",
+      "t": "Accountability, responsividade e crise representativa",
+      "refs": [
+        8,
+        26,
+        34,
+        36,
+        40,
+        51,
+        71
+      ],
+      "x": {
+        "e": "Accountability envolve prestar contas e poder sofrer sanção. Responsividade indica quanto as decisões correspondem às preferências dos cidadãos. A crise aparece quando os cidadãos têm dificuldade de reconhecer seus interesses, identidades e demandas nos canais de representação.",
+        "trap": "Equiparar prestação de contas à correspondência entre decisões e demandas.",
+        "src": "Etapa 06, p. 5. Aula 04, p. 5."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5.1",
+          "t": "Direções do controle democrático",
+          "refs": [
+            8,
+            14,
+            26,
+            36,
+            49
+          ],
+          "x": {
+            "e": "O’Donnell distingue o controle dos governantes pelos cidadãos e o controle entre órgãos estatais. A fiscalização pode gerar cobrança de explicações e consequências para os agentes públicos.",
+            "trap": "Restringir todo controle democrático aos órgãos estatais de fiscalização.",
+            "src": "Etapa 06, p. 5."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5.1.1",
+              "t": "Controle vertical e societal",
+              "n": "Cidadãos fiscalizam governantes",
+              "refs": [
+                8,
+                26,
+                36
+              ],
+              "x": {
+                "e": "Pelo voto, cidadãos podem premiar ou punir governantes. Na modalidade societal, associada a Peruzzotti e Smulovitz, a sociedade civil e a imprensa monitoram agentes públicos e cobram respostas.",
+                "ex": "Uma associação divulga gastos de uma autoridade e cobra explicações.",
+                "src": "Etapa 06, p. 5."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5.1.2",
+              "t": "Controle horizontal entre órgãos",
+              "n": "Fiscalização institucional entre órgãos estatais",
+              "refs": [
+                8,
+                14,
+                36,
+                71
+              ],
+              "x": {
+                "e": "Órgãos estatais fiscalizam outros órgãos ou agentes do Estado. O tipo de medida, como examinar despesas ou investigar uma conduta, depende das atribuições de quem exerce o controle.",
+                "ex": "Um tribunal de contas fiscaliza despesas do Executivo.",
+                "trap": "Classificar como horizontal a sanção imposta pelos eleitores nas urnas.",
+                "src": "Etapa 06, p. 5."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5.2",
+          "t": "Preferências cidadãs e decisões públicas",
+          "refs": [
+            8,
+            26,
+            34,
+            40
+          ],
+          "x": {
+            "e": "A responsividade é avaliada pela correspondência entre preferências dos cidadãos e decisões dos representantes. Uma administração pode cumprir suas obrigações de prestar contas e ainda dar pouca atenção às demandas da população. Na conexão eleitoral de Mayhew, a possibilidade de reeleição pode incentivar a atenção às bases.",
+            "trap": "Deduzir que a publicação de contas prova a correspondência das decisões às demandas.",
+            "src": "Etapa 06, pp. 5 e 18. Aula 04, pp. 5 e 24."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r5.2.1",
+              "t": "Confiança e canais de participação",
+              "n": "Apoio ao regime pode coexistir com desconfiança",
+              "refs": [
+                34,
+                41,
+                42,
+                50,
+                51
+              ],
+              "x": {
+                "e": "Uma pessoa pode apoiar a democracia e ter dificuldade de ver seus interesses expressos pelos representantes. Um canal digital amplia as oportunidades de participar, e a influência das contribuições depende de como elas chegam às decisões institucionais.",
+                "ex": "A Pauta Participativa coletou votos sobre propostas a priorizar no Plenário.",
+                "trap": "Tomar a abertura de uma consulta digital como prova de influência sobre a decisão.",
+                "src": "Aula 04, pp. 5, 25, 29, 70 e 73."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6",
+      "t": "Inclusão política e representação territorial",
+      "refs": [
+        9,
+        10,
+        14,
+        18,
+        22,
+        23,
+        27,
+        62
+      ],
+      "x": {
+        "e": "A política de presença examina como a inclusão de grupos historicamente excluídos pode influenciar a agenda. As regras brasileiras de candidaturas e recursos atuam na disputa eleitoral. A distribuição territorial das cadeiras da Câmara combina população e limites por unidade federativa.",
+        "trap": "Confundir percentuais de candidaturas com reserva de cadeiras.",
+        "src": "Etapa 06, pp. 6–7, 12 e 16. Etapa 16, p. 27."
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.1",
+          "t": "Presença e igualdade na disputa",
+          "refs": [
+            9,
+            18,
+            22,
+            23,
+            26,
+            48
+          ],
+          "x": {
+            "e": "Anne Phillips considera quem leva ideias e demandas à assembleia. As regras de candidaturas afetam o preenchimento das listas, e as de financiamento e propaganda afetam a distribuição de meios de campanha.",
+            "trap": "Supor que reservar nominalmente vagas na lista satisfaz a exigência de preenchimento.",
+            "src": "Etapa 06, pp. 6, 12 e 16."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.1.1",
+              "t": "Política de presença",
+              "n": "Experiências compartilhadas influenciam a agenda",
+              "refs": [
+                9,
+                22,
+                26,
+                48
+              ],
+              "x": {
+                "e": "A política de ideias se concentra nas opiniões levadas à decisão. A política de presença considera também quem ocupa os assentos, pois experiências de grupos historicamente excluídos podem alterar quais assuntos entram na agenda.",
+                "src": "Etapa 06, p. 6."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.1.2",
+              "t": "Cotas nas candidaturas proporcionais",
+              "n": "De 30% a 70% para cada sexo",
+              "refs": [
+                9,
+                11,
+                14,
+                18,
+                22
+              ],
+              "x": {
+                "e": "Na eleição proporcional, é preciso preencher efetivamente a lista de candidaturas dentro da faixa de 30% a 70% para cada sexo. A exigência incide sobre as candidaturas registradas.",
+                "trap": "Transferir o percentual de candidaturas para o número de pessoas eleitas.",
+                "src": "Etapa 06, pp. 6–7 e 12. Lei nº 9.504/1997, art. 10, § 3º."
+              }
+            },
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.1.3",
+              "t": "Recursos e propaganda de campanha",
+              "n": "Piso constitucional de 30% para candidatas",
+              "refs": [
+                18,
+                23
+              ],
+              "x": {
+                "e": "Para as candidatas, a Constituição fixa o mínimo de 30% dos recursos do Fundo Especial de Financiamento de Campanha, da parcela do Fundo Partidário destinada a campanhas e do tempo de propaganda gratuita no rádio e na televisão. O percentual acompanha a proporção de candidatas quando ela supera o piso.",
+                "trap": "Aplicar como teto o percentual que funciona como piso.",
+                "src": "Etapa 06, pp. 12 e 16. CF, art. 17, § 8º."
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.2",
+          "t": "Bancadas e peso territorial",
+          "refs": [
+            10,
+            14,
+            24,
+            27,
+            62
+          ],
+          "x": {
+            "e": "Cada estado e o Distrito Federal elege vários deputados federais pela mesma circunscrição. A Constituição combina distribuição segundo a população com limites por unidade. Cabe à lei complementar estabelecer o total de deputados e a representação por estado e pelo DF.",
+            "ex": "O material registra a manutenção de 513 cadeiras e da distribuição então vigente para a eleição de 2026.",
+            "trap": "Atribuir à Constituição a fixação do número de 513 deputados.",
+            "src": "Etapa 06, pp. 7, 9 e 19. CF, art. 45, § 1º."
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-3-representacao-politica-2026-11-22-r6.2.1",
+              "t": "Piso, teto e desproporcionalidade",
+              "n": "De oito a setenta deputados por estado ou pelo DF",
+              "refs": [
+                14,
+                24,
+                27,
+                62
+              ],
+              "x": {
+                "e": "Cada estado e o DF elegem pelo menos oito e no máximo setenta deputados. Esses limites podem fazer com que uma cadeira corresponda a quantidades diferentes de habitantes em unidades distintas.",
+                "trap": "Aplicar aos estados e ao DF o número de quatro deputados previsto para cada território federal.",
+                "src": "Etapa 06, pp. 7, 9 e 19. Etapa 16, p. 27. CF, art. 45, §§ 1º e 2º."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-CP-3-representacao-politica-2026-11-22": {
+      "1": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "2": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "3": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.2",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "4": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.2",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "5": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.3",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "6": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.4",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "7": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.4",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "8": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.5",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "9": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.6",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "10": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.7",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "11": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.7",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "12": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.8",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "13": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.9",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "14": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.9",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "15": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.10",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "16": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.11",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "17": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.12",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "18": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.12",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "19": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.13",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "20": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.14",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "21": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.14",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "22": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.15",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "23": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.16",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "24": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.16",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "25": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.17",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "26": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.18",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "27": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.19",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "28": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.19",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "29": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.20",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "30": {
+        "arquivo": "Ciência política/Etapa 06 · Cap. 5 · Representação política — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.21",
+        "sha256": "f3c050b0b2f80552e5bfc77c1855a0594e333800c1f66279a377b0078350d83f"
+      },
+      "31": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.1",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "32": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.3",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "33": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.3",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "34": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.5",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "35": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.6",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "36": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.8",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "37": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.11",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "38": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.17",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "39": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.19",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "40": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.24",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "41": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.25",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "42": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.29",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "43": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.35",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "44": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.41",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "45": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.44",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "46": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.52",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "47": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.63",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "48": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.66",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "49": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.67",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "50": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.70",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "51": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.73",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "52": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.76",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "53": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.81",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "54": {
+        "arquivo": "Ciência política/5. Aula 04 - Ciência Política Câmara.pdf",
+        "secao": "p.87",
+        "sha256": "061eb5d819e6f8cc16faa0700b689b59e7050d476e6f18d0a6e0efb7da449709"
+      },
+      "55": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "56": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.3",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "57": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.4",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "58": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.5",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "59": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.6",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "60": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.8",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "61": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.9",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "62": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.10",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "63": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.11",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "64": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.13",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "65": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.14",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "66": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.15",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "67": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.16",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "68": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.17",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "69": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.19",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "70": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.20",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "71": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.21",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "72": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.22",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "73": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.24",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "74": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.25",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "75": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.26",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "76": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.27",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "77": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.29",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "78": {
+        "arquivo": "Ciência política/Etapa 16 · Reta final · Treino e revisão — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.30",
+        "sha256": "0606a5110423bc48b80330fafb1c3aa614f47b79a81fc181145975fc0aedeeb4"
+      },
+      "79": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "80": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.1",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "81": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.8",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "82": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.15",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "83": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.16",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "84": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.19",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "85": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.20",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "86": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.21",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "87": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.24",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "88": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.27",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "89": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.28",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "90": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.28",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "91": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.32",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "92": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.39",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "93": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.46",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "94": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.50",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "95": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.54",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "96": {
+        "arquivo": "Ciência política/Etapa 17 · Banco de questões de concursos — Ciência Política, Câmara 2026.pdf",
+        "secao": "p.61",
+        "sha256": "6683e62d80b992aa4accd7405f73532b1112a52b7d7f4b14be47c9f2cc3fd007"
+      },
+      "97": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.1",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "98": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.23",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "99": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.46",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "100": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.55",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "101": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.57",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      },
+      "102": {
+        "arquivo": "Edital camara.pdf",
+        "secao": "p.64",
+        "sha256": "1564d6ccacdb20b5b16ad77fa2ccfc667efb925f83ab4d9b75150ade8745039e"
+      }
+    }
+  }
+}
