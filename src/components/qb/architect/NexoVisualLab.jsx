@@ -7,6 +7,7 @@ import './nexo-experiments.css';
 import NexoVisualTraining from './NexoVisualTraining';
 import {scopedVisualModels} from '@/lib/nexo/visual-catalog';
 import {STAGES} from '@/lib/nexo/visual-training';
+import {diarizationStageContext} from '@/lib/nexo/diarization-context';
 import asrKit from '@/data/kits/rf/rf-1-1/mapa.json';
 
 const models=[
@@ -96,11 +97,11 @@ function Wer({onPredictionMode}){
     {reveal&&<p className="nexo-explain">{val>100?'A WER ultrapassa 100%: as inserções elevam o numerador sem alterar o total de palavras de referência.':'A WER usa o total da referência no denominador, não o total da hipótese.'} Os controles simulam contagens de erros já alinhados; não medem uma transcrição real.</p>}
   </>}</NexoVisualTraining>;
 }
-function Diarization({onPredictionMode}){
+function Diarization({onPredictionMode,onStageChange,onRevealChange}){
   const [step,setStep]=React.useState(0);
   const spans=[[.08,.32,'A'],[.43,.68,'B'],[.77,.94,'A']];
-  return <NexoVisualTraining kind="diarization" parameters={{step}} onPredictionMode={onPredictionMode}>{({reveal})=><>
-    <Choice label="Etapa do pipeline clássico" values={[0,1,2,3,4]} value={step} onChange={setStep} format={v=>String(v+1)}/>
+  return <NexoVisualTraining kind="diarization" parameters={{step}} onPredictionMode={onPredictionMode} onRevealChange={onRevealChange}>{({reveal})=><>
+    <Choice label="Etapa do pipeline clássico" values={[0,1,2,3,4]} value={step} onChange={v=>{if(v!==step){setStep(v);onStageChange?.(v);}}} format={v=>reveal?(v+1)+' · '+STAGES[v]:String(v+1)}/>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>DIARIZAÇÃO · SINAL SINTÉTICO</span><span>{reveal?STAGES[step]:'ETAPA '+(step+1)}</span></div>
       <svg viewBox="0 0 680 250" role="img" aria-label={'Demonstração didática da etapa '+(step+1)+' de cinco'}>
         <text x="24" y="22" fill="var(--qb-moonlight)" fontSize="13">Sinal de entrada ilustrativo</text>
@@ -121,17 +122,21 @@ export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,
   const contextual=scoped.length>0;
   const [modelId,setModelId]=React.useState(null);
   const [predictionMode,setPredictionMode]=React.useState(false);
+  const [stage,setStage]=React.useState(0);
+  const [stageRevealed,setStageRevealed]=React.useState(false);
   const model=scoped.find(m=>m.id===modelId)||scoped[0];
   const Renderer=RENDERERS[model?.id];
+  const stageContext=model?.id==='diarization'?diarizationStageContext(model.source,stage):null;
+  const showStage=stageContext&&(!predictionMode||stageRevealed);
   return <section className="nexo-exp" aria-label="Laboratório Visual">
     <header className="nexo-exp-head"><div className="nexo-exp-emblem"><Icon name="astrolabe" size={30}/></div><div><span className="qb-overline">O ARQUITETO · LABORATÓRIO VISUAL</span><h2>Conhecimento em movimento</h2><p>Manipule um modelo, observe o efeito e compreenda o mecanismo.</p></div><span className="qb-badge qb-badge--gold">Prévia privada</span></header>
     <StudyTopicPicker label="Matéria e assunto" subjects={subjects} value={topicId} onSelect={onTopicChange}/>
     {topicModels.length>0&&<label className="nexo-control">Conceito vinculado<select className="qb-input" value={nodeId||''} onChange={e=>onNodeChange?.(e.target.value||undefined)}><option value="">Todos os modelos deste assunto</option>{nodeId&&!topicModels.some(m=>m.sources.some(n=>n.id===nodeId))&&<option value={nodeId}>Conceito atual (sem modelo)</option>}{topicModels.flatMap(m=>m.sources).map(n=><option key={n.id} value={n.id}>{n.t}</option>)}</select></label>}
     {!contextual?<div className="nexo-exp-empty"><Icon name="astrolabe" size={42}/><h3>Nenhum modelo disponível neste recorte</h3><p>Não há modelo vinculado exatamente a {topicLabel||'este assunto'}{nodeId?' e ao conceito atual':''}. Nenhum modelo de outro tópico será exibido.</p></div>:<>
       <span className="qb-overline">{scoped.length} {scoped.length===1?'modelo vinculado':'modelos vinculados'}</span>
-      {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==model.id){setModelId(m.id);setPredictionMode(false);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
-      <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><Renderer key={model.id} onPredictionMode={setPredictionMode}/></main>
-       {predictionMode?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>O caderno teórico fica oculto durante a predição. Retorne à exploração livre para consultá-lo.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}<small>Referência do kit, conferência primária pendente.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
+      {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==model.id){setModelId(m.id);setPredictionMode(false);setStage(0);setStageRevealed(false);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
+      <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><Renderer key={model.id} onPredictionMode={v=>{setPredictionMode(v);setStageRevealed(false);}} onStageChange={v=>{setStage(v);setStageRevealed(false);}} onRevealChange={setStageRevealed}/></main>
+       {showStage?<aside className="nexo-exp-context" aria-live="polite" aria-label="Características da etapa selecionada"><span className="qb-overline">ETAPA {stageContext.stage} DE {stageContext.total} · EM FOCO</span><h3>{stageContext.title}</h3><p className="nexo-context-label">Função no pipeline</p><p>{stageContext.function}</p><div className="nexo-stage-facts"><div><span className="qb-overline">ENTRADA ILUSTRATIVA</span><p>{stageContext.input}</p></div><div><span className="qb-overline">SAÍDA ILUSTRATIVA</span><p>{stageContext.output}</p></div></div><div className="nexo-plot-feedback"><strong>O que observar</strong><p>{stageContext.association}</p></div><details><summary>Resumo geral da diarização</summary><p>{model.source.x.e}</p></details><details><summary>Armadilha do material</summary><p>{model.source.x.trap}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong><p>{stageContext.reference}</p><small>Trecho associado: {stageContext.anchor}. A descrição do desenho é didática; conferência primária pendente.</small></div></div></aside>:predictionMode?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>O caderno teórico fica oculto durante a predição. Retorne à exploração livre para consultá-lo.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}<small>Referência do kit, conferência primária pendente.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
     </>}
     <footer className="nexo-exp-footer"><Icon name="lock" size={15}/><span>Geração contextual pelo Arquiteto e novos modelos dependem de validação e integração posteriores. A evocação permanece reservada ao mapa mental original.</span></footer>
   </section>;

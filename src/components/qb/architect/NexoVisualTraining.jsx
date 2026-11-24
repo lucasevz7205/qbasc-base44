@@ -2,7 +2,7 @@ import React from 'react';
 import {Icon} from '@/components/qb/core/Icon';
 import {visualExercise,evaluateVisual,scenarioKey} from '@/lib/nexo/visual-training';
 const fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:4});
-export default function NexoVisualTraining({kind,parameters,onPredictionMode,children}){
+export default function NexoVisualTraining({kind,parameters,onPredictionMode,onRevealChange,children}){
   const [mode,setMode]=React.useState('explore');
   const key=scenarioKey(kind,parameters);
   const [attempt,setAttempt]=React.useState({key,answers:{},result:null});
@@ -11,6 +11,7 @@ export default function NexoVisualTraining({kind,parameters,onPredictionMode,chi
   if(attempt.key!==key)setAttempt(current);
   const exercise=visualExercise(kind,parameters);
   const reveal=mode==='explore'||Boolean(current.result&&current.result.status!=='incomplete');
+  React.useEffect(()=>{onRevealChange?.(mode==='predict'&&reveal);},[mode,reveal,key,onRevealChange]);
   const clear=()=>setAttempt({key,answers:{},result:null});
   const changeMode=v=>{if(v!==mode){setMode(v);clear();onPredictionMode?.(v==='predict');}};
   const update=(id,value)=>setAttempt({key,answers:{...current.answers,[id]:value},result:null});

@@ -22,3 +22,6 @@ O proprietário esclareceu que o gráfico e a estrutura visual devem permanecer 
 
 ## Revisão 01.3 — correção universal e remissão exata
 Os quatro renderizadores existentes usam NexoVisualTraining, com parâmetros explícitos, avaliador determinístico por tipo, chave de cenário e correção integrada ao instrumento. Não existe correção genérica estática. O catálogo usa vínculo explícito matéria/assunto/nó; RF 1 tem quatro modelos; RF 1.1 tem um único medidor WER, vinculado aos dois nós WER do próprio kit (sem herança de outros tópicos); outros assuntos e nós sem vínculo mostram vazio. O usuário pode selecionar conceito ou todo o assunto. O estágio de diarização usa sinal e segmentos sintéticos para ilustrar operações, não executa ASR/VAD/clustering. A publicação continua bloqueada. Não se avançou ao classificador ou ciclo completo.
+
+## Revisão 01.4 — contiguidade contextual
+Na diarização, a seleção da etapa atualiza o caderno lateral: nome, função, entrada/saída ilustrativas, o que observar e referência do nó exato. O resumo geral fica recolhido. Durante predição, nomes dos botões e detalhes ficam ocultos até a correção; uma nova etapa limpa a revelação anterior. As descrições da representação são explicitamente didáticas, sem alegar processamento de áudio real ou revisão primária concluída.

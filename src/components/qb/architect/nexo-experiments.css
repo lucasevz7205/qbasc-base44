@@ -27,3 +27,7 @@
 .nexo-training-form{padding:14px}.nexo-training-form label{display:grid;gap:6px;font-size:12px}
 .nexo-training-form input,.nexo-exp select.qb-input{width:100%;min-width:0;color:var(--qb-ivory);background:var(--qb-navy-raised);border:1px solid var(--qb-bronze);border-radius:6px;padding:8px}
 .nexo-training-result{border-top:1px solid var(--divider);padding-top:12px;font-size:12px;color:var(--qb-ivory)}
+.nexo-stage-facts{display:grid;gap:8px}.nexo-stage-facts>div{border-left:2px solid var(--qb-bronze);padding:8px 10px;background:var(--qb-navy-raised);border-radius:0 6px 6px 0}
+.nexo-stage-facts .qb-overline{font-size:10px;color:var(--qb-gold)}
+.nexo-exp-context .nexo-plot-feedback{padding:10px;border:1px solid var(--divider);border-radius:8px;background:var(--qb-navy-deep)}
+.nexo-exp .nexo-control .qb-seg{flex-wrap:wrap}
