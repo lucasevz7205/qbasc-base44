@@ -89,7 +89,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={changeTopic} />}
-        {tool === 'cards' && <NexoVisualLab key={topic?.id} subjects={subjects} topicId={topic?.id} topicLabel={tLabel} nodeId={context.nodeId} onTopicChange={changeTopic} />}
+        {tool === 'cards' && <NexoVisualLab key={JSON.stringify([subj?.id,topic?.id,context.nodeId])} subjects={subjects} subjectId={subj?.id} topicId={topic?.id} topicLabel={tLabel} nodeId={context.nodeId} onTopicChange={changeTopic} onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>

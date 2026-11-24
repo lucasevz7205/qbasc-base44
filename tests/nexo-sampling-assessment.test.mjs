@@ -26,15 +26,10 @@ test('exact Nyquist phase-zero signal samples are null, boundary not below',()=>
 });
 test('incomplete predictions are not graded',()=>assert.equal(samplingAssessment(5000,8000,{classification:''}).status,'incomplete'));
 
-test('prediction keeps a single live plot mounted; only answer overlays/readouts are gated',async()=>{
+test('common training always renders live visual and gates only answer feedback',async()=>{
   const {readFileSync}=await import('node:fs');
-  const source=readFileSync(new URL('../src/components/qb/architect/NexoVisualLab.jsx',import.meta.url),'utf8');
-  const sampling=source.slice(source.indexOf('function Sampling('),source.indexOf('function Quantization('));
-  assert.equal((sampling.match(/data-nexo-live-graph/g)||[]).length,1);
-  assert.doesNotMatch(sampling,/hidden\?|O gráfico e os valores calculados serão exibidos/);
-  assert.match(sampling,/const reveal=mode==='explore'\|\|Boolean\(feedback\?\.expected\)/);
-  assert.match(sampling,/const aliasVisible=reveal&&showAlias&&data\.classification==='above'/);
-  assert.match(sampling,/data\.samples\.map/);
-  assert.match(sampling,/\{reveal&&<div className="nexo-plot-feedback"/);
-  assert.ok(sampling.indexOf('data-nexo-live-graph')<sampling.indexOf('INTERPRETE O CENÁRIO VISUAL'));
+  const source=readFileSync(new URL('../src/components/qb/architect/NexoVisualTraining.jsx',import.meta.url),'utf8');
+  assert.match(source,/data-nexo-live-graph>\{children\(/);
+  assert.match(source,/const reveal=mode==='explore'\|\|Boolean/);
+  assert.match(source,/attempt.key===key/);
 });

@@ -23,3 +23,7 @@
 .nexo-plot-feedback strong{color:var(--qb-gold-bright)}
 .nexo-prediction-workbench input[type=number]{width:100%;min-width:0;color:var(--qb-ivory);background:var(--qb-navy-raised);border:1px solid var(--qb-bronze);border-radius:6px;padding:8px}
 @media(min-width:1250px){.nexo-prediction-workbench{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
+.nexo-training,.nexo-training-visual,.nexo-training-form,.nexo-training-result{display:grid;gap:12px;min-width:0}
+.nexo-training-form{padding:14px}.nexo-training-form label{display:grid;gap:6px;font-size:12px}
+.nexo-training-form input,.nexo-exp select.qb-input{width:100%;min-width:0;color:var(--qb-ivory);background:var(--qb-navy-raised);border:1px solid var(--qb-bronze);border-radius:6px;padding:8px}
+.nexo-training-result{border-top:1px solid var(--divider);padding-top:12px;font-size:12px;color:var(--qb-ivory)}

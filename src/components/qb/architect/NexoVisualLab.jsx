@@ -4,18 +4,18 @@ import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import rfKit from '@/data/kits/rf/rf-1/mapa.json';
 import {sampleSignal,signal,quantize,wer} from '@/lib/nexo/experiments';
 import './nexo-experiments.css';
-import {samplingAssessment} from '@/lib/nexo/sampling-assessment';
+import NexoVisualTraining from './NexoVisualTraining';
+import {scopedVisualModels} from '@/lib/nexo/visual-catalog';
+import {STAGES} from '@/lib/nexo/visual-training';
+import asrKit from '@/data/kits/rf/rf-1-1/mapa.json';
 
-const prefix='kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-';
-const nodes=new Map();
-function collect(n){nodes.set(n.id,n);(n.f||[]).forEach(collect);}
-rfKit.ramos.forEach(collect);
 const models=[
-  {id:'sampling',type:'Simulação',title:'Osciloscópio de amostragem',desc:'Altere frequência e taxa de amostragem e observe o aliasing.',icon:'chart-column',node:'r1.1'},
-  {id:'quantization',type:'Modelo interativo',title:'Bancada de quantização',desc:'Explore a transformação de amplitudes em níveis discretos.',icon:'layers',node:'r1.2'},
-  {id:'wer',type:'Gráfico interativo',title:'Medidor de erro de palavras',desc:'Manipule as parcelas da WER e veja por que pode superar 100%.',icon:'chart-column',node:'r5.1'},
-  {id:'diarization',type:'Sequência de processo',title:'Linha de processamento da diarização',desc:'Percorra as etapas do processo na ordem descrita pelo material.',icon:'timer',node:'r4.2'}
-].map(m=>({...m,source:nodes.get(prefix+m.node)})).filter(m=>m.source?.x?.e&&m.source?.x?.src);
+  {id:'sampling',type:'Simulação',title:'Osciloscópio de amostragem',desc:'Altere frequência e taxa de amostragem e observe o aliasing.',icon:'chart-column'},
+  {id:'quantization',type:'Modelo interativo',title:'Bancada de quantização',desc:'Explore a transformação de amplitudes em níveis discretos.',icon:'layers'},
+  {id:'wer',type:'Gráfico interativo',title:'Medidor de erro de palavras',desc:'Manipule as parcelas da WER e veja por que pode superar 100%.',icon:'chart-column'},
+  {id:'diarization',type:'Sequência de processo',title:'Linha de processamento da diarização',desc:'Percorra as etapas do processo na ordem descrita pelo material.',icon:'timer'}
+];
+const kits=[rfKit,asrKit];
 const fmt=(v,d=0)=>v.toLocaleString('pt-BR',{maximumFractionDigits:d});
 const X=t=>48+584*t, Y=y=>120-82*y;
 function WaveGrid(){return <g aria-hidden="true">
@@ -29,62 +29,25 @@ function Choice({label,values,value,onChange,format=v=>v}){return <div className
 function Readout({items}){return <div className="nexo-readouts">{items.map(i=><div key={i.label}><span>{i.label}</span><strong>{i.value}</strong></div>)}</div>;}
 function Sampling({onPredictionMode}){
   const [frequency,setFrequency]=React.useState(5000),[rate,setRate]=React.useState(8000);
-  const [showAlias,setShowAlias]=React.useState(true);
-  const [mode,setMode]=React.useState('explore');
-  const [answer,setAnswer]=React.useState({nyquist:'',classification:'',alias:''});
-  const [feedback,setFeedback]=React.useState(null);
-  const clear=()=>{setAnswer({nyquist:'',classification:'',alias:''});setFeedback(null);};
-  const changeFrequency=v=>{if(v!==frequency){setFrequency(v);clear();}};
-  const changeRate=v=>{if(v!==rate){setRate(v);clear();}};
-  const changeMode=v=>{setMode(v);clear();onPredictionMode?.(v==='predict');};
-  const changeAnswer=(k,v)=>{setAnswer(a=>({...a,[k]:v}));setFeedback(null);};
   const data=sampleSignal(frequency,rate);
-  const reveal=mode==='explore'||Boolean(feedback?.expected);
-  const aliasVisible=reveal&&showAlias&&data.classification==='above';
-  const labels={below:'Abaixo do limite',boundary:'Exatamente no limite',above:'Acima do limite'};
-  const submit=()=>setFeedback(samplingAssessment(frequency,rate,{nyquist:Math.round(Number(answer.nyquist)*1000),classification:answer.classification,alias:Math.round(Number(answer.alias)*1000)}));
-  const explanation=data.classification==='boundary'?'No limite de Nyquist, não há garantia de recuperação única: nesta senoide de fase zero, todas as amostras são zero.':data.classification==='above'?'O sinal ultrapassa o limite de Nyquist. Outra senoide, de frequência aparente menor, produz os mesmos valores nos instantes amostrados.':'A frequência do sinal está abaixo de metade da taxa de amostragem; para esta senoide ideal, não há dobramento de frequência.';
-  return <>
-    <div className="qb-seg" role="group" aria-label="Modo de aprendizagem"><button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>changeMode('explore')}>Exploração livre</button><button type="button" className="qb-seg__opt" aria-pressed={mode==='predict'} onClick={()=>changeMode('predict')}>Predição e correção</button></div>
-    <div className="nexo-controls"><Choice label="Frequência da onda" values={[1000,3000,4000,5000,7000]} value={frequency} onChange={changeFrequency} format={v=>fmt(v/1000)+' kHz'}/><Choice label="Taxa de amostragem" values={[8000,16000,44100]} value={rate} onChange={changeRate} format={v=>fmt(v/1000,1)+' kHz'}/></div>
-    <div className={mode==='predict'?'nexo-prediction-workbench':undefined}>
-    <div className="nexo-prediction-plot">
-    <div className="nexo-instrument" data-nexo-live-graph><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{!reveal?'OBSERVAÇÃO ATIVA':data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST'}</span></div>
-      <svg viewBox="0 0 680 260" role="img" aria-label={'Onda de '+frequency+' Hz, amostrada a '+rate+' Hz. '+(reveal?'Frequência de Nyquist: '+data.nyquist+' Hz.':'Observe os pontos de amostragem.')}>
+  return <NexoVisualTraining kind="sampling" parameters={{frequency,rate}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+    <div className="nexo-controls"><Choice label="Frequência da onda" values={[1000,3000,4000,5000,7000]} value={frequency} onChange={setFrequency} format={v=>fmt(v/1000)+' kHz'}/><Choice label="Taxa de amostragem" values={[8000,16000,44100]} value={rate} onChange={setRate} format={v=>fmt(v/1000,1)+' kHz'}/></div>
+    <div className="nexo-instrument"><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{reveal?data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST':'OBSERVAÇÃO ATIVA'}</span></div>
+      <svg viewBox="0 0 680 260" role="img" aria-label={'Sinal de '+frequency+' Hz; taxa '+rate+' Hz'}>
         <WaveGrid/><polyline points={wave(frequency)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="2"/>
-        {aliasVisible&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="1.8" strokeDasharray="5 4"/>}
+        {reveal&&data.classification==='above'&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="1.8" strokeDasharray="5 4"/>}
         {data.samples.map((s,i)=><g key={i}><line x1={X(s.t)} y1={Y(0)} x2={X(s.t)} y2={Y(s.y)} stroke="var(--qb-gold)" strokeOpacity=".6"/><circle cx={X(s.t)} cy={Y(s.y)} r="4" fill="var(--qb-gold-bright)"/></g>)}
-      </svg><div className="nexo-legend"><span>— Onda original</span><span className="nexo-gold">● Amostras</span>{aliasVisible&&<span className="nexo-ember">– – Senoide equivalente nas amostras</span>}</div>
-    {reveal&&<div className="nexo-plot-feedback" aria-live="polite"><strong>{data.classification==='above'?'Aliasing':data.classification==='boundary'?'Caso limítrofe':'Abaixo de Nyquist'}</strong><span>Limite: {fmt(data.nyquist/1000,2)} kHz · sinal: {fmt(frequency/1000,2)} kHz{data.classification==='above'?' · senoide equivalente: '+fmt(data.alias/1000,2)+' kHz':''}</span></div>}
+      </svg><div className="nexo-legend"><span>— Onda original</span><span className="nexo-gold">● Amostras</span>{reveal&&data.classification==='above'&&<span className="nexo-ember">– – Senoide equivalente</span>}</div>
+      {reveal&&<div className="nexo-plot-feedback">Limite: {fmt(data.nyquist/1000,2)} kHz · dobramento: {fmt(data.alias/1000,2)} kHz{data.classification==='boundary'?' · amostras nulas nesta fase':''}</div>}
     </div>
-    {!reveal&&<p className="nexo-explain">Altere as frequências e observe como a onda e os pontos mudam. Os valores da correção e a senoide equivalente serão revelados no próprio gráfico após sua resposta.</p>}
-    </div>
-    {mode==='predict'&&<section className="nexo-instrument" style={{padding:14,display:'grid',gap:12}} aria-label="Predição do cenário">
-      <span className="qb-overline">INTERPRETE O CENÁRIO VISUAL</span>
-      <p>Para um sinal de {fmt(frequency/1000)} kHz amostrado a {fmt(rate/1000,1)} kHz, o que você prevê a partir da onda e dos pontos de amostragem?</p>
-      <label className="nexo-control">Limite de Nyquist (kHz)<input className="qb-input" type="number" min="0" step="0.05" value={answer.nyquist} onChange={e=>changeAnswer('nyquist',e.target.value)}/></label>
-      <div className="nexo-control"><span>Posição do sinal em relação ao limite</span><div role="group" className="qb-seg" aria-label="Classificação do sinal" style={{flexWrap:'wrap'}}>{Object.entries(labels).map(([id,label])=><button key={id} type="button" className="qb-seg__opt" aria-pressed={answer.classification===id} onClick={()=>changeAnswer('classification',id)}>{label}</button>)}</div></div>
-      <label className="nexo-control">Frequência aparente pelo dobramento espectral (kHz)<input className="qb-input" type="number" min="0" step="0.05" value={answer.alias} onChange={e=>changeAnswer('alias',e.target.value)}/></label>
-      <button type="button" className="qb-btn qb-btn--secondary" disabled={answer.nyquist===''||answer.alias===''||!answer.classification||!Number.isFinite(Number(answer.nyquist))||!Number.isFinite(Number(answer.alias))} onClick={submit}>Verificar previsão no gráfico</button>
-      {feedback?.expected&&<div aria-live="polite" style={{display:'grid',gap:8}}><strong style={{color:feedback.status==='correct'?'var(--qb-patina)':'var(--qb-ember)'}}>{feedback.status==='correct'?'Predição correta':'Revise sua predição'}</strong>
-      {[['nyquist','Limite',fmt(feedback.expected.nyquist/1000,2)+' kHz'],['classification','Classificação',labels[feedback.expected.classification]],['alias','Frequência aparente',fmt(feedback.expected.alias/1000,2)+' kHz']].map(([k,label,value])=><div key={k} style={{display:'flex',alignItems:'center',gap:8}}><Icon name={feedback.checks[k]?'circle-check':'circle-x'} size={16} color={feedback.checks[k]?'var(--qb-patina)':'var(--qb-ember)'}/><span>{label}: {value}</span></div>)}
-      <p>Limite = {fmt(rate/1000,1)} ÷ 2 = {fmt(data.nyquist/1000,2)} kHz. {explanation}</p>
-      <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={clear}>Nova tentativa</button></div>}
-    </section>}
-    </div>
-    {reveal&&<><label className="nexo-check"><input type="checkbox" checked={showAlias} onChange={e=>setShowAlias(e.target.checked)}/> Mostrar senoide equivalente quando o sinal estiver acima de Nyquist</label>
-    <Readout items={[{label:'Limite de Nyquist',value:fmt(data.nyquist/1000,2)+' kHz'},{label:'Frequência aparente (dobramento)',value:fmt(data.alias/1000,2)+' kHz'},{label:'Amostras na janela',value:fmt(data.samples.length)}]}/>
-    <p className="nexo-explain">{explanation}</p>
-    {data.classification==='boundary'&&<p>O dobramento espectral indica {fmt(data.alias/1000,2)} kHz, mas a onda de fase zero não pode ser recuperada a partir destas amostras nulas.</p>}
-    </>}
-  </>;
+  </>}</NexoVisualTraining>;
 }
-function Quantization(){
+function Quantization({onPredictionMode}){
   const [bits,setBits]=React.useState(3),[amplitude,setAmplitude]=React.useState(.37);
   const data=quantize(amplitude,bits),vals=sampleSignal(1000,16000).samples;
-  return <>
-    <div className="nexo-instrument"><div className="nexo-instrument-head"><span>CONVERSOR · AMPLITUDE NORMALIZADA</span><span>{fmt(data.levels)} NÍVEIS</span></div>
-      <svg viewBox="0 0 680 280" role="img" aria-label={'Amplitude '+fmt(amplitude,2)+' convertida ao nível '+data.code+' de '+data.levels+' níveis.'}>
+  return <NexoVisualTraining kind="quantization" parameters={{bits,amplitude}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+    <div className="nexo-instrument"><div className="nexo-instrument-head"><span>CONVERSOR · AMPLITUDE NORMALIZADA</span><span>{reveal?fmt(data.levels)+" NÍVEIS":"OBSERVAÇÃO ATIVA"}</span></div>
+      <svg viewBox="0 0 680 280" role="img" aria-label={'Amplitude '+fmt(amplitude,2)+'; profundidade '+bits+' bits.'}>
         <defs><linearGradient id="nexo-metal" x2="0" y2="1"><stop stopColor="#344E70"/><stop offset="1" stopColor="#101C2D"/></linearGradient></defs>
         <g transform="translate(40 34)">
           <polygon points="0,24 113,0 193,40 80,65" fill="#344E70" stroke="var(--qb-bronze)"/>
@@ -104,64 +67,71 @@ function Quantization(){
         <path d="M422 144H459" stroke="var(--qb-gold)" strokeWidth="3"/><path d="M451 137l8 7-8 7" fill="none" stroke="var(--qb-gold)" strokeWidth="2"/>
         <rect x="464" y="76" width="176" height="133" rx="12" fill="#101C2D" stroke="var(--qb-bronze)"/>
         <text x="552" y="100" textAnchor="middle" fontSize="12" fill="var(--qb-gold)">CÓDIGO DISCRETO</text>
-        <text x="552" y="139" textAnchor="middle" fontSize="25" fill="var(--qb-ivory)">{fmt(data.code)}</text>
-        <text x="552" y="166" textAnchor="middle" fontSize="12" fill="var(--qb-moonlight)">nível {fmt(data.output,4)}</text>
-        <text x="350" y="242" textAnchor="middle" fontSize="11" fill="var(--qb-ivory-muted)">Modelo didático de bancada · níveis densos abreviados</text>
+        <text x="552" y="139" textAnchor="middle" fontSize="25" fill="var(--qb-ivory)">{reveal?fmt(data.code):"?"}</text>
+        <text x="552" y="166" textAnchor="middle" fontSize="12" fill="var(--qb-moonlight)">{reveal?"nível "+fmt(data.output,4):"saída a interpretar"}</text>
+        <text x="350" y="242" textAnchor="middle" fontSize="11" fill="var(--qb-ivory-muted)">Modelo didático de bancada · níveis densos: guias ilustrativas</text>
       </svg>
       <div className="nexo-legend"><span>– – Entrada</span><span className="nexo-gold">— Nível escolhido</span></div>
     </div>
     <Choice label="Profundidade" values={[2,3,4,8,16]} value={bits} onChange={setBits} format={v=>v+' bits'}/>
     <label className="nexo-slider">Amplitude de entrada <strong>{fmt(amplitude,2)}</strong><input type="range" min="-1" max="1" step=".01" value={amplitude} onChange={e=>setAmplitude(Number(e.target.value))}/></label>
-    <Readout items={[{label:'Níveis (2ᴺ)',value:fmt(data.levels)},{label:'Código inteiro',value:fmt(data.code)},{label:'Erro absoluto',value:fmt(data.error,5)}]}/>
+    {reveal&&<Readout items={[{label:'Níveis (2ᴺ)',value:fmt(data.levels)},{label:'Código inteiro',value:fmt(data.code)},{label:'Erro absoluto',value:fmt(data.error,4)}]}/>}
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>VISÃO DA ONDA QUANTIZADA</span><span>{bits} BITS</span></div><svg viewBox="0 0 680 260" role="img" aria-label="Onda de demonstração e níveis quantizados das amostras"><WaveGrid/><polyline points={wave(1000)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="2"/>{vals.map((v,i)=><g key={i}><line x1={X(v.t)} y1={Y(v.y)} x2={X(v.t)} y2={Y(quantize(v.y,bits).output)} stroke="var(--qb-ember)" strokeWidth="2"/><circle cx={X(v.t)} cy={Y(quantize(v.y,bits).output)} r="4" fill="var(--qb-gold-bright)"/></g>)}</svg></div>
-    <p className="nexo-explain">Aumentar os bits aumenta os níveis disponíveis e reduz o limite do erro de arredondamento. A bancada usa quantização uniforme normalizada, não implementa um codec PCM completo.</p>
-  </>;
+    {reveal&&<p className="nexo-explain">Aumentar os bits aumenta os níveis disponíveis e reduz o limite do erro de arredondamento. A bancada usa quantização uniforme normalizada, não implementa um codec PCM completo.</p>}
+  </>}</NexoVisualTraining>;
 }
-function Wer(){
+function Wer({onPredictionMode}){
   const [n,setN]=React.useState(4),[s,setS]=React.useState(0),[d,setD]=React.useState(0),[i,setI]=React.useState(6);
   const val=wer({n,s,d,i}),max=Math.max(n,s+d+i,1);
   const changeN=v=>{setN(v);setS(Math.min(s,v));setD(Math.min(d,Math.max(0,v-Math.min(s,v))));};
-  return <>
+  return <NexoVisualTraining kind="wer" parameters={{n,s,d,i}} onPredictionMode={onPredictionMode}>{({reveal})=><>
     <div className="nexo-instrument nexo-wer"><div className="nexo-instrument-head"><span>ANALISADOR · WER</span><span>CENÁRIO DIDÁTICO</span></div>
-      <div className="nexo-big-readout"><span>WER = (S + D + I) / N</span><strong>{fmt(val,2)}%</strong><small>({s} + {d} + {i}) / {n} × 100</small></div>
+      <div className="nexo-big-readout"><span>WER</span><strong>{reveal?fmt(val,2)+"%":"?"}</strong>{reveal&&<small>({s} + {d} + {i}) / {n} × 100</small>}</div>
       <div className="nexo-bars"><div><span>Palavras da referência (N)</span><div className="nexo-bar-track"><div style={{width:100*n/max+'%',background:'var(--qb-moonlight)'}}/></div><b>{n}</b></div>
       <div><span>Total de erros (S + D + I)</span><div className="nexo-bar-track">{[[s,'var(--qb-gold)'],[d,'var(--qb-ember)'],[i,'var(--qb-patina)']].map(([count,color],j)=><div key={j} style={{width:100*count/max+'%',background:color}}/>)}</div><b>{s+d+i}</b></div></div>
       <div className="nexo-legend"><span className="nexo-gold">S · substituições</span><span className="nexo-ember">D · deleções</span><span style={{color:'var(--qb-patina)'}}>I · inserções</span></div>
     </div>
     <div className="nexo-controls nexo-four">{[{label:'N · referência',v:n,max:20,min:1,fn:changeN},{label:'S · substituições',v:s,max:n-d,min:0,fn:setS},{label:'D · deleções',v:d,max:n-s,min:0,fn:setD},{label:'I · inserções',v:i,max:40,min:0,fn:setI}].map(r=><label className="nexo-slider" key={r.label}>{r.label}<strong>{r.v}</strong><input type="range" min={r.min} max={r.max} value={r.v} onChange={e=>r.fn(Number(e.target.value))}/></label>)}</div>
     <button className="qb-btn qb-btn--secondary" type="button" onClick={()=>{setN(4);setS(0);setD(0);setI(6);}}>Restaurar exemplo do material</button>
-    <p className="nexo-explain">{val>100?'A WER ultrapassa 100%: as inserções elevam o numerador sem alterar o total de palavras de referência.':'A WER usa o total da referência no denominador, não o total da hipótese.'} Os controles simulam contagens de erros já alinhados; não medem uma transcrição real.</p>
-  </>;
+    {reveal&&<p className="nexo-explain">{val>100?'A WER ultrapassa 100%: as inserções elevam o numerador sem alterar o total de palavras de referência.':'A WER usa o total da referência no denominador, não o total da hipótese.'} Os controles simulam contagens de erros já alinhados; não medem uma transcrição real.</p>}
+  </>}</NexoVisualTraining>;
 }
-const stages=[['VAD','Detecção de atividade de voz'],['Segmentação','Separação do áudio em trechos'],['Embeddings','Representações de locutor'],['Agrupamento','Clustering'],['Ressegmentação','Etapa final do pipeline clássico']];
-function Diarization(){
+function Diarization({onPredictionMode}){
   const [step,setStep]=React.useState(0);
-  return <>
-    <div className="nexo-instrument nexo-process"><div className="nexo-instrument-head"><span>DIARIZAÇÃO · SEQUÊNCIA DO KIT</span><span>ETAPA {step+1} / {stages.length}</span></div>
-      <div className="nexo-process-art" aria-hidden="true"><Icon name={['mic','layers','target','network','repeat'][step]} size={76}/></div>
-      <div className="nexo-process-heading"><span className="qb-overline">ETAPA {step+1}</span><h3>{stages[step][0]}</h3><p>{stages[step][1]}</p></div>
-      <div className="nexo-track" role="group" aria-label="Etapas do processo">{stages.map((st,j)=><button type="button" key={st[0]} aria-current={j===step?'step':undefined} onClick={()=>setStep(j)}><span>{j+1}</span><small>{st[0]}</small></button>)}</div>
+  const spans=[[.08,.32,'A'],[.43,.68,'B'],[.77,.94,'A']];
+  return <NexoVisualTraining kind="diarization" parameters={{step}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+    <Choice label="Etapa do pipeline clássico" values={[0,1,2,3,4]} value={step} onChange={setStep} format={v=>String(v+1)}/>
+    <div className="nexo-instrument"><div className="nexo-instrument-head"><span>DIARIZAÇÃO · SINAL SINTÉTICO</span><span>{reveal?STAGES[step]:'ETAPA '+(step+1)}</span></div>
+      <svg viewBox="0 0 680 250" role="img" aria-label={'Demonstração didática da etapa '+(step+1)+' de cinco'}>
+        <text x="24" y="22" fill="var(--qb-moonlight)" fontSize="13">Sinal de entrada ilustrativo</text>
+        {Array.from({length:160},(_,j)=>{const t=j/160;const speaking=spans.some(([a,b])=>t>=a&&t<=b);const h=speaking?4+26*Math.abs(Math.sin(j*1.7)*Math.cos(j*.23)):1;return <line key={j} x1={48+t*584} x2={48+t*584} y1={65-h} y2={65+h} stroke="var(--qb-moonlight)"/>;})}
+        <text x="24" y="115" fill="var(--qb-gold)" fontSize="13">{reveal?STAGES[step]:'Representação da etapa'}</text>
+        {step<=1?spans.map(([a,b],j)=><g key={j}><rect x={48+a*584} y="130" width={(b-a)*584} height="38" rx="3" fill="var(--qb-gold)" opacity=".8"/>{step===1&&<text x={48+(a+b)/2*584} y="154" textAnchor="middle" fontSize="13" fill="#101C2D">{j+1}</text>}</g>):step===2?spans.map((_,j)=><g key={j}>{[0,1,2,3,4].map(k=><rect key={k} x={65+j*200+k*20} y={180-(j===1?[1,3,2,4,1]:[3,1,4,2,3])[k]*12} width="14" height={(j===1?[1,3,2,4,1]:[3,1,4,2,3])[k]*12} fill="var(--qb-gold)"/>)}</g>):spans.map(([a,b,id],j)=><g key={j}><rect x={48+a*584} y={id==='A'?132:178} width={(b-a)*584} height="28" fill={id==='A'?'var(--qb-moonlight)':'var(--qb-gold)'} rx={step===4?8:2}/><text x={48+(a+b)/2*584} y={id==='A'?151:197} textAnchor="middle" fontSize="13" fill="#101C2D">{id}</text></g>)}
+        <text x="340" y="234" textAnchor="middle" fill="var(--qb-ivory-muted)" fontSize="12">Exemplo esquemático, sem análise real de áudio</text>
+      </svg>
+      {reveal&&<div className="nexo-plot-feedback">{STAGES[step]}{step<4?' · próxima etapa: '+STAGES[step+1]:' · final do pipeline'}</div>}
     </div>
-    <div className="nexo-step-actions"><button type="button" className="qb-btn qb-btn--secondary" disabled={step===0} onClick={()=>setStep(step-1)}><Icon name="arrow-left" size={16}/>Anterior</button><button type="button" className="qb-btn qb-btn--secondary" disabled={step===4} onClick={()=>setStep(step+1)}>Próxima<Icon name="arrow-right" size={16}/></button></div>
-    <p className="nexo-explain">Sequência clássica explicitada no material, não uma execução real do algoritmo. A posição das etapas é ordinal; não representa duração.</p>
-  </>;
+    <p className="nexo-explain">Alterne as etapas para observar uma representação ilustrativa do processamento. Segmentos e vetores são sintéticos; não são resultados de um modelo de diarização.</p>
+  </>}</NexoVisualTraining>;
 }
 const RENDERERS={sampling:Sampling,quantization:Quantization,wer:Wer,diarization:Diarization};
-export default function NexoVisualLab({subjects=[],topicId,topicLabel,nodeId,onTopicChange}){
-  const targetSubject=subjects.find(s=>s.topics?.some(t=>t.id===rfKit.topico));
-  const available=Boolean(targetSubject);
-  const contextual=topicId===rfKit.topico&&available;
-  const [modelId,setModelId]=React.useState(()=>models.find(m=>m.source.id===nodeId)?.id||'sampling');
+export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,nodeId,onTopicChange,onNodeChange}){
+  const scoped=scopedVisualModels({subjects,subjectId,topicId,nodeId},kits,models);
+  const topicModels=scopedVisualModels({subjects,subjectId,topicId},kits,models);
+  const contextual=scoped.length>0;
+  const [modelId,setModelId]=React.useState(null);
   const [predictionMode,setPredictionMode]=React.useState(false);
-  const model=models.find(m=>m.id===modelId)||models[0];
+  const model=scoped.find(m=>m.id===modelId)||scoped[0];
   const Renderer=RENDERERS[model?.id];
   return <section className="nexo-exp" aria-label="Laboratório Visual">
     <header className="nexo-exp-head"><div className="nexo-exp-emblem"><Icon name="astrolabe" size={30}/></div><div><span className="qb-overline">O ARQUITETO · LABORATÓRIO VISUAL</span><h2>Conhecimento em movimento</h2><p>Manipule um modelo, observe o efeito e compreenda o mecanismo.</p></div><span className="qb-badge qb-badge--gold">Prévia privada</span></header>
     <StudyTopicPicker label="Matéria e assunto" subjects={subjects} value={topicId} onSelect={onTopicChange}/>
-    {!contextual?<div className="nexo-exp-empty"><Icon name="astrolabe" size={42}/><h3>Nenhum modelo disponível para este recorte</h3><p>Os modelos desta prévia estão vinculados ao kit RF 1. Não há geração automática de representações para {topicLabel||'este assunto'} ainda.</p>{available&&<button type="button" className="qb-btn qb-btn--secondary" onClick={()=>onTopicChange?.({subjectId:targetSubject.id,topicId:rfKit.topico})}>Abrir bancada de Reconhecimento de Fala<Icon name="arrow-right" size={16}/></button>}</div>:<>
-      <div className="nexo-exp-gallery" role="group" aria-label="Experimentos disponíveis">{models.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==modelId){setModelId(m.id);setPredictionMode(false);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>
+    {topicModels.length>0&&<label className="nexo-control">Conceito vinculado<select className="qb-input" value={nodeId||''} onChange={e=>onNodeChange?.(e.target.value||undefined)}><option value="">Todos os modelos deste assunto</option>{nodeId&&!topicModels.some(m=>m.sources.some(n=>n.id===nodeId))&&<option value={nodeId}>Conceito atual (sem modelo)</option>}{topicModels.flatMap(m=>m.sources).map(n=><option key={n.id} value={n.id}>{n.t}</option>)}</select></label>}
+    {!contextual?<div className="nexo-exp-empty"><Icon name="astrolabe" size={42}/><h3>Nenhum modelo disponível neste recorte</h3><p>Não há modelo vinculado exatamente a {topicLabel||'este assunto'}{nodeId?' e ao conceito atual':''}. Nenhum modelo de outro tópico será exibido.</p></div>:<>
+      <span className="qb-overline">{scoped.length} {scoped.length===1?'modelo vinculado':'modelos vinculados'}</span>
+      {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==model.id){setModelId(m.id);setPredictionMode(false);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
       <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><Renderer key={model.id} onPredictionMode={setPredictionMode}/></main>
-       {predictionMode&&model.id==='sampling'?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>O caderno teórico fica oculto durante a predição. Retorne à exploração livre para consultá-lo.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong><p>{model.source.x.src}</p><small>Referência do kit, conferência primária pendente.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
+       {predictionMode?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>O caderno teórico fica oculto durante a predição. Retorne à exploração livre para consultá-lo.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}<small>Referência do kit, conferência primária pendente.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
     </>}
     <footer className="nexo-exp-footer"><Icon name="lock" size={15}/><span>Geração contextual pelo Arquiteto e novos modelos dependem de validação e integração posteriores. A evocação permanece reservada ao mapa mental original.</span></footer>
   </section>;
