@@ -131,7 +131,7 @@ export function GanReviewDialog({ review, open, onOpenChange, returnFocus, fallb
           <header className="qb-gan-review__header">
             <div>
               <Dialog.Title ref={titleRef} tabIndex={-1}>Revisão das questões GAN</Dialog.Title>
-              <Dialog.Description>{review.anchor.label} · {review.entries.length} questões geradas</Dialog.Description>
+              <Dialog.Description>{review.anchor.label} · {review.entries.length}{review.requested ? ' de ' + review.requested : ''} propostas geradas · {pending} para revisão · {saved} para treino</Dialog.Description>
             </div>
             <Dialog.Close asChild><Button variant="secondary" icon="x">Fechar</Button></Dialog.Close>
           </header>

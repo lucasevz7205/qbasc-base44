@@ -1,3 +1,4 @@
+import { ganFailureLabel } from './gan-diagnostics.js';
 import { mechanismDetail } from './cebraspe-v1-taxonomy.js';
 import { questionQualityProblems } from './item-quality.js';
 
@@ -76,4 +77,38 @@ export function ganReviewEntries(node, result, forReview) {
     record: saved.get(item.id),
     status: saved.has(item.id) ? 'saved' : forReview ? 'pending' : 'report',
   }));
+}
+
+export async function runGanRound(parts, generateNode, isDiscarded) {
+  const entries = [];
+  const replacements = [];
+  let failure = '';
+  let saveFailures = 0;
+
+  // Reponha uma vez por lote, depois de processar a distribuição original.
+  for (const pass of [parts, replacements]) {
+    for (const { target, count } of pass) {
+      if (isDiscarded()) return null;
+      let received = 0;
+      try {
+        const result = await generateNode(target, count);
+        if (isDiscarded()) return null;
+        if (result?.falha) {
+          failure = ganFailureLabel(result.falha);
+        } else {
+          const batchEntries = ganReviewEntries(target, result || {}, true).slice(0, count);
+          received = batchEntries.length;
+          entries.push(...batchEntries);
+          saveFailures += result?.falhasGravacao || 0;
+        }
+      } catch (err) {
+        failure = err?.message || 'Falha na geração.';
+      }
+      if (pass === parts && received < count) {
+        replacements.push({ target, count: count - received });
+      }
+    }
+  }
+
+  return { entries, failure, saveFailures };
 }

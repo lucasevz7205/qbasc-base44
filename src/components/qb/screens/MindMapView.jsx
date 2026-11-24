@@ -23,8 +23,7 @@ import { mapNodePerformance } from '@/lib/mind-map-performance';
 import { generateMindMapFlashcards, generateMindMapGanQuestions } from '@/lib/server-fns';
 import { approvePersonalMapGan } from '@/lib/study-accounts';
 import { buildNodeFlashcardRecord, canPersistFlashcardCandidate } from '@/lib/node-flashcards';
-import { ganFailureLabel } from '@/lib/gan-diagnostics';
-import { approveGanReview, ganReviewEntries } from '@/lib/gan-review';
+import { approveGanReview, runGanRound } from '@/lib/gan-review';
 import { centralGanRound, buildGanSource, buildGanQuestionRecord } from '@/lib/gan-queue';
 
 export default function MindMapView({
@@ -120,10 +119,10 @@ export default function MindMapView({
     ganReviewFocus.current = event.currentTarget;
     setGanReviewOpen(true);
   }, []);
-  const newGanReview = (entries, anchor) => {
+  const newGanReview = (entries, anchor, requested) => {
     if (!entries.length) return;
     setGanReviews(current => ({ ...current, [mapId]: {
-      id: entries[0].item.id, anchor, entries, manual: true,
+      id: entries[0].item.id, anchor, entries, requested, manual: true,
     } }));
 
   };
@@ -489,25 +488,19 @@ export default function MindMapView({
           relatedCards && 'Referências de revisão do tópico:\n' + relatedCards,
         ].filter(Boolean).join('\n\n');
       }
-      const entries = [];
-      let failure = '';
-      let saveFailures = 0;
       const requested = batches.reduce((sum, batch) => sum + batch.count, 0);
       const parts = batches.flatMap(({ target, count }) => Array.from({length: Math.ceil(count / 4)}, (_, i) => ({ target, count: Math.min(4, count - 4 * i) })));
-      for (const {target,count} of parts) {
-        if (task.discard) return;
-        try {
-          const res = await generateNode(target, count, additionalContext);
-          if (task.discard) return;
-          if (res?.falha) { failure = ganFailureLabel(res.falha); break; }
-          entries.push(...ganReviewEntries(target,res || {},true).slice(0,count));
-          saveFailures += res?.falhasGravacao || 0;
-        } catch (err) { failure = err.message || 'Falha na geração.'; break; }
-      }
-      if (task.discard) return;
-      newGanReview(entries, node);
-      setNotice(entries.length + ' de ' + requested + ' questões geradas · ' + chosen.title + (failure ? '. ' + failure : '') + (saveFailures ? '. Confira as gravações pendentes no mapa.' : ''));
-      if (failure || entries.length < requested) setGanError(entries.length + ' de ' + requested + ' questões geradas. ' + failure);
+      const result = await runGanRound(parts, (target, count) => generateNode(target, count, additionalContext), () => task.discard);
+      if (!result || task.discard) return;
+      const { entries, failure, saveFailures } = result;
+      newGanReview(entries, node, requested);
+      const ready = entries.filter(entry => entry.status === 'saved').length;
+      const pending = entries.length - ready;
+      const summary = entries.length + ' de ' + requested + ' propostas geradas';
+      const incomplete = entries.length < requested;
+      const detail = incomplete && failure ? '. ' + failure : '';
+      setNotice(summary + ' · ' + pending + ' para revisão · ' + ready + ' para treino · ' + chosen.title + detail);
+      if (incomplete) setGanError(summary + ' após as tentativas de reposição' + detail + '.');
       if (saveFailures) setGanError(previous => [previous, 'Parte das gravações automáticas falhou. Confira as questões na revisão.'].filter(Boolean).join(' '));
     } catch (err) {
       if (!task.discard) setNotice(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
