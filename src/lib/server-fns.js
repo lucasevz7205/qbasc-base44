@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { getGenerationSources } from "@/lib/nexo/generation-sources";
+import { selectAnatomy } from "@/lib/nexo/anatomy-selection";
+import { getAllGenerationSources, getGenerationSources } from "@/lib/nexo/generation-sources";
 import { generateAssociation } from "@/lib/nexo/generation";
 import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
@@ -820,4 +821,20 @@ export const generateNexoAssociation = createServerFn({method:"POST"})
      return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
    };
    return generateAssociation(rows[0],{provider,invoke});
+ });
+
+export const selectNexoAnatomy = createServerFn({method:"POST"})
+ .middleware([requireUser])
+ .validator(z.object({provider:z.enum(["base44","gemini"])}).strict())
+ .handler(async ({data,context})=>{
+   await requireArchitectAccess(context);
+   if(context.user?.role!=="admin")throw new Error("Seleção experimental restrita ao administrador.");
+   const invoke=async ({prompt,schema})=>{
+     if(data.provider==="gemini"){
+       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-anatomy-selection",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:1500});
+       return parseProviderJson(result.reply);
+     }
+     return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
+   };
+   return {...await selectAnatomy(getAllGenerationSources(),invoke),provider:data.provider};
  });
