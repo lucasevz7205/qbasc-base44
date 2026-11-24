@@ -31,3 +31,4 @@
 .nexo-stage-facts .qb-overline{font-size:10px;color:var(--qb-gold)}
 .nexo-exp-context .nexo-plot-feedback{padding:10px;border:1px solid var(--divider);border-radius:8px;background:var(--qb-navy-deep)}
 .nexo-exp .nexo-control .qb-seg{flex-wrap:wrap}
+.nexo-classifier>summary{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--qb-gold);font-size:13px}.nexo-classifier[open]>summary{margin-bottom:10px}.nexo-classifier[open]>p,.nexo-classifier[open]>label,.nexo-classifier[open]>button{margin-top:10px}.nexo-classifier .nexo-training-result{margin-top:12px}

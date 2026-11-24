@@ -1,0 +1,326 @@
+{
+  "profiles": [
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.1",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "goal": "calculate",
+      "features": [
+        {
+          "type": "deterministic",
+          "excerpt": "a frequência máxima representada é a metade da taxa"
+        }
+      ],
+      "objective": "Compreender a relação entre frequência e amostragem",
+      "action": "Alterar taxa e frequência",
+      "observable": "Mudar densidade dos pontos e limite de Nyquist",
+      "assessment": "Calcular o limite e identificar aliasing no cenário atual",
+      "contextualExplanation": "Explicar sinal, amostras e frequência equivalente",
+      "limits": "Senoide ideal; não é áudio real."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "goal": "calculate",
+      "features": [
+        {
+          "type": "deterministic",
+          "excerpt": "N bits = 2^N valores"
+        }
+      ],
+      "objective": "Compreender a quantização uniforme",
+      "action": "Alterar profundidade e amplitude",
+      "observable": "Alterar código e erro de arredondamento",
+      "assessment": "Calcular níveis, código e erro atual",
+      "contextualExplanation": "Explicar entrada e nível escolhido",
+      "limits": "Modelo normalizado; não é um codec completo."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "goal": "interpret",
+      "features": [
+        {
+          "type": "axes",
+          "excerpt": "Como inserções sobem o numerador sem alterar N"
+        }
+      ],
+      "objective": "Interpretar proporção de erros em relação à referência",
+      "action": "Alterar S, D, I e N",
+      "observable": "Comparar barras de erros e referência",
+      "assessment": "Calcular e classificar WER",
+      "contextualExplanation": "Explicar o significado de cada parcela",
+      "limits": "Contagens didáticas, não transcrição real."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "goal": "sequence",
+      "features": [
+        {
+          "type": "sequence",
+          "excerpt": "VAD (detecção de atividade de voz) → segmentação → embeddings de locutor → agrupamento (clustering) → ressegmentação"
+        }
+      ],
+      "objective": "Compreender as operações da diarização",
+      "action": "Selecionar uma etapa",
+      "observable": "Mudar representação da etapa",
+      "assessment": "Identificar operação e etapa seguinte",
+      "contextualExplanation": "Exibir função e entrada/saída da etapa clicada",
+      "limits": "Sinal sintético; não executa diarização."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.1",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "goal": "interpret",
+      "features": [
+        {
+          "type": "axes",
+          "excerpt": "dividir S+D+I por N, o total de palavras da referência"
+        }
+      ],
+      "objective": "Interpretar a WER com o denominador correto",
+      "action": "Alterar contagens",
+      "observable": "Comparar erros e palavras de referência",
+      "assessment": "Calcular e interpretar WER",
+      "contextualExplanation": "Explicar as parcelas selecionadas",
+      "limits": "Contagens didáticas já alinhadas."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "goal": "interpret",
+      "features": [
+        {
+          "type": "axes",
+          "excerpt": "a WER não tem teto em 100%"
+        }
+      ],
+      "objective": "Entender quando a WER ultrapassa 100%",
+      "action": "Alterar inserções e referência",
+      "observable": "Mostrar relação entre numerador e denominador",
+      "assessment": "Calcular WER e comparar com 100%",
+      "contextualExplanation": "Explicar efeito das inserções",
+      "limits": "Contagens didáticas; não equivale a acurácia."
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "goal": "inspect",
+      "features": [
+        {
+          "type": "components",
+          "excerpt": "Cada bloco do pipeline clássico responde a uma pergunta distinta e usa fonte própria"
+        }
+      ],
+      "objective": "Distinguir as funções dos cinco blocos do ASR",
+      "action": "Selecionar bloco lógico",
+      "observable": "Destacar função e conexões descritas",
+      "assessment": "Associar bloco à função e tipo de entrada",
+      "contextualExplanation": "Exibir explicação localizada do bloco selecionado",
+      "limits": "Arquitetura lógica, não equipamento físico; começar em 2D.",
+      "spatial": "logical"
+    },
+    {
+      "subjectId": "cp",
+      "topicId": "cp-1",
+      "nodeId": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.3",
+      "version": "sha256:a9cc1e4ae8b27d0bf33b94dc9d313cc8a48035c84fc6c3ff59279f67cd30d85f",
+      "goal": "interpret",
+      "features": [
+        {
+          "type": "axes",
+          "excerpt": "quatro quadrantes no diagrama de Dahl"
+        }
+      ],
+      "objective": "Distinguir regimes pelos dois eixos qualitativos",
+      "action": "Alterar contestação e inclusividade",
+      "observable": "Mover marcador entre quadrantes",
+      "assessment": "Identificar o tipo puro do quadrante",
+      "contextualExplanation": "Explicar cada eixo e quadrante selecionado",
+      "limits": "Eixos qualitativos baixa/alta, sem inventar índices ou medidas reais."
+    },
+    {
+      "subjectId": "da",
+      "topicId": "da-10-1",
+      "nodeId": "kit-20261121t103807-2845-r3.1",
+      "version": "sha256:da51cc8d43c7226e15d7ecad405ce4cc904bf3656b292b23659e52b236ae232c",
+      "goal": "sequence",
+      "features": [
+        {
+          "type": "sequence",
+          "excerpt": "preparatória, divulgação do edital, propostas e lances, julgamento, habilitação, recursal e homologação"
+        }
+      ],
+      "objective": "Compreender a ordem geral do procedimento licitatório",
+      "action": "Percorrer fases",
+      "observable": "Destacar posição e próxima fase",
+      "assessment": "Identificar a próxima fase da sequência geral",
+      "contextualExplanation": "Explicar fase e base normativa conforme o kit",
+      "limits": "Ordem geral; exceções e inversão exigem fonte e validação próprias."
+    },
+    {
+      "subjectId": "da",
+      "topicId": "da-10-1",
+      "nodeId": "kit-20261121t103807-2845-r5.2",
+      "version": "sha256:da51cc8d43c7226e15d7ecad405ce4cc904bf3656b292b23659e52b236ae232c",
+      "goal": "discriminate",
+      "features": [
+        {
+          "type": "contrast",
+          "excerpt": "Inexigibilidade (competição inviável) e dispensa (competição possível, mas a lei autoriza não licitar)"
+        }
+      ],
+      "objective": "Distinguir fundamentos da contratação direta",
+      "action": "Alterar condição de competição e hipótese legal",
+      "observable": "Comparar enquadramentos em cenário simplificado",
+      "assessment": "Identificar enquadramento considerando as condições",
+      "contextualExplanation": "Explicar fundamento e requisitos da contratação",
+      "limits": "Não decide contratação real; conferência legal primária pendente."
+    },
+    {
+      "subjectId": "lg",
+      "topicId": "lg-3-1",
+      "nodeId": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2c",
+      "version": "sha256:d930a08523c79dd3cebe0160e3df243f23351dd04f7c93492940fc86508aaaa0",
+      "goal": "read",
+      "features": [
+        {
+          "type": "verbal",
+          "excerpt": "Trocar uma relação concessiva"
+        }
+      ],
+      "objective": "Reconhecer alterações de sentido em uma paráfrase",
+      "action": "",
+      "observable": "",
+      "assessment": "",
+      "contextualExplanation": "",
+      "limits": "Priorizar comparação de trechos verbais; não converter a linguagem em mecanismo físico."
+    }
+  ],
+  "sources": [
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.1",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "title": "Amostragem, Taxa em Hz e Teorema de Nyquist",
+      "text": "Amostragem (sampling) é medir a amplitude da onda sonora a intervalos regulares no eixo do tempo. A taxa de amostragem (sampling rate) indica o número de medidas por segundo em hertz (Hz). Como cada ciclo da onda exige ao menos duas medidas, a frequência máxima representada é a metade da taxa (frequência de Nyquist); frequências acima desse limite são distorcidas pelo fenômeno chamado aliasing. Aumentar a taxa de um arquivo já gravado não recupera frequências que não foram captadas.",
+      "reference": "Etapa 01 — Cap. 0, seção 0.1.2 (p. 8-9)",
+      "sourcePath": "src/data/kits/rf/rf-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r1.2",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "title": "Quantização, Profundidade de Bits, Canais e Compressão",
+      "text": "Quantização é arredondar cada amostra contínua para um valor inteiro dentro de um conjunto finito definido pela profundidade de bits (N bits = 2^N valores: 8 bits = 256; 16 bits = 65.536), gerando erro de quantização (menor quanto mais bits). Canais são fluxos independentes (mono, estéreo, multicanal; em plenário, um canal por microfone facilita identificar oradores). Formato (container, como WAV) é a embalagem com cabeçalho; codificação (codec, como PCM linear) define como as amostras viram bits; compressão sem perda (FLAC) reduz tamanho mantendo o áudio idêntico, enquanto compressão com perda (MP3, Opus, AMR) descarta informação de modo irreversível.",
+      "reference": "Etapa 01 — Cap. 0, seções 0.1.3 a 0.1.5 (p. 9-10)",
+      "sourcePath": "src/data/kits/rf/rf-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r5.1",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "title": "WER (Word Error Rate) e Seus Limites",
+      "text": "A WER compara a saída do sistema (hipótese) com a transcrição correta humana (referência) por alinhamento de distância mínima de edição, somando substituições (S), deleções/omissões (D) e inserções (I) e dividindo pelo total de palavras da referência (N). Como inserções sobem o numerador sem alterar N, a WER pode ultrapassar 100% (ex.: alucinações em silêncio). Limites críticos: (1) exige referência humana; (2) depende de normalização idêntica (maiúsculas, pontuação, números); (3) atribui peso igual a um artigo e a um nome próprio ou negação ('não'); (4) médias escondem variações amplas (8% a 50% na Câmara); (5) avalia apenas palavras, não quem falou.",
+      "reference": "Etapa 01 — Cap. 0, seção 0.6.1 (p. 13-14); Etapa 02 — seção 1.1.9 (p. 30-31)",
+      "sourcePath": "src/data/kits/rf/rf-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1",
+      "nodeId": "kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-r4.2",
+      "version": "sha256:2569cc4f7d8742c50a8d68c67aa756bb5f5a0bc6330aaa409d97921ec88fde2c",
+      "title": "Diarização de Falantes (1.4) e Tarefas Vizinhas",
+      "text": "Diarização responde 'quem falou quando?', segmentando o áudio em trechos com rótulos anônimos (Falante A, B...) sem exigir cadastro prévio. Seu pipeline clássico segue: VAD (detecção de atividade de voz) → segmentação → embeddings de locutor → agrupamento (clustering) → ressegmentação; falas sobrepostas (apartes) demandam modelos neurais como EEND ou pyannote.audio. Distingue-se de identificação de locutor (1:N, escolhe entre cadastrados), verificação de locutor (1:1, autentica identidade) e separação de fontes (isola áudios limpos no problema do coquetel).",
+      "reference": "Etapa 02 — seção 1.1.1 (p. 25); Aula Bloco 1, p. 23-28",
+      "sourcePath": "src/data/kits/rf/rf-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.1",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "title": "Fórmula e Procedimento da WER",
+      "text": "O cálculo da WER segue cinco passos (implementados tradicionalmente na ferramenta sclite do NIST): (1) obter transcrição de referência humana; (2) normalizar hipótese e referência de modo idêntico (minúsculas, pontuação, grafia de números); (3) alinhar pela distância mínima de edição; (4) contar substituições (S), omissões (D) e inserções (I); (5) dividir S+D+I por N, o total de palavras da referência.",
+      "reference": "Etapa 02 — Cap. 1.1, seção 1.1.9 e item 18 (p. 30, 36–37); Prof. Vinicius Borges, seção 1.1 (p. 9–10)",
+      "sourcePath": "src/data/kits/rf/rf-1-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.2",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "title": "Por que a WER pode passar de 100%",
+      "text": "O numerador soma S, D e I, mas o denominador N conta apenas as palavras da transcrição de referência. Como as inserções (inclusive palavras alucinadas em trechos de silêncio) aumentam o numerador sem alterar N, a WER não tem teto em 100%. Por rigor matemático, '100% menos a WER' não representa a acurácia do sistema.",
+      "reference": "Etapa 02 — Cap. 1.1, seção 1.1.9 (p. 30–31); Prof. Vinicius Borges, seção 1.1 e #VamosPraticar (p. 9–11)",
+      "sourcePath": "src/data/kits/rf/rf-1-1/mapa.json"
+    },
+    {
+      "subjectId": "rf",
+      "topicId": "rf-1-1",
+      "nodeId": "kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r2.2",
+      "version": "sha256:a316fb942d7a5ff539663b720ac0ef04916bce94bb684c9da1fc62d28ce1c844",
+      "title": "Os 5 Blocos do Pipeline Modular",
+      "text": "Cada bloco do pipeline clássico responde a uma pergunta distinta e usa fonte própria: a extração e o decodificador são algoritmos fixos; o modelo acústico aprende com áudio transcrito; o léxico vem de dicionários de pronúncia; e o modelo de linguagem aprende com texto puro. A independência dos blocos é a base da adaptação modular de vocabulário.",
+      "reference": "Etapa 02 — Cap. 1.1, seção 1.1.4 (p. 27–28); Prof. Vinicius Borges, seção 1.1 (p. 6–8)",
+      "sourcePath": "src/data/kits/rf/rf-1-1/mapa.json"
+    },
+    {
+      "subjectId": "cp",
+      "topicId": "cp-1",
+      "nodeId": "kit-arr-cp-1-regimes-politicos-2026-11-22-r3.3",
+      "version": "sha256:a9cc1e4ae8b27d0bf33b94dc9d313cc8a48035c84fc6c3ff59279f67cd30d85f",
+      "title": "Os quatro tipos puros de regime e trajetórias de mudança",
+      "text": "O cruzamento entre contestação pública (baixa/alta) e inclusividade (baixa/alta) gera quatro quadrantes no diagrama de Dahl, permitindo rastrear movimentos de liberalização (aumento da contestação) e de inclusão (aumento da participação).",
+      "reference": "Etapa 04 · Cap. 3 (3.2.3, p. 5; Item 6, p. 11-12); Aula 02 (3.9, p. 50-52)",
+      "sourcePath": "src/data/kits/cp/cp-1/mapa.json"
+    },
+    {
+      "subjectId": "da",
+      "topicId": "da-10-1",
+      "nodeId": "kit-20261121t103807-2845-r3.1",
+      "version": "sha256:da51cc8d43c7226e15d7ecad405ce4cc904bf3656b292b23659e52b236ae232c",
+      "title": "Fases do processo licitatório",
+      "text": "Art. 17 da Lei 14.133/2021 e os mecanismos de defesa dos interessados. As fases são: preparatória, divulgação do edital, propostas e lances, julgamento, habilitação, recursal e homologação.",
+      "reference": "Referências internas do kit: 15, 16, 23, 24",
+      "sourcePath": "src/data/kits/da-10-1/mapa.json"
+    },
+    {
+      "subjectId": "da",
+      "topicId": "da-10-1",
+      "nodeId": "kit-20261121t103807-2845-r5.2",
+      "version": "sha256:da51cc8d43c7226e15d7ecad405ce4cc904bf3656b292b23659e52b236ae232c",
+      "title": "Contratação direta",
+      "text": "Inexigibilidade (competição inviável) e dispensa (competição possível, mas a lei autoriza não licitar). A instrução do processo vale para ambas (art. 72). O rol de inexigibilidade é exemplificativo ('em especial').",
+      "reference": "Referências internas do kit: 55, 56, 58, 60, 61, 65",
+      "sourcePath": "src/data/kits/da-10-1/mapa.json"
+    },
+    {
+      "subjectId": "lg",
+      "topicId": "lg-3-1",
+      "nodeId": "kit-arr-lg-3.1-compreensao-literal-coesao-e-coerencia-t-2026-11-22-r2.2c",
+      "version": "sha256:d930a08523c79dd3cebe0160e3df243f23351dd04f7c93492940fc86508aaaa0",
+      "title": "Relações lógicas na paráfrase",
+      "text": "Verifica se a paráfrase conservou o nexo lógico exato entre as orações (causa, consequência, oposição, concessão, condição) e o escopo das negações. Trocar uma relação concessiva ('embora') por causal ('porque') inverte o sentido literal mesmo mantendo as mesmas palavras principais.",
+      "reference": "Etapa 08 (3.1.1), p. 4",
+      "sourcePath": "src/data/kits/lg/lg-3-1/mapa.json"
+    }
+  ]
+}
