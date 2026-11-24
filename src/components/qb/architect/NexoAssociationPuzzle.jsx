@@ -1,10 +1,12 @@
 import React from 'react';
 import {Icon} from '@/components/qb/core/Icon';
 import {evaluatePuzzle,placePiece,validPuzzle} from '@/lib/nexo/association-puzzle';
+import {rotatePieces} from '@/lib/nexo/experiment-refinements';
 export default function NexoAssociationPuzzle({puzzle,mode,onFocus,onFeedback,boardHeader,boardFooter}){
   const [placements,setPlacements]=React.useState({});
   const [selected,setSelected]=React.useState(null);
   const [focus,setFocus]=React.useState(null);
+  const [round,setRound]=React.useState(0);
   if(!validPuzzle(puzzle))return <p>Atividade indisponível: vínculo de peças inválido.</p>;
   const result=evaluatePuzzle(puzzle,placements);
   const complete=result.status==='correct';
@@ -15,7 +17,7 @@ export default function NexoAssociationPuzzle({puzzle,mode,onFocus,onFeedback,bo
     const check=evaluatePuzzle(puzzle,next).checks.find(c=>c.slotId===slotId);
     onFocus?.(slotId);onFeedback?.(check);
   };
-  const reset=()=>{setPlacements({});setSelected(null);setFocus(null);onFocus?.(null);onFeedback?.(null);};
+  const reset=()=>{setRound(r=>r+1);setPlacements({});setSelected(null);setFocus(null);onFocus?.(null);onFeedback?.(null);};
   const used=new Set(Object.values(placements));
   return <div className="nexo-association" data-nexo-puzzle={puzzle.id}>
     <p>{mode==='train'?puzzle.instruction:'Selecione um encaixe para consultar a explicação correspondente.'}</p>
@@ -37,7 +39,7 @@ export default function NexoAssociationPuzzle({puzzle,mode,onFocus,onFeedback,bo
     {boardFooter}
     {mode==='train'&&<>
       <div className="nexo-puzzle-pieces" role="group" aria-label="Peças disponíveis">
-        {puzzle.pieces.map(piece=><button key={piece.id} type="button" draggable={true} aria-pressed={selected===piece.id} className="nexo-puzzle-piece" onDragStart={e=>{e.dataTransfer.setData('text/plain',piece.id);setSelected(piece.id);}} onClick={()=>setSelected(selected===piece.id?null:piece.id)}><Icon name="puzzle" size={16}/>{piece.label}{used.has(piece.id)&&' · encaixada'}</button>)}
+        {rotatePieces(puzzle.pieces,round).map(piece=><button key={piece.id} type="button" draggable={true} aria-pressed={selected===piece.id} className="nexo-puzzle-piece" onDragEnd={()=>setSelected(null)} onDragStart={e=>{e.dataTransfer.setData('text/plain',piece.id);setSelected(piece.id);}} onClick={()=>setSelected(selected===piece.id?null:piece.id)}><Icon name="puzzle" size={16}/>{piece.label}{used.has(piece.id)&&' · encaixada'}</button>)}
       </div>
       <div className="nexo-puzzle-progress" aria-live="polite"><span>{result.correctCount}/{result.total} associações corretas{complete?' · atividade concluída':''}</span><button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={reset}>Recomeçar</button></div>
     </>}

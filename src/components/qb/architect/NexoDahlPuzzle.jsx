@@ -19,7 +19,7 @@ export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssocia
     if(!check){clear();return;}
     // Feedback describes the selected relation without supplying all other answers.
     const expected=puzzle.pieces.find(p=>p.id===check.expected);
-    onAssociationContext?.({title:check.correct?'Encaixe correto':'Reveja a associação',detail:check.explanation,correction:expected.label,reference:(stage===0?source.axis:stage===3?source.trajectory:source.matrix).x.src});
+    onAssociationContext?.({title:check.correct?'Encaixe correto':'Reveja a associação',detail:check.explanation,correction:expected.label,reference:(stage===0?source.axis:stage===3?source.trajectory:stage===2?source.contrast:source.matrix).x.src});
   };
   const t=TRAJECTORIES[scenario];
   if(guided)return <div className="nexo-instrument" data-nexo-live-graph><div className="nexo-instrument-head"><span>DIAGRAMA DE DAHL</span><span>↑ Contestação · Inclusividade →</span></div><div className="nexo-trajectory-map" style={{padding:12}}>{REGIMES.map(r=><div key={r.id} className="nexo-trajectory-cell" data-origin={guided.parameters.regime===r.id}><small>{r.description}</small>{guided.parameters.regime===r.id?<strong>{guided.reveal&&guided.parameters.stage!==0?r.label:'Estado atual'}</strong>:guided.reveal&&guided.parameters.stage!==0?r.label:'·'}</div>)}</div><p style={{padding:12}}>Dimensões qualitativas; o marcador representa um tipo puro hipotético.</p></div>;

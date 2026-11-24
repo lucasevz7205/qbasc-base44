@@ -7,11 +7,11 @@ const round=(n,d)=>Number(n.toFixed(d));
 export function visualExercise(kind,p){
   if(kind==='sampling'){
     const d=sampleSignal(p.frequency,p.rate);
-    return {fields:[number('nyquist','Limite de Nyquist',d.nyquist/1000,'kHz',2),choice('classification','Posição do sinal',d.classification,classification),number('alias','Frequência aparente pelo dobramento',d.alias/1000,'kHz',2)],explanation:d.classification==='above'?'A senoide equivalente coincide com as amostras: há aliasing.':d.classification==='boundary'?'Nesta senoide de fase zero, as amostras são nulas; a recuperação não é garantida.':'O sinal está abaixo do limite de Nyquist.'};
+    return {fields:[number('nyquist','Limite de Nyquist',d.nyquist/1000,'kHz',2),choice('classification','Posição do sinal',d.classification,classification),number('alias','Frequência dobrada teórica',d.alias/1000,'kHz',2)],explanation:d.classification==='above'?'A senoide equivalente coincide com as amostras: há aliasing.':d.classification==='boundary'?'Nesta senoide de fase zero, as amostras são nulas; a recuperação não é garantida.':'O sinal está abaixo do limite de Nyquist.'};
   }
   if(kind==='quantization'){
     const d=quantize(p.amplitude,p.bits);
-    return {fields:[number('levels','Quantidade de níveis',d.levels),number('code','Código inteiro selecionado',d.code),number('error','Erro absoluto (4 casas decimais)',round(d.error,4),'',4)],explanation:'2 elevado à profundidade dá a quantidade de níveis. O código arredonda a amplitude normalizada para o nível mais próximo; o erro é a diferença absoluta.'};
+    return {fields:[number('levels','Quantidade de níveis',d.levels),number('code','Código inteiro selecionado',d.code),number('error','Erro absoluto (4 casas decimais)',round(d.error,4),'',4)],explanation:'2 elevado à profundidade dá a quantidade de níveis. O código arredonda a amplitude normalizada para o nível mais próximo; o erro é a diferença absoluta, arredondada a quatro casas decimais. Mais bits reduzem o limite do erro, não necessariamente o erro de cada entrada isolada.'};
   }
   if(kind==='wer'){
     const v=wer(p);
