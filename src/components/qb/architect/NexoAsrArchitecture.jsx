@@ -1,8 +1,8 @@
 import React from 'react';
 import NexoVisualTraining from './NexoVisualTraining';
 import NexoComponentBoard from './NexoComponentBoard';
-import {componentFocus} from '@/lib/nexo/anatomy-model';
-export default function NexoAsrAnatomy({source,onPredictionMode,onAssociationContext,guided}){
+import {componentFocus} from '@/lib/nexo/functional-architecture';
+export default function NexoAsrArchitecture({source,onPredictionMode,onAssociationContext,guided}){
  const [localPart,setPart]=React.useState('features');
  const part=guided?.parameters.part||localPart;
  const [training,setTraining]=React.useState(false);

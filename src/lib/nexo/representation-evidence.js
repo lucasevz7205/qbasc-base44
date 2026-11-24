@@ -11,7 +11,7 @@ export const PEDAGOGICAL_REFERENCES=Object.freeze({
   poe:{title:'How effective is instructional support for learning with computer simulations? (2012)',url:'https://doi.org/10.1007/s11251-012-9220-y',application:'Predizer um resultado, observar e explicar discrepâncias.',limit:'O modo atual é interpretação com evidência visível; o ciclo prospectivo ainda será implementado.'}
 });
 export function representationEvidence(kind){
-  if(!['simulation','chart','timeline','comparison','architecture','anatomy','analogy','text'].includes(kind))return [];
+  if(!['simulation','chart','timeline','comparison','architecture','analogy','text'].includes(kind))return [];
   const common=['deft','mayer','cromley','coherence','generative','transfer','icap'];
   const keys=kind==='simulation'||kind==='chart'||kind==='timeline'?[...common,'simulation','poe']:common;
   return keys.map(k=>({...PEDAGOGICAL_REFERENCES[k],id:k}));

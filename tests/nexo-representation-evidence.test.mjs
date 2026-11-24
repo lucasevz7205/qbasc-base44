@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {representationEvidence,PEDAGOGICAL_REFERENCES} from '../src/lib/nexo/representation-evidence.js';
 test('all supported modalities expose bounded scientific references and limitations',()=>{
-  for(const kind of ['simulation','chart','timeline','comparison','anatomy','analogy','text']){
+  for(const kind of ['simulation','chart','timeline','comparison','analogy','text']){
     const refs=representationEvidence(kind);
     assert.ok(refs.some(r=>r.id==='deft'));
     assert.ok(refs.some(r=>r.id==='transfer'));

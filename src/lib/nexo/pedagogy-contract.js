@@ -13,7 +13,7 @@ const arr=(v,max=30)=>Array.isArray(v)&&v.length>0&&v.length<=max;
 const fields=(o,keys)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).every(k=>keys.includes(k));
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 const distinct=a=>new Set(a).size===a.length;
-const kinds=['simulation','anatomy','timeline','chart','comparison','analogy','text'];
+const kinds=['simulation','timeline','chart','comparison','analogy','text'];
 const origins=['calculated','illustrative','observed','not-applicable'];
 const purposes=['explain','signal','compare','locate','measure','navigate'];
 export function assessPedagogy(proposal,sourceRegistry=[]){

@@ -56,7 +56,7 @@ export function checkPrerequisiteCycles(graph) {
   return {acyclic:queue.length===nodes.size,blocked:[...remaining].filter(([,n])=>n>0).map(([id])=>id).sort()};
 }
 
-const visualKinds=new Set(['anatomy','timeline','chart','comparison','association']);
+const visualKinds=new Set(['timeline','chart','comparison','association']);
 const visualKeys=new Set(['id','kind','graphVersion','conceptIds','claimRefs','modelId','modelVersion','analogy','analogyLimits','altText']);
 const exactKeys=(value,allowed)=>value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).every(k=>allowed.has(k));
 

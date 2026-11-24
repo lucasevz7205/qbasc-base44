@@ -1,6 +1,6 @@
 import React from 'react';
 import {Icon} from '@/components/qb/core/Icon';
-import {validateComponentBoard,componentFocus} from '@/lib/nexo/anatomy-model';
+import {validateComponentBoard,componentFocus} from '@/lib/nexo/functional-architecture';
 const symbols={wave:'activity',acoustic:'audio-lines',lexicon:'book-open',language:'message-square',decoder:'network'};
 export default function NexoComponentBoard({model,selected,onSelect,reveal=true,locked=false}){
  const [isolated,setIsolated]=React.useState(false);

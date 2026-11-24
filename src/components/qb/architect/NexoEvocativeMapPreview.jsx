@@ -63,7 +63,7 @@ export default function NexoEvocativeMapPreview({subjects=[],topicId,topicLabel,
           <details className="nexo-sources"><summary>Origem e rastreabilidade</summary><p>{selected.source.sourceId}</p><p>Nó: {selected.source.locator}</p>{!hidden&&data.references.slice(0,5).map(ref=><p key={ref}>{ref}</p>)}<small>Referências preservadas do kit; validação primária pendente.</small></details>
         </aside>
       </div>
-      <footer className="nexo-future"><Icon name="lock" size={16}/><span>Modelos Anatomy, linhas do tempo e comparações fundamentadas serão habilitados após curadoria. O agendamento atual permanece independente.</span></footer>
+      <footer className="nexo-future"><Icon name="lock" size={16}/><span>Modelos funcionais, linhas do tempo e comparações fundamentadas serão habilitados após curadoria. O agendamento atual permanece independente.</span></footer>
     </>}
   </section>;
 }

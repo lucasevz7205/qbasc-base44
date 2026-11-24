@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {URL} from 'node:url';
-import {ASR_NODE,ASR_PARTS,getAsrBoard,validateComponentBoard,componentFocus} from '../src/lib/nexo/anatomy-model.js';
+import {ASR_NODE,ASR_PARTS,getAsrBoard,validateComponentBoard,componentFocus} from '../src/lib/nexo/functional-architecture.js';
 import {evaluateVisual,visualExercise,scenarioKey} from '../src/lib/nexo/visual-training.js';
 import {guidedConfig,guidedExercise,gradeGuided,GUIDED_VARIANTS} from '../src/lib/nexo/guided-cycle.js';
 import {scopedVisualModels} from '../src/lib/nexo/visual-catalog.js';

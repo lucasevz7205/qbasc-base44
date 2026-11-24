@@ -4,17 +4,16 @@ import {VISUAL_BINDINGS} from './visual-catalog.js';
 export const PLANNER_VERSION='1.0.0';
 const scope=s=>({subjectId:s.subjectId,topicId:s.topicId,nodeId:s.nodeId});
 const distinct=values=>new Set(values.map(v=>v.trim().toLocaleLowerCase('pt-BR'))).size===values.length;
-const noAnatomy='Anatomy exige componentes físicos e relações espaciais descritos na fonte. Uma analogia externa não satisfaz esse requisito.';
 export async function planRepresentation(s,pilot={profiles:[],sources:[]}){
  if(!s?.lines?.[0]||!s.reference)return null;
  const version=await sourceVersion(s);
- const base={...scope(s),title:s.title,reference:s.reference,sourceVersion:version,plannerVersion:PLANNER_VERSION,publicationAllowed:false,requiresReview:true,anatomyEligible:false,anatomyReason:noAnatomy};
+ const base={...scope(s),title:s.title,reference:s.reference,sourceVersion:version,plannerVersion:PLANNER_VERSION,publicationAllowed:false,requiresReview:true};
  // Reuse reviewed descriptors only when the exact underlying text and reference agree.
  const old=pilot.sources.find(p=>p.nodeId===s.nodeId&&p.topicId===s.topicId&&p.subjectId===s.subjectId&&p.text===s.lines[0]&&p.reference===s.reference);
  const profile=old&&pilot.profiles.find(p=>p.nodeId===old.nodeId&&p.topicId===old.topicId&&p.subjectId===old.subjectId&&p.version===old.version);
  if(profile){
   const result=classifyRepresentation(profile,old);
-  if(result.status==='recommendation'&&result.kind!=='anatomy'&&result.kind!=='analogy')return {...base,kind:result.kind,label:result.label,objective:result.objective,reason:result.reason,evidence:[result.evidence],score:40,method:'descritor curado revalidado',action:result.action};
+  if(result.status==='recommendation'&&result.kind!=='analogy')return {...base,kind:result.kind,label:result.label,objective:result.objective,reason:result.reason,evidence:[result.evidence],score:40,method:'descritor curado revalidado',action:result.action};
  }
  const t=s.table;
  // Literal structured evidence, not a guess from the topic label.

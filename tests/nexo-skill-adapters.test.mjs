@@ -12,8 +12,8 @@ test('unmapped and duplicate pairs fail closed',()=>{const r=kst({artifact:{...a
 const graph={version:'g1',nodes:concepts,edges:[]};
 const edge=(from,to,type='depends_on',status='approved')=>({from,to,type,status});
 test('cycles checked only in approved prerequisites',()=>{assert.equal(checkPrerequisiteCycles({...graph,edges:[edge('a','b'),edge('b','a','contrasts_with')]}).acyclic,true);assert.equal(checkPrerequisiteCycles({...graph,edges:[edge('a','b'),edge('b','a')]}).acyclic,false);});
-const req={id:'visual',kind:'anatomy',graphVersion:'g1',conceptIds:['a'],claimRefs:['claim'],modelId:'rig',modelVersion:'1',analogy:true,analogyLimits:'synthetic limitation',altText:'synthetic description'};
-const model={id:'rig',version:'1',kind:'anatomy',reviewed:true,graphVersion:'g1',conceptIds:['a'],claimRefs:['claim'],analogy:true,analogyLimits:req.analogyLimits,altText:req.altText};
+const req={id:'visual',kind:'comparison',graphVersion:'g1',conceptIds:['a'],claimRefs:['claim'],modelId:'rig',modelVersion:'1',analogy:true,analogyLimits:'synthetic limitation',altText:'synthetic description'};
+const model={id:'rig',version:'1',kind:'comparison',reviewed:true,graphVersion:'g1',conceptIds:['a'],claimRefs:['claim'],analogy:true,analogyLimits:req.analogyLimits,altText:req.altText};
 const env={graph,claims:[{id:'claim',status:'approved',graphVersion:'g1',conceptId:'a',text:'synthetic claim',sourceRef:'fixture'}],registry:[model]};
 test('reviewed reference-only visual request accepted',()=>{const r=prepareVisualRequest(req,env);assert.equal(r.status,'ready-for-reviewed-renderer');assert.equal(r.claims[0].text,'synthetic claim');assert.equal(r.renderPolicy.staticFallback,true);});
 test('arbitrary executable fields rejected',()=>{for(const extra of [{html:'<script>'},{script:'evil'},{url:'https://example.com'},{shader:'code'},{css:'style'}])assert.throws(()=>prepareVisualRequest({...req,...extra},env));});
