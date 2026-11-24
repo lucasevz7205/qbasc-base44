@@ -3,10 +3,11 @@ const tau=2*Math.PI;
 export const durationMs=1;
 export const signal=(frequency,tMs)=>Math.sin(tau*frequency*tMs/1000);
 export function sampleSignal(frequency,rate) {
-  if(![1000,3000,5000,7000].includes(frequency)||![8000,16000,44100].includes(rate))throw Error('Unsupported parameters');
+  if(![1000,3000,4000,5000,7000].includes(frequency)||![8000,16000,44100].includes(rate))throw Error('Unsupported parameters');
   const samples=Array.from({length:Math.floor(rate/1000)+1},(_,i)=>({t:i*1000/rate,y:signal(frequency,i*1000/rate)}));
-  const alias=Math.abs(((frequency+rate/2)%rate+rate)%rate-rate/2);
-  return {samples,nyquist:rate/2,alias,undersampled:frequency>=rate/2};
+  const signedAlias=((frequency+rate/2)%rate+rate)%rate-rate/2;
+  const alias=Math.abs(signedAlias),nyquist=rate/2;
+  return {samples,nyquist,alias,signedAlias,undersampled:frequency>=nyquist,classification:frequency<nyquist?"below":frequency===nyquist?"boundary":"above"};
 }
 export function quantize(value,bits){
   if(![2,3,4,8,16].includes(bits)||!Number.isFinite(value)||value<-1||value>1)throw Error('Unsupported quantization');
