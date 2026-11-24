@@ -62,14 +62,14 @@ function Quantization({onPredictionMode,guided}){
     <Choice label="Profundidade" values={[2,3,4,8,16]} value={bits} onChange={setBits} format={v=>v+' bits'}/>
     <label className="nexo-slider">Amplitude de entrada <strong>{fmt(amplitude,2)}</strong><input type="range" min="-1" max="1" step=".01" value={amplitude} onChange={e=>setAmplitude(Number(e.target.value))}/></label>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>QUANTIZAÇÃO UNIFORME · AMPLITUDE −1 A +1</span><span>{reveal?fmt(data.levels)+' NÍVEIS':'OBSERVAÇÃO ATIVA'}</span></div>
-      <svg viewBox="0 0 620 284" role="img" aria-label={'Amplitude '+fmt(amplitude,2)+'; profundidade '+bits+' bits. Escala completa e ampliação dos níveis próximos.'}>
+      <svg viewBox="0 0 700 284" role="img" aria-label={'Amplitude '+fmt(amplitude,2)+'; profundidade '+bits+' bits. Escala completa e ampliação dos níveis próximos.'}>
         <text x="105" y="20" textAnchor="middle" fill="var(--qb-gold)" fontSize="12">ESCALA COMPLETA</text><text x="396" y="20" textAnchor="middle" fill="var(--qb-gold)" fontSize="12">AMPLIAÇÃO LOCAL</text>
         <line x1="104" y1="40" x2="104" y2="220" stroke="var(--qb-steel-blue)" strokeWidth="5"/>
         {[-1,0,1].map(v=><g key={v}><line x1="92" x2="115" y1={globalY(v)} y2={globalY(v)} stroke="var(--qb-moonlight)"/><text x="82" y={globalY(v)+4} textAnchor="end" fontSize="12" fill="var(--qb-moonlight)">{v}</text></g>)}
         <rect x="95" y={globalY(data.max)} width="18" height={Math.max(2,globalY(data.min)-globalY(data.max))} fill="var(--qb-gold)" opacity=".65"/>
         <circle cx="104" cy={globalY(amplitude)} r="5" fill="var(--qb-moonlight)"/>
         <path d={'M115 '+globalY(data.max)+' L230 40 M115 '+globalY(data.min)+' L230 220'} stroke="var(--qb-bronze)" strokeDasharray="4 3" fill="none"/>
-        {data.levels.map(l=><g key={l.code}><line x1="240" x2="510" y1={y(l.value)} y2={y(l.value)} stroke="var(--qb-steel-blue)" strokeWidth="1.5"/>{reveal&&<text x="520" y={y(l.value)+4} fill="var(--qb-moonlight)" fontSize="11">cód. {l.code}</text>}</g>)}
+        {data.levels.map(l=><g key={l.code}><line x1="240" x2="510" y1={y(l.value)} y2={y(l.value)} stroke="var(--qb-steel-blue)" strokeWidth="1.5"/>{reveal&&<text x="520" y={y(l.value)+4} fill="var(--qb-moonlight)" fontSize="11">cód. {l.code} · {fmt(l.value,6)}</text>}</g>)}
         <line x1="230" x2="510" y1={y(amplitude)} y2={y(amplitude)} stroke="var(--qb-moonlight)" strokeWidth="2" strokeDasharray="5 3"/>
         {reveal&&<><line x1="240" x2="510" y1={y(data.output)} y2={y(data.output)} stroke="var(--qb-gold-bright)" strokeWidth="3"/><line x1="478" x2="478" y1={y(amplitude)} y2={y(data.output)} stroke="var(--qb-ember)" strokeWidth="4"/><circle cx="478" cy={y(data.output)} r="4" fill="var(--qb-gold-bright)"/></>}
         <text x="375" y="248" textAnchor="middle" fontSize="11" fill="var(--qb-ivory-muted)">Cada linha local é um nível real do modelo.</text>
@@ -77,7 +77,7 @@ function Quantization({onPredictionMode,guided}){
       </svg>
       <div className="nexo-legend"><span>– – Entrada {fmt(amplitude,2)}</span>{reveal&&<><span className="nexo-gold">— Nível escolhido</span><span className="nexo-ember">│ Erro de arredondamento</span></>}</div>
     </div>
-    {reveal&&<><Readout items={[{label:'Níveis (2ᴺ)',value:fmt(data.levels)},{label:'Código inteiro',value:fmt(data.code)},{label:'Erro absoluto',value:fmt(data.error,6)}]}/><Readout items={[{label:'Amplitude de saída',value:fmt(data.output,6)},{label:'Passo entre níveis',value:fmt(data.step,6)},{label:'Erro máximo',value:fmt(data.maxError,6)}]}/><p className="nexo-explain">Mais bits reduzem o limite do erro, não garantem erro menor em cada amplitude isolada. A escala local é ampliada; compare os valores numéricos. Modelo uniforme normalizado, não um codec PCM completo.</p></>}
+    {reveal&&<><Readout items={[{label:'Níveis (2ᴺ)',value:fmt(data.levels)},{label:'Código inteiro',value:fmt(data.code)},{label:'Erro (4 casas)',value:fmt(data.error,4)}]}/><Readout items={[{label:'Amplitude de saída',value:fmt(data.output,6)},{label:'Passo entre níveis',value:fmt(data.step,6)},{label:'Erro máximo',value:fmt(data.maxError,6)}]}/><p className="nexo-explain">Mais bits reduzem o limite do erro, não garantem erro menor em cada amplitude isolada. A escala local é ampliada; compare os valores numéricos. Modelo uniforme normalizado, não um codec PCM completo.</p></>}
   </>}</NexoVisualTraining>;
 }
 function Wer({onPredictionMode,guided}){
@@ -118,7 +118,7 @@ function Diarization({onPredictionMode,onStageChange,onRevealChange,guided}){
       </svg>
       {reveal&&<div className="nexo-plot-feedback">{STAGES[step]}{step<4?' · próxima etapa: '+STAGES[step+1]:' · final do pipeline'}</div>}
     </div>
-    <p className="nexo-explain">Alterne as etapas para observar uma representação ilustrativa do processamento. Segmentos e vetores são sintéticos; não são resultados de um modelo de diarização. Na etapa final, a linha tracejada indica a fronteira anterior; o ajuste é pré-definido, não calculado por IA.</p>
+    <p className="nexo-explain">Alterne as etapas para observar uma representação ilustrativa do processamento. Segmentos e vetores são sintéticos; não são resultados de um modelo de diarização. {reveal&&step===4?" A linha tracejada indica a fronteira anterior; o ajuste é pré-definido, não calculado por IA.":""}</p>
   </>}</NexoVisualTraining>;
 }
 const RENDERERS={sampling:Sampling,quantization:Quantization,wer:Wer,diarization:Diarization,dahl:NexoDahlPuzzle};
