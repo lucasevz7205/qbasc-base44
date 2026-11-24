@@ -39,6 +39,19 @@ export function effectiveGenerationSources(data,subjectId,topicId,central=[],nod
  }
  // Do not expose obsolete aliases or duplicate node ids.
  const unique=out.filter(s=>out.filter(t=>t.nodeId===s.nodeId).length===1);
+ const byMapId=new Map(unique.map(s=>[s.mapNodeId,s]));
+ // An explicit comparison/classification heading and its direct children are grounded structure.
+ // Do not turn arbitrary lists or procedure steps into a comparison.
+ for(const parent of unique){
+  if(parent.table||parent.procedure||!/×|\bversus\b|\bvs\.?\s|diferen[çc]|distin[çc]|classifica[çc]|\btipos\b|\bespécies\b|\bmodalidades\b|\bcategorias\b|\bprincípios\b/i.test(parent.title))continue;
+  const children=nodes.filter(n=>n.parent===parent.mapNodeId);
+  const rows=children.map(n=>byMapId.get(n.id));
+  if(rows.length<2||rows.length>6||rows.some(s=>!s||!good(s.lines[0],600)))continue;
+  const norm=v=>v.trim().toLocaleLowerCase('pt-BR').replace(/\s+/g,' ');
+  if(new Set(rows.map(s=>norm(s.title))).size!==rows.length||new Set(rows.map(s=>norm(s.lines[0]))).size!==rows.length)continue;
+  parent.table={headers:['Conceito','Descrição registrada'],rows:rows.map(s=>[s.title,s.lines[0]])};
+  parent.rowSources=rows.map(s=>({nodeId:s.mapNodeId,reference:s.reference}));
+ }
  return nodeId?(resolveEffectiveSource(unique,nodeId)?[resolveEffectiveSource(unique,nodeId)]:[]):unique;
 }
 export function decodeNexoDocuments(rows,parts){

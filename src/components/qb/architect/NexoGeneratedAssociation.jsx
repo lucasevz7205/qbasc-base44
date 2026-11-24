@@ -40,8 +40,9 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
   try{
    const r=await generateNexoAssociation({data:{subjectId,topicId,nodeId:source.nodeId,sourceVersion:await sourceVersion(source),provider}});
    if(seq.current!==request)return;
-   if(r.status!=='candidate'){setMessage(r.reason||'Não foi gerado um modelo.');return;}
+   if(!['candidate','recommended','abstained'].includes(r.status)){setMessage(r.reason||'Não foi gerado um modelo.');return;}
    if(r.scope?.nodeId!==source.nodeId||r.scope?.subjectId!==subjectId||r.scope?.topicId!==topicId||r.sourceVersion!==await sourceVersion(source))throw Error('Versão ou escopo divergente');
+   if(r.status!=='candidate'){if(seq.current===request){setPlan(r.plan||null);setMessage(r.reason||'Nenhum modelo criado.');}return;}
    const rebuilt=buildContextual(source,r.recipe);
    if(rebuilt.status!=='candidate')throw Error('Contrato rejeitado');
    if(seq.current===request){setCandidate({...r,...rebuilt});setPlan(r.plan||null);}
@@ -59,7 +60,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
   <p>O Arquiteto usa o nó exato do mapa de estudo atual. As propostas são prévias privadas e não entram automaticamente no catálogo de treino.</p>
   <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={selection} onChange={e=>{clear();setColumn(null);setSelection(e.target.value);}}>{!selection&&<option value="">Selecionando conceito…</option>}{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
   {source&&<p className="nexo-explain">{source.reference}</p>}
-  {plan&&<p><strong>Indicação do Arquiteto:</strong> {plan.label}. {plan.reason}</p>}
+  {plan&&<div><p><strong>Indicação do Arquiteto:</strong> {plan.label}. {plan.reason}</p><p>{plan.objective}</p><details><summary>Fundamentação do parecer</summary>{plan.evidence.map((e,i)=><p key={i}>{e}</p>)}<small>{plan.method} · {source?.reference}</small></details></div>}
   {candidate?.kind==='matrix'&&<label className="nexo-control">Critério da matriz<select className="qb-input" value={candidate.recipe.column} onChange={e=>{clear();setColumn(Number(e.target.value));}}>{availableColumns(source).map(i=><option key={i} value={i}>{source.table.headers[i]}</option>)}</select></label>}
   {!candidate&&<><p>Sem representação automática suficiente? Solicite ao Arquiteto uma seleção semântica entre os formatos disponíveis, com abstenção se necessário.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
   {candidate&&!approved&&<details><summary>Consultar seleção semântica do Arquiteto</summary><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("base44")}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("gemini")}>Analisar com Gemini (cota)</button></details>}

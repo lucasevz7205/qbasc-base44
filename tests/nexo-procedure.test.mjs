@@ -37,7 +37,7 @@ test('general literal chain uses exact original sequence and refuses ambiguous p
  assert.equal(buildContextual(s,{kind:'sequence',line:99}).status,'blocked');
 });
 test('semantic provider can select only the supported procedure, no invented branch',async()=>{
- const invoke=async()=>({kind:'procedure',column:-1,pairs:[],reason:'Ordem e exceção explícitas.'});
+ const invoke=async()=>({kind:'procedure',column:-1,pairs:[],reason:'Ordem e exceção explícitas.',modality:'procedure',evidence:source.lines[0],objective:'Ordenar fases'});
  assert.equal((await generateContextual(source,pilot,{provider:'gemini',invoke})).kind,'procedure');
- assert.equal((await generateContextual(source,pilot,{provider:'gemini',invoke:async()=>({kind:'association',column:-1,pairs:[],reason:'wrong'})})).status,'blocked');
+ assert.equal((await generateContextual(source,pilot,{provider:'gemini',invoke:async()=>({kind:'association',column:-1,pairs:[],reason:'wrong',modality:'comparison',evidence:source.lines[0],objective:'Comparar'})})).status,'blocked');
 });

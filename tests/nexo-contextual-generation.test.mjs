@@ -25,11 +25,11 @@ test('invalid column and injected executable modality blocked',()=>{
  assert.equal(buildContextual(source,{kind:'matrix',column:0}).status,'blocked');assert.equal(buildContextual(source,{kind:'matrix',column:1,code:'x'}).status,'blocked');assert.equal(buildContextual(source,{kind:'anatomy'}).status,'blocked');
 });
 test('semantic adapter selects matrix and fails closed without fallback',async()=>{
- let calls=0;const r=await generateContextual(source,pilot,{provider:'gemini',invoke:async()=>{calls++;return {kind:'matrix',column:2,pairs:[],reason:'Critério explícito.'};}});assert.equal(calls,1);assert.equal(r.recipe.column,2);
+ let calls=0;const r=await generateContextual(source,pilot,{provider:'gemini',invoke:async()=>{calls++;return {kind:'matrix',column:2,pairs:[],reason:'Critério explícito.',modality:'comparison',evidence:source.lines[0],objective:'Distinguir funções'};}});assert.equal(calls,1);assert.equal(r.recipe.column,2);
  await assert.rejects(()=>generateContextual(source,pilot,{provider:'base44',invoke:async()=>{throw Error('quota');}}));
 });
 test('mathematical content is not forced into a generated puzzle',async()=>{
  const rf=generationSources({'../../data/kits/rf/rf-1/mapa.json':load('src/data/kits/rf/rf-1/mapa.json')},'rf','rf-1').find(s=>s.nodeId.endsWith('-r1.1'));
  assert.equal((await generateContextual(rf,pilot)).status,'abstained');
- assert.equal((await generateContextual(rf,pilot,{provider:'gemini',invoke:async()=>({kind:'matrix',column:1,pairs:[],reason:'wrong'})})).status,'blocked');
+ assert.equal((await generateContextual(rf,pilot,{provider:'gemini',invoke:async()=>({kind:'matrix',column:1,pairs:[],reason:'wrong',modality:'comparison',evidence:rf.lines[0],objective:'Comparar'})})).status,'blocked');
 });
