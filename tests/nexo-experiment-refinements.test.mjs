@@ -1,9 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {quantizationWindow,werComposition,diarizationFrame,rotatePieces} from '../src/lib/nexo/experiment-refinements.js';
+import {quantizationWindow,werComposition,diarizationFrame,rotatePieces,werKitExample} from '../src/lib/nexo/experiment-refinements.js';
 import {quantize,wer} from '../src/lib/nexo/experiments.js';
 import {GUIDED_VARIANTS,guidedConfig,guidedExercise,gradeGuided} from '../src/lib/nexo/guided-cycle.js';
 import {DAHL_NODES} from '../src/lib/nexo/dahl-puzzle.js';
+import fs from 'node:fs';
+import {URL} from 'node:url';
 test('quantization window is a real adjacent subset of exact levels, includes input and selected level',()=>{
  for(const bits of [2,3,4,8,16])for(let i=-100;i<=100;i++){const x=i/100,q=quantizationWindow(x,bits),actual=quantize(x,bits);assert.equal(q.code,actual.code);assert.ok(q.levels.length<=5);assert.ok(q.levels.some(l=>l.code===q.code));assert.ok(x>=q.min-1e-12&&x<=q.max+1e-12);assert.ok(q.error<=q.maxError+1e-12);assert.ok(q.levels.every((l,i)=>i===0||Math.abs(l.value-q.levels[i-1].value-q.step)<1e-12));}
 });
@@ -14,4 +16,15 @@ test('rotating association pieces changes order, preserves all IDs',()=>{const p
 test('all 15 model/scenario combinations and Dahl exact nodes are valid and score their own target',()=>{
  const cases=[['sampling'],['quantization'],['wer'],['diarization'],['dahl'],...DAHL_NODES.map(id=>['dahl',id])];
  for(const [kind,node] of cases)for(let v=0;v<GUIDED_VARIANTS;v++){const c=guidedConfig(kind,node,v);assert.notDeepEqual(c.initial,c.target);assert.notDeepEqual(c.target,c.transfer);const a={};for(const phase of ['target','transfer']){a[phase]=Object.fromEntries(guidedExercise(kind,node,phase,v).fields.map(f=>[f.id,String(f.expected)]));assert.equal(gradeGuided(kind,node,phase,a[phase],v).status,'correct');assert.equal(gradeGuided(kind,node,phase,{},v).status,'incomplete');}assert.equal(gradeGuided(kind,node,'transfer',a.target,v).status,'incorrect');}
+});
+
+test('WER restores the example of the exact RF 1.1 formula node instead of the neighboring node',()=>{
+ const kit=JSON.parse(fs.readFileSync(new URL('../src/data/kits/rf/rf-1-1/mapa.json',import.meta.url)));
+ const nodes=kit.ramos.flatMap(n=>n.f||[]),formula=nodes.find(n=>n.id.endsWith('-r5.1')),ceiling=nodes.find(n=>n.id.endsWith('-r5.2'));
+ assert.match(formula.x.ex,/50 palavras com 4 substituições, 1 omissão e 5 inserções/);
+ assert.match(ceiling.x.ex,/4 palavras/);
+ assert.deepEqual(werKitExample(formula.id),{n:50,s:4,d:1,i:5});
+ assert.equal(werComposition(werKitExample(formula.id)).hypothesis,54);
+ assert.equal(wer(werKitExample(formula.id)),20);
+ assert.equal(wer(werKitExample(ceiling.id)),150);
 });

@@ -26,3 +26,9 @@ export function rotatePieces(pieces,round){
   const n=((round%pieces.length)+pieces.length)%pieces.length;
   return [...pieces.slice(n),...pieces.slice(0,n)];
 }
+
+// The RF 1.1 formula node has its own documented example; never label a neighboring example as its source.
+export function werKitExample(nodeId){
+  if(nodeId==='kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-r5.1')return {n:50,s:4,d:1,i:5};
+  return {n:4,s:0,d:0,i:6};
+}
