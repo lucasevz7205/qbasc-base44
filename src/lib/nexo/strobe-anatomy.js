@@ -23,7 +23,7 @@ export function strobeExercise(p){
  return {fields:[{id:'direction',label:'Movimento aparente entre capturas',type:'choice',options:{forward:'No mesmo sentido',reverse:'Sentido inverso',stationary:'Parado',boundary:'Caso limítrofe: sentido ambíguo'},expected:d.condition},{id:'limit',label:'Limite de Nyquist',type:'number',unit:'Hz',digits:0,expected:d.nyquist}],explanation:'A roda real gira '+p.frequency+' volta(s)/s; a câmera captura '+p.rate+' quadros/s. '+(d.condition==='boundary'?'Meia volta por quadro torna o sentido ambíguo.':d.condition==='stationary'?'A marca retorna à mesma posição entre quadros.':d.condition==='reverse'?'O menor deslocamento angular aparente é no sentido inverso.':'O menor deslocamento angular aparente tem o mesmo sentido da rotação.')};
 }
 export function strobeSource(kit){
- if(kit?.topico!=='rf-1'||kit.materia!=='rf')return null;
+ if(kit?.topico!=='rf-1'||(kit.materia!==undefined&&kit.materia!=='rf'))return null;
  const node=kit.ramos.flatMap(r=>r.f||[]).find(n=>n.id===STROBE_NODE);
  return node?.x?.src&&node.x.e?.includes('metade da taxa')?node:null;
 }

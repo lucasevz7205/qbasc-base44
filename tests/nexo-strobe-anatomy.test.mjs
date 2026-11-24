@@ -9,3 +9,11 @@ test('physical analogy uses the same phase as every captured frame',()=>{for(con
 test('forward, reverse, stationary and boundary correct across configurations',()=>{for(const [f,r,c] of [[1,4,'forward'],[3,4,'reverse'],[4,4,'stationary'],[2,4,'boundary']]){assert.equal(strobeState(f,r).condition,c);assert.equal(evaluateVisual('strobe',{frequency:f,rate:r},{direction:c,limit:String(r/2)}).status,'correct');}});
 test('exact existing sampling node supports the remitted analogue',()=>{const kit=JSON.parse(fs.readFileSync(new URL('../src/data/kits/rf/rf-1/mapa.json',import.meta.url)));assert.equal(strobeSource(kit)?.id,STROBE_NODE);assert.equal(strobeSource({...kit,topico:'other'}),null);});
 test('each guided variant uses valid target and transfer answer keys',()=>{for(let v=0;v<3;v++){const c=guidedConfig('strobe',STROBE_NODE,v);assert.notDeepEqual(c.target,c.transfer);for(const phase of ['target','transfer']){const a=Object.fromEntries(guidedExercise('strobe',STROBE_NODE,phase,v).fields.map(f=>[f.id,String(f.expected)]));assert.equal(gradeGuided('strobe',STROBE_NODE,phase,a,v).status,'correct');}assert.equal(visualExercise('strobe',c.target).fields.length,2);}});
+
+test('RF1 sampling exact node exposes both mathematical and tangible representations without inheriting others',async()=>{
+ const {scopedVisualModels}=await import('../src/lib/nexo/visual-catalog.js');
+ const kit=JSON.parse(fs.readFileSync(new URL('../src/data/kits/rf/rf-1/mapa.json',import.meta.url)));
+ const subjects=[{id:'rf',topics:[{id:'rf-1'}]}];
+ const defs=['strobe','sampling','quantization'].map(id=>({id}));
+ assert.deepEqual(scopedVisualModels({subjects,subjectId:'rf',topicId:'rf-1',nodeId:STROBE_NODE},[kit],defs).map(m=>m.id),['strobe','sampling']);
+});

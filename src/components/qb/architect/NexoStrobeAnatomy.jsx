@@ -34,11 +34,11 @@ function StrobeScene({angle,exploded,selected,yaw,onSelect}){
  },[]);
  React.useEffect(()=>{const s=sceneRef.current;if(!s)return;
   const spread={base:0,motor:-.9,shaft:-.35,wheel:0,lens:.25,sensor:.8,body:1.5};
-  for(const [id,g] of Object.entries(s.groups)){g.position.copy(g.userData.home);g.position.x+=exploded*spread[id];if(id==='base')g.position.y-=exploded*.6;g.rotation.x=id==='wheel'||id==='shaft'?angle:0;}
+  for(const [id,g] of Object.entries(s.groups)){g.position.copy(g.userData.home);g.position.x+=exploded*spread[id];if(id==='base')g.position.y-=exploded*.6;g.rotation.x=id==='wheel'||id==='shaft'?-angle:0;}
   for(const m of s.meshes){m.material.emissive.setHex(m.userData.id===selected?0x68501b:0x000000);m.material.emissiveIntensity=.55;}
-  const a=yaw*Math.PI/180;s.camera.position.set(Math.sin(a)*11,5.8,Math.cos(a)*11);s.camera.lookAt(0,-.1,0);s.render();
+  const a=yaw*Math.PI/180;const distance=11+exploded*3;s.camera.position.set(Math.sin(a)*distance,5.8+exploded,Math.cos(a)*distance);s.camera.lookAt(0,-.1,0);s.render();
  },[angle,exploded,selected,yaw]);
- return <><div ref={host} className="nexo-strobe-canvas" role="img" aria-label="Bancada 3D com motor, eixo, disco e câmera; controles de seleção abaixo."/>
+ return <><div ref={host} className="nexo-strobe-canvas" hidden={fallback} role="img" aria-label="Bancada 3D com motor, eixo, disco e câmera; controles de seleção abaixo."/>
  {fallback&&<div className="nexo-stage-facts"><p>WebGL indisponível. A sequência de imagens e os controles continuam funcionando.</p><p>Motor → eixo → disco marcado → lente → sensor → carcaça.</p></div>}</>;
 }
 export default function NexoStrobeAnatomy({sourceNode,onPredictionMode,onAssociationContext,guided}){
@@ -50,7 +50,8 @@ export default function NexoStrobeAnatomy({sourceNode,onPredictionMode,onAssocia
  const publish=React.useCallback((id,allow)=>{const p=STROBE_PARTS.find(p=>p.id===id);onAssociationContext?.(allow&&p?{title:p.title,detail:p.detail,reference:sourceNode.x.src+' · Analogia física: TU Delft, Sampling (ver referência no modelo).'}:null);},[sourceNode,onAssociationContext]);
  React.useEffect(()=>{if(!training&&!guided)publish(part,true);},[part,training,guided,publish]);
  const choose=id=>{setPart(id);publish(id,!training&&!guided);};
- return <NexoVisualTraining kind="strobe" guided={guided} parameters={params} onPredictionMode={v=>{setTraining(v);publish(part,!v);onPredictionMode?.(v);}}>{({reveal})=><>
+ const notifyReveal=React.useCallback(v=>{if(training)publish(part,v);},[training,publish,part]);
+ return <NexoVisualTraining kind="strobe" guided={guided} parameters={params} onRevealChange={notifyReveal} onPredictionMode={v=>{setTraining(v);publish(part,!v);onPredictionMode?.(v);}}>{({reveal})=><>
   <div className="nexo-instrument"><div className="nexo-instrument-head"><span>ANATOMY · BANCADA ESTROBOSCÓPICA</span><span>MODELO FÍSICO DIDÁTICO</span></div>
    <StrobeScene angle={d.angle} exploded={exploded} selected={part} yaw={yaw} onSelect={choose}/>
    <div className="nexo-controls"><label className="nexo-slider">Desmontagem <input type="range" min="0" max="1" step=".05" value={exploded} onChange={e=>setExploded(Number(e.target.value))}/></label><label className="nexo-slider">Rotacionar vista <input type="range" min="-60" max="75" value={yaw} onChange={e=>setYaw(Number(e.target.value))}/></label></div>
