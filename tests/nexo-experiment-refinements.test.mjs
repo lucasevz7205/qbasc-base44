@@ -7,7 +7,7 @@ import {DAHL_NODES} from '../src/lib/nexo/dahl-puzzle.js';
 import fs from 'node:fs';
 import {URL} from 'node:url';
 test('quantization window is a real adjacent subset of exact levels, includes input and selected level',()=>{
- for(const bits of [2,3,4,8,16])for(let i=-100;i<=100;i++){const x=i/100,q=quantizationWindow(x,bits),actual=quantize(x,bits);assert.equal(q.code,actual.code);assert.ok(q.levels.length<=5);assert.ok(q.levels.some(l=>l.code===q.code));assert.ok(x>=q.min-1e-12&&x<=q.max+1e-12);assert.ok(q.error<=q.maxError+1e-12);assert.ok(q.levels.every((l,i)=>i===0||Math.abs(l.value-q.levels[i-1].value-q.step)<1e-12));}
+ for(const bits of [2,3,4,8,16])for(let i=-100;i<=100;i++){const x=i/100,q=quantizationWindow(x,bits),actual=quantize(x,bits);assert.equal(q.code,actual.code);assert.ok(q.localLevels.length<=5);assert.ok(q.localLevels.some(l=>l.code===q.code));assert.ok(x>=q.min-1e-12&&x<=q.max+1e-12);assert.ok(q.error<=q.maxError+1e-12);assert.ok(q.localLevels.every((l,i)=>i===0||Math.abs(l.value-q.localLevels[i-1].value-q.step)<1e-12));}
 });
 test('more bits reduce maximum error, not necessarily individual error',()=>{const x=1/3,a=quantizationWindow(x,2),b=quantizationWindow(x,3);assert.ok(b.maxError<a.maxError);assert.ok(b.error>a.error);});
 test('WER reference, errors and hypothesis remain distinct for every valid small scenario',()=>{for(let n=1;n<=10;n++)for(let s=0;s<=n;s++)for(let d=0;d<=n-s;d++)for(const i of [0,1,n,2*n]){const p={n,s,d,i},v=werComposition(p);assert.equal(v.rate,wer(p));assert.equal(v.hypothesis,n-d+i);assert.equal(v.errors,s+d+i);assert.equal(v.classification,v.errors>n?'above':v.errors===n?'equal':'below');}});
@@ -27,4 +27,9 @@ test('WER restores the example of the exact RF 1.1 formula node instead of the n
  assert.equal(werComposition(werKitExample(formula.id)).hypothesis,54);
  assert.equal(wer(werKitExample(formula.id)),20);
  assert.equal(wer(werKitExample(ceiling.id)),150);
+});
+
+test('quantization display retains a numeric total and separates the local level array',()=>{
+ for(const [bits,expected] of [[2,4],[3,8],[4,16],[8,256],[16,65536]]){const q=quantizationWindow(.37,bits);assert.equal(q.levels,expected);assert.equal(typeof q.levels,'number');assert.ok(Array.isArray(q.localLevels));assert.equal(q.levels.toLocaleString('pt-BR'),expected.toLocaleString('pt-BR'));}
+ const ui=fs.readFileSync(new URL('../src/components/qb/architect/NexoVisualLab.jsx',import.meta.url),'utf8');assert.match(ui,/fmt\(data\.levels\)/);assert.match(ui,/data\.localLevels\.map/);assert.doesNotMatch(ui,/fmt\(data\.localLevels/);
 });

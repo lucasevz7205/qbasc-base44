@@ -4,7 +4,7 @@ export function quantizationWindow(amplitude,bits){
   const q=quantize(amplitude,bits),step=2/(q.levels-1);
   const first=Math.max(0,Math.min(q.levels-5,q.code-2)),last=Math.min(q.levels-1,first+4);
   const levels=Array.from({length:last-first+1},(_,i)=>({code:first+i,value:-1+(first+i)*step}));
-  return {...q,step,maxError:step/2,levels,min:levels[0].value,max:levels.at(-1).value};
+  return {...q,step,maxError:step/2,localLevels:levels,min:levels[0].value,max:levels.at(-1).value};
 }
 export function werComposition(p){
   const rate=wer(p),errors=p.s+p.d+p.i;

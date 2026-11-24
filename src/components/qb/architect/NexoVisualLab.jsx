@@ -77,7 +77,7 @@ function Quantization({onPredictionMode,guided}){
         <rect x="95" y={globalY(data.max)} width="18" height={Math.max(2,globalY(data.min)-globalY(data.max))} fill="var(--qb-gold)" opacity=".65"/>
         <circle cx="104" cy={globalY(amplitude)} r="5" fill="var(--qb-moonlight)"/>
         <path d={'M115 '+globalY(data.max)+' L230 40 M115 '+globalY(data.min)+' L230 220'} stroke="var(--qb-bronze)" strokeDasharray="4 3" fill="none"/>
-        {data.levels.map(l=><g key={l.code}><line x1="240" x2="510" y1={y(l.value)} y2={y(l.value)} stroke="var(--qb-steel-blue)" strokeWidth="1.5"/>{reveal&&<text x="520" y={y(l.value)+4} fill="var(--qb-moonlight)" fontSize="11">cód. {l.code} · {fmt(l.value,6)}</text>}</g>)}
+        {data.localLevels.map(l=><g key={l.code}><line x1="240" x2="510" y1={y(l.value)} y2={y(l.value)} stroke="var(--qb-steel-blue)" strokeWidth="1.5"/>{reveal&&<text x="520" y={y(l.value)+4} fill="var(--qb-moonlight)" fontSize="11">cód. {l.code} · {fmt(l.value,6)}</text>}</g>)}
         <line x1="230" x2="510" y1={y(amplitude)} y2={y(amplitude)} stroke="var(--qb-moonlight)" strokeWidth="2" strokeDasharray="5 3"/>
         {reveal&&<><line x1="240" x2="510" y1={y(data.output)} y2={y(data.output)} stroke="var(--qb-gold-bright)" strokeWidth="3"/><line x1="478" x2="478" y1={y(amplitude)} y2={y(data.output)} stroke="var(--qb-ember)" strokeWidth="4"/><circle cx="478" cy={y(data.output)} r="4" fill="var(--qb-gold-bright)"/></>}
         <text x="375" y="248" textAnchor="middle" fontSize="11" fill="var(--qb-ivory-muted)">Cada linha local é um nível real do modelo.</text>
