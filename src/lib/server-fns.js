@@ -1,5 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { getGenerationSources } from "@/lib/nexo/generation-sources";
+import { generateAssociation } from "@/lib/nexo/generation";
 import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
@@ -800,3 +802,22 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
       .catch(() => ({ registros: [], falhasGravacao: 1 }));
     return { ...result, ...saved, reviewId };
   }));
+// LAB06: private, explicit-cost candidate generation. No database writes or publication.
+export const generateNexoAssociation = createServerFn({method:"POST"})
+ .middleware([requireUser])
+ .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),provider:z.enum(["base44","gemini","local"])}).strict())
+ .handler(async ({data,context})=>{
+   await requireArchitectAccess(context);
+   if(context.user?.role!=="admin")throw new Error("Geração experimental restrita ao administrador.");
+   const rows=getGenerationSources(data.subjectId,data.topicId,data.nodeId);
+   if(rows.length!==1)return {status:"blocked",reason:"Nó exato indisponível.",publicationAllowed:false};
+   const provider=data.provider;
+   const invoke=async ({prompt,schema})=>{
+     if(provider==="gemini"){
+       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-association-generation",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:1800});
+       return parseProviderJson(result.reply);
+     }
+     return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
+   };
+   return generateAssociation(rows[0],{provider,invoke});
+ });
