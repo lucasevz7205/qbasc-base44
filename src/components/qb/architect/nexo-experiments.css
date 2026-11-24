@@ -46,3 +46,10 @@
 .qb-architect-full .qb-tab{flex:1 1 auto;min-width:0;white-space:normal}
 .qb-architect-full .nexo-exp-workbench{grid-template-columns:minmax(0,2.2fr) minmax(250px,1fr)}
 @media(max-width:850px){.qb-architect-full .nexo-exp-workbench{grid-template-columns:minmax(0,1fr)}}
+.nexo-procedure{display:grid;gap:12px;min-width:0}
+.nexo-procedure-controls{display:grid;gap:10px;padding:14px}
+.nexo-procedure-flow{display:grid;justify-items:center;gap:5px;padding:12px;background:var(--qb-navy-deep);border:1px solid var(--qb-bronze);border-radius:9px}
+.nexo-procedure-flow>svg{color:var(--qb-gold)}
+.nexo-procedure-step{width:min(100%,560px);display:flex;align-items:center;gap:12px;text-align:left;background:var(--qb-navy-raised);border:1px solid var(--qb-bronze);border-radius:8px;padding:12px;color:var(--qb-ivory);cursor:pointer}
+.nexo-procedure-step small{font-family:var(--font-mono);color:var(--qb-gold)}
+.nexo-procedure-step[aria-pressed=true]{outline:2px solid var(--qb-gold-bright)}

@@ -1,6 +1,7 @@
 import {classifyRepresentation} from './representation-classifier.js';
 import {extractExplicitPairs,sourceVersion} from './generation.js';
 import {VISUAL_BINDINGS} from './visual-catalog.js';
+import {sequenceLines} from './procedure.js';
 export const PLANNER_VERSION='1.0.0';
 const scope=s=>({subjectId:s.subjectId,topicId:s.topicId,nodeId:s.nodeId});
 const distinct=values=>new Set(values.map(v=>v.trim().toLocaleLowerCase('pt-BR'))).size===values.length;
@@ -8,6 +9,7 @@ export async function planRepresentation(s,pilot={profiles:[],sources:[]}){
  if(!s?.lines?.[0]||!s.reference)return null;
  const version=await sourceVersion(s);
  const base={...scope(s),title:s.title,reference:s.reference,sourceVersion:version,plannerVersion:PLANNER_VERSION,publicationAllowed:false,requiresReview:true};
+ if(s.procedure)return {...base,kind:"procedure",label:"Fluxograma condicional",objective:"Distinguir a ordem geral e a inversão das fases sob as condições do kit.",reason:"O procedimento tem uma ordem explícita e uma exceção motivada com previsão no edital.",evidence:[s.procedure.order.text,s.procedure.exception.text],score:100,method:"contrato procedimental com remissões exatas",action:"Alterar condições, prever a consequência e ordenar as fases."};
  // Reuse reviewed descriptors only when the exact underlying text and reference agree.
  const old=pilot.sources.find(p=>p.nodeId===s.nodeId&&p.topicId===s.topicId&&p.subjectId===s.subjectId&&p.text===s.lines[0]&&p.reference===s.reference);
  const profile=old&&pilot.profiles.find(p=>p.nodeId===old.nodeId&&p.topicId===old.topicId&&p.subjectId===old.subjectId&&p.version===old.version);
@@ -15,6 +17,8 @@ export async function planRepresentation(s,pilot={profiles:[],sources:[]}){
   const result=classifyRepresentation(profile,old);
   if(result.status==='recommendation'&&result.kind!=='analogy')return {...base,kind:result.kind,label:result.label,objective:result.objective,reason:result.reason,evidence:[result.evidence],score:40,method:'descritor curado revalidado',action:result.action};
  }
+ const chains=sequenceLines(s);
+ if(chains.length&&/ordem|etapas|fases|sequência|pipeline|fluxo|procedimento/i.test(s.title))return {...base,kind:"timeline",label:"Sequência operacional",objective:"Reconstruir a ordem explícita das etapas.",reason:"O kit registra uma cadeia ordenada; não há inferência de ramificações.",evidence:[s.lines[chains[0].index]],score:75,method:"sequência literal do kit",action:"Ordenar as etapas e conferir a fonte."};
  const t=s.table;
  // Literal structured evidence, not a guess from the topic label.
  if(t&&t.rows.length>=3&&t.rows.length<=6&&distinct(t.rows.map(r=>r[0]))&&t.headers.length>=3&&t.rows.every(r=>r.every(v=>typeof v==='string'&&v.trim()))){
