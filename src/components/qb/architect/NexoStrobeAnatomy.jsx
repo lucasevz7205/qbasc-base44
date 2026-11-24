@@ -23,7 +23,7 @@ export default function NexoStrobeAnatomy({sourceNode,onPredictionMode,onAssocia
  const choose=id=>{setPart(id);publish(id,!training&&!guided);};
  const notifyReveal=React.useCallback(v=>{if(training)publish(part,v);},[training,publish,part]);
  return <NexoVisualTraining kind="strobe" guided={guided} parameters={params} onRevealChange={notifyReveal} onPredictionMode={v=>{setTraining(v);publish(part,!v);onPredictionMode?.(v);}}>{({reveal})=><>
-  <div className="nexo-instrument"><div className="nexo-instrument-head"><span>ANATOMY · BANCADA ESTROBOSCÓPICA</span><span>MODELO FÍSICO DIDÁTICO</span></div>
+  <div className="nexo-instrument"><div className="nexo-instrument-head"><span>ANALOGIA FÍSICA EXPERIMENTAL · BANCADA ESTROBOSCÓPICA</span><span>MODELO FÍSICO DIDÁTICO</span></div>
    <StrobeScene angle={d.angle} exploded={exploded} selected={part} yaw={yaw} onSelect={choose}/>
    <div className="nexo-controls"><label className="nexo-slider">Desmontagem <input type="range" min="0" max="1" step=".05" value={exploded} onChange={e=>setExploded(Number(e.target.value))}/></label><label className="nexo-slider">Rotacionar vista <input type="range" min="-60" max="75" value={yaw} onChange={e=>setYaw(Number(e.target.value))}/></label></div>
    <div className="qb-seg" role="group" aria-label="Peças da bancada" style={{flexWrap:'wrap'}}>{STROBE_PARTS.map(p=><button key={p.id} type="button" className="qb-seg__opt" aria-pressed={p.id===part} onClick={()=>choose(p.id)}>{p.title}</button>)}</div>
