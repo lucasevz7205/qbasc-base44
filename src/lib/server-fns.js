@@ -1,7 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getGenerationSources } from "@/lib/nexo/generation-sources";
-import { generateAssociation } from "@/lib/nexo/generation";
+import { generateContextual } from "@/lib/nexo/contextual-generation";
+import representationPilot from "@/lib/nexo/representation-pilot.json";
 import { requireUser } from "@/lib/auth-middleware";
 import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
@@ -814,11 +815,11 @@ export const generateNexoAssociation = createServerFn({method:"POST"})
    const provider=data.provider;
    const invoke=async ({prompt,schema})=>{
      if(provider==="gemini"){
-       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-association-generation",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:1800});
+       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-contextual-generation",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:1800});
        return parseProviderJson(result.reply);
      }
      return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
    };
-   return generateAssociation(rows[0],{provider,invoke});
+   return generateContextual(rows[0],representationPilot,{provider,invoke});
  });
 
