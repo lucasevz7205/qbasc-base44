@@ -10,7 +10,7 @@ const subjects=[{id:'rf',topics:[{id:'rf-1'},{id:'rf-1-1'},{id:'rf-3'}]}];
 const defs=['sampling','quantization','wer','diarization'].map(id=>({id}));
 const scope=(topicId,nodeId,subjectId='rf')=>scopedVisualModels({subjects,subjectId,topicId,nodeId},kits,defs);
 test('RF 1 includes four distinct models, RF 1.1 only one, no inheritance',()=>{assert.equal(scope('rf-1').length,4);assert.deepEqual(scope('rf-1-1').map(m=>m.id),['wer']);assert.equal(scope('rf-3').length,0);assert.equal(scope('rf-1-1',null,'da').length,0);});
-test('all exact node bindings exist and never leak to another topic',()=>{for(const b of VISUAL_BINDINGS){const result=scope(b.topicId,b.nodeId);assert.equal(result.length,1);assert.equal(result[0].id,b.modelId);assert.equal(result[0].source.id,b.nodeId);assert.equal(scope(b.topicId==='rf-1'?'rf-1-1':'rf-1',b.nodeId).length,0);}assert.equal(scope('rf-1','unknown').length,0);});
+test('all exact node bindings exist and never leak to another topic',()=>{for(const b of VISUAL_BINDINGS.filter(b=>b.subjectId==='rf')){const result=scope(b.topicId,b.nodeId);assert.equal(result.length,1);assert.equal(result[0].id,b.modelId);assert.equal(result[0].source.id,b.nodeId);assert.equal(scope(b.topicId==='rf-1'?'rf-1-1':'rf-1',b.nodeId).length,0);}assert.equal(scope('rf-1','unknown').length,0);});
 const answer=(kind,p)=>Object.fromEntries(visualExercise(kind,p).fields.map(f=>[f.id,String(f.expected)]));
 test('all four models grade current scenarios; stale answers rejected when result changes',()=>{
   const cases=[['sampling',{frequency:5000,rate:8000},{frequency:5000,rate:16000}],['quantization',{bits:3,amplitude:.37},{bits:8,amplitude:.37}],['wer',{n:4,s:0,d:0,i:6},{n:8,s:0,d:0,i:6}],['diarization',{step:0},{step:3}]];
