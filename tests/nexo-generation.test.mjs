@@ -31,5 +31,5 @@ test('provider invoked only on demand and does not silently fall back',async()=>
 });
 test('student preview remains scoped and not persisted, backend requires auth and admin',()=>{
  const s=fs.readFileSync(new URL('../src/lib/server-fns.js',import.meta.url),'utf8').split('export const generateNexoAssociation')[1];
- assert.match(s,/middleware\(\[requireUser\]\)/);assert.match(s,/role!=="admin"/);assert.match(s,/getGenerationSources/);assert.doesNotMatch(s,/entities\..*create|entities\..*update/);
+ assert.match(s,/middleware\(\[requireUser\]\)/);assert.match(s,/role!=="admin"/);assert.match(s,/prepareNexoTopicSources/);assert.match(s,/sourceVersion\(rows\[0\]\)/);assert.doesNotMatch(s,/entities\..*create|entities\..*update/);
 });

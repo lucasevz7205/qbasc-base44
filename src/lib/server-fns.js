@@ -1,10 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { getGenerationSources } from "@/lib/nexo/generation-sources";
+import { sourceVersion } from "@/lib/nexo/generation";
 import { generateContextual } from "@/lib/nexo/contextual-generation";
 import representationPilot from "@/lib/nexo/representation-pilot.json";
 import { requireUser } from "@/lib/auth-middleware";
-import { requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
+import { prepareNexoTopicSources, requireArchitectAccess, preparePersonalMapGan, prepareGanSourcePassages, preparePersonalQuestionEditorial, saveAutoApprovedMapGan } from "@/lib/study-accounts";
 import { secrets } from "base44:runtime";
 import { invokeArchitectGemini, describeArchitectModels, resolveArchitectModels, MODEL_PREFERENCES } from "@/lib/gemini-router";
 import { architectTelemetry } from "@/lib/gemini-telemetry";
@@ -806,12 +806,13 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
 // LAB06: private, explicit-cost candidate generation. No database writes or publication.
 export const generateNexoAssociation = createServerFn({method:"POST"})
  .middleware([requireUser])
- .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),provider:z.enum(["base44","gemini","local"])}).strict())
+ .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),sourceVersion:z.string().regex(/^sha256:[a-f0-9]{64}$/),provider:z.enum(["base44","gemini","local"])}).strict())
  .handler(async ({data,context})=>{
    await requireArchitectAccess(context);
    if(context.user?.role!=="admin")throw new Error("Geração experimental restrita ao administrador.");
-   const rows=getGenerationSources(data.subjectId,data.topicId,data.nodeId);
+   const rows=await prepareNexoTopicSources(context,data);
    if(rows.length!==1)return {status:"blocked",reason:"Nó exato indisponível.",publicationAllowed:false};
+   if(await sourceVersion(rows[0])!==data.sourceVersion)return {status:"blocked",reason:"A fonte mudou. Atualize os dados antes de gerar.",publicationAllowed:false};
    const provider=data.provider;
    const invoke=async ({prompt,schema})=>{
      if(provider==="gemini"){

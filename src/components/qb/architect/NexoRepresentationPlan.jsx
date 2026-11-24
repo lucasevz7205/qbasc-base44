@@ -1,16 +1,15 @@
 import React from 'react';
 import pilot from '@/lib/nexo/representation-pilot.json';
-import {getGenerationSources} from '@/lib/nexo/generation-sources';
+import {resolveEffectiveSource} from '@/lib/nexo/effective-sources';
 import {planRepresentation,chooseNewRepresentation} from '@/lib/nexo/representation-planner';
-export default function NexoRepresentationPlan({subjectId,topicId,nodeId,initiallyOpen=false}){
+export default function NexoRepresentationPlan({subjectId,topicId,nodeId,sources,initiallyOpen=false}){
  const [plan,setPlan]=React.useState(null);
  React.useEffect(()=>{
   let active=true;
-  const sources=getGenerationSources(subjectId,topicId,nodeId);
-  const request=nodeId?planRepresentation(sources[0],pilot):chooseNewRepresentation(sources,pilot);
+  const request=nodeId?planRepresentation(resolveEffectiveSource(sources,nodeId),pilot):chooseNewRepresentation(sources,pilot);
   request.then(p=>{if(active)setPlan(p);}).catch(()=>{if(active)setPlan(null);});
   return()=>{active=false;};
- },[subjectId,topicId,nodeId]);
+ },[subjectId,topicId,nodeId,sources]);
 
  return <details className="nexo-exp-context nexo-classifier" data-nexo-planner open={initiallyOpen}><summary>Parecer do Arquiteto · representação recomendada</summary>
   {plan&&<><h3>{plan.title}</h3><strong>{plan.label}</strong><p>{plan.objective}</p><p>{plan.reason}</p>

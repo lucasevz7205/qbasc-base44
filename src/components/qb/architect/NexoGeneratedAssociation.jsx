@@ -2,13 +2,13 @@ import React from 'react';
 import NexoAssociationPuzzle from './NexoAssociationPuzzle';
 import NexoProcedure from './NexoProcedure';
 import {generateNexoAssociation} from '@/lib/server-fns';
-import {getGenerationSources} from '@/lib/nexo/generation-sources';
+import {resolveEffectiveSource} from '@/lib/nexo/effective-sources';
 import {sourceVersion} from '@/lib/nexo/generation';
 import {generateContextual,buildContextual,availableColumns} from '@/lib/nexo/contextual-generation';
 import {chooseNewRepresentation} from '@/lib/nexo/representation-planner';
 import pilot from '@/lib/nexo/representation-pilot.json';
-export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
- const sources=React.useMemo(()=>getGenerationSources(subjectId,topicId,nodeId),[subjectId,topicId,nodeId]);
+export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sources:allSources}){
+ const sources=React.useMemo(()=>nodeId?(resolveEffectiveSource(allSources,nodeId)?[resolveEffectiveSource(allSources,nodeId)]:[]):allSources,[allSources,nodeId]);
  const [selection,setSelection]=React.useState(nodeId||'');
  const [candidate,setCandidate]=React.useState(null);
  const [busy,setBusy]=React.useState(false);
@@ -38,7 +38,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
   if(!source||busy)return;
   clear();const request=++seq.current;setBusy(true);
   try{
-   const r=await generateNexoAssociation({data:{subjectId,topicId,nodeId:source.nodeId,provider}});
+   const r=await generateNexoAssociation({data:{subjectId,topicId,nodeId:source.nodeId,sourceVersion:await sourceVersion(source),provider}});
    if(seq.current!==request)return;
    if(r.status!=='candidate'){setMessage(r.reason||'Não foi gerado um modelo.');return;}
    if(r.scope?.nodeId!==source.nodeId||r.scope?.subjectId!==subjectId||r.scope?.topicId!==topicId||r.sourceVersion!==await sourceVersion(source))throw Error('Versão ou escopo divergente');
@@ -48,7 +48,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
   }catch{if(seq.current===request)setMessage('Geração não concluída. Confira acesso, provedor e cota. Nenhum outro provedor foi acionado automaticamente.');}
   finally{if(seq.current===request)setBusy(false);}
  }
- if(!sources.length)return <p>Não há nó de kit com fonte registrada neste recorte.</p>;
+ if(!sources.length)return <p>Não há mapa de estudo com explicação recuperável neste recorte. O Arquiteto não inventará uma fonte.</p>;
  const puzzle=candidate?.puzzle;
  const isProcedure=['procedure','sequence'].includes(candidate?.kind);
  const modeLabel=candidate?.kind==='procedure'?'Fluxograma condicional':candidate?.kind==='sequence'?'Sequência operacional':candidate?.kind==='matrix'?'Matriz comparativa com encaixes':'Quebra-cabeça conceitual';
@@ -56,7 +56,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
  return <section className="nexo-exp-context nexo-generation">
   <span className="qb-overline">O ARQUITETO · GERAÇÃO DE MODELO</span>
   <h3>Representação contextual</h3>
-  <p>O Arquiteto usa o nó exato do kit. As propostas são prévias privadas e não entram automaticamente no catálogo de treino.</p>
+  <p>O Arquiteto usa o nó exato do mapa de estudo atual. As propostas são prévias privadas e não entram automaticamente no catálogo de treino.</p>
   <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={selection} onChange={e=>{clear();setColumn(null);setSelection(e.target.value);}}>{!selection&&<option value="">Selecionando conceito…</option>}{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
   {source&&<p className="nexo-explain">{source.reference}</p>}
   {plan&&<p><strong>Indicação do Arquiteto:</strong> {plan.label}. {plan.reason}</p>}

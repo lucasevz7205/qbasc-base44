@@ -1,3 +1,5 @@
+import {decodeNexoDocuments} from './nexo/effective-sources.js';
+import {getEffectiveSources} from './nexo/generation-sources.js';
 import {parseImport} from './map-import.js';
 import { createServerFn } from '@tanstack/react-start';
 import { z } from 'zod';
@@ -476,3 +478,17 @@ export const importStudyBank = createServerFn({ method: 'POST' })
     for (const id of ids) if (await write(entities, workspaceCollection(data.id, 'questoes'), id, available.get(id), true)) created++;
     return { created, skipped: ids.length - created };
   });
+
+// Private NEXO: same normalized revision records as the study workspace, read-only.
+export async function prepareNexoTopicSources(context,{subjectId,topicId,nodeId}) {
+ const entities=admin(context);
+ const topic=await unique(entities,'edital',documentId.parse(topicId));
+ if(!topic)return [];
+ const entry=await decode(entities,topic);
+ if(String(entry.sigla||entry.id.split('-')[0]).toLowerCase()!==subjectId)return [];
+ const rows=await pageAll(entities.ClaudeDocument,{collection:'revisao'});
+ const parts=rows.some(row=>JSON.parse(row.payload_json)._claudeParts)?await pageAll(entities.ClaudeDocumentPart,{collection:'revisao'}):[];
+ const revisions=decodeNexoDocuments(rows,parts).filter(d=>(d.topico||d.id.replace(/\.(mapa|cartoes)$/,''))===topicId);
+ const {QB_DATA}=adaptStudy({edital:[entry],revisao:revisions},context.user);
+ return getEffectiveSources(QB_DATA,subjectId,topicId,nodeId);
+}
