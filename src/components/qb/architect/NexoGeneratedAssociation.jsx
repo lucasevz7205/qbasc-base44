@@ -2,13 +2,13 @@ import React from 'react';
 import NexoAssociationPuzzle from './NexoAssociationPuzzle';
 import {generateNexoAssociation} from '@/lib/server-fns';
 import {getGenerationSources} from '@/lib/nexo/generation-sources';
-import {sourceVersion,extractExplicitPairs} from '@/lib/nexo/generation';
+import {sourceVersion} from '@/lib/nexo/generation';
 import {generateContextual,buildContextual,availableColumns} from '@/lib/nexo/contextual-generation';
 import {chooseNewRepresentation} from '@/lib/nexo/representation-planner';
 import pilot from '@/lib/nexo/representation-pilot.json';
 export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
  const sources=React.useMemo(()=>getGenerationSources(subjectId,topicId,nodeId),[subjectId,topicId,nodeId]);
- const [selection,setSelection]=React.useState(()=>sources.find(s=>availableColumns(s).length)||sources.find(s=>extractExplicitPairs(s).kind==='association')?.nodeId||sources[0]?.nodeId||'');
+ const [selection,setSelection]=React.useState(nodeId||'');
  const [candidate,setCandidate]=React.useState(null);
  const [busy,setBusy]=React.useState(false);
  const [message,setMessage]=React.useState('');
@@ -24,7 +24,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
  React.useEffect(()=>{
   if(nodeId)return;
   let active=true;const request=seq.current;
-  chooseNewRepresentation(sources,pilot).then(p=>{if(active&&seq.current<=request+1&&p)setSelection(p.nodeId);}).catch(()=>{});
+  chooseNewRepresentation(sources,pilot).then(p=>{if(active&&seq.current===request)setSelection(p?.nodeId||sources[0]?.nodeId||'');}).catch(()=>{if(active&&seq.current===request)setSelection(sources[0]?.nodeId||'');});
   return()=>{active=false;};
  },[sources,nodeId]);
  // Local generation is automatic on selection, only explicit structured source relations.
@@ -54,17 +54,17 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
   <span className="qb-overline">O ARQUITETO · GERAÇÃO DE MODELO</span>
   <h3>Representação contextual</h3>
   <p>O Arquiteto usa o nó exato do kit. As propostas são prévias privadas e não entram automaticamente no catálogo de treino.</p>
-  <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={selection} onChange={e=>{clear();setColumn(null);setSelection(e.target.value);}}>{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
+  <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={selection} onChange={e=>{clear();setColumn(null);setSelection(e.target.value);}}>{!selection&&<option value="">Selecionando conceito…</option>}{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
   {source&&<p className="nexo-explain">{source.reference}</p>}
   {plan&&<p><strong>Indicação do Arquiteto:</strong> {plan.label}. {plan.reason}</p>}
   {candidate?.kind==='matrix'&&<label className="nexo-control">Critério da matriz<select className="qb-input" value={candidate.recipe.column} onChange={e=>{clear();setColumn(Number(e.target.value));}}>{availableColumns(source).map(i=><option key={i} value={i}>{source.table.headers[i]}</option>)}</select></label>}
-  {!candidate&&<><p>Sem representação automática suficiente? Solicite ao Arquiteto uma seleção semântica entre os formatos disponíveis, com abstenção se necessário.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
-  {candidate&&!approved&&<details><summary>Consultar seleção semântica do Arquiteto</summary><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run("base44")}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run("gemini")}>Analisar com Gemini (cota)</button></details>}
+  {!candidate&&<><p>Sem representação automática suficiente? Solicite ao Arquiteto uma seleção semântica entre os formatos disponíveis, com abstenção se necessário.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
+  {candidate&&!approved&&<details><summary>Consultar seleção semântica do Arquiteto</summary><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("base44")}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("gemini")}>Analisar com Gemini (cota)</button></details>}
   {busy&&<p role="status">Preparando proposta a partir do kit…</p>}{message&&<p role="alert">{message}</p>}
   {puzzle&&<div className="nexo-exp-workbench"><main className="nexo-exp-main"><div className="nexo-instrument-head"><span>{candidate.provider==='local'?'Extração automática sem IA':candidate.provider==='base44'?'Proposta Base44':'Proposta Gemini'}</span><span>PREVIEW · NÃO PUBLICADA</span></div>
    {!approved?<><p><strong>{candidate.kind==="matrix"?"Matriz comparativa com encaixes":"Quebra-cabeça conceitual"}</strong> · {candidate.plan?.objective}</p><p>Confira se os encaixes e as condições estão corretos. A correspondência literal não comprova a correção semântica.</p><NexoAssociationPuzzle key={candidate.sourceVersion+puzzle.id+'review'} puzzle={puzzle} mode="explore" onFocus={show}/><details><summary>Remissões exatas</summary>{puzzle.slots.map(s=><p key={s.id}>{s.explanation}</p>)}<small>{candidate.sourceVersion}</small></details><button type="button" className="qb-btn qb-btn--secondary" onClick={()=>{setApproved(true);setFocus(null);}}>Aceitar para testar nesta sessão</button></>:<>
     <div className="qb-seg" role="group" aria-label="Modo da atividade"><button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>{setMode('explore');setFocus(null);}}>Exploração livre</button><button type="button" className="qb-seg__opt" aria-pressed={mode==='train'} onClick={()=>{setMode('train');setFocus(null);}}>Treino de encaixe</button></div>
-    <NexoAssociationPuzzle key={candidate.sourceVersion+puzzle.id+mode} puzzle={puzzle} mode={mode} onFocus={id=>{if(mode==='explore')show(id);else setFocus(null);}} onFeedback={c=>{if(mode==='train'&&c)setFocus({title:c.correct?'Encaixe correto':'Reveja o encaixe',detail:c.explanation});}}/>
+    <NexoAssociationPuzzle key={candidate.sourceVersion+puzzle.id+mode} puzzle={puzzle} mode={mode} onFocus={id=>{if(mode==='explore')show(id);else setFocus(null);}} onFeedback={c=>{if(mode==='train')setFocus(c?{title:c.correct?'Encaixe correto':'Reveja o encaixe',detail:c.explanation}:null);}}/>
    </>}
    <small>Prévia temporária. Não salva resultados nem aprova conteúdo para publicação. O percurso completo e outros renderizadores gerados ainda estão pendentes.</small>
    <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={clear}>Descartar proposta</button>
