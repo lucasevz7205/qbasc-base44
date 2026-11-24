@@ -13,7 +13,7 @@ export const ASR_EDGES=Object.freeze(edges.map(e=>Object.freeze(e)));
 const boundedText=(s,n=500)=>typeof s==='string'&&s.trim().length>0&&s.length<=n;
 const id=s=>typeof s==='string'&&/^[a-z][a-z0-9-]{0,39}$/.test(s);
 export function validateComponentBoard(model){
- if(!model||!id(model.id)||!boundedText(model.version,80)||!boundedText(model.sourceNode,250)||!boundedText(model.reference)||!boundedText(model.limit)||!['logical-2d'].includes(model.dimension)||!Array.isArray(model.parts)||model.parts.length<2||model.parts.length>12||!Array.isArray(model.edges)||model.edges.length>24)return false;
+ if(!model||Object.keys(model).some(k=>!['id','version','sourceNode','reference','dimension','limit','parts','edges'].includes(k))||!id(model.id)||!boundedText(model.version,80)||!boundedText(model.sourceNode,250)||!boundedText(model.reference)||!boundedText(model.limit)||!['logical-2d'].includes(model.dimension)||!Array.isArray(model.parts)||model.parts.length<2||model.parts.length>12||!Array.isArray(model.edges)||model.edges.length>24)return false;
  const allowed=new Set(['id','title','role','origin','input','output','anchor','x','y','icon']);
  const icons=new Set(['wave','acoustic','lexicon','language','decoder']);
  const ids=new Set();

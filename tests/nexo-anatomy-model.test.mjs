@@ -31,3 +31,9 @@ test('new board is only linked to exact ASR parent node, WER still separate',()=
  const scope=nodeId=>scopedVisualModels({subjects,subjectId:'rf',topicId:'rf-1-1',nodeId},[kit],defs);
  assert.deepEqual(scope().map(m=>m.id),['asr','wer']);assert.deepEqual(scope(ASR_NODE).map(m=>m.id),['asr']);assert.equal(scope(ASR_NODE+'a').length,0);
 });
+test('guided questions identify a component rather than echo its function',()=>{
+ const e=guidedExercise('asr',ASR_NODE,'transfer',0);
+ assert.equal(e.fields[0].id,'component');assert.equal(e.fields[0].expected,'language');assert.equal(e.fields[1].expected,'text');
+ assert.equal(gradeGuided('asr',ASR_NODE,'transfer',{component:'language',origin:'audio'}).status,'incorrect');
+ assert.equal(validateComponentBoard({...model,html:'<script>'}),false);
+});

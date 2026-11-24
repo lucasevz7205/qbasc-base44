@@ -1,12 +1,13 @@
 import {visualExercise,evaluateVisual} from './visual-training.js';
 import {DAHL_NODES,REGIMES,TRAJECTORIES} from './dahl-puzzle.js';
+import {ASR_PARTS,asrExercise} from './anatomy-model.js';
 export const CYCLE_STAGES=['Ancoragem','Predição','Experimentação','Autoexplicação','Abstração','Transferência'];
 const copy=o=>({...o});
 const choice=(id,label,expected,options)=>({id,label,expected,options,type:'choice'});
 const regimes=Object.fromEntries(REGIMES.map(r=>[r.id,r.label]));
 const axes={up:'Contestação pública',right:'Inclusividade'};
 const scenarios={
-  asr:{initial:{part:'features'},target:{part:'acoustic'},transfer:{part:'language'},change:'Passe da extração de características para o bloco que recebe os vetores e estima verossimilhança por fone.',transferPrompt:'Um bloco do ASR clássico utiliza texto puro para estimar a probabilidade de sequências. Identifique sua função e fonte.',anchor:'Observe a ligação entre extração e modelo acústico.',explain:'Por que extrair vetores não é o mesmo que estimar verossimilhança acústica?',abstract:'Recupere os cinco blocos e suas fontes ou naturezas.',rule:'Extração e decodificador: algoritmos fixos. Acústico: áudio transcrito. Léxico: dicionários de pronúncia. Linguagem: texto puro.'},
+  asr:{initial:{part:'features'},target:{part:'acoustic'},transfer:{part:'language'},change:'Passe da extração de características para o bloco que recebe os vetores e estima verossimilhança por fone.',transferPrompt:'A escolha entre duas sequências de palavras depende de sua plausibilidade linguística. Identifique o bloco e sua fonte.',anchor:'Observe a ligação entre extração e modelo acústico.',explain:'Por que extrair vetores não é o mesmo que estimar verossimilhança acústica?',abstract:'Recupere os cinco blocos e suas fontes ou naturezas.',rule:'Extração e decodificador: algoritmos fixos. Acústico: áudio transcrito. Léxico: dicionários de pronúncia. Linguagem: texto puro.'},
   sampling:{initial:{frequency:5000,rate:8000},target:{frequency:5000,rate:16000},transfer:{frequency:7000,rate:8000},change:'Mantenha o sinal de 5 kHz e aumente a taxa de 8 para 16 kHz.',transferPrompt:'Um sinal de 7 kHz é amostrado a 8 kHz. Determine o limite, a posição e a frequência aparente.',anchor:'Observe a onda e os pontos. Distinga a frequência do sinal da taxa de amostragem.',explain:'Por que a alteração da taxa modifica o aliasing, mesmo sem alterar a frequência da onda?',abstract:'Enuncie a relação entre a taxa de amostragem e o limite de Nyquist.',rule:'O limite é metade da taxa. Acima dele há dobramento; no limite exato, a recuperação não é garantida.'},
   quantization:{initial:{bits:3,amplitude:.37},target:{bits:4,amplitude:.37},transfer:{bits:2,amplitude:-.4},change:'Mantenha amplitude 0,37 e aumente a profundidade de 3 para 4 bits.',transferPrompt:'No mesmo quantizador uniforme normalizado de −1 a 1, use 2 bits e amplitude −0,4. Determine níveis, código e erro absoluto (4 casas decimais).',anchor:'Observe a entrada e o nível discreto escolhido. Código e amplitude não são a mesma grandeza.',explain:'Como a profundidade altera os níveis disponíveis e o arredondamento?',abstract:'Recupere a relação entre bits, quantidade de níveis e limite do erro.',rule:'N bits oferecem 2^N níveis. Na quantização uniforme normalizada, o passo é 2/(2^N−1); o erro máximo é metade do passo.'},
   wer:{initial:{n:4,s:0,d:0,i:6},target:{n:4,s:0,d:0,i:2},transfer:{n:8,s:2,d:1,i:6},change:'Reduza as inserções de 6 para 2, mantendo 4 palavras de referência e os demais erros em zero.',transferPrompt:'Uma referência de 8 palavras tem 2 substituições, 1 omissão e 6 inserções já alinhadas. Calcule e interprete a WER.',anchor:'Compare a barra de erros com a quantidade de palavras da referência.',explain:'Por que a WER muda quando as inserções diminuem, sem mudar o denominador?',abstract:'Escreva a fórmula da WER e explique por que ela pode superar 100%.',rule:'WER = (S+D+I)/N × 100. N é a referência; inserções aumentam apenas o numerador.'},
@@ -20,8 +21,8 @@ function dahlConfig(nodeId){
 // Alternate cases are authored examples using the same mathematical rules and exact kit scope.
 const alternatives={
   asr:[
-    {initial:{part:'acoustic'},target:{part:'lexicon'},transfer:{part:'decoder'},change:'Selecione o componente responsável pela correspondência entre palavras e fones.',transferPrompt:'O bloco final combina as informações do acústico, léxico e linguagem. Qual sua função e natureza?',anchor:'Observe o modelo acústico e os blocos que alimentam a busca.',explain:'Por que a função do léxico não se confunde com a verossimilhança acústica?'},
-    {initial:{part:'lexicon'},target:{part:'language'},transfer:{part:'features'},change:'Passe do léxico ao bloco que estima a probabilidade de uma sequência de palavras.',transferPrompt:'Um componente recebe áudio e produz vetores por quadro. Identifique sua função e natureza.',anchor:'Observe as fontes distintas de léxico e linguagem.',explain:'Por que um dicionário de pronúncia não substitui um modelo de linguagem?'}
+    {initial:{part:'acoustic'},target:{part:'lexicon'},transfer:{part:'decoder'},change:'Selecione o componente responsável pela correspondência entre palavras e fones.',transferPrompt:'É preciso buscar a melhor frase combinando as informações dos três modelos. Identifique o bloco e sua natureza.',anchor:'Observe o modelo acústico e os blocos que alimentam a busca.',explain:'Por que a função do léxico não se confunde com a verossimilhança acústica?'},
+    {initial:{part:'lexicon'},target:{part:'language'},transfer:{part:'features'},change:'Passe do léxico ao bloco que estima a probabilidade de uma sequência de palavras.',transferPrompt:'Antes de estimar a verossimilhança dos fones, é preciso transformar o áudio em vetores por quadro. Identifique o bloco e sua natureza.',anchor:'Observe as fontes distintas de léxico e linguagem.',explain:'Por que um dicionário de pronúncia não substitui um modelo de linguagem?'}
   ],
   sampling:[
     {initial:{frequency:3000,rate:8000},target:{frequency:4000,rate:8000},transfer:{frequency:5000,rate:44100},change:'Mantenha a taxa de 8 kHz e eleve o sinal de 3 para 4 kHz.',transferPrompt:'Um sinal de 5 kHz é amostrado a 44,1 kHz. Determine o limite, a posição e a frequência dobrada teórica.',explain:'Por que a igualdade com o limite não garante a recuperação desta senoide de fase zero?'},
@@ -57,6 +58,7 @@ export function guidedConfig(kind,nodeId,variant=0){
 export function guidedExercise(kind,nodeId,phase,variant=0){
   const c=guidedConfig(kind,nodeId,variant);
   if(!c||!['target','transfer'].includes(phase))throw Error('No guided exercise');
+  if(kind==='asr'){const e=asrExercise(c[phase]);return {...e,fields:[choice('component','Qual bloco é responsável?',c[phase].part,Object.fromEntries(ASR_PARTS.map(p=>[p.id,p.title]))),e.fields[1]]};}
   if(kind==='dahl'){
     const t=TRAJECTORIES[c[phase].scenario],r=REGIMES.find(r=>r.id===t.to);
     return {fields:[c.axis?choice('axis','Qual dimensão aumenta?',t.direction,axes):choice('regime','Qual tipo puro resulta?',r.id,regimes)],explanation:(t.direction==='up'?'A contestação aumenta, sem mudança na inclusividade.':'A inclusividade aumenta, sem mudança na contestação.')+(c.axis?'':' Resultado: '+r.label+'.')};
@@ -65,9 +67,9 @@ export function guidedExercise(kind,nodeId,phase,variant=0){
 }
 export function gradeGuided(kind,nodeId,phase,answers,variant=0){
   const c=guidedConfig(kind,nodeId,variant),exercise=guidedExercise(kind,nodeId,phase,variant);
-  if(kind!=='dahl'){const r=evaluateVisual(kind,c[phase],answers);return {...r,checks:r.checks.map(f=>({...f,submitted:answers?.[f.id]??''}))};}
-  const f=exercise.fields[0],v=answers?.[f.id];
-  return {status:!Object.hasOwn(f.options,v)?'incomplete':v===f.expected?'correct':'incorrect',checks:[{...f,submitted:v??'',valid:Object.hasOwn(f.options,v),correct:v===f.expected}],explanation:exercise.explanation};
+  if(kind!=='dahl'&&kind!=='asr'){const r=evaluateVisual(kind,c[phase],answers);return {...r,checks:r.checks.map(f=>({...f,submitted:answers?.[f.id]??''}))};}
+  const checks=exercise.fields.map(f=>{const v=answers?.[f.id];return {...f,submitted:v??'',valid:Object.hasOwn(f.options,v),correct:v===f.expected};});
+  return {status:checks.some(f=>!f.valid)?'incomplete':checks.every(f=>f.correct)?'correct':'incorrect',checks,explanation:exercise.explanation};
 }
 export const initialCycle=()=>({stage:0,hypothesis:null,prediction:null,explanation:null,recall:null,transfer:null});
 export function advanceCycle(state,event){
