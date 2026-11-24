@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
-import { approveGanReview, canAutoApproveGan, ganReviewDraft, ganReviewEntries, ganReviewQuality } from '../src/lib/gan-review.js';
+import { approveGanReview, canAutoApproveGan, ganReviewDraft, ganReviewEntries, ganReviewQuality, runGanRound } from '../src/lib/gan-review.js';
 import { buildGanQuestionRecord } from '../src/lib/gan-queue.js';
 
 const node = { id: 'n', label: 'Governança' };
@@ -128,4 +128,30 @@ test('aprovação automática exige escore acima de 90, nó exato e trecho verif
   assert.equal(canAutoApproveGan({ ...trueItem, correcaoMinima: 'Item correto.' }, 'n'), false);
   const wrongNode = normalizeGanConfrontation([{ ...candidate, mapaNoId: 'fora' }], [{ ...blind, scoreRealismo: 97 }], map, { targetNodeId: 'n' });
   assert.equal(canAutoApproveGan({ ...wrongNode.questoes[0], fundamentacaoCega: item.fundamentacaoCega }, 'n'), false);
+});
+
+test('a rodada GAN continua após falhas e repõe somente as propostas faltantes', async () => {
+  const parts = ['A', 'B', 'C', 'D', 'E'].map(id => ({ target: { id }, count: 4 }));
+  const calls = [];
+  const result = await runGanRound(parts, async (target, count) => {
+    calls.push([target.id, count]);
+    if (calls.length === 1) return { falha: { etapa: 'confronto', mensagem: 'Julgamentos incompletos.' } };
+    if (calls.length === 2) throw new Error('Conexão interrompida.');
+    const questoes = Array.from({ length: calls.length === 3 ? 3 : count }, (_, i) => ({ id: calls.length + '-' + i }));
+    return { questoes, registros: questoes.slice(0, 1) };
+  }, () => false);
+
+  assert.deepEqual(calls, [['A', 4], ['B', 4], ['C', 4], ['D', 4], ['E', 4], ['A', 4], ['B', 4], ['C', 1]]);
+  assert.equal(result.entries.length, 20);
+  assert.equal(result.entries.filter(entry => entry.status === 'saved').length, 6);
+});
+
+test('a rodada GAN encerra após uma reposição por lote', async () => {
+  let calls = 0;
+  const result = await runGanRound([{ target: node, count: 4 }], async () => {
+    calls++;
+    return { questoes: [] };
+  }, () => false);
+  assert.equal(calls, 2);
+  assert.equal(result.entries.length, 0);
 });
