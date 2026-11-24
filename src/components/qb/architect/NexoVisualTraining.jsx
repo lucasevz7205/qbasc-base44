@@ -2,7 +2,7 @@ import React from 'react';
 import {Icon} from '@/components/qb/core/Icon';
 import {visualExercise,evaluateVisual,scenarioKey} from '@/lib/nexo/visual-training';
 const fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:4});
-export default function NexoVisualTraining({kind,parameters,onPredictionMode,onRevealChange,children}){
+export default function NexoVisualTraining({kind,parameters,onPredictionMode,onRevealChange,guided,children}){
   const [mode,setMode]=React.useState('explore');
   const key=scenarioKey(kind,parameters);
   const [attempt,setAttempt]=React.useState({key,answers:{},result:null});
@@ -16,6 +16,7 @@ export default function NexoVisualTraining({kind,parameters,onPredictionMode,onR
   const changeMode=v=>{if(v!==mode){setMode(v);clear();onPredictionMode?.(v==='predict');}};
   const update=(id,value)=>setAttempt({key,answers:{...current.answers,[id]:value},result:null});
   const grade=()=>setAttempt({...current,result:evaluateVisual(kind,parameters,current.answers)});
+  if(guided)return <div className="nexo-training-visual" data-nexo-live-graph><fieldset disabled style={{border:0,padding:0,margin:0,minWidth:0}} aria-label="Modelo com parâmetros do percurso">{children({reveal:guided.reveal,mode:'guided',result:null})}</fieldset></div>;
   return <div className="nexo-training" data-nexo-training={kind}>
     <div className="qb-seg" role="group" aria-label="Modo de aprendizagem">
       <button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>changeMode('explore')}>Exploração livre</button>

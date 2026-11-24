@@ -9,6 +9,7 @@ import {scopedVisualModels} from '@/lib/nexo/visual-catalog';
 import {STAGES} from '@/lib/nexo/visual-training';
 import {diarizationStageContext} from '@/lib/nexo/diarization-context';
 import NexoDahlPuzzle from './NexoDahlPuzzle';
+import NexoGuidedCycle from './NexoGuidedCycle';
 import {getDahlSource} from '@/lib/nexo/dahl-puzzle';
 import cpKit from '@/data/kits/cp/cp-1/mapa.json';
 import asrKit from '@/data/kits/rf/rf-1-1/mapa.json';
@@ -33,10 +34,11 @@ function WaveGrid(){return <g aria-hidden="true">
 function wave(f){return Array.from({length:301},(_,i)=>[X(i/300),Y(signal(f,i/300))].map(v=>v.toFixed(2)).join(',')).join(' ');}
 function Choice({label,values,value,onChange,format=v=>v}){return <div className="nexo-control"><span>{label}</span><div className="qb-seg" role="group" aria-label={label}>{values.map(v=><button type="button" key={v} className="qb-seg__opt" aria-pressed={value===v} onClick={()=>onChange(v)}>{format(v)}</button>)}</div></div>;}
 function Readout({items}){return <div className="nexo-readouts">{items.map(i=><div key={i.label}><span>{i.label}</span><strong>{i.value}</strong></div>)}</div>;}
-function Sampling({onPredictionMode}){
-  const [frequency,setFrequency]=React.useState(5000),[rate,setRate]=React.useState(8000);
+function Sampling({onPredictionMode,guided}){
+  const [localFrequency,setFrequency]=React.useState(5000),[localRate,setRate]=React.useState(8000);
+  const {frequency,rate}=guided?.parameters||{frequency:localFrequency,rate:localRate};
   const data=sampleSignal(frequency,rate);
-  return <NexoVisualTraining kind="sampling" parameters={{frequency,rate}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+  return <NexoVisualTraining kind="sampling" guided={guided} parameters={{frequency,rate}} onPredictionMode={onPredictionMode}>{({reveal})=><>
     <div className="nexo-controls"><Choice label="Frequência da onda" values={[1000,3000,4000,5000,7000]} value={frequency} onChange={setFrequency} format={v=>fmt(v/1000)+' kHz'}/><Choice label="Taxa de amostragem" values={[8000,16000,44100]} value={rate} onChange={setRate} format={v=>fmt(v/1000,1)+' kHz'}/></div>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{reveal?data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST':'OBSERVAÇÃO ATIVA'}</span></div>
       <svg viewBox="0 0 680 260" role="img" aria-label={'Sinal de '+frequency+' Hz; taxa '+rate+' Hz'}>
@@ -48,10 +50,11 @@ function Sampling({onPredictionMode}){
     </div>
   </>}</NexoVisualTraining>;
 }
-function Quantization({onPredictionMode}){
-  const [bits,setBits]=React.useState(3),[amplitude,setAmplitude]=React.useState(.37);
+function Quantization({onPredictionMode,guided}){
+  const [localBits,setBits]=React.useState(3),[localAmplitude,setAmplitude]=React.useState(.37);
+  const {bits,amplitude}=guided?.parameters||{bits:localBits,amplitude:localAmplitude};
   const data=quantize(amplitude,bits),vals=sampleSignal(1000,16000).samples;
-  return <NexoVisualTraining kind="quantization" parameters={{bits,amplitude}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+  return <NexoVisualTraining kind="quantization" guided={guided} parameters={{bits,amplitude}} onPredictionMode={onPredictionMode}>{({reveal})=><>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>CONVERSOR · AMPLITUDE NORMALIZADA</span><span>{reveal?fmt(data.levels)+" NÍVEIS":"OBSERVAÇÃO ATIVA"}</span></div>
       <svg viewBox="0 0 680 280" role="img" aria-label={'Amplitude '+fmt(amplitude,2)+'; profundidade '+bits+' bits.'}>
         <defs><linearGradient id="nexo-metal" x2="0" y2="1"><stop stopColor="#344E70"/><stop offset="1" stopColor="#101C2D"/></linearGradient></defs>
@@ -86,11 +89,12 @@ function Quantization({onPredictionMode}){
     {reveal&&<p className="nexo-explain">Aumentar os bits aumenta os níveis disponíveis e reduz o limite do erro de arredondamento. A bancada usa quantização uniforme normalizada, não implementa um codec PCM completo.</p>}
   </>}</NexoVisualTraining>;
 }
-function Wer({onPredictionMode}){
-  const [n,setN]=React.useState(4),[s,setS]=React.useState(0),[d,setD]=React.useState(0),[i,setI]=React.useState(6);
+function Wer({onPredictionMode,guided}){
+  const [ln,setN]=React.useState(4),[ls,setS]=React.useState(0),[ld,setD]=React.useState(0),[li,setI]=React.useState(6);
+  const {n,s,d,i}=guided?.parameters||{n:ln,s:ls,d:ld,i:li};
   const val=wer({n,s,d,i}),max=Math.max(n,s+d+i,1);
   const changeN=v=>{setN(v);setS(Math.min(s,v));setD(Math.min(d,Math.max(0,v-Math.min(s,v))));};
-  return <NexoVisualTraining kind="wer" parameters={{n,s,d,i}} onPredictionMode={onPredictionMode}>{({reveal})=><>
+  return <NexoVisualTraining kind="wer" guided={guided} parameters={{n,s,d,i}} onPredictionMode={onPredictionMode}>{({reveal})=><>
     <div className="nexo-instrument nexo-wer"><div className="nexo-instrument-head"><span>ANALISADOR · WER</span><span>CENÁRIO DIDÁTICO</span></div>
       <div className="nexo-big-readout"><span>WER</span><strong>{reveal?fmt(val,2)+"%":"?"}</strong>{reveal&&<small>({s} + {d} + {i}) / {n} × 100</small>}</div>
       <div className="nexo-bars"><div><span>Palavras da referência (N)</span><div className="nexo-bar-track"><div style={{width:100*n/max+'%',background:'var(--qb-moonlight)'}}/></div><b>{n}</b></div>
@@ -102,10 +106,11 @@ function Wer({onPredictionMode}){
     {reveal&&<p className="nexo-explain">{val>100?'A WER ultrapassa 100%: as inserções elevam o numerador sem alterar o total de palavras de referência.':'A WER usa o total da referência no denominador, não o total da hipótese.'} Os controles simulam contagens de erros já alinhados; não medem uma transcrição real.</p>}
   </>}</NexoVisualTraining>;
 }
-function Diarization({onPredictionMode,onStageChange,onRevealChange}){
-  const [step,setStep]=React.useState(0);
+function Diarization({onPredictionMode,onStageChange,onRevealChange,guided}){
+  const [localStep,setStep]=React.useState(0);
+  const step=guided?.parameters.step??localStep;
   const spans=[[.08,.32,'A'],[.43,.68,'B'],[.77,.94,'A']];
-  return <NexoVisualTraining kind="diarization" parameters={{step}} onPredictionMode={onPredictionMode} onRevealChange={onRevealChange}>{({reveal})=><>
+  return <NexoVisualTraining kind="diarization" guided={guided} parameters={{step}} onPredictionMode={onPredictionMode} onRevealChange={onRevealChange}>{({reveal})=><>
     <Choice label="Etapa do pipeline clássico" values={[0,1,2,3,4]} value={step} onChange={v=>{if(v!==step){setStep(v);onStageChange?.(v);}}} format={v=>reveal?(v+1)+' · '+STAGES[v]:String(v+1)}/>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>DIARIZAÇÃO · SINAL SINTÉTICO</span><span>{reveal?STAGES[step]:'ETAPA '+(step+1)}</span></div>
       <svg viewBox="0 0 680 250" role="img" aria-label={'Demonstração didática da etapa '+(step+1)+' de cinco'}>
@@ -130,6 +135,7 @@ export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,
   const [stage,setStage]=React.useState(0);
   const [stageRevealed,setStageRevealed]=React.useState(false);
   const [associationContext,setAssociationContext]=React.useState(null);
+  const [guidedMode,setGuidedMode]=React.useState(false);
   const model=scoped.find(m=>m.id===modelId)||scoped[0];
   const Renderer=RENDERERS[model?.id];
   const stageContext=model?.id==='diarization'?diarizationStageContext(model.source,stage):null;
@@ -140,9 +146,9 @@ export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,
     {topicModels.length>0&&<label className="nexo-control">Conceito vinculado<select className="qb-input" value={nodeId||''} onChange={e=>onNodeChange?.(e.target.value||undefined)}><option value="">Todos os modelos deste assunto</option>{nodeId&&!topicModels.some(m=>m.sources.some(n=>n.id===nodeId))&&<option value={nodeId}>Conceito atual (sem modelo)</option>}{topicModels.flatMap(m=>m.sources).map(n=><option key={n.id} value={n.id}>{n.t}</option>)}</select></label>}
     {!contextual?<div className="nexo-exp-empty"><Icon name="astrolabe" size={42}/><h3>Nenhum modelo disponível neste recorte</h3><p>Não há modelo vinculado exatamente a {topicLabel||'este assunto'}{nodeId?' e ao conceito atual':''}. Nenhum modelo de outro tópico será exibido.</p></div>:<>
       <span className="qb-overline">{scoped.length} {scoped.length===1?'modelo vinculado':'modelos vinculados'}</span>
-      {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==model.id){setModelId(m.id);setPredictionMode(false);setStage(0);setStageRevealed(false);setAssociationContext(null);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
-      <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><Renderer key={model.id} onPredictionMode={v=>{setPredictionMode(v);setStageRevealed(false);}} onStageChange={v=>{setStage(v);setStageRevealed(false);}} onRevealChange={setStageRevealed} source={model.id==='dahl'?dahlSource:undefined} nodeId={nodeId} onAssociationContext={setAssociationContext}/></main>
-       {model.id==='dahl'&&associationContext?<aside className="nexo-exp-context" aria-live="polite"><span className="qb-overline">ASSOCIAÇÃO EM FOCO</span><h3>{associationContext.title}</h3>{associationContext.correction&&<strong>{associationContext.correction}</strong>}<p>{associationContext.detail}</p><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte do kit</strong><p>{associationContext.reference}</p></div></div></aside>:showStage?<aside className="nexo-exp-context" aria-live="polite" aria-label="Características da etapa selecionada"><span className="qb-overline">ETAPA {stageContext.stage} DE {stageContext.total} · EM FOCO</span><h3>{stageContext.title}</h3><p className="nexo-context-label">Função no pipeline</p><p>{stageContext.function}</p><div className="nexo-stage-facts"><div><span className="qb-overline">ENTRADA ILUSTRATIVA</span><p>{stageContext.input}</p></div><div><span className="qb-overline">SAÍDA ILUSTRATIVA</span><p>{stageContext.output}</p></div></div><div className="nexo-plot-feedback"><strong>O que observar</strong><p>{stageContext.association}</p></div><details><summary>Resumo geral da diarização</summary><p>{model.source.x.e}</p></details><details><summary>Armadilha do material</summary><p>{model.source.x.trap}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong><p>{stageContext.reference}</p><small>Trecho associado: {stageContext.anchor}. A descrição do desenho é didática; transformação visual sujeita a homologação.</small></div></div></aside>:predictionMode?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>Selecione e responda no modelo. A explicação correspondente aparece após a correção.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}<small>Kit aceito como base validada; representação sujeita a homologação.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
+      {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>{if(m.id!==model.id){setModelId(m.id);setGuidedMode(false);setPredictionMode(false);setStage(0);setStageRevealed(false);setAssociationContext(null);}}}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
+      <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><div className="qb-seg" role="group" aria-label="Percurso de aprendizagem"><button type="button" className="qb-seg__opt" aria-pressed={!guidedMode} onClick={()=>{setGuidedMode(false);setPredictionMode(false);setAssociationContext(null);}}>Consulta e treino</button><button type="button" className="qb-seg__opt" aria-pressed={guidedMode} onClick={()=>{setGuidedMode(true);setPredictionMode(false);setAssociationContext(null);}}>Percurso orientado</button></div>{guidedMode?<NexoGuidedCycle key={model.id} kind={model.id} nodeId={nodeId}>{guided=><Renderer guided={guided} source={model.id==='dahl'?dahlSource:undefined} nodeId={nodeId}/>}</NexoGuidedCycle>:<Renderer key={model.id} onPredictionMode={v=>{setPredictionMode(v);setStageRevealed(false);}} onStageChange={v=>{setStage(v);setStageRevealed(false);}} onRevealChange={setStageRevealed} source={model.id==='dahl'?dahlSource:undefined} nodeId={nodeId} onAssociationContext={setAssociationContext}/>}</main>
+       {guidedMode?<aside className="nexo-exp-context"><span className="qb-overline">PERCURSO ORIENTADO</span><p>O modelo acompanha o cenário de cada etapa. A teoria e as respostas de referência aparecem no momento da correção. A recuperação e a aplicação final são realizadas sem o gráfico.</p><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte do percurso</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}</div></div></aside>:model.id==='dahl'&&associationContext?<aside className="nexo-exp-context" aria-live="polite"><span className="qb-overline">ASSOCIAÇÃO EM FOCO</span><h3>{associationContext.title}</h3>{associationContext.correction&&<strong>{associationContext.correction}</strong>}<p>{associationContext.detail}</p><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte do kit</strong><p>{associationContext.reference}</p></div></div></aside>:showStage?<aside className="nexo-exp-context" aria-live="polite" aria-label="Características da etapa selecionada"><span className="qb-overline">ETAPA {stageContext.stage} DE {stageContext.total} · EM FOCO</span><h3>{stageContext.title}</h3><p className="nexo-context-label">Função no pipeline</p><p>{stageContext.function}</p><div className="nexo-stage-facts"><div><span className="qb-overline">ENTRADA ILUSTRATIVA</span><p>{stageContext.input}</p></div><div><span className="qb-overline">SAÍDA ILUSTRATIVA</span><p>{stageContext.output}</p></div></div><div className="nexo-plot-feedback"><strong>O que observar</strong><p>{stageContext.association}</p></div><details><summary>Resumo geral da diarização</summary><p>{model.source.x.e}</p></details><details><summary>Armadilha do material</summary><p>{model.source.x.trap}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong><p>{stageContext.reference}</p><small>Trecho associado: {stageContext.anchor}. A descrição do desenho é didática; transformação visual sujeita a homologação.</small></div></div></aside>:predictionMode?<aside className="nexo-exp-context"><span className="qb-overline">MODO PREDIÇÃO</span><p>Selecione e responda no modelo. A explicação correspondente aparece após a correção.</p></aside>:<aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong>{model.sources.map(n=><p key={n.id}>{n.x.src}</p>)}<small>Kit aceito como base validada; representação sujeita a homologação.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside>}</div>
     </>}
     
     <footer className="nexo-exp-footer"><Icon name="lock" size={15}/><span>Geração contextual pelo Arquiteto e novos modelos dependem de validação e integração posteriores. A evocação permanece reservada ao mapa mental original.</span></footer>

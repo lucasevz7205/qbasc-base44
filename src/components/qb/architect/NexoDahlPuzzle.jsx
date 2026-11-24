@@ -2,7 +2,7 @@ import React from 'react';
 import {dahlPuzzle,REGIMES,TRAJECTORIES,dahlContext,DAHL_NODES} from '@/lib/nexo/dahl-puzzle';
 import NexoAssociationPuzzle from './NexoAssociationPuzzle';
 const stages=['Eixos','Regimes','Características','Trajetórias'];
-export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssociationContext}){
+export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssociationContext,guided}){
   const [mode,setMode]=React.useState('explore');
   const allowed=nodeId===DAHL_NODES[0]?[0]:nodeId===DAHL_NODES[1]?[1]:nodeId===DAHL_NODES[2]?[2]:nodeId===DAHL_NODES[3]?[3]:[0,1,2,3];
   const [stage,setStage]=React.useState(allowed[0]);
@@ -22,6 +22,7 @@ export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssocia
     onAssociationContext?.({title:check.correct?'Encaixe correto':'Reveja a associação',detail:check.explanation,correction:expected.label,reference:(stage===0?source.axis:stage===3?source.trajectory:source.matrix).x.src});
   };
   const t=TRAJECTORIES[scenario];
+  if(guided)return <div className="nexo-instrument" data-nexo-live-graph><div className="nexo-instrument-head"><span>DIAGRAMA DE DAHL</span><span>↑ Contestação · Inclusividade →</span></div><div className="nexo-trajectory-map" style={{padding:12}}>{REGIMES.map(r=><div key={r.id} className="nexo-trajectory-cell" data-origin={guided.parameters.regime===r.id}><small>{r.description}</small>{guided.parameters.regime===r.id?<strong>{guided.reveal?r.label:'Estado atual'}</strong>:guided.reveal?r.label:'·'}</div>)}</div><p style={{padding:12}}>Dimensões qualitativas; o marcador representa um tipo puro hipotético.</p></div>;
   return <div className="nexo-training">
     <div className="qb-seg" role="group" aria-label="Modo de aprendizagem">{[['explore','Exploração livre'],['train','Treino de encaixe']].map(([v,label])=><button key={v} type="button" className="qb-seg__opt" aria-pressed={mode===v} onClick={()=>{if(mode!==v){setMode(v);clear();onPredictionMode?.(v==='train');}}}>{label}</button>)}</div>
     <div className="qb-seg" role="group" aria-label="Atividade">{stages.map((label,i)=>allowed.includes(i)&&<button key={label} type="button" className="qb-seg__opt" aria-pressed={stage===i} onClick={()=>{if(stage!==i){setStage(i);clear();}}}>{i+1} · {label}</button>)}</div>
