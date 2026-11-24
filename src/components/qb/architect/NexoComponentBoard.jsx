@@ -10,7 +10,7 @@ export default function NexoComponentBoard({model,selected,onSelect,reveal=true,
  const visible=id=>!isolated||id===selected||focus?.neighbors.includes(id);
  const links=model.edges.map(([from,to])=>({from:model.parts.find(p=>p.id===from),to:model.parts.find(p=>p.id===to)}));
  return <div className="nexo-instrument nexo-component-instrument" data-nexo-component-board={model.id}>
-  <div className="nexo-instrument-head"><span>ARQUITETURA MODULAR · ANATOMY</span><span>ESQUEMA LÓGICO 2D</span></div>
+  <div className="nexo-instrument-head"><span>ARQUITETURA MODULAR · ESQUEMA FUNCIONAL</span><span>ESQUEMA LÓGICO 2D</span></div>
   <div className="nexo-component-toolbar"><button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" aria-pressed={isolated} onClick={()=>setIsolated(v=>!v)} disabled={locked||!focus}>{isolated?'Mostrar sistema inteiro':'Isolar componente e conexões'}</button><small>Selecione um bloco para consultar sua função.</small></div>
   <div className="nexo-component-board" role="group" aria-label="Cinco componentes lógicos e suas conexões">
    <svg viewBox="0 0 700 380" aria-hidden="true" preserveAspectRatio="none">

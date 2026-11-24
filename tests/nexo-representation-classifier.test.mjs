@@ -12,7 +12,7 @@ test('each curated descriptor has exact original node, source bytes and excerpt'
     assert.equal(m.topico,p.topicId);assert.equal(n.x.e,s.text);assert.equal(p.version,'sha256:'+createHash('sha256').update(bytes).digest('hex'));assert.equal(classifyRepresentation(p,s).status,'recommendation');}
 });
 test('classifier routes all pilot objectives to intended formats, without permission to publish',()=>{
-  const expected=['simulation','simulation','chart','timeline','chart','chart','anatomy','chart','timeline','comparison','text'];
+  const expected=['simulation','simulation','chart','timeline','chart','chart','architecture','chart','timeline','comparison','text'];
   assert.deepEqual(profiles.map(p=>classifyRepresentation(p,source(p)).kind),expected);
   for(const p of profiles)assert.equal(classifyRepresentation(p,source(p)).publicationAllowed,false);
 });

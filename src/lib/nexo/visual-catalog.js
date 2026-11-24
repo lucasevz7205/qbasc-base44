@@ -1,9 +1,11 @@
 // Explicit exact topic and node bindings, no prefix matching or inherited topic content.
 const root='kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-';
 import {DAHL_NODES} from './dahl-puzzle.js';
+import {STROBE_NODE} from './strobe-anatomy.js';
 import {ASR_NODE} from './anatomy-model.js';
 const asr='kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-';
 export const VISUAL_BINDINGS=Object.freeze([
+  {subjectId:'rf',topicId:'rf-1',modelId:'strobe',nodeId:STROBE_NODE},
   {subjectId:'rf',topicId:'rf-1-1',modelId:'asr',nodeId:ASR_NODE},
   ...DAHL_NODES.map(nodeId=>({subjectId:'cp',topicId:'cp-1',modelId:'dahl',nodeId})),
   {subjectId:'rf',topicId:'rf-1',modelId:'sampling',nodeId:root+'r1.1'},

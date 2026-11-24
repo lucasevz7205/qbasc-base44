@@ -1,4 +1,5 @@
 import {sampleSignal,quantize,wer} from './experiments.js';
+import {strobeExercise} from './strobe-anatomy.js';
 import {asrExercise} from './anatomy-model.js';
 export const STAGES=Object.freeze(['VAD','Segmentação','Embeddings','Agrupamento','Ressegmentação']);
 const classification={below:'Abaixo do limite',boundary:'Exatamente no limite',above:'Acima do limite'};
@@ -6,6 +7,7 @@ const number=(id,label,expected,unit='',digits=0)=>({id,label,expected,unit,digi
 const choice=(id,label,expected,options)=>({id,label,expected,options,type:'choice'});
 const round=(n,d)=>Number(n.toFixed(d));
 export function visualExercise(kind,p){
+  if(kind==='strobe')return strobeExercise(p);
   if(kind==='asr')return asrExercise(p);
   if(kind==='sampling'){
     const d=sampleSignal(p.frequency,p.rate);

@@ -40,3 +40,4 @@
 .nexo-component-instrument{container-type:inline-size}
 @container(max-width:580px){.nexo-component-board{display:none}.nexo-component-mobile{display:grid}.nexo-component-toolbar button{display:none}}
 @media(prefers-reduced-motion:reduce){.nexo-component-part,.nexo-component-mobile-part{transition:none!important;animation:none!important}}
+.nexo-strobe-canvas{width:100%;min-height:250px;background:radial-gradient(ellipse at 50% 55%,#243c56,#101c2d);overflow:hidden}.nexo-strobe-canvas canvas{display:block;max-width:100%;cursor:pointer}
