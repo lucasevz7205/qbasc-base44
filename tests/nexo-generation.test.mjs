@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {URL} from "node:url";
 import {generationSources,extractExplicitPairs,validateGeneration,generateAssociation,sourceVersion} from '../src/lib/nexo/generation.js';
 import {evaluatePuzzle} from '../src/lib/nexo/association-puzzle.js';
 const path='../../data/kits/da/da-8-1/mapa.json',kit=JSON.parse(fs.readFileSync(new URL('../src/data/kits/da/da-8-1/mapa.json',import.meta.url)));

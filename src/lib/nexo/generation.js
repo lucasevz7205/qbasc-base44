@@ -68,6 +68,7 @@ export function validateGeneration(source,raw){
 }
 export async function generateAssociation(source,{provider='local',invoke}={}){
  if(!source)return {status:'blocked',reason:'Nó exato não encontrado.',publicationAllowed:false};
+ if(!['local','base44','gemini'].includes(provider))return {status:'blocked',reason:'Provedor não autorizado.',publicationAllowed:false};
  const raw=provider==='local'?extractExplicitPairs(source):await invoke({prompt:generationPrompt(source),schema:GENERATION_SCHEMA});
  return {...validateGeneration(source,raw),scope:{subjectId:source.subjectId,topicId:source.topicId,nodeId:source.nodeId},sourceVersion:await sourceVersion(source),reference:source.reference,provider,version:GENERATION_VERSION};
 }

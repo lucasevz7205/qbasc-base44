@@ -47,14 +47,13 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId}){
   {source&&<p className="nexo-explain">{source.reference}</p>}
   {!candidate&&<><p>Sem encaixe automático suficiente? Solicite ao Arquiteto uma proposta restrita às relações literais deste nó.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
   {busy&&<p role="status">Preparando proposta a partir do kit…</p>}{message&&<p role="alert">{message}</p>}
-  {puzzle&&<><div className="nexo-instrument-head"><span>{candidate.provider==='local'?'Extração automática sem IA':candidate.provider==='base44'?'Proposta Base44':'Proposta Gemini'}</span><span>PREVIEW · NÃO PUBLICADA</span></div>
+  {puzzle&&<div className="nexo-exp-workbench"><main className="nexo-exp-main"><div className="nexo-instrument-head"><span>{candidate.provider==='local'?'Extração automática sem IA':candidate.provider==='base44'?'Proposta Base44':'Proposta Gemini'}</span><span>PREVIEW · NÃO PUBLICADA</span></div>
    {!approved?<><p>Confira se os encaixes e as condições estão corretos. A correspondência literal não comprova a correção semântica.</p><NexoAssociationPuzzle key={candidate.sourceVersion+'review'} puzzle={puzzle} mode="explore" onFocus={show}/><details><summary>Remissões exatas</summary>{candidate.pairs.map((p,i)=><p key={i}>{p.evidence}</p>)}<small>{candidate.sourceVersion}</small></details><button type="button" className="qb-btn qb-btn--secondary" onClick={()=>{setApproved(true);setFocus(null);}}>Aceitar para testar nesta sessão</button></>:<>
     <div className="qb-seg" role="group" aria-label="Modo da atividade"><button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>{setMode('explore');setFocus(null);}}>Exploração livre</button><button type="button" className="qb-seg__opt" aria-pressed={mode==='train'} onClick={()=>{setMode('train');setFocus(null);}}>Treino de encaixe</button></div>
     <NexoAssociationPuzzle key={candidate.sourceVersion+mode} puzzle={puzzle} mode={mode} onFocus={id=>{if(mode==='explore')show(id);else setFocus(null);}} onFeedback={c=>{if(mode==='train'&&c)setFocus({title:c.correct?'Encaixe correto':'Reveja o encaixe',detail:c.explanation});}}/>
    </>}
-   {focus&&<div className="nexo-stage-facts" aria-live="polite"><div><strong>{focus.title}</strong><p>{focus.detail}</p><small>{source.reference}</small></div></div>}
    <small>Prévia temporária. Não salva resultados nem aprova conteúdo para publicação. O percurso completo e outros renderizadores gerados ainda estão pendentes.</small>
    <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={clear}>Descartar proposta</button>
-  </>}
+  </main><aside className="nexo-exp-context" aria-live="polite"><span className="qb-overline">EXPLICAÇÃO CONTEXTUAL</span>{focus?<><h3>{focus.title}</h3><p>{focus.detail}</p></>:<p>Selecione um encaixe para consultar a explicação. No treino, a explicação só aparece após a tentativa.</p>}<small>{source.reference}</small></aside></div>}
  </section>;
 }
