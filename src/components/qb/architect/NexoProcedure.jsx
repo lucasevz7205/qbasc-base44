@@ -10,7 +10,7 @@ export default function NexoProcedure({candidate,mode,onFocus}){
  const reveal=mode==='explore'||checked||!model;
  const evidence=model?(route.inverted?model.exception.text:model.order.text):'';
  const puzzle=model?procedurePuzzle(route.steps,evidence):candidate.puzzle;
- const stateKey=JSON.stringify([motivated,notice,requestInversion,mode]);
+ const stateKey=JSON.stringify([motivated,notice,requestInversion,mode,prediction]);
  const change=(set,value)=>{set(value);setPrediction('');setChecked(false);setFocus(null);onFocus?.(null);};
  const show=id=>{const slot=puzzle.slots.find(s=>s.id===id);setFocus(id);if(mode==='explore')onFocus?.(slot?{title:slot.label,detail:slot.explanation,reference:route?.reference||candidate.reference}:null);};
  return <div className="nexo-procedure">

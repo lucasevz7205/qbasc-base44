@@ -25,7 +25,7 @@ test('all eight scenarios preserve seven phases; both conditions permit but do n
  }
 });
 test('changed exception or order fails closed; wrong scope and unregistered recipe rejected',()=>{
- const changed=structuredClone(kit);changed.ramos.find(n=>n.id==='r4').f.find(n=>n.id==='r4.2').x.e='Alterado';
+ const changed=JSON.parse(JSON.stringify(kit));changed.ramos.find(n=>n.id==='r4').f.find(n=>n.id==='r4.2').x.e='Alterado';
  assert.equal(procurementProcedure(changed),null);
  assert.equal(buildContextual({...source,procedure:undefined},{kind:'procedure'}).status,'blocked');
  assert.equal(buildContextual(source,{kind:'procedure',code:'x'}).status,'blocked');
