@@ -22,19 +22,26 @@ export function resolveEffectiveSource(rows,id){
 export function effectiveGenerationSources(data,subjectId,topicId,central=[],nodeId){
  if(!data?.studySubjects?.some(s=>s.id===subjectId&&s.topics?.some(t=>t.id===topicId)))return [];
  const map=data.mindMaps?.filter(m=>m.topicId===topicId&&m.subjectId===subjectId)||[];
- if(map.length!==1)return [];
- const m=map[0],nodes=m.nodes||[],counts=new Map();
+ if(!map.length)return [];
+ const nodes=map.flatMap(m=>m.nodes||[]),counts=new Map(),mapByNode=new Map();
+ for(const m of map)for(const n of m.nodes||[])mapByNode.set(n.id,m);
  for(const n of nodes){const k=data.concepts?.[n.id]?.nexo?.rawId;if(k)counts.set(k,(counts.get(k)||0)+1);}
  const out=[];
  for(const n of nodes){
-  const d=data.concepts?.[n.id]?.nexo;
-  if(!good(d?.summary)||!good(n.label,300)||!good(n.id,250))continue;
+  const m=mapByNode.get(n.id),d=data.concepts?.[n.id]?.nexo;
+  if(!good(d?.summary)||!good(n.label,300)||!good(n.id,250)||nodes.filter(c=>c.id===n.id).length!==1)continue;
   const raw=d.rawId&&counts.get(d.rawId)===1?d.rawId:null;
-  // Only a currently visible, unmodified central node may inherit its curated contract.
-  const original=d.central&&raw?central.find(s=>s.nodeId===raw&&s.lines[0]===d.summary&&s.reference===d.direct):null;
+  // A stored copy may reuse a reviewed contract only if its current source is identical.
+  let original=raw?central.find(s=>s.nodeId===raw&&s.lines[0]===d.summary&&s.reference===d.direct&&JSON.stringify(s.lines.slice(1))===JSON.stringify(d.extraLines)&&JSON.stringify(s.table||null)===JSON.stringify(d.table||null)):null;
+  if(original?.procedure){
+   const p=original.procedure;
+   const child=id=>nodes.filter(c=>c.parent===n.id&&data.concepts?.[c.id]?.nexo?.rawId===id);
+   const order=child(p.order.nodeId),exception=child(p.exception.nodeId);
+   if(order.length!==1||exception.length!==1||data.concepts[order[0].id].nexo.summary!==p.order.text||data.concepts[exception[0].id].nexo.summary!==p.exception.text||data.concepts[exception[0].id].nexo.direct!==p.exception.reference)original=null;
+  }
   const reference=d.direct|| (d.general?'Referências gerais do mapa: '+d.general:'Mapa de estudo '+m.title+' · nó '+n.label+' (sem referência bibliográfica individual)');
   const base={subjectId,topicId,nodeId:n.id,mapNodeId:n.id,legacyNodeId:raw,title:n.label,reference,lines:[d.summary,...d.extraLines],sourcePath:'mapa-efetivo:'+m.id,referenceLevel:d.direct?'node':d.general?'map':'internal',...(d.table?{table:d.table}:{})};
-  if(original)out.push({...original,mapNodeId:n.id,legacyNodeId:raw,referenceLevel:'node',central:true});
+  if(original)out.push({...original,mapNodeId:n.id,legacyNodeId:raw,sourcePath:base.sourcePath,referenceLevel:'node',central:true,origin:d.central?'kit':'mapa-armazenado'});
   else out.push(base);
  }
  // Do not expose obsolete aliases or duplicate node ids.

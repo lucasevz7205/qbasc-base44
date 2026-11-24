@@ -31,7 +31,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
  // Local generation is automatic on selection, only explicit structured source relations.
  React.useEffect(()=>{
   if(!source)return;
-  const request=++seq.current;
+  const request=++seq.current;setCandidate(null);setApproved(false);setFocus(null);setPlan(null);setBusy(false);
   generateContextual(source,pilot,{column:column??undefined}).then(r=>{if(seq.current===request){setCandidate(r.status==='candidate'?r:null);setApproved(false);setFocus(null);setPlan(r.plan||null);}}).catch(()=>{if(seq.current===request)setMessage('Não foi possível preparar a prévia local.');});
  },[source,column]);
  async function run(provider){
@@ -62,7 +62,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
   {source&&<p className="nexo-explain">{source.reference}</p>}
   {plan&&<div><p><strong>Indicação do Arquiteto:</strong> {plan.label}. {plan.reason}</p><p>{plan.objective}</p><details><summary>Fundamentação do parecer</summary>{plan.evidence.map((e,i)=><p key={i}>{e}</p>)}<small>{plan.method} · {source?.reference}</small></details></div>}
   {candidate?.kind==='matrix'&&<label className="nexo-control">Critério da matriz<select className="qb-input" value={candidate.recipe.column} onChange={e=>{clear();setColumn(Number(e.target.value));}}>{availableColumns(source).map(i=><option key={i} value={i}>{source.table.headers[i]}</option>)}</select></label>}
-  {!candidate&&<><p>Sem representação automática suficiente? Solicite ao Arquiteto uma seleção semântica entre os formatos disponíveis, com abstenção se necessário.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
+  {!candidate&&<><p>Solicite uma análise semântica do Arquiteto. Ele pode recomendar um formato, criar uma atividade fundamentada ou explicar por que uma representação não é adequada.</p><div className="qb-seg" role="group" aria-label="Provedor de geração"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('base44')}>Gerar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('gemini')}>Gerar com Gemini (cota da chave)</button></div></>}
   {candidate&&!approved&&<details><summary>Consultar seleção semântica do Arquiteto</summary><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("base44")}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run("gemini")}>Analisar com Gemini (cota)</button></details>}
   {busy&&<p role="status">Preparando proposta a partir do kit…</p>}{message&&<p role="alert">{message}</p>}
   {puzzle&&<div className="nexo-exp-workbench"><main className="nexo-exp-main"><div className="nexo-instrument-head"><span>{candidate.provider==='local'?'Extração automática sem IA':candidate.provider==='base44'?'Proposta Base44':'Proposta Gemini'}</span><span>PREVIEW · NÃO PUBLICADA</span></div>
