@@ -4,7 +4,7 @@ import { Tabs } from '@/components/qb/navigation/Tabs';
 import { SocraticChat } from '@/components/qb/architect/SocraticChat';
 import { FeynmanLab } from '@/components/qb/architect/FeynmanLab';
 import { CornellNotebook } from '@/components/qb/architect/CornellNotebook';
-import { ScannerFlashcards } from '@/components/qb/architect/ScannerFlashcards';
+import { NexoVisualLab } from '@/components/qb/architect/NexoVisualLab';
 import StudyClock from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { useAuth } from '@/lib/AuthContext';
@@ -14,7 +14,7 @@ const TOOLS = [
   { id: 'socratico', label: 'Tutor Socrático', icon: 'message-circle' },
   { id: 'feynman', label: 'Laboratório Feynman', icon: 'lightbulb' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
-  { id: 'cards', label: 'Flashcards 3D e Scanner', icon: 'layers' },
+  { id: 'cards', label: 'Laboratório Visual', icon: 'network' },
   { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
 ];
 
@@ -22,7 +22,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[0], label: 'Perguntar' },
   { ...TOOLS[1], label: 'Feynman' },
   { ...TOOLS[2], label: 'Cornell' },
-  { ...TOOLS[3], label: 'Flashcards' },
+  { ...TOOLS[3], label: 'Visual' },
   { ...TOOLS[4], label: 'Sessão' },
 ];
 
@@ -75,7 +75,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           {!dock && !clockOnly && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
         {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
-        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Base44' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards'}><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Base44' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e laboratório visual'}><Icon name="sparkles" size={13} />IA Ativa</span>}
         {onClose && (dock
           ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
@@ -89,7 +89,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={changeTopic} />}
-        {tool === 'cards' && <ScannerFlashcards key={topic?.id} topicId={topic?.id} topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} />}
+        {tool === 'cards' && <NexoVisualLab key={topic?.id} subjects={subjects} topicId={topic?.id} topicLabel={tLabel} nodeId={context.nodeId} onTopicChange={changeTopic} />}
         {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>
