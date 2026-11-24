@@ -7,6 +7,8 @@ export default function NexoVisualTraining({kind,parameters,onPredictionMode,chi
   const key=scenarioKey(kind,parameters);
   const [attempt,setAttempt]=React.useState({key,answers:{},result:null});
   const current=attempt.key===key?attempt:{key,answers:{},result:null};
+  // Reset permanently on every scenario change, including returning to an earlier scenario.
+  if(attempt.key!==key)setAttempt(current);
   const exercise=visualExercise(kind,parameters);
   const reveal=mode==='explore'||Boolean(current.result&&current.result.status!=='incomplete');
   const clear=()=>setAttempt({key,answers:{},result:null});
