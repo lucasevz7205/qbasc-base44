@@ -20,19 +20,19 @@ const stubs = {
     };
   };`,
   "@/lib/auth-middleware": "export const requireUser = Symbol('requireUser');",
-  "@/lib/study-accounts": "export const requireArchitectAccess=async()=>null; export const prepareGanSourcePassages=async()=>[]; export const saveAutoApprovedMapGan=async()=>{}; export const preparePersonalMapGan=async()=>{}; export const preparePersonalQuestionEditorial=async()=>{};",
+  "@/lib/study-accounts": "export const prepareNexoTopicSources=async()=>globalThis.nexoTestSources||[]; export const requireArchitectAccess=async()=>null; export const prepareGanSourcePassages=async()=>[]; export const saveAutoApprovedMapGan=async()=>{}; export const preparePersonalMapGan=async()=>{}; export const preparePersonalQuestionEditorial=async()=>{};",
   "base44:runtime": "export const secrets={get(name){return globalThis.routerTestSecrets[name];}};",
 };
 
 const { outputFiles } = await build({
   bundle: true, write: false, platform: "node", format: "esm",
-  stdin: { contents: "export { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect } from './src/lib/server-fns.js';", resolveDir: process.cwd() },
+  stdin: { contents: "export { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation } from './src/lib/server-fns.js';", resolveDir: process.cwd() },
   plugins: [{ name: "router-test-runtime", setup(builder) {
     builder.onResolve({ filter: /.*/ }, ({ path }) => Object.hasOwn(stubs, path) ? { path, namespace: "stub" } : undefined);
     builder.onLoad({ filter: /.*/, namespace: "stub" }, ({ path }) => ({ contents: stubs[path], loader: "js" }));
   } }],
 });
-const { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect } =
+const { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation } =
   await import("data:text/javascript;base64," + Buffer.from(outputFiles[0].contents).toString("base64"));
 
 // Uma chave por cenário: o cache de models.list é indexado pela impressão digital da chave.
@@ -99,4 +99,20 @@ test("status do administrador traz disponibilidade sem a chave; registros são s
   const summary = await getArchitectModelTelemetry({ context: admin(() => {}) });
   assert.equal(summary.scope, "instancia-atual");
   assert.ok(!JSON.stringify(summary).includes(KEY));
+});
+
+test("NEXO server checks current source before calling semantic provider and returns grounded recommendation", async t => {
+  const {sourceVersion}=await import("../src/lib/nexo/generation.js");
+  const source={subjectId:"ti",topicId:"ti-4",nodeId:"node-1",title:"Conceito de teste",reference:"Fonte de teste",lines:["O conteúdo descreve uma relação funcional."]};
+  globalThis.nexoTestSources=[source];
+  const decision={kind:"recommendation",column:-1,pairs:[],reason:"Representação funcional adequada.",modality:"architecture",evidence:source.lines[0],objective:"Compreender a relação funcional."};
+  const provider=t.mock.fn(async ()=>decision);
+  const data={subjectId:source.subjectId,topicId:source.topicId,nodeId:source.nodeId,sourceVersion:await sourceVersion(source),provider:"base44"};
+  await assert.rejects(generateNexoAssociation({context:{},data}),/Sessão obrigatória/);
+  await assert.rejects(generateNexoAssociation({context:{user:{role:"user"}},data}),/restrita/);
+  const stale=await generateNexoAssociation({context:admin(provider),data:{...data,sourceVersion:"sha256:"+"0".repeat(64)}});
+  assert.equal(stale.status,"blocked");assert.equal(provider.mock.callCount(),0);
+  const result=await generateNexoAssociation({context:admin(provider),data});
+  assert.equal(result.status,"recommended");assert.equal(result.plan.kind,"architecture");assert.equal(result.provider,"base44");assert.equal(provider.mock.callCount(),1);
+  globalThis.nexoTestSources=[];
 });
