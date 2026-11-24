@@ -1,10 +1,12 @@
 import {sampleSignal,quantize,wer} from './experiments.js';
+import {asrExercise} from './anatomy-model.js';
 export const STAGES=Object.freeze(['VAD','Segmentação','Embeddings','Agrupamento','Ressegmentação']);
 const classification={below:'Abaixo do limite',boundary:'Exatamente no limite',above:'Acima do limite'};
 const number=(id,label,expected,unit='',digits=0)=>({id,label,expected,unit,digits,type:'number'});
 const choice=(id,label,expected,options)=>({id,label,expected,options,type:'choice'});
 const round=(n,d)=>Number(n.toFixed(d));
 export function visualExercise(kind,p){
+  if(kind==='asr')return asrExercise(p);
   if(kind==='sampling'){
     const d=sampleSignal(p.frequency,p.rate);
     return {fields:[number('nyquist','Limite de Nyquist',d.nyquist/1000,'kHz',2),choice('classification','Posição do sinal',d.classification,classification),number('alias','Frequência dobrada teórica',d.alias/1000,'kHz',2)],explanation:d.classification==='above'?'A senoide equivalente coincide com as amostras: há aliasing.':d.classification==='boundary'?'Nesta senoide de fase zero, as amostras são nulas; a recuperação não é garantida.':'O sinal está abaixo do limite de Nyquist.'};
