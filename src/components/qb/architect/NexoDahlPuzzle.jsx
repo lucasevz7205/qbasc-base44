@@ -4,7 +4,7 @@ import NexoAssociationPuzzle from './NexoAssociationPuzzle';
 const stages=['Eixos','Regimes','Características','Trajetórias'];
 export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssociationContext}){
   const [mode,setMode]=React.useState('explore');
-  const allowed=nodeId===DAHL_NODES[0]?[0]:nodeId===DAHL_NODES[2]?[2]:nodeId===DAHL_NODES[3]?[3]:[0,1,2,3];
+  const allowed=nodeId===DAHL_NODES[0]?[0]:nodeId===DAHL_NODES[1]?[1]:nodeId===DAHL_NODES[2]?[2]:nodeId===DAHL_NODES[3]?[3]:[0,1,2,3];
   const [stage,setStage]=React.useState(allowed[0]);
   const [scenario,setScenario]=React.useState(0);
   const puzzle=dahlPuzzle(stage,scenario);
@@ -29,8 +29,8 @@ export default function NexoDahlPuzzle({source,nodeId,onPredictionMode,onAssocia
       <div className="nexo-instrument-head"><span>DIAGRAMA DE DAHL</span><span>DIMENSÕES QUALITATIVAS</span></div>
       {stage===3&&<div className="nexo-trajectory-control"><span>Trajetória {scenario+1} de {TRAJECTORIES.length}</span><button className="qb-btn qb-btn--secondary qb-btn--sm" type="button" onClick={()=>{setScenario((scenario+1)%TRAJECTORIES.length);clear();}}>Outra trajetória</button></div>}
       <NexoAssociationPuzzle key={mode+':'+puzzle.id} puzzle={puzzle} mode={mode} onFocus={onFocus} onFeedback={onFeedback}
-        boardHeader={stage===3?<div className="nexo-trajectory-map" role="img" aria-label="Diagrama: origem e sentido da mudança">
-          {REGIMES.map(r=><div key={r.id} className="nexo-trajectory-cell" data-origin={r.id===t.from} data-destination={mode==='explore'&&r.id===t.to}>{r.id===t.from?r.label:mode==='explore'&&r.id===t.to?r.label:'·'}{r.id===t.from&&<strong>{t.direction==='up'?' ↑':' →'}</strong>}</div>)}
+        boardHeader={stage===3?({placements,result})=><div className="nexo-trajectory-map" role="img" aria-label="Diagrama: origem e sentido da mudança">
+          {REGIMES.map(r=><div key={r.id} className="nexo-trajectory-cell" data-origin={r.id===t.from} data-destination={(mode==='explore'||result.status==='correct')&&r.id===t.to} data-wrong={mode==='train'&&result.status==='incorrect'&&r.id===placements.destination}>{r.id===t.from?r.label:(mode==='explore'||result.status==='correct')&&r.id===t.to?r.label:mode==='train'&&result.status==='incorrect'&&r.id===placements.destination?r.label:'·'}{r.id===t.from&&<strong>{t.direction==='up'?' ↑':' →'}</strong>}</div>)}
         </div>:stage===0?<p className="nexo-axis-heading">↑ Eixo vertical · → Eixo horizontal</p>:<div className="nexo-axis-heading">↑ Contestação pública · maior no topo</div>}
         boardFooter={stage===1||stage===2?<div className="nexo-axis-heading">Inclusividade · maior à direita →</div>:null}/>
     </div>

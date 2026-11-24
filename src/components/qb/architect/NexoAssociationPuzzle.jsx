@@ -19,7 +19,7 @@ export default function NexoAssociationPuzzle({puzzle,mode,onFocus,onFeedback,bo
   const used=new Set(Object.values(placements));
   return <div className="nexo-association" data-nexo-puzzle={puzzle.id}>
     <p>{mode==='train'?puzzle.instruction:'Selecione um encaixe para consultar a explicação correspondente.'}</p>
-    {boardHeader}
+    {typeof boardHeader==='function'?boardHeader({placements,result}):boardHeader}
     <div className={'nexo-puzzle-board nexo-puzzle-'+puzzle.layout} role="group" aria-label="Tabuleiro de associações">
       {puzzle.slots.map(slot=>{
         const check=result.checks.find(c=>c.slotId===slot.id);
