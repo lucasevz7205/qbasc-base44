@@ -3,6 +3,7 @@ import {Icon} from '@/components/qb/core/Icon';
 import {scopedRecommendations} from '@/lib/nexo/representation-classifier';
 import pilot from '@/lib/nexo/representation-pilot.json';
 import {VISUAL_BINDINGS} from '@/lib/nexo/visual-catalog';
+import {representationEvidence} from '@/lib/nexo/representation-evidence';
 export default function NexoRepresentationReview({subjects,subjectId,topicId,nodeId}){
   const rows=scopedRecommendations({subjects,subjectId,topicId,nodeId},pilot.profiles,pilot.sources);
   const [selection,setSelection]=React.useState('');
@@ -26,7 +27,8 @@ export default function NexoRepresentationReview({subjects,subjectId,topicId,nod
           <p><strong>Limites: </strong>{r.limits}</p>
           <details><summary>Alternativas não prioritárias</summary>{r.alternatives.map(a=><p key={a.kind}><strong>{a.label}: </strong>{a.reason}</p>)}</details>
           <details><summary>Trecho e referência do kit</summary><p>{r.evidence}</p><p>{r.reference}</p><small>{r.version}</small></details>
-          <p>Descritores curados para este piloto, não extraídos automaticamente por IA. Conferência primária pendente.</p>
+          <details><summary>Fundamentação pedagógica e limites da evidência</summary>{representationEvidence(r.kind).map(ref=><div key={ref.id} style={{marginTop:10}}><a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.title}</a><p>{ref.application}</p><small>{ref.limit}</small></div>)}</details>
+          <p>Descritores curados para este piloto, não extraídos automaticamente por IA. A correspondência literal do trecho não é validação semântica. Conferência primária pendente. A recomendação não comprova eficácia pedagógica.</p>
         </>}
       </div>}
     </>}
