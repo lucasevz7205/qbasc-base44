@@ -4,6 +4,7 @@ import StudyTopicPicker from '@/components/qb/study/StudyTopicPicker';
 import rfKit from '@/data/kits/rf/rf-1/mapa.json';
 import {sampleSignal,signal,quantize,wer} from '@/lib/nexo/experiments';
 import './nexo-experiments.css';
+import NexoPedagogyReview from './NexoPedagogyReview';
 
 const prefix='kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-';
 const nodes=new Map();
@@ -127,6 +128,7 @@ export default function NexoVisualLab({subjects=[],topicId,topicLabel,nodeId,onT
       <div className="nexo-exp-workbench"><main className="nexo-exp-main"><div><span className="qb-overline">{model.type}</span><h3>{model.title}</h3><p>{model.desc}</p></div><Renderer key={model.id}/></main>
       <aside className="nexo-exp-context"><span className="qb-overline">CADERNO DE REFERÊNCIA</span><h3>{model.source.t}</h3><p className="nexo-context-label">Extraído do kit existente</p><p>{model.source.x.e}</p><details><summary>Exemplo do material</summary><p>{model.source.x.ex||'Não registrado no nó.'}</p></details><details><summary>Armadilha indicada pelo material</summary><p>{model.source.x.trap||'Não registrada no nó.'}</p></details><div className="nexo-exp-source"><Icon name="book-open" size={17}/><div><strong>Fonte registrada</strong><p>{model.source.x.src}</p><small>Referência do kit, conferência primária pendente.</small></div></div><p className="nexo-exp-limit"><Icon name="info" size={15}/>Modelo de demonstração. Dados calculados ou contagens didáticas, não medições nem desempenho. Nada é salvo.</p></aside></div>
     </>}
+    {contextual && <NexoPedagogyReview />}
     <footer className="nexo-exp-footer"><Icon name="lock" size={15}/><span>Geração contextual pelo Arquiteto e novos modelos dependem de validação e integração posteriores. A evocação permanece reservada ao mapa mental original.</span></footer>
   </section>;
 }
