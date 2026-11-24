@@ -31,9 +31,9 @@ export function guidedExercise(kind,nodeId,phase){
 }
 export function gradeGuided(kind,nodeId,phase,answers){
   const c=guidedConfig(kind,nodeId),exercise=guidedExercise(kind,nodeId,phase);
-  if(kind!=='dahl')return evaluateVisual(kind,c[phase],answers);
+  if(kind!=='dahl'){const r=evaluateVisual(kind,c[phase],answers);return {...r,checks:r.checks.map(f=>({...f,submitted:answers?.[f.id]??''}))};}
   const f=exercise.fields[0],v=answers?.[f.id];
-  return {status:!Object.hasOwn(f.options,v)?'incomplete':v===f.expected?'correct':'incorrect',checks:[{...f,valid:Object.hasOwn(f.options,v),correct:v===f.expected}],explanation:exercise.explanation};
+  return {status:!Object.hasOwn(f.options,v)?'incomplete':v===f.expected?'correct':'incorrect',checks:[{...f,submitted:v??'',valid:Object.hasOwn(f.options,v),correct:v===f.expected}],explanation:exercise.explanation};
 }
 export const initialCycle=()=>({stage:0,hypothesis:null,prediction:null,explanation:null,recall:null,transfer:null});
 export function advanceCycle(state,event){

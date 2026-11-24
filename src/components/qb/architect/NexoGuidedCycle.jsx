@@ -7,7 +7,7 @@ function Fields({exercise,answers,onChange}){
   </div>)}</div>;
 }
 function Feedback({result}){
-  return <div className="nexo-training-result" aria-live="polite"><strong>{result.status==='correct'?'Resposta correta':'Compare sua hipótese com a regra'}</strong>{result.checks.map(c=><p key={c.id}>{c.correct?'Correto':'Rever'} · {c.label}: {display(c)}</p>)}<p>{result.explanation}</p></div>;
+  return <div className="nexo-training-result" aria-live="polite"><strong>{result.status==='correct'?'Resposta correta':'Compare sua hipótese com a regra'}</strong>{result.checks.map(c=><p key={c.id}>{c.correct?'Correto':'Rever'} · {c.label}: sua resposta {c.type==='choice'?c.options[c.submitted]:c.submitted} · referência {display(c)}</p>)}<p>{result.explanation}</p></div>;
 }
 export default function NexoGuidedCycle({kind,nodeId,children}){
   const config=guidedConfig(kind,nodeId);
