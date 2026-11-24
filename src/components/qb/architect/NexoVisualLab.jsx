@@ -34,39 +34,45 @@ function Sampling({onPredictionMode}){
   const [answer,setAnswer]=React.useState({nyquist:'',classification:'',alias:''});
   const [feedback,setFeedback]=React.useState(null);
   const clear=()=>{setAnswer({nyquist:'',classification:'',alias:''});setFeedback(null);};
-  const changeFrequency=v=>{setFrequency(v);clear();};
-  const changeRate=v=>{setRate(v);clear();};
+  const changeFrequency=v=>{if(v!==frequency){setFrequency(v);clear();}};
+  const changeRate=v=>{if(v!==rate){setRate(v);clear();}};
   const changeMode=v=>{setMode(v);clear();onPredictionMode?.(v==='predict');};
   const changeAnswer=(k,v)=>{setAnswer(a=>({...a,[k]:v}));setFeedback(null);};
   const data=sampleSignal(frequency,rate);
-  const hidden=mode==='predict'&&!feedback;
+  const reveal=mode==='explore'||Boolean(feedback?.expected);
+  const aliasVisible=reveal&&showAlias&&data.classification==='above';
   const labels={below:'Abaixo do limite',boundary:'Exatamente no limite',above:'Acima do limite'};
   const submit=()=>setFeedback(samplingAssessment(frequency,rate,{nyquist:Math.round(Number(answer.nyquist)*1000),classification:answer.classification,alias:Math.round(Number(answer.alias)*1000)}));
   const explanation=data.classification==='boundary'?'No limite de Nyquist, não há garantia de recuperação única: nesta senoide de fase zero, todas as amostras são zero.':data.classification==='above'?'O sinal ultrapassa o limite de Nyquist. Outra senoide, de frequência aparente menor, produz os mesmos valores nos instantes amostrados.':'A frequência do sinal está abaixo de metade da taxa de amostragem; para esta senoide ideal, não há dobramento de frequência.';
   return <>
     <div className="qb-seg" role="group" aria-label="Modo de aprendizagem"><button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>changeMode('explore')}>Exploração livre</button><button type="button" className="qb-seg__opt" aria-pressed={mode==='predict'} onClick={()=>changeMode('predict')}>Predição e correção</button></div>
     <div className="nexo-controls"><Choice label="Frequência da onda" values={[1000,3000,4000,5000,7000]} value={frequency} onChange={changeFrequency} format={v=>fmt(v/1000)+' kHz'}/><Choice label="Taxa de amostragem" values={[8000,16000,44100]} value={rate} onChange={changeRate} format={v=>fmt(v/1000,1)+' kHz'}/></div>
+    <div className={mode==='predict'?'nexo-prediction-workbench':undefined}>
+    <div className="nexo-prediction-plot">
+    <div className="nexo-instrument" data-nexo-live-graph><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{!reveal?'OBSERVAÇÃO ATIVA':data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST'}</span></div>
+      <svg viewBox="0 0 680 260" role="img" aria-label={'Onda de '+frequency+' Hz, amostrada a '+rate+' Hz. '+(reveal?'Frequência de Nyquist: '+data.nyquist+' Hz.':'Observe os pontos de amostragem.')}>
+        <WaveGrid/><polyline points={wave(frequency)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="2"/>
+        {aliasVisible&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="1.8" strokeDasharray="5 4"/>}
+        {data.samples.map((s,i)=><g key={i}><line x1={X(s.t)} y1={Y(0)} x2={X(s.t)} y2={Y(s.y)} stroke="var(--qb-gold)" strokeOpacity=".6"/><circle cx={X(s.t)} cy={Y(s.y)} r="4" fill="var(--qb-gold-bright)"/></g>)}
+      </svg><div className="nexo-legend"><span>— Onda original</span><span className="nexo-gold">● Amostras</span>{aliasVisible&&<span className="nexo-ember">– – Senoide equivalente nas amostras</span>}</div>
+    {reveal&&<div className="nexo-plot-feedback" aria-live="polite"><strong>{data.classification==='above'?'Aliasing':data.classification==='boundary'?'Caso limítrofe':'Abaixo de Nyquist'}</strong><span>Limite: {fmt(data.nyquist/1000,2)} kHz · sinal: {fmt(frequency/1000,2)} kHz{data.classification==='above'?' · senoide equivalente: '+fmt(data.alias/1000,2)+' kHz':''}</span></div>}
+    </div>
+    {!reveal&&<p className="nexo-explain">Altere as frequências e observe como a onda e os pontos mudam. Os valores da correção e a senoide equivalente serão revelados no próprio gráfico após sua resposta.</p>}
+    </div>
     {mode==='predict'&&<section className="nexo-instrument" style={{padding:14,display:'grid',gap:12}} aria-label="Predição do cenário">
-      <span className="qb-overline">PREDIGA ANTES DE OBSERVAR</span>
-      <p>Para um sinal de {fmt(frequency/1000)} kHz amostrado a {fmt(rate/1000,1)} kHz, qual será o resultado?</p>
+      <span className="qb-overline">INTERPRETE O CENÁRIO VISUAL</span>
+      <p>Para um sinal de {fmt(frequency/1000)} kHz amostrado a {fmt(rate/1000,1)} kHz, o que você prevê a partir da onda e dos pontos de amostragem?</p>
       <label className="nexo-control">Limite de Nyquist (kHz)<input className="qb-input" type="number" min="0" step="0.05" value={answer.nyquist} onChange={e=>changeAnswer('nyquist',e.target.value)}/></label>
       <div className="nexo-control"><span>Posição do sinal em relação ao limite</span><div role="group" className="qb-seg" aria-label="Classificação do sinal" style={{flexWrap:'wrap'}}>{Object.entries(labels).map(([id,label])=><button key={id} type="button" className="qb-seg__opt" aria-pressed={answer.classification===id} onClick={()=>changeAnswer('classification',id)}>{label}</button>)}</div></div>
       <label className="nexo-control">Frequência aparente pelo dobramento espectral (kHz)<input className="qb-input" type="number" min="0" step="0.05" value={answer.alias} onChange={e=>changeAnswer('alias',e.target.value)}/></label>
-      <button type="button" className="qb-btn qb-btn--secondary" disabled={answer.nyquist===''||answer.alias===''||!answer.classification||!Number.isFinite(Number(answer.nyquist))||!Number.isFinite(Number(answer.alias))} onClick={submit}>Verificar previsão e observar</button>
+      <button type="button" className="qb-btn qb-btn--secondary" disabled={answer.nyquist===''||answer.alias===''||!answer.classification||!Number.isFinite(Number(answer.nyquist))||!Number.isFinite(Number(answer.alias))} onClick={submit}>Verificar previsão no gráfico</button>
       {feedback?.expected&&<div aria-live="polite" style={{display:'grid',gap:8}}><strong style={{color:feedback.status==='correct'?'var(--qb-patina)':'var(--qb-ember)'}}>{feedback.status==='correct'?'Predição correta':'Revise sua predição'}</strong>
       {[['nyquist','Limite',fmt(feedback.expected.nyquist/1000,2)+' kHz'],['classification','Classificação',labels[feedback.expected.classification]],['alias','Frequência aparente',fmt(feedback.expected.alias/1000,2)+' kHz']].map(([k,label,value])=><div key={k} style={{display:'flex',alignItems:'center',gap:8}}><Icon name={feedback.checks[k]?'circle-check':'circle-x'} size={16} color={feedback.checks[k]?'var(--qb-patina)':'var(--qb-ember)'}/><span>{label}: {value}</span></div>)}
       <p>Limite = {fmt(rate/1000,1)} ÷ 2 = {fmt(data.nyquist/1000,2)} kHz. {explanation}</p>
-      <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={clear}>Tentar novamente sem pistas</button></div>}
+      <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={clear}>Nova tentativa</button></div>}
     </section>}
-    {hidden?<div className="nexo-instrument" style={{padding:24,textAlign:'center'}}><Icon name="eye-off" size={28}/><p>O gráfico e os valores calculados serão exibidos após a sua previsão.</p></div>:<>
-    <div className="nexo-instrument"><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST'}</span></div>
-      <svg viewBox="0 0 680 260" role="img" aria-label={'Onda de '+frequency+' Hz, amostrada a '+rate+' Hz. Frequência de Nyquist: '+data.nyquist+' Hz.'}>
-        <WaveGrid/><polyline points={wave(frequency)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="2"/>
-        {showAlias&&data.classification==='above'&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="1.8" strokeDasharray="5 4"/>}
-        {data.samples.map((s,i)=><g key={i}><line x1={X(s.t)} y1={Y(0)} x2={X(s.t)} y2={Y(s.y)} stroke="var(--qb-gold)" strokeOpacity=".6"/><circle cx={X(s.t)} cy={Y(s.y)} r="4" fill="var(--qb-gold-bright)"/></g>)}
-      </svg><div className="nexo-legend"><span>— Onda original</span><span className="nexo-gold">● Amostras</span>{showAlias&&data.classification==='above'&&<span className="nexo-ember">– – Senoide equivalente nas amostras</span>}</div>
     </div>
-    <label className="nexo-check"><input type="checkbox" checked={showAlias} onChange={e=>setShowAlias(e.target.checked)}/> Mostrar senoide equivalente quando o sinal estiver acima de Nyquist</label>
+    {reveal&&<><label className="nexo-check"><input type="checkbox" checked={showAlias} onChange={e=>setShowAlias(e.target.checked)}/> Mostrar senoide equivalente quando o sinal estiver acima de Nyquist</label>
     <Readout items={[{label:'Limite de Nyquist',value:fmt(data.nyquist/1000,2)+' kHz'},{label:'Frequência aparente (dobramento)',value:fmt(data.alias/1000,2)+' kHz'},{label:'Amostras na janela',value:fmt(data.samples.length)}]}/>
     <p className="nexo-explain">{explanation}</p>
     {data.classification==='boundary'&&<p>O dobramento espectral indica {fmt(data.alias/1000,2)} kHz, mas a onda de fase zero não pode ser recuperada a partir destas amostras nulas.</p>}

@@ -24,3 +24,16 @@ test('exact Nyquist phase-zero signal samples are null, boundary not below',()=>
   const d=sampleSignal(4000,8000);assert.equal(d.classification,'boundary');assert.ok(d.samples.every(s=>Math.abs(s.y)<1e-12));
 });
 test('incomplete predictions are not graded',()=>assert.equal(samplingAssessment(5000,8000,{classification:''}).status,'incomplete'));
+
+test('prediction keeps a single live plot mounted; only answer overlays/readouts are gated',async()=>{
+  const {readFileSync}=await import('node:fs');
+  const source=readFileSync(new URL('../src/components/qb/architect/NexoVisualLab.jsx',import.meta.url),'utf8');
+  const sampling=source.slice(source.indexOf('function Sampling('),source.indexOf('function Quantization('));
+  assert.equal((sampling.match(/data-nexo-live-graph/g)||[]).length,1);
+  assert.doesNotMatch(sampling,/hidden\?|O gráfico e os valores calculados serão exibidos/);
+  assert.match(sampling,/const reveal=mode==='explore'\|\|Boolean\(feedback\?\.expected\)/);
+  assert.match(sampling,/const aliasVisible=reveal&&showAlias&&data\.classification==='above'/);
+  assert.match(sampling,/data\.samples\.map/);
+  assert.match(sampling,/\{reveal&&<div className="nexo-plot-feedback"/);
+  assert.ok(sampling.indexOf('data-nexo-live-graph')<sampling.indexOf('INTERPRETE O CENÁRIO VISUAL'));
+});
