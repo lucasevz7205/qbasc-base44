@@ -20,7 +20,7 @@ function questionOutcome(mark, ok, key) {
 }
 
 const nonnegative = value => Math.max(0, Math.trunc(Number(value) || 0));
-const bucket = () => ({ correct: 0, wrong: 0, partial: 0, latest: null });
+const bucket = () => ({ correct: 0, wrong: 0, partial: 0, evaluated: 0, latest: null });
 
 function remember(out, outcome, timestamp) {
   if (!outcome) return;
@@ -36,11 +36,15 @@ function countQuestion(out, response, key) {
   const history = Array.isArray(response.hist) ? response.hist : [];
   const outcomes = history.map(entry => questionOutcome(entry?.m, entry?.ok, key));
   const correct = nonnegative(response.acertos), wrong = nonnegative(response.erros);
-  out.correct += correct || outcomes.filter(result => result === 'correct').length;
-  out.wrong += wrong || outcomes.filter(result => result === 'wrong').length;
+  const countedCorrect = correct || outcomes.filter(result => result === 'correct').length;
+  const countedWrong = wrong || outcomes.filter(result => result === 'wrong').length;
+  const legacyOutcome = questionOutcome(response.ultimaMarcada, undefined, response.gabaritoUsado || key);
+  if (countedCorrect || countedWrong || legacyOutcome) out.evaluated++;
+  out.correct += countedCorrect;
+  out.wrong += countedWrong;
   const last = history.findLast(entry => questionOutcome(entry?.m, entry?.ok, key));
   if (last) remember(out, questionOutcome(last.m, last.ok, key), last.em || response.atualizadoEm);
-  else remember(out, questionOutcome(response.ultimaMarcada, undefined, response.gabaritoUsado || key), response.atualizadoEm);
+  else remember(out, legacyOutcome, response.atualizadoEm);
 }
 
 function countCard(out, review) {
@@ -48,13 +52,17 @@ function countCard(out, review) {
   const history = Array.isArray(review.hist) ? review.hist : [];
   const valid = history.filter(entry => cardOutcome(entry?.v));
   if (valid.length) {
+    out.evaluated++;
     for (const entry of valid) out[cardOutcome(entry.v)]++;
     const last = valid.at(-1);
     remember(out, cardOutcome(last.v), last.em || review.atualizadoEm);
     return;
   }
   const current = cardOutcome(review.ult);
-  if (current) out[current]++;
+  if (current) {
+    out[current]++;
+    out.evaluated++;
+  }
   remember(out, current, review.atualizadoEm);
 }
 
@@ -62,6 +70,7 @@ function merge(target, child) {
   target.correct += child.correct;
   target.wrong += child.wrong;
   target.partial += child.partial;
+  target.evaluated += child.evaluated;
   const last = child.latest;
   if (last && (!target.latest || last.time > target.latest.time || (last.time === target.latest.time && last.outcome === 'wrong'))) {
     target.latest = last;
@@ -107,9 +116,13 @@ export function mapNodePerformance({ nodes, rootId, topicId, questions, flashcar
     const questions = summarize(node.questions);
     const flashcards = summarize(node.flashcards);
     const evidence = [questions, flashcards].filter(item => item.total);
-    const status = !evidence.length ? 'no-evidence'
+    const requiredQuestions = questions.evaluated ? 0 : 1;
+    const requiredFlashcards = flashcards.evaluated ? 0 : 1;
+    const remaining = Math.max(5 - questions.evaluated - flashcards.evaluated, requiredQuestions + requiredFlashcards);
+    const status = remaining ? 'insufficient'
+      : !evidence.length ? 'no-evidence'
       : evidence.some(item => item.latest?.outcome === 'wrong') ? 'incorrect'
         : evidence.every(item => item.rate >= 85) ? 'correct' : 'progress';
-    return [id, { questions, flashcards, status, includesChildren: node.children.length > 0 }];
+    return [id, { questions, flashcards, status, remaining, requiredQuestions, requiredFlashcards, includesChildren: node.children.length > 0 }];
   }));
 }
