@@ -54,6 +54,7 @@ export function structureViability(s,id){
   const recipe=extractExplicitPairs(s);
   if(recipe.kind==='association'&&buildContextual(s,recipe).status==='candidate')return {status:'local-recipe',recipe,reason:'Encaixes literais, não um grafo completo.'};
  }
+ if(['relational','comparative'].includes(id))return {status:'semantic-recipe',reason:'É possível tentar uma associação literal pelo provedor; não é garantia de geração nem um grafo completo.'};
  return {status:'unavailable',reason:'Gerador compatível ainda não registrado para este conceito.'};
 }
 const legacyMap={simulation:'simulation',chart:'quantitative',timeline:'sequential',comparison:'comparative',architecture:'architectural',procedure:'conditional'};
@@ -169,4 +170,11 @@ export async function buildDecidedCandidate(s,decision,{column}={}){
  const recipe=v.recipe.kind==='matrix'&&column!==undefined?{...v.recipe,column}:v.recipe;
  const result=buildContextual(s,recipe);
  return {...result,provider:'local',sourceVersion:decision.sourceVersion,scope:decision.scope,plan:{objective:decision.objective},decisionVersion:decision.decisionVersion};
+}
+
+// Topic-level local triage never ranks by renderer availability.
+export async function chooseCognitiveSource(sources,pilot){
+ const decisions=await Promise.all(sources.map(async s=>({source:s,decision:await decideCognitive(s,pilot)})));
+ const decided=decisions.filter(r=>r.decision.status==='decided');
+ return decided.sort((a,b)=>Number(Boolean(b.decision.secondary))-Number(Boolean(a.decision.secondary))||a.source.nodeId.localeCompare(b.source.nodeId))[0]?.source||sources[0]||null;
 }

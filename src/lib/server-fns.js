@@ -807,7 +807,7 @@ export const generateMindMapGanQuestions = createServerFn({ method: "POST" })
 // LAB06: private, explicit-cost candidate generation. No database writes or publication.
 export const generateNexoAssociation = createServerFn({method:"POST"})
  .middleware([requireUser])
- .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),sourceVersion:z.string().regex(/^sha256:[a-f0-9]{64}$/),provider:z.enum(["base44","gemini","local"])}).strict())
+ .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),sourceVersion:z.string().regex(/^sha256:[a-f0-9]{64}$/),provider:z.enum(["base44","gemini","local"]),expectedStructure:z.enum(["relational","comparative"]).optional()}).strict())
  .handler(async ({data,context})=>{
    await requireArchitectAccess(context);
    if(context.user?.role!=="admin")throw new Error("Geração experimental restrita ao administrador.");
@@ -822,7 +822,9 @@ export const generateNexoAssociation = createServerFn({method:"POST"})
      }
      return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
    };
-   return generateContextual(rows[0],representationPilot,{provider,invoke});
+   const result=await generateContextual(rows[0],representationPilot,{provider,invoke});
+   if(data.expectedStructure&&result.status==="candidate"&&!(data.expectedStructure==="relational"?result.kind==="association":["matrix","association"].includes(result.kind)))return {status:"blocked",reason:"O modelo proposto não respeita a estrutura escolhida.",publicationAllowed:false};
+   return result;
  });
 
 

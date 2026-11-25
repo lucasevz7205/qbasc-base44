@@ -26,13 +26,13 @@ const stubs = {
 
 const { outputFiles } = await build({
   bundle: true, write: false, platform: "node", format: "esm",
-  stdin: { contents: "export { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation } from './src/lib/server-fns.js';", resolveDir: process.cwd() },
+  stdin: { contents: "export { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation, decideNexoRepresentation } from './src/lib/server-fns.js';", resolveDir: process.cwd() },
   plugins: [{ name: "router-test-runtime", setup(builder) {
     builder.onResolve({ filter: /.*/ }, ({ path }) => Object.hasOwn(stubs, path) ? { path, namespace: "stub" } : undefined);
     builder.onLoad({ filter: /.*/, namespace: "stub" }, ({ path }) => ({ contents: stubs[path], loader: "js" }));
   } }],
 });
-const { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation } =
+const { askArchitectTutor, getArchitectProviderStatus, getArchitectModelTelemetry, correctFlashcardWithArchitect, generateNexoAssociation, decideNexoRepresentation } =
   await import("data:text/javascript;base64," + Buffer.from(outputFiles[0].contents).toString("base64"));
 
 // Uma chave por cenário: o cache de models.list é indexado pela impressão digital da chave.
@@ -114,5 +114,22 @@ test("NEXO server checks current source before calling semantic provider and ret
   assert.equal(stale.status,"blocked");assert.equal(provider.mock.callCount(),0);
   const result=await generateNexoAssociation({context:admin(provider),data});
   assert.equal(result.status,"recommended");assert.equal(result.plan.kind,"architecture");assert.equal(result.provider,"base44");assert.equal(provider.mock.callCount(),1);
+  globalThis.nexoTestSources=[];
+});
+
+test("cognitive decision endpoint checks auth and source version before provider, returns nine assessments without generation", async t => {
+  const {sourceVersion}=await import("../src/lib/nexo/generation.js");
+  const {STRUCTURE_IDS}=await import("../src/lib/nexo/cognitive-decision.js");
+  const source={subjectId:"ti",topicId:"ti-8-2",nodeId:"n",title:"Histograma",reference:"Aula",lines:["Distribuição de frequência por classes."]};
+  globalThis.nexoTestSources=[source];
+  const raw={primary:"quantitative",secondary:"none",objective:"Interpretar classes",reason:"Gráfico adequado.",backupReason:"Nenhuma alternativa.",assessments:STRUCTURE_IDS.map(structure=>({structure,suitability:structure==="quantitative"?"strong":"unsupported",reason:"Parecer de teste.",evidence:structure==="quantitative"?[{id:"line:0",excerpt:source.lines[0]}]:[]}))};
+  const invoke=t.mock.fn(async()=>raw);
+  const data={subjectId:"ti",topicId:"ti-8-2",nodeId:"n",sourceVersion:await sourceVersion(source),provider:"base44"};
+  await assert.rejects(decideNexoRepresentation({context:{},data}),/Sessão obrigatória/);
+  await assert.rejects(decideNexoRepresentation({context:{user:{role:"user"}},data}),/restrita/);
+  assert.equal((await decideNexoRepresentation({context:admin(invoke),data:{...data,sourceVersion:"sha256:"+"0".repeat(64)}})).status,"blocked");
+  assert.equal(invoke.mock.callCount(),0);
+  const result=await decideNexoRepresentation({context:admin(invoke),data});
+  assert.equal(result.status,"decided");assert.equal(result.assessments.length,9);assert.equal(result.primary.structure,"quantitative");assert.equal(result.constructionAllowed,false);assert.equal(result.publicationAllowed,false);assert.equal(invoke.mock.callCount(),1);
   globalThis.nexoTestSources=[];
 });
