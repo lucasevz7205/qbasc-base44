@@ -50,6 +50,8 @@ export function effectiveGenerationSources(data,subjectId,topicId,central=[],nod
  // An explicit comparison/classification heading and its direct children are grounded structure.
  // Do not turn arbitrary lists or procedure steps into a comparison.
  for(const parent of unique){
+  const direct=nodes.filter(n=>n.parent===parent.mapNodeId).map(n=>byMapId.get(n.id));
+  if(direct.length>=2&&direct.length<=8&&direct.every(c=>c&&good(c.lines[0],1500)))parent.children=direct.map(c=>({nodeId:c.mapNodeId,title:c.title,text:c.lines[0],reference:c.reference}));
   if(parent.table||parent.procedure||!/×|\bversus\b|\bvs\.?\s|diferen[çc]|distin[çc]|classifica[çc]|\btipos\b|\bespécies\b|\bmodalidades\b|\bcategorias\b|\bprincípios\b/i.test(parent.title))continue;
   const children=nodes.filter(n=>n.parent===parent.mapNodeId);
   const rows=children.map(n=>byMapId.get(n.id));
