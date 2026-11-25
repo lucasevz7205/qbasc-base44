@@ -1,0 +1,59 @@
+[
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c24",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1",
+    "pergunta": "Na ADI 2.039/RS, qual espécie normativa a Constituição exige para alterar a lei orgânica e o estatuto do Ministério Público estadual?",
+    "resposta": [
+      "Lei complementar"
+    ],
+    "explicacao": "A alteração gaúcha foi feita por lei ordinária e caiu.",
+    "fonte": "ADI 2.039/RS (CF, art. 128, § 5º) — informativo 1237, trecho 42",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c25",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.1",
+    "pergunta": "Quais atos não corrigem o vício formal de lei ordinária que altera a organização do MP estadual?",
+    "resposta": [
+      "Aprovação por quórum qualificado",
+      "Sanção do governador"
+    ],
+    "explicacao": "O vício formal é insanável.",
+    "fonte": "ADI 2.039/RS — informativo 1237, trecho 43",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c29",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.1",
+    "pergunta": "Na ADI 7.635/MA, como o STF qualificou a pressa na votação da lei que elevou o ICMS?",
+    "resposta": [
+      "Matéria interna corporis, que não invalida a lei"
+    ],
+    "explicacao": "A exceção é a ofensa a regra constitucional específica.",
+    "fonte": "ADI 7.635/MA — informativo 1235, trecho 8",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c30",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.2",
+    "pergunta": "Segundo a ADI 7.508/AM, quais requisitos constitucionais a proposta de emenda à Constituição estadual precisa cumprir?",
+    "resposta": [
+      "Votação em dois turnos",
+      "Maioria qualificada"
+    ],
+    "explicacao": "Intervalo mínimo previsto só no regimento interno é interna corporis.",
+    "fonte": "ADI 7.508/AM — informativo 1237, trechos 40 e 41",
+    "tema": "Processo legislativo e competência"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c31",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.3",
+    "pergunta": "Na ADI 7.937 MC-Ref/PE, de quem é a iniciativa sobre regime jurídico e remuneração dos servidores, ainda que a mudança venha por emenda à Constituição estadual?",
+    "resposta": [
+      "Do chefe do Poder Executivo (governador)"
+    ],
+    "explicacao": "Por isso foi suspensa a emenda parlamentar que liberava converter em dinheiro férias e licença-prêmio não gozadas.",
+    "fonte": "ADI 7.937 MC-Ref/PE — informativo 1237, trechos 51 e 52",
+    "tema": "Processo legislativo e competência"
+  }
+]
