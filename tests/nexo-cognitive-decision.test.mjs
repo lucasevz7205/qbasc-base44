@@ -54,3 +54,9 @@ test('evidence references include child and procedure with exact node remissions
  assert.equal(structureViability(fixture,'hierarchical').status,'unavailable');
  assert.equal(Object.keys(STRUCTURES).length,9);
 });
+test('classification with direct subdivisions outranks the derived comparison even if only the latter can render',async()=>{
+ const s={...fixture,title:'Tipos de controle',lines:['A classificação distingue categorias de controle.'],children:[{nodeId:'a',title:'Tipo A',text:'Descrição A.',reference:'Fonte A'},{nodeId:'b',title:'Tipo B',text:'Descrição B.',reference:'Fonte B'}],table:{headers:['Conceito','Descrição'],rows:[['Tipo A','Descrição A.'],['Tipo B','Descrição B.']]},rowSources:[{nodeId:'a',reference:'Fonte A'},{nodeId:'b',reference:'Fonte B'}]};
+ const d=await decideCognitive(s,pilot);
+ assert.equal(d.primary.structure,'hierarchical');assert.equal(d.primary.viability.status,'unavailable');assert.equal(d.secondary.structure,'comparative');assert.equal(d.secondary.viability.status,'local-recipe');
+ assert.equal((await buildDecidedCandidate(s,d)).status,'recommended');
+});
