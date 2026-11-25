@@ -194,7 +194,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
               if (i.action === 'errors') { startErrorTraining(i.subjectId, i.topicId); return; }
               if (i.action === 'review' && (reviews.questions.due || reviews.flashcards.due)) {
                 openAndScroll(reviewRef);
-              } else dispatch(i.action === 'train' ? { ...i, filter } : i, 'train');
+              } else dispatch(i.action === 'train' || (i.action === 'flashcards' && filter === 'unseen') ? { ...i, filter } : i, 'train');
             }}
           />
         </div>

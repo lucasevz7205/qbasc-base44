@@ -1,3 +1,5 @@
+import { flashcardWasRated } from './spaced-review.js';
+
 export const FLASHCARD_RATINGS = [
   { id: 'errei', label: 'Errei', tone: 'incorrect' },
   { id: 'dificil', label: 'Difícil', tone: 'attention' },
@@ -7,6 +9,7 @@ export const FLASHCARD_RATINGS = [
 
 export const FLASHCARD_FILTERS = [
   { id: 'all', label: 'Todos' },
+  { id: 'unseen', label: 'Inéditos', hint: 'Cartões que você ainda não avaliou.' },
   { id: 'unseen-today', label: 'Não vistos hoje', hint: 'Cartões do baralho sem avaliação registrada hoje.' },
   { id: 'missed', label: 'Errados', hint: 'Cartões cuja última avaliação foi Errei ou Novamente.' },
 ];
@@ -14,6 +17,7 @@ export const FLASHCARD_FILTERS = [
 export function filterFlashcardDeck(deck, reviews, filter, today, studyDate) {
   return deck.filter(card => {
     const review = reviews[card.id];
+    if (filter === 'unseen') return !flashcardWasRated(review);
     const history = Array.isArray(review?.hist) ? review.hist : [];
     if (filter === 'unseen-today') {
       const seenToday = [review?.atualizadoEm, ...history.map(entry => entry?.em)]
