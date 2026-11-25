@@ -91,7 +91,7 @@ async function localAssessment(s,pilot,refs){
  if(bounded){
   if(/\b(?:se|caso|desde que|salvo|exceto)\b/i.test(body)&&/\b(?:então|somente|poderá|deverá|não poderá|será|fica|permite|exige)\b/i.test(body))mark('conditional','strong','O trecho contém uma condição e consequência normativa explícitas; a leitura local ainda exige revisão.',[cite(first)],52);
   if(/\b(?:prazo|prazos|duração|vigência|cronologia)\b/i.test(body)&&/\b\d+\s*(?:dias|meses|anos|horas)\b/i.test(body))mark('temporal','strong','O prazo ou duração está expresso no trecho, sem inferir marco inicial ou final.',[cite(first)],58);
-  if(!['dc','da','pl','jur','cp'].includes(s.subjectId)&&/\b(?:histograma|distribuição|frequência|proporção|percentual|métrica|taxa)\b/i.test(body)&&/\b(?:eixo|intervalos|classes|valores|numerador|denominador|frequência|proporção|percentual)\b/i.test(body)&&/\b(?:gráfico|histograma|distribuição|métrica)\b/i.test(s.title+' '+body))mark('quantitative','strong','O material descreve valores, distribuição ou eixos; não há dados de medição inventados.',[cite(first)],58);
+  if(/\b(?:histograma|distribuição|frequência|proporção|percentual|métrica|taxa)\b/i.test(body)&&/\b(?:eixo|intervalos|classes|numerador|denominador|variância|desvio|mediana|histograma)\b/i.test(body)&&/\b(?:gráfico|histograma|distribuição|métrica)\b/i.test(s.title+' '+body))mark('quantitative','strong','O material descreve valores, distribuição ou eixos; não há dados de medição inventados.',[cite(first)],58);
  }
  const children=s.children||[];
  if(children.length>=2&&children.length<=8&&rulePatterns.hierarchical.test(s.title+' '+(first?.text||''))&&!rulePatterns.comparative.test(s.title)){

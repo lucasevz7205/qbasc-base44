@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {fileURLToPath} from 'node:url';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {registerHooks} from 'node:module';
+import {effectiveGenerationSources} from '../../src/lib/nexo/effective-sources.js';
 import {generationSources} from '../../src/lib/nexo/generation.js';
 import {STRUCTURE_IDS,decideCognitive,buildDecidedCandidate} from '../../src/lib/nexo/cognitive-decision.js';
 import {validPuzzle,evaluatePuzzle} from '../../src/lib/nexo/association-puzzle.js';
@@ -10,7 +12,16 @@ const maps={};
 function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(e.name==='mapa.json')maps[p]=JSON.parse(fs.readFileSync(p,'utf8'));}}
 walk(path.join(root,'src/data/kits'));
 const pilot=JSON.parse(fs.readFileSync(path.join(root,'src/lib/nexo/representation-pilot.json'),'utf8'));
-const sources=Object.values(maps).flatMap(m=>generationSources(maps,m.topico.split('-')[0],m.topico));
+let sources=Object.values(maps).flatMap(m=>generationSources(maps,m.topico.split('-')[0],m.topico));
+const effective=process.argv.includes('--effective');
+if(effective){
+ const hooks=registerHooks({resolve(s,c,n){return s.startsWith('@/lib/')?n(pathToFileURL(path.join(root,'src/lib',s.slice(6)+'.js')).href,c):n(s,c);}});
+ const {adaptStudy}=await import('../../src/lib/qb-real-model.js');hooks.deregister();
+ // Synthetic syllabus entries only for scoping the actual bundled maps, not an audit of the live database.
+ const edital=Object.values(maps).map(m=>({id:m.topico,sigla:m.topico.split('-')[0].toUpperCase(),materia:m.topico.split('-')[0],titulo:m.centro}));
+ const {QB_DATA}=adaptStudy({edital},{role:'admin'},new Date('2026-11-24T12:00:00Z'),{centralKitModules:maps});
+ sources=edital.flatMap(e=>effectiveGenerationSources(QB_DATA,e.sigla.toLowerCase(),e.id,generationSources(maps,e.sigla.toLowerCase(),e.id)));
+}
 const bySubject={},primaries=Object.fromEntries(STRUCTURE_IDS.map(k=>[k,0])),errors=[],examples={},all=[];
 for(const s of sources){
  const d=await decideCognitive(s,pilot);
@@ -33,5 +44,5 @@ for(const s of sources){
 const seed='QBAsc-2026-11-24-215911',rank=r=>createHash('sha256').update(seed+'|'+r.topic+'/'+r.node).digest('hex');
 const sample=Object.keys(bySubject).sort().flatMap(subject=>all.filter(r=>r.subject===subject).sort((a,b)=>rank(a).localeCompare(rank(b))).slice(0,2));
 const total=Object.values(bySubject).reduce((a,r)=>{for(const [k,v] of Object.entries(r))a[k]=(a[k]||0)+v;return a;},{});
-console.log(JSON.stringify({scope:'bundled JSON kits only; not database or real providers',seed,total,bySubject,primaries,examples,sample,errors},null,2));
+console.log(JSON.stringify({scope:effective?'effective normalization of bundled kits with synthetic syllabus; not live database or real providers':'bundled JSON kits only; not database or real providers',seed,total,bySubject,primaries,examples,sample,errors},null,2));
 if(errors.length)process.exitCode=1;
