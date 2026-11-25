@@ -47,14 +47,14 @@ export function structureViability(s,id){
  const bound=VISUAL_BINDINGS.find(b=>b.subjectId===s.subjectId&&b.topicId===s.topicId&&b.nodeId===s.nodeId&&modelTypes[b.modelId]===id);
  // Effective sources only reuse exact reviewed contracts; central raw kits are valid for offline audit.
  if(bound&&(s.central||!s.mapNodeId))return {status:'existing',modelId:bound.modelId,reason:'Modelo específico já vinculado a esta versão do conteúdo.'};
- if(id==='conditional'&&s.procedure)return {status:'local-recipe',recipe:{kind:'procedure'},reason:'Contrato condicional registrado.'};
- if(id==='sequential'&&sequenceLines(s).length)return {status:'local-recipe',recipe:{kind:'sequence',line:sequenceLines(s)[0].index},reason:'Cadeia de etapas literal.'};
- if(id==='comparative'&&availableColumns(s).length)return {status:'local-recipe',recipe:{kind:'matrix',column:availableColumns(s)[0]},reason:'Tabela com correspondências inequívocas.'};
+ if(id==='conditional'&&s.procedure)return {status:'local-recipe',renderer:'Simulador condicional',recipe:{kind:'procedure'},reason:'Contrato condicional registrado.'};
+ if(id==='sequential'&&sequenceLines(s).length)return {status:'local-recipe',renderer:'Fluxograma linear',recipe:{kind:'sequence',line:sequenceLines(s)[0].index},reason:'Cadeia de etapas literal.'};
+ if(id==='comparative'&&availableColumns(s).length)return {status:'local-recipe',renderer:'Matriz comparativa',recipe:{kind:'matrix',column:availableColumns(s)[0]},reason:'Tabela com correspondências inequívocas.'};
  if(id==='relational'||id==='comparative'){
   const recipe=extractExplicitPairs(s);
-  if(recipe.kind==='association'&&buildContextual(s,recipe).status==='candidate')return {status:'local-recipe',recipe,reason:'Encaixes literais, não um grafo completo.'};
+  if(recipe.kind==='association'&&buildContextual(s,recipe).status==='candidate')return {status:'local-recipe',renderer:'Encaixes relacionais',recipe,reason:'Encaixes literais, não um grafo completo.'};
  }
- if(['relational','comparative'].includes(id))return {status:'semantic-recipe',reason:'É possível tentar uma associação literal pelo provedor; não é garantia de geração nem um grafo completo.'};
+ if(['relational','comparative'].includes(id))return {status:'semantic-recipe',renderer:'Encaixes associativos (tentativa)',reason:'É possível tentar uma associação literal pelo provedor; não é garantia de geração nem um grafo completo.'};
  return {status:'unavailable',reason:'Gerador compatível ainda não registrado para este conceito.'};
 }
 const legacyMap={simulation:'simulation',chart:'quantitative',timeline:'sequential',comparison:'comparative',architecture:'architectural',procedure:'conditional'};
@@ -123,7 +123,7 @@ async function localAssessment(s,pilot,refs){
  const secondary=supported.slice(1).find(a=>compatible[primary]?.includes(a.structure))?.structure||'none';
  return {primary,secondary,objective:primary==='none'?'Compreender o conceito e investigar a adequação visual.':legacy?.method==='descritor curado revalidado'?legacy.objective:goals[primary]+' no contexto do conceito.',
  reason:primary==='none'?'A análise local não identificou estrutura suficientemente sustentada; solicite análise semântica.':'Escolha baseada na estrutura documentada, independentemente do gerador.',
- backupReason:secondary==='none'?'Não há alternativa independente suficientemente sustentada nesta análise.':'Alternativa documentada para o mesmo recorte de aprendizagem; pertinência a revisar.',
+ backupReason:secondary==='none'?'Não há alternativa independente suficientemente sustentada nesta análise.':'Alternativa estrutural potencial para o mesmo recorte; equivalência pedagógica a revisar.',
  assessments:assessments.map(({priority,...a})=>a)};
 }
 export const DECISION_SCHEMA={type:'object',properties:{
@@ -164,8 +164,11 @@ export async function decideCognitive(s,pilot,{provider='local',invoke}={}){
 }
 // A decision never authorizes automatic fallback or publication. Existing deterministic recipes only.
 export async function buildDecidedCandidate(s,decision,{column}={}){
- if(decision?.status!=='decided'||decision.sourceVersion!==await sourceVersion(s)||decision.scope?.subjectId!==s.subjectId||decision.scope?.topicId!==s.topicId||decision.scope?.nodeId!==s.nodeId)return blocked('Decisão ausente ou desatualizada.');
- const v=structureViability(s,decision.primary?.structure);
+ if(!s||decision?.status!=='decided'||decision.decisionVersion!==DECISION_VERSION||decision.sourceVersion!==await sourceVersion(s)||decision.scope?.subjectId!==s.subjectId||decision.scope?.topicId!==s.topicId||decision.scope?.nodeId!==s.nodeId)return blocked('Decisão ausente ou desatualizada.');
+ const raw={primary:decision.primary?.structure,secondary:decision.secondary?.structure||'none',objective:decision.objective,reason:decision.reason,backupReason:decision.backupReason,assessments:decision.assessments?.map(a=>({structure:a.structure,suitability:a.suitability,reason:a.reason,evidence:a.evidence?.map(({id,excerpt})=>({id,excerpt}))}))};
+ const checked=await validateCognitiveDecision(s,raw,{provider:decision.provider});
+ if(checked.status!=='decided')return blocked('Contrato de decisão inválido.');
+ const v=structureViability(s,checked.primary.structure);
  if(v.status!=='local-recipe')return {status:'recommended',reason:v.reason,publicationAllowed:false};
  const recipe=v.recipe.kind==='matrix'&&column!==undefined?{...v.recipe,column}:v.recipe;
  const result=buildContextual(s,recipe);
