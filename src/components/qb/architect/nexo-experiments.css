@@ -53,3 +53,7 @@
 .nexo-procedure-step{width:min(100%,560px);display:flex;align-items:center;gap:12px;text-align:left;background:var(--qb-navy-raised);border:1px solid var(--qb-bronze);border-radius:8px;padding:12px;color:var(--qb-ivory);cursor:pointer}
 .nexo-procedure-step small{font-family:var(--font-mono);color:var(--qb-gold)}
 .nexo-procedure-step[aria-pressed=true]{outline:2px solid var(--qb-gold-bright)}
+.nexo-cognitive-decision{display:grid;gap:8px;min-width:0}
+.nexo-cognitive-decision .nexo-stage-facts>div{min-width:0}
+.nexo-cognitive-assessment{border-top:1px solid var(--divider);padding:10px 0;overflow-wrap:anywhere}
+.nexo-cognitive-assessment small{display:block}

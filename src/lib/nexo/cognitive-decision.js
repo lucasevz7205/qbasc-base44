@@ -76,7 +76,7 @@ async function localAssessment(s,pilot,refs){
  const assessments=STRUCTURE_IDS.map(id=>({structure:id,suitability:'unsupported',reason:'Não foi identificada evidência estrutural suficiente nesta análise local.',evidence:[]}));
  const mark=(id,suitability,reason,evidence,priority)=>{
   const a=assessments.find(a=>a.structure===id);
-  if(!a||!evidence.length||(a.priority||0)>=priority)return;
+  if(!a||!evidence.length||evidence.length>3||evidence.some(e=>!good(e.excerpt,1500))||(a.priority||0)>=priority)return;
   Object.assign(a,{suitability,reason,evidence,priority});
  };
  const first=refs.find(r=>r.id==='line:0');
@@ -85,12 +85,20 @@ async function localAssessment(s,pilot,refs){
   const ref=refs.find(r=>r.id.startsWith('line:')&&rulePatterns[id].test(r.text)&&r.text.length<=1500);
   if(ref)mark(id,'possible','Há indício textual compatível; a pertinência precisa de avaliação semântica.',[cite(ref)],10);
  }
+ const body=first?.text||'';
+ const bounded=body.length<=1500&&first;
+ if(bounded){
+  if(/\b(?:se|caso|desde que|salvo|exceto)\b/i.test(body)&&/\b(?:então|somente|poderá|deverá|não poderá|será|fica|permite|exige)\b/i.test(body))mark('conditional','strong','O trecho contém uma condição e consequência normativa explícitas; a leitura local ainda exige revisão.',[cite(first)],52);
+  if(/\b(?:prazo|prazos|duração|vigência|cronologia)\b/i.test(body)&&/\b\d+\s*(?:dias|meses|anos|horas)\b/i.test(body))mark('temporal','strong','O prazo ou duração está expresso no trecho, sem inferir marco inicial ou final.',[cite(first)],58);
+  if(/\b(?:histograma|distribuição|frequência|proporção|percentual|métrica|taxa)\b/i.test(body)&&/\b(?:eixo|intervalos|classes|valores|numerador|denominador|frequência|proporção|percentual)\b/i.test(body)&&/\b(?:gráfico|histograma|distribuição|métrica)\b/i.test(s.title+' '+body))mark('quantitative','strong','O material descreve valores, distribuição ou eixos; não há dados de medição inventados.',[cite(first)],58);
+ }
  const children=s.children||[];
  if(children.length>=2&&children.length<=8&&rulePatterns.hierarchical.test(s.title+' '+(first?.text||''))){
   mark('hierarchical','strong','O ramo classifica conceitos e contém subdivisões diretas explicitamente registradas.',[cite(first),...refs.filter(r=>r.id.startsWith('child:')&&r.id.endsWith(':title')).slice(0,2).map(r=>cite(r))],80);
  }
+ if(children.length>=2&&children.length<=8&&bounded&&rulePatterns.architectural.test(body)&&/\b(?:função|entrada|saída|processa|responsável|interface|comunica|conecta)\b/i.test(body))mark('architectural','strong','O trecho descreve componentes e função/interface, com partes explícitas no mapa.',[cite(first),...refs.filter(r=>r.id.startsWith('child:')&&r.id.endsWith(':title')).slice(0,2).map(r=>cite(r))],79);
  if(availableColumns(s).length){
-  const rowRefs=refs.filter(r=>r.id.startsWith('table:')).slice(0,4);
+  const rowRefs=refs.filter(r=>r.id.startsWith('table:')).slice(0,3);
   mark('comparative','strong','Correspondências explícitas permitem comparar os conceitos por critérios registrados.',rowRefs.map(r=>cite(r)),85);
  }
  const pairs=extractExplicitPairs(s);
@@ -110,7 +118,8 @@ async function localAssessment(s,pilot,refs){
  const supported=assessments.filter(a=>a.suitability==='strong').sort((a,b)=>b.priority-a.priority||(rank(s,a.structure)<0?99:rank(s,a.structure))-(rank(s,b.structure)<0?99:rank(s,b.structure))||a.structure.localeCompare(b.structure));
  const primary=supported[0]?.structure||'none';
  // A lexical clue alone is not a defensible fallback. Do not fill a quota of alternatives.
- const secondary=supported[1]?.structure||'none';
+ const compatible={hierarchical:['comparative','relational'],relational:['hierarchical','comparative','architectural'],comparative:['hierarchical','relational','quantitative'],sequential:['conditional','temporal','architectural'],conditional:['sequential','comparative'],temporal:['sequential','comparative'],architectural:['relational','sequential'],quantitative:['simulation','comparative'],simulation:['quantitative','conditional']};
+ const secondary=supported.slice(1).find(a=>compatible[primary]?.includes(a.structure))?.structure||'none';
  return {primary,secondary,objective:primary==='none'?'Compreender o conceito e investigar a adequação visual.':legacy?.method==='descritor curado revalidado'?legacy.objective:goals[primary]+' no contexto do conceito.',
  reason:primary==='none'?'A análise local não identificou estrutura suficientemente sustentada; solicite análise semântica.':'Escolha baseada na estrutura documentada, independentemente do gerador.',
  backupReason:secondary==='none'?'Não há alternativa independente suficientemente sustentada nesta análise.':'Alternativa documentada para o mesmo recorte de aprendizagem; pertinência a revisar.',
