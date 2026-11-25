@@ -490,17 +490,26 @@ export default function MindMapView({
       }
       const requested = batches.reduce((sum, batch) => sum + batch.count, 0);
       const parts = batches.flatMap(({ target, count }) => Array.from({length: Math.ceil(count / 4)}, (_, i) => ({ target, count: Math.min(4, count - 4 * i) })));
-      const result = await runGanRound(parts, (target, count) => generateNode(target, count, additionalContext), () => task.discard);
+      const result = await runGanRound(
+        parts,
+        (target, count) => generateNode(target, count, additionalContext),
+        () => task.discard,
+        { targetSaved: !isAdmin },
+      );
       if (!result || task.discard) return;
       const { entries, failure, saveFailures } = result;
-      newGanReview(entries, node, requested);
+      newGanReview(entries, node, isAdmin ? requested : undefined);
       const ready = entries.filter(entry => entry.status === 'saved').length;
       const pending = entries.length - ready;
-      const summary = entries.length + ' de ' + requested + ' propostas geradas';
-      const incomplete = entries.length < requested;
+      const summary = isAdmin
+        ? entries.length + ' de ' + requested + ' propostas geradas'
+        : ready + ' de ' + requested + ' questões prontas para treino';
+      const incomplete = (isAdmin ? entries.length : ready) < requested;
+      const belowMinimum = isAdmin ? incomplete : ready < Math.ceil(requested * 0.9);
       const detail = incomplete && failure ? '. ' + failure : '';
-      setNotice(summary + ' · ' + pending + ' para revisão · ' + ready + ' para treino · ' + chosen.title + detail);
-      if (incomplete) setGanError(summary + ' após as tentativas de reposição' + detail + '.');
+      const training = isAdmin ? ' · ' + ready + ' para treino' : '';
+      setNotice(summary + ' · ' + pending + ' para revisão' + training + ' · ' + chosen.title + detail);
+      if (belowMinimum) setGanError(summary + ' após as tentativas de reposição' + detail + '.');
       if (saveFailures) setGanError(previous => [previous, 'Parte das gravações automáticas falhou. Confira as questões na revisão.'].filter(Boolean).join(' '));
     } catch (err) {
       if (!task.discard) setNotice(err?.message || 'Não foi possível concluir o confronto GAN para este nó.');
@@ -516,7 +525,7 @@ export default function MindMapView({
       aria-haspopup="dialog" aria-label={ganActionLabel} onClick={openGanPackage}>
       {mapMaximized ? <span className="qb-map-full-header__action-text">{ganReviewPending ? 'Revisar questões' : 'Gerar questões'}</span> : ganActionLabel}
     </Button>
-    {!ganReviewPending && ganReview?.entries.some(entry => entry.status === 'saved') && (
+    {(!isAdmin || !ganReviewPending) && ganReview?.entries.some(entry => entry.status === 'saved') && (
       <Button size="sm" variant="secondary" icon="target" aria-label="Treinar pacote"
         disabled={ganLoading || flashcardsLoading} onClick={trainGanReview}>
         {mapMaximized ? <span className="qb-map-full-header__action-text">Treinar pacote</span> : 'Treinar pacote'}
