@@ -1,0 +1,312 @@
+{
+ "topico": "cp-11",
+ "materia": "cp",
+ "centro": "História do voto e dos partidos no Brasil",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "05"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a05-r2",
+   "t": "Voto e partidos no Império",
+   "topico": "cp-11",
+   "n": "Voto censitário e partidos de quadros endógenos",
+   "x": {
+    "e": "No Império o voto era censitário e indireto. Os \"partidos\" do Primeiro Reinado eram correntes de opinião; no Segundo Reinado, Liberais (luzia) e Conservadores (saquarema) disputaram o poder.",
+    "src": "Aula 05, p. 13",
+    "cit": "estamos nos referindo a correntes de opinião, já que esses grupos não se organizavam como uma instituição",
+    "trap": "Partidos do Primeiro Reinado não eram partidos modernos: eram correntes de opinião e clubes."
+   },
+   "f": [
+    {
+     "id": "est-a05-r2.1",
+     "t": "Voto censitário de 1824",
+     "topico": "cp-11",
+     "n": "Renda definia quem votava e quem podia ser votado",
+     "x": {
+      "e": "Eleição indireta e censitária: votava quem tinha renda mínima (cidadão ativo, eleitor de paróquia); ser votado exigia renda maior (cidadão passivo, eleitor de província). Para deputado a renda mínima era de 400 mil réis; para senador, 800 mil réis.",
+      "src": "Aula 05, p. 24",
+      "cit": "Quem tinha a partir de 200 mil réis votava e poderia ser votado (cidadão passivo).",
+      "trap": "Cidadão ativo é quem vota; cidadão passivo é quem pode ser votado. Não são sinônimos."
+     }
+    },
+    {
+     "id": "est-a05-r2.2",
+     "t": "Liberais e Conservadores",
+     "topico": "cp-11",
+     "n": "Luzia e saquarema: facções da mesma elite",
+     "x": {
+      "e": "Liberais (luzia) e conservadores (saquarema) eram ambos monarquistas e escravocratas; divergiam sobre a forma de Estado (centralização ou descentralização) e sobre questões administrativas.",
+      "src": "Aula 05, p. 30",
+      "cit": "Apesar de ambos defenderem a monarquia e a escravidão, tinham visões distintas sobre o",
+      "trap": "Não atribuir aos partidos imperiais divergências sobre liberdades civis ou reformas sociais: o texto aponta centralização e descentralização."
+     },
+     "f": [
+      {
+       "id": "est-a05-r2.2.1",
+       "t": "Frase-síntese dos partidos imperiais",
+       "topico": "cp-11",
+       "n": "Mesma elite no poder, com alternância de grupos",
+       "x": {
+        "e": "Frase do texto (p. 30): \"nada se assemelha mais a um saquarema do que um luzia no poder\". Luzia = liberal; saquarema = conservador. A frase diz que, no poder, os dois grupos eram parecidos, não que eram idênticos em tudo.",
+        "src": "Aula 05, p. 30",
+        "cit": "nada se assemelha mais a um saquarema do que um luzia no poder",
+        "trap": "A frase não diz que os partidos eram idênticos em tudo: diz que, no poder, eram parecidos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r2.3",
+     "t": "Reformas eleitorais do Império",
+     "topico": "cp-11",
+     "n": "Lei dos Círculos (1855) e Lei Saraiva (1881)",
+     "x": {
+      "e": "Duas reformas: a Lei dos Círculos (1855) criou o voto distrital; a Lei Saraiva (1881) estabeleceu eleições diretas e excluiu os analfabetos, tornando o eleitorado mais restrito.",
+      "src": "Aula 05, p. 33",
+      "cit": "Essa reforma criou o voto distrital.",
+      "trap": "Lei Saraiva não ampliou o eleitorado: o texto diz que ele se tornou mais excludente."
+     },
+     "f": [
+      {
+       "id": "est-a05-r2.3.1",
+       "t": "Lei dos Círculos (1855)",
+       "topico": "cp-11",
+       "n": "Um deputado por distrito, com maioria absoluta",
+       "x": {
+        "e": "Províncias divididas em distritos (\"círculos\"), cada um elegendo um representante. Se ninguém atingisse maioria absoluta, havia nova votação entre os mais votados.",
+        "src": "Aula 05, p. 33",
+        "cit": "O sistema adotado foi o de maioria absoluta, no qual, caso nenhum candidato obtivesse 50% mais 1 dos votos",
+        "trap": "Lei dos Círculos é voto distrital com maioria absoluta, não representação proporcional."
+       }
+      },
+      {
+       "id": "est-a05-r2.3.2",
+       "t": "Lei Saraiva (1881)",
+       "topico": "cp-11",
+       "n": "Eleições diretas, analfabetos excluídos",
+       "x": {
+        "e": "A Lei Saraiva estabeleceu eleições diretas e tornou elegíveis imigrantes comerciantes ou industriais; permitiu a participação de não católicos; excluiu os analfabetos. Em 1872 eram 1.097.698 votantes; em 1886, 117.022 eleitores (texto).",
+        "src": "Aula 05, p. 38",
+        "cit": "A legislação proibiu a participação política de analfabetos, seja como eleitores ou como candidatos.",
+        "trap": "Lei Saraiva excluiu analfabetos e restringiu o eleitorado; não é marco de ampliação do voto."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "05"
+  },
+  {
+   "id": "est-a05-r4",
+   "t": "Partidos e voto de 1930 a 1964",
+   "topico": "cp-11",
+   "n": "Código de 1932, Estado Novo, Lei Agamenon e Constituição de 1946",
+   "x": {
+    "e": "O Código Eleitoral de 1932 trouxe voto secreto, voto feminino e Justiça Eleitoral. O Estado Novo (1937-1945) extinguiu temporariamente os partidos. A Lei Agamenon (1945) e a Constituição de 1946 reconstruíram o sistema de partidos nacionais.",
+    "src": "Aula 05, p. 51-54",
+    "cit": "O marco inicial desse movimento foi a promulgação do Código Eleitoral de 1932 pelo Governo Provisório",
+    "trap": "O Código de 1932 não criou partido nacional: o texto diz que o Brasil não deu esse passo naquela época."
+   },
+   "nota": "Texto escreve \"Lei Agamenon\" (p. 54); a grafia do nome da lei não foi conferida com fonte externa.",
+   "f": [
+    {
+     "id": "est-a05-r4.1",
+     "t": "Código de 1932 e Constituição de 1934",
+     "topico": "cp-11",
+     "n": "Representação classista e partidos ainda estaduais",
+     "x": {
+      "e": "O Código de 1932 criou a representação classista (40 vagas: 18 sindicatos, 17 patronais, 3 profissionais liberais, 2 funcionários públicos). A Constituição de 1934 manteve eleições disputadas por partidos estaduais.",
+      "src": "Aula 05, p. 52",
+      "cit": "resultando em eleições ainda disputadas por partidos estaduais em vez de agremiações nacionais.",
+      "trap": "Representação classista é de associações profissionais, não de partidos."
+     }
+    },
+    {
+     "id": "est-a05-r4.2",
+     "t": "Estado Novo (1937-1945)",
+     "topico": "cp-10",
+     "n": "Golpe de 1937 e Constituição outorgada",
+     "x": {
+      "e": "O Golpe de 1937 deu origem ao Estado Novo e à Constituição outorgada de inspiração fascista. Os partidos foram extintos temporariamente; a tentativa de partido único (Legião Cívica Brasileira) não prosperou.",
+      "src": "Aula 05, p. 53",
+      "cit": "Durante o Estado Novo, houve uma extinção temporária de todos os partidos políticos no Brasil",
+      "trap": "Estado Novo extinguiu os partidos, mas o partido único (Legião Cívica Brasileira) não se consolidou."
+     }
+    },
+    {
+     "id": "est-a05-r4.3",
+     "t": "Lei Agamenon, Constituição de 1946 e partidos nacionais",
+     "topico": "cp-11",
+     "n": "Partidos de âmbito nacional e candidatura partidária",
+     "x": {
+      "e": "A Lei Agamenon (1945) exigiu partido de âmbito nacional (10 mil assinaturas em pelo menos 5 estados), candidatura partidária obrigatória e representação proporcional. A Constituição de 1946 reconheceu explicitamente os partidos nacionais.",
+      "src": "Aula 05, p. 54",
+      "cit": "O partido político deveria ter âmbito nacional, com 10 mil assinaturas distribuídas em pelo menos 5 Estados",
+      "trap": "A Lei Agamenon é de 1945; a Constituição de 1946 é outra norma, promulgada depois."
+     },
+     "f": [
+      {
+       "id": "est-a05-r4.3.1",
+       "t": "PSD, UDN, PTB e PCB",
+       "topico": "cp-11",
+       "n": "Quatro partidos de destaque entre 1946 e 1965",
+       "x": {
+        "e": "PSD (formado por ex-interventores e burocracia varguista), UDN (antigetulistas, com diretórios na maioria dos municípios), PTB (apoiado pelo Ministério do Trabalho e pelos sindicatos; o que mais cresceu) e PCB (legenda proibida de 1947 a 1985).",
+        "src": "Aula 05, p. 56",
+        "cit": "o PCB teve sua legenda proibida entre 1947 e 1985",
+        "trap": "O PCB foi o único dos quatro sem legenda legal no período de 1947 a 1985."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "05"
+  },
+  {
+   "id": "est-a05-r6",
+   "t": "Regime militar (1964-1985)",
+   "topico": "cp-7",
+   "n": "Autoritarismo, Atos Institucionais e eleições controladas",
+   "x": {
+    "e": "Ditadura civil-militar de 1964 até meados dos anos 1980: o Executivo prevalece sobre o Legislativo e o Judiciário, sustentado por Atos Institucionais, Lei de Segurança Nacional (1967) e órgãos de repressão.",
+    "src": "Aula 05, p. 76",
+    "cit": "um regime político que privilegiava a autoridade do Estado em relação às liberdades individuais",
+    "trap": "O regime não tinha canais de diálogo com a sociedade nem com o Congresso, segundo o texto."
+   },
+   "f": [
+    {
+     "id": "est-a05-r6.1",
+     "t": "Atos Institucionais e Congresso fechado",
+     "topico": "cp-7",
+     "n": "AI modificam a Constituição; o Congresso foi fechado",
+     "x": {
+      "e": "Os Atos Institucionais (AI) se sobrepunham à Constituição e podiam modificá-la; os Atos Complementares regulamentavam os AI. O Congresso foi fechado mais de uma vez; entre 1968 e 1969 ficou fechado por 10 meses.",
+      "src": "Aula 05, p. 76",
+      "cit": "É um conjunto de normas que se sobrepunham até mesmo à Constituição Federal",
+      "trap": "AI não era lei comum: podia modificar até a Constituição Federal."
+     }
+    },
+    {
+     "id": "est-a05-r6.2",
+     "t": "Eleições e reformas eleitorais do regime",
+     "topico": "cp-11",
+     "n": "Eleições indiretas, voto vinculado e proibição do voto em legenda",
+     "x": {
+      "e": "Código Eleitoral de 1965: voto vinculado, proibição de coligação nas eleições proporcionais, multas para quem não votava. Cargos majoritários passaram a ser indiretos; em 1982 não se podia votar na legenda.",
+      "src": "Aula 05, p. 77",
+      "cit": "obrigatoriedade de o eleitor votar em candidatos do mesmo partido nas eleições para deputado federal e estadual",
+      "trap": "Voto vinculado: o eleitor só podia votar em candidatos do mesmo partido para deputado federal e estadual."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.2.1",
+       "t": "Lei Falcão (1976)",
+       "topico": "cp-11",
+       "n": "Propaganda no rádio restrita ao currículo do candidato",
+       "x": {
+        "e": "A Lei Falcão (ministro Armando Falcão) restringiu a propaganda eleitoral no rádio à apresentação de um resumo da biografia do candidato, sem posições políticas nem propostas.",
+        "src": "Aula 05, p. 79",
+        "cit": "sem posições políticas ou apresentação de propostas e programas",
+        "trap": "A Lei Falcão proibia a exposição de propostas no rádio: não era simples limite de tempo."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r6.3",
+     "t": "Bipartidarismo: ARENA e MDB",
+     "topico": "cp-11",
+     "n": "Dois partidos criados pelo regime: apoio e oposição controlada",
+     "x": {
+      "e": "O AI-2 extinguiu os partidos existentes. O AC-4 exigia 120 deputados federais e 20 senadores para formar uma legenda. Na prática seria possível três partidos, mas a maioria dos congressistas aderiu à legenda de apoio ao regime e só dois se formaram: ARENA (apoio ao governo) e MDB (oposição).",
+      "src": "Aula 05, p. 78",
+      "cit": "Foi o AI-2 o instrumento político que extinguiu todos os partidos políticos.",
+      "trap": "O bipartidarismo resultou da extinção dos partidos e de regras restritivas, não de uma proibição expressa de criar partidos."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.3.1",
+       "t": "ARENA e MDB",
+       "topico": "cp-11",
+       "n": "Partido de apoio ao governo e oposição tolerada",
+       "x": {
+        "e": "ARENA: partido de apoio ao governo militar. MDB: partido de oposição, mas controlada e considerada moderada pelo sistema.",
+        "src": "Aula 05, p. 79",
+        "cit": "Movimento Democrático Brasileiro (MDB): partido de oposição ao Governo, mas uma",
+        "trap": "MDB era oposição controlada, não oposição livre."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r6.4",
+     "t": "Abertura e fim do bipartidarismo (1979)",
+     "topico": "cp-11",
+     "n": "Lei da Anistia e Lei Orgânica dos Partidos de 1979",
+     "x": {
+      "e": "A Lei da Anistia (agosto de 1979) e a Lei Orgânica dos Partidos (novembro de 1979) dissolveram ARENA e MDB e permitiram novos partidos (PDS e PMDB como sucessores; PP, PTB, PDT e PT).",
+      "src": "Aula 05, p. 82",
+      "cit": "A Arena e o MDB foram dissolvidos e, logo em seguida, de forma independente e autônoma do Estado, foram criados 6 novos partidos.",
+      "trap": "PDS é sucessor da ARENA e PMDB é sucessor do MDB; não são partidos criados do zero."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.4.1",
+       "t": "Partido dos Trabalhadores (PT)",
+       "topico": "cp-11",
+       "n": "Primeiro partido de massas, de formação exógena",
+       "x": {
+        "e": "O PT foi fundado por sindicalistas, ativistas de movimentos sociais e intelectuais. Para Raquel Meneguello, foi o primeiro partido de massas, de formação exógena.",
+        "src": "Aula 05, p. 82",
+        "cit": "o PT foi a principal novidade nesse quadro político-institucional partidário porque foi o primeiro partido de massas",
+        "trap": "Partido de formação exógena nasce da sociedade civil; o de quadros (endógeno) nasce no parlamento."
+       }
+      },
+      {
+       "id": "est-a05-r6.4.2",
+       "t": "Diretas Já (1983-1984)",
+       "topico": "cp-7",
+       "n": "Campanha popular sem eleição direta em 1985",
+       "x": {
+        "e": "A campanha Diretas Já (1983) tomou as ruas; a Emenda Dante, de eleição direta para presidente, não atingiu os votos necessários. A eleição de 1985 foi indireta.",
+        "src": "Aula 05, p. 83",
+        "cit": "Contudo, a proposta não atingiu o número de votos necessários para ser aprovada.",
+        "trap": "A campanha Diretas Já não resultou em eleição direta em 1985: a eleição foi indireta pelo Colégio Eleitoral."
+       }
+      },
+      {
+       "id": "est-a05-r6.4.3",
+       "t": "Eleição indireta de Figueiredo (1978)",
+       "topico": "cp-7",
+       "n": "Colégio Eleitoral elegeu o general Figueiredo",
+       "x": {
+        "e": "Após Geisel, o Colégio Eleitoral elegeu o general Figueiredo. O texto indica a votação de 335 a 266 para Figueiredo e Euler Bentes Monteiro.",
+        "src": "Aula 05, p. 80",
+        "cit": "Após o Presidente General Ernesto Geisel, o Colégio Eleitoral elegeu o General Figueiredo para",
+        "trap": "A eleição era indireta: o Colégio Eleitoral, não o voto popular."
+       },
+       "nota": "Os números de votação (335 x 266, p. 80) não foram conferidos com fonte externa."
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "05"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Voto censitário -> Lei Saraiva exclui analfabetos",
+   "de": "est-a05-r2.1",
+   "para": "est-a05-r2.3.2"
+  },
+  {
+   "rotulo": "Lei Orgânica de 1979 -> PT, partido de massas",
+   "de": "est-a05-r6.4",
+   "para": "est-a05-r6.4.1"
+  }
+ ],
+ "fontesCentral": {}
+}

@@ -1,0 +1,643 @@
+[
+ {
+  "id": "cp-e03-q01",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito C confirmado. A assertiva omite 'garantir a organização administrativa': é V2 (incompleto não é errado), não V1; o comentário dizia 'sem alterar nenhum ponto'. Trocar mecanismo para V2 · Incompleto não é errado.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "novo_comentario": "O texto da aula diz: \"O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político do Estado, garantir a organização administrativa e os processos políticos de tomada de decisão\" (Aula 03, p. 5). A assertiva omite apenas \"a organização administrativa\", sem alterar o que reproduz; enunciado incompleto não é errado. Item certo (V2 · Incompleto não é errado)."
+ },
+ {
+  "id": "cp-e03-q02",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto, mas a assertiva tinha negação frontal ('não fazem parte') somada a uma segunda falsidade ('se restringe às camadas de forma de Estado...'; a fonte não lista forma de Estado entre as noções de p. 5) e a 'versão correta' do comentário continuava falsa. Reescrito com ponto único (F2: exclusão de um item da lista).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "novo_assertiva": "Segundo a aula, entre as engrenagens do sistema político incluem-se a representação política e os sistemas partidários, mas não os sistemas eleitorais.",
+  "novo_enunciado": "Acerca da organização do sistema político, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. Segundo a aula, entre as engrenagens do sistema político incluem-se a representação política e os sistemas partidários, mas não os sistemas eleitorais.",
+  "novo_comentario": "O texto da aula diz: \"Não vamos esquecer que representação política, sistemas partidários e eleitorais também fazem parte das engrenagens do sistema\" (Aula 03, p. 5). O item exclui os sistemas eleitorais, que a aula inclui expressamente. Versão correta: representação política, sistemas partidários e sistemas eleitorais também fazem parte das engrenagens do sistema político. Item errado (F2 · Restrição indevida)."
+ },
+ {
+  "id": "cp-e03-q03",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo V2 deveria ser V1 (paráfrase completa).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q04",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (político × econômico).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q05",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q06",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q07",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto (F3: atribui ao sistema de governo a palavra-chave e o conteúdo da forma de governo). Mas a 'versão correta' do comentário mantinha 'quem detém o poder, base de legitimidade e transmissão da autoridade', que é a definição de forma de governo. Comentário corrigido.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "novo_comentario": "O texto da aula diz: \"Sistema de Governo se refere a como o poder político está dividido e como os detentores do poder se relacionam [...] Aqui a noção chave é DIVISÃO e RELAÇÃO ENTRE PODERES\" (Aula 03, p. 6). \"Quem detém o poder, qual é a sua base de legitimidade e como a autoridade é transmitida\", com a palavra-chave AUTORIDADE, é a definição de forma de governo (p. 5). Versão correta: a noção-chave do sistema de governo é a divisão e a relação entre poderes, pois ele trata de como o poder político está dividido e de como os detentores do poder se relacionam. Item errado (F3 · Troca de conceito)."
+ },
+ {
+  "id": "cp-e03-q08",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito C confirmado, mas o trecho 'ligada às regras e instituições do exercício do poder' é glosa da professora, não está na citação de Duverger; atribuí-lo a Duverger torna o item discutível. Reescrito só com a citação.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_assertiva": "Segundo Maurice Duverger, no sentido amplo, chama-se regime político a forma que, num dado grupo social, assume a distinção entre governantes e governados.",
+  "novo_enunciado": "Acerca da organização do sistema político, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. Segundo Maurice Duverger, no sentido amplo, chama-se regime político a forma que, num dado grupo social, assume a distinção entre governantes e governados.",
+  "novo_comentario": "A aula cita Duverger: \"no sentido amplo chama-se regime político a forma que, num dado grupo social, assume a distinção entre governantes governados\" (Aula 03, p. 6). A assertiva reproduz a citação. Item certo (V1 · Paráfrase fiel)."
+ },
+ {
+  "id": "cp-e03-q09",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q10",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (diferentes órgãos × mesmo órgão).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q11",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q12",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q13",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q14",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q15",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q16",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q17",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (parte legislativa dos nobres × tribunais da lei).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q18",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q19",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q20",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto (47 trocado por 51), mas o item e o comentário reproduziam o erro da fonte que inclui John Adams entre os autores d'Os Federalistas (p. 15); os autores são Madison, Hamilton e Jay. Autoria retirada do item.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "novo_assertiva": "Segundo a aula, Montesquieu é expressamente citado em Os Federalistas e, no número 51 dessa obra, é chamado de \"oráculo\" da organização dos poderes.",
+  "novo_enunciado": "No que se refere ao sistema de freios e contrapesos, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. Segundo a aula, Montesquieu é expressamente citado em Os Federalistas e, no número 51 dessa obra, é chamado de \"oráculo\" da organização dos poderes.",
+  "novo_comentario": "O texto da aula diz: \"Montesquieu é expressamente citado em 'Os Federalistas' (nos 9, 43, 47 e 78). No 47 é chamado de 'oráculo' da organização dos poderes\" (Aula 03, p. 15). O item traz o número 51 no lugar do 47 (o n. 51 é o da frase de Madison sobre os anjos, p. 23). Versão correta: no número 47, Montesquieu é chamado de \"oráculo\" da organização dos poderes. Item errado (F4 · Detalhe alterado)."
+ },
+ {
+  "id": "cp-e03-q21",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo V3; 'qualquer ramo' é literal, V1.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q22",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (liberdade individual × igualdade econômica).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q23",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q24",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q25",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q26",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q27",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e03-q28",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q29",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q30",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q31",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (exclusivamente × em conjunto com o Congresso).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q32",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q33",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q34",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto, mas 'a do seu partido' é ambíguo (partido do ministro ou do presidente?); lido como partido do presidente, a fonte não o contradiz. Reescrito para deixar claro que se trata do partido do próprio ministro.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "novo_assertiva": "O Presidente é capaz de montar seu próprio ministério, e, segundo a aula, os ministros devem seguir tanto a política do presidente quanto a orientação de seus próprios partidos.",
+  "novo_enunciado": "A respeito das noções gerais do presidencialismo, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. O Presidente é capaz de montar seu próprio ministério, e, segundo a aula, os ministros devem seguir tanto a política do presidente quanto a orientação de seus próprios partidos.",
+  "novo_comentario": "O texto da aula diz: \"o Presidente é capaz de montar seu próprio ministério. Por isso, os ministros devem seguir a política do presidente e não sua ou do seu partido\" (Aula 03, p. 20). O item acrescenta a orientação dos partidos dos ministros, que a aula exclui. Versão correta: os ministros devem seguir a política do presidente, e não a sua própria nem a de seu partido. Item errado (F3 · Troca de conceito)."
+ },
+ {
+  "id": "cp-e03-q35",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q36",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q37",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (militar × civil).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q38",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q39",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q40",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo V4; não cobra exceção, é V1.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q41",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto (F5). Retirado o acréscimo sobre a vedação de delegar (art. 36, § 2º), para não depender desse trecho e manter um só ponto de verificação.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F5",
+  "novo_assertiva": "Na Constituição de 1946, o cidadão investido na função de um dos Poderes não poderia exercer a de outro em nenhuma hipótese.",
+  "novo_enunciado": "Quanto à história do presidencialismo no Brasil, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. Na Constituição de 1946, o cidadão investido na função de um dos Poderes não poderia exercer a de outro em nenhuma hipótese.",
+  "novo_comentario": "O texto da aula transcreve o art. 36, § 1º, da Constituição de 1946: \"O cidadão investido na função de um deles não poderá exercer a de outro, salvo as exceções previstas nesta Constituição\" (Aula 03, p. 27). O item suprime a ressalva e diz \"em nenhuma hipótese\". Versão correta: não poderia exercer a de outro, salvo as exceções previstas na Constituição. Item errado (F5 · Regra × exceção)."
+ },
+ {
+  "id": "cp-e03-q42",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q43",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q44",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q45",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q46",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q47",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q48",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto (F3: fiscalização atribuída ao Judiciário em vez do Legislativo). A 'versão correta' do comentário estava truncada e com pontuação quebrada. Comentário corrigido.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "novo_comentario": "O texto da aula diz: \"o Poder Executivo, além de administrar e executar a lei, deve também controlar a atividade legislativa, por meio do veto [...]. O Legislativo, por sua vez, além de criar as leis, tem o poder típico de fiscalização de alguns pontos do Executivo\" (Aula 03, p. 29). O item atribui ao Judiciário o poder típico de fiscalização, que a aula atribui ao Legislativo. Versão correta: o Executivo controla a atividade legislativa pelo veto, enquanto o Legislativo tem o poder típico de fiscalização de alguns pontos do Executivo. Item errado (F3 · Troca de conceito)."
+ },
+ {
+  "id": "cp-e03-q49",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (Executivo × Legislativo).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q50",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q51",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref. Ajustar rótulo do mecanismo: rótulo F4; é F3 (nacional × estados invertidos).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q52",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q53",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q54",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q55",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto, mas o comentário confrontava 'a cada dois anos' com 'intervalos fixos', que não prova a falsidade; além disso, no Brasil há eleições a cada dois anos (alternando municipais e gerais), o que torna o item discutível. Reescrito com o mandato presidencial explícito e o trecho 'de quatro em quatro anos'.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "novo_assertiva": "No presidencialismo brasileiro, a eleição como saída para crises políticas só está à disposição dos eleitores de dois em dois anos, quando se renovam os mandatos presidenciais.",
+  "novo_enunciado": "Sobre as relações entre Executivo e Legislativo e a governabilidade, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. No presidencialismo brasileiro, a eleição como saída para crises políticas só está à disposição dos eleitores de dois em dois anos, quando se renovam os mandatos presidenciais.",
+  "novo_comentario": "A aula diz que a primeira alternativa (a eleição) \"só está à disposição dos eleitores de quatro em quatro anos, quando se renovam os mandatos presidenciais\" e que \"as eleições periódicas [...] acontecem a cada quatro anos\" (Aula 03, p. 32). O item traz \"de dois em dois anos\". Versão correta: só está à disposição dos eleitores de quatro em quatro anos. Item errado (F4 · Detalhe alterado)."
+ },
+ {
+  "id": "cp-e03-q56",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q57",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q58",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q59",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q60",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q61",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q62",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q63",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q64",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q65",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2"
+ },
+ {
+  "id": "cp-e03-q66",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto (F2). A 'versão correta' do comentário estava contraditória ('e controle os políticos, de modo que parte... escapa'). Comentário corrigido.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "novo_comentario": "Arantes, citado na aula: \"No Brasil, existe a possibilidade de que o Judiciário controle as leis, controle as políticas públicas e controle os políticos. Isso significa que todo o ciclo da política democrática está sob a vigilância cotidiana desses órgãos judiciais\" (Aula 03, p. 35). O item exclui os políticos e diz que parte do ciclo escapa. Versão correta: o Judiciário pode controlar as leis, as políticas públicas e os políticos, e todo o ciclo da política democrática está sob sua vigilância. Item errado (F2 · Restrição indevida)."
+ },
+ {
+  "id": "cp-e03-q67",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q68",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q69",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q70",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q71",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q72",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q73",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q74",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q75",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito E correto, mas a assertiva fazia dupla alteração com conclusão absurda ('irrelevantes'), e a 'versão correta' do comentário era contraditória. Reescrito com ponto único (F2: 'exclusivamente').",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "novo_assertiva": "Segundo a aula, a efetividade da democracia depende exclusivamente da participação política dos cidadãos e da realização de eleições regulares.",
+  "novo_enunciado": "A respeito de capacidades estatais, governança e democracia, conforme a Aula 03 de Ciência Política do Estratégia, julgue o item a seguir. Segundo a aula, a efetividade da democracia depende exclusivamente da participação política dos cidadãos e da realização de eleições regulares.",
+  "novo_comentario": "O texto da aula diz: \"A efetividade da democracia não depende apenas da participação política ou de eleições regulares, mas da capacidade do Estado de realizar os direitos prometidos constitucionalmente\" (Aula 03, p. 42). O item restringe a efetividade à participação e às eleições. Versão correta: a efetividade da democracia não depende apenas da participação política ou de eleições regulares, mas também da capacidade do Estado de realizar os direitos prometidos constitucionalmente. Item errado (F2 · Restrição indevida)."
+ },
+ {
+  "id": "cp-e03-q76",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q77",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q78",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q79",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q80",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q81",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e03-q82",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q83",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e03-q84",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q85",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q86",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e03-q87",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e03-q88",
+  "decisao": "APROVADO",
+  "motivo": "Classificação cega coincide com o gabarito; ponto único, sustentado pela evidência e pela ref.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ }
+]

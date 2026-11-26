@@ -1,0 +1,539 @@
+[
+  {
+    "id": "cp-e05-q01",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 10) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q02",
+    "decisao": "CORRIGIDO",
+    "motivo": "Item com dois pontos falsos: troca 1824 por 1891 e ainda chama 1891 de 'ano da Proclamação da República' (foi 1889). Reduzido a um único ponto de alteração.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4",
+    "novo_enunciado": "A respeito de início do estado brasileiro e da história política brasileira, julgue o item a seguir. Oficialmente, o Estado brasileiro inicia-se com a Independência, em 1822, e tem sua primeira Constituição em 1891.",
+    "novo_comentario": "O texto da Aula 05 (p. 5) diz: \"Oficialmente, o Estado brasileiro inicia-se com a Independência em 1822 e tem a primeira Constituição em 1824.\" O item altera um único ponto (F4 · Detalhe alterado): traz \"1891\" no lugar de \"1824\". 1891 é a primeira Constituição republicana, não a primeira do Estado brasileiro. Versão correta: Oficialmente, o Estado brasileiro inicia-se com a Independência, em 1822, e tem sua primeira Constituição em 1824."
+  },
+  {
+    "id": "cp-e05-q03",
+    "decisao": "APROVADO",
+    "motivo": "Gabarito correto (Poder Moderador ficou suspenso, p. 27); rótulo F6 aceitável.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q04",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 8) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q05",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 18) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q06",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 18) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q07",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 20) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q08",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 27) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q09",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 28) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q10",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 31) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q11",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 13) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q12",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 14) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q13",
+    "decisao": "APROVADO",
+    "motivo": "V2: lista parcial dos participantes; não torna o item discutível.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V2"
+  },
+  {
+    "id": "cp-e05-q14",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 24) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q15",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 30) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q16",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 30) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q17",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 33) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q18",
+    "decisao": "APROVADO",
+    "motivo": "Aprovado: a disputa do dia seguinte era entre os quatro mais votados; só a segunda rodada reunia os dois (p. 33).",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q19",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 38) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q20",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 40) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q21",
+    "decisao": "APROVADO",
+    "motivo": "Mecanismo registrado F2 não descreve a alteração: o item suprime uma exceção (analfabetos) e afirma o contrário; F5 (regra x exceção) é mais preciso. Gabarito correto.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F5"
+  },
+  {
+    "id": "cp-e05-q22",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 42) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q23",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 41) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q24",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 41) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q25",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 44) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q26",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 46) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q27",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 42) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q28",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 43) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q29",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 44) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q30",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 42) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q31",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 50) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q32",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 51) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q33",
+    "decisao": "APROVADO",
+    "motivo": "Mecanismo registrado F5; leitura cega F4 (proibição -> permissão). Divergência de rótulo apenas; gabarito correto.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q34",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 54) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q35",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 52) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q36",
+    "decisao": "APROVADO",
+    "motivo": "Literal; V1 mais preciso que V2. Gabarito correto.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q37",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 54) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q38",
+    "decisao": "CORRIGIDO",
+    "motivo": "Dois pontos falsos: o período (1964 x 1985) e a conclusão causal 'razão pela qual não participou da Constituinte' — a fonte (p. 54) diz que a Carta de 1946 foi fruto dos trabalhos dos 4 partidos, incluindo o PCB. O próprio comentário perpetua o erro na 'versão correta'. Removida a conclusão.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4",
+    "novo_enunciado": "A respeito de psd, udn, ptb e pcb e da história política brasileira, julgue o item a seguir. Entre os quatro principais partidos nacionais do período de 1946, o PCB teve sua legenda proibida entre 1947 e 1964.",
+    "novo_comentario": "O texto da Aula 05 (p. 56) diz: \"Além disso o PCB teve sua legenda proibida entre 1947 e 1985.\" O item altera um único ponto (F4 · Detalhe alterado): traz \"1964\" no lugar de \"1985\". Lembre também que o PCB foi um dos 4 partidos cujos trabalhos resultaram na Carta de 1946 (p. 54). Versão correta: Entre os quatro principais partidos nacionais do período de 1946, o PCB teve sua legenda proibida entre 1947 e 1985."
+  },
+  {
+    "id": "cp-e05-q39",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 62) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q40",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 64) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q41",
+    "decisao": "CORRIGIDO",
+    "motivo": "C discutível: a fonte diz que a Marcha de 19/3/1964 foi 'a primeira dessas grandes manifestações' (as Marchas), não a primeira grande manifestação contra o governo Jango em geral. Reescrito pelo recorte da fonte.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1",
+    "novo_enunciado": "A respeito de marcha da família e da história política brasileira, julgue o item a seguir. A primeira das grandes Marchas da Família com Deus pela Liberdade ocorreu em São Paulo, em 19 de março de 1964, e reuniu cerca de 500 mil pessoas.",
+    "novo_comentario": "Item certo. O texto da Aula 05 (p. 69-70) apresenta a \"Marcha da Família com Deus pela Liberdade, em 19 de março de 1964\" e diz: \"A primeira dessas grandes manifestações ocorreu em São Paulo, no dia 19 de março de 1964. Nesse protesto, cerca de 500 mil pessoas participaram.\" A assertiva reproduz esse conteúdo (V1 · Paráfrase fiel)."
+  },
+  {
+    "id": "cp-e05-q42",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 65) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q43",
+    "decisao": "CORRIGIDO",
+    "motivo": "Toca a divergência interna referendo x plebiscito de 1963 (p. 65). O gabarito não muda, mas o termo foi neutralizado para que o único ponto avaliado seja o ano.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4",
+    "novo_enunciado": "A respeito de plebiscito de 1963 e da história política brasileira, julgue o item a seguir. Na consulta popular realizada em 1965 sobre o sistema de governo, mais de 11,5 milhões de pessoas votaram, e quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo.",
+    "novo_comentario": "O texto da Aula 05 (p. 65) diz que a consulta popular sobre o parlamentarismo seria \"realizada em 1963\" e que \"mais de 11,5 milhões de pessoas votaram, sendo que quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo.\" O item altera um único ponto (F4 · Detalhe alterado): traz \"1965\" no lugar de \"1963\". Versão correta: Na consulta popular realizada em 1963 sobre o sistema de governo, mais de 11,5 milhões de pessoas votaram, e quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo."
+  },
+  {
+    "id": "cp-e05-q44",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 67) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q45",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 66) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q46",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 74) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q47",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 74) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q48",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 76) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q49",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 75) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q50",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 77) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q51",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 82) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q52",
+    "decisao": "APROVADO",
+    "motivo": "Literal (p. 76); V1 mais preciso que V2.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q53",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F4); evidência e ref (Estratégia, Aula 05, p. 77) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q54",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 79) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q55",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 78) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q56",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 79) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q57",
+    "decisao": "CORRIGIDO",
+    "motivo": "E frágil: a fonte diz que a emenda revogou 'alguns Atos Institucionais, COMO o de nº 5' — exemplo não exaustivo, que não exclui o AI-2; além disso o número 'EC 13' da fonte é historicamente impreciso (foi a EC 11/1978). Ponto de alteração movido para o presidente (Geisel x Figueiredo, que só assumiu em 15/3/1979, p. 80) e número da emenda retirado.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3",
+    "novo_enunciado": "A respeito de revogação do ai-5 e da história política brasileira, julgue o item a seguir. Em 1978, o presidente Figueiredo promulgou emenda constitucional que revogou alguns Atos Institucionais, como o AI-5, em ação para diminuir a tensão autoritária.",
+    "novo_comentario": "O texto da Aula 05 (p. 81) diz: \"Em 1978, o presidente Geisel promulgou a Emenda Constitucional [...] que revogou alguns Atos Institucionais, como o de nº 5 (o AI-5). Uma ação no sentido de diminuir a tensão autoritária.\" O item altera um único ponto (F3 · Troca de conceito): traz \"Figueiredo\" no lugar de \"Geisel\". O governo Figueiredo só começou em 15 de março de 1979 (p. 80). Versão correta: Em 1978, o presidente Geisel promulgou emenda constitucional que revogou alguns Atos Institucionais, como o AI-5."
+  },
+  {
+    "id": "cp-e05-q58",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 82) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q59",
+    "decisao": "APROVADO",
+    "motivo": "Literal; V1 mais preciso que V2.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q60",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 80) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q61",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 86) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q62",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 87) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q63",
+    "decisao": "CORRIGIDO",
+    "motivo": "A primeira oração ('Com a Constituição de 1988, os analfabetos obtiveram o direito de voto') depende da divergência interna da fonte (EC 25/1985 na p. 95 x CF/1988 nas p. 87/111). Reescrito para isolar o único ponto: elegibilidade.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3",
+    "novo_enunciado": "A respeito de voto dos analfabetos em 1988 e da história política brasileira, julgue o item a seguir. Na Constituição de 1988, os analfabetos, além do direito de voto, têm também elegibilidade, exercendo a chamada cidadania passiva.",
+    "novo_comentario": "O texto da Aula 05 (p. 95) diz: \"Apesar de terem o direito de voto, os analfabetos continuaram inelegíveis (cidadania passiva).\" O item altera um único ponto (F3 · Troca de conceito): diz que os analfabetos são elegíveis, quando continuaram inelegíveis. Versão correta: Na Constituição de 1988, os analfabetos têm direito de voto, mas continuam inelegíveis, sem a chamada cidadania passiva."
+  },
+  {
+    "id": "cp-e05-q64",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V2 x C/V2); evidência e ref (Estratégia, Aula 05, p. 87) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V2"
+  },
+  {
+    "id": "cp-e05-q65",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 88) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q66",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 96) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q67",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V2 x C/V1); evidência e ref (Estratégia, Aula 05, p. 97) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V2"
+  },
+  {
+    "id": "cp-e05-q68",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F4 x E/F4); evidência e ref (Estratégia, Aula 05, p. 98) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F4"
+  },
+  {
+    "id": "cp-e05-q69",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 103) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q70",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 103) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q71",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 104) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q72",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 85) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  },
+  {
+    "id": "cp-e05-q73",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F2 x E/F2); evidência e ref (Estratégia, Aula 05, p. 85) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F2"
+  },
+  {
+    "id": "cp-e05-q74",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (E/F3 x E/F3); evidência e ref (Estratégia, Aula 05, p. 85) sustentam; ponto único.",
+    "gabarito_cego": "E",
+    "mecanismo_cego": "F3"
+  },
+  {
+    "id": "cp-e05-q75",
+    "decisao": "APROVADO",
+    "motivo": "Classificação cega coincide (C/V1 x C/V1); evidência e ref (Estratégia, Aula 05, p. 85) sustentam; ponto único.",
+    "gabarito_cego": "C",
+    "mecanismo_cego": "V1"
+  }
+]

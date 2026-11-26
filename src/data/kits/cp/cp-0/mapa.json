@@ -1,0 +1,1248 @@
+{
+ "topico": "cp-0",
+ "materia": "cp",
+ "centro": "Base de Ciência Política",
+ "aula": "00",
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes, Aula 00",
+ "topicosEdital": {
+  "cp-0": "Ciência Política em geral (definição, objeto, papel e relação com outras Ciências Sociais); teoria política (ABCP); principais abordagens e correntes teóricas; história das ideias políticas; teoria da justiça; teoria do comportamento político. Não é tópico numerado do cargo 11; a aula o trata como base.",
+  "cp-1": "Antecipação apenas: a poliarquia de Robert Dahl (grau de democratização) é anunciada na aula e será retomada em regimes políticos.",
+  "cp-9": "Antecipação apenas: poder político e monopólio do uso legítimo da força do Estado (Weber); a aula diz que a teoria do Estado será retomada na aula seguinte."
+ },
+ "ramos": [
+  {
+   "id": "est-a00-r1",
+   "t": "Ciência Política: sentidos de política e objeto",
+   "n": "A CP estuda política, poder e Estado; para a prova, é ciência do Estado.",
+   "x": {
+    "e": "Ciência Política é o estudo da política; para efeitos de prova, a banca a trata como ciência do Estado.",
+    "src": "Aula 00, p. 8",
+    "cit": "Assim, para efeitos de prova, poderíamos definir a Ciência Política como a Ciência do Estado.",
+    "trap": "Tomar a CP como estudo de partidos ou de opiniões pessoais; o curso foca no Estado e no poder."
+   },
+   "f": [
+    {
+     "id": "est-a00-r1.1",
+     "t": "Sentidos de política",
+     "n": "Política é conceito polissêmico: liberdade e bem comum (Arendt) ou luta pelo Estado (Weber).",
+     "x": {
+      "e": "Política é conceito polissêmico, com duas vertentes: a filosófica (Arendt, liberdade e bem comum) e a científica (Weber, luta pela dominação).",
+      "src": "Aula 00, p. 10",
+      "cit": "Política é conceito polissêmico - como vários outros na área da CP.",
+      "trap": "Atribuir a Arendt a ideia de luta pelo Estado, que é de Weber."
+     },
+     "f": [
+      {
+       "id": "est-a00-r1.1.1",
+       "t": "Arendt: política como prática da liberdade",
+       "n": "Política emerge num espaço público de livres e iguais que deliberam.",
+       "x": {
+        "e": "Para Arendt, a política é um espaço público de indivíduos livres e iguais que se engajam em processo deliberativo; a palavra é a forma legítima de persuasão.",
+        "src": "Aula 00, p. 10",
+        "cit": "a política emerge somente quando se estabelece um espaço público no qual indivíduos livres e iguais se engajam em um processo deliberativo",
+        "trap": "Arendt não define política pelo monopólio da força; isso é Weber."
+       }
+      },
+      {
+       "id": "est-a00-r1.1.2",
+       "t": "Weber: luta pela direção do Estado",
+       "n": "Política é luta pela direção do Estado moderno, com monopólio da força.",
+       "x": {
+        "e": "Para Weber, a política é a luta pela direção do Estado, que reivindica o monopólio do uso legítimo da força física num território.",
+        "src": "Aula 00, p. 12",
+        "cit": "a política é a luta pela direção do Estado, especialmente do Estado Moderno, que reivindica o monopólio do uso legítimo da força física dentro de um território específico.",
+        "trap": "Trocar Weber e Arendt nas alternativas (erro típico de prova)."
+       }
+      },
+      {
+       "id": "est-a00-r1.1.3",
+       "t": "Schmitter: quatro categorias de análise",
+       "n": "Instituições, recursos, processos e funções.",
+       "x": {
+        "e": "Schmitter propõe quatro categorias gerais para estudar a política: instituições, recursos, processos e funções.",
+        "src": "Aula 00, p. 13",
+        "cit": "Representam o quadro social concreto e estabelecido no qual os atores interagem.",
+        "trap": "Tratar as categorias como atores concretos (Estado, partidos) e não como conceitos gerais."
+       }
+      },
+      {
+       "id": "est-a00-r1.1.4",
+       "t": "Schmitter: resolução não violenta de conflitos",
+       "n": "Política canaliza conflitos sem destruir nenhum dos lados.",
+       "x": {
+        "e": "Schmitter define a função da política como a resolução não violenta de conflitos, canalizando-os sem destruir as partes.",
+        "src": "Aula 00, p. 12-13",
+        "cit": "a resolução não violenta de conflitos entre indivíduos e grupos, sem destruir nenhum dos lados em conflito",
+        "trap": "Política não põe fim a todos os conflitos; ela os canaliza (p. 13).",
+        "nota": "No texto, o nome aparece como 'Schimitter' (p. 12) e 'Schmitter' (p. 13); trata-se do mesmo autor."
+       }
+      },
+      {
+       "id": "est-a00-r1.1.5",
+       "t": "Giddens: política como uso e contestação do poder",
+       "n": "A política é o meio pelo qual o poder é usado e contestado, com recursos dos grupos.",
+       "x": {
+        "e": "Giddens afirma que a política é o meio pelo qual o poder é tanto utilizado quanto contestado.",
+        "src": "Aula 00, p. 12",
+        "cit": "Ele afirma que a política é o meio pelo qual o poder é tanto utilizado quanto contestado",
+        "trap": "Giddens não reduz a política à luta pelo Estado (Weber); para ele, o poder também é contestado."
+       }
+      },
+      {
+       "id": "est-a00-r1.1.6",
+       "t": "Duverger: duas concepções da política",
+       "n": "Política como luta pela dominação ou como esforço para governar a ordem e a justiça, em nome do bem comum.",
+       "x": {
+        "e": "Duverger apresenta duas concepções: a política como luta ou combate pelo poder, e a política como esforço para fazer governar a ordem e a justiça.",
+        "src": "Aula 00, p. 10",
+        "cit": "Para outros, a política é um esforço para fazer governar a ordem e a justiça",
+        "trap": "Duverger descreve a política também como luta; não a reduza ao bem comum, que é só uma das concepções.",
+        "nota": "O texto-fonte grafa 'Durverger' (p. 10); o autor citado é Maurice Duverger."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r1.2",
+     "t": "CP como ciência do Estado e objetos históricos",
+     "n": "A banca adota a CP como ciência do Estado; o foco é o poder político do Estado.",
+     "x": {
+      "e": "A banca adota a noção de que Ciência Política é Ciência do Estado, e o foco é o poder político do Estado.",
+      "src": "Aula 00, p. 9",
+      "cit": "a Banca adota a noção de que Ciência Política é Ciência do Estado",
+      "trap": "Achar que a banca adota a CP como estudo de comportamento ou de partidos."
+     },
+     "f": [
+      {
+       "id": "est-a00-r1.2.1",
+       "t": "Objeto da CP (Bonavides)",
+       "n": "CP estuda acontecimentos, instituições e ideias políticas, no passado, presente e futuro.",
+       "x": {
+        "e": "Bonavides define a CP como estudo dos acontecimentos, das instituições e das ideias políticas, referido ao passado, ao presente e ao futuro.",
+        "src": "Aula 00, p. 8",
+        "cit": "A Ciência Política, em sentido lato, tem por objeto o estudo dos acontecimentos, das instituições e das ideias políticas",
+        "trap": "Tratar os objetos da política como fixos; a aula diz que são históricos e mutáveis."
+       }
+      },
+      {
+       "id": "est-a00-r1.2.2",
+       "t": "Objetos históricos e mutáveis",
+       "n": "Objetos da política são históricos e sempre mutáveis.",
+       "x": {
+        "e": "Os objetos da política são históricos e sempre mutáveis, por isso a questão deve ser lida no seu tempo histórico.",
+        "src": "Aula 00, p. 8",
+        "cit": "Os objetos da política são históricos",
+        "trap": "Ignorar o tempo histórico referido na questão (ex.: Parlamento no Império)."
+       }
+      },
+      {
+       "id": "est-a00-r1.2.3",
+       "t": "Perguntas que a CP investiga",
+       "n": "Formação e funcionamento dos governos, participação, políticas públicas e justiça.",
+       "x": {
+        "e": "A CP investiga como os governos são formados, quais são os mecanismos de participação, como as políticas públicas são feitas e como a justiça é buscada.",
+        "src": "Aula 00, p. 9",
+        "cit": "Para atingir seus objetivos, a CP investiga questões como:",
+        "trap": "Reduzir a CP ao estudo de eleições."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r1.3",
+     "t": "Relação com as demais Ciências Sociais",
+     "n": "CP é a mais 'hard' das Ciências Sociais; usa estatística e normas.",
+     "x": {
+      "e": "A relação com as demais Ciências Sociais está na p. 9; a frase 'mais hard' vem da orientação de estudo (p. 5). A CP usa estatística e normas para analisar o Poder e o Estado.",
+      "src": "Aula 00, p. 5",
+      "cit": "Ciência Política é a ciência mais hard entre as Ciências Sociais",
+      "trap": "Dizer que a CP é a mais 'hard' entre todas as ciências; a aula restringe às Ciências Sociais."
+     },
+     "f": [
+      {
+       "id": "est-a00-r1.3.1",
+       "t": "Estatística e normas",
+       "n": "Serve-se da estatística e das normas para analisar Poder e Estado.",
+       "x": {
+        "e": "Por isso, a CP se serve muito da estatística e das normas para analisar seus dois objetos prioritários.",
+        "src": "Aula 00, p. 5",
+        "cit": "ela se serve muito da estatística e das normas para analisar seus dois objetos prioritários",
+        "trap": "Tratar a estatística como fim, e não como ferramenta para analisar Poder e Estado."
+       }
+      },
+      {
+       "id": "est-a00-r1.3.2",
+       "t": "Aproximação com outras áreas",
+       "n": "Sociologia, antropologia, história, direito e economia.",
+       "x": {
+        "e": "A CP se aproxima de outros conhecimentos das Ciências Sociais, como Sociologia, Antropologia, História, Direito e Economia.",
+        "src": "Aula 00, p. 9",
+        "cit": "se aproxima de outros conhecimentos produzidos em outras áreas das Ciências Sociais, como a",
+        "trap": "Confundir a CP com a Sociologia; são áreas que dialogam."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r1.4",
+     "t": "Papel da CP na sociedade",
+     "n": "CP ajuda a compreender governos, melhorar decisões, fomentar debate e desenvolver a democracia.",
+     "x": {
+      "e": "A CP tem quatro contribuições: promover a compreensão (contratualistas, Bobbio, Dahl, Rawls e Nozick), melhorar a tomada de decisões (Lowi, Nye), fomentar o debate (Habermas) e desenvolver a democracia (Dahl, Pateman, Duverger).",
+      "src": "Aula 00, p. 29-30",
+      "cit": "A Ciência Política fornece análises baseadas em evidências que auxiliam na formulação de",
+      "trap": "Listar só democracia e debate; são quatro contribuições (compreensão, decisões, debate e democracia)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r1.4.1",
+       "t": "Desenvolver a democracia",
+       "n": "Estudo da democracia e da participação política aprimora as instituições democráticas.",
+       "x": {
+        "e": "Pelo estudo da democracia e da participação política, a CP contribui para o aprimoramento das instituições democráticas.",
+        "src": "Aula 00, p. 30",
+        "cit": "Por meio do estudo da democracia e da participação política, a Ciência Política contribui para o",
+        "trap": "Democracia é uma das quatro contribuições da CP, não a única."
+       }
+      },
+      {
+       "id": "est-a00-r1.4.2",
+       "t": "Fomentar o debate público",
+       "n": "Comunicação política e espaço público (Habermas).",
+       "x": {
+        "e": "As teorias da comunicação política, incluindo o conceito de espaço público de Habermas, ajudam a entender a influência da mídia e da opinião pública.",
+        "src": "Aula 00, p. 29",
+        "cit": "As teorias da comunicação política, incluindo o conceito de",
+        "trap": "Habermas (espaço público) é referência do debate, e não da teoria democrática de Dahl e Pateman."
+       }
+      },
+      {
+       "id": "est-a00-r1.4.3",
+       "t": "Promover a compreensão",
+       "n": "Ajuda a entender como os governos são formados e a origem das autoridades políticas.",
+       "x": {
+        "e": "A Ciência Política, com teorias contratualistas, ajuda as pessoas a entender como os governos são formados e a origem das autoridades políticas.",
+        "src": "Aula 00, p. 29",
+        "cit": "ajuda as pessoas a entenderem como os governos são formados e a origem das autoridades políticas",
+        "trap": "Compreensão não se limita à origem dos governos: inclui a evolução dos sistemas e a teoria da justiça (Rawls e Nozick)."
+       }
+      },
+      {
+       "id": "est-a00-r1.4.4",
+       "t": "Melhorar a tomada de decisões",
+       "n": "Análises baseadas em evidências orientam políticas públicas e a escolha do melhor caminho.",
+       "x": {
+        "e": "A CP fornece análises baseadas em evidências que auxiliam na formulação de políticas públicas mais eficazes, como as de Lowi, e a análise internacional de Nye.",
+        "src": "Aula 00, p. 29",
+        "cit": "A Ciência Política fornece análises baseadas em evidências que auxiliam na formulação de",
+        "trap": "Nye (poder suave e poder duro) entra na análise da política internacional para decisores, não em eleições."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r2",
+   "t": "Poder: conceito, meios, dimensões e autores",
+   "n": "Poder é a capacidade de influenciar o comportamento de outros; em Weber, é dominação.",
+   "x": {
+    "e": "Poder é o fenômeno pelo qual um indivíduo ou grupo exerce controle, promove mudanças ou influencia o comportamento de outros.",
+    "src": "Aula 00, p. 8",
+    "cit": "poder é o fenômeno pelo qual um indivíduo ou grupo exerce controle, promove mudanças ou influencia o comportamento de outros",
+    "trap": "Confundir poder com autoridade; autoridade é uma forma legítima de poder (p. 21).",
+    "nota": "Duas formulações coexistem: p. 8 (controle e influência) e p. 21 (Weber: 'poder é igual a dominação'). A aula chama a segunda de simplificação para memorizar ('Tatue na mente')."
+   },
+   "f": [
+    {
+     "id": "est-a00-r2.1",
+     "t": "Dominação (Weber) e relação (Bobbio)",
+     "n": "Bobbio: relação em que um impõe sua vontade ao outro; Weber: poder é dominação.",
+     "x": {
+      "e": "Bobbio define o poder por vezes como relação entre dois sujeitos em que um impõe ao outro a própria vontade e lhe determina o comportamento.",
+      "src": "Aula 00, p. 20-21",
+      "cit": "o poder é definido por vezes como uma relação entre dois sujeitos, dos quais um impõe ao outro a própria vontade e lhe determina o comportamento",
+      "trap": "Tratar dominação como sinônimo de autoridade."
+     },
+     "f": [
+      {
+       "id": "est-a00-r2.1.1",
+       "t": "Três tipos de dominação legítima",
+       "n": "Tradicional, carismática e legal-racional.",
+       "x": {
+        "e": "Weber distinguiu três tipos ideais de dominação legítima relacionados ao poder: tradicional, carismática e legal-racional.",
+        "src": "Aula 00, p. 21",
+        "cit": "Weber distinguiu três tipos ideais (ou tipos puros) de dominação legítima relacionados ao poder: tradicional, carismática e legal-racional.",
+        "trap": "Esquecer que são tipos ideais de dominação legítima, e não de poder em geral."
+       }
+      },
+      {
+       "id": "est-a00-r2.1.2",
+       "t": "Autoridade como poder legítimo",
+       "n": "Autoridade é forma legítima de poder.",
+       "x": {
+        "e": "Weber introduziu o conceito de autoridade como uma forma legítima de poder.",
+        "src": "Aula 00, p. 21",
+        "cit": "Ele também introduziu o conceito de autoridade como uma forma legítima de poder.",
+        "trap": "Tratar autoridade como qualquer poder."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r2.2",
+     "t": "Meios do poder: econômico, ideológico e político",
+     "n": "A natureza do poder é dada pelo meio usado.",
+     "x": {
+      "e": "A natureza do poder é estabelecida pelos meios usados para exercê-lo: econômico, ideológico (inclui o religioso) ou político.",
+      "src": "Aula 00, p. 24",
+      "cit": "Dos meios que se usa para exercer o poder, estabelece-se a natureza dele:",
+      "trap": "Confundir os meios (p. 24) com as dimensões do poder (p. 22).",
+      "nota": "As dimensões (p. 22: política, econômica, ideológica) e os meios (p. 24: econômico, ideológico, político) têm nomes quase iguais e são apresentados como classificações distintas; a aula não diz que são a mesma coisa."
+     },
+     "f": [
+      {
+       "id": "est-a00-r2.2.1",
+       "t": "Poder econômico",
+       "n": "Quem tem bens determina o comportamento de quem está em penúria.",
+       "x": {
+        "e": "Todo possuidor de abundância de bens é capaz de determinar o comportamento de quem se encontra em condições de penúria, pela promessa de vantagens.",
+        "src": "Aula 00, p. 24",
+        "cit": "todo possuidor de abundância de bens é capaz de determinar o comportamento de quem se encontra em condições de penúria",
+        "trap": "Associar o poder econômico só à propriedade dos meios de produção (Marx); aqui é posse de bens e promessa de vantagens."
+       }
+      },
+      {
+       "id": "est-a00-r2.2.2",
+       "t": "Poder ideológico",
+       "n": "Poder sobre ideias, crenças e valores; inclui o religioso.",
+       "x": {
+        "e": "O poder ideológico, que inclui o religioso, é um dos meios do poder (p. 24); 'atua sobre crenças e valores' vem da dimensão ideológica (p. 22).",
+        "src": "Aula 00, p. 24",
+        "cit": "Poder Ideológico (inclui o religioso)",
+        "trap": "Tratar o poder ideológico como sinônimo de poder político."
+       }
+      },
+      {
+       "id": "est-a00-r2.2.3",
+       "t": "Poder político: força como meio",
+       "n": "O meio específico do poder político é a força.",
+       "x": {
+        "e": "O meio específico do Poder Político é a força.",
+        "src": "Aula 00, p. 25",
+        "cit": "Diante disso, podemos concluir que o MEIO específico do Poder Político é a força.",
+        "trap": "Achar que a força basta para o poder político (ver r3.1.1)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r2.3",
+     "t": "Dimensões do poder",
+     "n": "Política, econômica e ideológica; dimensões que se sobrepõem.",
+     "x": {
+      "e": "As dimensões mais proeminentes do poder são a política, a econômica e a ideológica ou intelectual, que se sobrepõem e interagem.",
+      "src": "Aula 00, p. 22",
+      "cit": "Essas dimensões do poder, muitas vezes, se sobrepõem",
+      "trap": "Tratar cada dimensão como isolada; a aula diz que se sobrepõem."
+     },
+     "f": [
+      {
+       "id": "est-a00-r2.3.1",
+       "t": "Dimensão política",
+       "n": "Poder de instituições e governos: criar leis, decidir e fazer cumprir regras.",
+       "x": {
+        "e": "A dimensão política envolve o poder exercido por instituições políticas, governos e autoridades, incluindo criar leis e fazer cumprir regras.",
+        "src": "Aula 00, p. 22",
+        "cit": "Dimensão Política: Esta dimensão envolve o poder exercido por instituições políticas,",
+        "trap": "Restringir a dimensão política ao Legislativo; inclui governos e autoridades."
+       }
+      },
+      {
+       "id": "est-a00-r2.3.2",
+       "t": "Dimensão econômica",
+       "n": "Controle de recursos: dinheiro, propriedades, meios de produção.",
+       "x": {
+        "e": "A dimensão econômica refere-se ao poder ligado ao controle dos recursos econômicos, como dinheiro, propriedades e meios de produção.",
+        "src": "Aula 00, p. 22",
+        "cit": "Dimensão Econômica: Refere-se ao poder que está ligado ao controle dos recursos",
+        "trap": "Confundir a dimensão econômica com a política: aqui o foco é o controle de recursos."
+       }
+      },
+      {
+       "id": "est-a00-r2.3.3",
+       "t": "Dimensão ideológica ou intelectual",
+       "n": "Moldar ideias, crenças e valores; cultura, educação, mídia.",
+       "x": {
+        "e": "A dimensão ideológica ou intelectual envolve a capacidade de moldar ideias, crenças e valores na sociedade.",
+        "src": "Aula 00, p. 22",
+        "cit": "Dimensão Ideológica ou Intelectual: Este poder está relacionado à capacidade de moldar",
+        "trap": "Confundir a dimensão ideológica com a política: aqui o foco é ideias, crenças e valores."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r2.4",
+     "t": "Concepções de poder de autores clássicos",
+     "n": "Cada autor enfatiza um aspecto: classe, coesão, ação, difusão, influência, capital, necropolítica.",
+     "x": {
+      "e": "A aula lista concepções de poder de Marx, Durkheim, Arendt, Foucault, Simmel, Bourdieu e Mbembe, cada um com um foco próprio.",
+      "src": "Aula 00, p. 22",
+      "cit": "Agora, para não sermos pegos de surpresa em questões bem específicas, deixo uma lista de",
+      "trap": "Trocar autores: Durkheim (coesão, anomia) não é Foucault (poder difuso e produtivo)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r2.4.1",
+       "t": "Marx: instrumento das classes dominantes",
+       "n": "Poder como instrumento para manter o controle dos meios de produção.",
+       "x": {
+        "e": "Para Marx, o poder é um instrumento das classes dominantes para manter o controle sobre os meios de produção.",
+        "src": "Aula 00, p. 22",
+        "cit": "Ele via o poder como um instrumento utilizado pelas classes dominantes para manter seu controle",
+        "trap": "Poder como instrumento de classe (Marx) não é poder como influência (Simmel)."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.2",
+       "t": "Durkheim: coesão e anomia",
+       "n": "Poder necessário para manter a ordem social e prevenir a anomia.",
+       "x": {
+        "e": "Para Durkheim, o poder é necessário para manter a ordem social e prevenir a anomia, estado de desintegração social.",
+        "src": "Aula 00, p. 22",
+        "cit": "Durkheim argumentou que o poder é necessário para manter a ordem social e",
+        "trap": "Anomia é desintegração social, não luta de classes (Marx)."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.3",
+       "t": "Arendt: capacidade de agir em conjunto",
+       "n": "Poder como agir em conjunto para objetivos políticos.",
+       "x": {
+        "e": "Arendt define o poder como a capacidade de agir em conjunto com outros para alcançar objetivos políticos.",
+        "src": "Aula 00, p. 23",
+        "cit": "Ela definiu o poder como a capacidade de agir em conjunto com",
+        "trap": "Arendt fala de poder como ação coletiva, distinto do poder como dominação de Weber."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.4",
+       "t": "Foucault: poder difuso e produtivo",
+       "n": "Poder como rede de relações, difuso e também produtivo.",
+       "x": {
+        "e": "Para Foucault, o poder é difuso e não é algo que um grupo ou indivíduo possui; é uma rede de relações e estratégias.",
+        "src": "Aula 00, p. 23",
+        "cit": "Ele argumenta que o poder não é algo que um grupo ou indivíduo possui",
+        "trap": "Foucault não vê o poder só como repressão; ele também produz conhecimento e normas."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.5",
+       "t": "Simmel: influência nas interações",
+       "n": "Poder como influência que se manifesta nas interações sociais.",
+       "x": {
+        "e": "Para Simmel, o poder é uma forma de influência que se manifesta nas interações sociais e pode ser fonte de coesão ou de conflito.",
+        "src": "Aula 00, p. 23",
+        "cit": "Georg Simmel viu o poder como uma forma de influência que se manifesta nas interações",
+        "trap": "Simmel fala de influência nas interações, não de dominação legítima (Weber, r2.1)."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.6",
+       "t": "Bourdieu: poder e capital",
+       "n": "Poder ligado à distribuição de capital econômico, cultural e social.",
+       "x": {
+        "e": "Para Bourdieu, o poder depende da quantidade e qualidade de capital econômico, cultural e social que um grupo possui.",
+        "src": "Aula 00, p. 23",
+        "cit": "Pierre Bourdieu aborda o poder em termos de capital, argumentando que o poder está",
+        "trap": "Capital cultural e social também entram no poder, não só o capital econômico (Bourdieu)."
+       }
+      },
+      {
+       "id": "est-a00-r2.4.7",
+       "t": "Mbembe: necropolítica",
+       "n": "Poder político sobre a vida e também sobre a morte das populações.",
+       "x": {
+        "e": "Mbembe argumenta que o poder político se estende ao controle sobre a morte; a necropolítica é o exercício do poder estatal sobre a vida e a morte.",
+        "src": "Aula 00, p. 23",
+        "cit": "Ele argumenta que o poder político não se limita ao controle das vidas das pessoas, mas também se estende ao controle sobre suas mortes",
+        "trap": "Necropolítica (Mbembe) não é o monopólio legítimo da força (Weber)."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r3",
+   "t": "Poder político e Estado: força, monopólio e legitimidade",
+   "n": "Poder político tem a força como meio; o Estado monopoliza seu uso legítimo.",
+   "x": {
+    "e": "O poder político se baseia na posse dos instrumentos que permitem o exercício da força física.",
+    "src": "Aula 00, p. 24",
+    "cit": "o poder político se baseia na posse dos instrumentos mediante os quais se exerce a",
+    "trap": "Tomar a força como suficiente; ela é condição necessária, mas não suficiente (p. 27)."
+   },
+   "f": [
+    {
+     "id": "est-a00-r3.1",
+     "t": "Força como meio do poder político",
+     "n": "Posse dos instrumentos de força física; é o poder coator em sentido estrito.",
+     "x": {
+      "e": "O poder político se baseia na posse dos instrumentos de força física (armas e potência): é o poder coator em sentido estrito.",
+      "src": "Aula 00, p. 24",
+      "cit": "o poder político se baseia na posse dos instrumentos mediante os quais se exerce a força física",
+      "trap": "Confundir poder político com poder econômico ou ideológico."
+     },
+     "f": [
+      {
+       "id": "est-a00-r3.1.1",
+       "t": "Força é condição necessária, não suficiente",
+       "n": "O uso da força é necessário, mas não basta para o poder político.",
+       "x": {
+        "e": "O uso da força é uma condição necessária, mas não suficiente, para a existência do Poder Político.",
+        "src": "Aula 00, p. 27",
+        "cit": "Esse uso da força é uma condição necessária, mas não suficiente para a existência do Poder Político.",
+        "trap": "Afirmar que o poder político se resume à força; o texto nega."
+       }
+      },
+      {
+       "id": "est-a00-r3.1.2",
+       "t": "Formas de exercício da força",
+       "n": "Medo, ameaça, violência física e outras formas.",
+       "x": {
+        "e": "A força se exerce por meio do medo, da ameaça, da violência física e de outras formas.",
+        "src": "Aula 00, p. 25",
+        "cit": "O medo, a ameaça, a violência física, entre outros.",
+        "trap": "Medo e ameaça também são formas de exercer força; não se restringe à violência física."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r3.2",
+     "t": "Monopólio do uso legítimo da força (Weber)",
+     "n": "O Estado moderno reivindica o monopólio do uso legítimo da força física num território.",
+     "x": {
+      "e": "Para Weber, o Estado moderno é a única fonte legítima do uso da violência física dentro de um território determinado.",
+      "src": "Aula 00, p. 27",
+      "cit": "reivindica o monopólio do uso legítimo da violência física",
+      "trap": "Tratar força e violência como termos intercambiáveis sem notar a diferença de citação.",
+      "nota": "A aula usa 'força física' (p. 24-25) e a citação de Weber usa 'violência física' (p. 27); o texto não distingue os termos."
+     },
+     "f": [
+      {
+       "id": "est-a00-r3.2.1",
+       "t": "Centralização e incriminação da violência",
+       "n": "Monopolização da força acompanhou a punição de atos de violência não autorizados.",
+       "x": {
+        "e": "O processo de centralização do Poder resultou no monopólio do uso legítimo da força pelo Estado, que incriminou atos de violência não autorizados.",
+        "src": "Aula 00, p. 25",
+        "cit": "o processo histórico de centralização da organização do Poder resultou no",
+        "trap": "Achar que o monopólio pertence a qualquer grupo; é o Estado."
+       }
+      },
+      {
+       "id": "est-a00-r3.2.2",
+       "t": "Estado como fonte do 'direito' à violência",
+       "n": "Só o Estado tolera o uso da violência por outros grupos.",
+       "x": {
+        "e": "O Estado se transforma na única fonte do direito à violência, a não ser nos casos em que o Estado a tolera.",
+        "src": "Aula 00, p. 27",
+        "cit": "o Estado se transforma, portanto, na única fonte do ‘direito’ à violência",
+        "trap": "Admitir violência de outros grupos sem a tolerância do Estado."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r3.3",
+     "t": "Legitimidade e renúncia à força (Hobbes)",
+     "n": "Hobbes: indivíduos renunciam à própria força e a confiam ao Estado.",
+     "x": {
+      "e": "A legitimidade do Estado, segundo a hipótese de Hobbes, nasce da renúncia ao uso da própria força em favor de um único corpo.",
+      "src": "Aula 00, p. 27",
+      "cit": "Uma hipótese do surgimento dessa legitimidade que os homens e a sociedade enxergam",
+      "trap": "Atribuir a Hobbes a visão de direitos naturais (é Locke)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r3.3.1",
+       "t": "Estado de natureza e renúncia da força",
+       "n": "Passagem do estado de natureza ao civil pela renúncia ao uso da própria força.",
+       "x": {
+        "e": "Segundo Hobbes, a passagem do estado de natureza ao civil ocorreu quando os indivíduos renunciaram ao direito de usar a própria força.",
+        "src": "Aula 00, p. 27",
+        "cit": "renunciaram ao direito de usar cada um a sua própria força",
+        "trap": "Não atribuir a Hobbes a passagem do estado de natureza por direitos naturais, que é de Locke."
+       }
+      },
+      {
+       "id": "est-a00-r3.3.2",
+       "t": "Por que a força: denominador comum",
+       "n": "Sem força, a sociedade complexa se desagregaria.",
+       "x": {
+        "e": "Numa sociedade complexa, só o recurso à força impede, em última instância, a desagregação do grupo.",
+        "src": "Aula 00, p. 27",
+        "cit": "só o recurso à força impede, em última instância, a desagregação do grupo",
+        "trap": "Ler o argumento sobre a força como se a sociedade complexa dispensasse regras e instituições."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r4",
+   "t": "Teoria política e principais abordagens",
+   "n": "Teoria política une filosofia e história das ideias; abordagens lêem o mesmo objeto por ângulos diferentes.",
+   "x": {
+    "e": "A área temática de teoria política é um ramo da ciência política que agrega contribuições de variadas disciplinas, especialmente da filosofia política e da história das ideias.",
+    "src": "Aula 00, p. 30",
+    "cit": "A área temática de teoria política é um ramo da ciência política que agrega contribuições de",
+    "trap": "Achar que teoria política é só filosofia; a ABCP inclui a história das ideias."
+   },
+   "f": [
+    {
+     "id": "est-a00-r4.1",
+     "t": "Teoria política: normativa e histórica (ABCP)",
+     "n": "Normativa: dever ser da ordem política; histórica: tradição do pensamento político.",
+     "x": {
+      "e": "A teoria política é entendida como normativa (dever ser da ordem política) e como histórica (narrativas da tradição do pensamento), não inconciliáveis.",
+      "src": "Aula 00, p. 30",
+      "cit": "duas maneiras distintas, mas não inconciliáveis: como teoria política normativa e como teoria",
+      "trap": "Tratar as duas formas como excludentes; o texto diz 'não inconciliáveis'."
+     },
+     "f": [
+      {
+       "id": "est-a00-r4.1.1",
+       "t": "Teoria normativa",
+       "n": "Reflexão crítica sobre a realidade e o dever ser.",
+       "x": {
+        "e": "A teoria normativa envolve o esforço de reflexão crítica sobre a realidade e a projeção do dever ser da ordem política.",
+        "src": "Aula 00, p. 30",
+        "cit": "projeção do dever ser da ordem política",
+        "trap": "Teoria normativa não é narrativa histórica; ela trata do dever ser da ordem política."
+       }
+      },
+      {
+       "id": "est-a00-r4.1.2",
+       "t": "Teoria histórica",
+       "n": "Narrativas sobre a tradição, conceitos e embates ideológicos.",
+       "x": {
+        "e": "A teoria histórica elabora narrativas sobre o desenvolvimento da própria tradição do pensamento político.",
+        "src": "Aula 00, p. 30",
+        "cit": "elabora narrativas sobre o desenvolvimento da própria tradição do pensamento político",
+        "trap": "Teoria histórica não projeta o dever ser; ela narra a tradição do pensamento político."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r4.2",
+     "t": "Pluralismo, elitismo e poliarquia",
+     "n": "Pluralismo: poder difuso entre grupos; elitismo: poder concentrado em elites.",
+     "x": {
+      "e": "O pluralismo vê a sociedade como composta por grupos de interesse, e o elitismo vê o poder real nas mãos de um pequeno grupo.",
+      "src": "Aula 00, p. 32",
+      "cit": "O pluralismo é uma abordagem que vê a sociedade como composta por uma variedade de",
+      "trap": "Inverter pluralismo e elitismo; o elitismo é 'ao contrário' do pluralismo."
+     },
+     "f": [
+      {
+       "id": "est-a00-r4.2.1",
+       "t": "Pluralismo (Robert A. Dahl)",
+       "n": "Poder distribuído de forma difusa; competição e participação cidadã.",
+       "x": {
+        "e": "O pluralismo acredita que o poder é distribuído de forma difusa, com grupos competindo por recursos e influência.",
+        "src": "Aula 00, p. 32",
+        "cit": "Essa abordagem acredita que o poder é distribuído de forma difusa na sociedade, com",
+        "trap": "Pluralismo não é elitismo; a palavra-chave é grupos de interesse."
+       }
+      },
+      {
+       "id": "est-a00-r4.2.2",
+       "t": "Elitismo (C. Wright Mills)",
+       "n": "Poder real em um pequeno grupo de elites.",
+       "x": {
+        "e": "O elitismo argumenta que o poder real está nas mãos de um pequeno grupo de elites, políticos ou empresários.",
+        "src": "Aula 00, p. 33",
+        "cit": "O elitismo, ao contrário do pluralismo, argumenta que o poder real está nas mãos de um",
+        "trap": "Elite governante (Mills) não é classe social (Marx)."
+       }
+      },
+      {
+       "id": "est-a00-r4.2.3",
+       "t": "Poliarquia (Robert Dahl)",
+       "n": "Forma ideal de regime que mede o grau de democratização.",
+       "x": {
+        "e": "A poliarquia de Dahl é uma forma ideal de regime político baseada em elementos como eleições livres, liberdade de expressão e cidadania inclusiva.",
+        "src": "Aula 00, p. 38",
+        "cit": "o conceito de poliarquia que se refere-se a uma forma ideal de regime político baseado em",
+        "trap": "Eleições são só um dos seis elementos, não o conceito inteiro."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r4.3",
+     "t": "Marxismo, institucionalismo e behaviorismo",
+     "n": "Marx: luta de classes; institucionalismo: instituições moldam a política; behaviorismo: comportamento.",
+     "x": {
+      "e": "O marxismo analisa as estruturas de classe e a luta de classes; o institucionalismo, as instituições; o behaviorismo, o comportamento político.",
+      "src": "Aula 00, p. 33",
+      "cit": "O marxismo concentra-se na análise das estruturas de classe na sociedade e em como elas",
+      "trap": "Não confundir institucionalismo (instituições) com behaviorismo (comportamento individual)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r4.3.1",
+       "t": "Marxismo: luta de classes",
+       "n": "Luta de classes como motor de mudança política e social.",
+       "x": {
+        "e": "O marxismo enfatiza a luta de classes como um motor de mudança política e social.",
+        "src": "Aula 00, p. 33",
+        "cit": "O marxismo também enfatiza a luta de classes como um motor de mudança política e",
+        "trap": "Luta de classes é conceito marxista, não weberiano."
+       }
+      },
+      {
+       "id": "est-a00-r4.3.2",
+       "t": "Institucionalismo e neoinstitucionalismo",
+       "n": "Regras do jogo político afetam a governança; neo reconhece interação entre instituições e atores.",
+       "x": {
+        "e": "O institucionalismo argumenta que as regras do jogo político têm impacto significativo na governança; o neoinstitucionalismo considera a interação entre instituições e atores.",
+        "src": "Aula 00, p. 34",
+        "cit": "Ele argumenta que as regras do jogo político têm um impacto significativo na governança.",
+        "trap": "Tratar o institucionalismo clássico como visão de interação mútua; isso é o neoinstitucionalismo (p. 34).",
+        "nota": "A aula apresenta David Easton como autor de referência do institucionalismo (p. 34) e cita Duverger e Lijphart em seguida; a fonte não detalha essa escolha."
+       },
+       "f": [
+        {
+         "id": "est-a00-r4.3.2.1",
+         "t": "Putnam: capital social e instituições",
+         "n": "Organizações da sociedade civil afetam a governança e a participação política.",
+         "x": {
+          "e": "Putnam é conhecido por seu trabalho sobre capital social e como as instituições, como organizações da sociedade civil, afetam a governança e a participação política.",
+          "src": "Aula 00, p. 35",
+          "cit": "Putnam é conhecido por seu trabalho sobre capital social e como as instituições, como organizações da sociedade civil, afetam a governança",
+          "trap": "Não trocar os autores: Putnam trata de capital social; Skocpol, do Estado e das revoluções; Pierson, de políticas públicas."
+         }
+        },
+        {
+         "id": "est-a00-r4.3.2.2",
+         "t": "Skocpol: Estado e dinâmica política",
+         "n": "Instituições governamentais, como o Estado, influenciam a dinâmica política e os movimentos sociais.",
+         "x": {
+          "e": "Skocpol examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política e os movimentos sociais.",
+          "src": "Aula 00, p. 35",
+          "cit": "Skocpol examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política e os movimentos sociais",
+          "trap": "Skocpol não é Putnam: o foco dela é o Estado e os movimentos sociais, não o capital social."
+         }
+        },
+        {
+         "id": "est-a00-r4.3.2.3",
+         "t": "Pierson: instituições e políticas públicas",
+         "n": "Instituições moldam as políticas públicas, e mudanças institucionais as afetam.",
+         "x": {
+          "e": "Pierson explora como as instituições políticas moldam as políticas públicas e como as mudanças nessas instituições afetam as políticas.",
+          "src": "Aula 00, p. 35",
+          "cit": "Pierson explora como as instituições políticas moldam as políticas públicas",
+          "trap": "Pierson não é Skocpol: ele analisa políticas públicas, enquanto Skocpol analisa a dinâmica revolucionária."
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a00-r4.3.3",
+       "t": "Behaviorismo (V. O. Key Jr.)",
+       "n": "Estudo do comportamento político com métodos científicos.",
+       "x": {
+        "e": "O behaviorismo concentra-se no estudo do comportamento político humano, usando métodos científicos para analisar o voto e as decisões.",
+        "src": "Aula 00, p. 35",
+        "cit": "O behaviorismo concentra-se no estudo do comportamento político humano.",
+        "trap": "Behaviorismo (Key, p. 35) não é cultura cívica (Almond e Verba, p. 48)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r4.4",
+     "t": "Funcionalismo e estruturalismo",
+     "n": "Funcionalismo: funções para a estabilidade; estruturalismo: estruturas subjacentes e poder.",
+     "x": {
+      "e": "O funcionalismo foca nas funções das instituições para a estabilidade social; o estruturalismo, nas estruturas subjacentes que moldam o poder.",
+      "src": "Aula 00, p. 36",
+      "cit": "O funcionalismo é uma abordagem que se concentra na ideia de que as instituições e estruturas sociais desempenham funções específicas na sociedade",
+      "trap": "Funcionalismo explica estabilidade por funções, não por conflito de classes (Marx)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r4.4.1",
+       "t": "Funcionalismo (Talcott Parsons)",
+       "n": "Partes da sociedade têm funções que mantêm a estabilidade.",
+       "x": {
+        "e": "O funcionalismo analisa como as partes da sociedade interagem e mantêm a estabilidade social.",
+        "src": "Aula 00, p. 36",
+        "cit": "Analisa como essas partes interagem e mantêm a estabilidade social.",
+        "trap": "Funcionalismo explica a estabilidade por funções, não por conflito de classes (Marx)."
+       }
+      },
+      {
+       "id": "est-a00-r4.4.2",
+       "t": "Estruturalismo (Althusser e Poulantzas)",
+       "n": "Estruturas sociais, como a economia, moldam a política e o poder.",
+       "x": {
+        "e": "O estruturalismo argumenta que as estruturas sociais, como a economia, moldam a política e as relações de poder.",
+        "src": "Aula 00, p. 36",
+        "cit": "Argumenta que as estruturas sociais, como a economia, moldam a política e as relações de",
+        "trap": "Lévi-Strauss é antropologia; na CP a aula cita Althusser e Poulantzas."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r5",
+   "t": "História das ideias políticas: teóricos clássicos",
+   "n": "Clássicos seguem em ordem cronológica e continuam atuais por serem raízes do debate.",
+   "x": {
+    "e": "Dizer que um pensador é um clássico significa dizer que suas ideias permanecem e sobreviveram ao seu tempo.",
+    "src": "Aula 00, p. 40",
+    "cit": "Dizer que um pensador é um clássico significa dizer que suas ideias permanecem.",
+    "trap": "Achar que clássico está fora da história; os clássicos pensaram o tempo deles."
+   },
+   "f": [
+    {
+     "id": "est-a00-r5.0",
+     "t": "Aristóteles: política e a cidade (polis)",
+     "n": "Aristóteles concebe a política como organização da sociedade; o melhor governo possível é a politeia, voltada ao bem comum.",
+     "x": {
+      "e": "Aristóteles concebia a política como a organização da sociedade; a polis era o lugar em que os cidadãos buscavam a virtude pela participação, e o melhor governo possível era a politeia.",
+      "src": "Aula 00, p. 11",
+      "cit": "como o local onde os cidadãos buscavam a virtude e a excelência ética por meio",
+      "trap": "A polis de Aristóteles tem finalidade ética e comunitária; não confundir com o Estado moderno de Weber, definido pelo monopólio da força."
+     }
+    },
+    {
+     "id": "est-a00-r5.1",
+     "t": "Maquiavel e o realismo político",
+     "n": "Política como ela é; virtù é capacidade de governar; fortuna é o acaso.",
+     "x": {
+      "e": "Maquiavel propôs que a política deve ser analisada como ela é, e não como deveria ser, separando-a da moral.",
+      "src": "Aula 00, p. 19",
+      "cit": "Maquiavel propôs que a política deve ser analisada como ela é",
+      "trap": "Virtù não é virtude moral (p. 19).",
+      "nota": "p. 19 diz que virtù 'não significa virtude moral'; p. 41 fala em 'virtù cívica' que envolve 'a virtude do governante'. A fonte não concilia as duas formulações."
+     },
+     "f": [
+      {
+       "id": "est-a00-r5.1.1",
+       "t": "Virtù e fortuna",
+       "n": "Virtù: capacidade de agir com inteligência, astúcia e força; fortuna: o acaso.",
+       "x": {
+        "e": "Virtù não significa virtude moral, mas a capacidade do governante de agir com inteligência, astúcia e força.",
+        "src": "Aula 00, p. 19",
+        "cit": "Virtù: não significa virtude moral, mas a capacidade do governante de agir com",
+        "trap": "Confundir virtù com virtude moral."
+       }
+      },
+      {
+       "id": "est-a00-r5.1.2",
+       "t": "Política distinta da moral",
+       "n": "Governante pode agir contra a moral comum pela estabilidade do Estado.",
+       "x": {
+        "e": "Para Maquiavel, o governante deve agir contra a moral comum, por exemplo mentindo ou usando da força, para garantir a estabilidade do Estado.",
+        "src": "Aula 00, p. 20",
+        "cit": "governante deve agir contra a moral comum (mentir, usar da força) para garantir a estabilidade",
+        "trap": "Maquiavel não é moralista; a ética política é distinta da individual."
+       }
+      },
+      {
+       "id": "est-a00-r5.1.3",
+       "t": "Maquiavel e o Estado moderno",
+       "n": "Antecipa soberania e centralidade do Estado.",
+       "x": {
+        "e": "Maquiavel antecipa a ideia de soberania e da centralidade do Estado na vida social.",
+        "src": "Aula 00, p. 20",
+        "cit": "Maquiavel antecipa a ideia de soberania e da centralidade",
+        "trap": "Maquiavel antecipa soberania; não é contratualista (Hobbes)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r5.2",
+     "t": "Contratualistas: Hobbes, Locke e Rousseau",
+     "n": "Explicam a origem da autoridade política; Hobbes descreve o estado de natureza como guerra, Locke fala em direitos naturais e Rousseau em vontade geral.",
+     "x": {
+      "e": "Hobbes imagina o estado de natureza como guerra geral e vê o contrato como base da paz; Locke fala em direitos naturais anteriores ao governo e em governo limitado; Rousseau, em contrato e vontade geral.",
+      "src": "Aula 00, p. 41-42",
+      "cit": "Hobbes imaginava o estado de natureza como um cenário de guerra geral",
+      "trap": "Confundir Hobbes (guerra e Leviatã) com Locke (direitos e rebelião)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r5.2.1",
+       "t": "Hobbes: contrato social e Leviatã",
+       "n": "Renúncia à liberdade natural em troca de proteção do Estado soberano.",
+       "x": {
+        "e": "Para Hobbes, o contrato social é a base para a paz e a ordem social, com um governo soberano centralizado.",
+        "src": "Aula 00, p. 41",
+        "cit": "O contrato social, segundo Hobbes, era a base para a paz e a ordem social",
+        "trap": "Direito de rebelião é de Locke, não de Hobbes."
+       }
+      },
+      {
+       "id": "est-a00-r5.2.2",
+       "t": "Locke: direitos naturais e governo limitado",
+       "n": "Direitos naturais anteriores ao governo; direito de rebelião.",
+       "x": {
+        "e": "John Locke é associado à ideia de direitos naturais e ao governo limitado por uma constituição.",
+        "src": "Aula 00, p. 41",
+        "cit": "é associado à ideia de Direitos Naturais e ao Governo Limitado",
+        "trap": "Locke justifica a revolução quando o governo não protege os direitos (p. 42)."
+       }
+      },
+      {
+       "id": "est-a00-r5.2.3",
+       "t": "Rousseau: contrato e vontade geral",
+       "n": "Autoridade legítima vem do contrato; soberania popular pela vontade geral.",
+       "x": {
+        "e": "Rousseau argumentava que a autoridade legítima derivava de um contrato social, com a vontade geral como soberana.",
+        "src": "Aula 00, p. 42",
+        "cit": "a autoridade legítima derivava de um contrato social, no qual as pessoas renunciam à sua",
+        "trap": "Vontade geral (Rousseau) não é direito de rebelião (Locke)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r5.3",
+     "t": "Separação de poderes, federalismo e liberdade",
+     "n": "Montesquieu: três poderes que se controlam; federalistas: União forte; Tocqueville: descentralização; Mill: liberdade.",
+     "x": {
+      "e": "Montesquieu propôs ramos independentes que se controlam mutuamente, enquanto os federalistas defenderam uma Constituição forte e um governo centralizado.",
+      "src": "Aula 00, p. 42",
+      "cit": "Montesquieu propôs que o governo fosse dividido em três ramos independentes: legislativo, executivo e judiciário.",
+      "trap": "Atribuir a Montesquieu, sem ressalva, a ideia de divisão do poder já presente em Locke.",
+      "nota": "p. 42 afirma que Locke já sustentava a necessidade da divisão do poder para evitar a tirania; a aula atribui a Montesquieu a teoria da separação de poderes. Registro a atribuição sem resolver."
+     },
+     "f": [
+      {
+       "id": "est-a00-r5.3.1",
+       "t": "Montesquieu: separação de poderes",
+       "n": "Três ramos independentes que se controlam para proteger a liberdade.",
+       "x": {
+        "e": "Montesquieu propôs que o governo fosse dividido em três ramos independentes, que se controlam mutuamente.",
+        "src": "Aula 00, p. 42",
+        "cit": "Montesquieu propôs que o governo fosse dividido em três ramos independentes: legislativo, executivo e judiciário.",
+        "trap": "A divisão do poder já aparece em Locke; Montesquieu sistematiza a separação em ramos independentes (p. 42)."
+       }
+      },
+      {
+       "id": "est-a00-r5.3.2",
+       "t": "Federalistas: Hamilton, Madison e Jay",
+       "n": "Hamilton: governo federal forte; Madison: checks and balances; Jay: União e política externa.",
+       "x": {
+        "e": "A teoria de Madison estava centrada na ideia de checks and balances e na necessidade de equilibrar os poderes do governo.",
+        "src": "Aula 00, p. 43",
+        "cit": "Sua teoria política estava centrada na ideia de Checks and Balances e na necessidade de",
+        "trap": "Hamilton defendia governo federal forte; não é o foco de Madison."
+       }
+      },
+      {
+       "id": "est-a00-r5.3.3",
+       "t": "Tocqueville: descentralização e participação",
+       "n": "Sociedade civil, participação e autonomia local preservam a democracia.",
+       "x": {
+        "e": "Tocqueville destacou que a descentralização do poder e a autonomia local eram vitais para a preservação da liberdade e da democracia.",
+        "src": "Aula 00, p. 43",
+        "cit": "a descentralização do poder e a autonomia local eram vitais para a preservação da liberdade e",
+        "trap": "Tocqueville não é o autor da separação de poderes."
+       }
+      },
+      {
+       "id": "est-a00-r5.3.4",
+       "t": "Mill: utilitarismo e liberdade",
+       "n": "Maximização da felicidade e liberdade de expressão como meio para a verdade.",
+       "x": {
+        "e": "Mill defendeu o utilitarismo e a liberdade de expressão como meio para alcançar a verdade e o progresso social.",
+        "src": "Aula 00, p. 43",
+        "cit": "Mill também discutiu a importância da liberdade de expressão como um meio de alcançar a",
+        "trap": "Não confundir Mill (utilitarismo) com Rousseau (vontade geral)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r5.4",
+     "t": "Weber: racionalização e tipos de autoridade",
+     "n": "Burocracia, racionalização e três tipos de autoridade: tradicional, legal-racional e carismática.",
+     "x": {
+      "e": "Weber introduziu os conceitos de autoridade tradicional, legal-racional e carismática como formas de legitimidade.",
+      "src": "Aula 00, p. 44",
+      "cit": "Ele introduziu os conceitos de autoridade tradicional (baseada na tradição), legal-racional (baseada em regras e leis) e carismática (baseada no carisma",
+      "trap": "Weber trata 'autoridade' como forma de legitimidade; não confundir com a 'dominação' de p. 21."
+     }
+    },
+    {
+     "id": "est-a00-r5.5",
+     "t": "Hegel: dialética e Estado racional",
+     "n": "Dialética (tese, antítese, síntese) move a história; o Estado é a manifestação mais elevada da vontade racional.",
+     "x": {
+      "e": "Hegel aplicou a dialética (tese, antítese, síntese) à história e à política, e via o Estado como a manifestação mais elevada da vontade racional da sociedade.",
+      "src": "Aula 00, p. 42",
+      "cit": "Hegel aplicou a dialética (tese, antítese, síntese) à história e à política",
+      "trap": "Não confundir o Estado racional de Hegel com o contrato social dos contratualistas (Hobbes, Locke e Rousseau)."
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r6",
+   "t": "Teoria da justiça: Rawls e Sen",
+   "n": "Justiça é noção central para pensar o Estado, a política e o poder.",
+   "x": {
+    "e": "A teoria da justiça é um dos temas da teoria política, pelo papel central da noção de justiça no pensar o Estado, a política e o poder.",
+    "src": "Aula 00, p. 44",
+    "cit": "Entre os temas da teoria política está a teoria da justiça, isso pelo papel central que é a noção",
+    "trap": "Tratar a teoria da justiça como teoria do Estado; é teoria política sobre justiça social."
+   },
+   "f": [
+    {
+     "id": "est-a00-r6.1",
+     "t": "Rawls: justiça como equidade",
+     "n": "Justiça como equidade: princípios escolhidos sob o véu da ignorância.",
+     "x": {
+      "e": "Rawls propôs um conceito de justiça chamado justiça como equidade, cujos princípios são escolhidos numa posição hipotética.",
+      "src": "Aula 00, p. 44",
+      "cit": "Ele propôs um conceito de justiça que ficou conhecido",
+      "trap": "O véu da ignorância é hipotético, não um contrato social direto (p. 45)."
+     },
+     "f": [
+      {
+       "id": "est-a00-r6.1.1",
+       "t": "Véu da ignorância (posição original)",
+       "n": "Pessoas escolhem princípios sem saber sua posição social ou pessoal.",
+       "x": {
+        "e": "Rawls usa o véu da ignorância, um dispositivo imaginário em que as pessoas escolhem princípios sem saber sua posição social ou econômica.",
+        "src": "Aula 00, p. 44",
+        "cit": "que pede às pessoas para imaginarem que estão escolhendo os princípios fundamentais de uma",
+        "trap": "Não confundir a posição original com estado de natureza (Hobbes e Locke)."
+       }
+      },
+      {
+       "id": "est-a00-r6.1.2",
+       "t": "Contrato social hipotético",
+       "n": "Justiça não se alcança por contrato social direto, mas hipotético.",
+       "x": {
+        "e": "Rawls argumenta que a justiça não pode ser alcançada por meio de um contrato social direto, mas por um contrato hipotético.",
+        "src": "Aula 00, p. 45",
+        "cit": "a justiça não pode ser alcançada por meio de um contrato social direto",
+        "trap": "Não confundir o contrato hipotético de Rawls com o contrato social real de Hobbes ou Rousseau."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r6.2",
+     "t": "Os dois princípios de justiça",
+     "n": "Dois princípios: liberdade (liberdades políticas e civis) e diferença (desigualdades só se beneficiarem os menos favorecidos).",
+     "x": {
+      "e": "Rawls formula dois princípios: liberdade (liberdades políticas e civis) e diferença (desigualdades só são admitidas se beneficiarem os menos favorecidos). A frase-resumo da p. 45 também cita a igualdade básica de oportunidades, sem a tratar como princípio.",
+      "src": "Aula 00, p. 45",
+      "cit": "Esses princípios visam garantir que uma sociedade justa seja construída com base na igualdade",
+      "trap": "Achar que qualquer desigualdade é aceita; só se beneficiar os menos favorecidos.",
+      "nota": "A página 45 tem duas colunas (Princípios da Liberdade e da Diferença) com texto intercalado no PDF. O conteúdo foi lido pelo sentido; conferir o PDF antes de citar literalmente."
+     },
+     "f": [
+      {
+       "id": "est-a00-r6.2.1",
+       "t": "Princípio da liberdade",
+       "n": "Conjunto básico de liberdades políticas e civis.",
+       "x": {
+        "e": "Rawls defende um conjunto básico de liberdades políticas e civis, incluindo pensamento, expressão e religião.",
+        "src": "Aula 00, p. 45",
+        "cit": "Essas liberdades incluem",
+        "trap": "Liberdade (políticas e civis) é um dos dois princípios, não o princípio da diferença (p. 45)."
+       }
+      },
+      {
+       "id": "est-a00-r6.2.2",
+       "t": "Princípio da diferença",
+       "n": "Desigualdades justificadas pelo bem-estar geral e só se beneficiarem os menos favorecidos.",
+       "x": {
+        "e": "Rawls admite desigualdades apenas na medida em que beneficiem os menos favorecidos e sejam justificadas pelo bem-estar geral.",
+        "src": "Aula 00, p. 45",
+        "cit": "desigualdades apenas na medida em que beneficiassem as",
+        "trap": "Princípio da diferença não admite qualquer desigualdade."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r6.3",
+     "t": "Amartya Sen: capacidades",
+     "n": "Justiça vai além da distribuição de recursos; avalia a capacidade real das pessoas.",
+     "x": {
+      "e": "Sen avalia a justiça pelas capacidades das pessoas de buscar vidas significativas, e não apenas pela distribuição de recursos.",
+      "src": "Aula 00, p. 52",
+      "cit": "limita à distribuição de recursos, mas deve incluir a capacidade real das pessoas de",
+      "trap": "Sen não é Rawls: Rawls fala em princípios; Sen fala em capacidades."
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a00-r7",
+   "t": "Cultura política (Almond e Verba) e métodos empíricos",
+   "n": "Estudo das atitudes, valores e práticas de voto dos cidadãos com métodos empíricos.",
+   "x": {
+    "e": "A cultura política (Almond e Verba) analisa atitudes, valores e práticas de voto dos cidadãos com métodos empíricos, como surveys. Não se confunde com o behaviorismo de V. O. Key Jr., que é outra abordagem.",
+    "src": "Aula 00, p. 48",
+    "cit": "utiliza métodos empíricos, como pesquisas de opinião (surveys), para coletar",
+    "trap": "Confundir cultura política com behaviorismo: são abordagens e autores distintos."
+   },
+   "f": [
+    {
+     "id": "est-a00-r7.1",
+     "t": "Cultura cívica (Almond e Verba)",
+     "n": "Atitudes, valores e padrões de comportamento que influenciam a participação política.",
+     "x": {
+      "e": "Cultura cívica é o conceito central de Almond e Verba: atitudes, valores e padrões de comportamento que influenciam a participação política.",
+      "src": "Aula 00, p. 48",
+      "cit": "que se refere às atitudes, valores e padrões de comportamento que influenciam a participação política",
+      "trap": "Cultura cívica não é o mesmo que estudo formal de instituições."
+     },
+     "f": [
+      {
+       "id": "est-a00-r7.1.1",
+       "t": "Três tipos de cultura cívica",
+       "n": "Paroquial, sujeita e participativa.",
+       "x": {
+        "e": "Almond e Verba identificaram três tipos de cultura cívica: paroquial, sujeita e participativa.",
+        "src": "Aula 00, p. 52",
+        "cit": "Eles identificaram três tipos de cultura cívica: paroquial, sujeita e participativa",
+        "trap": "Não trocar os três tipos entre si."
+       }
+      },
+      {
+       "id": "est-a00-r7.1.2",
+       "t": "Estudo comparativo em cinco países",
+       "n": "EUA, Grã-Bretanha, Alemanha, México e Itália.",
+       "x": {
+        "e": "Almond e Verba fizeram um estudo comparativo da cultura cívica em cinco países.",
+        "src": "Aula 00, p. 48",
+        "cit": "Almond e Verba realizaram um estudo comparativo da cultura cívica em cinco países",
+        "trap": "O estudo comparativo cobre cinco nações; não ampliar para outros países (p. 48)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a00-r7.2",
+     "t": "Cultura política e métodos empíricos",
+     "n": "Cultura política passa a analisar atitudes e práticas de voto, além das instituições.",
+     "x": {
+      "e": "A cultura política afastou-se dos estudos formalistas das instituições e passou a analisar atitudes e práticas de voto.",
+      "src": "Aula 00, p. 48",
+      "cit": "estudos mais formalistas das instituições políticas, que tradicionalmente dominavam a",
+      "trap": "Cultura política não substitui a análise institucional; complementa-a."
+     },
+     "f": [
+      {
+       "id": "est-a00-r7.2.1",
+       "t": "Pesquisa qualitativa",
+       "n": "Dados não numéricos: entrevistas, observação e documentos.",
+       "x": {
+        "e": "A pesquisa qualitativa envolve a coleta de dados não numéricos, como entrevistas, observações e análise de documentos.",
+        "src": "Aula 00, p. 50",
+        "cit": "Esta abordagem envolve a coleta de dados não numéricos",
+        "trap": "Qualitativa não é análise numérica; trabalha com dados não numéricos."
+       }
+      },
+      {
+       "id": "est-a00-r7.2.2",
+       "t": "Pesquisa quantitativa",
+       "n": "Dados numéricos e técnicas estatísticas.",
+       "x": {
+        "e": "A pesquisa quantitativa envolve a coleta e a análise de dados numéricos, muitas vezes com técnicas estatísticas.",
+        "src": "Aula 00, p. 50",
+        "cit": "Este método envolve a coleta e análise de dados numéricos,",
+        "trap": "Qualitativa e quantitativa são oposição de tipo de dado, não de tema."
+       }
+      },
+      {
+       "id": "est-a00-r7.2.3",
+       "t": "Estudo de caso e comparação de sistemas",
+       "n": "Caso aprofundado; comparação identifica padrões entre sistemas.",
+       "x": {
+        "e": "Estudos de caso analisam a fundo um evento político, e a comparação de sistemas identifica padrões entre países.",
+        "src": "Aula 00, p. 50",
+        "cit": "Os estudos de caso analisam a fundo um evento ou fenômeno",
+        "trap": "Estudo de caso aprofunda um caso; não substitui a comparação de sistemas entre países."
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Weber: política como luta pelo Estado e monopólio da força",
+   "de": "est-a00-r1.1.2",
+   "para": "est-a00-r3"
+  },
+  {
+   "rotulo": "Weber: força como meio do poder político",
+   "de": "est-a00-r3.2",
+   "para": "est-a00-r2.2.3"
+  },
+  {
+   "rotulo": "Weber: autoridade legítima (legal-racional, tradicional, carismática)",
+   "de": "est-a00-r2.1.2",
+   "para": "est-a00-r5.4"
+  },
+  {
+   "rotulo": "Hobbes: renúncia à própria força em favor do Estado",
+   "de": "est-a00-r3.3.1",
+   "para": "est-a00-r5.2.1"
+  },
+  {
+   "rotulo": "Contratualistas: Hobbes (contrato e Estado soberano) e Locke (direitos naturais e governo limitado)",
+   "de": "est-a00-r5.2.1",
+   "para": "est-a00-r5.2.2"
+  },
+  {
+   "rotulo": "Marx: classes e poder (marxismo)",
+   "de": "est-a00-r2.4.1",
+   "para": "est-a00-r4.3.1"
+  },
+  {
+   "rotulo": "Poder difuso: pluralismo e Foucault",
+   "de": "est-a00-r4.2.1",
+   "para": "est-a00-r2.4.4"
+  },
+  {
+   "rotulo": "Dahl: pluralismo e poliarquia",
+   "de": "est-a00-r4.2.1",
+   "para": "est-a00-r4.2.3"
+  },
+  {
+   "rotulo": "Véu da ignorância e posição original de Rawls",
+   "de": "est-a00-r6.1.1",
+   "para": "est-a00-r6.1"
+  },
+  {
+   "rotulo": "Behaviorismo (Key) e cultura cívica (Almond e Verba): ambos estudam o comportamento político, com autores e métodos distintos",
+   "de": "est-a00-r7.1",
+   "para": "est-a00-r4.3.3"
+  }
+ ],
+ "fontesCentral": {},
+ "tipo": "base-estrategia"
+}

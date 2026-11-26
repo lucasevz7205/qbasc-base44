@@ -1,0 +1,176 @@
+{
+ "topico": "cp-7",
+ "materia": "cp",
+ "centro": "Organização política brasileira",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "05"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a05-r7",
+   "t": "Nova República e Constituição de 1988",
+   "topico": "cp-7",
+   "n": "Transição negociada, Constituinte e Constituição Cidadã",
+   "x": {
+    "e": "A Nova República começa em 1985 com a eleição indireta de Tancredo Neves e a posse de José Sarney. A EC 25 (1985) restabeleceu a eleição direta para presidente; a Constituição de 1988 consolidou direitos políticos e a organização de partidos.",
+    "src": "Aula 05, p. 86",
+    "cit": "A Nova República é o nome que damos a fase da História da República a partir de 1985",
+    "trap": "A Nova República começa com eleição indireta, não com eleição direta."
+   },
+   "f": [
+    {
+     "id": "est-a05-r7.1",
+     "t": "Emenda Constitucional 25 (1985)",
+     "topico": "cp-11",
+     "n": "Eleições diretas para presidente e flexibilização partidária",
+     "x": {
+      "e": "EC 25 (maio de 1985): estabelecimento de eleições diretas para presidente (por maioria absoluta em dois turnos), eleições municipais em capitais e áreas de segurança nacional, liberação das regras para organização de partidos e coligações em prefeituras; revogou a fidelidade partidária.",
+      "src": "Aula 05, p. 87",
+      "cit": "estabelecimento de eleições diretas para presidente",
+      "trap": "A p. 95 diz que o voto do analfabeto foi conquistado com a EC 25/1985 e constitucionalizado em 1988; a p. 87 não separa EC 25 e CF/1988. Não atribua o voto só à Constituição de 1988 sem essa ressalva."
+     },
+     "nota": "p. 87 e p. 111 (resumo) atribuem a conquista do voto dos analfabetos ao período 1985-1988 sem separar EC 25 e CF; p. 95 diz que o direito foi conquistado com a EC 25/1985 e constitucionalizado em 1988. O mapa segue a p. 95."
+    },
+    {
+     "id": "est-a05-r7.2",
+     "t": "Constituinte e Constituição de 1988",
+     "topico": "cp-7",
+     "n": "Participação popular e Constituição Cidadã",
+     "x": {
+      "e": "A Assembleia Nacional Constituinte foi instalada em 1/2/1987, com parlamentares eleitos em 1986, e durou cerca de 20 meses, com emendas populares. Ulysses Guimarães presidiu a promulgação em 5/10/1988.",
+      "src": "Aula 05, p. 88",
+      "cit": "Esses membros eram os próprios parlamentares da Câmara dos Deputados e do Senado Federal",
+      "trap": "Os constituintes eram os próprios deputados e senadores eleitos em 1986."
+     },
+     "nota": "p. 88 diz \"hoje existem 30 partidos registrados oficialmente\", sem data da consulta: número datado.",
+     "f": [
+      {
+       "id": "est-a05-r7.2.1",
+       "t": "Direitos políticos (art. 14)",
+       "topico": "cp-7",
+       "n": "Sufrágio universal e voto obrigatório a partir de 18 anos",
+       "x": {
+        "e": "Art. 14: sufrágio universal, voto direto e secreto. Alistamento e voto são obrigatórios para maiores de 18 anos e facultativos para analfabetos, maiores de 70 e maiores de 16 e menores de 18.",
+        "src": "Aula 05, p. 96",
+        "cit": "I - obrigatórios para os maiores de dezoito anos; II - facultativos para: a) os analfabetos;",
+        "trap": "Analfabeto tem voto facultativo, mas continua inelegível (cidadania passiva, p. 95)."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.2",
+       "t": "Partidos políticos (art. 17)",
+       "topico": "cp-7",
+       "n": "Criação livre com requisitos constitucionais",
+       "x": {
+        "e": "Art. 17: criação, fusão, incorporação e extinção de partidos são livres, com caráter nacional, vedação de recursos estrangeiros, prestação de contas à Justiça Eleitoral e funcionamento parlamentar de acordo com a lei.",
+        "src": "Aula 05, p. 97",
+        "cit": "É livre a criação, fusão, incorporação e extinção de partidos políticos",
+        "trap": "A liberdade partidária tem requisitos: caráter nacional e prestação de contas são obrigatórios."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.3",
+       "t": "Cláusula de desempenho (art. 17, § 3º)",
+       "topico": "cp-7",
+       "n": "3% dos votos válidos ou 15 deputados federais",
+       "x": {
+        "e": "Para ter fundo partidário e tempo gratuito de rádio e TV, o partido precisa de 3% dos votos válidos para a Câmara (em pelo menos um terço das UFs, com mínimo de 2% em cada) ou de 15 deputados federais em um terço das UFs.",
+        "src": "Aula 05, p. 98",
+        "cit": "obtiverem, nas eleições para a Câmara dos Deputados, no mínimo, 3% (três por cento) dos",
+        "trap": "Eleito por partido que não cumpre o requisito mantém o mandato (§ 5º)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r7.3",
+     "t": "Do voto em cédula à urna eletrônica",
+     "topico": "cp-11",
+     "n": "Cédula de papel até 1996; urna eletrônica a partir de 1996",
+     "x": {
+      "e": "Até 1955 as cédulas eram confeccionadas pelos partidos e candidatos; a partir de 1955 a cédula oficial passou a ser da Justiça Eleitoral, ainda preenchida à mão. A urna eletrônica foi introduzida gradualmente a partir de 1996.",
+      "src": "Aula 05, p. 103",
+      "cit": "Até 1955, o sistema de votação no Brasil era baseado em cédulas de papel confeccionadas",
+      "trap": "Cédula oficial de 1955 não é urna eletrônica: o eleitor ainda preenchia à mão."
+     },
+     "f": [
+      {
+       "id": "est-a05-r7.3.1",
+       "t": "Urna eletrônica (1996)",
+       "topico": "cp-11",
+       "n": "Introdução gradual, com 57 municípios em 1996",
+       "x": {
+        "e": "A urna eletrônica foi usada em 57 municípios em 1996 e em 537 municípios em 1998; reduziu votos nulos e acelerou a apuração.",
+        "src": "Aula 05, p. 103",
+        "cit": "Nas eleições municipais de 1996, a urna eletrônica foi usada em 57 municípios",
+        "trap": "Em 1996 a urna não era nacional: a implantação foi gradual."
+       }
+      },
+      {
+       "id": "est-a05-r7.3.2",
+       "t": "Comparecimento eleitoral",
+       "topico": "cp-11",
+       "n": "Média de 86% entre 1986 e 1998",
+       "x": {
+        "e": "Taxa de comparecimento de cerca de 86% dos inscritos entre 1986 e 1998 (Nicolau). O voto obrigatório contribui para o percentual.",
+        "src": "Aula 05, p. 104",
+        "cit": "Em média, cerca de 86% dos eleitores inscritos votaram nas eleições entre 1986 e 1998",
+        "trap": "A taxa muda conforme o denominador (inscritos, população ou população em idade de votar)."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "05"
+  },
+  {
+   "id": "est-a05-r8",
+   "t": "Crises institucionais e intervenções no Parlamento",
+   "topico": "cp-7",
+   "n": "Intervenções do Executivo sobre o Legislativo nas crises republicanas",
+   "x": {
+    "e": "Em crises (1891, 1930, 1937 e ditadura militar) o Executivo fechou ou dissolveu o Congresso. Essa recorrência caracteriza a tendência ao super-presidencialismo.",
+    "src": "Aula 05, p. 85",
+    "cit": "momentos de crise política frequentemente resultaram em intervenções diretas do Poder Executivo sobre o Parlamento",
+    "trap": "Não confundir super-presidencialismo com presidencialismo formal: o texto fala em desequilíbrio entre os poderes."
+   },
+   "f": [
+    {
+     "id": "est-a05-r8.1",
+     "t": "Super-presidencialismo",
+     "topico": "cp-7",
+     "n": "Concentração de poder no presidente",
+     "x": {
+      "e": "Tendência recorrente de concentração de poder no presidente da República, com o Executivo se sobrepondo ao Legislativo em momentos de conflito.",
+      "src": "Aula 05, p. 85",
+      "cit": "a tendência ao super-presidencialismo, ou seja, a forte concentração de poder nas mãos do",
+      "trap": "O padrão não é exclusivo da ditadura: aparece em 1891, 1930 e 1937 (texto)."
+     }
+    },
+    {
+     "id": "est-a05-r8.2",
+     "t": "Fechamentos e recessos do Congresso",
+     "topico": "cp-7",
+     "n": "Deodoro (1891), Vargas (1930 e 1937), ditadura (1966, 1968 e 1977)",
+     "x": {
+      "e": "Deodoro levou ao fechamento do Legislativo; Vargas dissolveu o Congresso em 1930 e 1937; a ditadura registrou recesso em 1966, fechamento com o AI-5 em 1968 e fechamento temporário em 1977 (Pacote de Abril), conforme a tabela da p. 86.",
+      "src": "Aula 05, p. 85-86",
+      "cit": "No caso de Deodoro da Fonseca, o impasse entre presidente e Congresso sobre limites de atuação e reformas levou ao fechamento do Legislativo.",
+      "trap": "O Pacote de Abril (1977) foi um fechamento temporário do Congresso imposto por decreto."
+     }
+    }
+   ],
+   "aulaOrigem": "05"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Crises institucionais -> super-presidencialismo",
+   "de": "est-a05-r8",
+   "para": "est-a05-r8.1"
+  }
+ ],
+ "fontesCentral": {}
+}

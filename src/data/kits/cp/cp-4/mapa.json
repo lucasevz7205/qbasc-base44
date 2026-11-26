@@ -1,0 +1,661 @@
+{
+ "topico": "cp-4",
+ "materia": "cp",
+ "centro": "Poderes e relações entre poderes",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "03"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a03-r2",
+   "t": "Teoria da separação dos poderes: origens e Montesquieu",
+   "n": "A separação dos poderes vai de Aristóteles a Montesquieu, com ênfase em equilíbrio e funções, não em poder dividido.",
+   "x": {
+    "e": "Teoria que trata dos limites recíprocos entre os poderes, da cooperação e da harmonia. A rigor o Poder é uno; fala-se em divisão de funções exercidas por órgãos diferentes.",
+    "trap": "Dizer que o Poder do Estado é dividido: o que se divide são as funções, exercidas por órgãos distintos.",
+    "src": "Aula 03, p. 7",
+    "cit": "Esta teoria compreende o estudo da dinâmica dos três Poderes consolidados nos Estados de Direito Moderno"
+   },
+   "f": [
+    {
+     "id": "est-a03-r2.1",
+     "t": "Antiguidade e Locke",
+     "n": "Aristóteles distingue funções; Locke põe o Legislativo como poder supremo.",
+     "x": {
+      "e": "Aristóteles distinguiu funções deliberativa, de magistratura (executiva) e jurisdicional. Locke, no Segundo Tratado (1690), limita o poder e tem teoria bipartite, com o Legislativo supremo.",
+      "trap": "Atribuir a Locke o equilíbrio de Montesquieu; a fonte diz que Locke tende à subordinação do Executivo.",
+      "src": "Aula 03, p. 9",
+      "cit": "Aristóteles contribuiu ao demonstrar a existência de funções distintas no governo"
+     },
+     "f": [
+      {
+       "id": "est-a03-r2.1.1",
+       "t": "Locke: Legislativo supremo",
+       "n": "Em Locke, o Legislativo é o poder supremo e o Executivo lhe é subordinado.",
+       "x": {
+        "e": "Locke indica o Legislativo como poder supremo da comunidade civil; a teoria não tende ao equilíbrio, mas à subordinação do Executivo ao Legislativo (análise de Bobbio).",
+        "trap": "Tratar Locke como teórico do equilíbrio entre poderes, que é de Montesquieu.",
+        "src": "Aula 03, p. 10",
+        "cit": "a teoria de Locke não tende ao equilíbrio entre os poderes, mas uma certa subordinação do Executivo ao Legislativo"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r2.1.2",
+       "t": "Locke: poder federativo",
+       "n": "O poder federativo (guerra e paz) fica dentro do Executivo: teoria bipartite.",
+       "x": {
+        "e": "Locke distingue legislativa, executiva e federativa; o federativo trata de questões externas (guerra, paz, transições) e está inserido no Executivo.",
+        "trap": "Contar três poderes em Locke: o federativo não é terceiro poder.",
+        "src": "Aula 03, p. 10",
+        "cit": "Porém, a rigor, Locke ressalta os Poderes Legislativo e Executivo, reforçando a ideia de uma Teoria Bipartite da Separação dos Poderes"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r2.2",
+     "t": "Montesquieu: funções, equipotência e impeachment",
+     "n": "Montesquieu: três funções em órgãos diferentes, com freios e contrapesos.",
+     "x": {
+      "e": "Funções legislativa, executiva e judiciária devem caber a poderes diferentes, como condição de liberdade e segurança. Obra: Do Espírito das Leis (1748). A separação gera freios e contrapesos.",
+      "trap": "Dizer que Montesquieu buscou separação rígida: a fonte diz que ele acentuou mais o equilíbrio do que a separação.",
+      "src": "Aula 03, p. 11",
+      "cit": "Funções estas cujo exercício deve caber a Poderes diferentes, como condição da liberdade e da segurança dos seres humanos"
+     },
+     "nota": "A p. 19 situa Montesquieu 'na França do final do século XVIII', mas a p. 11 dá 1689-1755 e a obra é de 1748; a data da p. 19 parece inconsistente. Registrado sem resolver.",
+     "f": [
+      {
+       "id": "est-a03-r2.2.1",
+       "t": "Equipotência",
+       "n": "Equipotência = igualdade entre os três poderes, com independência de cada um.",
+       "x": {
+        "e": "A teoria dos poderes de Montesquieu é conhecida como separação ou equipotência; a separação inclui independência de um poder e sua equivalência aos demais.",
+        "trap": "Confundir equipotência (equivalência) com subordinação de um poder a outro.",
+        "src": "Aula 03, p. 14",
+        "cit": "A teoria dos poderes de Montesquieu é conhecida como separação ou equipotência dos poderes Executivo, Legislativo e Judiciário"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r2.2.2",
+       "t": "Impeachment em Montesquieu",
+       "n": "No impeachment, o Legislativo acusa; quem julga é o órgão dos nobres.",
+       "x": {
+        "e": "Montesquieu descreve o impeachment inglês. O poder legislativo, em geral, não julga: só pode acusar, e a acusação é feita perante a parte legislativa dos nobres.",
+        "trap": "Achar que, no modelo de Montesquieu, o Legislativo julga diretamente o acusado.",
+        "src": "Aula 03, p. 13",
+        "cit": "Logo, ele só pode ser acusador"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r2.3",
+     "t": "Base constitucional brasileira",
+     "n": "CF/88 (art. 2º) prevê três Poderes independentes e harmônicos; a separação é cláusula pétrea.",
+     "x": {
+      "e": "Art. 2º: são poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário. Art. 60, § 4º, III: não é objeto de emenda a abolição da separação dos Poderes.",
+      "trap": "Tratar a separação como ampliação das pétreas: ela é uma das cláusulas listadas no § 4º do art. 60.",
+      "src": "Aula 03, p. 7",
+      "cit": "estabeleceu que esses três Poderes são independentes e harmônicos entre si"
+     },
+     "nota": "O Resumo (p. 48) diz que os poderes têm 'competências próprias e indelegáveis'; o texto didático mostra leis delegadas (art. 68, p. 28), e a vedação de delegar atribuições (p. 27) é da CF/1946. Registrado sem resolver.",
+     "f": []
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r3",
+   "t": "Freios e contrapesos (checks and balances)",
+   "n": "Cada poder controla e limita os outros para evitar tirania: a doutrina foi desenvolvida pelos Federalistas.",
+   "x": {
+    "e": "Sistema de controle recíproco entre os poderes. Cada ramo pode limitar ou verificar o poder dos outros. Os autores federalistas foram além de Montesquieu, com objetivo liberal.",
+    "trap": "Achar que freios e contrapesos é a formulação original de Montesquieu; a fonte atribui o desenvolvimento aos Federalistas.",
+    "src": "Aula 03, p. 15",
+    "cit": "um sistema de controle recíprocos entre os poderes que é fundamental para a independência do Poder Judiciário e fortalecimento do Poder Executivo"
+   },
+   "nota": "A p. 15 nomeia 'John Adams' entre os autores de 'Os Federalistas'. Hipótese: possível erro de nome do texto-fonte (conferir). Registrado sem resolver.",
+   "f": [
+    {
+     "id": "est-a03-r3.1",
+     "t": "Objetivo liberal",
+     "n": "Os freios e contrapesos visam evitar a tirania, limitar a autoridade e preservar a liberdade.",
+     "x": {
+      "e": "Técnica de controle com objetivos liberais clássicos: evitar a tirania; limitar a autoridade impedindo arbitrariedades; preservar a liberdade individual.",
+      "trap": "Ver freios e contrapesos como eficiência administrativa; o objetivo é liberal (liberdade e limitação do poder).",
+      "src": "Aula 03, p. 15",
+      "cit": "Limitar a autoridade impedindo arbitrariedades"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r3.2",
+     "t": "Judiciário no modelo norte-americano",
+     "n": "Nos EUA, o Judiciário tem veto mais forte que em Montesquieu, pela declaração de inconstitucionalidade.",
+     "x": {
+      "e": "Para a doutrina norte-americana, o Judiciário exerce veto que Montesquieu não previa, ao declarar inconstitucionalidade. O Brasil adotou o modelo de divisão dos poderes na Constituição de 1891.",
+      "trap": "Atribuir ao Judiciário o papel 'neutro' de Montesquieu, sem o veto da doutrina norte-americana.",
+      "src": "Aula 03, p. 16",
+      "cit": "Para os norte-americanos, o Poder Judiciário tem mais peso do que para Montesquieu"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r3.3",
+     "t": "Controle institucional, não moral",
+     "n": "O controle do poder é institucional: a natureza humana exige instituições que contenham o poder.",
+     "x": {
+      "e": "Os Federalistas partem da natureza humana: o poder tende a se tornar arbitrário; por isso o controle é institucional e não depende de povo virtuoso.",
+      "trap": "Achar que a separação dos Federalistas depende de povo virtuoso; a fonte diz o contrário.",
+      "src": "Aula 03, p. 24",
+      "cit": "o controle sobre os poderes, a fim de garantir a liberdade e evitar a tirania e todo tipo de abuso de poder não é de ordem moral, mas sim institucional"
+     },
+     "f": [
+      {
+       "id": "est-a03-r3.3.1",
+       "t": "Natureza humana",
+       "n": "Para Madison, os homens não são anjos, por isso precisam de controles.",
+       "x": {
+        "e": "Os Federalistas adotam visão realista: os seres humanos são governados por seus semelhantes, o que torna essencial o controle sobre quem detém o poder.",
+        "trap": "Tratar a visão federalista como otimista sobre a natureza humana.",
+        "src": "Aula 03, p. 23",
+        "cit": "Afinal, como Madison nos lembra, os seres humanos não são governados por anjos"
+       },
+       "f": []
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r6",
+   "t": "Relações Executivo-Legislativo e governabilidade",
+   "n": "A governabilidade depende de coalizão no Congresso, e o sistema tem rigidez em crises.",
+   "x": {
+    "e": "As relações entre Executivo e Legislativo combinam separação de poderes com coordenação política. O Executivo precisa de maioria, formada por coalizões de partidos.",
+    "trap": "Tratar o presidencialismo de coalizão como sinônimo de fisiologismo; a fonte diz que ele é o mecanismo predominante de articulação, embora criticado.",
+    "src": "Aula 03, p. 30",
+    "cit": "Em 1988, o Cientista Político Sérgio Abranches publicou na Revista DADOS um dos artigos mais citados na literatura brasileira recente"
+   },
+   "f": [
+    {
+     "id": "est-a03-r6.1",
+     "t": "Funções típicas, atípicas e controles recíprocos",
+     "n": "Cada poder exerce funções típicas e atípicas e controla os outros.",
+     "x": {
+      "e": "O Executivo, além de executar, controla o Legislativo por veto e pode editar normas; o Legislativo fiscaliza; o Judiciário controla constitucionalidade.",
+      "trap": "Dizer que o Legislativo só legisla: ele tem o poder típico de fiscalizar o Executivo.",
+      "src": "Aula 03, p. 29",
+      "cit": "o Poder Executivo, além de administrar e executar a lei, deve também controlar a atividade legislativa"
+     },
+     "f": [
+      {
+       "id": "est-a03-r6.1.1",
+       "t": "Controles recíprocos",
+       "n": "CPI, Tribunais de Contas, impeachment, controle de constitucionalidade e veto são controles recíprocos.",
+       "x": {
+        "e": "Mecanismos: comissões (CPI), controle externo pelas Casas com apoio dos Tribunais de Contas, impeachment, controle de constitucionalidade e veto com possível derrubada.",
+        "trap": "Achar que o texto esgota os mecanismos; a fonte remete o aprofundamento ao Direito Constitucional.",
+        "src": "Aula 03, p. 29",
+        "cit": "Vale lembrar, também, que existem diversos mecanismos de controle de um Poder sobre o outro"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r6.1.2",
+       "t": "Ações coordenadas e mandado de injunção",
+       "n": "Orçamento exige convergência; o mandado de injunção supre omissão de outro poder.",
+       "x": {
+        "e": "Orçamentos são construídos coletivamente. Quando um poder falha, o Judiciário pode suprir déficits, como no mandado de injunção.",
+        "trap": "Achar que o Judiciário supre omissões de ofício; a fonte condiciona a atuação à provocação.",
+        "src": "Aula 03, p. 30",
+        "cit": "como quando é utilizado o remédio constitucional mandado de injunção"
+       },
+       "nota": "Frase de p. 30 embaralhada no PDF ('desde que não assuma ações provocado'); a condição parece ser a provocação. Registrado sem resolver.",
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r6.2",
+     "t": "Presidencialismo de coalizão",
+     "n": "O presidente depende de coalizões parlamentares para governar.",
+     "x": {
+      "e": "Termo de Sérgio Abranches (1988): o Presidente é eleito por voto majoritário nacional; deputados e senadores, nos estados. A maioria no Congresso depende de coalizão de partidos.",
+      "trap": "Achar que coalizão é exclusiva do presidencialismo ou do Brasil.",
+      "src": "Aula 03, p. 30",
+      "cit": "Em 1988, o Cientista Político Sérgio Abranches publicou na Revista DADOS um dos artigos mais citados na literatura brasileira recente"
+     },
+     "f": [
+      {
+       "id": "est-a03-r6.2.1",
+       "t": "Definição de coalizão",
+       "n": "Coalizão: partidos compartilham recursos políticos para metas comuns.",
+       "x": {
+        "e": "Coalizões governamentais são acordos em que partidos compartilham recursos políticos para metas comuns. Não são traços só brasileiros nem só presidencialistas.",
+        "trap": "Achar que coalizão é exclusiva do presidencialismo: a fonte diz que também existe no parlamentarismo.",
+        "src": "Aula 03, p. 31",
+        "cit": "As coalizões governamentais são acordos em que os partidos políticos concordam em compartilhar recursos políticos a fim de alcançar metas em comum"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r6.2.2",
+       "t": "Eleição presidencial e maioria",
+       "n": "O partido do presidente raramente tem maioria no Congresso, por causa de regras eleitorais diferentes.",
+       "x": {
+        "e": "O Presidente é eleito por voto majoritário nacional; a Câmara, por voto proporcional; o Senado, por voto majoritário simples nos estados. A governabilidade depende de coalizão majoritária.",
+        "trap": "Achar que a eleição presidencial garante maioria parlamentar.",
+        "src": "Aula 03, p. 31",
+        "cit": "tornando improvável que o partido do presidente consiga maioria no Congresso"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r6.2.3",
+       "t": "Instabilidade estrutural",
+       "n": "Coalizões grandes em sistema partidário fragmentado geram instabilidade.",
+       "x": {
+        "e": "Há um elemento estrutural de instabilidade da governança quando o presidencialismo depende de coalizões grandes em sistema partidário tendente à fragmentação; há também conflito de agendas entre Legislativo e Executivo.",
+        "trap": "Ver a coalizão só como fisiologismo; a fonte aponta também desafios de agenda e de instabilidade.",
+        "src": "Aula 03, p. 31",
+        "cit": "há um elemento estrutural de instabilidade da governança em um regime presidencialista dependente de coalizões parlamentares grandes"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r6.3",
+     "t": "Crises e rigidez do sistema",
+     "n": "No presidencialismo, a crise tem só duas saídas: eleição ou impeachment.",
+     "x": {
+      "e": "Linz: o presidencialismo tem apenas duas saídas de crise, a eleição a cada quatro anos e o impeachment, demorado e paralisante. Em ambos os casos, a qualidade da democracia fica comprometida.",
+      "trap": "Achar que o Congresso pode derrubar o governo por voto de desconfiança; a fonte diz que as saídas são eleição ou impeachment.",
+      "src": "Aula 03, p. 32",
+      "cit": "o presidencialismo brasileiro tem em apenas duas portas de saída: eleição ou os processos de impeachment"
+     },
+     "nota": "O Resumo (p. 50) cita os impeachments de Collor (1992) e Dilma Rousseff (2016) como exemplos; o texto didático não os nomeia. Registrado sem resolver.",
+     "f": []
+    },
+    {
+     "id": "est-a03-r6.4",
+     "t": "Agenda, veto e produção legislativa",
+     "n": "O veto é faculdade relativa; a produção de origem parlamentar cresce após 2008.",
+     "x": {
+      "e": "Bonavides: o veto é faculdade impeditiva e relativa, que o Congresso pode derrubar por maioria absoluta. Almeida (2020) mostra que, após 2008, cresce a produção legislativa de origem parlamentar.",
+      "trap": "Tratar o veto como última palavra do Presidente.",
+      "src": "Aula 03, p. 33",
+      "cit": "caráter relativo daquela faculdade, meramente impeditiva, sem efeito absoluto"
+     },
+     "f": [
+      {
+       "id": "est-a03-r6.4.1",
+       "t": "Produção legislativa parlamentar após 2008",
+       "n": "Após 2008, cresce a produção de origem parlamentar; coalizões majoritárias favorecem o Executivo.",
+       "x": {
+        "e": "Almeida (2020): a partir de 2008 cresce a produção legislativa de origem parlamentar, com emendas e o Centrão. Coalizões majoritárias ampliam a aprovação da agenda do Executivo.",
+        "trap": "Achar que a produção legislativa do Executivo sempre domina.",
+        "src": "Aula 03, p. 34",
+        "cit": "a partir de 2008 observa-se um aumento substancial da produção legislativa de origem parlamentar"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r6.4.2",
+       "t": "Pandemia e falta de coordenação",
+       "n": "A Covid-19 mostrou que a governabilidade depende de cooperação entre os Poderes.",
+       "x": {
+        "e": "O isolamento político do Executivo obrigou o Legislativo a protagonizar medidas emergenciais, como o aumento do auxílio emergencial e o orçamento paralelo.",
+        "trap": "Tratar a pandemia como caso isolado; a fonte a usa como tese geral sobre coordenação.",
+        "src": "Aula 03, p. 34",
+        "cit": "A pandemia de Covid-19, por sua vez, expôs de forma aguda as consequências da ausência de coordenação entre os Poderes"
+       },
+       "f": []
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r7",
+   "t": "Judicialização de políticas públicas e ativismo judicial",
+   "n": "Judicialização: conflitos políticos decididos pelo Judiciário; ativismo é postura proativa dos juízes.",
+   "x": {
+    "e": "Fenômeno em que questões de políticas públicas e direitos sociais passam a ser decididas pelo Judiciário, típico de constituições extensas e programáticas como a brasileira.",
+    "trap": "Tratar judicialização e ativismo judicial como a mesma coisa.",
+    "src": "Aula 03, p. 35",
+    "cit": "O termo refere-se ao processo pelo qual questões que seriam típicas do campo político"
+   },
+   "f": [
+    {
+     "id": "est-a03-r7.1",
+     "t": "Conceito de judicialização",
+     "n": "Judicialização: conflitos políticos chegam ao Judiciário e são decididos por ele.",
+     "x": {
+      "e": "Diz respeito ao fato de que conflitos políticos chegam ao Judiciário e são decididos por ele. Não é sinônimo de ativismo judicial.",
+      "trap": "Confundir judicialização (fenômeno) com ativismo (postura interpretativa).",
+      "src": "Aula 03, p. 35",
+      "cit": "A judicialização diz respeito ao fato de que conflitos políticos chegam ao Judiciário e são decididos por ele"
+     },
+     "f": [
+      {
+       "id": "est-a03-r7.1.1",
+       "t": "Supremocracia",
+       "n": "Supremocracia: Judiciário no topo da hierarquia decisória, sem os mecanismos de accountability dos outros poderes.",
+       "x": {
+        "e": "Oscar Vilhena Vieira fala em supremocracia quando a atuação do Judiciário se torna sistemática e ele fica acima dos demais Poderes.",
+        "trap": "Tratar a supremocracia como episódio pontual; a fonte a descreve como forma sistemática.",
+        "src": "Aula 03, p. 35",
+        "cit": "acima dos demais Poderes e sem os mesmos mecanismos de accountability"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r7.2",
+     "t": "Condições da judicialização no Brasil",
+     "n": "A judicialização no Brasil decorre da CF/88, da crise do Legislativo, da cultura dos direitos e de estratégias políticas.",
+     "x": {
+      "e": "A judicialização é resultado de condições institucionais e democráticas: a Constituição de 1988, a baixa legitimidade do Legislativo, a cultura dos direitos e o uso estratégico do Judiciário por partidos e chefes do Executivo.",
+      "trap": "Ver a judicialização só como culpa de ministros ou de atores sociais; a fonte aponta condições institucionais.",
+      "src": "Aula 03, p. 35",
+      "cit": "não é apenas fruto do ativismo de ministros ou do voluntarismo de atores sociais"
+     },
+     "f": [
+      {
+       "id": "est-a03-r7.2.1",
+       "t": "Engenharia constitucional",
+       "n": "A CF/88 permite ao Judiciário controlar leis, políticas públicas e políticos.",
+       "x": {
+        "e": "Arantes (2023): pela engenharia constitucional, todo o ciclo da política democrática fica sob vigilância judicial.",
+        "trap": "Achar que a CF/88 limitou o acesso ao Judiciário; a fonte diz que ampliou canais de controle.",
+        "src": "Aula 03, p. 35",
+        "cit": "No Brasil, existe a possibilidade de que o Judiciário controle as leis, controle as políticas públicas e controle os políticos"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r7.2.2",
+       "t": "Judicialização como processo histórico",
+       "n": "Campante: judicialização é processo gradual, não evento isolado, com efeitos ambíguos.",
+       "x": {
+        "e": "Campante vê a judicialização como redefinição gradual das fronteiras entre os Poderes. Tem efeitos ambíguos: protege direitos, mas pode tecnocratizar o debate público.",
+        "trap": "Ler a judicialização como evento pontual e não como processo.",
+        "src": "Aula 03, p. 36",
+        "cit": "Campante propõe que se compreenda a judicialização como um processo e não um evento isolado"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r7.3",
+     "t": "Riscos e potencialidades",
+     "n": "A judicialização protege direitos, mas pode desequilibrar os Poderes e reduzir a soberania popular.",
+     "x": {
+      "e": "Potencialidades: novos canais de cidadania, proteção a grupos vulnerabilizados, correção de omissões. Riscos: desequilíbrio entre os Poderes, enfraquecimento da soberania popular e supremacia de corpo técnico não eleito.",
+      "trap": "Achar que a judicialização é patológica por definição; a fonte diz que é reflexo das tensões e lacunas da democracia.",
+      "src": "Aula 03, p. 37",
+      "cit": "Desequilíbrio entre os Poderes e crise de governabilidade"
+     },
+     "f": [
+      {
+       "id": "est-a03-r7.3.1",
+       "t": "Assimetria democrática (Avritzer)",
+       "n": "O Judiciário tende a responder mais às elites e a partidos do que aos grupos populares.",
+       "x": {
+        "e": "Avritzer alerta para a assimetria democrática: o Judiciário responde mais prontamente às elites econômicas e a partidos do que aos grupos populares, criando desigualdade de acesso e efetividade.",
+        "trap": "Tratar a assimetria como neutra; a fonte a aponta como risco de desigualdade.",
+        "src": "Aula 03, p. 37",
+        "cit": "o Judiciário brasileiro tende a responder mais prontamente às demandas das elites econômicas e às ações de partidos do que às demandas dos grupos populares"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r7.4",
+     "t": "Ativismo judicial: visões e autocontenção",
+     "n": "Ativismo: visão positiva (supremacia da Constituição) e negativa (decisionismo); o oposto é a autocontenção.",
+     "x": {
+      "e": "Ativismo é intervenção proativa e interpretativa do juiz além dos limites tradicionais. Críticos e entusiastas concordam que ele afasta o juiz de suas funções rotineiras.",
+      "trap": "Usar ativismo e judicialização como sinônimos (ver est-a03-r7.1).",
+      "src": "Aula 03, p. 40",
+      "cit": "tanto os críticos quanto os entusiastas do ativismo judicial parecem compartilhar a percepção"
+     },
+     "f": [
+      {
+       "id": "est-a03-r7.4.1",
+       "t": "Visão positiva do ativismo",
+       "n": "Visão positiva: o ativismo garante a supremacia da Constituição e corrige omissões do Legislativo.",
+       "x": {
+        "e": "Defensores veem intervenção 'funcionalmente necessária e oportuna', para garantir a supremacia da Constituição. Exemplo citado: o STF reconheceu a mora do Congresso sobre homofobia e transfobia (ADO 26 e MI 4733).",
+        "trap": "Tratar a criminalização da homofobia pelo STF como simples decisão técnica; a fonte a cita como exemplo de ativismo.",
+        "src": "Aula 03, p. 39",
+        "cit": "garantir a supremacia da Constituição"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r7.4.2",
+       "t": "Visão negativa e decisionismo",
+       "n": "Visão negativa: o ativismo transgride as fronteiras da jurisdição e leva ao decisionismo.",
+       "x": {
+        "e": "Críticos veem o ativismo como transgressão das fronteiras da função jurisdicional, levando ao voluntarismo ou ao decisionismo judicial, e defendem a autocontenção.",
+        "trap": "Achar que a visão negativa nega a separação de poderes; ela diz que o ativismo a quebra.",
+        "src": "Aula 03, p. 40",
+        "cit": "conduzindo o juiz ao voluntarismo ou ao"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r7.4.3",
+       "t": "Autocontenção judicial",
+       "n": "Autocontenção: o Judiciário reduz sua interferência nos outros Poderes e nas políticas públicas.",
+       "x": {
+        "e": "Oposto do ativismo: juízes evitam aplicar a Constituição fora do âmbito expresso, usam critérios rígidos para declarar inconstitucionalidade e se abstêm de definir políticas públicas.",
+        "trap": "Confundir autocontenção com omissão na guarda da Constituição.",
+        "src": "Aula 03, p. 41",
+        "cit": "abstêm-se de interferir na definição das políticas públicas"
+       },
+       "f": []
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r8",
+   "t": "Capacidades estatais, governança e democracia",
+   "n": "Capacidade estatal é o que transforma direitos em políticas; a democracia exige um Estado capaz.",
+   "x": {
+    "e": "Relação entre capacidades estatais e democracia: não basta votar, o Estado precisa realizar os direitos prometidos. Base: Evans, Skocpol, Avritzer e IPEA.",
+    "trap": "Ver capacidade estatal só como eficiência administrativa; ela tem dimensão política e relacional.",
+    "src": "Aula 03, p. 41",
+    "cit": "O estudo da relação entre os poderes nos remete a outro tema correlacionado"
+   },
+   "f": [
+    {
+     "id": "est-a03-r8.1",
+     "t": "Três dimensões das capacidades estatais",
+     "n": "Capacidades: administrativa, política e relacional.",
+     "x": {
+      "e": "Administrativa (infraestrutura, recursos humanos, instrumentos técnicos); política (articular interesses, construir consensos, liderança legítima); relacional (responsividade, confiança e accountability). Juntas formam a 'autonomia enraizada' de Evans.",
+      "trap": "Trocar as dimensões: a política é articulação e consenso, não execução técnica.",
+      "src": "Aula 03, p. 41",
+      "cit": "infraestrutura organizacional, recursos humanos e instrumentos técnicos que permitem ao Estado executar tarefas com competência"
+     },
+     "f": [
+      {
+       "id": "est-a03-r8.1.1",
+       "t": "Capacidade política",
+       "n": "Capacidade política: articular interesses, construir consensos e exercer liderança legítima.",
+       "x": {
+        "e": "Habilidade de articular interesses, construir consensos e exercer liderança legítima nas arenas institucionais e sociais.",
+        "trap": "Reduzir a capacidade política à técnica administrativa.",
+        "src": "Aula 03, p. 42",
+        "cit": "exercer liderança legítima nas arenas institucionais e sociais"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r8.1.2",
+       "t": "Capacidade relacional e autonomia enraizada",
+       "n": "Capacidade relacional: responsividade, confiança e accountability entre Estado e sociedade.",
+       "x": {
+        "e": "Qualidade da interação entre Estado e sociedade civil. Evans chama de autonomia enraizada a combinação de autonomia técnica com conexões sociais densas.",
+        "trap": "Entender autonomia enraizada como autonomia total do Estado frente à sociedade.",
+        "src": "Aula 03, p. 42",
+        "cit": "especialmente no que tange à responsividade, confiança e accountability"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r8.2",
+     "t": "Ampliação de direitos e fragilidade institucional",
+     "n": "A CF/88 ampliou direitos, mas as capacidades para garanti-los são limitadas.",
+     "x": {
+      "e": "Segundo o IPEA (2021), houve ampliação de direitos e políticas, mas as capacidades estatais para garanti-los permanecem limitadas. Fatores: assimetrias federativas, baixa coordenação, fragmentação e clientelismo, judicialização em omissão.",
+      "trap": "Achar que o problema é apenas de direitos formais; a fonte aponta descompasso com as capacidades estatais.",
+      "src": "Aula 03, p. 42",
+      "cit": "Assimetrias federativas, com forte desigualdade institucional entre União, estados e municípios"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r8.3",
+     "t": "Democracia substantiva",
+     "n": "Democracia substantiva: o Estado efetiva os direitos prometidos, além do voto.",
+     "x": {
+      "e": "A efetividade da democracia não depende só de participação e eleições regulares, mas da capacidade do Estado de realizar os direitos prometidos. Avritzer fala em democracia substantiva.",
+      "trap": "Medir a democracia só por eleições regulares.",
+      "src": "Aula 03, p. 42",
+      "cit": "mas da capacidade do Estado de realizar os direitos prometidos constitucionalmente"
+     },
+     "f": [
+      {
+       "id": "est-a03-r8.3.1",
+       "t": "Exigências do Estado democrático",
+       "n": "O Estado deve formular políticas universais, controlar, prover serviços e agir com transparência.",
+       "x": {
+        "e": "Formular políticas públicas universais e equitativas; garantir controle interno e externo; prover serviços com qualidade e equidade territorial; atuar com transparência, accountability e previsibilidade.",
+        "trap": "Achar que o controle é só externo; a fonte cita controle interno e externo.",
+        "src": "Aula 03, p. 43",
+        "cit": "Formular políticas públicas universais e equitativas"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r8.3.2",
+       "t": "Profissionalização da burocracia",
+       "n": "Profissionalizar a burocracia é um eixo para fortalecer capacidades estatais.",
+       "x": {
+        "e": "Eixo de fortalecimento: concursos de qualidade, formação continuada e valorização dos servidores públicos, junto com planejamento de longo prazo e controle social.",
+        "trap": "Ver a burocracia só como custo; a fonte a propõe como eixo de fortalecimento.",
+        "src": "Aula 03, p. 43",
+        "cit": "com concursos de qualidade, formação continuada e valorização dos servidores públicos"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r8.4",
+     "t": "Governabilidade, governança e capacidade governativa",
+     "n": "Governabilidade é a condição sistêmica; governança é a prática; capacidade governativa une as duas.",
+     "x": {
+      "e": "Capacidade governativa (Maria Helena de Castro Santos) é a habilidade de formular e implementar políticas que respondam às necessidades da sociedade, integrando governança e governabilidade.",
+      "trap": "Usar governabilidade e governança como sinônimos.",
+      "src": "Aula 03, p. 44",
+      "cit": "A capacidade governativa, conforme discutida por Maria Helena de Castro Santos"
+     },
+     "f": [
+      {
+       "id": "est-a03-r8.4.1",
+       "t": "Governabilidade",
+       "n": "Governabilidade: condições sistêmicas e institucionais em que o poder é exercido.",
+       "x": {
+        "e": "Refere-se às condições sistêmicas em que o poder é exercido: forma de governo, relações entre os poderes, intermediação de interesses e arquitetura institucional. Liga-se à legitimidade.",
+        "trap": "Confundir governabilidade (condições do sistema) com governança (prática de gestão e interação com a sociedade).",
+        "src": "Aula 03, p. 44",
+        "cit": "Governabilidade refere-se às condições sistêmicas e institucionais sob as quais o poder é exercido"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r8.4.2",
+       "t": "Governança",
+       "n": "Governança: modo como a autoridade é exercida na administração de recursos, com eficiência e participação.",
+       "x": {
+        "e": "Originalmente, o modo como a autoridade é exercida na administração de recursos econômicos e sociais; ampliou-se para eficiência, transparência, responsabilidade e participação.",
+        "trap": "Reduzir governança à eficiência administrativa; a fonte inclui participação e parcerias.",
+        "src": "Aula 03, p. 45",
+        "cit": "originalmente refere-se ao modo como a autoridade é exercida na administração dos recursos econômicos e sociais de um país"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r8.4.3",
+       "t": "Capacidade governativa",
+       "n": "Capacidade governativa integra os aspectos operacionais (governança) e políticos (governabilidade).",
+       "x": {
+        "e": "Conceito de Santos: une a dimensão operacional e administrativa (governança) e a política e institucional (governabilidade); inclui identificar problemas, mobilizar apoio e implementar de forma democrática.",
+        "trap": "Tratar capacidade governativa como sinônimo de governabilidade.",
+        "src": "Aula 03, p. 46",
+        "cit": "é um termo mais abrangente que une ambos os aspectos"
+       },
+       "f": []
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "03"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Montesquieu (equilíbrio) desenvolvido pelos Federalistas",
+   "de": "est-a03-r2.2",
+   "para": "est-a03-r3"
+  },
+  {
+   "rotulo": "controle recíproco aparece como controle entre poderes",
+   "de": "est-a03-r3.1",
+   "para": "est-a03-r6.1"
+  },
+  {
+   "rotulo": "coalizão gera instabilidade e rigidez nas crises",
+   "de": "est-a03-r6.2.3",
+   "para": "est-a03-r6.3"
+  },
+  {
+   "rotulo": "tensão Executivo-Legislativo leva à judicialização",
+   "de": "est-a03-r6.4",
+   "para": "est-a03-r7.2"
+  },
+  {
+   "rotulo": "judicialização tensiona democracia e capacidades estatais",
+   "de": "est-a03-r7.3",
+   "para": "est-a03-r8.2"
+  },
+  {
+   "rotulo": "capacidade governativa integra governabilidade e governança",
+   "de": "est-a03-r8.4",
+   "para": "est-a03-r6"
+  }
+ ],
+ "fontesCentral": {}
+}

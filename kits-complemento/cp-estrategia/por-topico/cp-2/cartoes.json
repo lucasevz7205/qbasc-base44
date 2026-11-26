@@ -1,0 +1,1499 @@
+[
+ {
+  "id": "cp-e02-c01",
+  "no": "est-a02-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político e instituições",
+  "pergunta": "O sistema político de um país é formado pelo conjunto de quê?",
+  "resposta": [
+   "Instituições políticas"
+  ],
+  "explicacao": "Elas definem a constituição do poder, a organização administrativa e os processos de decisão.",
+  "fonte": "Aula 02, p. 5",
+  "citacao": "O sistema político de um país é formado pelo conjunto de instituições políticas",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c02",
+  "no": "est-a02-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político e instituições",
+  "pergunta": "Na analogia esportiva de Douglass North, o que as instituições representam?",
+  "resposta": [
+   "As regras do jogo"
+  ],
+  "explicacao": "North diferencia instituições, organizações e atores.",
+  "fonte": "Aula 02, p. 5",
+  "citacao": "e as instituições constituem as regras do jogo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c03",
+  "no": "est-a02-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político e instituições",
+  "pergunta": "Na analogia esportiva de Douglass North, o que as organizações representam?",
+  "resposta": [
+   "As equipes"
+  ],
+  "explicacao": "Os atores são os jogadores; as organizações, as equipes.",
+  "fonte": "Aula 02, p. 5",
+  "citacao": "enquanto as organizações representam as equipes",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c04",
+  "no": "est-a02-r1.1",
+  "topico": "cp-2",
+  "tema": "Instituições: definição materialista e normativa",
+  "pergunta": "Qual definição trata as instituições como estruturas materiais do poder político do Estado, como parlamentos, cortes e burocracias?",
+  "resposta": [
+   "Definição materialista"
+  ],
+  "explicacao": "A outra é a normativa: regras, rotinas, valores, normas e crenças.",
+  "fonte": "Aula 02, p. 5",
+  "citacao": "Definição materialista , como estruturas materiais do poder político do Estado",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c05",
+  "no": "est-a02-r1.2",
+  "topico": "cp-2",
+  "tema": "Três aspectos da organização do Estado (Pedro Lenza)",
+  "pergunta": "Na sistematização de Pedro Lenza, sob quais três aspectos se analisa a organização do Estado?",
+  "resposta": [
+   "Forma de governo",
+   "Sistema de governo",
+   "Forma de Estado"
+  ],
+  "explicacao": "República/Monarquia; presidencialismo/parlamentarismo; unitário/Federação.",
+  "fonte": "Aula 02, p. 6",
+  "citacao": "a organização e a estrutura do Estado podem ser analisadas sob três aspectos: forma de governo, sistema de governo e forma de Estado",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c06",
+  "no": "est-a02-r1.3",
+  "topico": "cp-2",
+  "tema": "Soberania x autonomia",
+  "pergunta": "Que conceito a aula define, em síntese, como o poder de autodeterminação do Estado?",
+  "resposta": [
+   "Soberania"
+  ],
+  "explicacao": "A soberania só encontra limites na determinação do próprio Estado.",
+  "fonte": "Aula 02, p. 10",
+  "citacao": "É o poder de autodeterminação",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c07",
+  "no": "est-a02-r1.3",
+  "topico": "cp-2",
+  "tema": "Soberania x autonomia",
+  "pergunta": "A capacidade das entidades estatais internas de compor seu governo e prover sua Administração segundo o ordenamento vigente corresponde a qual conceito?",
+  "resposta": [
+   "Autonomia"
+  ],
+  "explicacao": "Autonomia é administrar o que é próprio, dentro da soberania do Estado.",
+  "fonte": "Aula 02, p. 10",
+  "citacao": "entidades estatais internas (Estadosmembros, Distrito Federal e Municípios, por exemplo) para compor seu governo e prover sua Administração segundo o ordenamento jurídico vigente",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c08",
+  "no": "est-a02-r2",
+  "topico": "cp-2",
+  "tema": "Forma de Estado: unitário e federado",
+  "pergunta": "Em qual forma de Estado o poder político fica centralizado em um único governo nacional?",
+  "resposta": [
+   "Estado unitário"
+  ],
+  "explicacao": "No Estado unitário as subdivisões existem, mas subordinadas ao governo central.",
+  "fonte": "Aula 02, p. 7",
+  "citacao": "O Estado Unitário é uma forma de organização política em que o poder político é centralizado em um único governo nacional",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c09",
+  "no": "est-a02-r2",
+  "topico": "cp-2",
+  "tema": "Forma de Estado: unitário e federado",
+  "pergunta": "No Estado unitário, de onde provém a autoridade das subdivisões administrativas?",
+  "resposta": [
+   "Delegação do governo central"
+  ],
+  "explicacao": "As subdivisões existem, mas estão subordinadas ao governo central.",
+  "fonte": "Aula 02, p. 7",
+  "citacao": "geralmente têm autoridade delegada pelo governo central e estão subordinadas a ele",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c10",
+  "no": "est-a02-r2",
+  "topico": "cp-2",
+  "tema": "Forma de Estado: unitário e federado",
+  "pergunta": "Em qual Constituição o federalismo foi apresentado como proposta de organização política?",
+  "resposta": [
+   "Constituição dos EUA de 1787"
+  ],
+  "explicacao": "O debate ocorreu entre a Independência (1776) e a Constituição (1787).",
+  "fonte": "Aula 02, p. 8",
+  "citacao": "o federalismo foi uma proposta de organização política apresentada na Constituição dos Estados Unidos, de 1787",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c11",
+  "no": "est-a02-r2",
+  "topico": "cp-2",
+  "tema": "Forma de Estado: unitário e federado",
+  "pergunta": "Sob que forma ficaram organizadas as 13 ex-colônias americanas entre 1781 e 1787?",
+  "resposta": [
+   "Confederação"
+  ],
+  "explicacao": "Só depois veio a proposta da Federação.",
+  "fonte": "Aula 02, p. 8",
+  "citacao": "Entre 1781 e 1787, as 13 ex-colônias ficaram organizadas sob a forma de uma Confederação",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c12",
+  "no": "est-a02-r2.1",
+  "topico": "cp-2",
+  "tema": "Estado federado e autonomia dos entes",
+  "pergunta": "Quais três capacidades a aula atribui às unidades autônomas do Estado federado?",
+  "resposta": [
+   "Auto-organização",
+   "Autoadministração",
+   "Autolegislação"
+  ],
+  "explicacao": "Cada unidade tem constituição própria e autoridade legislativa.",
+  "fonte": "Aula 02, p. 7",
+  "citacao": "(auto-organização, autoadministração e auto legislação)",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c13",
+  "no": "est-a02-r2.1",
+  "topico": "cp-2",
+  "tema": "Estado federado e autonomia dos entes",
+  "pergunta": "No Estado federado, que temas ficam sob a autoridade do governo federal, segundo os exemplos da aula?",
+  "resposta": [
+   "Defesa",
+   "Política externa",
+   "Moeda"
+  ],
+  "explicacao": "São questões de âmbito nacional.",
+  "fonte": "Aula 02, p. 7",
+  "citacao": "mantém autoridade sobre questões de âmbito nacional, como defesa, política externa, moeda etc.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c14",
+  "no": "est-a02-r2.2",
+  "topico": "cp-2",
+  "tema": "Origem do federalismo e a Confederação",
+  "pergunta": "Que poder falta ao Governo Confederado, o que o impede de exercer soberania sobre o território?",
+  "resposta": [
+   "Poder de império"
+  ],
+  "explicacao": "Na Confederação, cada estado mantém sua soberania.",
+  "fonte": "Aula 02, p. 9",
+  "citacao": "O Governo Confederado não tem poder de império e, portanto, não exerce soberania sobre o território",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c15",
+  "no": "est-a02-r2.2",
+  "topico": "cp-2",
+  "tema": "Origem do federalismo e a Confederação",
+  "pergunta": "Que tipo de soberania a fórmula federalista visava criar?",
+  "resposta": [
+   "Una e indivisível"
+  ],
+  "explicacao": "Soberania da União com autonomia dos entes.",
+  "fonte": "Aula 02, p. 9",
+  "citacao": "A fórmula federalista visava justamente criar uma soberania una e indivisível",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c16",
+  "no": "est-a02-r2.3",
+  "topico": "cp-2",
+  "tema": "Federalismo segundo Dalmo Dallari",
+  "pergunta": "Para Dalmo Dallari, qual é a base jurídica fundamental de um Estado Federal?",
+  "resposta": [
+   "A Constituição"
+  ],
+  "explicacao": "Não é um tratado ou acordo, como na Confederação.",
+  "fonte": "Aula 02, p. 16",
+  "citacao": "A base jurídica fundamental de um Estado Federal é a Constituição, não um tratado ou acordo.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c17",
+  "no": "est-a02-r2.3",
+  "topico": "cp-2",
+  "tema": "Federalismo segundo Dalmo Dallari",
+  "pergunta": "Para Dalmo Dallari, que direito não existe no Estado Federal, ao contrário da Confederação?",
+  "resposta": [
+   "Secessão"
+  ],
+  "explicacao": "A soberania é exclusiva do Estado Federal.",
+  "fonte": "Aula 02, p. 16",
+  "citacao": "em um Estado Federal não existe o direito de secessão",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c18",
+  "no": "est-a02-r2.4",
+  "topico": "cp-2",
+  "tema": "Arranjos federativos (Maria das Graças Rua)",
+  "pergunta": "Segundo Maria das Graças Rua, quais são os três arranjos federativos?",
+  "resposta": [
+   "Dual",
+   "Centralizado",
+   "Cooperativo"
+  ],
+  "explicacao": "Quanto à hierarquia, há ainda simétrico e assimétrico.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "As Federações podem adotar diferentes tipos de arranjos federativos: federalismo dual, federalismo centralizado e federalismo cooperativo.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c19",
+  "no": "est-a02-r2.4.1",
+  "topico": "cp-2",
+  "tema": "Federalismo dual",
+  "pergunta": "Em qual arranjo federativo há separação rígida de soberanias entre o governo federal e os estados?",
+  "resposta": [
+   "Federalismo dual"
+  ],
+  "explicacao": "Cada ente age de forma independente em sua esfera.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "O federalismo dual é caracterizado pela separação rígida de soberanias entre o governo federal e os estados",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c20",
+  "no": "est-a02-r2.4.2",
+  "topico": "cp-2",
+  "tema": "Federalismo centralizado e cooperativo",
+  "pergunta": "Em qual arranjo federativo as políticas são formuladas centralmente e os entes subnacionais executam as diretrizes federais?",
+  "resposta": [
+   "Federalismo centralizado"
+  ],
+  "explicacao": "Estados e municípios atuam como agentes das políticas federais.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "as políticas são formuladas de forma centralizada, com os entes subnacionais executando as diretrizes federais",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c21",
+  "no": "est-a02-r2.4.2",
+  "topico": "cp-2",
+  "tema": "Federalismo centralizado e cooperativo",
+  "pergunta": "Em qual arranjo federativo há graus variados de intervenção federal e ações conjuntas entre níveis de governo, com autonomia decisória das unidades?",
+  "resposta": [
+   "Federalismo cooperativo"
+  ],
+  "explicacao": "Baseia-se em harmonia, solidariedade e cooperação mútua.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "Esse arranjo permite graus variados de intervenção do governo federal e envolve ações conjuntas entre os diferentes níveis de governo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c22",
+  "no": "est-a02-r2.4.3",
+  "topico": "cp-2",
+  "tema": "Federalismo simétrico e assimétrico",
+  "pergunta": "Em qual tipo de federalismo estados de igual nível não exercem as mesmas competências?",
+  "resposta": [
+   "Federalismo assimétrico"
+  ],
+  "explicacao": "Também não têm necessariamente o mesmo número de senadores.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "No federalismo assimétrico, os estados de igual nível não exercem as mesmas competências",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c23",
+  "no": "est-a02-r2.4.3",
+  "topico": "cp-2",
+  "tema": "Federalismo simétrico e assimétrico",
+  "pergunta": "Que expressão a aula (citando Lenza) usa para o tratamento idêntico dado aos Estados pelo constituinte brasileiro?",
+  "resposta": [
+   "Erro de simetria"
+  ],
+  "explicacao": "O constituinte trata os Estados de modo idêntico apesar das diferenças.",
+  "fonte": "Aula 02, p. 17",
+  "citacao": "No Brasil há um certo ‘erro de simetria’, pelo fato de o constituinte tratar de modo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c24",
+  "no": "est-a02-r3",
+  "topico": "cp-2",
+  "tema": "Forma de governo: monarquia e república",
+  "pergunta": "Qual é a palavra-chave da forma de governo, segundo a aula?",
+  "resposta": [
+   "Autoridade"
+  ],
+  "explicacao": "Forma de governo: quem tem a autoridade legítima e como se chegou a ela.",
+  "fonte": "Aula 02, p. 21",
+  "citacao": "Assim, a palavra chave é aqui AUTORIDADE",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c25",
+  "no": "est-a02-r3",
+  "topico": "cp-2",
+  "tema": "Forma de governo: monarquia e república",
+  "pergunta": "Quais são as duas formas de governo na sistematização de Pedro Lenza?",
+  "resposta": [
+   "República",
+   "Monarquia"
+  ],
+  "explicacao": "São as formas clássicas.",
+  "fonte": "Aula 02, p. 6",
+  "citacao": "forma de governo: República ou Monarquia",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c26",
+  "no": "est-a02-r3",
+  "topico": "cp-2",
+  "tema": "Forma de governo: monarquia e república",
+  "pergunta": "Que forma de governo o Brasil adotou?",
+  "resposta": [
+   "Republicana"
+  ],
+  "explicacao": "Com forma federativa de Estado, presidencialismo e regime democrático.",
+  "fonte": "Aula 02, p. 21",
+  "citacao": "O Brasil adotou a forma republicana de governo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c27",
+  "no": "est-a02-r3.1",
+  "topico": "cp-2",
+  "tema": "Monarquia",
+  "pergunta": "Na monarquia, como o chefe de Estado geralmente detém o poder?",
+  "resposta": [
+   "Por hereditariedade"
+  ],
+  "explicacao": "A legitimidade costuma estar na história, linhagem ou tradição.",
+  "fonte": "Aula 02, p. 21",
+  "citacao": "a monarquia é caracterizada por um chefe de Estado que geralmente detém o poder por hereditariedade",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c28",
+  "no": "est-a02-r3.1",
+  "topico": "cp-2",
+  "tema": "Monarquia",
+  "pergunta": "Nas monarquias constitucionais modernas, por quem o governo é em geral realizado?",
+  "resposta": [
+   "Pelo parlamento"
+  ],
+  "explicacao": "\"O rei reina, mas não governa\".",
+  "fonte": "Aula 02, p. 21",
+  "citacao": "Em geral, a direção do estado - o governo é realizado pelo parlamento",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c29",
+  "no": "est-a02-r3.1",
+  "topico": "cp-2",
+  "tema": "Monarquia",
+  "pergunta": "Segundo a aula, de que tipo é o poder na monarquia?",
+  "resposta": [
+   "Autocrático"
+  ],
+  "explicacao": "Na república, por contraste, o poder é do tipo democrático.",
+  "fonte": "Aula 02, p. 21",
+  "citacao": "Poder é do tipo autocrático",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c30",
+  "no": "est-a02-r3.2",
+  "topico": "cp-2",
+  "tema": "República",
+  "pergunta": "Em quais bases se assenta o sistema político de uma República Moderna?",
+  "resposta": [
+   "Representação",
+   "Soberania popular"
+  ],
+  "explicacao": "O governo é visto como órgão representativo da maioria.",
+  "fonte": "Aula 02, p. 22",
+  "citacao": "Em uma República Moderna, o sistema político é baseado em princípios e representação e na soberania popular",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c31",
+  "no": "est-a02-r3.2",
+  "topico": "cp-2",
+  "tema": "República",
+  "pergunta": "Segundo a aula, de que tipo é o poder na república?",
+  "resposta": [
+   "Democrático"
+  ],
+  "explicacao": "Porque permite a participação ativa dos cidadãos na escolha dos líderes.",
+  "fonte": "Aula 02, p. 22",
+  "citacao": "por isso, o poder é do tipo democrático",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c32",
+  "no": "est-a02-r3.3",
+  "topico": "cp-2",
+  "tema": "República: forma e conteúdo (Rui Barbosa)",
+  "pergunta": "Para Rui Barbosa, quais dos três poderes constitucionais devem derivar de eleição popular?",
+  "resposta": [
+   "Legislativo",
+   "Executivo"
+  ],
+  "explicacao": "Os dois primeiros dos três poderes (Legislativo, Executivo e Judiciário).",
+  "fonte": "Aula 02, p. 22",
+  "citacao": "o Legislativo, o Executivo e o Judiciário - os dois primeiros devem derivar de eleição popular",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c33",
+  "no": "est-a02-r3.3",
+  "topico": "cp-2",
+  "tema": "República: forma e conteúdo (Rui Barbosa)",
+  "pergunta": "Como Rui Barbosa resume o que é a república?",
+  "resposta": [
+   "A democracia e a liberdade na lei"
+  ],
+  "explicacao": "Para ele, a forma sem conteúdo republicano não basta.",
+  "fonte": "Aula 02, p. 23",
+  "citacao": "A república é a democracia e a liberdade na lei.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c34",
+  "no": "est-a02-r4",
+  "topico": "cp-2",
+  "tema": "Sistema de governo: divisão e relação entre poderes",
+  "pergunta": "Qual é a noção-chave do sistema de governo, segundo a aula?",
+  "resposta": [
+   "Divisão e relação entre poderes"
+  ],
+  "explicacao": "Sistema de governo: como o poder está dividido e como os detentores se relacionam.",
+  "fonte": "Aula 02, p. 23",
+  "citacao": "Aqui a noção chave é DIVISÂO e RELAÇÃO ENTRE PODERES",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c35",
+  "no": "est-a02-r4",
+  "topico": "cp-2",
+  "tema": "Sistema de governo: divisão e relação entre poderes",
+  "pergunta": "Segundo Paulo Bonavides, o parlamentarismo pode ser considerado derivação de qual teoria?",
+  "resposta": [
+   "Tripartição de poderes"
+  ],
+  "explicacao": "O presidencialismo se alinha à distribuição igualitária de competências.",
+  "fonte": "Aula 02, p. 24",
+  "citacao": "o parlamentarismo pode ser considerado uma derivação da teoria tradicional da tripartição de poderes",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c36",
+  "no": "est-a02-r4",
+  "topico": "cp-2",
+  "tema": "Sistema de governo: divisão e relação entre poderes",
+  "pergunta": "No presidencialismo puro, como é a distribuição de competências entre os ramos do governo?",
+  "resposta": [
+   "Mais equitativa"
+  ],
+  "explicacao": "O Legislativo legisla, o Executivo administra e o Judiciário julga.",
+  "fonte": "Aula 02, p. 24",
+  "citacao": "No presidencialismo puro, ocorre uma distribuição mais equitativa de competências entre os ramos do governo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c37",
+  "no": "est-a02-r4.1",
+  "topico": "cp-2",
+  "tema": "Parlamentarismo",
+  "pergunta": "Em que revolução culminou a evolução do parlamentarismo britânico?",
+  "resposta": [
+   "Revolução Gloriosa (1688)"
+  ],
+  "explicacao": "Evoluiu gradualmente a partir do século XVII.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "culminando na Revolução Gloriosa de 1688",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c38",
+  "no": "est-a02-r4.1",
+  "topico": "cp-2",
+  "tema": "Parlamentarismo",
+  "pergunta": "No parlamentarismo, de onde emerge o Executivo, perante quem também é responsável?",
+  "resposta": [
+   "Do Parlamento"
+  ],
+  "explicacao": "O Executivo depende da confiança do Parlamento.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "emerge do Parlamento e é responsável perante ele",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c39",
+  "no": "est-a02-r4.1",
+  "topico": "cp-2",
+  "tema": "Parlamentarismo",
+  "pergunta": "No parlamentarismo, quem indica o Primeiro Ministro?",
+  "resposta": [
+   "O Chefe de Estado"
+  ],
+  "explicacao": "Ele assume após aprovação pelo parlamento.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "O Chefe de Governo (Primeiro Ministro) é indicado pelo Chefe de Estado e assume o cargo após a aprovação pelo parlamento.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c40",
+  "no": "est-a02-r4.1.1",
+  "topico": "cp-2",
+  "tema": "Chefe de Estado e chefe de Governo",
+  "pergunta": "No parlamentarismo, que papel o Chefe de Estado desempenha principalmente?",
+  "resposta": [
+   "Representativo"
+  ],
+  "explicacao": "Ele não participa das decisões políticas de governo.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "desempenhando principalmente um papel representativo do Estado",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c41",
+  "no": "est-a02-r4.1.1",
+  "topico": "cp-2",
+  "tema": "Chefe de Estado e chefe de Governo",
+  "pergunta": "Quem é a figura central do parlamentarismo, responsável pelo poder executivo?",
+  "resposta": [
+   "O Chefe de Governo"
+  ],
+  "explicacao": "É o Primeiro Ministro.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "O Chefe de Governo é a figura central do parlamentarismo, responsável pelo exercício do poder executivo.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c42",
+  "no": "est-a02-r4.1.2",
+  "topico": "cp-2",
+  "tema": "Responsabilidade política e voto de desconfiança",
+  "pergunta": "Quais fatos podem determinar a demissão do Primeiro Ministro?",
+  "resposta": [
+   "Perda da maioria parlamentar",
+   "Voto de desconfiança"
+  ],
+  "explicacao": "O Primeiro Ministro não tem mandato com prazo determinado.",
+  "fonte": "Aula 02, p. 25",
+  "citacao": "A perda da maioria parlamentar ou um voto de desconfiança podem determinar a demissão do Primeiro Ministro.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c43",
+  "no": "est-a02-r4.1.2",
+  "topico": "cp-2",
+  "tema": "Responsabilidade política e voto de desconfiança",
+  "pergunta": "Segundo Darcy Azambuja, o que todo o Gabinete deve fazer se a maioria parlamentar retirar sua confiança?",
+  "resposta": [
+   "Renunciar"
+  ],
+  "explicacao": "Salvo se o Presidente da República dissolver a câmara.",
+  "fonte": "Aula 02, p. 26",
+  "citacao": "todo o Gabinete deve renunciar",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c44",
+  "no": "est-a02-r4.1.3",
+  "topico": "cp-2",
+  "tema": "Dissolução do parlamento",
+  "pergunta": "Além do voto de desconfiança, em que hipótese o Primeiro Ministro pode levar à dissolução do parlamento?",
+  "resposta": [
+   "Expectativa de ampliar a maioria em eleições gerais"
+  ],
+  "explicacao": "A outra hipótese: recebe voto de desconfiança, mas vê o parlamento em desacordo com a vontade popular.",
+  "fonte": "Aula 02, p. 26",
+  "citacao": "A dissolução do parlamento pode ocorrer quando o Primeiro Ministro acredita que a realização de eleições gerais pode resultar em uma ampliação de sua maioria parlamentar.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c45",
+  "no": "est-a02-r4.2",
+  "topico": "cp-2",
+  "tema": "Presidencialismo",
+  "pergunta": "No presidencialismo, quem acumula as funções de Chefe de Estado e de Chefe de Governo?",
+  "resposta": [
+   "O Presidente da República"
+  ],
+  "explicacao": "A chefia de governo é unipessoal.",
+  "fonte": "Aula 02, p. 27",
+  "citacao": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c46",
+  "no": "est-a02-r4.2",
+  "topico": "cp-2",
+  "tema": "Presidencialismo",
+  "pergunta": "Segundo Paulo Bonavides, de onde o Presidente deriva seus poderes?",
+  "resposta": [
+   "Diretamente da Nação"
+  ],
+  "explicacao": "Princípio da derivação dos poderes da Nação.",
+  "fonte": "Aula 02, p. 28",
+  "citacao": "O Presidente deriva seus poderes diretamente da Nação.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c47",
+  "no": "est-a02-r4.2.1",
+  "topico": "cp-2",
+  "tema": "Eleição direta e mandato fixo",
+  "pergunta": "No presidencialismo, por quem o Presidente da República é escolhido?",
+  "resposta": [
+   "Pelo povo, diretamente"
+  ],
+  "explicacao": "Não apenas pelos parlamentares.",
+  "fonte": "Aula 02, p. 27",
+  "citacao": "O Presidente da República é escolhido diretamente pelo povo em eleições populares",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c48",
+  "no": "est-a02-r4.2.1",
+  "topico": "cp-2",
+  "tema": "Eleição direta e mandato fixo",
+  "pergunta": "O que o prazo determinado do mandato presidencial evita?",
+  "resposta": [
+   "Monarquia eletiva"
+  ],
+  "explicacao": "É característica básica do presidencialismo.",
+  "fonte": "Aula 02, p. 27",
+  "citacao": "Um prazo determinado é estabelecido para o mandato do Presidente da República, evitando uma monarquia eletiva.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c49",
+  "no": "est-a02-r4.2.2",
+  "topico": "cp-2",
+  "tema": "Veto presidencial",
+  "pergunta": "Que risco o poder de veto do Presidente busca evitar?",
+  "resposta": [
+   "Ditadura legislativa"
+  ],
+  "explicacao": "O veto permite ao Presidente interferir no processo legislativo.",
+  "fonte": "Aula 02, p. 28",
+  "citacao": "O Presidente tem o poder de veto para evitar o risco de uma ditadura legislativa",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c50",
+  "no": "est-a02-r4.2.2",
+  "topico": "cp-2",
+  "tema": "Veto presidencial",
+  "pergunta": "Segundo Bonavides, por qual maioria o Congresso, em regra, rejeita o veto presidencial?",
+  "resposta": [
+   "Dois terços"
+  ],
+  "explicacao": "O veto é relativo; a última palavra fica com o Congresso.",
+  "fonte": "Aula 02, p. 32",
+  "citacao": "mediante rejeição do veto presidencial, o que via de regra se dá através de votação legislativa, por maioria de dois terços",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c51",
+  "no": "est-a02-r4.2.3",
+  "topico": "cp-2",
+  "tema": "Impedimento (impeachment) do presidente",
+  "pergunta": "No presidencialismo, o que precisa existir para que o Presidente possa ser destituído?",
+  "resposta": [
+   "Crime (de responsabilidade)"
+  ],
+  "explicacao": "Perda de apoio político ou impopularidade não bastam.",
+  "fonte": "Aula 02, p. 31",
+  "citacao": "Se não houver crime cometido, o Presidente da República não pode ser",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c52",
+  "no": "est-a02-r4.2.3",
+  "topico": "cp-2",
+  "tema": "Impedimento (impeachment) do presidente",
+  "pergunta": "Segundo Michel Temer (1987), que figura o Legislativo deveria utilizar com vigor para garantir o equilíbrio de poderes?",
+  "resposta": [
+   "Impedimento (impeachment) do Presidente"
+  ],
+  "explicacao": "Ele defendia o presidencialismo com mecanismos de controle.",
+  "fonte": "Aula 02, p. 29",
+  "citacao": "Basta que o Legislativo utilize, com vigor, a figura do impedimento do presidente da República",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c53",
+  "no": "est-a02-r4.3",
+  "topico": "cp-2",
+  "tema": "Semipresidencialismo",
+  "pergunta": "No semipresidencialismo, quais dois centros de poder coexistem?",
+  "resposta": [
+   "Presidente eleito pelo povo",
+   "Primeiro-Ministro"
+  ],
+  "explicacao": "O Primeiro-Ministro conduz o governo e depende da confiança do Parlamento.",
+  "fonte": "Aula 02, p. 32",
+  "citacao": "coexistem dois centros de poder político: um Presidente da República, eleito diretamente pelo povo, e um Primeiro-Ministro",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c54",
+  "no": "est-a02-r4.3",
+  "topico": "cp-2",
+  "tema": "Semipresidencialismo",
+  "pergunta": "Como Paulo Bonavides define o semipresidencialismo?",
+  "resposta": [
+   "Sistema de governo dualista"
+  ],
+  "explicacao": "O Executivo é compartilhado por duas autoridades.",
+  "fonte": "Aula 02, p. 32",
+  "citacao": "Paulo Bonavides define o semipresidencialismo como um [...] sistema de governo dualista",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c55",
+  "no": "est-a02-r4.3",
+  "topico": "cp-2",
+  "tema": "Semipresidencialismo",
+  "pergunta": "Para Dallari, sem partidos estruturados e cultura de cooperação, em que o semipresidencialismo tende a degenerar?",
+  "resposta": [
+   "Presidencialismo disfarçado",
+   "Parlamentarismo instável"
+  ],
+  "explicacao": "Dallari vê no sistema um atenuante de crises, com essa ressalva.",
+  "fonte": "Aula 02, p. 32",
+  "citacao": "sem os quais o sistema tende a degenerar em “presidencialismo disfarçado” ou em “parlamentarismo instável”",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c56",
+  "no": "est-a02-r4.3.1",
+  "topico": "cp-2",
+  "tema": "Debate sobre o semipresidencialismo no Brasil",
+  "pergunta": "Em qual Casa está em debate a implantação do semipresidencialismo no Brasil?",
+  "resposta": [
+   "Câmara dos Deputados"
+  ],
+  "explicacao": "Fonte citada: Agência Câmara de Notícias.",
+  "fonte": "Aula 02, p. 33",
+  "citacao": "Está em debate no Brasil, mais especificamente na Câmara dos Deputados, discussões sobre implantação do semipresidencialismo.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c57",
+  "no": "est-a02-r4.3.1",
+  "topico": "cp-2",
+  "tema": "Debate sobre o semipresidencialismo no Brasil",
+  "pergunta": "O que seria preciso para implantar o semipresidencialismo no Brasil?",
+  "resposta": [
+   "Mudar a Constituição"
+  ],
+  "explicacao": "A Constituição define o atual sistema.",
+  "fonte": "Aula 02, p. 33",
+  "citacao": "Para que seja implantado, é preciso mudar a Constituição",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c58",
+  "no": "est-a02-r5",
+  "topico": "cp-2",
+  "tema": "Controle entre poderes e crises de governo",
+  "pergunta": "Em qual número de \"O Federalista\" está a frase de Madison segundo a qual, se os homens fossem anjos, não seria necessário governo?",
+  "resposta": [
+   "N. 51"
+  ],
+  "explicacao": "A frase resume a visão realista da natureza humana.",
+  "fonte": "Aula 02, p. 34",
+  "citacao": "Esta afirmação de James Madison, presente no \"O Federalista\" n. 51",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c59",
+  "no": "est-a02-r5",
+  "topico": "cp-2",
+  "tema": "Controle entre poderes e crises de governo",
+  "pergunta": "Segundo Hamilton, em \"O Federalista\" n. 6, como são os seres humanos por natureza?",
+  "resposta": [
+   "Ambiciosos",
+   "Vingativos",
+   "Ávidos"
+  ],
+  "explicacao": "Visão realista, às vezes pessimista.",
+  "fonte": "Aula 02, p. 34",
+  "citacao": "os seres humanos são, por natureza, \"ambiciosos, vingativos e ávidos\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c60",
+  "no": "est-a02-r5",
+  "topico": "cp-2",
+  "tema": "Controle entre poderes e crises de governo",
+  "pergunta": "Para quais males os Federalistas apresentaram seus remédios?",
+  "resposta": [
+   "Os \"males da república\""
+  ],
+  "explicacao": "Os remédios: divisão de poderes, direitos das minorias, Senado e Bill of Rights.",
+  "fonte": "Aula 02, p. 11",
+  "citacao": "Os federalistas, então, apresentaram alguns remédios para os \"males da república\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c61",
+  "no": "est-a02-r5",
+  "topico": "cp-2",
+  "tema": "Controle entre poderes e crises de governo",
+  "pergunta": "A que ideia Montesquieu ainda estava ligado, diferentemente dos Federalistas?",
+  "resposta": [
+   "Governo misto"
+  ],
+  "explicacao": "Nos EUA não havia aristocracia nobre para um governo misto.",
+  "fonte": "Aula 02, p. 34",
+  "citacao": "Enquanto Montesquieu ainda estava ligado à ideia de um \"governo misto\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c62",
+  "no": "est-a02-r5.1",
+  "topico": "cp-2",
+  "tema": "Natureza humana e freios e contrapesos",
+  "pergunta": "Dada a tendência de quem detém o poder a abusar dele, o que é necessário, segundo os Federalistas?",
+  "resposta": [
+   "Contrapoder (freios e contrapesos)"
+  ],
+  "explicacao": "O poder deve ser controlado para não ultrapassar os limites.",
+  "fonte": "Aula 02, p. 34",
+  "citacao": "é necessário que haja um contrapoder - sistema de freios e contrapesos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c63",
+  "no": "est-a02-r5.1.1",
+  "topico": "cp-2",
+  "tema": "Divisão do poder em três esferas",
+  "pergunta": "Qual é o primeiro remédio dos Federalistas para os males da república?",
+  "resposta": [
+   "Divisão do poder em três esferas"
+  ],
+  "explicacao": "Esferas harmônicas e independentes, como sistema de freios e contrapesos.",
+  "fonte": "Aula 02, p. 11",
+  "citacao": "Divisão do poder em três esferas harmônicas e independentes",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c64",
+  "no": "est-a02-r5.1.2",
+  "topico": "cp-2",
+  "tema": "Direitos das minorias e proporcionalidade",
+  "pergunta": "Que critério de representação os Federalistas ligaram aos direitos de expressão das minorias?",
+  "resposta": [
+   "Proporcionalidade"
+  ],
+  "explicacao": "Segundo remédio dos Federalistas.",
+  "fonte": "Aula 02, p. 11",
+  "citacao": "criando o critério de proporcionalidade na representação política",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c65",
+  "no": "est-a02-r5.1.3",
+  "topico": "cp-2",
+  "tema": "Senado e controle dos Estados",
+  "pergunta": "Que instituição os Federalistas criaram para manter o controle do Governo da União pelos Estados?",
+  "resposta": [
+   "Senado"
+  ],
+  "explicacao": "Terceiro remédio dos Federalistas.",
+  "fonte": "Aula 02, p. 11",
+  "citacao": "A criação do Senado como forma de manter o controle do Governo da União pelos Estados Federados",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c66",
+  "no": "est-a02-r5.1.4",
+  "topico": "cp-2",
+  "tema": "Declaração de Direitos (Bill of Rights)",
+  "pergunta": "Quantas emendas à Constituição compõem a Bill of Rights citada na aula?",
+  "resposta": [
+   "Dez"
+  ],
+  "explicacao": "Quarto remédio: Declaração de Direitos Civis.",
+  "fonte": "Aula 02, p. 12",
+  "citacao": "A Declaração de Direitos Civis (Bill of rights - 10 emendas à Constituição)",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c67",
+  "no": "est-a02-r5.2",
+  "topico": "cp-2",
+  "tema": "Controle institucional, não moral",
+  "pergunta": "Para os Federalistas, o controle sobre os poderes é de que ordem?",
+  "resposta": [
+   "Institucional"
+  ],
+  "explicacao": "Não é de ordem moral.",
+  "fonte": "Aula 02, p. 35",
+  "citacao": "não é de ordem moral, mas sim institucional",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c68",
+  "no": "est-a02-r5.2",
+  "topico": "cp-2",
+  "tema": "Controle institucional, não moral",
+  "pergunta": "Em que se apoia a separação de poderes dos Federalistas, em vez da premissa de um povo virtuoso?",
+  "resposta": [
+   "Conter interesses e ambições pessoais"
+  ],
+  "explicacao": "Os ramos devem ter força para resistir uns aos outros.",
+  "fonte": "Aula 02, p. 35",
+  "citacao": "ela se apoia na necessidade de conter os interesses e ambições pessoais dos seres humanos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c69",
+  "no": "est-a02-r5.3",
+  "topico": "cp-2",
+  "tema": "Crises: parlamentarismo e presidencialismo",
+  "pergunta": "No parlamentarismo, como são geralmente enfrentadas as crises de governo?",
+  "resposta": [
+   "Dissolução do Gabinete"
+  ],
+  "explicacao": "Ocorre ao retirar-se o voto de confiança do Primeiro Ministro.",
+  "fonte": "Aula 02, p. 30",
+  "citacao": "geralmente são enfrentadas com a dissolução do Gabinete",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c70",
+  "no": "est-a02-r5.3",
+  "topico": "cp-2",
+  "tema": "Crises: parlamentarismo e presidencialismo",
+  "pergunta": "Após a dissolução do Gabinete, como é nomeado o novo Gabinete?",
+  "resposta": [
+   "Negociações no Legislativo"
+  ],
+  "explicacao": "Em alguns casos, há dissolução do Parlamento e novas eleições.",
+  "fonte": "Aula 02, p. 30",
+  "citacao": "um novo Gabinete é nomeado por meio de negociações no Legislativo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c71",
+  "no": "est-a02-r5.3",
+  "topico": "cp-2",
+  "tema": "Crises: parlamentarismo e presidencialismo",
+  "pergunta": "No parlamentarismo, que caráter tem a dissolução do Gabinete?",
+  "resposta": [
+   "Medida de último recurso"
+  ],
+  "explicacao": "A governabilidade é quase pressuposta no parlamentarismo.",
+  "fonte": "Aula 02, p. 31",
+  "citacao": "A dissolução do Gabinete é uma medida de último recurso.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c72",
+  "no": "est-a02-r5.3.1",
+  "topico": "cp-2",
+  "tema": "Presidencialismo e tensão entre poderes",
+  "pergunta": "Qual sistema de governo, segundo a aula, tende a gerar mais tensões?",
+  "resposta": [
+   "Presidencialismo"
+  ],
+  "explicacao": "A legitimidade popular do Presidente gera potencial conflito com o Legislativo.",
+  "fonte": "Aula 02, p. 31",
+  "citacao": "O presidencialismo é um sistema que tende a gerar mais tensões.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c73",
+  "no": "est-a02-r5.4",
+  "topico": "cp-2",
+  "tema": "Regime de coalizão",
+  "pergunta": "Nos parlamentos multipartidaristas, que regime é fundamental para o sistema?",
+  "resposta": [
+   "Regime de coalizão"
+  ],
+  "explicacao": "O Legislativo deve chegar a amplo consenso sobre a Chefia de Gabinete.",
+  "fonte": "Aula 02, p. 31",
+  "citacao": "Nos parlamentos multipartidaristas, o regime de coalizão é fundamental para o sistema.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e03-c01",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual camada do sistema político descreve como o poder é distribuído geograficamente?",
+  "resposta": [
+   "Forma de Estado"
+  ],
+  "explicacao": "A forma de Estado trata da organização espacial e territorial do poder (centralização ou descentralização).",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "Esse conceito destina-se a descrever como o poder é distribuído geograficamente",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c02",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual é a palavra-chave da forma de governo?",
+  "resposta": [
+   "Autoridade"
+  ],
+  "explicacao": "A forma de governo trata de quem detém o poder, de sua legitimidade e de como a autoridade é transmitida.",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "Assim, a palavra chave é aqui AUTORIDADE",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c03",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual é a noção-chave do sistema de governo?",
+  "resposta": [
+   "Divisão e relação entre poderes"
+  ],
+  "explicacao": "O sistema de governo trata de como o poder está dividido e de como seus detentores se relacionam.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "Aqui a noção chave é DIVISÂO e RELAÇÃO ENTRE PODERES",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c04",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Segundo Duverger, que distinção o regime político assume num grupo social?",
+  "resposta": [
+   "Entre governantes e governados"
+  ],
+  "explicacao": "Duverger define regime político, em sentido amplo, pela forma da distinção entre governantes e governados.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "chama-se regime político a forma que, num dado grupo social, assume a distinção entre governantes governados",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c05",
+  "no": "est-a03-r1.1",
+  "topico": "cp-2",
+  "tema": "Forma de Estado",
+  "pergunta": "Quais são as formas de Estado mais comuns?",
+  "resposta": [
+   "Estado Unitário",
+   "Estado Federado"
+  ],
+  "explicacao": "A forma de Estado descreve a organização territorial do poder; o Brasil é Estado Federado.",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "As formas de Estado mais comuns incluem: Estado Unitário e Estado Federado",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c06",
+  "no": "est-a03-r1.2",
+  "topico": "cp-2",
+  "tema": "Forma de governo",
+  "pergunta": "Qual é a forma de governo do Brasil?",
+  "resposta": [
+   "República"
+  ],
+  "explicacao": "Forma de governo do Brasil, segundo a aula.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "Forma de Governo: República",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c07",
+  "no": "est-a03-r1.3",
+  "topico": "cp-2",
+  "tema": "Sistema de governo",
+  "pergunta": "Qual é o sistema de governo do Brasil?",
+  "resposta": [
+   "Presidencialista"
+  ],
+  "explicacao": "Sistema de governo do Brasil, segundo a aula.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "Sistema de Governo: Presidencialista",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c08",
+  "no": "est-a03-r1.4",
+  "topico": "cp-2",
+  "tema": "Regime político",
+  "pergunta": "Qual é o regime político do Brasil?",
+  "resposta": [
+   "Democrático"
+  ],
+  "explicacao": "Regime político do Brasil; o art. 1º da CF/88 fala em Estado Democrático de Direito.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "Regime Político: Democrático",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c30",
+  "no": "est-a03-r4",
+  "topico": "cp-2",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Em qual país está a origem filosófica do presidencialismo?",
+  "resposta": [
+   "Estados Unidos"
+  ],
+  "explicacao": "A Constituição dos EUA de 1787 estabeleceu o sistema presidencialista.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "O presidencialismo tem suas origens na filosofia política dos Estados Unidos",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c31",
+  "no": "est-a03-r4",
+  "topico": "cp-2",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Segundo Darcy Azambuja, a separação entre os poderes significa ausência de quê?",
+  "resposta": [
+   "Subordinação"
+  ],
+  "explicacao": "Separação não é oposição: os poderes são independentes e colaboram.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "essa separação não é oposição entre eles, mas sim ausência de subordinação",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c32",
+  "no": "est-a03-r4",
+  "topico": "cp-2",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Segundo Bonavides, de onde o Presidente deriva seus poderes?",
+  "resposta": [
+   "Diretamente da Nação"
+  ],
+  "explicacao": "Princípio da derivação dos poderes da Nação.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "O Presidente deriva seus poderes diretamente da Nação",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c33",
+  "no": "est-a03-r4",
+  "topico": "cp-2",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Quem pode derrubar o veto presidencial?",
+  "resposta": [
+   "O Legislativo"
+  ],
+  "explicacao": "O veto nega total ou parcialmente as leis, mas não é absoluto.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "Lembrando que o Legislativo tem o poder de derrubar o veto",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c34",
+  "no": "est-a03-r4.1",
+  "topico": "cp-2",
+  "tema": "Definição e separação",
+  "pergunta": "Em comparação ao parlamentarismo, como é a distribuição de competências no presidencialismo?",
+  "resposta": [
+   "Mais equânime"
+  ],
+  "explicacao": "Cada ramo tem funções distintas e é independente.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "a distribuição de competências é mais equânime",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c35",
+  "no": "est-a03-r4.2",
+  "topico": "cp-2",
+  "tema": "Chefia de Estado e de governo",
+  "pergunta": "Quais chefias o Presidente da República acumula no presidencialismo?",
+  "resposta": [
+   "Chefe de Estado",
+   "Chefe de Governo"
+  ],
+  "explicacao": "Chefia de Estado (representação) e de governo (direção da administração).",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c36",
+  "no": "est-a03-r4.2",
+  "topico": "cp-2",
+  "tema": "Chefia de Estado e de governo",
+  "pergunta": "Como se classifica a chefia de governo no presidencialismo, exercida só pelo Presidente?",
+  "resposta": [
+   "Unipessoal"
+  ],
+  "explicacao": "A definição das diretrizes do Executivo cabe exclusivamente ao Presidente.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "Chefia de Governo Unipessoal",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c37",
+  "no": "est-a03-r4.2.1",
+  "topico": "cp-2",
+  "tema": "Eleição direta",
+  "pergunta": "Como se denomina o traço do presidencialismo em que o voto recai na figura do candidato?",
+  "resposta": [
+   "Personalismo"
+  ],
+  "explicacao": "Por isso um partido com menos votos pode eleger o Presidente.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "pois o voto é na figura do candidato, caracterizando o personalismo",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c38",
+  "no": "est-a03-r4.2.2",
+  "topico": "cp-2",
+  "tema": "Mandato determinado",
+  "pergunta": "Em que hipótese o Presidente deixa o cargo antes do fim do mandato fixo?",
+  "resposta": [
+   "Impeachment"
+  ],
+  "explicacao": "Só em circunstâncias graves.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "exceto em casos de impeachment sob circunstâncias graves",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c39",
+  "no": "est-a03-r4.3",
+  "topico": "cp-2",
+  "tema": "Gabinete e alianças",
+  "pergunta": "Que política os ministros devem seguir no presidencialismo?",
+  "resposta": [
+   "A do Presidente"
+  ],
+  "explicacao": "Não seguem a sua própria política nem a do partido.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "os ministros devem seguir a política do presidente e não sua ou do seu partido",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c40",
+  "no": "est-a03-r4.3",
+  "topico": "cp-2",
+  "tema": "Gabinete e alianças",
+  "pergunta": "No Brasil, de que costumam resultar os ministérios?",
+  "resposta": [
+   "Alianças e acordos políticos"
+  ],
+  "explicacao": "Acordos entre o chefe do Executivo, seu partido e os partidos da base aliada.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "os ministérios são fruto de alianças e acordos políticos",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c41",
+  "no": "est-a03-r4.4",
+  "topico": "cp-2",
+  "tema": "Veto e iniciativa",
+  "pergunta": "Que risco o poder de veto do Presidente busca evitar?",
+  "resposta": [
+   "Ditadura legislativa"
+  ],
+  "explicacao": "O veto permite ao Presidente interferir no processo legislativo.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "O Presidente tem o poder de veto para evitar o risco de uma ditadura legislativa",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c42",
+  "no": "est-a03-r5",
+  "topico": "cp-2",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Qual evento marca o início do presidencialismo no Brasil?",
+  "resposta": [
+   "Proclamação da República (1889)"
+  ],
+  "explicacao": "Movimento predominantemente militar que destituiu a monarquia.",
+  "fonte": "Aula 03, p. 24",
+  "citacao": "Seu início remonta à Proclamação da República em 1889",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c43",
+  "no": "est-a03-r5",
+  "topico": "cp-2",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Em que ano a população reafirmou em plebiscito o presidencialismo após a CF/88?",
+  "resposta": [
+   "1993"
+  ],
+  "explicacao": "A população votou pela manutenção do sistema presidencialista.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "Essa escolha foi posteriormente reafirmada pelo plebiscito de 1993",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c44",
+  "no": "est-a03-r5",
+  "topico": "cp-2",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Qual Constituição quebrou a função do Poder Legislativo no Estado Novo?",
+  "resposta": [
+   "1937"
+  ],
+  "explicacao": "O regime ditatorial de Vargas diminuiu o papel do Legislativo.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "Constituição de 1937 Houve uma quebra na função do Poder Legislativo",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c45",
+  "no": "est-a03-r5.1",
+  "topico": "cp-2",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Que crise originou o parlamentarismo de 1961?",
+  "resposta": [
+   "Renúncia de Jânio Quadros"
+  ],
+  "explicacao": "Seguiu-se a resistência à posse de João Goulart; o Presidente passou a ser escolhido indiretamente pelo Congresso.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "política que envolveu a renúncia do presidente Jânio Quadros e a subsequente resistência à posse do vice-presidente João Goulart",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c46",
+  "no": "est-a03-r5.1",
+  "topico": "cp-2",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Como terminou a experiência parlamentarista de 1961-63?",
+  "resposta": [
+   "Plebiscito de 1963"
+  ],
+  "explicacao": "O eleitorado escolheu o retorno ao presidencialismo.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "terminando com o retorno ao presidencialismo em 1963 após um plebiscito no qual o eleitorado escolheu o presidencialismo",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c47",
+  "no": "est-a03-r5.1",
+  "topico": "cp-2",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Nas mãos de quem estava o poder na República Velha?",
+  "resposta": [
+   "Oligarquias locais"
+  ],
+  "explicacao": "Refletia os interesses da elite agrária, com eleitorado restrito.",
+  "fonte": "Aula 03, p. 24",
+  "citacao": "O poder estava largamente nas mãos de oligarquias locais",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c48",
+  "no": "est-a03-r5.2",
+  "topico": "cp-2",
+  "tema": "Constituições de 1891 a 1967",
+  "pergunta": "Como a Constituição de 1934 qualificava os três Poderes entre si?",
+  "resposta": [
+   "Independentes e coordenados"
+  ],
+  "explicacao": "Manteve os três poderes clássicos de Montesquieu.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "os Poderes Legislativo, Executivo e Judiciário, independentes e coordenados entre si",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c49",
+  "no": "est-a03-r5.2.1",
+  "topico": "cp-2",
+  "tema": "Constituição de 1946",
+  "pergunta": "O que a Constituição de 1946 vedou a qualquer dos Poderes?",
+  "resposta": [
+   "Delegar atribuições"
+  ],
+  "explicacao": "A CF/1946 retornou à tripartição de Montesquieu.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "§ 2o - É vedado a qualquer dos Poderes delegar atribuições",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c50",
+  "no": "est-a03-r5.2.2",
+  "topico": "cp-2",
+  "tema": "Constituição de 1967 e regime militar",
+  "pergunta": "Sob a Constituição de 1967, em qual Poder houve centralização?",
+  "resposta": [
+   "Executivo Federal"
+  ],
+  "explicacao": "A divisão dos Poderes continuou formalmente prevista no Regime Militar.",
+  "fonte": "Aula 03, p. 28",
+  "citacao": "Apesar de estar prevista formalmente a divisão dos Poderes, houve a centralização no Poder Executivo Federal",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c51",
+  "no": "est-a03-r5.3",
+  "topico": "cp-2",
+  "tema": "Constituição de 1988 e plebiscito de 1993",
+  "pergunta": "Que modelo o projeto inicial da Constituinte sugeria?",
+  "resposta": [
+   "Parlamentarista"
+  ],
+  "explicacao": "Acabou prevalecendo o presidencialismo.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "Embora o projeto inicial sugerisse um modelo parlamentarista",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ },
+ {
+  "id": "cp-e03-c52",
+  "no": "est-a03-r5.3",
+  "topico": "cp-2",
+  "tema": "Constituição de 1988 e plebiscito de 1993",
+  "pergunta": "Que espécie normativa o Presidente pode editar na CF/88, diferindo do esquema de Montesquieu?",
+  "resposta": [
+   "Medidas provisórias"
+  ],
+  "explicacao": "O Presidente também tem iniciativa legislativa e elabora leis delegadas.",
+  "fonte": "Aula 03, p. 28",
+  "citacao": "como também pode editar medidas provisórias (art. 62)",
+  "topicoOriginal": "cp-4",
+  "aulaOrigem": "03"
+ }
+]
