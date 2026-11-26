@@ -2,6 +2,7 @@
 const root='kit-arr-rf-1-reconhecimento-de-fala-e-transcricao-de-2026-11-22-';
 import {DAHL_NODES} from './dahl-puzzle.js';
 import {ASR_NODE} from './functional-architecture.js';
+import {kitVisualBindings} from './kit-visuals.js';
 const asr='kit-arr-rf-1.1-reconhecimento-automatico-de-fala-asr-au-2026-11-22-';
 export const VISUAL_BINDINGS=Object.freeze([
   {subjectId:'rf',topicId:'rf-1-1',modelId:'asr',nodeId:ASR_NODE},
@@ -11,7 +12,8 @@ export const VISUAL_BINDINGS=Object.freeze([
   {subjectId:'rf',topicId:'rf-1',modelId:'wer',nodeId:root+'r5.1'},
   {subjectId:'rf',topicId:'rf-1',modelId:'diarization',nodeId:root+'r4.2'},
   {subjectId:'rf',topicId:'rf-1-1',modelId:'wer',nodeId:asr+'r5.1'},
-  {subjectId:'rf',topicId:'rf-1-1',modelId:'wer',nodeId:asr+'r5.2'}
+  {subjectId:'rf',topicId:'rf-1-1',modelId:'wer',nodeId:asr+'r5.2'},
+  ...kitVisualBindings()
 ]);
 export function scopedVisualModels({subjects,subjectId,topicId,nodeId},kits,definitions){
   if(!subjects?.some(s=>s.id===subjectId&&s.topics?.some(t=>t.id===topicId)))return [];
