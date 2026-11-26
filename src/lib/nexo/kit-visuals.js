@@ -28,7 +28,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r4.3','competição centrífuga']
     ],
     stages:[
-      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'pipeline',
+      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'matrix',
         instruction:'Encaixe os sete tipos na ordem da tipologia. Os dois primeiros degraus são não competitivos.',
         pieces:[piece('atomizado','Atomizado'),piece('hegemonico','Hegemônico'),piece('moderado','Pluralismo moderado'),piece('unico','Partido único'),piece('bipartidarismo','Bipartidarismo'),piece('polarizado','Pluralismo polarizado'),piece('predominante','Predominante')],
         slots:[
@@ -66,7 +66,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r2.5','se aproximam do Estado, vivem de recursos públicos e cooperam entre si para limitar a entrada de novos competidores']
     ],
     stages:[
-      {id:'linha',label:'Autor e ano',node:'r2',layout:'timeline',
+      {id:'linha',label:'Autor e ano',node:'r2',layout:'matrix',
         instruction:'Encaixe cada modelo no marco da linha do tempo.',
         pieces:[piece('cartel','Partido cartel'),piece('massa','Partido de massa'),piece('pegatudo','Pega-tudo (catch-all)'),piece('quadros','Partido de quadros'),piece('profissional','Profissional-eleitoral')],
         slots:[
