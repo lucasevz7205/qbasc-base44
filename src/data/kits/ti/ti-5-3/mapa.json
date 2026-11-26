@@ -1,0 +1,592 @@
+{
+  "topico": "ti-5-3",
+  "materia": "ti",
+  "centro": "IA generativa: conceitos, exemplos e casos de uso",
+  "ramos": [
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1",
+      "cor": 1,
+      "t": "Conceito e funcionamento",
+      "n": "Cria conteúdo novo por probabilidade",
+      "x": {
+        "e": "Bloco que define a IA generativa e explica como ela produz conteúdo. Ela aprende padrões de grandes volumes de dados e gera saídas novas, escolhendo a cada passo o elemento mais provável. Os modelos de base são a estrutura que sustenta isso, e o ciclo de desenvolvimento mostra as etapas do treino ao uso real.",
+        "trap": "Dizer que a IA generativa busca respostas prontas num banco de dados ou copia exemplos do treinamento.",
+        "src": "Aula 15, p. 51-58; Mapa IA, p. 6"
+      },
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1",
+          "t": "Definição",
+          "n": "Ramo da IA dedicado a conteúdo inédito",
+          "x": {
+            "e": "A fonte define a IA generativa como um conjunto de técnicas que criam conteúdo novo e original a partir de padrões aprendidos. O que a separa dos sistemas tradicionais é produzir, e não apenas classificar ou analisar dados.",
+            "src": "Aula 15, p. 51"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.1",
+              "t": "Conteúdo novo e original",
+              "n": "Texto, imagem, música, dados sintéticos",
+              "x": {
+                "e": "Conteúdo original é a saída que não existia no conjunto de treino. Dados sintéticos são dados artificiais criados pelo modelo, semelhantes em qualidade e diversidade aos reais, mas únicos em conteúdo.",
+                "ex": "Histórias, músicas, ilustrações e vídeos (exemplos da fonte, p. 51).",
+                "src": "Aula 15, p. 51 (\"gerar novos dados que sejam semelhantes em qualidade e diversidade, mas únicos em conteúdo\")"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.2",
+              "t": "Geração probabilística, não cópia",
+              "n": "Não acessa base de respostas prontas",
+              "x": {
+                "e": "Geração probabilística quer dizer que o modelo calcula a saída a partir dos padrões estatísticos aprendidos, em vez de recuperar um texto guardado. Por isso o mesmo pedido pode gerar respostas diferentes, coerentes e não idênticas (variabilidade).",
+                "trap": "\"O ChatGPT é um banco de dados\": o mapa da Estratégia diz que ele não busca resposta pronta, mas constrói a saída em tempo real.",
+                "src": "Aula 15, p. 51 e 53-54; Mapa IA, p. 6"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.3",
+              "t": "Popularização a partir de 2022",
+              "n": "ChatGPT e DALL-E",
+              "x": {
+                "e": "Marco temporal da fonte: a partir de 2022 os modelos generativos se popularizaram e saíram do círculo de especialistas para o público em geral. ChatGPT gera texto e código; DALL-E gera imagens a partir de descrições textuais.",
+                "src": "Aula 15, p. 51; Mapa IA, p. 6"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2",
+          "t": "Modelos de base",
+          "n": "Foundation models",
+          "x": {
+            "e": "Modelos de base (foundation models) são redes neurais de grande escala, treinadas com volumes massivos e variados de dados, que servem de ponto de partida para muitas aplicações. Eles sustentam a IA generativa e funcionam pela distribuição de probabilidade.",
+            "src": "Aula 15, p. 51 e 57-58"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2.1",
+              "t": "Base generalista ajustada depois",
+              "n": "Fine-tuning sem reconstrução completa",
+              "x": {
+                "e": "Generalização inicial: o modelo é treinado de forma ampla e depois ajustado (fine-tuning, isto é, treino complementar para uma tarefa específica) sem precisar ser reconstruído. Isso economiza tempo, custo e esforço em relação a treinar um modelo do zero para cada função.",
+                "ex": "ChatGPT, Gemini, DALL·E e Stable Diffusion adaptados para texto, imagem, tradução e resumo.",
+                "src": "Aula 15, p. 57-58"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2.2",
+              "t": "Distribuição de probabilidade",
+              "n": "Elemento mais provável a seguir",
+              "x": {
+                "e": "Distribuição de probabilidade é a atribuição de uma chance a cada saída possível. O modelo avalia qual elemento é mais provável na sequência: uma palavra, um pixel ou uma nota musical.",
+                "src": "Aula 15, p. 51; Mapa IA, p. 6"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3",
+          "t": "Ciclo de desenvolvimento",
+          "n": "Dados → treino → alinhamento → uso",
+          "x": {
+            "e": "Sequência de etapas pela qual um modelo generativo passa: preparar dados, treinar, ajustar e alinhar, implantar, gerar (inferência) e monitorar. A ordem é a que a fonte apresenta.",
+            "src": "Aula 15, p. 52; Mapa IA, p. 6"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3.1",
+              "t": "Treinamento e alinhamento",
+              "n": "Coleta e limpeza → treino → fine-tuning e alinhamento",
+              "x": {
+                "e": "Treinar é ajustar milhões ou bilhões de parâmetros (os números internos da rede) a partir de padrões estatísticos. Alinhamento é a calibragem posterior para comportamentos mais úteis, seguros e coerentes.",
+                "src": "Aula 15, p. 52"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3.2",
+              "t": "Implantação, inferência e monitoramento",
+              "n": "Inferência = geração efetiva",
+              "x": {
+                "e": "Inferência é o momento em que o modelo já implantado gera conteúdo a partir das entradas do usuário. Depois vem o monitoramento em uso real, com atualização, correção ou retreinamento quando necessário.",
+                "trap": "Confundir inferência (uso) com treinamento (aprendizado).",
+                "src": "Aula 15, p. 52; Mapa IA, p. 6"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2",
+      "cor": 2,
+      "t": "Generativo × discriminativo",
+      "n": "Cria × classifica",
+      "x": {
+        "e": "As duas abordagens fundamentais de modelos. O discriminativo aprende a separar categorias; o generativo aprende a estrutura dos dados e pode criar amostras novas. A fonte diz que o discriminativo tende a ser mais preciso em reconhecimento, e o generativo, mais flexível, embora mais complexo e suscetível a vieses ou imprecisões.",
+        "trap": "Inverter as probabilidades: P(Y|X) é do discriminativo; P(X,Y) é do generativo.",
+        "src": "Aula 15, p. 62-63 e 66; Mapa IA, p. 2"
+      },
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1",
+          "t": "Modelo discriminativo",
+          "n": "P(Y|X)",
+          "x": {
+            "e": "P(Y|X) é a probabilidade condicional: a chance de uma saída Y (classe) dado o conjunto de entradas X. O modelo discriminativo aprende fronteiras entre categorias a partir de exemplos rotulados.",
+            "src": "Aula 15, p. 62"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1.1",
+              "t": "Classifica, detecta e prediz",
+              "n": "Regressão logística, SVM, BERT; busca e recomendação",
+              "x": {
+                "e": "Classificar é dizer a que categoria pertence uma entrada. SVM (máquina de vetores de suporte) e regressão logística são classificadores clássicos; BERT é citado pela fonte como exemplo discriminativo. Sistemas de recomendação e mecanismos de busca aplicam, com frequência, modelos discriminativos.",
+                "trap": "Pôr sistema de recomendação como exemplo típico de modelo generativo.",
+                "src": "Aula 15, p. 62"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.2",
+          "t": "Modelo generativo",
+          "n": "P(X,Y)",
+          "x": {
+            "e": "P(X,Y) é a distribuição conjunta: a probabilidade de entrada e rótulo ocorrerem juntos. Modelando a estrutura inteira dos dados, o modelo pode também gerar amostras novas semelhantes às originais.",
+            "src": "Aula 15, p. 62-63"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.2.1",
+              "t": "Gera novas amostras",
+              "n": "GPT, DALL·E, Stable Diffusion, GANs, VAEs",
+              "x": {
+                "e": "Gerar amostra é produzir um exemplo novo que obedece aos padrões aprendidos. A fonte cita como generativos os modelos GPT, DALL·E, Stable Diffusion, as GANs e os VAEs (autoencoders variacionais).",
+                "ex": "Cebraspe/ANM 2025 julgou certo que a IA generativa que aprende p(x,y) pode gerar mais amostras por si só (Aula 15, p. 172).",
+                "src": "Aula 15, p. 62-63 e 172"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3",
+      "cor": 3,
+      "t": "Arquiteturas e modelos",
+      "n": "LLM, multimodal, GAN, VAE, difusão",
+      "x": {
+        "e": "Bloco das estruturas que fazem a geração. Os LLMs geram linguagem com a arquitetura Transformer; os modelos multimodais integram vários tipos de dados; GANs, VAEs e modelos de difusão geram sobretudo imagem, áudio e vídeo por estratégias diferentes.",
+        "src": "Aula 15, p. 59, 66-71 e 76-78"
+      },
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1",
+          "t": "Modelos de linguagem (LLMs)",
+          "n": "Large Language Models",
+          "x": {
+            "e": "LLM (modelo de linguagem de larga escala) é um sistema treinado com volumes massivos de texto para compreender e gerar linguagem humana. Ele não trabalha com palavras, mas com tokens convertidos em vetores numéricos (embeddings) num espaço latente.",
+            "ex": "Cebraspe/PF 2025 julgou certo: LLM são modelos de aprendizado profundo pré-treinados em grandes quantidades de dados (Aula 15, p. 166).",
+            "src": "Aula 15, p. 66-68 e 166"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1.1",
+              "t": "Transformer e atenção",
+              "n": "Arquitetura de 2017",
+              "x": {
+                "e": "Transformer é a arquitetura de rede neural, introduzida em 2017, em que se baseiam os LLMs. O mecanismo de atenção avalia, a cada etapa, quais partes do contexto são mais relevantes, o que mantém a coerência em textos longos, independentemente da distância no texto.",
+                "src": "Aula 15, p. 66-67"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1.2",
+              "t": "Geração autorregressiva",
+              "n": "Token por token",
+              "x": {
+                "e": "Autorregressivo quer dizer que o modelo gera o texto token por token (token é um fragmento de texto, como uma palavra ou parte dela), prevendo cada próximo elemento com base nos anteriores. Cada token gerado volta para a entrada e influencia o seguinte.",
+                "trap": "Atribuir ao LLM compreensão real: a fonte diz que as saídas resultam de cálculos probabilísticos, sem compreensão, consciência ou intenção.",
+                "src": "Aula 15, p. 67-68"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.2",
+          "t": "Multimodalidade dos modelos",
+          "n": "Vários tipos de dado no mesmo modelo",
+          "x": {
+            "e": "Multimodalidade é a capacidade de um sistema lidar com múltiplos tipos de dados (texto, imagem, áudio, vídeo, código) de forma integrada. O modelo unimodal, ao contrário, opera sobre um só tipo.",
+            "src": "Aula 15, p. 59 e 70"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.2.1",
+              "t": "Relaciona modalidades",
+              "n": "Espaço latente comum",
+              "x": {
+                "e": "Relacionar modalidades é, por exemplo, interpretar uma imagem a partir de uma descrição textual ou gerar uma imagem a partir de um comando escrito. Tecnicamente, cada modalidade vira embedding projetado num espaço latente comum, onde podem ser comparadas e transformadas umas nas outras.",
+                "src": "Aula 15, p. 59 e 70"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3",
+          "t": "Geradores de imagem, áudio e vídeo",
+          "n": "GAN · VAE · difusão",
+          "caixa": true,
+          "x": {
+            "e": "Modelos generativos não textuais aprendem a distribuição de imagens, sons ou vídeos para gerar amostras realistas. As GANs usam competição entre redes; os VAEs, codificação probabilística; os modelos de difusão, refinamento gradual a partir de ruído.",
+            "src": "Aula 15, p. 70-71 e 76-78"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.1",
+              "t": "GAN (rede adversária generativa)",
+              "n": "Geradora × discriminadora",
+              "x": {
+                "e": "GAN (rede adversária generativa) tem duas redes que competem: a geradora cria exemplos e a discriminadora tenta distinguir o real do falso. A competição é um jogo min–max (o ganho de uma é a perda da outra). Colapso de modo é quando a geradora passa a produzir um número restrito de tipos de dados.",
+                "ex": "Deepfakes podem ser criados por GAN (Cebraspe, item julgado certo, Aula 15, p. 171).",
+                "src": "Aula 15, p. 76-77 e 171"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.2",
+              "t": "VAE (autoencoder variacional)",
+              "n": "Codificador + decodificador probabilísticos",
+              "x": {
+                "e": "VAE (autoencoder variacional) tem um codificador, que transforma a entrada numa representação compacta e probabilística (média e variância), e um decodificador, que reconstrói dados a partir dela. O espaço latente contínuo permite transições suaves; em relação às GANs, gera resultados menos nítidos, mas treina com mais estabilidade.",
+                "trap": "Cebraspe/BDMG 2025: é errado dizer que a regularização do VAE ocorre somente após o treinamento (Aula 15, p. 166).",
+                "src": "Aula 15, p. 78 e 166"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.3",
+              "t": "Modelos de difusão",
+              "n": "Refinamento gradual a partir de ruído",
+              "x": {
+                "e": "Difusão é o processo de partir de ruído (imagem aleatória) e removê-lo aos poucos até formar a amostra. A fonte diz que, diferentemente das GANs, que usam competição, os modelos de difusão constroem imagens gradualmente, com alto realismo e estabilidade.",
+                "src": "Aula 15, p. 70-71 e 79"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4",
+      "cor": 4,
+      "t": "Exemplos de ferramentas",
+      "n": "ChatGPT, Copilot, Gemini, DALL·E",
+      "x": {
+        "e": "Ferramentas comerciais de IA generativa citadas pela fonte, com a vocação de cada uma. A tabela comparativa da aula separa: conversação generalista (ChatGPT), produtividade no Office (Copilot), multimodal de contexto longo (Gemini) e imagem a partir de texto (DALL·E).",
+        "trap": "Trocar a vocação de uma ferramenta pela de outra (ex.: Copilot como gerador de imagens).",
+        "src": "Aula 15, p. 96 e 100-101"
+      },
+      "tabela": [
+        [
+          "ChatGPT",
+          [
+            "Conversação, texto, código e multimodal",
+            "Pode alucinar"
+          ]
+        ],
+        [
+          "Microsoft Copilot",
+          [
+            "Produtividade: Word, Excel, PowerPoint, Outlook, Teams"
+          ]
+        ],
+        [
+          "Google Gemini",
+          [
+            "Multimodal",
+            "Contexto longo (até milhões de tokens)"
+          ]
+        ],
+        [
+          "DALL·E",
+          [
+            "Imagem a partir de texto",
+            "Inpainting e outpainting"
+          ]
+        ]
+      ],
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1",
+          "t": "Texto e produtividade",
+          "n": "Assistentes de linguagem",
+          "x": {
+            "e": "Assistentes baseados em LLM que conversam, escrevem e se integram a pacotes de escritório. A diferença entre eles está no foco e no ecossistema a que se integram.",
+            "src": "Aula 15, p. 100-101"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.1",
+              "t": "ChatGPT (OpenAI)",
+              "n": "Generalista; pode alucinar",
+              "x": {
+                "e": "Generalista quer dizer que atende a conversação, texto, código e entrada multimodal (texto + imagem) sem um nicho único. Na tabela da aula, a qualidade de saída é descrita como clara e coerente, mas com o aviso de que pode alucinar (inventar informação).",
+                "src": "Aula 15, p. 100"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.2",
+              "t": "Microsoft Copilot",
+              "n": "Integra o Microsoft 365",
+              "x": {
+                "e": "Focado em produtividade: está embutido nas ferramentas Office (Word, Excel, PowerPoint, Outlook, Teams) e produz conteúdo contextualizado com base nos arquivos do usuário.",
+                "src": "Aula 15, p. 100"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.3",
+              "t": "Google Gemini",
+              "n": "Multimodal, contexto longo",
+              "x": {
+                "e": "Janela de contexto é a quantidade de texto (em tokens) que o modelo considera de uma vez. A tabela da aula descreve o Gemini como multimodal (texto, imagem, áudio, vídeo, código, PDFs) e com contexto longo, até milhões de tokens, integrado ao Google Workspace.",
+                "src": "Aula 15, p. 100"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.2",
+          "t": "Geração de imagens",
+          "n": "Texto → imagem",
+          "x": {
+            "e": "Ferramentas que transformam descrição textual em imagem, sem exigir conhecimento técnico de desenho. É aplicação direta de IA generativa voltada à criação visual.",
+            "src": "Aula 15, p. 95-96"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.2.1",
+              "t": "DALL·E (OpenAI)",
+              "n": "Inpainting e outpainting",
+              "x": {
+                "e": "Inpainting é remover ou substituir elementos dentro de uma imagem existente; outpainting é expandir a cena para além dos limites originais. O DALL·E tem filtros que bloqueiam imagens violentas e representações não autorizadas de figuras públicas.",
+                "src": "Aula 15, p. 96"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5",
+      "cor": 5,
+      "t": "Casos de uso",
+      "n": "Setor público, auditoria, direito, jornalismo",
+      "x": {
+        "e": "Aplicações práticas citadas pela fonte. O ponto comum é ganhar velocidade em tarefas de texto e dados volumosos, sempre com revisão humana dos resultados antes de decisões.",
+        "trap": "Afirmar que a IA substitui o profissional ou dispensa supervisão humana.",
+        "src": "Aula 15, p. 109-127"
+      },
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1",
+          "t": "Administração pública",
+          "n": "Eficiência e controle",
+          "x": {
+            "e": "Na Administração Pública, a IA processa grandes volumes de dados administrativos, acelera processos e apoia atendimento, fiscalização e políticas públicas. A fonte condiciona o uso a ética, transparência, supervisão humana e proteção de dados (LGPD).",
+            "src": "Aula 15, p. 126-127"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1.1",
+              "t": "Documentos e atendimento",
+              "n": "Classificar, extrair, redigir minutas",
+              "x": {
+                "e": "A fonte lista: classificar automaticamente documentos, extrair informações importantes, sugerir encaminhamentos e redigir minutas ou relatórios. Chatbots e assistentes virtuais fazem o atendimento inicial ao cidadão.",
+                "src": "Aula 15, p. 127"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1.2",
+              "t": "Controle e fiscalização",
+              "n": "Detecção de anomalias",
+              "x": {
+                "e": "Detecção de anomalias é localizar pontos fora da curva num conjunto de dados. A fonte cita a identificação de padrões suspeitos em licitações, contratos, compras públicas e pagamentos, para apoiar auditorias internas.",
+                "src": "Aula 15, p. 127"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.2",
+          "t": "Auditoria com IA",
+          "n": "Minutas e análise de dados",
+          "x": {
+            "e": "A IA generativa prepara e revisa documentos de auditoria e ajuda a analisar dados contábeis e financeiros, mas os resultados devem ser revisados por auditores humanos e o uso deve respeitar confidencialidade e LGPD.",
+            "src": "Aula 15, p. 110-111"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.2.1",
+              "t": "Usos na auditoria",
+              "n": "Minutas, transações suspeitas, checklists",
+              "x": {
+                "e": "Minuta é a versão preliminar de um documento. A fonte cita: minutas de relatórios, sumários executivos e pareceres iniciais com base nos achados da equipe; detecção de padrões incomuns e transações suspeitas; checklists dinâmicos para testes de conformidade.",
+                "ex": "Cebraspe/TCE-RS 2025: o auditor deve revisar as informações geradas pela IAG, ainda que pareçam convincentes (certo; Aula 15, p. 36-37).",
+                "src": "Aula 15, p. 110-111 e 36-37"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3",
+          "t": "Outros setores",
+          "n": "Direito e jornalismo",
+          "x": {
+            "e": "Dois setores com seção própria na aula: a pesquisa jurídica e documental e o jornalismo. Em ambos, a IA acelera a etapa inicial (pesquisa, coleta, redação de rotina) e o profissional mantém a interpretação.",
+            "src": "Aula 15, p. 114 e 117"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3.1",
+              "t": "Pesquisa jurídica",
+              "n": "Análise semântica com PLN",
+              "x": {
+                "e": "PLN (processamento de linguagem natural) permite compreender o contexto das expressões jurídicas. A fonte diz que a análise semântica vai além da busca por palavras-chave e encontra resultados mesmo descritos com sinônimos.",
+                "src": "Aula 15, p. 114"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3.2",
+              "t": "Jornalismo automatizado",
+              "n": "Notícias automatizadas de dados estruturados",
+              "x": {
+                "e": "Dados estruturados são informações organizadas em campos (placares, balanços, previsões). A fonte cita Washington Post, Reuters e Associated Press gerando automaticamente notícias sobre resultados financeiros, jogos esportivos e boletins meteorológicos.",
+                "src": "Aula 15, p. 117"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6",
+      "cor": 6,
+      "t": "Riscos e IA responsável",
+      "n": "Alucinação, desinformação, viés · FAT",
+      "x": {
+        "e": "Riscos que acompanham o uso de modelos generativos e os princípios para mitigá-los. A fonte trata o tema dentro do capítulo de IA; parte dele também se liga ao item 6 do edital (ética e responsabilidade digital).",
+        "trap": "Dizer que dados de fontes confiáveis tornam o modelo preciso e imparcial (Cebraspe/TRT-10 2025, errado; Aula 15, p. 35).",
+        "src": "Aula 15, p. 25-37; Mapa IA, p. 3-4"
+      },
+      "f": [
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1",
+          "t": "Riscos da IA generativa",
+          "n": "Técnicos, sociais e jurídicos",
+          "x": {
+            "e": "A fonte lista desinformação, violação de direitos autorais, vieses algorítmicos, impacto no trabalho, uso indevido de dados sensíveis, alucinações e desatualização. Vários decorrem da natureza estatística do modelo e dos dados de treino.",
+            "src": "Aula 15, p. 25-36; Mapa IA, p. 3"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.1",
+              "t": "Alucinação dos modelos",
+              "n": "Falso com confiança e verossimilhança",
+              "x": {
+                "e": "Alucinação é a geração de informações falsas ou inexistentes apresentadas com elevado grau de confiança e verossimilhança (aparência de verdade). Decorre da natureza estatística: o modelo prevê a sequência mais provável de palavras, sem compreensão real.",
+                "ex": "Citações bibliográficas inventadas.",
+                "src": "Aula 15, p. 35; Mapa IA, p. 3"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.2",
+              "t": "Desatualização",
+              "n": "Corte de treinamento",
+              "x": {
+                "e": "Corte de treinamento é a data até a qual vão os dados usados no treino. Depois dela, o modelo não conhece leis, eventos ou descobertas novas; a busca em tempo real mitiga, mas a fonte diz que os resultados ainda não são plenamente confiáveis.",
+                "src": "Aula 15, p. 36"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.3",
+              "t": "Desinformação e deepfakes",
+              "n": "Mitigação: watermarking e educação midiática",
+              "x": {
+                "e": "Deepfake é imagem, áudio ou vídeo falso e realista que apresenta eventos fictícios como reais. Watermarking (marca d'água digital) identifica conteúdo gerado por IA; a fonte o cita ao lado de educação midiática, legislação específica e instituições de verificação.",
+                "src": "Aula 15, p. 27-28; Mapa IA, p. 3"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.4",
+              "t": "Direitos autorais e da personalidade",
+              "n": "Treino com obras sem consentimento",
+              "x": {
+                "e": "Direito autoral protege a obra; direito da personalidade protege a pessoa (imagem, voz, identidade). A fonte aponta treino com obras protegidas sem consentimento ou compensação e diz que a legislação atual presume autoria humana, o que gera lacuna jurídica.",
+                "src": "Aula 15, p. 29-30; Mapa IA, p. 3"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.5",
+              "t": "Viés nos dados",
+              "n": "Reproduz desigualdades dos dados",
+              "x": {
+                "e": "Viés é a distorção sistemática que leva a resultados injustos para certos grupos. Modelos treinados com dados enviesados reproduzem de forma automatizada desigualdades sociais. A tabela da aula (p. 33-34) separa viés de dados, de amostragem, de rotulagem, histórico, algorítmico, de exclusão, de resposta, de confirmação, de seleção e de interpretação; o Mapa IA (p. 3) cita só dados, amostragem, rotulagem, histórico e confirmação (lista parcial, não contraditória).",
+                "ex": "IA de recrutamento penaliza mulheres porque os contratados anteriores eram majoritariamente homens (viés histórico).",
+                "src": "Aula 15, p. 26 e 33-34; Mapa IA, p. 3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2",
+          "t": "Governança e verificação",
+          "n": "FAT e revisão humana",
+          "x": {
+            "e": "Princípios e práticas que mantêm o uso da IA generativa ético e responsável: a matriz FAT como base normativa e a verificação humana como exigência, não como opção.",
+            "src": "Aula 15, p. 26 e 37; Mapa IA, p. 3-4"
+          },
+          "f": [
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.1",
+              "t": "Matriz FAT",
+              "n": "Fairness, Accountability, Transparency",
+              "x": {
+                "e": "Fairness (justiça): evitar discriminação entre grupos. Accountability (responsabilidade): decisões automatizadas sob controle humano, com revisão e atribuição de responsabilidade. Transparency (transparência): clareza sobre critérios, dados de treinamento, métodos e limitações.",
+                "src": "Aula 15, p. 26-27; Mapa IA, p. 3"
+              }
+            },
+            {
+              "id": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.2",
+              "t": "Verificação humana",
+              "n": "Human-in-the-loop × human-on-the-loop",
+              "x": {
+                "e": "Human-in-the-loop: a decisão final depende de validação humana. Human-on-the-loop: a IA opera de forma autônoma, mas sob vigilância constante. Os três deveres do usuário são verificar, editar e validar.",
+                "trap": "Trocar as definições de in-the-loop e on-the-loop.",
+                "src": "Aula 15, p. 37; Mapa IA, p. 4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "a mesma previsão probabilística explica a alucinação",
+      "de": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2.2",
+      "para": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.1"
+    },
+    {
+      "rotulo": "GANs são usadas para criar deepfakes",
+      "de": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.1",
+      "para": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.3"
+    },
+    {
+      "rotulo": "GANs e VAEs são exemplos de modelos generativos",
+      "de": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.2.1",
+      "para": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-TI-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25": {}
+  }
+}
