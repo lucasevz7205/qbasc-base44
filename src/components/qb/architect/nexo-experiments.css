@@ -57,3 +57,13 @@
 .nexo-cognitive-decision .nexo-stage-facts>div{min-width:0}
 .nexo-cognitive-assessment{border-top:1px solid var(--divider);padding:10px 0;overflow-wrap:anywhere}
 .nexo-cognitive-assessment small{display:block}
+/* Kit-bound layouts (CP-6, CP-7, TI-5.3) */
+.nexo-puzzle-ladder{grid-template-columns:1fr}.nexo-puzzle-ladder .nexo-puzzle-slot{min-height:58px;grid-template-columns:minmax(120px,38%) 1fr;align-items:center;text-align:left}.nexo-puzzle-ladder .nexo-puzzle-slot .nexo-puzzle-status{grid-column:1/-1;justify-content:flex-start}
+.nexo-puzzle-timeline{grid-template-columns:repeat(5,minmax(0,1fr));position:relative}.nexo-puzzle-timeline .nexo-puzzle-slot{border-top:3px solid var(--qb-gold)}
+.nexo-puzzle-pipeline{grid-template-columns:repeat(3,minmax(0,1fr));counter-reset:etapa}.nexo-puzzle-pipeline .nexo-puzzle-slot{position:relative;border-style:solid}.nexo-puzzle-pipeline .nexo-puzzle-slot:not(:nth-child(3n))::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:var(--qb-gold-bright);font-size:14px;z-index:1}
+.nexo-puzzle-act{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nexo-act-line{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;text-align:center;color:var(--qb-moonlight);font-size:11px}.nexo-act-line strong{border:2px solid var(--qb-gold);border-radius:6px;padding:8px 10px;color:var(--qb-gold);font-size:11px}
+.nexo-matrix-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;text-align:center;color:var(--qb-gold);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.nexo-nep-stack{display:flex;height:34px;margin:8px 12px;border-radius:5px;overflow:hidden;border:1px solid var(--qb-steel-blue)}.nexo-nep-stack>div{display:flex;align-items:center;justify-content:center;min-width:0;transition:width .2s ease}.nexo-nep-stack span{color:#101C2D;font-size:11px;font-weight:600;overflow:hidden;white-space:nowrap}
+@media (max-width:640px){.nexo-puzzle-timeline,.nexo-puzzle-pipeline{grid-template-columns:1fr}.nexo-puzzle-pipeline .nexo-puzzle-slot::after{display:none}.nexo-puzzle-ladder .nexo-puzzle-slot{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.nexo-nep-stack>div{transition:none}}
