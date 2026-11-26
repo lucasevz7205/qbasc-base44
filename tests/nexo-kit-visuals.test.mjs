@@ -51,6 +51,16 @@ test('node selection narrows stages to the selected node',()=>{
   const s=getKitPuzzleSource(kits['cp-7'],m);
   assert.equal(kitPuzzleStages(s).length,3);
   assert.deepEqual(kitPuzzleStages(s,m.prefix+'r3.3').map(x=>x.id),['iniciativa']);
+  assert.deepEqual(kitPuzzleStages(s,m.prefix+'r1.1'),[]);
+});
+test('supporting nodes are evidence for the activity but have no borrowed model',()=>{
+  const kit=kits['ti-5-3'];
+  const model=KIT_PUZZLES.find(m=>m.id==='ti53-ciclo');
+  const subjects=[{id:'ti',topics:[{id:'ti-5-3'}]}];
+  const defs=kitVisualDefinitions(kitVisualSources([kit]));
+  const scope={subjects,subjectId:'ti',topicId:'ti-5-3'};
+  assert.equal(scopedVisualModels({...scope,nodeId:model.prefix+'r1.3'},[kit],defs)[0]?.id,model.id);
+  assert.deepEqual(scopedVisualModels({...scope,nodeId:model.prefix+'r1.3.1'},[kit],defs),[]);
 });
 test('catalog exposes the new models in the lab for cp-6, cp-7 and ti-5-3',()=>{
   const sources=kitVisualSources(Object.values(kits));

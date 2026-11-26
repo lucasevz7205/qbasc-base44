@@ -122,7 +122,7 @@ test("cognitive decision endpoint checks auth and source version before provider
   const {STRUCTURE_IDS}=await import("../src/lib/nexo/cognitive-decision.js");
   const source={subjectId:"ti",topicId:"ti-8-2",nodeId:"n",title:"Histograma",reference:"Aula",lines:["Distribuição de frequência por classes."]};
   globalThis.nexoTestSources=[source];
-  const raw={primary:"quantitative",secondary:"none",objective:"Interpretar classes",reason:"Gráfico adequado.",backupReason:"Nenhuma alternativa.",assessments:STRUCTURE_IDS.map(structure=>({structure,suitability:structure==="quantitative"?"strong":"unsupported",reason:"Parecer de teste.",evidence:structure==="quantitative"?[{id:"line:0",excerpt:source.lines[0]}]:[]}))};
+  const raw={primary:"quantitative",secondary:"none",objective:"Interpretar classes",reason:"Gráfico adequado.",backupReason:"Nenhuma alternativa.",assessments:STRUCTURE_IDS.map(structure=>({structure,suitability:structure==="quantitative"?"strong":"unsupported",secondaryFit:"unverified",reason:"Parecer de teste.",evidence:structure==="quantitative"?[{id:"line:0",excerpt:source.lines[0]}]:[]}))};
   const invoke=t.mock.fn(async()=>raw);
   const data={subjectId:"ti",topicId:"ti-8-2",nodeId:"n",sourceVersion:await sourceVersion(source),provider:"base44"};
   await assert.rejects(decideNexoRepresentation({context:{},data}),/Sessão obrigatória/);
@@ -131,5 +131,16 @@ test("cognitive decision endpoint checks auth and source version before provider
   assert.equal(invoke.mock.callCount(),0);
   const result=await decideNexoRepresentation({context:admin(invoke),data});
   assert.equal(result.status,"decided");assert.equal(result.assessments.length,9);assert.equal(result.primary.structure,"quantitative");assert.equal(result.constructionAllowed,false);assert.equal(result.publicationAllowed,false);assert.equal(invoke.mock.callCount(),1);
+  const task="Determinar a frequência exata do segundo intervalo.";
+  const taskInvoke=t.mock.fn(async request=>{
+    assert.ok(request.prompt.includes(task));
+    assert.ok(request.response_json_schema.required.includes("taskCoverage"));
+    return {...raw,taskCoverage:[{part:0,status:"missing",reason:"As frequências da amostra não foram fornecidas.",evidence:[]}]};
+  });
+  const taskResult=await decideNexoRepresentation({context:admin(taskInvoke),data:{...data,task}});
+  assert.equal(taskInvoke.mock.callCount(),1);
+  assert.equal(taskResult.task,task);
+  assert.equal(taskResult.status,"abstained");
+  assert.equal(taskResult.primary,null);
   globalThis.nexoTestSources=[];
 });

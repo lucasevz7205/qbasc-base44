@@ -3,7 +3,8 @@ import NexoAssociationPuzzle from './NexoAssociationPuzzle';
 import NexoProcedure from './NexoProcedure';
 import {decideNexoRepresentation,generateNexoAssociation} from '@/lib/server-fns';
 import NexoDecisionDetails from './NexoDecisionDetails';
-import {decideCognitive,buildDecidedCandidate,chooseCognitiveSource} from '@/lib/nexo/cognitive-decision';
+import NexoTaskField from './NexoTaskField';
+import {decideCognitive,buildDecidedCandidate,chooseCognitiveSource,normalizeNexoTask} from '@/lib/nexo/cognitive-decision';
 import {resolveEffectiveSource} from '@/lib/nexo/effective-sources';
 import {sourceVersion} from '@/lib/nexo/generation';
 import {availableColumns,buildContextual} from '@/lib/nexo/contextual-generation';
@@ -18,8 +19,11 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
  const [focus,setFocus]=React.useState(null);
  const [approved,setApproved]=React.useState(false);
  const [decision,setDecision]=React.useState(null);
+ const [task,setTask]=React.useState('');
+ const requested=normalizeNexoTask(task);
+ const hasTask=Boolean(task.trim());
  const seq=React.useRef(0);
- const source=sources.find(s=>s.nodeId===selection);
+ const source=nodeId?sources[0]:sources.find(s=>s.nodeId===selection);
  const clear=()=>{seq.current++;setCandidate(null);setDecision(null);setApproved(false);setFocus(null);setMode('explore');setMessage('');setBusy(false);};
  React.useEffect(()=>()=>{seq.current++;},[]);
  React.useEffect(()=>{
@@ -30,7 +34,7 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
  },[sources,nodeId]);
  // Local decision first. Existing deterministic construction is gated by the primary structure.
  React.useEffect(()=>{
-  if(!source)return;
+  if(!source||hasTask)return;
   const request=++seq.current;setCandidate(null);setApproved(false);setFocus(null);setDecision(null);setBusy(false);
   decideCognitive(source,pilot).then(async d=>{
    if(seq.current!==request)return;setDecision(d);
@@ -39,29 +43,34 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
    if(seq.current===request)setCandidate(r.status==='candidate'?r:null);
   }).catch(()=>{if(seq.current===request)setMessage('Não foi possível preparar a decisão local.');});
   return()=>{seq.current++;};
- },[source]);
+ },[source,hasTask]);
+ function changeTask(value){
+  setTask(value);
+  if(normalizeNexoTask(value)?.text!==requested?.text)clear();
+ }
  async function run(provider){
-  if(!source||busy)return;
+  if(!source||busy||!requested)return;
   clear();const request=++seq.current;setBusy(true);
   try{
    const version=await sourceVersion(source);
-   const d=await decideNexoRepresentation({data:{subjectId,topicId,nodeId:source.nodeId,sourceVersion:version,provider}});
+   if(seq.current!==request)return;
+   const d=await decideNexoRepresentation({data:{subjectId,topicId,nodeId:source.nodeId,sourceVersion:version,provider,task:requested.text}});
    if(seq.current!==request)return;
    if(d.status==='blocked'){setMessage(d.reason);return;}
-   if(d.scope?.nodeId!==source.nodeId||d.scope?.subjectId!==subjectId||d.scope?.topicId!==topicId||d.sourceVersion!==version)throw Error('Versão ou escopo divergente');
+   if(d.task!==requested.text||d.scope?.nodeId!==source.nodeId||d.scope?.subjectId!==subjectId||d.scope?.topicId!==topicId||d.sourceVersion!==version)throw Error('Tarefa, versão ou escopo divergente.');
    setDecision(d);
   }catch{if(seq.current===request)setMessage('Análise não concluída. Confira acesso, provedor e cota. Nenhum outro provedor foi acionado automaticamente.');}
   finally{if(seq.current===request)setBusy(false);}
  }
  async function construct(){
-  if(!source||!decision||busy)return;
+  if(!source||!decision||hasTask||busy)return;
   const request=++seq.current;setBusy(true);setMessage('');
   try{const r=await buildDecidedCandidate(source,decision);if(seq.current===request){setCandidate(r.status==='candidate'?r:null);setApproved(false);setFocus(null);if(r.status!=='candidate')setMessage(r.reason);}}
   catch{if(seq.current===request)setMessage('Não foi possível construir a representação escolhida.');}
   finally{if(seq.current===request)setBusy(false);}
  }
  async function semanticConstruct(){
-  if(!source||!decision?.primary||busy||!['gemini','base44'].includes(decision.provider)||decision.primary.viability.status!=='semantic-recipe')return;
+  if(!source||!decision?.primary||hasTask||busy||!['gemini','base44'].includes(decision.provider)||decision.primary.viability.status!=='semantic-recipe')return;
   const request=++seq.current;setBusy(true);setMessage('');
   try{
    const r=await generateNexoAssociation({data:{subjectId,topicId,nodeId:source.nodeId,sourceVersion:decision.sourceVersion,provider:decision.provider,expectedStructure:decision.primary.structure}});
@@ -83,15 +92,16 @@ export default function NexoGeneratedAssociation({subjectId,topicId,nodeId,sourc
   <span className="qb-overline">O ARQUITETO · GERAÇÃO DE MODELO</span>
   <h3>Representação contextual</h3>
   <p>O Arquiteto usa o nó exato do mapa de estudo atual. As propostas são prévias privadas e não entram automaticamente no catálogo de treino.</p>
-  <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={selection} onChange={e=>{clear();setSelection(e.target.value);}}>{!selection&&<option value="">Selecionando conceito…</option>}{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
+  <label className="nexo-control">Conceito<select className="qb-input" disabled={busy} value={source?.nodeId||''} onChange={e=>{clear();setTask('');setSelection(e.target.value);}}>{!source&&<option value="">Selecionando conceito…</option>}{sources.map(s=><option key={s.nodeId} value={s.nodeId}>{s.title}</option>)}</select></label>
   {source&&<p className="nexo-explain">{source.reference}</p>}
+  {source&&<NexoTaskField task={task} onChange={changeTask} valid={Boolean(requested)}/>}
   <NexoDecisionDetails decision={decision}/>
   {candidate?.kind==='matrix'&&<label className="nexo-control">Critério da matriz<select className="qb-input" value={candidate.recipe.column} onChange={async e=>{const value=Number(e.target.value),request=++seq.current;setBusy(true);setApproved(false);setFocus(null);try{const r=await buildDecidedCandidate(source,decision,{column:value});if(seq.current===request){setCandidate(r.status==="candidate"?r:null);if(r.status!=="candidate")setMessage(r.reason);}}catch{if(seq.current===request)setMessage("Não foi possível alterar o critério.");}finally{if(seq.current===request)setBusy(false);}}}>{availableColumns(source).map(i=><option key={i} value={i}>{source.table.headers[i]}</option>)}</select></label>}
-  <div className="qb-seg" role="group" aria-label="Provedor da decisão"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('base44')}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source} onClick={()=>run('gemini')}>Analisar com Gemini (cota)</button></div>
-  {!candidate&&decision?.primary?.viability.status==='local-recipe'&&<button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={construct}>Construir estrutura primária</button>}
-  {!candidate&&decision?.primary?.viability.status==='semantic-recipe'&&decision.provider!=='local'&&<button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={semanticConstruct}>Tentar geração associativa com {decision.provider} (cota/créditos)</button>}
-  {!candidate&&decision?.primary?.viability.status==='semantic-recipe'&&decision.provider==='local'&&<p>Selecione um provedor para validar a decisão antes de tentar a geração semântica.</p>}
-  {busy&&<p role="status">Avaliando o conceito…</p>}{message&&<p role="alert">{message}</p>}
+  <div className="qb-seg" role="group" aria-label="Provedor da decisão"><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source||!requested} onClick={()=>run('base44')}>Analisar com Base44 (créditos)</button><button type="button" className="qb-btn qb-btn--secondary" disabled={busy||!source||!requested} onClick={()=>run('gemini')}>Analisar com Gemini (cota)</button></div>
+  {!hasTask&&!candidate&&decision?.primary?.viability.status==='local-recipe'&&<button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={construct}>Construir estrutura primária</button>}
+  {!hasTask&&!candidate&&decision?.primary?.viability.status==='semantic-recipe'&&decision.provider!=='local'&&<button type="button" className="qb-btn qb-btn--secondary" disabled={busy} onClick={semanticConstruct}>Tentar geração associativa com {decision.provider} (cota/créditos)</button>}
+  {!hasTask&&!candidate&&decision?.primary?.viability.status==='semantic-recipe'&&decision.provider==='local'&&<p>Selecione um provedor para validar a decisão antes de tentar a geração semântica.</p>}
+  {busy&&<p role="status">Analisando a fonte e as estruturas…</p>}{message&&<p role="alert">{message}</p>}
   {puzzle&&<div className="nexo-exp-workbench"><main className="nexo-exp-main"><div className="nexo-instrument-head"><span>{candidate.provider==='local'?'Extração automática sem IA':candidate.provider==='base44'?'Proposta Base44':'Proposta Gemini'}</span><span>PREVIEW · NÃO PUBLICADA</span></div>
    {!approved?<><p><strong>{modeLabel}</strong> · {candidate.plan?.objective}</p><p>Confira se os encaixes e as condições estão corretos. A correspondência literal não comprova a correção semântica.</p>{isProcedure?<NexoProcedure key={candidate.sourceVersion+"review"} candidate={candidate} mode="explore" onFocus={setFocus}/>:<NexoAssociationPuzzle key={candidate.sourceVersion+puzzle.id+"review"} puzzle={puzzle} mode="explore" onFocus={show}/>}<details><summary>Remissões exatas</summary>{puzzle.slots.map(s=><p key={s.id}>{s.explanation}</p>)}<small>{candidate.sourceVersion}</small></details><button type="button" className="qb-btn qb-btn--secondary" onClick={()=>{setApproved(true);setFocus(null);}}>Aceitar para testar nesta sessão</button></>:<>
     <div className="qb-seg" role="group" aria-label="Modo da atividade"><button type="button" className="qb-seg__opt" aria-pressed={mode==='explore'} onClick={()=>{setMode('explore');setFocus(null);}}>Exploração livre</button><button type="button" className="qb-seg__opt" aria-pressed={mode==='train'} onClick={()=>{setMode('train');setFocus(null);}}>{isProcedure?"Treino de procedimento":"Treino de encaixe"}</button></div>

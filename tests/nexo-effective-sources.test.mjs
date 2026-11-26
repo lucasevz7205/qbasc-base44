@@ -54,6 +54,27 @@ test('stored procurement copy retains reviewed contract only when both linked no
  records.revisao[0].mapa=JSON.parse(JSON.stringify(kit));records.revisao[0].mapa.ramos.find(n=>n.id==='r4').f.find(n=>n.id==='r4.2').x.e='Outro texto';
  s=resolveEffectiveSource(effectiveGenerationSources(load(),'da','da-10-1',central),'r4');assert.equal(s.procedure,undefined);
 });
+test('a reviewed visual route is dropped if a supporting concept changes in the effective map',()=>{
+ const path='../../data/kits/cp/cp-7/mapa.json';
+ const kit=JSON.parse(fs.readFileSync(new URL('../src/data/kits/cp/cp-7/mapa.json',import.meta.url)));
+ const modules={[path]:kit};
+ const central=generationSources(modules,'cp','cp-7');
+ const act=central.find(s=>s.learningRoute?.format==='Linha do ato');
+ const supportingId=act.learningRoute.requiredNodes.find(id=>id!==act.nodeId);
+ const read=mapa=>{
+  const records={edital:[{id:'cp-7',sigla:'CP',materia:'cp',titulo:'Organização política'}],revisao:[{id:'cp-7',topico:'cp-7',mapa}]};
+  const {QB_DATA}=adaptStudy(records,{role:'admin'},new Date('2026-11-24T12:00:00Z'),{centralKitModules:modules});
+  return resolveEffectiveSource(effectiveGenerationSources(QB_DATA,'cp','cp-7',central),act.nodeId);
+ };
+ assert.equal(read(kit).learningRoute.modelId,'cp7-consulta');
+ const updated=JSON.parse(JSON.stringify(kit));
+ const change=nodes=>nodes.forEach(n=>{
+  if(n.id===supportingId)n.x.e='Outro texto com o mesmo identificador e título.';
+  change(n.f||[]);
+ });
+ change(updated.ramos);
+ assert.equal(read(updated).learningRoute,undefined);
+});
 test('semantic reply can recommend unimplemented format with literal evidence, cannot invent evidence',async()=>{
  const s=resolveEffectiveSource(effectiveGenerationSources(adapt(),'ti','ti-4'),'a');
  const raw={kind:'recommendation',column:-1,pairs:[],reason:'Visualização para revisão.',modality:'architecture',evidence:s.lines[0],objective:'Analisar a descrição'};

@@ -41,7 +41,10 @@ for(const s of sources){
   }
  }else if(d.status==='abstained')row.abstained++;else{row.blocked++;errors.push({node:s.nodeId,status:d.status,reason:d.reason});}
  if(d.assessments?.length!==9)errors.push({node:s.nodeId,reason:'incomplete assessments'});
- all.push({subject:s.subjectId,topic:s.topicId,node:s.nodeId,title:s.title,status:d.status,primary:d.primary?.structure||null,secondary:d.secondary?.structure||null,viability:d.primary?.viability.status||null});
+ const candidates=(d.assessments||[]).filter(a=>a.structureRank!==null).slice(0,3).map(a=>({
+  structure:a.structure,suitability:a.suitability,rank:a.structureRank,secondaryFit:a.secondaryFit
+ }));
+ all.push({subject:s.subjectId,topic:s.topicId,node:s.nodeId,title:s.title,status:d.status,primary:d.primary?.structure||null,secondary:d.secondary?.structure||null,viability:d.primary?.viability.status||null,candidates});
 }
 const seed='QBAsc-2026-11-24-215911',rank=r=>createHash('sha256').update(seed+'|'+r.topic+'/'+r.node).digest('hex');
 const sample=Object.keys(bySubject).sort().flatMap(subject=>all.filter(r=>r.subject===subject).sort((a,b)=>rank(a).localeCompare(rank(b))).slice(0,2));

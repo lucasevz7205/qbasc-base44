@@ -1,5 +1,6 @@
 import {validPuzzle} from './association-puzzle.js';
 import {procurementProcedure} from './procedure.js';
+import {kitLearningRoutes} from './kit-visuals.js';
 export const GENERATION_VERSION='1.0.0';
 const text=(v,max=600)=>typeof v==='string'&&v.trim().length>0&&v.length<=max;
 const own=(o,keys)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).length===keys.length&&Object.keys(o).every(k=>keys.includes(k));
@@ -13,13 +14,15 @@ export function generationSources(modules,subjectId,topicId,nodeId){
  if(dir!=='kits'&&dir!==subjectId)return [];
  const out=[],seen=new Set(),duplicates=new Set();
  const procedure=subjectId==='da'?procurementProcedure(kit):null;
+ const learningRoutes=kitLearningRoutes(kit);
  function walk(n){
    if(n?.id){if(seen.has(n.id))duplicates.add(n.id);seen.add(n.id);}
    if((!nodeId||n.id===nodeId)&&text(n.id,250)&&text(n.t,300)&&text(n.x?.e,12000)&&text(n.x?.src,1500)){
      const lines=[n.x.e,...(Array.isArray(n.caixa?.itens)?n.caixa.itens.filter(x=>text(x,1500)):[])];
      const table=n.tabela;
      const validTable=Array.isArray(table?.cab)&&table.cab.length>=2&&table.cab.length<=6&&table.cab.every(c=>text(c,300))&&Array.isArray(table.linhas)&&table.linhas.length>=2&&table.linhas.length<=12&&table.linhas.every(r=>Array.isArray(r)&&r.length===table.cab.length&&r.every(c=>text(c,1500)));
-     out.push({subjectId,topicId,nodeId:n.id,title:n.t,reference:n.x.src,lines,sourcePath:path,...(validTable?{table:{headers:table.cab,rows:table.linhas}}:{}),...(procedure&&n.id==='r4'?{procedure}:{})});
+     const learningRoute=learningRoutes.get(n.id);
+     out.push({subjectId,topicId,nodeId:n.id,title:n.t,reference:n.x.src,lines,sourcePath:path,...(validTable?{table:{headers:table.cab,rows:table.linhas}}:{}),...(procedure&&n.id==='r4'?{procedure}:{}),...(learningRoute?{learningRoute}:{})});
    }
    (n.f||[]).forEach(walk);
  }

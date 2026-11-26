@@ -28,7 +28,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r4.3','competição centrífuga']
     ],
     stages:[
-      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'matrix',
+      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'matrix',structure:'hierarchical',format:'Escada classificatória',
         instruction:'Encaixe os sete tipos na ordem da tipologia. Os dois primeiros degraus são não competitivos.',
         pieces:[piece('atomizado','Atomizado'),piece('hegemonico','Hegemônico'),piece('moderado','Pluralismo moderado'),piece('unico','Partido único'),piece('bipartidarismo','Bipartidarismo'),piece('polarizado','Pluralismo polarizado'),piece('predominante','Predominante')],
         slots:[
@@ -40,7 +40,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('d6','6º degrau · competitivo','polarizado','Pluralismo polarizado: mais de cinco partidos, grande distância ideológica, competição centrífuga.'),
           slot('d7','7º degrau · competitivo','atomizado','Atomizado: último tipo da tipologia.')
         ]},
-      {id:'traco',label:'Traço de cada tipo',node:'r4.3',layout:'matrix',
+      {id:'traco',label:'Traço de cada tipo',node:'r4.3',layout:'matrix',structure:'comparative',format:'Quadro comparativo',
         instruction:'Associe cada descrição ao tipo correspondente. Há peças que não se encaixam.',
         pieces:[piece('polarizado','Pluralismo polarizado'),piece('unico','Partido único'),piece('bipartidarismo','Bipartidarismo'),piece('predominante','Predominante'),piece('moderado','Pluralismo moderado'),piece('hegemonico','Hegemônico')],
         slots:[
@@ -66,7 +66,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r2.5','se aproximam do Estado, vivem de recursos públicos e cooperam entre si para limitar a entrada de novos competidores']
     ],
     stages:[
-      {id:'linha',label:'Autor e ano',node:'r2',layout:'matrix',
+      {id:'linha',label:'Autor e ano',node:'r2',layout:'matrix',structure:'temporal',format:'Quadro cronológico',
         instruction:'Encaixe cada modelo no marco da linha do tempo.',
         pieces:[piece('cartel','Partido cartel'),piece('massa','Partido de massa'),piece('pegatudo','Pega-tudo (catch-all)'),piece('quadros','Partido de quadros'),piece('profissional','Profissional-eleitoral')],
         slots:[
@@ -76,7 +76,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('l-profissional','1982 · Panebianco','profissional','Profissional-eleitoral: profissionais especializados e eleitor de opinião.'),
           slot('l-cartel','1995 · Katz e Mair','cartel','Cartel: partidos perto do Estado, contra novos competidores.')
         ]},
-      {id:'tracos',label:'Traço de cada modelo',node:'r2.2',layout:'matrix',
+      {id:'tracos',label:'Traço de cada modelo',node:'r2.2',layout:'matrix',structure:'comparative',format:'Quadro comparativo',
         instruction:'Associe cada traço ao modelo descrito pelo material.',
         pieces:[piece('profissional','Profissional-eleitoral'),piece('quadros','Partido de quadros'),piece('cartel','Partido cartel'),piece('massa','Partido de massa'),piece('pegatudo','Pega-tudo (catch-all)')],
         slots:[
@@ -86,7 +86,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('t-profissional','Profissionais de marketing e comunicação, eleitor de opinião','profissional','Panebianco (1982): profissional-eleitoral, oposto ao burocrático de massa.'),
           slot('t-cartel','Perto do Estado, recursos públicos, cooperação contra novos competidores','cartel','Katz e Mair (1995): partido cartel.')
         ]},
-      {id:'origem',label:'Origem (Duverger)',node:'r2.1',layout:'matrix',
+      {id:'origem',label:'Origem (Duverger)',node:'r2.1',layout:'matrix',structure:'comparative',format:'Quadro comparativo por origem',
         instruction:'Origem e estrutura são critérios diferentes. Encaixe a origem.',
         pieces:[piece('externa','Origem externa'),piece('interna','Origem interna')],
         slots:[
@@ -109,7 +109,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r2.2','Cumulativa: Distrito Federal, com competências de Estado e de Município']
     ],
     stages:[
-      {id:'quadro',label:'Tipo → titular e artigo',node:'r2.2',layout:'matrix',
+      {id:'quadro',label:'Tipo → titular e artigo',node:'r2.2',layout:'matrix',structure:'relational',format:'Quadro de competências',
         instruction:'Encaixe o titular e o artigo de cada tipo de competência.',
         pieces:[piece('df','Distrito Federal · art. 32'),piece('todos','Todos os entes · art. 23'),piece('municipios','Municípios · art. 30'),piece('uniao','União · arts. 21 e 22'),piece('estados','Estados · art. 25, § 1º'),piece('concorrente','União (normas gerais) + Estados e DF (suplementar) · art. 24')],
         slots:[
@@ -137,14 +137,14 @@ export const KIT_PUZZLES=Object.freeze([
       ['r3.3','no mínimo 1% do eleitorado nacional, distribuído por pelo menos cinco Estados, com não menos de 0,3% dos eleitores de cada um deles']
     ],
     stages:[
-      {id:'ato',label:'Antes ou depois do ato',node:'r3.1',layout:'act',
+      {id:'ato',label:'Antes ou depois do ato',node:'r3.1',layout:'act',structure:'temporal',format:'Linha do ato',
         instruction:'Encaixe a consulta no momento em relação ao ato legislativo ou administrativo.',
         pieces:[piece('referendo','Referendo'),piece('iniciativa','Iniciativa popular'),piece('plebiscito','Plebiscito')],
         slots:[
           slot('antes','Antes do ato · anterioridade','plebiscito','PLEbiscito é PRÉvio: convocado com anterioridade ao ato.'),
           slot('depois','Depois do ato · ratificar ou rejeitar','referendo','REferendo é REtroativo: convocado com posterioridade, para ratificação ou rejeição.')
         ]},
-      {id:'convocacao',label:'Convocação',node:'r3.2',layout:'matrix',
+      {id:'convocacao',label:'Convocação',node:'r3.2',layout:'matrix',structure:'relational',format:'Quadro de convocação',
         instruction:'Monte a convocação de plebiscito e referendo em questões de relevância nacional.',
         pieces:[piece('presidente','Decreto do Presidente da República'),piece('maioria','Regra geral de maioria'),piece('decreto','Decreto legislativo'),piece('terco','1/3 dos membros de qualquer das Casas')],
         slots:[
@@ -152,7 +152,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('proposta','Proposta mínima','terco','Pelo menos um terço dos membros de qualquer das Casas do Congresso.'),
           slot('aprovacao','Aprovação do decreto','maioria','A aprovação segue a regra geral de maioria.')
         ]},
-      {id:'iniciativa',label:'Iniciativa popular 1 – 5 – 0,3',node:'r3.3',layout:'matrix',
+      {id:'iniciativa',label:'Iniciativa popular 1 – 5 – 0,3',node:'r3.3',layout:'matrix',structure:'relational',format:'Quadro de requisitos',
         instruction:'Complete os requisitos da iniciativa popular de lei.',
         pieces:[piece('cinco','5 Estados'),piece('senado','Senado Federal'),piece('um','1% do eleitorado nacional'),piece('camara','Câmara dos Deputados'),piece('zerotres','0,3% dos eleitores de cada Estado')],
         slots:[
@@ -179,7 +179,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r4.3','São inalistáveis os estrangeiros e, durante o serviço militar obrigatório, os conscritos']
     ],
     stages:[
-      {id:'idades',label:'Idade mínima',node:'r4.4',layout:'ladder',
+      {id:'idades',label:'Idade mínima',node:'r4.4',layout:'ladder',structure:'comparative',format:'Escada de requisitos',
         instruction:'Encaixe os cargos em cada degrau de idade mínima.',
         pieces:[piece('vereador','Vereador'),piece('presidente','Presidente, Vice-Presidente e Senador'),piece('deputado','Deputado, Prefeito, Vice-Prefeito e juiz de paz'),piece('governador','Governador e Vice-Governador')],
         slots:[
@@ -188,7 +188,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('a21','21 anos','deputado','21 anos: Deputado federal, estadual ou distrital, Prefeito, Vice-Prefeito e juiz de paz.'),
           slot('a18','18 anos','vereador','18 anos: Vereador.')
         ]},
-      {id:'voto',label:'Alistamento e voto',node:'r4.3',layout:'matrix',
+      {id:'voto',label:'Alistamento e voto',node:'r4.3',layout:'matrix',structure:'conditional',format:'Quadro de condições e consequências',
         instruction:'Encaixe cada grupo na situação correta.',
         pieces:[piece('facultativo','Analfabetos, maiores de 70 e de 16 a 18 anos'),piece('estrangeiros','Estrangeiros e conscritos'),piece('maiores','Maiores de 18 anos')],
         slots:[
@@ -211,7 +211,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r1.3.2','monitoramento em uso real, com atualização, correção ou retreinamento quando necessário']
     ],
     stages:[
-      {id:'ordem',label:'Ordem das etapas',node:'r1.3',layout:'pipeline',
+      {id:'ordem',label:'Ordem das etapas',node:'r1.3',layout:'pipeline',structure:'sequential',format:'Esteira de processo',
         instruction:'Encaixe as seis etapas na ordem apresentada pela fonte.',
         pieces:[piece('monitorar','Monitorar'),piece('treinar','Treinar'),piece('implantar','Implantar'),piece('dados','Preparar dados'),piece('inferencia','Gerar (inferência)'),piece('alinhar','Ajustar e alinhar')],
         slots:[
@@ -222,7 +222,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('e5','Etapa 5','inferencia','Gerar (inferência): o modelo já implantado gera conteúdo a partir das entradas do usuário.'),
           slot('e6','Etapa 6','monitorar','Monitorar: uso real, com atualização, correção ou retreinamento quando necessário.')
         ]},
-      {id:'definicao',label:'O que acontece em cada etapa',node:'r1.3.2',layout:'matrix',
+      {id:'definicao',label:'O que acontece em cada etapa',node:'r1.3.2',layout:'matrix',structure:'relational',format:'Quadro etapa × função',
         instruction:'Associe a descrição à etapa. Não confunda inferência (uso) com treinamento (aprendizado).',
         pieces:[piece('inferencia','Inferência'),piece('alinhamento','Alinhamento'),piece('monitoramento','Monitoramento'),piece('treinamento','Treinamento')],
         slots:[
@@ -249,7 +249,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r2.2.1','GPT, DALL·E, Stable Diffusion, as GANs e os VAEs']
     ],
     stages:[
-      {id:'matriz',label:'Matriz',node:'r2',layout:'matrix',columns:['Discriminativo','Generativo'],
+      {id:'matriz',label:'Matriz',node:'r2',layout:'matrix',structure:'comparative',format:'Matriz comparativa',columns:['Discriminativo','Generativo'],
         instruction:'Encaixe cada peça na coluna e na linha certas. Coluna da esquerda: discriminativo; da direita: generativo.',
         pieces:[piece('conjunta','P(X,Y) · distribuição conjunta'),piece('fronteiras','Fronteiras entre categorias'),piece('gerar','Gerar amostras novas'),piece('exdisc','Regressão logística, SVM, BERT'),piece('condicional','P(Y|X) · probabilidade condicional'),piece('estrutura','A estrutura inteira dos dados'),piece('exgen','GPT, DALL·E, Stable Diffusion, GANs, VAEs'),piece('classificar','Classificar, detectar e predizer')],
         slots:[
@@ -262,7 +262,7 @@ export const KIT_PUZZLES=Object.freeze([
           slot('m-ex-d','Exemplos','exdisc','Discriminativo: regressão logística, SVM e BERT.'),
           slot('m-ex-g','Exemplos','exgen','Generativo: GPT, DALL·E, Stable Diffusion, GANs e VAEs.')
         ]},
-      {id:'aplicacao',label:'Aplicação',node:'r2.1.1',layout:'matrix',
+      {id:'aplicacao',label:'Aplicação',node:'r2.1.1',layout:'matrix',structure:'comparative',format:'Encaixe por aplicação',
         instruction:'Classifique cada aplicação citada pela fonte.',
         pieces:[piece('gen','Generativo'),piece('disc','Discriminativo')],
         slots:[
@@ -316,9 +316,32 @@ export function kitPuzzleStages(source,nodeId){
   if(!source)return [];
   const suffix=nodeId&&nodeId.startsWith(source.model.prefix)?nodeId.slice(source.model.prefix.length):null;
   const all=source.model.stages.map((s,i)=>({...s,index:i}));
-  if(!suffix)return all;
+  if(!nodeId)return all;
   const own=all.filter(s=>s.node===suffix);
-  return own.length?own:all;
+  return own;
+}
+// Only activities with their own learning objective route an exact concept.
+export function kitLearningRoutes(kit){
+  const routes=new Map();
+  for(const model of KIT_PUZZLES){
+    const source=getKitPuzzleSource(kit,model);
+    if(!source)continue;
+    for(const stage of model.stages){
+      const node=source.nodes[stage.node];
+      const anchors=model.anchors.filter(([id,text])=>id===stage.node&&node.x.e.includes(text)).map(([,text])=>text);
+      if(!anchors.length)continue;
+      routes.set(node.id,{
+        modelId:model.id,structure:stage.structure,format:stage.format,objective:stage.instruction,
+        anchors,requiredNodes:source.nodeIds
+      });
+    }
+  }
+  if(getNepSource(kit))routes.set(NEP_NODE,{
+    modelId:NEP_MODEL.id,structure:'simulation',format:'Instrumento de cálculo',
+    objective:'Distribua as cadeiras e preveja como muda o número efetivo de partidos.',
+    anchors:['NEP = 1 ÷ Σ p²'],requiredNodes:[NEP_NODE]
+  });
+  return routes;
 }
 export function kitPuzzleContext(source,stage,slotId){
   const s=stage?.slots.find(x=>x.id===slotId);
@@ -327,7 +350,7 @@ export function kitPuzzleContext(source,stage,slotId){
 }
 export function kitVisualBindings(){
   return [
-    ...KIT_PUZZLES.flatMap(m=>m.nodes.map(s=>({subjectId:m.subjectId,topicId:m.topicId,modelId:m.id,nodeId:m.prefix+s}))),
+    ...KIT_PUZZLES.flatMap(m=>m.stages.map(s=>({subjectId:m.subjectId,topicId:m.topicId,modelId:m.id,nodeId:m.prefix+s.node}))),
     {subjectId:'cp',topicId:'cp-6',modelId:NEP_MODEL.id,nodeId:NEP_NODE}
   ];
 }

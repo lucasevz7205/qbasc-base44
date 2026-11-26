@@ -47,6 +47,10 @@ export function effectiveGenerationSources(data,subjectId,topicId,central=[],nod
  // Do not expose obsolete aliases or duplicate node ids.
  const unique=out.filter(s=>out.filter(t=>t.nodeId===s.nodeId).length===1);
  const byMapId=new Map(unique.map(s=>[s.mapNodeId,s]));
+ const exactCentralNodes=new Set(unique.filter(s=>s.central).map(s=>s.nodeId));
+ for(const source of unique){
+  if(source.learningRoute?.requiredNodes.some(id=>!exactCentralNodes.has(id)))delete source.learningRoute;
+ }
  // An explicit comparison/classification heading and its direct children are grounded structure.
  // Do not turn arbitrary lists or procedure steps into a comparison.
  for(const parent of unique){

@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { sourceVersion } from "@/lib/nexo/generation";
-import { decideCognitive } from "@/lib/nexo/cognitive-decision";
+import { decideCognitive, NEXO_TASK_MAX_LENGTH } from "@/lib/nexo/cognitive-decision";
 import { generateContextual } from "@/lib/nexo/contextual-generation";
 import representationPilot from "@/lib/nexo/representation-pilot.json";
 import { requireUser } from "@/lib/auth-middleware";
@@ -853,7 +853,7 @@ export const generateNexoAssociation = createServerFn({method:"POST"})
 // LAB06.8: independent decision, no model generation or writes.
 export const decideNexoRepresentation = createServerFn({method:"POST"})
  .middleware([requireUser])
- .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),sourceVersion:z.string().regex(/^sha256:[a-f0-9]{64}$/),provider:z.enum(["base44","gemini","local"])}).strict())
+ .validator(z.object({subjectId:z.string().max(4),topicId:z.string().max(80),nodeId:z.string().min(1).max(250),sourceVersion:z.string().regex(/^sha256:[a-f0-9]{64}$/),provider:z.enum(["base44","gemini","local"]),task:z.string().max(NEXO_TASK_MAX_LENGTH).optional()}).strict())
  .handler(async ({data,context})=>{
    await requireArchitectAccess(context);
    if(context.user?.role!=="admin")throw new Error("Decisão experimental restrita ao administrador.");
@@ -867,5 +867,5 @@ export const decideNexoRepresentation = createServerFn({method:"POST"})
      }
      return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
    };
-   return decideCognitive(rows[0],representationPilot,{provider:data.provider,invoke});
+   return decideCognitive(rows[0],representationPilot,{provider:data.provider,invoke,task:data.task});
  });

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="nexo-prediction-hash" content="<!-- PREDICTION_HASH -->">
+<title>Nexo · Rodada Cega 01</title>
+<style>
+  :root { color-scheme: light; font: 16px/1.55 system-ui, sans-serif; color: #152841; background: #f6f4ef }
+  body { margin: 0 }
+  main { max-width: 64rem; margin: auto; padding: 2rem clamp(1rem, 5vw, 3rem) 4rem }
+  header { border-bottom: 1px solid #b5a88c; margin-bottom: 1.5rem; padding-bottom: 1rem }
+  h1, h2 { font-family: Georgia, serif; line-height: 1.2; margin: .35em 0 }
+  h1 { font-size: clamp(2rem, 6vw, 3.25rem) }
+  article { background: white; border: 1px solid #d8d5cc; border-radius: .65rem; margin: 1rem 0; padding: clamp(1rem, 4vw, 1.6rem); scroll-margin-top: 1rem }
+  .case-id, small { color: #4a5d70 }
+  .task { background: #eef2f6; border-left: .25rem solid #32526a; padding: .7rem .9rem }
+  summary { cursor: pointer; font-weight: 650 }
+  blockquote { margin: .55rem 0; padding: .55rem .75rem; background: #f6f7f8; overflow-wrap: anywhere }
+  label { display: block; font-weight: 620; margin-top: .75rem }
+  label > input:not([type=checkbox]), label > select, label > textarea { display: block; width: 100%; box-sizing: border-box; margin: .25rem 0 }
+  input, textarea, select, button { font: inherit }
+  input:not([type=checkbox]), textarea, select { border: 1px solid #677787; background: white; border-radius: .25rem; padding: .5rem }
+  textarea { min-height: 4.7rem; resize: vertical }
+  button { border: 1px solid #15314a; border-radius: .35rem; padding: .45rem .8rem; color: #fff; background: #15314a; cursor: pointer }
+  button.secondary { background: white; color: #15314a }
+  button:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #9d6416; outline-offset: 3px }
+  .actions, .choices { display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center }
+  .choices label { font-weight: 400; margin: .25rem 0 }
+  .taxonomy dt { font-weight: 650 }
+  .taxonomy dd { margin: 0 0 .65rem }
+  output { display: block; min-height: 1.6em; margin: .6rem 0 }
+  #reviewer { max-width: 25rem }
+  #load { max-width: 100% }
+</style>
+<main>
+  <header>
+    <h1>Nexo · Rodada Cega 01</h1>
+    <p>Avalie cada tarefa com a fonte indicada. Trabalhe individualmente e registre o trecho que sustenta sua decisão. Se o material for insuficiente para a tarefa, selecione <strong>Abster</strong>.</p>
+    <details><summary>Consultar as nove estruturas</summary><dl class="taxonomy" id="taxonomy"></dl></details>
+  </header>
+  <form id="review">
+    <label>Seu identificador de avaliador<input id="reviewer" required maxlength="80" autocomplete="off"></label>
+    <label for="load">Retomar a partir de um JSON</label><input id="load" type="file" accept=".json,application/json">
+    <output id="status" aria-live="polite"></output>
+    <div id="cases"></div>
+    <div class="actions">
+      <button type="submit">Exportar parecer completo</button>
+      <button type="button" id="draft" class="secondary">Salvar rascunho</button>
+    </div>
+  </form>
+</main>
+<script type="application/json" id="round"><!-- ROUND_JSON --></script>
+<script>
+  const round = JSON.parse(document.querySelector('#round').textContent);
+  const predictionHash = document.querySelector('meta[name="nexo-prediction-hash"]').content;
+  const entries = Object.entries(round.taxonomy);
+  const form = document.querySelector('#review');
+  const reviewer = document.querySelector('#reviewer');
+  const status = document.querySelector('#status');
+  const build = (tag, value, parent) => {
+    const node = document.createElement(tag);
+    if (value) node.textContent = value;
+    parent.append(node);
+    return node;
+  };
+  const taxonomy = document.querySelector('#taxonomy');
+  for (const [, structure] of entries) {
+    build('dt', structure.label, taxonomy);
+    build('dd', structure.criterion, taxonomy);
+  }
+  function input(parent, title, tag, required = true) {
+    const label = build('label', title, parent);
+    const field = build(tag, '', label);
+    field.required = required;
+    if (tag === 'input') field.autocomplete = 'off';
+    return field;
+  }
+  function categoryOptions(parent, title) {
+    const details = build('details', '', parent);
+    build('summary', title, details);
+    const group = build('div', '', details);
+    group.className = 'choices';
+    return entries.map(([id, value]) => {
+      const label = build('label', '', group);
+      const checkbox = build('input', '', label);
+      checkbox.type = 'checkbox';
+      checkbox.value = id;
+      build('span', ' ' + value.label, label);
+      return checkbox;
+    });
+  }
+  const fields = round.cases.map(item => {
+    const card = build('article', '', document.querySelector('#cases'));
+    build('small', item.id + ' · ' + item.topic.toUpperCase(), card).className = 'case-id';
+    build('h2', item.title, card);
+    build('p', item.task, card).className = 'task';
+    const source = build('details', '', card);
+    build('summary', 'Fonte · ' + item.reference, source);
+    for (const excerpt of item.evidence) {
+      const block = build('blockquote', excerpt.text, source);
+      build('small', excerpt.reference || item.reference, block).style.display = 'block';
+    }
+    const primary = input(card, 'Estrutura ideal', 'select');
+    primary.add(new Option('Selecione', ''));
+    for (const [id, value] of entries) primary.add(new Option(value.label, id));
+    primary.add(new Option('Abster', 'abstain'));
+    const acceptable = categoryOptions(card, 'Outras estruturas aceitáveis como primária');
+    const secondary = categoryOptions(card, 'Estruturas equivalentes como secundária');
+    const formats = input(card, 'Subformas adequadas, separadas por |', 'input', false);
+    const expected = input(card, 'Resposta esperada ou informação que falta', 'textarea');
+    const rationale = input(card, 'Justificativa da classificação', 'textarea');
+    const evidence = input(card, 'Trecho literal de apoio (copie da fonte)', 'textarea');
+    const update = () => {
+      const abstaining = primary.value === 'abstain';
+      formats.disabled = abstaining;
+      formats.required = !abstaining;
+      for (const option of [...acceptable, ...secondary]) option.disabled = abstaining || option.value === primary.value;
+    };
+    primary.addEventListener('change', update);
+    update();
+    return {item, primary, acceptable, secondary, formats, expected, rationale, evidence, update};
+  });
+  const selected = list => list.filter(item => item.checked && !item.disabled).map(item => item.value);
+  const labelKey = value => value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const answers = () => fields.map(f => ({
+    id: f.item.id, primary: f.primary.value, acceptablePrimaries: selected(f.acceptable), equivalentSecondaries: selected(f.secondary),
+    forms: f.formats.disabled ? [] : f.formats.value.split('|').map(value => value.trim()).filter(Boolean),
+    expected: f.expected.value.trim(), rationale: f.rationale.value.trim(), evidence: f.evidence.value.trim()
+  }));
+  function download(draft) {
+    const submission = {roundHash: round.roundHash, predictionHash, reviewer: reviewer.value.trim(), answers: answers()};
+    if (!draft) {
+      const wrong = submission.answers.find((a, i) =>
+        !labelKey(submission.reviewer) || !a.primary || !a.expected || !a.rationale || !a.evidence || !fields[i].item.evidence.some(e => e.text.includes(a.evidence)) ||
+        (a.primary !== 'abstain' && (!a.forms.length || a.forms.map(labelKey).includes('') || new Set(a.forms.map(labelKey)).size !== a.forms.length))
+      );
+      if (wrong) {
+        status.textContent = 'Confira as respostas e o trecho literal do caso ' + wrong.id + '.';
+        status.scrollIntoView();
+        return;
+      }
+    }
+    const file = new Blob([JSON.stringify(submission, null, 2) + '\n'], {type: 'application/json'});
+    const address = URL.createObjectURL(file);
+    const anchor = document.createElement('a');
+    anchor.href = address;
+    anchor.download = 'nexo-' + (draft ? 'rascunho-' : 'parecer-') + (submission.reviewer.replace(/[^\p{L}\p{N}]+/gu, '-') || 'local') + '.json';
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(address), 1000);
+    status.textContent = draft ? 'Rascunho exportado.' : 'Parecer exportado.';
+  }
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    download(false);
+  });
+  document.querySelector('#draft').addEventListener('click', () => download(true));
+  document.querySelector('#load').addEventListener('change', async event => {
+    const file = event.target.files[0];
+    if (!file) return;
+    try {
+      const saved = JSON.parse(await file.text());
+      if (saved.roundHash !== round.roundHash || saved.predictionHash !== predictionHash || !Array.isArray(saved.answers) || saved.answers.length !== fields.length ||
+          fields.some((f, i) => saved.answers[i]?.id !== f.item.id)) throw Error('Arquivo de outra rodada.');
+      reviewer.value = saved.reviewer || '';
+      for (const [i, f] of fields.entries()) {
+        const a = saved.answers[i];
+        f.primary.value = a.primary || '';
+        f.formats.value = (a.forms || []).join(' | ');
+        for (const option of f.acceptable) option.checked = (a.acceptablePrimaries || []).includes(option.value);
+        for (const option of f.secondary) option.checked = (a.equivalentSecondaries || []).includes(option.value);
+        f.expected.value = a.expected || '';
+        f.rationale.value = a.rationale || '';
+        f.evidence.value = a.evidence || '';
+        f.update();
+      }
+      status.textContent = 'Respostas carregadas.';
+    } catch {
+      status.textContent = 'Não foi possível carregar este arquivo como parecer da rodada.';
+    } finally {
+      event.target.value = '';
+    }
+  });
+</script>
+</html>

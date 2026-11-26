@@ -153,18 +153,12 @@ export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,
   const selectedSource=nodeId?resolveEffectiveSource(sourceNodes,nodeId):null;
   const selectedId=selectedSource?.nodeId||nodeId;
   const liveModels=items=>items.flatMap(m=>{
-    const sources=m.sources.filter(n=>sourceNodes.some(s=>s.central&&s.nodeId===n.id));
-    if(sources.length)return [{...m,source:sources[0],sources}];
-    // Kit-bound models are already validated against the bundled kit text; a stored copy of
-    // the topic map (same node ids or titles) must not hide them.
-    if(KIT_MODEL_IDS.has(m.id)&&sourceNodes.some(s=>m.sources.some(n=>s.nodeId===n.id||s.legacyNodeId===n.id||s.title===n.t)))return [m];
-    return [];
+    const sources=m.sources.filter(n=>sourceNodes.some(s=>s.central&&s.nodeId===n.id&&
+      (!KIT_MODEL_IDS.has(m.id)||s.learningRoute?.modelId===m.id)));
+    return sources.length?[{...m,source:sources[0],sources}]:[];
   });
-  const nodeModels=liveModels(scopedVisualModels({subjects,subjectId,topicId,nodeId:selectedId},kits,models));
   const topicModels=liveModels(scopedVisualModels({subjects,subjectId,topicId},kits,models));
-  // A concept without its own model falls back to the topic's kit-bound models instead of the generator.
-  const nodeFallback=Boolean(selectedId)&&nodeModels.length===0&&topicModels.some(m=>KIT_MODEL_IDS.has(m.id));
-  const scoped=nodeFallback?topicModels.filter(m=>KIT_MODEL_IDS.has(m.id)):nodeModels;
+  const scoped=selectedId?liveModels(scopedVisualModels({subjects,subjectId,topicId,nodeId:selectedId},kits,models)):topicModels;
   const contextual=scoped.length>0;
   const [modelId,setModelId]=React.useState(null);
   const [predictionMode,setPredictionMode]=React.useState(false);
@@ -188,9 +182,9 @@ export default function NexoVisualLab({subjects=[],subjectId,topicId,topicLabel,
     <header className="nexo-exp-head"><div className="nexo-exp-emblem"><Icon name="astrolabe" size={30}/></div><div><span className="qb-overline">O ARQUITETO · LABORATÓRIO VISUAL</span><h2>Conhecimento em movimento</h2><p>Manipule um modelo, observe o efeito e compreenda o mecanismo.</p></div><span className="qb-badge qb-badge--gold">Prévia privada</span></header>
     <StudyTopicPicker label="Matéria e assunto" subjects={subjects} value={topicId} onSelect={onTopicChange}/>
     {(topicModels.length>0||sourceNodes.length>0)&&<label className="nexo-control">Conceito vinculado<select className="qb-input" value={selectedId||''} onChange={e=>onNodeChange?.(e.target.value||undefined)}><option value="">Todos os modelos deste assunto</option>{selectedId&&!sourceNodes.some(n=>n.nodeId===selectedId)&&!topicModels.some(m=>m.sources.some(n=>n.id===selectedId))&&<option value={selectedId}>Conceito atual (sem modelo)</option>}{Array.from(new Map([...sourceNodes.map(n=>[n.nodeId,n.title]),...topicModels.flatMap(m=>m.sources).map(n=>[n.id,n.t])]).entries()).map(([id,title])=><option key={id} value={id}>{title}</option>)}</select></label>}
-    {contextual&&!guidedMode&&!predictionMode&&<NexoRepresentationPlan key={JSON.stringify([subjectId,topicId,nodeId])} subjectId={subjectId} topicId={topicId} nodeId={selectedId||model?.source?.id} sources={sourceNodes} initiallyOpen={!contextual}/>}
+    {contextual&&!guidedMode&&!predictionMode&&<NexoRepresentationPlan key={JSON.stringify([subjectId,topicId,selectedId||model?.source?.id])} subjectId={subjectId} topicId={topicId} nodeId={selectedId||model?.source?.id} sources={sourceNodes} initiallyOpen={Boolean(selectedId)}/>}
     {!contextual?<NexoGeneratedAssociation key={JSON.stringify([subjectId,topicId,nodeId])} subjectId={subjectId} topicId={topicId} nodeId={selectedId} sources={sourceNodes}/>:<>
-      <span className="qb-overline">{scoped.length} {scoped.length===1?'modelo vinculado':'modelos vinculados'}</span>{nodeFallback&&<p className="nexo-explain">Este conceito não tem modelo próprio. Mostrando os modelos do assunto.</p>}
+      <span className="qb-overline">{scoped.length} {scoped.length===1?'modelo vinculado':'modelos vinculados'}</span>
       {scoped.length>1&&<div className="nexo-exp-gallery" role="group" aria-label="Experimentos deste assunto">{scoped.map(m=><button key={m.id} type="button" aria-pressed={model.id===m.id} onClick={()=>switchModel(m.id)}><Icon name={m.icon} size={21}/><span><small>{m.type}</small><strong>{m.title}</strong></span></button>)}</div>}
       {full&&<div aria-hidden="true" className="nexo-exp-scrim" onClick={()=>setFull(false)}/>}
       <div className={full?'qb-map-full nexo-exp-full':undefined} role={full?'dialog':undefined} aria-modal={full||undefined} aria-label={full?'Laboratório Visual em tela cheia':undefined}>
