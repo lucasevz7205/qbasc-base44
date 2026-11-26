@@ -11,11 +11,13 @@ function Header({stage}){
 }
 
 // Generic, source-bound association board for kits without a bespoke instrument.
-export default function NexoKitPuzzle({source,nodeId,onPredictionMode,onAssociationContext,guided}){
+export default function NexoKitPuzzle({source,nodeId,onPredictionMode,onAssociationContext,onConceptChange,guided}){
   const stages=kitPuzzleStages(source,nodeId);
   const [mode,setMode]=React.useState('explore');
   const [index,setIndex]=React.useState(stages[0]?.index??0);
   const stage=stages.find(s=>s.index===index)||stages[0];
+  const conceptNode=stage?source.nodes[stage.node]:null;
+  React.useEffect(()=>{if(conceptNode)onConceptChange?.(conceptNode);},[conceptNode,onConceptChange]);
   if(!stage)return <p>Modelo indisponível: fonte do kit não confirmada.</p>;
   const clear=()=>onAssociationContext?.(null);
   const onFocus=slotId=>{if(mode!=='explore'){clear();return;}onAssociationContext?.(kitPuzzleContext(source,stage,slotId));};
