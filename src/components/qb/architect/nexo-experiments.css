@@ -67,3 +67,14 @@
 .nexo-nep-stack{display:flex;height:34px;margin:8px 12px;border-radius:5px;overflow:hidden;border:1px solid var(--qb-steel-blue)}.nexo-nep-stack>div{display:flex;align-items:center;justify-content:center;min-width:0;transition:width .2s ease}.nexo-nep-stack span{color:#101C2D;font-size:11px;font-weight:600;overflow:hidden;white-space:nowrap}
 @media (max-width:640px){.nexo-puzzle-timeline,.nexo-puzzle-pipeline{grid-template-columns:1fr}.nexo-puzzle-pipeline .nexo-puzzle-slot::after{display:none}.nexo-puzzle-ladder .nexo-puzzle-slot{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.nexo-nep-stack>div{transition:none}}
+/* Tela cheia do Laboratório Visual (mesmo molde do mapa mental) */
+.nexo-exp-main-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.nexo-exp-main-head .qb-btn{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px}
+.nexo-exp-scrim{position:fixed;inset:0;z-index:69;background:rgba(8,10,15,.82);backdrop-filter:blur(6px)}
+.nexo-exp-full .qb-map-full-header__actions .qb-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px}
+.nexo-exp-full .qb-map-full-header__picker select{width:100%;min-height:44px}
+.nexo-exp-full .nexo-exp-workbench{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) minmax(300px,400px);align-items:stretch}
+.nexo-exp-full .nexo-exp-workbench[data-show-concept=false]{grid-template-columns:minmax(0,1fr)}
+.nexo-exp-full .nexo-exp-main,.nexo-exp-full .nexo-exp-context{overflow:auto;min-height:0;align-content:start}
+.nexo-exp-context-block{display:grid;gap:12px}
+.nexo-concept-card{display:grid;gap:10px;padding-top:12px;border-top:1px solid var(--divider)}.nexo-concept-card h3{margin:0;font-size:16px}.nexo-concept-card details{border-top:1px solid var(--divider);padding-top:8px}.nexo-concept-card summary{cursor:pointer;color:var(--qb-gold)}
+@media (max-width:850px){.nexo-exp-full .nexo-exp-workbench{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,40%)}.nexo-exp-full .nexo-exp-workbench[data-show-concept=false]{grid-template-rows:minmax(0,1fr)}}
