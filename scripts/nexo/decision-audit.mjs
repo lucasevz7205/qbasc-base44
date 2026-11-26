@@ -9,7 +9,7 @@ import {STRUCTURE_IDS,decideCognitive,buildDecidedCandidate} from '../../src/lib
 import {validPuzzle,evaluatePuzzle} from '../../src/lib/nexo/association-puzzle.js';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const maps={};
-function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(e.name==='mapa.json')maps[p]=JSON.parse(fs.readFileSync(p,'utf8'));}}
+function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(e.name==='mapa.json')maps[p.split(path.sep).join('/')]=JSON.parse(fs.readFileSync(p,'utf8'));}}
 walk(path.join(root,'src/data/kits'));
 const pilot=JSON.parse(fs.readFileSync(path.join(root,'src/lib/nexo/representation-pilot.json'),'utf8'));
 let sources=Object.values(maps).flatMap(m=>generationSources(maps,m.topico.split('-')[0],m.topico));

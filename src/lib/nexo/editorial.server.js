@@ -2,10 +2,9 @@
 // server-controlled storage in a later integration. No endpoints, writes, or
 // authority assignment here. Matching excerpts do not prove semantic entailment.
 import { createHash } from 'node:crypto';
-import { validateGraph } from './core.js';
+import { RELATION_TYPES, validateGraph } from './core.js';
 import { checkPrerequisiteCycles } from './skill-adapters.js';
 
-const kinds = new Set(['is_a','part_of','contrasts_with','exception_to','depends_on','causes','precedes','exemplifies','equivalent_to']);
 const valid = (s,max=400) => typeof s==='string' && s.trim().length>0 && s.length<=max;
 const bounded = (a,max) => Array.isArray(a) && a.length<=max;
 const assert = (v,m) => {if(!v) throw new Error(m);};
@@ -51,7 +50,7 @@ function nodePacket(n,sources,scope,version){
 }
 function edgePacket(e,sources,nodes,scope,version){
   assert(allowedKeys(e,['id','from','to','type','proposition','status','evidence','weight'])&&e.status==='candidate'&&
-    valid(e.id)&&nodes.has(e.from)&&nodes.has(e.to)&&e.from!==e.to&&kinds.has(e.type)&&
+    valid(e.id)&&nodes.has(e.from)&&nodes.has(e.to)&&e.from!==e.to&&RELATION_TYPES.includes(e.type)&&
     valid(e.proposition,4000)&&Number.isFinite(e.weight)&&e.weight>=0&&e.weight<=1,'Invalid relation candidate');
   return {scope,version,kind:'relation',id:e.id,from:e.from,to:e.to,type:e.type,proposition:e.proposition,weight:e.weight,
     endpointDigests:[fingerprint(nodes.get(e.from)),fingerprint(nodes.get(e.to))],evidence:evidencePacket(e.evidence,sources)};

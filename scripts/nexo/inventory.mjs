@@ -2,12 +2,12 @@ import fs from 'node:fs';
 import {URL} from 'node:url';
 import process from 'node:process';
 import console from 'node:console';
-import {createHash} from 'node:crypto';
+import {canonicalDigest} from './canonical-digest.mjs';
 import {extractMapCandidates} from '../../src/lib/nexo/catalog.js';
 const root=new URL('../../',import.meta.url);
 const base='src/data/kits/';
 const result={status:'candidate-only',sourceApp:'QBAsc',approvedConcepts:[],approvedEdges:[],kits:[],unprocessed:[]};
-const digest=bytes=>'sha256:'+createHash('sha256').update(bytes).digest('hex');
+const digest=canonicalDigest;
 const read=path=>{const bytes=fs.readFileSync(new URL(path,root));return {version:digest(bytes),value:JSON.parse(bytes)};};
 const exists=path=>fs.existsSync(new URL(path,root));
 const files=fs.readdirSync(new URL(base,root),{recursive:true,withFileTypes:false}).map(p=>String(p).replaceAll('\\','/')).sort();
@@ -36,6 +36,6 @@ for(const path of files.filter(p=>p.endsWith('/mapa.json'))){
   result.kits.push(kit);
 }
 const out=JSON.stringify(result,null,2)+'\n', dest=new URL('docs/nexo/source-inventory.json',root);
-if(process.argv.includes('--check')){if(fs.readFileSync(dest,'utf8')!==out)throw Error('Inventory mismatch');}
+if(process.argv.includes('--check')){if(fs.readFileSync(dest,'utf8').replace(/\r\n/g,'\n')!==out)throw Error('Inventory mismatch');}
 else fs.writeFileSync(dest,out);
 console.log(JSON.stringify({kits:result.kits.length,concepts:result.kits.reduce((s,k)=>s+k.concepts.length,0),structuralLinks:result.kits.reduce((s,k)=>s+k.structuralLinks.length,0),activities:result.kits.reduce((s,k)=>s+k.activities.length,0),unresolved:result.kits.reduce((s,k)=>s+k.unresolved.length,0),unprocessed:result.unprocessed.length,approvedEdges:0}));

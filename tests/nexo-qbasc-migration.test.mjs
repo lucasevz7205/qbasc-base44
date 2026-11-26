@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {URL} from 'node:url';
-import {createHash} from 'node:crypto';
+import {canonicalDigest} from '../scripts/nexo/canonical-digest.mjs';
 import {exactConcept} from '../src/lib/nexo/shadow.js';
 const root=new URL('../',import.meta.url);
 const inventory=JSON.parse(fs.readFileSync(new URL('docs/nexo/source-inventory.json',root)));
@@ -19,7 +19,7 @@ test('inventory uses actual QBAsc kits, exact IDs and file hashes only',()=>{
       assert.ok(ref.sourceId.startsWith('src/data/kits/'));
       if(!checked.has(ref.sourceId)){
         const bytes=fs.readFileSync(new URL(ref.sourceId,root));
-        checked.set(ref.sourceId,'sha256:'+createHash('sha256').update(bytes).digest('hex'));
+        checked.set(ref.sourceId,canonicalDigest(bytes));
       }
       assert.equal(checked.get(ref.sourceId),ref.version);
       assert.equal(r.status,'candidate');

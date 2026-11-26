@@ -1,7 +1,7 @@
 // NEXO: deterministic, isolated learning evidence engine.
 // No persistence, runtime AI, UI imports or scheduler writes.
 // Only trusted server-assessed events may enter this engine in a future integration.
-const TYPES = new Set(['is_a','part_of','contrasts_with','exception_to','depends_on','causes','precedes','exemplifies','equivalent_to']);
+export const RELATION_TYPES = Object.freeze(['is_a','part_of','contrasts_with','exception_to','depends_on','causes','precedes','exemplifies','equivalent_to']);
 const CRITICAL = new Set(['contrasts_with','exception_to','depends_on']);
 const MODES = new Set(['recognition','cued','free']);
 const STATUSES = new Set(['approved','draft','retired']);
@@ -19,7 +19,7 @@ export function validateGraph(graph) {
   }
   for (const e of graph.edges) {
     requireValue(id(e.id) && !edges.has(e.id) && nodes.has(e.from) && nodes.has(e.to) && e.from !== e.to &&
-      TYPES.has(e.type) && STATUSES.has(e.status) && id(e.proposition) && sourceRefs(e.sourceRefs) &&
+      RELATION_TYPES.includes(e.type) && STATUSES.has(e.status) && id(e.proposition) && sourceRefs(e.sourceRefs) &&
       Number.isFinite(e.weight) && e.weight >= 0 && e.weight <= 1, 'Invalid edge');
     edges.set(e.id, e);
   }

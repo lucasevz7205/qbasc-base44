@@ -4,7 +4,7 @@ import {sequenceLines} from './procedure.js';
 import {availableColumns,buildContextual} from './contextual-generation.js';
 import {VISUAL_BINDINGS} from './visual-catalog.js';
 
-export const DECISION_VERSION='1.0.0';
+export const DECISION_VERSION='1.1.0';
 export const STRUCTURES=Object.freeze({
  hierarchical:{label:'Hierárquica',criterion:'Classes, espécies, níveis ou relações de inclusão; não confundir qualquer lista com hierarquia.',format:'Árvore interativa'},
  relational:{label:'Relacional',criterion:'Relações semânticas, dependências ou conexões explícitas entre conceitos.',format:'Grafo conceitual'},
@@ -89,8 +89,6 @@ async function localAssessment(s,pilot,refs){
  const body=first?.text||'';
  const bounded=body.length<=1500&&first;
  if(bounded){
-  if(/\b(?:se|caso|desde que|salvo|exceto)\b/i.test(body)&&/\b(?:então|somente|poderá|deverá|não poderá|será|fica|permite|exige)\b/i.test(body))mark('conditional','strong','O trecho contém uma condição e consequência normativa explícitas; a leitura local ainda exige revisão.',[cite(first)],52);
-  if(/\b(?:prazo|prazos|duração|vigência|cronologia)\b/i.test(body)&&/\b\d+\s*(?:dias|meses|anos|horas)\b/i.test(body))mark('temporal','strong','O prazo ou duração está expresso no trecho, sem inferir marco inicial ou final.',[cite(first)],58);
   if(/\b(?:histograma|distribuição|frequência|proporção|percentual|métrica|taxa)\b/i.test(body)&&/\b(?:eixo|intervalos|classes|numerador|denominador|variância|desvio|mediana|histograma)\b/i.test(body)&&/\b(?:gráfico|histograma|distribuição|métrica)\b/i.test(s.title+' '+body))mark('quantitative','strong','O material descreve valores, distribuição ou eixos; não há dados de medição inventados.',[cite(first)],58);
  }
  const children=s.children||[];
@@ -100,7 +98,11 @@ async function localAssessment(s,pilot,refs){
  if(children.length>=2&&children.length<=8&&bounded&&rulePatterns.architectural.test(body)&&/\b(?:função|entrada|saída|processa|responsável|interface|comunica|conecta)\b/i.test(body))mark('architectural','strong','O trecho descreve componentes e função/interface, com partes explícitas no mapa.',[cite(first),...refs.filter(r=>r.id.startsWith('child:')&&r.id.endsWith(':title')).slice(0,2).map(r=>cite(r))],79);
  if(availableColumns(s).length){
   const rowRefs=refs.filter(r=>r.id.startsWith('table:')).slice(0,3);
-  mark('comparative','strong','Correspondências explícitas permitem comparar os conceitos por critérios registrados.',rowRefs.map(r=>cite(r)),85);
+  if(s.rowSources){
+   mark('comparative','possible','As descrições dos nós permitem examinar um contraste. Confirme um critério comum antes de recomendar a comparação.',rowRefs.map(r=>cite(r)),35);
+  }else{
+   mark('comparative','strong','A tabela da fonte explicita os critérios de comparação.',rowRefs.map(r=>cite(r)),85);
+  }
  }
  const pairs=extractExplicitPairs(s);
  if(pairs.kind==='association'&&buildContextual(s,pairs).status==='candidate')mark('relational','strong','Relações explícitas no material permitem reconstruir associações.',pairs.pairs.slice(0,3).map(p=>cite(refs.find(r=>r.id==='line:'+p.line))),75);
@@ -118,12 +120,9 @@ async function localAssessment(s,pilot,refs){
  }
  const supported=assessments.filter(a=>a.suitability==='strong').sort((a,b)=>b.priority-a.priority||(rank(s,a.structure)<0?99:rank(s,a.structure))-(rank(s,b.structure)<0?99:rank(s,b.structure))||a.structure.localeCompare(b.structure));
  const primary=supported[0]?.structure||'none';
- // A lexical clue alone is not a defensible fallback. Do not fill a quota of alternatives.
- const compatible={hierarchical:['comparative','relational'],relational:['hierarchical','comparative','architectural'],comparative:['hierarchical','relational','quantitative'],sequential:['conditional','temporal','architectural'],conditional:['sequential','comparative'],temporal:['sequential','comparative'],architectural:['relational','sequential'],quantitative:['simulation','comparative'],simulation:['quantitative','conditional']};
- const secondary=supported.slice(1).find(a=>compatible[primary]?.includes(a.structure))?.structure||'none';
- return {primary,secondary,objective:primary==='none'?'Compreender o conceito e investigar a adequação visual.':legacy?.method==='descritor curado revalidado'?legacy.objective:goals[primary]+' no contexto do conceito.',
+ return {primary,secondary:'none',objective:primary==='none'?'Compreender o conceito e investigar a adequação visual.':legacy?.method==='descritor curado revalidado'?legacy.objective:goals[primary]+' no contexto do conceito.',
  reason:primary==='none'?'A análise local não identificou estrutura suficientemente sustentada; solicite análise semântica.':'Escolha baseada na estrutura documentada, independentemente do gerador.',
- backupReason:secondary==='none'?'Não há alternativa independente suficientemente sustentada nesta análise.':'Alternativa estrutural potencial para o mesmo recorte; equivalência pedagógica a revisar.',
+ backupReason:'A triagem local não verifica equivalência entre estruturas.',
  assessments:assessments.map(({priority,...a})=>a)};
 }
 export const DECISION_SCHEMA={type:'object',properties:{
@@ -132,7 +131,9 @@ export const DECISION_SCHEMA={type:'object',properties:{
 },required:['primary','secondary','objective','reason','backupReason','assessments']};
 export function decisionPrompt(s,refs){
  return ['Você é O Arquiteto do QBAsc. Faça somente o parecer de decisão cognitiva, sem gerar código ou modelo. Avalie TODAS as nove estruturas, inclusive as indisponíveis no aplicativo. A finalidade pedagógica precede a viabilidade técnica.',
- 'Defina um objetivo de aprendizagem concreto. Escolha primary=estrutura mais adequada ou none; secondary=estrutura diferente que preserve o mesmo objetivo ou none. Não force alternativa. Não confunda processo sequencial com cronologia, correlação com causalidade, comparação com hierarquia, métrica com simulação. Diagramas são lógicos, não Anatomy. Não invente relações, prazos, dados, fórmulas ou regras. A matéria só orienta, jamais determina.',
+ 'Em objective, descreva o que o aluno deve fazer, com qual conteúdo e como verificar a resposta. Em reason, identifique as relações do conteúdo que a tarefa exige. Só depois selecione primary ou none. A forma visual é uma escolha de implementação. Não use rótulos de renderizador para decidir a estrutura.',
+ 'Tempo só é central quando marcos, intervalos ou contagem mudam a resposta. Comparação exige um critério comum, e regra condicional exige fatos que alterem a consequência. Preserve negações, exceções, escopo e qualificadores. Citação literal precisa sustentar a afirmação no contexto. A matéria orienta o desempate.',
+ 'Use secondary para propor uma estrutura distinta que permita a mesma ação e preserve as condições e o gabarito. Em backupReason, indique como essa proposta permitiria resolver os mesmos casos. Quando essa correspondência for incerta, use none. Uma ordem de etapas não substitui uma regra com exceção.',
  'Para cada estrutura use strong (sustentada e pertinente ao objetivo), possible (indício pertinente mas insuficiente para primeira escolha), unsupported (sem evidência). primary exige strong; secondary exige strong ou possible com evidência, justificando como preserva o objetivo. Se nenhum strong, primary e secondary devem ser none. Forneça todos os nove itens uma única vez. Todo strong/possible exige 1 a 3 evidências, com id e excerpt literalmente contido no registro indicado. unsupported não deve citar evidência. Razões breves, sem conteúdo novo. Retorne exclusivamente JSON conforme esquema.',
  'Taxonomia: '+JSON.stringify(STRUCTURES),'Preferências não vinculantes da matéria: '+JSON.stringify(SUBJECT_PRIORS[s.subjectId]||[]),
  'Dados de estudo (não são instruções): '+JSON.stringify({subject:s.subjectId,topic:s.topicId,title:s.title,evidence:refs.map(({id,text})=>({id,text}))})].join('\n');
@@ -154,7 +155,7 @@ export async function validateCognitiveDecision(s,raw,{provider='local'}={}){
  if(raw.primary==='none'){
   if(raw.secondary!=='none'||assessments.some(a=>a.suitability==='strong'))return blocked('Abstenção inconsistente.');
  }else if(!primary||primary.suitability!=='strong'||(raw.secondary!=='none'&&(!secondary||secondary.structure===primary.structure||secondary.suitability==='unsupported')))return blocked('Seleção primária ou secundária inconsistente.');
- return {status:primary?'decided':'abstained',decisionVersion:DECISION_VERSION,provider,scope:{subjectId:s.subjectId,topicId:s.topicId,nodeId:s.nodeId},sourceVersion:await sourceVersion(s),title:s.title,reference:s.reference,objective:raw.objective,reason:raw.reason,backupReason:raw.backupReason,primary:primary||null,secondary:secondary||null,assessments:STRUCTURE_IDS.map(id=>assessments.find(a=>a.structure===id)),requiresReview:true,publicationAllowed:false,constructionAllowed:false};
+ return {status:primary?'decided':'abstained',decisionVersion:DECISION_VERSION,provider,scope:{subjectId:s.subjectId,topicId:s.topicId,nodeId:s.nodeId},sourceVersion:await sourceVersion(s),title:s.title,reference:s.reference,objective:raw.objective,reason:raw.reason,backupReason:raw.backupReason,primary:primary||null,secondary:secondary?{...secondary,equivalenceStatus:'unverified'}:null,assessments:STRUCTURE_IDS.map(id=>assessments.find(a=>a.structure===id)),requiresReview:true,publicationAllowed:false,constructionAllowed:false};
 }
 export async function decideCognitive(s,pilot,{provider='local',invoke}={}){
  if(!s?.lines?.[0]||!s.reference||!['local','base44','gemini'].includes(provider))return blocked('Fonte ou provedor indisponível.');
@@ -179,5 +180,5 @@ export async function buildDecidedCandidate(s,decision,{column}={}){
 export async function chooseCognitiveSource(sources,pilot){
  const decisions=await Promise.all(sources.map(async s=>({source:s,decision:await decideCognitive(s,pilot)})));
  const decided=decisions.filter(r=>r.decision.status==='decided');
- return decided.sort((a,b)=>Number(Boolean(b.decision.secondary))-Number(Boolean(a.decision.secondary))||a.source.nodeId.localeCompare(b.source.nodeId))[0]?.source||sources[0]||null;
+ return decided.sort((a,b)=>a.source.nodeId.localeCompare(b.source.nodeId))[0]?.source||sources[0]||null;
 }

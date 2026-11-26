@@ -2,14 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {URL} from 'node:url';
-import {createHash} from 'node:crypto';
+import {canonicalDigest} from '../scripts/nexo/canonical-digest.mjs';
 import {classifyRepresentation,scopedRecommendations} from '../src/lib/nexo/representation-classifier.js';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url));
 const {profiles,sources}=JSON.parse(read('src/lib/nexo/representation-pilot.json'));
 const source=p=>sources.find(s=>s.nodeId===p.nodeId&&s.topicId===p.topicId);
 test('each curated descriptor has exact original node, source bytes and excerpt',()=>{
   for(const p of profiles){const s=source(p),bytes=read(s.sourcePath),m=JSON.parse(bytes),nodes=[];function walk(n){nodes.push(n);(n.f||[]).forEach(walk)}m.ramos.forEach(walk);const n=nodes.find(n=>n.id===p.nodeId);
-    assert.equal(m.topico,p.topicId);assert.equal(n.x.e,s.text);assert.equal(p.version,'sha256:'+createHash('sha256').update(bytes).digest('hex'));assert.equal(classifyRepresentation(p,s).status,'recommendation');}
+    assert.equal(m.topico,p.topicId);assert.equal(n.x.e,s.text);assert.equal(p.version,canonicalDigest(bytes));assert.equal(classifyRepresentation(p,s).status,'recommendation');}
 });
 test('classifier routes all pilot objectives to intended formats, without permission to publish',()=>{
   const expected=['simulation','simulation','chart','timeline','chart','chart','architecture','chart','timeline','comparison','text'];

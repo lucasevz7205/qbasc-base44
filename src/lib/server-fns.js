@@ -840,7 +840,7 @@ export const decideNexoRepresentation = createServerFn({method:"POST"})
    if(await sourceVersion(rows[0])!==data.sourceVersion)return {status:"blocked",reason:"A fonte mudou. Atualize os dados.",publicationAllowed:false};
    const invoke=async ({prompt,schema})=>{
      if(data.provider==="gemini"){
-       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-cognitive-decision",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:4200});
+       const result=await invokeArchitectGemini({apiKey:architectKey(),models:architectModels(),task:"nexo-cognitive-decision",preference:"flash",prompt,responseJsonSchema:schema,maxOutputTokens:4200,allowFallback:false});
        return parseProviderJson(result.reply);
      }
      return parseProviderJson(await invokeBase44StudyAI(context,prompt,schema));
