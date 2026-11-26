@@ -209,6 +209,7 @@ export async function invokeArchitectGemini({
   cache = architectModelCache,
   telemetry = architectTelemetry,
   now = Date.now,
+  allowFallback = true,
 }) {
   if (typeof apiKey !== "string" || !apiKey.trim()) {
     throw new Error("Chave Gemini ausente. Confira o segredo Arquiteto (ou ARQUITETO/GEMINI_API_KEY) na Base44.");
@@ -238,9 +239,10 @@ export async function invokeArchitectGemini({
 
   const started = now();
   const deadline = timeoutMs == null ? null : started + timeoutMs;
+  const attempts = allowFallback ? chain : chain.slice(0, 1);
   let fallbackFrom = chain[0].tier !== primaryTier ? models[primaryTier] : undefined;
-  for (let index = 0; index < chain.length; index += 1) {
-    const { model, tier: usedTier } = chain[index];
+  for (let index = 0; index < attempts.length; index += 1) {
+    const { model, tier: usedTier } = attempts[index];
     const remaining = deadline == null ? null : deadline - now();
     if (remaining != null && remaining <= 0) throw new GeminiTimeoutError();
     const attemptStart = now();
@@ -257,7 +259,7 @@ export async function invokeArchitectGemini({
       };
     } catch (error) {
       telemetry.record({ ...entry, durationMs: now() - attemptStart, status: error?.status ?? null, outcome: "error", errorCode: error?.code || "unknown" });
-      const canFallback = error instanceof GeminiModelNotFoundError && availabilityKnown && index < chain.length - 1;
+      const canFallback = error instanceof GeminiModelNotFoundError && availabilityKnown && index < attempts.length - 1;
       if (!canFallback) throw error;
       await cache.forget?.(apiKey, model);
       fallbackFrom = model;

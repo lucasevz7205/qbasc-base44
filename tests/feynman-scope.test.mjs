@@ -38,7 +38,7 @@ const mocks = {
     };
   };`,
   '@/lib/auth-middleware': 'export const requireUser = Symbol();',
-  '@/lib/study-accounts': `export const requireArchitectAccess = async () => null;
+  '@/lib/study-accounts': `export const requireArchitectAccess = async () => null; export const prepareNexoTopicSources = async () => [];
     export const preparePersonalMapGan = () => {}; export const prepareGanSourcePassages = () => {};
     export const preparePersonalQuestionEditorial = () => {}; export const saveAutoApprovedMapGan = () => {};`,
   'base44:runtime': 'export const secrets = {};',

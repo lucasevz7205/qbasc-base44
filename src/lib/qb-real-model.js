@@ -1,3 +1,4 @@
+import { nodeSourceDetail } from './nexo/effective-sources.js';
 import { stripFlashcardContext } from './flashcard-standard.js';
 import { stripLeadingEmoji, subjectIconName } from './subject-icons.js';
 import { conceptLabelKey, indexConceptRemissions, matchLegacyConcept } from './concept-review.js';
@@ -21,6 +22,7 @@ function nodeConcept(node, mapSources) {
     url: typeof source?.url === 'string' && /^https?:\/\//i.test(source.url) ? source.url : undefined,
   })).filter(source => source.label);
   return {
+    nexo: nodeSourceDetail(node,mapSources),
     summary: firstText(detail.e, detail.explicacao, detail.definicao, node.x, node.explicacao, node.definicao, node.n),
     example: firstText(detail.ex, detail.exemplo, node.ex, node.exemplo),
     trap: firstText(detail.trap, detail.pegadinha, node.trap, node.pegadinha),
@@ -103,6 +105,7 @@ export function adaptStudy(records, user, now = new Date(), { examName, centralK
         const label=str(v.t??v.label??v.titulo??v.rotulo)||title;
         nodes.push({id,parent,label});
         concepts[id] = nodeConcept(v, d.fontes);
+        concepts[id].nexo.central=localRevisions.includes(d);
         for (const qid of new Set([...arr(v.questaoIds), ...arr(v.x?.questaoIds)])) {
           if (typeof qid !== 'string') continue;
           if (!questionNodeLinks.has(qid)) questionNodeLinks.set(qid, []);

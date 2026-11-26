@@ -1,0 +1,483 @@
+[
+  {
+    "id": "cp-6-c01",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+    "tema": "Conceito",
+    "pergunta": "Qual autor define partido como equipe que busca controlar o governo pela vitória em eleições?",
+    "resposta": [
+      "Anthony Downs (1957)"
+    ],
+    "explicacao": "Para Downs, os partidos formulam políticas para ganhar eleições, e não o contrário.",
+    "fonte": "Etapa 09, p. 2, l. 173"
+  },
+  {
+    "id": "cp-6-c02",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+    "tema": "Conceito",
+    "pergunta": "Para Edmund Burke, o que une os membros de um partido?",
+    "resposta": [
+      "Um princípio com o qual todos concordam, para promover o interesse nacional"
+    ],
+    "fonte": "Etapa 09, p. 2, l. 163"
+  },
+  {
+    "id": "cp-6-c03",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+    "tema": "Conceito",
+    "pergunta": "Na definição de Weber, o partido busca poder para quem?",
+    "resposta": [
+      "Para seus líderes, dentro de uma organização"
+    ],
+    "explicacao": "Daí resultam vantagens ideais ou materiais para os membros.",
+    "fonte": "Etapa 09, p. 2, l. 167"
+  },
+  {
+    "id": "cp-6-c04",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+    "tema": "Conceito",
+    "pergunta": "Que três elementos compõem a definição mínima de partido de Sartori?",
+    "resposta": [
+      "Rótulo oficial",
+      "Apresentação em eleições",
+      "Capacidade de levar candidatos a cargos públicos"
+    ],
+    "fonte": "Etapa 09, p. 2, l. 179"
+  },
+  {
+    "id": "cp-6-c05",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.2",
+    "tema": "Funções",
+    "pergunta": "Para Gabriel Almond, a articulação de interesses cabe sobretudo a quem?",
+    "resposta": [
+      "Aos grupos de interesse"
+    ],
+    "explicacao": "Aos partidos cabe a agregação de interesses.",
+    "fonte": "Etapa 09, p. 2, l. 183"
+  },
+  {
+    "id": "cp-6-c06",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.3",
+    "tema": "Downs",
+    "pergunta": "No modelo espacial de Downs, em que condições os partidos convergem para o eleitor mediano?",
+    "resposta": [
+      "Disputa entre dois partidos",
+      "Eleitores concentrados no centro"
+    ],
+    "fonte": "Etapa 09, p. 2, l. 186-187"
+  },
+  {
+    "id": "cp-6-c07",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
+    "tema": "Duverger",
+    "pergunta": "Na classificação de Duverger, de onde nascem os partidos de origem interna?",
+    "resposta": [
+      "De grupos parlamentares e comitês eleitorais"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 221"
+  },
+  {
+    "id": "cp-6-c08",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
+    "tema": "Duverger",
+    "pergunta": "Qual é o exemplo clássico de partido de origem externa em Duverger?",
+    "resposta": [
+      "O Partido Trabalhista britânico"
+    ],
+    "explicacao": "Criado por organização de fora do parlamento (sindicatos).",
+    "fonte": "Etapa 09, p. 3, l. 222-223"
+  },
+  {
+    "id": "cp-6-c09",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+    "tema": "Duverger",
+    "pergunta": "Qual é a unidade de base do partido de quadros em Duverger?",
+    "resposta": [
+      "O comitê"
+    ],
+    "explicacao": "Mnemônico: Quadros = Comitê; Massa = Seção.",
+    "fonte": "Etapa 09, p. 10, l. 913"
+  },
+  {
+    "id": "cp-6-c10",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+    "tema": "Duverger",
+    "pergunta": "Como se financia o partido de massa de Duverger?",
+    "resposta": [
+      "Pela contribuição dos membros"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 227-228"
+  },
+  {
+    "id": "cp-6-c11",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+    "tema": "Duverger",
+    "pergunta": "Que unidades de base Duverger associa aos partidos comunistas e fascistas?",
+    "resposta": [
+      "Célula (comunistas)",
+      "Milícia (fascistas)"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 228-229"
+  },
+  {
+    "id": "cp-6-c12",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+    "tema": "Modelos",
+    "pergunta": "Quem descreveu o partido pega-tudo (catch-all) e em que ano?",
+    "resposta": [
+      "Otto Kirchheimer, 1966"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 241"
+  },
+  {
+    "id": "cp-6-c13",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+    "tema": "Modelos",
+    "pergunta": "O que o partido pega-tudo faz com a bagagem ideológica e com o filiado?",
+    "resposta": [
+      "Reduz a bagagem ideológica",
+      "Desvaloriza o filiado"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 243"
+  },
+  {
+    "id": "cp-6-c14",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
+    "tema": "Modelos",
+    "pergunta": "A que tipo de partido Panebianco opõe o partido profissional-eleitoral?",
+    "resposta": [
+      "Ao partido burocrático de massa"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 254"
+  },
+  {
+    "id": "cp-6-c15",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
+    "tema": "Modelos",
+    "pergunta": "A que eleitor se dirige o apelo do partido profissional-eleitoral?",
+    "resposta": [
+      "Ao eleitor de opinião"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 252-253"
+  },
+  {
+    "id": "cp-6-c16",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
+    "tema": "Modelos",
+    "pergunta": "Quem formulou o conceito de partido cartel e em que ano?",
+    "resposta": [
+      "Richard Katz e Peter Mair, 1995"
+    ],
+    "explicacao": "Mnemônico K-P-K: Katz e Mair = kartel.",
+    "fonte": "Etapa 09, p. 3, l. 258, 259"
+  },
+  {
+    "id": "cp-6-c17",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
+    "tema": "Modelos",
+    "pergunta": "Para que os partidos cartel cooperam entre si?",
+    "resposta": [
+      "Para limitar a entrada de novos competidores"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 261-262"
+  },
+  {
+    "id": "cp-6-c18",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
+    "tema": "Oligarquia",
+    "pergunta": "Quem formulou a lei de ferro da oligarquia?",
+    "resposta": [
+      "Robert Michels (Sociologia dos partidos políticos, 1911)"
+    ],
+    "explicacao": "A banca costuma trocar por Weber.",
+    "fonte": "Etapa 09, p. 3, l. 265"
+  },
+  {
+    "id": "cp-6-c19",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
+    "tema": "Oligarquia",
+    "pergunta": "Que três fatores explicam a tendência oligárquica em Michels?",
+    "resposta": [
+      "Necessidade de especialização",
+      "Competência técnica dos líderes",
+      "Apatia das bases"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 266-267"
+  },
+  {
+    "id": "cp-6-c20",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
+    "tema": "Clivagens",
+    "pergunta": "Quais são as quatro clivagens de Lipset e Rokkan?",
+    "resposta": [
+      "Centro × periferia",
+      "Estado × Igreja",
+      "Campo × cidade",
+      "Capital × trabalho"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 270"
+  },
+  {
+    "id": "cp-6-c21",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
+    "tema": "Clivagens",
+    "pergunta": "Pela tese do congelamento, os sistemas partidários dos anos 1960 refletiam as clivagens de que época?",
+    "resposta": [
+      "Dos anos 1920"
+    ],
+    "fonte": "Etapa 09, p. 3, l. 271"
+  },
+  {
+    "id": "cp-6-c22",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
+    "tema": "Sartori",
+    "pergunta": "Que dois critérios Sartori usou para classificar os sistemas partidários?",
+    "resposta": [
+      "Número de partidos relevantes",
+      "Distância ideológica entre eles"
+    ],
+    "fonte": "Etapa 09, p. 4, l. 312-313"
+  },
+  {
+    "id": "cp-6-c23",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
+    "tema": "Sartori",
+    "pergunta": "O que é potencial de chantagem, para Sartori?",
+    "resposta": [
+      "Capacidade de um partido alterar a direção da competição"
+    ],
+    "fonte": "Etapa 09, p. 8, l. 712"
+  },
+  {
+    "id": "cp-6-c24",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
+    "tema": "Sartori",
+    "pergunta": "Na tipologia de Sartori, quais sistemas são não competitivos?",
+    "resposta": [
+      "Partido único",
+      "Partido hegemônico"
+    ],
+    "fonte": "Etapa 09, p. 4, l. 350"
+  },
+  {
+    "id": "cp-6-c25",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
+    "tema": "Sartori",
+    "pergunta": "O que distingue o partido predominante do hegemônico, em Sartori?",
+    "resposta": [
+      "No predominante há competição livre, mas um partido vence seguidamente com maioria absoluta"
+    ],
+    "explicacao": "No hegemônico os outros partidos são satélites e não há alternância possível.",
+    "fonte": "Etapa 09, p. 4, l. 330"
+  },
+  {
+    "id": "cp-6-c26",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
+    "tema": "Sartori",
+    "pergunta": "Quantos partidos relevantes tem o pluralismo moderado de Sartori?",
+    "resposta": [
+      "De três a cinco"
+    ],
+    "fonte": "Etapa 09, p. 4, l. 338"
+  },
+  {
+    "id": "cp-6-c27",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
+    "tema": "Sartori",
+    "pergunta": "Qual é o tipo de competição no pluralismo polarizado?",
+    "resposta": [
+      "Centrífuga"
+    ],
+    "explicacao": "Mnemônico: polarizado foge (centrífugo); moderado converge (centrípeto).",
+    "fonte": "Etapa 09, p. 4, l. 343-344"
+  },
+  {
+    "id": "cp-6-c28",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
+    "tema": "NEP",
+    "pergunta": "Qual é a fórmula do número efetivo de partidos de Laakso e Taagepera?",
+    "resposta": [
+      "NEP = 1 ÷ Σ p²"
+    ],
+    "explicacao": "p = proporção de votos (NEP eleitoral) ou de cadeiras (NEP parlamentar).",
+    "fonte": "Etapa 09, p. 4, l. 354"
+  },
+  {
+    "id": "cp-6-c29",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
+    "tema": "NEP",
+    "pergunta": "Em torno de quanto fica o NEP parlamentar da Câmara eleita em 2026, segundo o cálculo do material?",
+    "resposta": [
+      "Cerca de 7,3 (números provisórios)"
+    ],
+    "fonte": "Etapa 09, p. 4, l. 360"
+  },
+  {
+    "id": "cp-6-c30",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.5",
+    "tema": "Institucionalização",
+    "pergunta": "Quais são as quatro dimensões de institucionalização de Mainwaring e Scully?",
+    "resposta": [
+      "Estabilidade dos padrões de competição",
+      "Raízes dos partidos na sociedade",
+      "Legitimidade dos partidos e das eleições",
+      "Organização partidária sólida"
+    ],
+    "fonte": "Etapa 09, p. 5, l. 372-373"
+  },
+  {
+    "id": "cp-6-c31",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
+    "tema": "Art. 17",
+    "pergunta": "Partidos podem receber recursos de entidade ou governo estrangeiros?",
+    "resposta": [
+      "Não; a Constituição proíbe"
+    ],
+    "fonte": "Etapa 09, p. 5, l. 417-418"
+  },
+  {
+    "id": "cp-6-c32",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
+    "tema": "Art. 17",
+    "pergunta": "Onde os partidos registram seus estatutos?",
+    "resposta": [
+      "No TSE"
+    ],
+    "explicacao": "A personalidade jurídica é adquirida na forma da lei civil (art. 17, § 2º).",
+    "fonte": "Etapa 09, p. 5, l. 419"
+  },
+  {
+    "id": "cp-6-c33",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.2",
+    "tema": "Art. 17",
+    "pergunta": "Em que eleições a Constituição veda as coligações?",
+    "resposta": [
+      "Nas eleições proporcionais"
+    ],
+    "fonte": "Etapa 09, p. 5, l. 410"
+  },
+  {
+    "id": "cp-6-c34",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+    "tema": "Cláusula",
+    "pergunta": "Que requisitos de votos a cláusula de desempenho exigiu na legislatura seguinte às eleições de 2026?",
+    "resposta": [
+      "2,5% dos votos válidos, com 1,5% em pelo menos um terço das UFs"
+    ],
+    "explicacao": "Alternativa: 13 deputados distribuídos em um terço das UFs (EC nº 97/2017).",
+    "fonte": "Etapa 09, p. 5, l. 424-425"
+  },
+  {
+    "id": "cp-6-c35",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+    "tema": "Cláusula",
+    "pergunta": "Quantos deputados federais a cláusula exigiu na legislatura seguinte às eleições de 2026?",
+    "resposta": [
+      "13, distribuídos em pelo menos um terço das UFs"
+    ],
+    "fonte": "Etapa 09, p. 5, l. 426"
+  },
+  {
+    "id": "cp-6-c36",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+    "tema": "Cláusula",
+    "pergunta": "A partir de que eleições valem os patamares de 3% dos votos ou 15 deputados?",
+    "resposta": [
+      "Das eleições de 2030"
+    ],
+    "fonte": "Etapa 09, p. 5, l. 422"
+  },
+  {
+    "id": "cp-6-c37",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+    "tema": "Cláusula",
+    "pergunta": "O que o partido que não atinge a cláusula de desempenho perde?",
+    "resposta": [
+      "Recursos do fundo partidário",
+      "Acesso gratuito ao rádio e à televisão"
+    ],
+    "explicacao": "Os eleitos mantêm o mandato (art. 17, § 5º).",
+    "fonte": "Etapa 09, p. 5, l. 412-413"
+  },
+  {
+    "id": "cp-6-c38",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+    "tema": "Federação",
+    "pergunta": "Por quanto tempo, no mínimo, os partidos devem permanecer em uma federação?",
+    "resposta": [
+      "Quatro anos"
+    ],
+    "fonte": "Etapa 09, p. 6, l. 478"
+  },
+  {
+    "id": "cp-6-c39",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+    "tema": "Federação",
+    "pergunta": "Federação × fusão: em qual delas os partidos mantêm a identidade?",
+    "resposta": [
+      "Na federação"
+    ],
+    "explicacao": "Na fusão, os partidos deixam de existir e formam um novo.",
+    "fonte": "Etapa 09, p. 8, l. 722, 725"
+  },
+  {
+    "id": "cp-6-c40",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+    "tema": "Federação",
+    "pergunta": "Após a ADI 7.021 (2025), até quando a federação precisa estar registrada no TSE?",
+    "resposta": [
+      "Seis meses antes da eleição"
+    ],
+    "fonte": "Etapa 09, p. 6, l. 480-481"
+  },
+  {
+    "id": "cp-6-c41",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
+    "tema": "Fidelidade",
+    "pergunta": "Em que decisão o STF afastou a perda do mandato por infidelidade para cargos majoritários?",
+    "resposta": [
+      "ADI 5081 (2015)"
+    ],
+    "fonte": "Etapa 09, p. 6, l. 517-518"
+  },
+  {
+    "id": "cp-6-c42",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
+    "tema": "Financiamento",
+    "pergunta": "Em que decisão o STF vedou as doações de empresas a campanhas e partidos?",
+    "resposta": [
+      "ADI 4650 (2015)"
+    ],
+    "fonte": "Etapa 09, p. 6, l. 522"
+  },
+  {
+    "id": "cp-6-c43",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
+    "tema": "Brasil 2026",
+    "pergunta": "Quantos partidos superaram a cláusula de desempenho em 2026, segundo os números provisórios?",
+    "resposta": [
+      "14 dos 30 partidos registrados"
+    ],
+    "fonte": "Etapa 09, p. 7, l. 572"
+  },
+  {
+    "id": "cp-6-c44",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
+    "tema": "Brasil 2026",
+    "pergunta": "Por que a federação PSOL-Rede ficou abaixo da cláusula em 2026, apesar de 4,9% dos votos e 15 eleitos?",
+    "resposta": [
+      "Atingiu 1,5% em só oito UFs e seus eleitos não se distribuíam por nove UFs"
+    ],
+    "fonte": "Etapa 09, p. 7, l. 574-575"
+  },
+  {
+    "id": "cp-6-c45",
+    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
+    "tema": "Câmara",
+    "pergunta": "Que bancada mínima permite a um partido escolher líder na Câmara?",
+    "resposta": [
+      "Um centésimo da Câmara (seis deputados)"
+    ],
+    "explicacao": "RICD, art. 9º, caput e § 4º.",
+    "fonte": "Etapa 09, p. 9, l. 859"
+  }
+]

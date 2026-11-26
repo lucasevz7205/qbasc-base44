@@ -156,6 +156,12 @@ test("404 sem substituto listado, ou sem listagem confirmada, não troca de mode
   assert.deepEqual(noListing.generated(), [FLASH]);
 });
 
+test("decisão com allowFallback:false não troca de modelo nem após 404", async () => {
+  const h = harness({ statusByModel: { [FLASH]: 404 } });
+  await assert.rejects(h.call({ mode: "banca", userMessage: "x", allowFallback: false }), /não encontrado/);
+  assert.deepEqual(h.generated(), [FLASH]);
+});
+
 test("modelo principal ausente da listagem é substituído antes da chamada; nenhum disponível não chama a API", async () => {
   const h = harness({ available: [LITE] });
   const res = await h.call({ mode: "feynman", userMessage: "x" });

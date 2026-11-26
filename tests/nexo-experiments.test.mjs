@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {URL} from 'node:url';
+import {sampleSignal,signal,quantize,wer} from '../src/lib/nexo/experiments.js';
+test('sampling follows frequency and time, including alias',()=>{const a=sampleSignal(5000,8000),b=sampleSignal(5000,16000);assert.equal(a.nyquist,4000);assert.equal(a.alias,3000);assert.equal(a.undersampled,true);assert.equal(b.undersampled,false);assert.equal(b.samples.length,17);assert.ok(a.samples.every(x=>Math.abs(x.y-signal(5000,x.t))<1e-12));});
+test('quantization uses integer level and bounded error',()=>{for(const bits of [2,3,4,8,16])for(const x of [-1,-.37,0,.37,1]){const q=quantize(x,bits);assert.equal(q.levels,2**bits);assert.ok(Number.isInteger(q.code));assert.ok(q.error<=1/(q.levels-1)+1e-12);}});
+test('original WER example and impossible counts',()=>{assert.equal(wer({n:4,s:0,d:0,i:6}),150);assert.throws(()=>wer({n:4,s:3,d:2,i:0}));assert.throws(()=>wer({n:0,s:0,d:0,i:0}));});
+test('actual kit nodes provide the four pilot sources',()=>{const m=JSON.parse(fs.readFileSync(new URL('../src/data/kits/rf/rf-1/mapa.json',import.meta.url)));const nodes=[];function walk(n){nodes.push(n);(n.f||[]).forEach(walk);}m.ramos.forEach(walk);for(const suffix of ['r1.1','r1.2','r5.1','r4.2']){const n=nodes.find(n=>n.id.endsWith('-'+suffix));assert.ok(n.x.e&&n.x.src);}assert.match(nodes.find(n=>n.id.endsWith('-r5.1')).x.ex,/150%/);});
+test('evocative map archived, not active in studio visual lab',()=>{const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');const lab=read('src/components/qb/architect/NexoVisualLab.jsx');assert.doesNotMatch(lab,/visualNeighborhood|AssociationStage|NexoEvocativeMapPreview/);assert.match(read('src/components/qb/architect/NexoEvocativeMapPreview.jsx'),/visualNeighborhood/);assert.match(lab,/sampleSignal/);assert.match(lab,/quantizationWindow/);assert.match(lab,/werComposition/);});
