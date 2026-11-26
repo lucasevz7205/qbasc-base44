@@ -1,0 +1,690 @@
+{
+ "topico": "cp-2",
+ "materia": "cp",
+ "centro": "Sistemas e formas de governo",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "02",
+  "03"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a02-r1",
+   "t": "Sistema político e instituições",
+   "n": "Instituições são o que compõe o sistema político",
+   "x": {
+    "e": "O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político, garantir a organização administrativa e os processos políticos de tomada de decisão.",
+    "src": "Aula 02, p. 5",
+    "cit": "O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político"
+   },
+   "f": [
+    {
+     "id": "est-a02-r1.1",
+     "t": "Instituições: definição materialista e normativa",
+     "n": "Instituição pode ser estrutura material ou conjunto de regras",
+     "x": {
+      "e": "Duas definições de instituições: a materialista (estruturas materiais do poder, como órgãos do Estado) e a normativa (regras, rotinas, valores, normas e crenças).",
+      "src": "Aula 02, p. 5",
+      "cit": "conjunto de regras e rotinas correlacionadas, valores, normas, crenças, modelos cognitivos.",
+      "trap": "Instituição não é só órgão: na definição normativa são regras e rotinas."
+     }
+    },
+    {
+     "id": "est-a02-r1.2",
+     "t": "Três aspectos da organização do Estado (Pedro Lenza)",
+     "n": "Três camadas: forma de governo, sistema de governo e forma de Estado",
+     "x": {
+      "e": "Segundo a sistematização de Pedro Lenza, a organização do Estado tem três aspectos: forma de governo (República ou Monarquia), sistema de governo (presidencialismo ou parlamentarismo) e forma de Estado (Estado unitário ou Federação).",
+      "src": "Aula 02, p. 6",
+      "cit": "forma de governo: República ou Monarquia; sistema de governo: presidencialismo ou parlamentarismo; forma de Estado: Estado unitário ou Federação.",
+      "trap": "Forma de Estado (unitário ou federado) não é forma de governo (república ou monarquia).",
+      "nota": "Divergência de numeração: a p. 4 diz que a aula trata dos 'tópicos 3 e 4 do Edital'; neste mapa a numeração segue o cargo 11 (cp-1 Regimes políticos, cp-2 Sistemas e formas de governo)."
+     }
+    },
+    {
+     "id": "est-a02-r1.3",
+     "t": "Soberania x autonomia",
+     "n": "Soberania é poder de autodeterminação; autonomia é administrar o próprio, dentro da soberania",
+     "x": {
+      "e": "A soberania é o poder de autodeterminação do Estado, que só encontra limites na determinação do próprio Estado. A autonomia é a capacidade das entidades estatais internas (Estados-membros, Distrito Federal e Municípios) de compor seu governo e prover sua administração segundo o ordenamento jurídico vigente.",
+      "src": "Aula 02, p. 10",
+      "cit": "É o poder de autodeterminação",
+      "trap": "Soberania é do Estado (Nação); autonomia é das entidades internas, dentro do ordenamento jurídico. Não são sinônimos.",
+      "nota": "Trecho da p. 10 com a ordem de leitura embaralhada no texto-fonte; o cit acima é a parte legível."
+     }
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r2",
+   "t": "Forma de Estado: unitário e federado",
+   "n": "Estado federado divide o poder entre governo central e unidades autônomas",
+   "x": {
+    "e": "No Estado unitário o poder é centralizado em um governo nacional; no Estado federado o poder é compartilhado entre um governo central e unidades políticas autônomas.",
+    "src": "Aula 02, p. 7",
+    "cit": "O Estado Unitário é uma forma de organização política em que o poder político é centralizado em um único governo nacional"
+   },
+   "f": [
+    {
+     "id": "est-a02-r2.1",
+     "t": "Estado federado e autonomia dos entes",
+     "n": "Cada unidade federada tem constituição e autoridade legislativa própria",
+     "x": {
+      "e": "Nas unidades autônomas do Estado federado, cada uma tem constituição própria e competência legislativa sobre questões específicas (auto-organização, autoadministração e autolegislação). O governo federal cuida de temas nacionais, como defesa, política externa e moeda.",
+      "src": "Aula 02, p. 7",
+      "cit": "Cada uma dessas unidades políticas autônomas possui sua própria constituição e autoridade legislativa para tomar decisões sobre questões específicas",
+      "trap": "Autonomia dos estados não é soberania: a soberania é do Estado Federal."
+     }
+    },
+    {
+     "id": "est-a02-r2.2",
+     "t": "Origem do federalismo e a Confederação",
+     "n": "A Confederação fracassou; a Federação combina soberania única com autonomias",
+     "x": {
+      "e": "Na Confederação, os estados se unem voluntariamente, mantêm a soberania e o governo central não tem poder de império. A fórmula federalista criou uma soberania una e indivisível, com autonomia para os entes.",
+      "src": "Aula 02, p. 9",
+      "cit": "Um Estado Confederado, na definição clássica, é uma forma de organização política em que vários estados ou entidades políticas independentes se unem voluntariamente para formar uma associação ou liga",
+      "trap": "Confederação: poder central sem império; Federação: soberania una e indivisível."
+     }
+    },
+    {
+     "id": "est-a02-r2.3",
+     "t": "Federalismo segundo Dalmo Dallari",
+     "n": "Base jurídica é a Constituição; não existe secessão",
+     "x": {
+      "e": "Para Dallari, a base jurídica do Estado Federal é a Constituição, não um tratado. Os entes federados perdem a condição de Estados independentes, e não há direito de secessão, pois a soberania é exclusiva do Estado Federal.",
+      "src": "Aula 02, p. 16",
+      "cit": "A base jurídica fundamental de um Estado Federal é a Constituição, não um tratado ou acordo.",
+      "trap": "No Estado Federal não existe o direito de secessão, diferente da Confederação."
+     }
+    },
+    {
+     "id": "est-a02-r2.4",
+     "t": "Arranjos federativos (Maria das Graças Rua)",
+     "n": "Três arranjos: dual, centralizado e cooperativo",
+     "x": {
+      "e": "Maria das Graças Rua sistematiza três arranjos federativos (dual, centralizado e cooperativo) e, quanto à hierarquia entre os entes, a distinção entre federalismo simétrico e assimétrico.",
+      "src": "Aula 02, p. 17",
+      "cit": "As Federações podem adotar diferentes tipos de arranjos federativos: federalismo dual, federalismo centralizado e federalismo cooperativo."
+     },
+     "f": [
+      {
+       "id": "est-a02-r2.4.1",
+       "t": "Federalismo dual",
+       "n": "Separação rígida de soberanias, cada ente age na sua esfera",
+       "x": {
+        "e": "No federalismo dual há separação rígida de soberanias entre o governo federal e os estados, mesmo que compartilhem o território, e cada ente age de forma independente na sua esfera de competência.",
+        "src": "Aula 02, p. 17",
+        "cit": "O federalismo dual é caracterizado pela separação rígida de soberanias entre o governo federal e os estados"
+       }
+      },
+      {
+       "id": "est-a02-r2.4.2",
+       "t": "Federalismo centralizado e cooperativo",
+       "n": "Centralizado: políticas formuladas pela União; cooperativo: ações conjuntas",
+       "x": {
+        "e": "No federalismo centralizado, os estados e municípios executam diretrizes federais. No cooperativo, há graus variados de intervenção federal e ações conjuntas entre os níveis de governo, mantendo as unidades autonomia decisória e capacidade de financiamento.",
+        "src": "Aula 02, p. 17",
+        "cit": "Esse arranjo permite graus variados de intervenção do governo federal e envolve ações conjuntas entre os diferentes níveis de governo",
+        "trap": "No federalismo centralizado os entes subnacionais executam, não formulam, as políticas."
+       }
+      },
+      {
+       "id": "est-a02-r2.4.3",
+       "t": "Federalismo simétrico e assimétrico",
+       "n": "Assimétrico: estados de mesmo nível com competências diferentes",
+       "x": {
+        "e": "No federalismo simétrico os estados de igual nível têm competências semelhantes e o mesmo número de senadores. No assimétrico, não têm as mesmas competências nem necessariamente o mesmo número de senadores. A fonte observa que a Constituição brasileira trata os estados de modo idêntico, o que é um 'erro de simetria'.",
+        "src": "Aula 02, p. 17",
+        "cit": "No federalismo assimétrico, os estados de igual nível não exercem as mesmas competências e não necessariamente têm o mesmo número de representantes no Senado.",
+        "trap": "O Brasil é descrito pela fonte com 'erro de simetria' (p. 18), não como exemplo de assimetria pura."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r3",
+   "t": "Forma de governo: monarquia e república",
+   "n": "Forma de governo responde a quem exerce a autoridade e como ela é transmitida",
+   "x": {
+    "e": "Forma de governo diz respeito ao modo pelo qual o poder se organiza e se exerce, quem tem a autoridade legítima e como se chegou a essa autoridade.",
+    "src": "Aula 02, p. 21",
+    "cit": "A forma de governo determina a estrutura fundamental de como um país é governado."
+   },
+   "f": [
+    {
+     "id": "est-a02-r3.1",
+     "t": "Monarquia",
+     "n": "Chefe de Estado com poder em geral hereditário",
+     "x": {
+      "e": "Na monarquia, o chefe de Estado geralmente detém o poder por hereditariedade, e a legitimidade costuma vir da história ou da tradição. Nas monarquias constitucionais, o governo é conduzido pelo parlamento.",
+      "src": "Aula 02, p. 21",
+      "cit": "um dos sistemas mais antigos e tradicionais, a monarquia é caracterizada por um chefe de Estado que geralmente detém o poder por hereditariedade",
+      "trap": "Monarquia constitucional: o monarca reina, mas não governa; a direção do Estado cabe ao parlamento."
+     }
+    },
+    {
+     "id": "est-a02-r3.2",
+     "t": "República",
+     "n": "Poder não hereditário, baseado em representação e soberania popular",
+     "x": {
+      "e": "Na república, o poder não é hereditário nem vinculado a uma família ou monarca; o chefe de Estado e/ou de governo não tem cargo hereditário e sua autoridade é limitada pela constituição ou por leis.",
+      "src": "Aula 02, p. 22",
+      "cit": "a República é uma forma de governo na qual o poder político não é hereditário e não está vinculado a uma única família ou monarca",
+      "trap": "Na república o cargo não é hereditário, mas a fonte não diz que todo chefe de governo é eleito diretamente."
+     }
+    },
+    {
+     "id": "est-a02-r3.3",
+     "t": "República: forma e conteúdo (Rui Barbosa)",
+     "n": "Forma republicana não basta: importa o conteúdo, a justiça e a liberdade",
+     "x": {
+      "e": "Rui Barbosa definiu a república pela forma (três poderes, sendo os dois primeiros derivados de eleição popular), mas alertou que a forma sem conteúdo, valores e princípios republicanos não basta.",
+      "src": "Aula 02, p. 23",
+      "cit": "A república é a democracia e a liberdade na lei.",
+      "trap": "A forma republicana (quem escolhe) não garante o conteúdo republicano (justiça e liberdade)."
+     }
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r4",
+   "t": "Sistema de governo: divisão e relação entre poderes",
+   "n": "Sistema de governo trata da divisão de poderes e de como eles se relacionam",
+   "x": {
+    "e": "O sistema de governo se refere à divisão do poder entre Executivo, Legislativo e Judiciário e à relação entre eles, o que define parlamentarismo, presidencialismo e, na fonte, semipresidencialismo.",
+    "src": "Aula 02, p. 23",
+    "cit": "Sistema de Governo se refere a como o poder político está dividido e como os detentores do poder se relacionam."
+   },
+   "f": [
+    {
+     "id": "est-a02-r4.1",
+     "t": "Parlamentarismo",
+     "n": "Executivo sai do Parlamento e depende da sua confiança",
+     "x": {
+      "e": "No parlamentarismo, o Executivo emerge do Parlamento e é responsável perante ele. O chefe de governo (primeiro-ministro) é indicado pelo chefe de Estado e assume após aprovação do parlamento.",
+      "src": "Aula 02, p. 25",
+      "cit": "O Chefe de Governo (Primeiro Ministro) é indicado pelo Chefe de Estado e assume o cargo após a aprovação pelo parlamento."
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.1.1",
+       "t": "Chefe de Estado e chefe de Governo",
+       "n": "Chefe de Estado é representativo; governo é chefiado pelo primeiro-ministro",
+       "x": {
+        "e": "No parlamentarismo, o chefe de Estado (monarca ou presidente) não participa das decisões políticas de governo e tem papel representativo. O chefe de governo é a figura central do poder executivo.",
+        "src": "Aula 02, p. 25",
+        "cit": "No parlamentarismo, o Chefe de Estado (monarca ou Presidente da República) não participa das decisões políticas de governo",
+        "trap": "Em república parlamentarista existe presidente, mas ele não é o chefe de governo."
+       }
+      },
+      {
+       "id": "est-a02-r4.1.2",
+       "t": "Responsabilidade política e voto de desconfiança",
+       "n": "Perda da maioria ou voto de desconfiança derruba o primeiro-ministro",
+       "x": {
+        "e": "O primeiro-ministro não tem mandato de prazo determinado. A perda da maioria parlamentar ou um voto de desconfiança podem levar à sua demissão.",
+        "src": "Aula 02, p. 25",
+        "cit": "A perda da maioria parlamentar ou um voto de desconfiança podem determinar a demissão do Primeiro Ministro.",
+        "trap": "No parlamentarismo o primeiro-ministro não tem mandato fixo."
+       }
+      },
+      {
+       "id": "est-a02-r4.1.3",
+       "t": "Dissolução do parlamento",
+       "n": "Dissolução pode ocorrer por interesse do primeiro-ministro",
+       "x": {
+        "e": "O parlamento pode ser dissolvido quando o primeiro-ministro acredita que eleições gerais ampliarão sua maioria, ou quando recebe voto de desconfiança mas acredita que o parlamento está em desacordo com a vontade popular.",
+        "src": "Aula 02, p. 26",
+        "cit": "A dissolução do parlamento pode ocorrer quando o Primeiro Ministro acredita que a realização de eleições gerais pode resultar em uma ampliação de sua maioria parlamentar."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r4.2",
+     "t": "Presidencialismo",
+     "n": "Presidente acumula chefia de Estado e de governo e tem mandato fixo",
+     "x": {
+      "e": "No presidencialismo, o presidente é chefe de Estado e de governo e é eleito diretamente pelo povo, com mandato fixo. O Executivo não depende de confiança do Legislativo para se manter.",
+      "src": "Aula 02, p. 27",
+      "cit": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções."
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.2.1",
+       "t": "Eleição direta e mandato fixo",
+       "n": "Presidente eleito pelo povo com prazo determinado",
+       "x": {
+        "e": "O presidente é escolhido diretamente pelo povo, e o prazo fixo do mandato evita uma monarquia eletiva.",
+        "src": "Aula 02, p. 27",
+        "cit": "O Presidente da República é escolhido diretamente pelo povo em eleições populares, não apenas pelos parlamentares.",
+        "trap": "O presidente é eleito pelo povo, não pelos parlamentares."
+       }
+      },
+      {
+       "id": "est-a02-r4.2.2",
+       "t": "Veto presidencial",
+       "n": "Veto evita a ditadura legislativa; é relativo e pode ser derrubado",
+       "x": {
+        "e": "O presidente tem poder de veto para evitar o risco de uma ditadura legislativa. Ele é meramente impeditivo e relativo, podendo o Congresso rejeitá-lo, em regra por maioria de dois terços.",
+        "src": "Aula 02, p. 32",
+        "cit": "caráter relativo daquela faculdade, meramente impeditiva, sem efeito absoluto",
+        "trap": "O veto é relativo: o Congresso pode rejeitá-lo (p. 32)."
+       }
+      },
+      {
+       "id": "est-a02-r4.2.3",
+       "t": "Impedimento (impeachment) do presidente",
+       "n": "Presidente só cai por crime de responsabilidade",
+       "x": {
+        "e": "Como o presidente tem legitimidade popular direta e mandato fixo, a saída do cargo se dá por processo de responsabilidade por crime, e não por perda de apoio político, como no parlamentarismo.",
+        "src": "Aula 02, p. 31",
+        "cit": "Se não houver crime cometido, o Presidente da República não pode ser",
+        "trap": "No presidencialismo, perda de apoio político não derruba o presidente.",
+        "nota": "O trecho da p. 31 que trata das formas de derrubar o governo está embaralhado no texto-fonte; a regra do crime de responsabilidade foi conferida pela parte legível da p. 31 e pela opinião de Temer na p. 29 (que não é a regra de direito)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r4.3",
+     "t": "Semipresidencialismo",
+     "n": "Sistema misto com presidente eleito e primeiro-ministro dependente do parlamento",
+     "x": {
+      "e": "No semipresidencialismo coexistem dois centros de poder: um presidente eleito diretamente pelo povo e um primeiro-ministro responsável pela condução do governo e dependente da confiança do Parlamento.",
+      "src": "Aula 02, p. 32",
+      "cit": "O semipresidencialismo é um sistema de governo misto, situado entre o presidencialismo e o parlamentarismo, no qual coexistem dois centros de poder político"
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.3.1",
+       "t": "Debate sobre o semipresidencialismo no Brasil",
+       "n": "Está em debate, mas exigiria mudança constitucional",
+       "x": {
+        "e": "A fonte informa que há debate na Câmara dos Deputados sobre implantar o semipresidencialismo, o que exigiria mudar a Constituição, que define hoje o sistema brasileiro.",
+        "src": "Aula 02, p. 33",
+        "cit": "Está em debate no Brasil, mais especificamente na Câmara dos Deputados, discussões sobre implantação do semipresidencialismo.",
+        "trap": "O Brasil é presidencialista (p. 21 e 37); o semipresidencialismo é apenas tema de debate."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r5",
+   "t": "Controle entre poderes e crises de governo",
+   "n": "Controle entre poderes é institucional, não moral",
+   "x": {
+    "e": "Como os poderes se controlam e como cada sistema lida com crises: a separação de poderes é mantida por freios e contrapesos.",
+    "src": "Aula 02, p. 34",
+    "cit": "Afinal, como Madison nos lembra, os seres humanos não são governados por anjos, mas sim por seus semelhantes"
+   },
+   "f": [
+    {
+     "id": "est-a02-r5.1",
+     "t": "Natureza humana e freios e contrapesos",
+     "n": "O poder precisa de contrapoder para não ser abusado",
+     "x": {
+      "e": "Os Federalistas partem de uma visão realista da natureza humana: quem tem poder tende a abusar dele, então o poder deve ser controlado por um contrapoder, o sistema de freios e contrapesos.",
+      "src": "Aula 02, p. 34",
+      "cit": "é necessário que haja um contrapoder - sistema de freios e contrapesos",
+      "trap": "Freios e contrapesos têm base em Montesquieu, mas os Federalistas trazem nuances próprias."
+     },
+     "f": [
+      {
+       "id": "est-a02-r5.1.1",
+       "t": "Divisão do poder em três esferas",
+       "n": "Três poderes harmônicos e independentes, com freios e contrapesos",
+       "x": {
+        "e": "Primeiro remédio dos Federalistas para os 'males da república': dividir o poder em três esferas harmônicas e independentes, com o papel de ser o sistema de freios e contrapesos contra todo tipo de abuso.",
+        "src": "Aula 02, p. 11",
+        "cit": "Divisão do poder em três esferas harmônicas e independentes",
+        "trap": "O primeiro remédio é a divisão do poder, não a proteção de minorias (que é o segundo)."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.2",
+       "t": "Direitos das minorias e proporcionalidade",
+       "n": "Segundo remédio: direitos plenos das minorias e representação proporcional",
+       "x": {
+        "e": "Segundo remédio: garantir os direitos plenos de expressão das minorias políticas, criando o critério de proporcionalidade na representação política.",
+        "src": "Aula 02, p. 11",
+        "cit": "Os direitos plenos de expressão das minorias políticas",
+        "trap": "A proporcionalidade é critério de representação, não de divisão de poderes."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.3",
+       "t": "Senado e controle dos Estados",
+       "n": "Senado mantém o controle da União pelos Estados federados",
+       "x": {
+        "e": "Terceiro remédio: a criação do Senado como forma de manter o controle do Governo da União pelos Estados federados.",
+        "src": "Aula 02, p. 11",
+        "cit": "A criação do Senado como forma de manter o controle do Governo da União pelos Estados Federados",
+        "trap": "O Senado, no remédio dos Federalistas, serve de controle dos Estados sobre a União."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.4",
+       "t": "Declaração de Direitos (Bill of Rights)",
+       "n": "Quarto remédio: direitos civis em dez emendas",
+       "x": {
+        "e": "Quarto remédio: a Declaração de Direitos Civis (Bill of Rights), com dez emendas à Constituição.",
+        "src": "Aula 02, p. 12",
+        "cit": "A Declaração de Direitos Civis (Bill of rights - 10 emendas à Constituição)",
+        "trap": "O Bill of Rights são as dez emendas; não é o mesmo que a separação de poderes."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r5.2",
+     "t": "Controle institucional, não moral",
+     "n": "O controle entre poderes é de ordem institucional",
+     "x": {
+      "e": "Para os Federalistas, a separação de poderes não se apoia num povo virtuoso, mas em conter os interesses e ambições de quem busca poder. Por isso o controle entre poderes é institucional, e não moral.",
+      "src": "Aula 02, p. 35",
+      "cit": "não é de ordem moral, mas sim institucional",
+      "trap": "A separação de poderes não depende de virtude moral dos governantes."
+     }
+    },
+    {
+     "id": "est-a02-r5.3",
+     "t": "Crises: parlamentarismo e presidencialismo",
+     "n": "Parlamentarismo resolve crise trocando o gabinete; presidencialismo tende a mais tensão",
+     "x": {
+      "e": "No parlamentarismo, crises de governo são enfrentadas com a dissolução do gabinete. No presidencialismo, a legitimidade popular direta do presidente e o mandato fixo geram potencial de conflito com o Legislativo.",
+      "src": "Aula 02, p. 30",
+      "cit": "No parlamentarismo, as crises de governo, crises políticas e até mesmo crises econômicas geralmente são enfrentadas com a dissolução do Gabinete"
+     },
+     "f": [
+      {
+       "id": "est-a02-r5.3.1",
+       "t": "Presidencialismo e tensão entre poderes",
+       "n": "Presidencialismo é mais propenso a tensões entre Executivo e Legislativo",
+       "x": {
+        "e": "A fonte afirma que o presidencialismo tende a gerar mais tensões, pois a legitimidade popular do presidente pode gerar conflito com o Legislativo, e a estabilidade depende da maioria parlamentar e do prestígio do presidente.",
+        "src": "Aula 02, p. 31",
+        "cit": "O presidencialismo é um sistema que tende a gerar mais tensões.",
+        "trap": "No parlamentarismo a governabilidade é quase pressuposta; no presidencialismo não é garantida."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r5.4",
+     "t": "Regime de coalizão",
+     "n": "Em parlamentos multipartidários, o consenso sustenta a chefia de gabinete",
+     "x": {
+      "e": "Nos parlamentos multipartidários, o regime de coalizão é fundamental: o Legislativo deve chegar a um amplo consenso ao definir o nome para a chefia de gabinete, garantindo legitimidade e governabilidade.",
+      "src": "Aula 02, p. 31",
+      "cit": "Regime de Coalizão: Nos parlamentos multipartidaristas, o regime de coalizão é fundamental para o sistema.",
+      "trap": "A fonte aplica o regime de coalizão aos parlamentos multipartidaristas (p. 31); não o trate como regra geral de todo sistema."
+     }
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a03-r1",
+   "t": "Sistema político: forma, sistema e regime",
+   "n": "O sistema político se organiza em camadas: forma de Estado, forma de governo, sistema de governo e regime.",
+   "x": {
+    "e": "Sistema político é o conjunto de instituições que definem a constituição do poder político do Estado e os processos de tomada de decisão. O texto o separa em camadas.",
+    "trap": "Misturar as camadas: forma de Estado (território), forma de governo (quem governa), sistema de governo (divisão entre poderes) e regime (regras do exercício do poder).",
+    "src": "Aula 03, p. 5",
+    "cit": "O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político do Estado"
+   },
+   "nota": "Introdução (p. 3) anuncia Sistema Eleitoral e Representação Política como temas da aula; o item do edital listado na p. 4 é apenas '6 Poderes e relações entre poderes'; o conteúdo de Poderes ocupa as pp. 5-47. O mapa segue o conteúdo. Registrado sem resolver.",
+   "f": [
+    {
+     "id": "est-a03-r1.1",
+     "t": "Forma de Estado",
+     "n": "Forma de Estado = organização territorial do poder: unitário ou federado.",
+     "x": {
+      "e": "Refere-se à organização espacial e territorial do poder, em centralização ou descentralização. Formas comuns: Estado Unitário e Estado Federado.",
+      "trap": "Atribuir à forma de Estado quem governa; isso é forma de governo.",
+      "src": "Aula 03, p. 5",
+      "cit": "Forma de Estado se refere à organização espacial e territorial do poder político dentro de um país"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r1.2",
+     "t": "Forma de governo",
+     "n": "Forma de governo = estrutura de quem governa, base de legitimidade e transmissão da autoridade.",
+     "x": {
+      "e": "Determina a estrutura fundamental de como o país é governado: quem detém o poder, sua legitimidade e como a autoridade é transmitida. Palavra-chave: autoridade. No Brasil, República.",
+      "trap": "Confundir forma de governo (quem governa) com sistema de governo (como os poderes se relacionam).",
+      "src": "Aula 03, p. 5",
+      "cit": "A Forma de Governo determina a estrutura fundamental de como um país é governado"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r1.3",
+     "t": "Sistema de governo",
+     "n": "Sistema de governo = como o poder se divide e como os detentores se relacionam; no Brasil, presidencialista.",
+     "x": {
+      "e": "Trata de como o poder político está dividido e de como os detentores do poder se relacionam. A noção-chave é divisão e relação entre poderes. No Brasil: presidencialista (p. 7).",
+      "trap": "Tratar sistema de governo como regime político; a fonte separa os dois conceitos.",
+      "src": "Aula 03, p. 6",
+      "cit": "Sistema de Governo se refere a como o poder político está dividido e como os detentores do poder se relacionam"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r1.4",
+     "t": "Regime político",
+     "n": "Regime político = forma como o poder é exercido, com regras e instituições; no Brasil, democrático.",
+     "x": {
+      "e": "Diz respeito à estrutura institucional e às regras que estabelecem o exercício do poder político. Brasil: Estado Democrático de Direito (art. 1º).",
+      "trap": "Confundir regime (democrático ou autoritário) com sistema de governo (presidencialista ou parlamentarista).",
+      "src": "Aula 03, p. 6",
+      "cit": "Assim, aqui estamos falando da forma como o poder é exercido, quais as regras e as instituições usadas para estabelecer o exercício do poder político do Estado"
+     },
+     "nota": "A definição de Duverger no PDF está embaralhada (p. 6); a citação usada é trecho legível do mesmo parágrafo.",
+     "f": []
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r4",
+   "t": "Presidencialismo: noções gerais",
+   "n": "Presidencialismo: separação entre os poderes e Presidente como chefe de Estado e de governo, eleito diretamente.",
+   "x": {
+    "e": "Forma em que o Executivo é independente do Legislativo, com chefia de Estado e de governo acumulada pelo Presidente, eleito diretamente e por mandato fixo. Origem: Constituição dos EUA (1787).",
+    "trap": "Achar que, no presidencialismo, a formação de maiorias é irrelevante: no Brasil ela é central (ramo 6).",
+    "src": "Aula 03, p. 19",
+    "cit": "O presidencialismo tem suas origens na filosofia política dos Estados Unidos"
+   },
+   "f": [
+    {
+     "id": "est-a03-r4.1",
+     "t": "Definição e separação",
+     "n": "O presidencialismo se caracteriza pela separação e independência entre Executivo, Legislativo e Judiciário.",
+     "x": {
+      "e": "Definido pela separação e independência entre os três poderes. O Executivo não depende de confiança parlamentar para permanecer no cargo, salvo impeachment.",
+      "trap": "Dizer que o Presidente depende de maioria parlamentar para permanecer no cargo: no presidencialismo não depende.",
+      "src": "Aula 03, p. 19",
+      "cit": "O presidencialismo é caracterizado, principalmente, pela separação e independência entre os poderes Executivo, Legislativo e Judiciário"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r4.2",
+     "t": "Chefia de Estado e de governo",
+     "n": "No presidencialismo, o Presidente é chefe de Estado e de governo ao mesmo tempo.",
+     "x": {
+      "e": "A chefia de Estado (representação) e a de governo (direção da administração) ficam com o Presidente, que é chefe de governo unipessoal.",
+      "trap": "Achar que o chefe de governo é um primeiro-ministro, papel do parlamentarismo.",
+      "src": "Aula 03, p. 21",
+      "cit": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções"
+     },
+     "nota": "O Resumo (p. 49) atribui a Dallari as características 'estabilidade, legitimidade direta, independência dos poderes'; o texto didático não cita Dallari nessa passagem. Registrado sem resolver.",
+     "f": [
+      {
+       "id": "est-a03-r4.2.1",
+       "t": "Eleição direta",
+       "n": "O Presidente é eleito diretamente pelo povo, e não só pelos parlamentares.",
+       "x": {
+        "e": "Eleito diretamente pelo povo; mesmo que seu partido receba menos votos, pode eleger o Presidente, pois o voto é na figura do candidato (personalismo).",
+        "trap": "Achar que o partido que elege o Presidente terá maioria no Congresso.",
+        "src": "Aula 03, p. 21",
+        "cit": "O Presidente da República é escolhido diretamente pelo povo em eleições populares, não apenas pelos parlamentares"
+       },
+       "f": []
+      },
+      {
+       "id": "est-a03-r4.2.2",
+       "t": "Mandato determinado",
+       "n": "O mandato é fixo: a saída antecipada ocorre por impeachment ou eleição.",
+       "x": {
+        "e": "Prazo determinado para o mandato, evitando a permanência como monarquia eletiva. O Presidente só deixa o cargo antes do fim por impeachment, em circunstâncias graves.",
+        "trap": "Confundir mandato fixo com ausência de impeachment.",
+        "src": "Aula 03, p. 21",
+        "cit": "Um prazo determinado é estabelecido para o mandato do Presidente da República"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r4.3",
+     "t": "Gabinete e alianças",
+     "n": "Ministros seguem a política do Presidente, mas no Brasil os ministérios resultam de alianças.",
+     "x": {
+      "e": "O Presidente monta o ministério, e os ministros devem seguir sua política, não a do partido. No Brasil, porém, os ministérios costumam resultar de alianças com os partidos da base.",
+      "trap": "Tratar o ministério, no Brasil, como escolha livre do Presidente; a fonte aponta alianças e acordos.",
+      "src": "Aula 03, p. 20",
+      "cit": "Por isso, os ministros devem seguir a política do presidente e não sua ou do seu partido"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r4.4",
+     "t": "Veto e iniciativa",
+     "n": "O veto nega leis do Legislativo, mas o Congresso pode derrubá-lo.",
+     "x": {
+      "e": "O veto nega, total ou parcialmente, a aprovação das leis; o Legislativo pode derrubá-lo. O Presidente também tem iniciativa legislativa, inclusive privativa, e o veto evita uma ditadura legislativa.",
+      "trap": "Tratar o veto como poder absoluto: a fonte diz que ele é relativo e pode ser derrubado.",
+      "src": "Aula 03, p. 21",
+      "cit": "O Presidente tem o poder de veto para evitar o risco de uma ditadura legislativa"
+     },
+     "f": []
+    }
+   ],
+   "aulaOrigem": "03"
+  },
+  {
+   "id": "est-a03-r5",
+   "t": "Presidencialismo no Brasil: história e Constituições",
+   "n": "O presidencialismo brasileiro mudou com cada Constituição; a de 1988 o consolidou após plebiscito.",
+   "x": {
+    "e": "Trajetória: República Velha com oligarquias, breve parlamentarismo (1961-63), regime militar com fortalecimento do Presidente, Constituição de 1988 e plebiscito de 1993.",
+    "trap": "Tratar o parlamentarismo de 1961-63 como solução definitiva: ele terminou com plebiscito em 1963.",
+    "src": "Aula 03, p. 24",
+    "cit": "A história do presidencialismo brasileiro também experimentou um breve interlúdio parlamentarista entre 1961 e 1963"
+   },
+   "f": [
+    {
+     "id": "est-a03-r5.1",
+     "t": "Primeira República e parlamentarismo de 1961-63",
+     "n": "O parlamentarismo de 1961-63 foi revertido por plebiscito em 1963.",
+     "x": {
+      "e": "Na República Velha, governos oligárquicos e eleições restritas. Em 1961-63, o Presidente era escolhido indiretamente pelo Congresso, após a renúncia de Jânio Quadros. O plebiscito de 1963 devolveu o presidencialismo.",
+      "trap": "Confundir o plebiscito de 1963 com o de 1993.",
+      "src": "Aula 03, p. 25",
+      "cit": "terminando com o retorno ao presidencialismo em 1963 após um plebiscito no qual o eleitorado escolheu o presidencialismo"
+     },
+     "f": []
+    },
+    {
+     "id": "est-a03-r5.2",
+     "t": "Constituições de 1891 a 1967",
+     "n": "A tripartição foi formal em 1891-1946 e 1967; o Estado Novo reduziu o Legislativo.",
+     "x": {
+      "e": "As Constituições republicanas adotaram os três poderes. A de 1937 reduziu o papel do Legislativo no Estado Novo; a de 1967 manteve a divisão formal, com centralização no Executivo.",
+      "trap": "Achar que 1967 aboliu a divisão formal dos poderes; a fonte diz que ela foi prevista, mas o Executivo centralizou.",
+      "src": "Aula 03, p. 27",
+      "cit": "regime ditatorial, diminuiu o papel do Poder Legislativo"
+     },
+     "f": [
+      {
+       "id": "est-a03-r5.2.1",
+       "t": "Constituição de 1946",
+       "n": "A CF/1946 restaurou a tripartição e vedou delegar atribuições.",
+       "x": {
+        "e": "Retorno da tripartição de Montesquieu. O cidadão investido na função de um poder não pode exercer a de outro, e é vedado a qualquer poder delegar atribuições.",
+        "trap": "Atribuir essa vedação à CF/1988, que prevê leis delegadas (art. 68).",
+        "src": "Aula 03, p. 27",
+        "cit": "§ 2o - É vedado a qualquer dos Poderes delegar atribuições"
+       },
+       "nota": "Ver nota no nó est-a03-r2.3 sobre o Resumo (p. 48) e 'competências indelegáveis'.",
+       "f": []
+      },
+      {
+       "id": "est-a03-r5.2.2",
+       "t": "Constituição de 1967 e regime militar",
+       "n": "Divisão formal mantida, mas o Executivo centralizou o poder no regime militar.",
+       "x": {
+        "e": "Apesar da divisão formal dos poderes, houve centralização no Poder Executivo Federal, no contexto do Regime Militar (1964-1985).",
+        "trap": "Ver no regime militar a extinção do Legislativo; a fonte fala em centralização no Executivo.",
+        "src": "Aula 03, p. 28",
+        "cit": "Apesar de estar prevista formalmente a divisão dos Poderes, houve a centralização no Poder Executivo Federal"
+       },
+       "f": []
+      }
+     ]
+    },
+    {
+     "id": "est-a03-r5.3",
+     "t": "Constituição de 1988 e plebiscito de 1993",
+     "n": "A CF/88 manteve a separação e o presidencialismo; o plebiscito de 1993 confirmou a escolha.",
+     "x": {
+      "e": "A Constituinte: o projeto inicial sugeria modelo parlamentarista, mas prevaleceu o presidencialismo, reafirmado em plebiscito de 1993. A CF/88 preserva a separação de Montesquieu, com diferenças como medidas provisórias e iniciativa presidencial.",
+      "trap": "Dizer que a CF/88 adotou o parlamentarismo; prevaleceu o presidencialismo.",
+      "src": "Aula 03, p. 25",
+      "cit": "a opção pelo presidencialismo acabou prevalecendo"
+     },
+     "nota": "A p. 25 diz que o projeto inicial sugeria 'um modelo parlamentarista, com importantes poderes atribuídos ao presidente da República (um formato semipresidencialista)': a expressão é ambígua no texto-fonte. Registrado sem resolver.",
+     "f": []
+    }
+   ],
+   "aulaOrigem": "03"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "forma de Estado depende da divisão de unidades",
+   "de": "est-a02-r2",
+   "para": "est-a02-r1"
+  },
+  {
+   "rotulo": "forma e sistema de governo compõem a organização do Estado",
+   "de": "est-a02-r3",
+   "para": "est-a02-r4"
+  },
+  {
+   "rotulo": "sistema de governo exige controle entre poderes",
+   "de": "est-a02-r4",
+   "para": "est-a02-r5"
+  },
+  {
+   "rotulo": "noções gerais levam à história brasileira",
+   "de": "est-a03-r4",
+   "para": "est-a03-r5"
+  }
+ ],
+ "fontesCentral": {}
+}

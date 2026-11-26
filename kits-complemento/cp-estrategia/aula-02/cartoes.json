@@ -1022,13 +1022,14 @@
   "no": "est-a02-r6.1",
   "topico": "cp-1",
   "tema": "Regime político e os demais aspectos do Estado",
-  "pergunta": "Segundo alguns autores, o regime político está contido em qual outro aspecto?",
+  "pergunta": "Segundo alguns autores citados na Aula 02, em que outro aspecto o regime político estaria contido?",
   "resposta": [
    "Sistema de governo"
   ],
   "explicacao": "A fonte grafa \"sistema e governo\" (erro de digitação).",
   "fonte": "Aula 02, p. 36",
-  "citacao": "Alguns autores afirmam que o regime político está dentro do sistema e governo."
+  "citacao": "Alguns autores afirmam que o regime político está dentro do sistema e governo.",
+  "nota": "Posição minoritária citada na aula. O kit cp-1 trata regime e sistema de governo como camadas separadas, e a própria aula as separa nos quadros das pp. 36-37."
  },
  {
   "id": "cp-e02-c79",
@@ -1048,13 +1049,14 @@
   "no": "est-a02-r6.2.1",
   "topico": "cp-1",
   "tema": "Democracia direta e indireta",
-  "pergunta": "Na democracia indireta, quem escolhe o Presidente?",
+  "pergunta": "Como a Aula 02 define a democracia indireta quanto ao exercício do poder?",
   "resposta": [
-   "Os representantes (ou colégio eleitoral)"
+   "Uso exclusivo de representantes"
   ],
-  "explicacao": "Na direta, o povo participa diretamente da escolha.",
-  "fonte": "Aula 02, p. 37",
-  "citacao": "Já na Indireta o povo não participa, mas sim os representantes é que escolhem o Presidente ou mesmo um colégio eleitoral indicado pelos representantes."
+  "explicacao": "Na semidireta há mistura. A definição pela escolha do Presidente (p. 37) confunde eleição indireta com democracia indireta e não é adotada aqui. Critério: forma de exercício do poder (Bobbio; José Afonso da Silva).",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "Democracia indireta, uso exclusivo de representante no exercício de poder",
+  "nota": "Corrigido segundo a literatura: democracia indireta não se define pela forma de escolha do Presidente; \"democracia indireta é conceito diverso de eleições indiretas\" (José Afonso da Silva)."
  },
  {
   "id": "cp-e02-c81",
@@ -1631,13 +1633,14 @@
   "no": "est-a02-r8",
   "topico": "cp-1",
   "tema": "Teorias e crise da democracia",
-  "pergunta": "Que abordagem a aula atribui a Carole Pateman?",
+  "pergunta": "Que teoria da democracia a Aula 02 associa a Carole Pateman?",
   "resposta": [
-   "Institucionalista"
+   "Democracia participativa"
   ],
-  "explicacao": "Rótulo do título da seção na aula.",
+  "explicacao": "O título da seção a chama de \"abordagem institucionalista\", rótulo que destoa do corpo do texto e do kit cp-1.",
   "fonte": "Aula 02, p. 53",
-  "citacao": "Carole Pateman (abordagem institucionalista)"
+  "citacao": "Pateman é uma teórica política britânica conhecida por seu trabalho na área da teoria democrática",
+  "nota": "Rótulo \"institucionalista\" aparece só no título da seção (p. 53); o kit cp-1 trata Pateman como teórica da democracia participativa."
  },
  {
   "id": "cp-e02-c125",

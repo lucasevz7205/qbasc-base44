@@ -464,12 +464,12 @@
       {
        "id": "est-a02-r6.2.1",
        "t": "Democracia direta e indireta",
-       "n": "Na indireta, os representantes escolhem o presidente",
+       "n": "Indireta: uso exclusivo de representantes",
        "x": {
-        "e": "Na democracia direta o povo participa diretamente do processo político, em particular na escolha do presidente. Na indireta o povo não participa, e os representantes ou um colégio eleitoral é que escolhem.",
-        "src": "Aula 02, p. 37",
-        "cit": "Já na Indireta o povo não participa, mas sim os representantes é que escolhem o Presidente",
-        "trap": "Na democracia indireta quem escolhe é o representante, não o povo.",
+        "e": "Na democracia indireta o poder é exercido exclusivamente por representantes (p. 44); na direta, pelo povo; na semidireta há mistura. A p. 37 define pela escolha do Presidente, critério que confunde eleição indireta com democracia indireta.",
+        "src": "Aula 02, p. 44",
+        "cit": "Democracia indireta, uso exclusivo de representante no exercício de poder",
+        "trap": "Democracia indireta não é eleição indireta: o Presidente brasileiro é eleito diretamente e a democracia é semidireta.",
         "nota": "Definição pela escolha do presidente (p. 37). A p. 44 define direta/indireta pelo exercício do poder (direta = povo; indireta = representantes; semidireta = mistura), outro critério. Não são a mesma definição; ligado a r7.4."
        }
       },
@@ -775,7 +775,7 @@
         "e": "Entre as nove características de Bobbio: o órgão legislativo supremo é composto por eleitos (1); todos os eleitores têm voto igual (4); a maioria não pode limitar os direitos da minoria (8); e o Governo deve gozar de confiança do Parlamento ou de chefe do Executivo eleito pelo povo (9).",
         "src": "Aula 02, p. 57",
         "cit": "9) o órgão do Governo deve gozar de confiança do Parlamento ou do chefe do poder executivo",
-        "trap": "A característica 9 exige confiança do Parlamento; não diz que o Governo é eleito diretamente pelo povo."
+        "trap": "A característica 9 admite confiança do Parlamento OU de chefe do Executivo eleito pelo povo; não exige as duas."
        }
       },
       {

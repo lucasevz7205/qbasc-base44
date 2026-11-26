@@ -17,13 +17,14 @@
   "no": "est-a04-r1",
   "topico": "cp-3",
   "tema": "Representação política: conceito e dimensões",
-  "pergunta": "Qual tipo de mandato a concepção de Hobbes (representação como procuração) fundamenta?",
+  "pergunta": "Segundo a Aula 04, que tipo de mandato a representação como relação de procuração fundamenta?",
   "resposta": [
    "Mandato vinculado"
   ],
-  "explicacao": "Nele não há autonomia decisória do representante.",
+  "explicacao": "Nele não há autonomia decisória do representante. Atenção: a Aula 04 (p. 7) atribui essa concepção a Hobbes. Na literatura, Hobbes dá ao soberano autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII; Pitkin, 1967, cap. 2); o mandato vinculado liga-se à tradição medieval e a Rousseau. Os kits cp-3 e a literatura prevalecem.",
   "fonte": "Aula 04, p. 7",
-  "citacao": "Essa forma de representação fundamenta o chamado mandato vinculado, no qual não há autonomia decisória do representante"
+  "citacao": "Essa forma de representação fundamenta o chamado mandato vinculado, no qual não há autonomia decisória do representante",
+  "nota": "Atenção: a Aula 04 (p. 7) atribui essa concepção a Hobbes. Na literatura, Hobbes dá ao soberano autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII; Pitkin, 1967, cap. 2); o mandato vinculado liga-se à tradição medieval e a Rousseau. Os kits cp-3 e a literatura prevalecem."
  },
  {
   "id": "cp-e04-c03",
@@ -135,13 +136,14 @@
   "no": "est-a04-r1.3",
   "topico": "cp-3",
   "tema": "Representação por presença (descritiva)",
-  "pergunta": "Qual autora desenvolveu a noção de representação por presença elaborada por Hanna Pitkin?",
+  "pergunta": "Com que dimensão de Pitkin a Aula 04 associa a representação por presença?",
   "resposta": [
-   "Iris Marion Young"
+   "Representação descritiva"
   ],
-  "explicacao": "A ideia é que o Parlamento reflita a diversidade real da sociedade.",
+  "explicacao": "Parlamento que reflete a diversidade real da sociedade. Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação.",
   "fonte": "Aula 04, p. 33",
-  "citacao": "elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)"
+  "citacao": "Hanna Pitkin define representação por presença por meio do que ela chama de Representação Descritiva",
+  "nota": "Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação."
  },
  {
   "id": "cp-e04-c12",
@@ -265,13 +267,14 @@
   "no": "est-a04-r2.1",
   "topico": "cp-6",
   "tema": "Definições de autores",
-  "pergunta": "Para Burke (1790), o partido é um grupo de homens unidos para promover o quê?",
+  "pergunta": "Para Burke, o partido é um grupo de homens unidos para promover o quê?",
   "resposta": [
    "Interesse nacional"
   ],
   "explicacao": "Com base em algum princípio com o qual todos concordam.",
   "fonte": "Aula 04, p. 10",
-  "citacao": "Partido é um grupo de homens unidos para a promoção, pelo seu esforço conjunto, do interesse nacional"
+  "citacao": "Partido é um grupo de homens unidos para a promoção, pelo seu esforço conjunto, do interesse nacional",
+  "nota": "A aula (p. 10) data a definição em 1790; o kit cp-6 a data em 1770 (Thoughts on the Cause of the Present Discontents). O ano foi retirado da pergunta."
  },
  {
   "id": "cp-e04-c22",
@@ -403,7 +406,8 @@
   ],
   "explicacao": "Estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
   "fonte": "Aula 04, p. 12",
-  "citacao": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+  "citacao": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos",
+  "nota": "Terminologia: a aula (p. 12) fala em \"autonomia organizacional\"; o kit cp-6 (Mainwaring e Scully, 1995) fala em \"organização partidária sólida\". Tratam da mesma dimensão."
  },
  {
   "id": "cp-e04-c32",
@@ -887,7 +891,8 @@
   ],
   "explicacao": "Pela variável ideológica.",
   "fonte": "Aula 04, p. 42",
-  "citacao": "diferenciou entre sistemas multipartidários fragmentados e polarizados"
+  "citacao": "diferenciou entre sistemas multipartidários fragmentados e polarizados",
+  "nota": "Terminologia: a aula usa \"fragmentados e polarizados\" (p. 42); o kit cp-6 usa \"pluralismo moderado × polarizado\". Sartori: moderado e polarizado são os dois tipos de multipartidarismo."
  },
  {
   "id": "cp-e04-c69",

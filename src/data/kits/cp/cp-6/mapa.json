@@ -1,316 +1,800 @@
 {
-  "topico": "cp-6",
-  "materia": "cp",
-  "centro": "Teoria dos partidos políticos",
-  "ramos": [
+ "topico": "cp-6",
+ "materia": "cp",
+ "centro": "Teoria dos partidos políticos",
+ "ramos": [
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1",
+   "t": "Conceito e funções do partido",
+   "cor": 1,
+   "x": {
+    "e": "Partido é a organização que disputa eleições para ocupar cargos e governar. As definições clássicas mudam de ênfase: Burke fala em princípio comum, Weber em poder para os líderes, Downs em equipe que busca o governo e Sartori em rótulo que leva candidatos a cargos. As funções mais citadas vão da agregação de interesses à comunicação entre sociedade e Estado.",
+    "trap": "Trocar o autor da definição: atribuir a Burke a equipe que busca cargos (é Downs).",
+    "src": "Etapa 09, p. 1, l. 12"
+   },
+   "f": [
     {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1",
-      "t": "Conceito e funções do partido",
-      "cor": 1,
-      "x": {
-        "e": "Partido é a organização que disputa eleições para ocupar cargos e governar. As definições clássicas mudam de ênfase: Burke fala em princípio comum, Weber em poder para os líderes, Downs em equipe que busca o governo e Sartori em rótulo que leva candidatos a cargos. As funções mais citadas vão da agregação de interesses à comunicação entre sociedade e Estado.",
-        "trap": "Trocar o autor da definição: atribuir a Burke a equipe que busca cargos (é Downs).",
-        "src": "Etapa 09, p. 1, l. 12"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
-          "t": "Definições clássicas",
-          "n": "Burke princípio; Weber poder; Downs equipe; Sartori rótulo",
-          "x": {
-            "e": "Burke (1770): grupo unido para promover o interesse nacional com base em um princípio com o qual todos concordam. Weber: associação de adesão livre que busca poder para seus líderes e vantagens ideais ou materiais para os membros. Downs (1957): equipe que busca controlar o governo pela vitória em eleições. Sartori (1976): grupo identificado por rótulo oficial que se apresenta em eleições e é capaz de levar candidatos a cargos públicos. O material resume as definições, não as cita literalmente.",
-            "trap": "Burke não define partido como equipe que busca cargos; essa é a definição de Downs.",
-            "src": "Etapa 09, p. 2, l. 163, 167, 173, 179"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.2",
-          "t": "Funções dos partidos",
-          "n": "Agregação (partidos) × articulação (grupos de interesse)",
-          "x": {
-            "e": "Funções mais citadas: agregação de interesses, recrutamento de lideranças, estruturação do voto, formação do governo ou da oposição, socialização política e comunicação entre sociedade e Estado. Para Gabriel Almond, a articulação de interesses cabe sobretudo aos grupos de interesse; aos partidos cabe a agregação.",
-            "trap": "Inverter Almond: dizer que a articulação é função típica dos partidos.",
-            "src": "Etapa 09, p. 2, l. 183-185"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.3",
-          "t": "Modelo espacial de Downs",
-          "n": "Dois partidos + centro = eleitor mediano",
-          "x": {
-            "e": "No modelo espacial de Downs, partidos e eleitores se distribuem num eixo esquerda-direita. Em disputas entre dois partidos com eleitores concentrados no centro, os partidos convergem para o eleitor mediano. Downs inverte a lógica ideológica: os partidos formulam políticas para ganhar eleições, e não o contrário.",
-            "trap": "A convergência depende de duas condições (dois partidos e eleitores no centro); não é regra para qualquer sistema.",
-            "src": "Etapa 09, p. 2, l. 173-174, 186-187"
-          }
-        }
-      ]
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+     "t": "Definições clássicas",
+     "n": "Burke princípio; Weber poder; Downs equipe; Sartori rótulo",
+     "x": {
+      "e": "Burke (1770): grupo unido para promover o interesse nacional com base em um princípio com o qual todos concordam. Weber: associação de adesão livre que busca poder para seus líderes e vantagens ideais ou materiais para os membros. Downs (1957): equipe que busca controlar o governo pela vitória em eleições. Sartori (1976): grupo identificado por rótulo oficial que se apresenta em eleições e é capaz de levar candidatos a cargos públicos. O material resume as definições, não as cita literalmente.",
+      "trap": "Burke não define partido como equipe que busca cargos; essa é a definição de Downs.",
+      "src": "Etapa 09, p. 2, l. 163, 167, 173, 179"
+     }
     },
     {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2",
-      "t": "Origem e modelos de partido",
-      "cor": 2,
-      "x": {
-        "e": "Duverger (1951) classificou os partidos pela origem (interna ou externa) e pela estrutura (quadros ou massa). Depois vieram o pega-tudo de Kirchheimer (1966), o profissional-eleitoral de Panebianco (1982) e o cartel de Katz e Mair (1995).",
-        "trap": "Trocar autor e modelo: K-P-K = Kirchheimer pega-tudo, Panebianco profissional, Katz e Mair kartel.",
-        "src": "Etapa 09, p. 3, l. 214; p. 10, l. 914"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
-          "t": "Duverger: origem interna × externa",
-          "n": "Parlamento e comitês × sindicatos e igrejas",
-          "x": {
-            "e": "Origem interna (eleitoral e parlamentar): partidos nascidos de grupos parlamentares e comitês eleitorais, como os conservadores e liberais do século XIX. Origem externa: criados por organizações fora do parlamento, como sindicatos e igrejas; exemplo clássico, o Partido Trabalhista britânico.",
-            "trap": "Origem e estrutura são critérios diferentes: o partido de massa não nasce sempre dentro do parlamento.",
-            "src": "Etapa 09, p. 3, l. 221-222, 222-223"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
-          "t": "Duverger: quadros × massa",
-          "n": "Quadros = Comitê; Massa = Seção",
-          "x": {
-            "e": "Partidos de quadros: poucos membros, notáveis, financiamento por grandes doadores, base no comitê. Partidos de massa: muitos filiados, contribuição dos membros, educação política, base na seção. Duverger cita ainda a célula (comunistas) e a milícia (fascistas).",
-            "trap": "Descrever o partido de quadros com os traços do de massa (muitos filiados, contribuição dos membros, seção).",
-            "src": "Etapa 09, p. 3, l. 227, 227-228, 228-229"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
-          "t": "Pega-tudo (catch-all)",
-          "n": "Kirchheimer, 1966: menos ideologia, eleitores de todas as classes",
-          "x": {
-            "e": "Otto Kirchheimer (1966) descreveu o partido pega-tudo: redução da bagagem ideológica, reforço da liderança, desvalorização do filiado, abertura a vários grupos de interesse e busca de eleitores de todas as classes.",
-            "trap": "Dizer que o catch-all reforça a ideologia ou o papel do filiado: ele faz o contrário.",
-            "src": "Etapa 09, p. 3, l. 243-244"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
-          "t": "Profissional-eleitoral",
-          "n": "Panebianco, 1982: profissionais e eleitor de opinião",
-          "x": {
-            "e": "Angelo Panebianco (Modelos de partido, 1982): papel central de profissionais especializados (marketing, comunicação), apelo ao eleitor de opinião, financiamento por grupos de interesse e fundos públicos, liderança personalizada. Opõe-se ao partido burocrático de massa.",
-            "trap": "Atribuir o modelo profissional-eleitoral a Kirchheimer ou a Katz e Mair.",
-            "src": "Etapa 09, p. 3, l. 252-254"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
-          "t": "Partido cartel",
-          "n": "Katz e Mair, 1995: perto do Estado, contra novos competidores",
-          "x": {
-            "e": "Richard Katz e Peter Mair (1995): os partidos se aproximam do Estado, vivem de recursos públicos e cooperam entre si para limitar a entrada de novos competidores.",
-            "trap": "Atribuir o cartel a Panebianco ou dizer que ele se afasta do Estado e depende dos filiados.",
-            "src": "Etapa 09, p. 3, l. 261-262"
-          }
-        }
-      ]
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.2",
+     "t": "Funções dos partidos",
+     "n": "Agregação (partidos) × articulação (grupos de interesse)",
+     "x": {
+      "e": "Funções mais citadas: agregação de interesses, recrutamento de lideranças, estruturação do voto, formação do governo ou da oposição, socialização política e comunicação entre sociedade e Estado. Para Gabriel Almond, a articulação de interesses cabe sobretudo aos grupos de interesse; aos partidos cabe a agregação.",
+      "trap": "Inverter Almond: dizer que a articulação é função típica dos partidos.",
+      "src": "Etapa 09, p. 2, l. 183-185"
+     }
     },
     {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3",
-      "t": "Oligarquia e clivagens",
-      "cor": 3,
-      "x": {
-        "e": "Dois clássicos da sociologia dos partidos: Michels explica por que as organizações tendem à oligarquia; Lipset e Rokkan explicam os sistemas partidários europeus pelas clivagens sociais.",
-        "src": "Etapa 09, p. 3, l. 264"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
-          "t": "Lei de ferro da oligarquia",
-          "n": "Michels, 1911: quem diz organização diz oligarquia",
-          "x": {
-            "e": "Robert Michels (Sociologia dos partidos políticos, 1911), a partir da social-democracia alemã: toda organização grande, mesmo democrática, tende a ser dominada por uma minoria de dirigentes, por causa da necessidade de especialização, da competência técnica dos líderes e da apatia das bases.",
-            "trap": "A lei de ferro é de Michels, não de Weber.",
-            "src": "Etapa 09, p. 3, l. 265-267; p. 10, l. 902"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
-          "t": "Clivagens de Lipset e Rokkan",
-          "n": "4 clivagens + congelamento",
-          "x": {
-            "e": "Seymour Lipset e Stein Rokkan (1967): quatro clivagens produzidas pelas revoluções nacional e industrial (centro × periferia, Estado × Igreja, campo × cidade, capital × trabalho). Tese do congelamento: os sistemas partidários dos anos 1960 refletiam as clivagens dos anos 1920.",
-            "trap": "Incluir clivagens que não estão na lista (democracia × autoritarismo, materialismo × pós-materialismo, que é tema de Inglehart).",
-            "src": "Etapa 09, p. 3, l. 269-270, 271"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4",
-      "t": "Sistemas partidários",
-      "cor": 4,
-      "x": {
-        "e": "Duverger contou partidos (uni, bi e multipartidarismo). Sartori somou dois critérios: o número de partidos relevantes e a distância ideológica. Laakso e Taagepera criaram o número efetivo de partidos; Mainwaring e Scully mediram a institucionalização.",
-        "src": "Etapa 09, p. 4, l. 312"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
-          "t": "Relevância em Sartori",
-          "n": "Potencial de coalizão ou de chantagem",
-          "x": {
-            "e": "Para Sartori, contam os partidos relevantes: os que têm potencial de coalizão (úteis para formar governo) ou potencial de chantagem (capazes de alterar a direção da competição). Um partido pode ser relevante mesmo sem integrar governos.",
-            "trap": "Dizer que todo partido com cadeiras é relevante.",
-            "src": "Etapa 09, p. 4, l. 312-314; p. 8, l. 710, 712"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
-          "t": "Tipologia de Sartori",
-          "n": "Sete tipos: dois não competitivos, cinco competitivos",
-          "x": {
-            "e": "Partido único (só um é permitido); hegemônico (outros existem como satélites, sem alternância possível); predominante (competição livre, mas um partido vence seguidamente com maioria absoluta das cadeiras); bipartidarismo; pluralismo moderado; pluralismo polarizado; atomizado. Os dois primeiros são não competitivos; os demais, competitivos.",
-            "trap": "Confundir predominante (há competição livre) com hegemônico ou partido único.",
-            "src": "Etapa 09, p. 4, l. 321, 325, 330, 350"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
-          "t": "Pluralismo moderado × polarizado",
-          "n": "Moderado converge (centrípeto); polarizado foge (centrífugo)",
-          "x": {
-            "e": "Pluralismo moderado: de três a cinco partidos relevantes, pequena distância ideológica, competição centrípeta, governos de coalizão. Pluralismo polarizado: mais de cinco partidos, grande distância ideológica, oposições bilaterais e antissistema, competição centrífuga.",
-            "trap": "Atribuir competição centrípeta ao pluralismo polarizado.",
-            "src": "Etapa 09, p. 4, l. 338-339, 343-344"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
-          "t": "Número efetivo de partidos",
-          "n": "NEP = 1 ÷ Σ p² (Laakso e Taagepera, 1979)",
-          "x": {
-            "e": "Markku Laakso e Rein Taagepera (1979) propuseram o NEP, que pondera cada partido por seu tamanho: NEP = 1 ÷ Σ p², em que p é a proporção de votos (NEP eleitoral) ou de cadeiras (NEP parlamentar). Com 40%, 35%, 15% e 10% das cadeiras, Σ p² = 0,315 e NEP ≈ 3,2. Para a Câmara eleita em 2026, o material calcula NEP parlamentar em torno de 7,3, com números provisórios.",
-            "trap": "Atribuir o NEP a Sartori; esquecer que fusões reduzem o NEP.",
-            "src": "Etapa 09, p. 4, l. 353-354, 357-358, 360"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.5",
-          "t": "Institucionalização",
-          "n": "Mainwaring e Scully (1995): quatro dimensões",
-          "x": {
-            "e": "Mainwaring e Scully (Building democratic institutions, 1995) avaliaram a institucionalização por quatro dimensões: estabilidade dos padrões de competição, raízes dos partidos na sociedade, legitimidade atribuída aos partidos e às eleições e organização partidária sólida. Mainwaring (1999) classificou o sistema brasileiro como pouco institucionalizado; estudos posteriores, com base no comportamento legislativo, apontaram partidos mais disciplinados.",
-            "trap": "Atribuir a institucionalização a Lipset.",
-            "src": "Etapa 09, p. 5, l. 372-373, 373-375"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5",
-      "t": "Partidos no direito brasileiro",
-      "cor": 5,
-      "x": {
-        "e": "O art. 17 da Constituição garante a liberdade partidária com limites, veda coligações nas eleições proporcionais e condiciona fundo partidário e propaganda gratuita à cláusula de desempenho. A Lei nº 9.096/1995 regula as federações; STF e TSE fixaram a fidelidade e vedaram doações de empresas.",
-        "src": "Etapa 09, p. 5, l. 406-407"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
-          "t": "Liberdade partidária e preceitos",
-          "n": "Livre, mas com caráter nacional e sem dinheiro estrangeiro",
-          "x": {
-            "e": "É livre a criação, fusão, incorporação e extinção de partidos, resguardados a soberania nacional, o regime democrático, o pluripartidarismo e os direitos fundamentais. Preceitos: caráter nacional, proibição de recursos de entidade ou governo estrangeiros, prestação de contas à Justiça Eleitoral e funcionamento parlamentar de acordo com a lei. Personalidade jurídica na forma da lei civil, estatutos registrados no TSE; vedada organização paramilitar.",
-            "trap": "Exigir autorização do Congresso para criar partido ou admitir recursos estrangeiros.",
-            "src": "Etapa 09, p. 5, l. 417-419, 419"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.2",
-          "t": "Autonomia e coligações",
-          "n": "Coligação só na majoritária",
-          "x": {
-            "e": "O art. 17, § 1º, assegura autonomia para definir estrutura interna e para adotar os critérios de escolha e o regime das coligações nas eleições majoritárias, vedada a sua celebração nas eleições proporcionais, sem obrigatoriedade de vinculação entre candidaturas nos diferentes âmbitos. Os estatutos devem estabelecer normas de disciplina e fidelidade.",
-            "trap": "Dizer que a autonomia alcança coligações nas eleições proporcionais.",
-            "src": "Etapa 09, p. 5, l. 410"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
-          "t": "Cláusula de desempenho",
-          "n": "2026: 2,5 – 1,5 – 13 – 9; 2030: 3% ou 15",
-          "x": {
-            "e": "Só têm fundo partidário e acesso gratuito ao rádio e à TV os partidos que atingem a cláusula. A partir de 2030: 3% dos votos válidos em pelo menos um terço das UFs, com 2% em cada, ou 15 deputados em um terço das UFs. Na legislatura seguinte às eleições de 2026 (EC nº 97/2017): 2,5% dos votos válidos, com 1,5% em pelo menos nove UFs, ou 13 deputados em nove UFs. O eleito por partido que não atinge a cláusula mantém o mandato e pode filiar-se a partido que a atingiu.",
-            "trap": "Aplicar a 2026 os patamares de 2030; achar que a cláusula retira o mandato.",
-            "src": "Etapa 09, p. 5, l. 420-421, 422, 424; p. 6, l. 471"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
-          "t": "Federações partidárias",
-          "n": "Quatro anos, nacional, bancada única, identidade mantida",
-          "x": {
-            "e": "Lei nº 9.096/1995, art. 11-A (Lei nº 14.208/2021): dois ou mais partidos podem reunir-se em federação, que atua como se fosse uma única agremiação. Exige registro definitivo dos partidos, permanência mínima de quatro anos e abrangência nacional; preserva a identidade e a autonomia dos partidos. Quem sai antes perde o direito de ingressar em federação e de coligar-se nas duas eleições seguintes e de usar o fundo partidário até completar o prazo. Na ADI 7.021 (2025), o STF exigiu que a federação esteja registrada seis meses antes da eleição.",
-            "trap": "Confundir federação (partidos mantêm identidade) com fusão (formam um novo partido) ou com a antiga coligação proporcional (só durava a eleição).",
-            "src": "Etapa 09, p. 6, l. 473-474, 475-476, 477-478, 480-481"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
-          "t": "Fidelidade e financiamento",
-          "n": "Mandato proporcional é do partido; empresa não doa",
-          "x": {
-            "e": "Em 2007 (STF, MS 26.602, 26.603 e 26.604; TSE, Resolução nº 22.610/2007), o mandato proporcional passou a pertencer ao partido. Em 2015 (ADI 5081), o STF afastou a regra para os cargos majoritários. A EC nº 111/2021 constitucionalizou a perda do mandato para deputados e vereadores que deixam o partido, salvo anuência ou justa causa. Em 2015 (ADI 4650), o STF vedou doações de empresas; as campanhas contam com o FEFC (Lei nº 13.487/2017), o fundo partidário e doações de pessoas físicas.",
-            "trap": "Estender a perda do mandato a senadores e prefeitos.",
-            "src": "Etapa 09, p. 6, l. 517, 517-518, 522"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6",
-      "t": "O sistema partidário brasileiro em 2026",
-      "cor": 6,
-      "x": {
-        "e": "Conjuntura de outubro de 2026, com números provisórios: 21 partidos elegeram deputados federais e 14 dos 30 partidos registrados superaram a cláusula de desempenho. Na Câmara, o tamanho da bancada define liderança e proporcionalidade.",
-        "trap": "Números provisórios: podem mudar com recontagens e decisões judiciais.",
-        "src": "Etapa 09, p. 7, l. 577"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
-          "t": "Resultado das eleições de 2026",
-          "n": "21 partidos com deputados; 14 de 30 acima da cláusula",
-          "x": {
-            "e": "Na eleição de 4 de outubro de 2026, 21 partidos elegeram deputados federais, dois a menos que em 2022 e nove a menos que em 2018. Pela regra de transição, 14 dos 30 partidos registrados superaram a cláusula. A federação PSOL-Rede obteve 4,9% dos votos e elegeu 15 deputados, mas ficou abaixo: atingiu 1,5% em apenas oito UFs e seus eleitos não se distribuíam por nove. O PL elegeu 121 deputados, a maior bancada desde 1988.",
-            "trap": "Achar que votação nacional alta basta: a cláusula exige distribuição pelas UFs.",
-            "src": "Etapa 09, p. 7, l. 571-572, 572-573, 574-575; p. 8, l. 656"
-          }
-        },
-        {
-          "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
-          "t": "Na prática da Câmara",
-          "n": "Líder com bancada de 1/100 (seis deputados)",
-          "x": {
-            "e": "Partido, federação ou bloco com bancada de pelo menos um centésimo da Câmara (seis deputados) escolhe líder; bancada menor tem só um deputado que expressa a posição do partido (RICD, art. 9º). A composição da Mesa e das comissões observa, tanto quanto possível, a proporcionalidade (CF, art. 58, § 1º). Partidos abaixo da cláusula mantêm mandatos, mas perdem fundo e propaganda, o que estimula fusões, incorporações e federações.",
-            "trap": "Dizer que partido abaixo da cláusula perde os mandatos.",
-            "src": "Etapa 09, p. 9, l. 859, 865-866"
-          }
-        }
-      ]
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.3",
+     "t": "Modelo espacial de Downs",
+     "n": "Dois partidos + centro = eleitor mediano",
+     "x": {
+      "e": "No modelo espacial de Downs, partidos e eleitores se distribuem num eixo esquerda-direita. Em disputas entre dois partidos com eleitores concentrados no centro, os partidos convergem para o eleitor mediano. Downs inverte a lógica ideológica: os partidos formulam políticas para ganhar eleições, e não o contrário.",
+      "trap": "A convergência depende de duas condições (dois partidos e eleitores no centro); não é regra para qualquer sistema.",
+      "src": "Etapa 09, p. 2, l. 173-174, 186-187"
+     }
     }
-  ],
-  "ligacoes": [
+   ]
+  },
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2",
+   "t": "Origem e modelos de partido",
+   "cor": 2,
+   "x": {
+    "e": "Duverger (1951) classificou os partidos pela origem (interna ou externa) e pela estrutura (quadros ou massa). Depois vieram o pega-tudo de Kirchheimer (1966), o profissional-eleitoral de Panebianco (1982) e o cartel de Katz e Mair (1995).",
+    "trap": "Trocar autor e modelo: K-P-K = Kirchheimer pega-tudo, Panebianco profissional, Katz e Mair kartel.",
+    "src": "Etapa 09, p. 3, l. 214; p. 10, l. 914"
+   },
+   "f": [
     {
-      "rotulo": "Cláusula estimula federações e fusões",
-      "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
-      "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4"
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
+     "t": "Duverger: origem interna × externa",
+     "n": "Parlamento e comitês × sindicatos e igrejas",
+     "x": {
+      "e": "Origem interna (eleitoral e parlamentar): partidos nascidos de grupos parlamentares e comitês eleitorais, como os conservadores e liberais do século XIX. Origem externa: criados por organizações fora do parlamento, como sindicatos e igrejas; exemplo clássico, o Partido Trabalhista britânico.",
+      "trap": "Origem e estrutura são critérios diferentes: o partido de massa não nasce sempre dentro do parlamento.",
+      "src": "Etapa 09, p. 3, l. 221-222, 222-223"
+     }
     },
     {
-      "rotulo": "Fusão reduz o NEP",
-      "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
-      "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4"
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+     "t": "Duverger: quadros × massa",
+     "n": "Quadros = Comitê; Massa = Seção",
+     "x": {
+      "e": "Partidos de quadros: poucos membros, notáveis, financiamento por grandes doadores, base no comitê. Partidos de massa: muitos filiados, contribuição dos membros, educação política, base na seção. Duverger cita ainda a célula (comunistas) e a milícia (fascistas).",
+      "trap": "Descrever o partido de quadros com os traços do de massa (muitos filiados, contribuição dos membros, seção).",
+      "src": "Etapa 09, p. 3, l. 227, 227-228, 228-229"
+     }
     },
     {
-      "rotulo": "Catch-all e cartel enfraquecem o filiado de massa",
-      "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
-      "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2"
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+     "t": "Pega-tudo (catch-all)",
+     "n": "Kirchheimer, 1966: menos ideologia, eleitores de todas as classes",
+     "x": {
+      "e": "Otto Kirchheimer (1966) descreveu o partido pega-tudo: redução da bagagem ideológica, reforço da liderança, desvalorização do filiado, abertura a vários grupos de interesse e busca de eleitores de todas as classes.",
+      "trap": "Dizer que o catch-all reforça a ideologia ou o papel do filiado: ele faz o contrário.",
+      "src": "Etapa 09, p. 3, l. 243-244"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
+     "t": "Profissional-eleitoral",
+     "n": "Panebianco, 1982: profissionais e eleitor de opinião",
+     "x": {
+      "e": "Angelo Panebianco (Modelos de partido, 1982): papel central de profissionais especializados (marketing, comunicação), apelo ao eleitor de opinião, financiamento por grupos de interesse e fundos públicos, liderança personalizada. Opõe-se ao partido burocrático de massa.",
+      "trap": "Atribuir o modelo profissional-eleitoral a Kirchheimer ou a Katz e Mair.",
+      "src": "Etapa 09, p. 3, l. 252-254"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
+     "t": "Partido cartel",
+     "n": "Katz e Mair, 1995: perto do Estado, contra novos competidores",
+     "x": {
+      "e": "Richard Katz e Peter Mair (1995): os partidos se aproximam do Estado, vivem de recursos públicos e cooperam entre si para limitar a entrada de novos competidores.",
+      "trap": "Atribuir o cartel a Panebianco ou dizer que ele se afasta do Estado e depende dos filiados.",
+      "src": "Etapa 09, p. 3, l. 261-262"
+     }
     }
-  ],
-  "fontesCentral": {
-    "KIT-ARR-CP-6-teoria-dos-partidos-politicos-2026-11-26": {}
+   ]
+  },
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3",
+   "t": "Oligarquia e clivagens",
+   "cor": 3,
+   "x": {
+    "e": "Dois clássicos da sociologia dos partidos: Michels explica por que as organizações tendem à oligarquia; Lipset e Rokkan explicam os sistemas partidários europeus pelas clivagens sociais.",
+    "src": "Etapa 09, p. 3, l. 264"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
+     "t": "Lei de ferro da oligarquia",
+     "n": "Michels, 1911: quem diz organização diz oligarquia",
+     "x": {
+      "e": "Robert Michels (Sociologia dos partidos políticos, 1911), a partir da social-democracia alemã: toda organização grande, mesmo democrática, tende a ser dominada por uma minoria de dirigentes, por causa da necessidade de especialização, da competência técnica dos líderes e da apatia das bases.",
+      "trap": "A lei de ferro é de Michels, não de Weber.",
+      "src": "Etapa 09, p. 3, l. 265-267; p. 10, l. 902"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
+     "t": "Clivagens de Lipset e Rokkan",
+     "n": "4 clivagens + congelamento",
+     "x": {
+      "e": "Seymour Lipset e Stein Rokkan (1967): quatro clivagens produzidas pelas revoluções nacional e industrial (centro × periferia, Estado × Igreja, campo × cidade, capital × trabalho). Tese do congelamento: os sistemas partidários dos anos 1960 refletiam as clivagens dos anos 1920.",
+      "trap": "Incluir clivagens que não estão na lista (democracia × autoritarismo, materialismo × pós-materialismo, que é tema de Inglehart).",
+      "src": "Etapa 09, p. 3, l. 269-270, 271"
+     }
+    }
+   ]
+  },
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4",
+   "t": "Sistemas partidários",
+   "cor": 4,
+   "x": {
+    "e": "Duverger contou partidos (uni, bi e multipartidarismo). Sartori somou dois critérios: o número de partidos relevantes e a distância ideológica. Laakso e Taagepera criaram o número efetivo de partidos; Mainwaring e Scully mediram a institucionalização.",
+    "src": "Etapa 09, p. 4, l. 312"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
+     "t": "Relevância em Sartori",
+     "n": "Potencial de coalizão ou de chantagem",
+     "x": {
+      "e": "Para Sartori, contam os partidos relevantes: os que têm potencial de coalizão (úteis para formar governo) ou potencial de chantagem (capazes de alterar a direção da competição). Um partido pode ser relevante mesmo sem integrar governos.",
+      "trap": "Dizer que todo partido com cadeiras é relevante.",
+      "src": "Etapa 09, p. 4, l. 312-314; p. 8, l. 710, 712"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
+     "t": "Tipologia de Sartori",
+     "n": "Sete tipos: dois não competitivos, cinco competitivos",
+     "x": {
+      "e": "Partido único (só um é permitido); hegemônico (outros existem como satélites, sem alternância possível); predominante (competição livre, mas um partido vence seguidamente com maioria absoluta das cadeiras); bipartidarismo; pluralismo moderado; pluralismo polarizado; atomizado. Os dois primeiros são não competitivos; os demais, competitivos.",
+      "trap": "Confundir predominante (há competição livre) com hegemônico ou partido único.",
+      "src": "Etapa 09, p. 4, l. 321, 325, 330, 350"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
+     "t": "Pluralismo moderado × polarizado",
+     "n": "Moderado converge (centrípeto); polarizado foge (centrífugo)",
+     "x": {
+      "e": "Pluralismo moderado: de três a cinco partidos relevantes, pequena distância ideológica, competição centrípeta, governos de coalizão. Pluralismo polarizado: mais de cinco partidos, grande distância ideológica, oposições bilaterais e antissistema, competição centrífuga.",
+      "trap": "Atribuir competição centrípeta ao pluralismo polarizado.",
+      "src": "Etapa 09, p. 4, l. 338-339, 343-344"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
+     "t": "Número efetivo de partidos",
+     "n": "NEP = 1 ÷ Σ p² (Laakso e Taagepera, 1979)",
+     "x": {
+      "e": "Markku Laakso e Rein Taagepera (1979) propuseram o NEP, que pondera cada partido por seu tamanho: NEP = 1 ÷ Σ p², em que p é a proporção de votos (NEP eleitoral) ou de cadeiras (NEP parlamentar). Com 40%, 35%, 15% e 10% das cadeiras, Σ p² = 0,315 e NEP ≈ 3,2. Para a Câmara eleita em 2026, o material calcula NEP parlamentar em torno de 7,3, com números provisórios.",
+      "trap": "Atribuir o NEP a Sartori; esquecer que fusões reduzem o NEP.",
+      "src": "Etapa 09, p. 4, l. 353-354, 357-358, 360"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.5",
+     "t": "Institucionalização",
+     "n": "Mainwaring e Scully (1995): quatro dimensões",
+     "x": {
+      "e": "Mainwaring e Scully (Building democratic institutions, 1995) avaliaram a institucionalização por quatro dimensões: estabilidade dos padrões de competição, raízes dos partidos na sociedade, legitimidade atribuída aos partidos e às eleições e organização partidária sólida. Mainwaring (1999) classificou o sistema brasileiro como pouco institucionalizado; estudos posteriores, com base no comportamento legislativo, apontaram partidos mais disciplinados.",
+      "trap": "Atribuir a institucionalização a Lipset.",
+      "src": "Etapa 09, p. 5, l. 372-373, 373-375"
+     }
+    }
+   ]
+  },
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5",
+   "t": "Partidos no direito brasileiro",
+   "cor": 5,
+   "x": {
+    "e": "O art. 17 da Constituição garante a liberdade partidária com limites, veda coligações nas eleições proporcionais e condiciona fundo partidário e propaganda gratuita à cláusula de desempenho. A Lei nº 9.096/1995 regula as federações; STF e TSE fixaram a fidelidade e vedaram doações de empresas.",
+    "src": "Etapa 09, p. 5, l. 406-407"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
+     "t": "Liberdade partidária e preceitos",
+     "n": "Livre, mas com caráter nacional e sem dinheiro estrangeiro",
+     "x": {
+      "e": "É livre a criação, fusão, incorporação e extinção de partidos, resguardados a soberania nacional, o regime democrático, o pluripartidarismo e os direitos fundamentais. Preceitos: caráter nacional, proibição de recursos de entidade ou governo estrangeiros, prestação de contas à Justiça Eleitoral e funcionamento parlamentar de acordo com a lei. Personalidade jurídica na forma da lei civil, estatutos registrados no TSE; vedada organização paramilitar.",
+      "trap": "Exigir autorização do Congresso para criar partido ou admitir recursos estrangeiros.",
+      "src": "Etapa 09, p. 5, l. 417-419, 419"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.2",
+     "t": "Autonomia e coligações",
+     "n": "Coligação só na majoritária",
+     "x": {
+      "e": "O art. 17, § 1º, assegura autonomia para definir estrutura interna e para adotar os critérios de escolha e o regime das coligações nas eleições majoritárias, vedada a sua celebração nas eleições proporcionais, sem obrigatoriedade de vinculação entre candidaturas nos diferentes âmbitos. Os estatutos devem estabelecer normas de disciplina e fidelidade.",
+      "trap": "Dizer que a autonomia alcança coligações nas eleições proporcionais.",
+      "src": "Etapa 09, p. 5, l. 410"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+     "t": "Cláusula de desempenho",
+     "n": "2026: 2,5 – 1,5 – 13 – 9; 2030: 3% ou 15",
+     "x": {
+      "e": "Só têm fundo partidário e acesso gratuito ao rádio e à TV os partidos que atingem a cláusula. A partir de 2030: 3% dos votos válidos em pelo menos um terço das UFs, com 2% em cada, ou 15 deputados em um terço das UFs. Na legislatura seguinte às eleições de 2026 (EC nº 97/2017): 2,5% dos votos válidos, com 1,5% em pelo menos nove UFs, ou 13 deputados em nove UFs. O eleito por partido que não atinge a cláusula mantém o mandato e pode filiar-se a partido que a atingiu.",
+      "trap": "Aplicar a 2026 os patamares de 2030; achar que a cláusula retira o mandato.",
+      "src": "Etapa 09, p. 5, l. 420-421, 422, 424; p. 6, l. 471"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+     "t": "Federações partidárias",
+     "n": "Quatro anos, nacional, bancada única, identidade mantida",
+     "x": {
+      "e": "Lei nº 9.096/1995, art. 11-A (Lei nº 14.208/2021): dois ou mais partidos podem reunir-se em federação, que atua como se fosse uma única agremiação. Exige registro definitivo dos partidos, permanência mínima de quatro anos e abrangência nacional; preserva a identidade e a autonomia dos partidos. Quem sai antes perde o direito de ingressar em federação e de coligar-se nas duas eleições seguintes e de usar o fundo partidário até completar o prazo. Na ADI 7.021 (2025), o STF exigiu que a federação esteja registrada seis meses antes da eleição.",
+      "trap": "Confundir federação (partidos mantêm identidade) com fusão (formam um novo partido) ou com a antiga coligação proporcional (só durava a eleição).",
+      "src": "Etapa 09, p. 6, l. 473-474, 475-476, 477-478, 480-481"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
+     "t": "Fidelidade e financiamento",
+     "n": "Mandato proporcional é do partido; empresa não doa",
+     "x": {
+      "e": "Em 2007 (STF, MS 26.602, 26.603 e 26.604; TSE, Resolução nº 22.610/2007), o mandato proporcional passou a pertencer ao partido. Em 2015 (ADI 5081), o STF afastou a regra para os cargos majoritários. A EC nº 111/2021 constitucionalizou a perda do mandato para deputados e vereadores que deixam o partido, salvo anuência ou justa causa. Em 2015 (ADI 4650), o STF vedou doações de empresas; as campanhas contam com o FEFC (Lei nº 13.487/2017), o fundo partidário e doações de pessoas físicas.",
+      "trap": "Estender a perda do mandato a senadores e prefeitos.",
+      "src": "Etapa 09, p. 6, l. 517, 517-518, 522"
+     }
+    }
+   ]
+  },
+  {
+   "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6",
+   "t": "O sistema partidário brasileiro em 2026",
+   "cor": 6,
+   "x": {
+    "e": "Conjuntura de outubro de 2026, com números provisórios: 21 partidos elegeram deputados federais e 14 dos 30 partidos registrados superaram a cláusula de desempenho. Na Câmara, o tamanho da bancada define liderança e proporcionalidade.",
+    "trap": "Números provisórios: podem mudar com recontagens e decisões judiciais.",
+    "src": "Etapa 09, p. 7, l. 577"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
+     "t": "Resultado das eleições de 2026",
+     "n": "21 partidos com deputados; 14 de 30 acima da cláusula",
+     "x": {
+      "e": "Na eleição de 4 de outubro de 2026, 21 partidos elegeram deputados federais, dois a menos que em 2022 e nove a menos que em 2018. Pela regra de transição, 14 dos 30 partidos registrados superaram a cláusula. A federação PSOL-Rede obteve 4,9% dos votos e elegeu 15 deputados, mas ficou abaixo: atingiu 1,5% em apenas oito UFs e seus eleitos não se distribuíam por nove. O PL elegeu 121 deputados, a maior bancada desde 1988.",
+      "trap": "Achar que votação nacional alta basta: a cláusula exige distribuição pelas UFs.",
+      "src": "Etapa 09, p. 7, l. 571-572, 572-573, 574-575; p. 8, l. 656"
+     }
+    },
+    {
+     "id": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
+     "t": "Na prática da Câmara",
+     "n": "Líder com bancada de 1/100 (seis deputados)",
+     "x": {
+      "e": "Partido, federação ou bloco com bancada de pelo menos um centésimo da Câmara (seis deputados) escolhe líder; bancada menor tem só um deputado que expressa a posição do partido (RICD, art. 9º). A composição da Mesa e das comissões observa, tanto quanto possível, a proporcionalidade (CF, art. 58, § 1º). Partidos abaixo da cláusula mantêm mandatos, mas perdem fundo e propaganda, o que estimula fusões, incorporações e federações.",
+      "trap": "Dizer que partido abaixo da cláusula perde os mandatos.",
+      "src": "Etapa 09, p. 9, l. 859, 865-866"
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r2",
+   "t": "Definição de partido político",
+   "n": "Organização que busca conquistar e manter o poder político.",
+   "x": {
+    "e": "Partido é definido pelo objetivo central de controlar ou influenciar o governo por meio da conquista do poder; a definição varia conforme o autor.",
+    "src": "Aula 04, p. 8",
+    "cit": "Como em quase tudo na Ciência Política a definição de \"partido\" é ampla e depende do autor",
+    "trap": "Tomar uma única definição como universal; a aula recomenda ver a definição por autor e pelo objetivo central."
+   },
+   "f": [
+    {
+     "id": "est-a04-r2.1",
+     "t": "Definições de autores",
+     "n": "Partido: associação com objetivo de conquistar e manter o poder.",
+     "x": {
+      "e": "Diversos autores definem o partido pelo objetivo de conquistar ou manter o poder.",
+      "src": "Aula 04, p. 10",
+      "cit": "o partido pode ser definido pelo seu objetivo central de controlar ou influenciar o governo por meio da conquista do poder"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.1.1",
+       "t": "Lapalombara: organização durável",
+       "n": "Organização cuja vida supera a de seus dirigentes.",
+       "x": {
+        "e": "Para Lapalombara, o partido é uma organização durável, cuja esperança de vida política supera a de seus dirigentes no poder.",
+        "src": "Aula 04, p. 10",
+        "cit": "O Partido é uma organização durável, ou seja, uma organização cuja esperança de vida política seja superior à de seus dirigentes no poder"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.2",
+       "t": "Guarnieri: arena eleitoral e decisória",
+       "n": "Conquista do poder nas arenas eleitoral e decisória.",
+       "x": {
+        "e": "Para Guarnieri, o partido é associação de pessoas que busca o poder atuando na arena eleitoral e na arena decisória.",
+        "src": "Aula 04, p. 10",
+        "cit": "Um partido político é uma associação de pessoas que tem como fim a conquista do poder atuando na arena eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.3",
+       "t": "Bonavides: elementos da definição",
+       "n": "Grupo social, princípio de organização, ideias e interesse de tomar o poder.",
+       "x": {
+        "e": "Bonavides lista elementos do partido, entre eles um grupo social, um princípio de organização, um acervo de ideias e o interesse básico na tomada do poder.",
+        "src": "Aula 04, p. 9",
+        "cit": "(d) um interesse básico em vista: a tomada do poder"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.2",
+     "t": "Partido x associações da sociedade civil",
+     "n": "Partidos disputam o controle do Estado; sindicatos e ONGs apenas influenciam.",
+     "x": {
+      "e": "Associações da sociedade civil influenciam decisões de governo, mas não disputam diretamente o controle do aparelho do Estado.",
+      "src": "Aula 04, p. 11",
+      "cit": "Já as associações da sociedade civil (sindicatos, movimentos sociais, ONGs.) buscam influenciar as decisões políticas dos governos, mas não disputam diretamente o controle do aparelho do estado",
+      "trap": "Classificar sindicato ou ONG como partido: a diferença central é a disputa direta pelo controle do Estado."
+     }
+    },
+    {
+     "id": "est-a04-r2.3",
+     "t": "Abordagens de Nicolau",
+     "n": "Ideológica, sociológica e institucionalista explicam o número de partidos.",
+     "x": {
+      "e": "Segundo Jairo Nicolau, as diferentes definições decorrem de três abordagens: ideológica, sociológica e institucionalista.",
+      "src": "Aula 04, p. 11",
+      "cit": "essas diferentes definições se dão devido a diferentes abordagens que o professor classifica como: a ideológica, a sociológica e a institucionalista"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.3.1",
+       "t": "Abordagem ideológica",
+       "n": "Diversidade de opiniões determina o número de partidos.",
+       "x": {
+        "e": "Na abordagem ideológica, a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos.",
+        "src": "Aula 04, p. 11",
+        "cit": "a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos em uma democracia"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.2",
+       "t": "Abordagem sociológica",
+       "n": "Divisões sociais determinam o número de partidos.",
+       "x": {
+        "e": "Na abordagem sociológica, o número de partidos reflete as divisões sociais e as demandas dos segmentos da sociedade.",
+        "src": "Aula 04, p. 11",
+        "cit": "Portanto, o número de partidos é visto como um reflexo das divisões sociais e das demandas de diferentes segmentos da sociedade"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.3",
+       "t": "Abordagem institucionalista",
+       "n": "Regras institucionais moldam o sistema partidário.",
+       "x": {
+        "e": "A abordagem institucionalista destaca a influência do sistema eleitoral, do sistema de governo e da organização do Estado sobre o sistema partidário.",
+        "src": "Aula 04, p. 11",
+        "cit": "A abordagem institucionalista destaca a influência das estruturas institucionais, como o sistema eleitoral, o sistema de governo e a organização do Estado, sobre o sistema partidário",
+        "trap": "Tratar o sistema eleitoral como efeito, e não como causa, do sistema partidário: na abordagem institucionalista ele molda os partidos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.4",
+     "t": "Institucionalização partidária",
+     "n": "Partido institucionalizado perdura, tem continuidade e compete em várias eleições.",
+     "x": {
+      "e": "A institucionalização partidária indica qualidade da democracia; envolve estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
+      "src": "Aula 04, p. 12",
+      "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.4.1",
+       "t": "Dimensões (Mainwaring)",
+       "n": "Estabilidade eleitoral, enraizamento social, autonomia e legitimidade.",
+       "x": {
+        "e": "Mainwaring destaca quatro dimensões da institucionalização partidária.",
+        "src": "Aula 04, p. 12",
+        "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+       }
+      },
+      {
+       "id": "est-a04-r2.4.2",
+       "t": "Critério de Rose e Mackie",
+       "n": "Partido que perdura de eleição em eleição e compete em pelo menos três pleitos nacionais.",
+       "x": {
+        "e": "Para Rose e Mackie, um partido institucionalizado perdura de eleição em eleição, com continuidade organizacional.",
+        "src": "Aula 04, p. 12",
+        "cit": "um partido institucionalizado é aquele que perdura de eleição em eleição, já que demonstra continuidade organizacional e capacidade de competir em pelo menos três pleitos nacionais",
+        "trap": "Confundir partido institucionalizado com partido grande: o critério é a permanência ao longo de eleições."
+       }
+      },
+      {
+       "id": "est-a04-r2.4.3",
+       "t": "Cláusula de desempenho",
+       "n": "Norma constitucional que se liga à institucionalização.",
+       "x": {
+        "e": "A cláusula de desempenho está prevista no § 3º do art. 17 da Constituição Federal.",
+        "src": "Aula 04, p. 12",
+        "cit": "a atual norma prevista no dispositivo do § 3o do art. 17 da nossa Constituição Federal, a chamada cláusula de desempenho"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r3",
+   "t": "Origem e tipologias dos partidos",
+   "n": "Tipologia de Duverger: origem parlamentar ou externa e a evolução dos modelos.",
+   "x": {
+    "e": "Duverger é o principal referencial da aula; as tipologias tratam da origem dos partidos e dos modelos partidários.",
+    "src": "Aula 04, p. 13",
+    "cit": "Esse é o método de Maurice Duverger - autor que mais cai em provas de concurso e é, nesta aula, nosso principal referencial",
+    "trap": "Usar a história (origem) e as tipologias (modelos) como se fossem a mesma coisa: são dois subcampos que se tocam."
+   },
+   "f": [
+    {
+     "id": "est-a04-r3.1",
+     "t": "Origem parlamentar e externa",
+     "n": "Partido parlamentar nasce no parlamento; partido externo nasce na sociedade civil.",
+     "x": {
+      "e": "Partidos de criação parlamentar nascem de iniciativa de legisladores; partidos de organização externa nascem de organizações da sociedade civil.",
+      "src": "Aula 04, p. 15",
+      "cit": "Um partido de criação parlamentar é uma organização política que se origina e evolui principalmente dentro do contexto das instituições parlamentares"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.1.1",
+       "t": "Criação externa",
+       "n": "Organização externa ao sistema parlamentar e eleitoral.",
+       "x": {
+        "e": "O partido de organização externa é criado por meio de organizações externas ao sistema parlamentar e eleitoral.",
+        "src": "Aula 04, p. 15",
+        "cit": "Um partido de organização externa, como o próprio nome sugere, é criado por meio de organizações externas ao sistema parlamentar e eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r3.1.2",
+       "t": "Sequência histórica",
+       "n": "Primeiro surgiram os partidos parlamentares, depois os externos.",
+       "x": {
+        "e": "Em uma linha do tempo, existiram primeiro os partidos parlamentares e depois os partidos exteriores.",
+        "src": "Aula 04, p. 16",
+        "cit": "podemos afirmar que existiram primeiros os partidos parlamentares e depois os partidos exteriores",
+        "nota": "Texto-fonte: 'primeiros' no lugar de 'primeiro' (erro de concordância); sentido preservado."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.2",
+     "t": "Partido de quadros",
+     "n": "Clubes parlamentares de notáveis, com pouca base social, primeira metade do século XIX.",
+     "x": {
+      "e": "Partidos de quadros surgem na primeira metade do século XIX, dominados por notáveis, com pouca penetração social.",
+      "src": "Aula 04, p. 16",
+      "cit": "Em um primeiro momento, na primeira metade do século XIX, tivemos os partidos de quadros",
+      "trap": "Confundir partido de quadros (notáveis, financiados por poucos ricos) com partido de massas (filiados e contribuições)."
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.2.1",
+       "t": "Objetivo dos partidos de quadros",
+       "n": "Ganhar eleições, fazer acordos e controlar o orçamento.",
+       "x": {
+        "e": "O principal objetivo dos partidos de quadros é ganhar eleições, fazer acordos, conseguir cargos e controlar o orçamento público.",
+        "src": "Aula 04, p. 17",
+        "cit": "Desse modo, seu principal objetivo é ganhar eleições, fazer acordos, conseguir cargos e controlar parcela significativa do orçamento público"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.3",
+     "t": "Partido de massas",
+     "n": "Surge com a ampliação do sufrágio e busca filiados e ideologia marcada.",
+     "x": {
+      "e": "Partidos de massas não buscam apenas resultados eleitorais, mas também maior contato com filiados.",
+      "src": "Aula 04, p. 17",
+      "cit": "Uma das características centrais é que esses partidos não buscam apenas resultados eleitorais, mas também um maior contato com filiados"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.3.1",
+       "t": "Figura do filiado",
+       "n": "O filiado, que financia por pequenas contribuições, substitui os notáveis.",
+       "x": {
+        "e": "É no partido de massas que aparece a figura do filiado partidário.",
+        "src": "Aula 04, p. 17",
+        "cit": "Na verdade, é aí que aparece a figura do filiado partidário"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r4",
+   "t": "Partidos nas democracias contemporâneas: catch-all e cartel",
+   "n": "Do partido de massas ao catch-all e ao partido cartel.",
+   "x": {
+    "e": "O partido catch-all concentra-se na disputa eleitoral imediata; o partido cartel opera a partir do Estado.",
+    "src": "Aula 04, p. 20",
+    "cit": "O Partido Catch-all é caracterizado por sua concentração na disputa eleitoral imediata",
+    "trap": "Confundir catch-all (eleitorado amplo, pouca ideologia) com partido de massas (base de militantes e ideologia marcada)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r4.1",
+     "t": "Partido pega-tudo (catch-all)",
+     "n": "Busca eleitor médio, com discurso difuso e menos ideologia.",
+     "x": {
+      "e": "O partido catch-all procura construir consenso amplo para atrair o eleitor médio, em vez de focar em membros e ativistas.",
+      "src": "Aula 04, p. 20",
+      "cit": "Os partidos que adotam essa abordagem buscam dialogar com um eleitorado que ultrapassa as fronteiras de suas bases sociais originais"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.1.1",
+       "t": "Eleitor como consumidor",
+       "n": "Eleitores são mais consumidores do que participantes ativos.",
+       "x": {
+        "e": "A ideia do partido catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos.",
+        "src": "Aula 04, p. 21",
+        "cit": "A ideia do Partido Catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos"
+       }
+      },
+      {
+       "id": "est-a04-r4.1.2",
+       "t": "Reformas graduais",
+       "n": "Não buscam transformação radical, e sim reformas graduais.",
+       "x": {
+        "e": "Os partidos catch-all não buscam transformações radicais, mas reformas e melhorias graduais.",
+        "src": "Aula 04, p. 21",
+        "cit": "os partidos não buscam transformações radicais, mas sim reformas e melhorias graduais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.2",
+     "t": "Partido cartel (Katz e Mair)",
+     "n": "Três faces do partido: no governo, na base e na central; o cartel fecha o sistema.",
+     "x": {
+      "e": "Katz e Mair observam o enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office.",
+      "src": "Aula 04, p. 22",
+      "cit": "Segundo Katz e Mair, nas últimas décadas observa-se um progressivo enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.2.1",
+       "t": "Partido cartel",
+       "n": "Legendas estabelecidas cooperam para controlar o sistema e reduzir a concorrência.",
+       "x": {
+        "e": "No partido cartel, as legendas estabelecidas cooperam entre si para controlar o sistema político e dificultar a entrada de novos atores.",
+        "src": "Aula 04, p. 22",
+        "cit": "Esse processo culmina no que os autores denominam partido cartel, modelo no qual as legendas estabelecidas cooperam entre si para controlar o sistema político, reduzir a competição efetiva e dificultar a entrada de novos atores",
+        "trap": "Inverter a relação: no cartel os partidos operam a partir do Estado em direção à sociedade, e não o contrário."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.3",
+     "t": "Partidos institucionalizados e papel de representação",
+     "n": "Institucionalização traz previsibilidade; partidos captam a opinião pública.",
+     "x": {
+      "e": "Partidos institucionalizados oferecem previsibilidade às disputas, fortalecem vínculos representativos e reduzem a personalização.",
+      "src": "Aula 04, p. 22",
+      "cit": "Partidos institucionalizados tendem a oferecer maior previsibilidade às disputas eleitorais, fortalecer os vínculos representativos e reduzir a personalização excessiva da política"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.3.1",
+       "t": "Canais legítimos de atuação",
+       "n": "Partidos captam, organizam e transformam em bandeiras as aspirações sociais.",
+       "x": {
+        "e": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública.",
+        "src": "Aula 04, p. 23",
+        "cit": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r5",
+   "t": "Sistemas partidários: Duverger e Sartori",
+   "n": "Classificações de sistemas partidários por número de partidos (Duverger) e relevância ideológica (Sartori).",
+   "x": {
+    "e": "Duverger classifica pelo número de partidos; Sartori acrescenta a profundidade das diferenças ideológicas e a relevância dos partidos.",
+    "src": "Aula 04, p. 37",
+    "cit": "Maurice Duverger e Giovanni Sartori são dois estudiosos da teoria dos partidos políticos que contribuíram para a classificação dos sistemas partidários",
+    "trap": "Achar que Sartori descartou a contagem de partidos: ele a complementa com o critério ideológico."
+   },
+   "f": [
+    {
+     "id": "est-a04-r5.1",
+     "t": "Duverger: unipartidarismo, bipartidarismo e multipartidarismo",
+     "n": "Classificação pelo número de partidos em sistemas contemporâneos.",
+     "x": {
+      "e": "Duverger classifica os sistemas partidários em unipartidarismo, bipartidarismo e multipartidarismo.",
+      "src": "Aula 04, p. 38",
+      "cit": "O unipartidarismo é característico de regimes totalitários",
+      "nota": "Texto-fonte p. 38 traz 'como o e comunismo' (exemplos omitidos na extração); a citação usa só a frase íntegra."
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.1.1",
+       "t": "Unipartidarismo",
+       "n": "Partido único, típico de regimes totalitários, incompatível com a democracia.",
+       "x": {
+        "e": "O sistema unipartidário é incompatível com os princípios democráticos, pois não permite a alternância no poder.",
+        "src": "Aula 04, p. 39",
+        "cit": "O sistema unipartidário é incompatível com os princípios democráticos, uma vez que não permite a alternância no poder"
+       }
+      },
+      {
+       "id": "est-a04-r5.1.2",
+       "t": "Bipartidarismo",
+       "n": "Dois partidos dominantes; elogiado pela estabilidade, criticado pela exclusão de minorias.",
+       "x": {
+        "e": "O bipartidarismo é frequentemente elogiado por sua estabilidade política.",
+        "src": "Aula 04, p. 39",
+        "cit": "Esse sistema é frequentemente elogiado por sua estabilidade política",
+        "trap": "Tratar o bipartidarismo só como virtude: a aula lista críticas (exclusão de minorias, menos escolhas, rigidez)."
+       }
+      },
+      {
+       "id": "est-a04-r5.1.3",
+       "t": "Multipartidarismo",
+       "n": "Três ou mais partidos; risco de pulverização e de governos de coalizão.",
+       "x": {
+        "e": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política.",
+        "src": "Aula 04, p. 40",
+        "cit": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.2",
+     "t": "Sartori: relevância, coalizão e chantagem",
+     "n": "Partido relevante é o que pode formar maioria ou alterar a competição.",
+     "x": {
+      "e": "Sartori propõe que o sistema seja avaliado também pela profundidade das diferenças ideológicas entre os partidos.",
+      "src": "Aula 04, p. 38",
+      "cit": "Sartori argumentou que um sistema partidário não deveria ser avaliado apenas pela quantidade de partidos, mas também pela profundidade das diferenças ideológicas entre eles"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.2.1",
+       "t": "Potencial de coalizão",
+       "n": "Partido relevante é o que pode integrar ou determinar maioria.",
+       "x": {
+        "e": "Um partido é relevante se tiver a capacidade de determinar uma maioria parlamentar; o menor é irrelevante se nunca integra coalizão possível.",
+        "src": "Aula 04, p. 42",
+        "cit": "Potencial de Coalizão: um partido menor é considerado irrelevante se nunca é necessário ou integrado em qualquer coalizão majoritária possível ao longo do tempo"
+       }
+      },
+      {
+       "id": "est-a04-r5.2.2",
+       "t": "Força do partido e tipologias de Sartori",
+       "n": "Força eleitoral (cadeiras) e potencial de coalizão; tipos incluem pluralismo moderado e polarizado.",
+       "x": {
+        "e": "Sartori classificou os sistemas em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados.",
+        "src": "Aula 04, p. 42",
+        "cit": "Sartori classificou os sistemas partidários em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados",
+        "nota": "Resumos (p. 60) dizem que o potencial de chantagem é 'alterar a tática ou vetar decisões'; o texto didático (p. 42) fala em 'modificar o rumo da competição'. 'Vetar decisões' não consta do texto didático."
+       }
+      },
+      {
+       "id": "est-a04-r5.2.3",
+       "t": "Critério ideológico como complemento",
+       "n": "A contagem de partidos continua relevante, mas precisa de análise ideológica.",
+       "x": {
+        "e": "O posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado.",
+        "src": "Aula 04, p. 38",
+        "cit": "Cuidadoooo: esse posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.3",
+     "t": "Presidencialismo de coalizão (Abranches)",
+     "n": "Modelo brasileiro: presidencialismo, multipartidarismo e representação proporcional.",
+     "x": {
+      "e": "O Brasil combina presidencialismo, multipartidarismo e representação proporcional, e organiza o Executivo com grandes coalizões.",
+      "src": "Aula 04, p. 43",
+      "cit": "o Brasil é o único país que, além de combinar a proporcionalidade, o multipartidarismo e o"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.3.1",
+       "t": "Fórmula brasileira",
+       "n": "Combinação de multipartidarismo, presidencialismo e RP de listas abertas.",
+       "x": {
+        "e": "O Brasil adotou uma fórmula que combina multipartidarismo, presidencialismo e representação proporcional de listas abertas.",
+        "src": "Aula 04, p. 41",
+        "cit": "o Brasil, por exemplo, adotou uma fórmula política que combina multipartidarismo, presidencialismo e sistema de representação proporcional de listas abertas"
+       }
+      },
+      {
+       "id": "est-a04-r5.3.2",
+       "t": "Governabilidade e coalizões",
+       "n": "Sem maioria, o governo depende de negociações para formar coalizões.",
+       "x": {
+        "e": "Quando o partido vitorioso não detém a maioria das cadeiras, inicia-se um complexo jogo de negociações para criar coalizões.",
+        "src": "Aula 04, p. 41",
+        "cit": "Quando o partido vitorioso nas eleições não detém a maioria das cadeiras no legislativo, inicia-se um complexo jogo de negociações para criar coalizões capazes de sustentar o governo"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
   }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Cláusula estimula federações e fusões",
+   "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
+   "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4"
+  },
+  {
+   "rotulo": "Fusão reduz o NEP",
+   "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+   "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4"
+  },
+  {
+   "rotulo": "Catch-all e cartel enfraquecem o filiado de massa",
+   "de": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+   "para": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2"
+  },
+  {
+   "rotulo": "definição de partido leva às tipologias",
+   "de": "est-a04-r2",
+   "para": "est-a04-r3"
+  },
+  {
+   "rotulo": "origem e evolução explicam catch-all e cartel",
+   "de": "est-a04-r3",
+   "para": "est-a04-r4"
+  },
+  {
+   "rotulo": "número e relevância dos partidos (sistemas partidários)",
+   "de": "est-a04-r4",
+   "para": "est-a04-r5"
+  }
+ ],
+ "fontesCentral": {
+  "KIT-ARR-CP-6-teoria-dos-partidos-politicos-2026-11-26": {}
+ }
 }

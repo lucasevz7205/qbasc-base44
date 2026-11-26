@@ -1,446 +1,660 @@
 [
-  {
-    "id": "cp-7-c01",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
-    "tema": "Fundamentos",
-    "pergunta": "Quais são os cinco fundamentos da República (art. 1º)?",
-    "resposta": [
-      "Soberania",
-      "Cidadania",
-      "Dignidade da pessoa humana",
-      "Valores sociais do trabalho e da livre iniciativa",
-      "Pluralismo político"
-    ],
-    "explicacao": "Mnemônico: SO-CI-DI-VA-PLU.",
-    "fonte": "Etapa 10, p. 2, l. 159, 160"
-  },
-  {
-    "id": "cp-7-c02",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
-    "tema": "Fundamentos",
-    "pergunta": "Em que dispositivo estão os objetivos fundamentais da República e como começam?",
-    "resposta": [
-      "No art. 3º; cada objetivo começa por verbo (construir, garantir, erradicar, promover)"
-    ],
-    "fonte": "Etapa 10, p. 2, l. 184, 187"
-  },
-  {
-    "id": "cp-7-c03",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
-    "tema": "Fundamentos",
-    "pergunta": "Que artigo trata dos princípios das relações internacionais?",
-    "resposta": [
-      "O art. 4º"
-    ],
-    "fonte": "Etapa 10, p. 2, l. 162"
-  },
-  {
-    "id": "cp-7-c04",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.2",
-    "tema": "Fundamentos",
-    "pergunta": "Que forma de democracia o parágrafo único do art. 1º consagra?",
-    "resposta": [
-      "A democracia semidireta (representantes eleitos ou diretamente)"
-    ],
-    "fonte": "Etapa 10, p. 2, l. 157-158"
-  },
-  {
-    "id": "cp-7-c05",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
-    "tema": "Federação",
-    "pergunta": "Quem é soberano na federação brasileira: os entes federados ou a República Federativa?",
-    "resposta": [
-      "A República Federativa; os entes são autônomos"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 246"
-  },
-  {
-    "id": "cp-7-c06",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
-    "tema": "Federação",
-    "pergunta": "Que quatro capacidades compõem a autonomia dos entes federados?",
-    "resposta": [
-      "Auto-organização",
-      "Autogoverno",
-      "Autoadministração",
-      "Autolegislação"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 245"
-  },
-  {
-    "id": "cp-7-c07",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
-    "tema": "Federação",
-    "pergunta": "Os territórios federais são entes federados?",
-    "resposta": [
-      "Não; integram a União"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 248"
-  },
-  {
-    "id": "cp-7-c08",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-    "tema": "Competências",
-    "pergunta": "Qual artigo da Constituição trata da competência comum (material) de todos os entes?",
-    "resposta": [
-      "O art. 23"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 265"
-  },
-  {
-    "id": "cp-7-c09",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-    "tema": "Competências",
-    "pergunta": "Quem exerce a competência legislativa concorrente (art. 24)?",
-    "resposta": [
-      "A União (normas gerais) e os Estados e o DF (suplementar)"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 271"
-  },
-  {
-    "id": "cp-7-c10",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-    "tema": "Competências",
-    "pergunta": "A quem cabe a competência remanescente (art. 25, § 1º)?",
-    "resposta": [
-      "Aos Estados"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 275"
-  },
-  {
-    "id": "cp-7-c11",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-    "tema": "Competências",
-    "pergunta": "Por que a competência do Distrito Federal é chamada cumulativa?",
-    "resposta": [
-      "Reúne as competências de Estado e de Município; o DF não pode ser dividido em Municípios"
-    ],
-    "explicacao": "Art. 32.",
-    "fonte": "Etapa 10, p. 3, l. 290, 291"
-  },
-  {
-    "id": "cp-7-c12",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
-    "tema": "Criação de entes",
-    "pergunta": "Que dois atos exige a criação de novo Estado por subdivisão (art. 18, § 3º)?",
-    "resposta": [
-      "Plebiscito da população diretamente interessada",
-      "Lei complementar do Congresso Nacional"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 238-239"
-  },
-  {
-    "id": "cp-7-c13",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
-    "tema": "Criação de entes",
-    "pergunta": "Por que ato se criam Municípios (art. 18, § 4º)?",
-    "resposta": [
-      "Por lei estadual, dentro do período fixado em lei complementar federal, após plebiscito"
-    ],
-    "fonte": "Etapa 10, p. 3, l. 240, 241"
-  },
-  {
-    "id": "cp-7-c14",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
-    "tema": "Federalismo",
-    "pergunta": "Federalismo dual ou cooperativo: qual modelo a Constituição de 1988 adotou?",
-    "resposta": [
-      "O cooperativo (competências compartilhadas, art. 23)"
-    ],
-    "fonte": "Etapa 10, p. 4, l. 316"
-  },
-  {
-    "id": "cp-7-c15",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
-    "tema": "Federalismo",
-    "pergunta": "A federação brasileira nasceu por agregação ou por desagregação?",
-    "resposta": [
-      "Por desagregação (Estado unitário que se descentralizou, 1889-1891)"
-    ],
-    "fonte": "Etapa 10, p. 4, l. 326"
-  },
-  {
-    "id": "cp-7-c16",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
-    "tema": "Federalismo",
-    "pergunta": "Que obra e que tese de Abrucio descrevem a federação brasileira pós-redemocratização?",
-    "resposta": [
-      "Os barões da federação (1998): governadores centrais, federalismo estadualista"
-    ],
-    "fonte": "Etapa 10, p. 4, l. 333, 336"
-  },
-  {
-    "id": "cp-7-c17",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
-    "tema": "Federalismo",
-    "pergunta": "Qual a tese de Marta Arretche sobre a federação brasileira?",
-    "resposta": [
-      "A União concentra a autoridade legislativa; a execução é descentralizada e a regulação, centralizada"
-    ],
-    "explicacao": "Obra: Democracia, federalismo e centralização no Brasil (2012).",
-    "fonte": "Etapa 10, p. 4, l. 340, 341"
-  },
-  {
-    "id": "cp-7-c18",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
-    "tema": "Plebiscito e referendo",
-    "pergunta": "Plebiscito ou referendo: qual é convocado antes do ato legislativo?",
-    "resposta": [
-      "O plebiscito"
-    ],
-    "explicacao": "Mnemônico: PLEbiscito é PRÉvio; REferendo é REtroativo.",
-    "fonte": "Etapa 10, p. 5, l. 397"
-  },
-  {
-    "id": "cp-7-c19",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
-    "tema": "Plebiscito e referendo",
-    "pergunta": "O que cabe ao povo no referendo?",
-    "resposta": [
-      "Ratificar ou rejeitar o ato legislativo ou administrativo já editado"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 399"
-  },
-  {
-    "id": "cp-7-c20",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
-    "tema": "Plebiscito e referendo",
-    "pergunta": "Qual foi o resultado do referendo de 2005 sobre o comércio de armas de fogo e munição?",
-    "resposta": [
-      "A proibição foi rejeitada"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 433, 434"
-  },
-  {
-    "id": "cp-7-c21",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
-    "tema": "Convocação",
-    "pergunta": "Por meio de que ato são convocados plebiscito e referendo nacionais?",
-    "resposta": [
-      "Decreto legislativo"
-    ],
-    "explicacao": "Lei nº 9.709/1998, art. 3º.",
-    "fonte": "Etapa 10, p. 5, l. 401"
-  },
-  {
-    "id": "cp-7-c22",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
-    "tema": "Convocação",
-    "pergunta": "Que apoio exige a proposta de decreto legislativo de plebiscito ou referendo?",
-    "resposta": [
-      "Um terço dos membros de qualquer das Casas do Congresso"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 447"
-  },
-  {
-    "id": "cp-7-c23",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
-    "tema": "Iniciativa popular",
-    "pergunta": "Que requisitos tem a iniciativa popular de projeto de lei (Lei nº 9.709/1998, art. 13)?",
-    "resposta": [
-      "1% do eleitorado nacional",
-      "Pelo menos cinco Estados",
-      "0,3% dos eleitores em cada um"
-    ],
-    "explicacao": "Mnemônico: 1 – 5 – 0,3.",
-    "fonte": "Etapa 10, p. 5, l. 403, 404"
-  },
-  {
-    "id": "cp-7-c24",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
-    "tema": "Iniciativa popular",
-    "pergunta": "A que Casa do Congresso se apresenta o projeto de iniciativa popular?",
-    "resposta": [
-      "À Câmara dos Deputados"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 403"
-  },
-  {
-    "id": "cp-7-c25",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
-    "tema": "Iniciativa popular",
-    "pergunta": "Cite duas leis originadas de iniciativa popular.",
-    "resposta": [
-      "Lei nº 9.840/1999 (compra de votos)",
-      "Lei Complementar nº 135/2010 (Ficha Limpa)"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 444, 445"
-  },
-  {
-    "id": "cp-7-c26",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
-    "tema": "Iniciativa popular",
-    "pergunta": "A Constituição prevê iniciativa popular de emenda constitucional ou recall no plano federal?",
-    "resposta": [
-      "Não prevê nenhum dos dois"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 448, 449"
-  },
-  {
-    "id": "cp-7-c27",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
-    "tema": "Consultas municipais",
-    "pergunta": "Até quantos dias antes das eleições a consulta municipal deve ser encaminhada à Justiça Eleitoral?",
-    "resposta": [
-      "90 dias"
-    ],
-    "explicacao": "Art. 14, § 12.",
-    "fonte": "Etapa 10, p. 4, l. 384"
-  },
-  {
-    "id": "cp-7-c28",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
-    "tema": "Consultas municipais",
-    "pergunta": "Pode haver propaganda gratuita no rádio e na TV nas consultas populares municipais?",
-    "resposta": [
-      "Não (art. 14, § 13)"
-    ],
-    "fonte": "Etapa 10, p. 4, l. 386"
-  },
-  {
-    "id": "cp-7-c29",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.5",
-    "tema": "Participação",
-    "pergunta": "Em que ano foi criada a Comissão de Legislação Participativa da Câmara e o que ela recebe?",
-    "resposta": [
-      "2001; sugestões legislativas de associações, sindicatos e outras entidades da sociedade civil"
-    ],
-    "fonte": "Etapa 10, p. 8, l. 779"
-  },
-  {
-    "id": "cp-7-c30",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
-    "tema": "Órgãos",
-    "pergunta": "Quantos deputados e quantos senadores compõem o Congresso Nacional?",
-    "resposta": [
-      "513 deputados",
-      "81 senadores"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 494, 501"
-  },
-  {
-    "id": "cp-7-c31",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
-    "tema": "Órgãos",
-    "pergunta": "Qual a duração do mandato de deputado e de senador?",
-    "resposta": [
-      "Deputado: quatro anos",
-      "Senador: oito anos"
-    ],
-    "fonte": "Etapa 10, p. 5, l. 495, 502"
-  },
-  {
-    "id": "cp-7-c32",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
-    "tema": "Órgãos",
-    "pergunta": "Quais são os dois períodos da sessão legislativa?",
-    "resposta": [
-      "2 de fevereiro a 17 de julho",
-      "1º de agosto a 22 de dezembro"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 521"
-  },
-  {
-    "id": "cp-7-c33",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
-    "tema": "Órgãos",
-    "pergunta": "Em que data toma posse o Presidente da República a partir de 2027?",
-    "resposta": [
-      "5 de janeiro do ano seguinte à eleição (EC nº 111/2021)"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 529, 530"
-  },
-  {
-    "id": "cp-7-c34",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
-    "tema": "Órgãos",
-    "pergunta": "Quantos ministros tem o STF e como são escolhidos?",
-    "resposta": [
-      "Onze, nomeados pelo Presidente após aprovação do Senado por maioria absoluta"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 539"
-  },
-  {
-    "id": "cp-7-c35",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
-    "tema": "Voto",
-    "pergunta": "Para quem o alistamento e o voto são facultativos (art. 14, § 1º, II)?",
-    "resposta": [
-      "Analfabetos",
-      "Maiores de setenta anos",
-      "Maiores de dezesseis e menores de dezoito anos"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 552, 553"
-  },
-  {
-    "id": "cp-7-c36",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
-    "tema": "Voto",
-    "pergunta": "Quem são os inalistáveis (art. 14, § 2º)?",
-    "resposta": [
-      "Os estrangeiros e, durante o serviço militar obrigatório, os conscritos"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 574"
-  },
-  {
-    "id": "cp-7-c37",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
-    "tema": "Elegibilidade",
-    "pergunta": "Qual a idade mínima para Presidente, Vice-Presidente e Senador?",
-    "resposta": [
-      "35 anos"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 558, 560"
-  },
-  {
-    "id": "cp-7-c38",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
-    "tema": "Elegibilidade",
-    "pergunta": "Qual a idade mínima para Governador e Vice-Governador?",
-    "resposta": [
-      "30 anos"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 562, 564"
-  },
-  {
-    "id": "cp-7-c39",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
-    "tema": "Elegibilidade",
-    "pergunta": "Qual a idade mínima para Deputado, Prefeito e Vice-Prefeito e para Vereador?",
-    "resposta": [
-      "Deputado, Prefeito e Vice-Prefeito: 21 anos",
-      "Vereador: 18 anos"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 566, 568, 570, 572"
-  },
-  {
-    "id": "cp-7-c40",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
-    "tema": "Elegibilidade",
-    "pergunta": "O analfabeto pode votar e pode ser votado?",
-    "resposta": [
-      "Pode votar (facultativo), mas é inelegível"
-    ],
-    "fonte": "Etapa 10, p. 6, l. 574-575"
-  },
-  {
-    "id": "cp-7-c41",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
-    "tema": "Atualidade",
-    "pergunta": "Que quórum exige a aprovação de emenda constitucional?",
-    "resposta": [
-      "Três quintos, em dois turnos, em cada Casa"
-    ],
-    "fonte": "Etapa 10, p. 7, l. 626"
-  },
-  {
-    "id": "cp-7-c42",
-    "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
-    "tema": "Atualidade",
-    "pergunta": "Que votação restava para a PEC nº 18/2025 no Senado na data de corte do material?",
-    "resposta": [
-      "Votação em dois turnos no Plenário, com pelo menos 49 votos"
-    ],
-    "fonte": "Etapa 10, p. 7, l. 622"
-  }
+ {
+  "id": "cp-7-c01",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
+  "tema": "Fundamentos",
+  "pergunta": "Quais são os cinco fundamentos da República (art. 1º)?",
+  "resposta": [
+   "Soberania",
+   "Cidadania",
+   "Dignidade da pessoa humana",
+   "Valores sociais do trabalho e da livre iniciativa",
+   "Pluralismo político"
+  ],
+  "explicacao": "Mnemônico: SO-CI-DI-VA-PLU.",
+  "fonte": "Etapa 10, p. 2, l. 159, 160"
+ },
+ {
+  "id": "cp-7-c02",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
+  "tema": "Fundamentos",
+  "pergunta": "Em que dispositivo estão os objetivos fundamentais da República e como começam?",
+  "resposta": [
+   "No art. 3º; cada objetivo começa por verbo (construir, garantir, erradicar, promover)"
+  ],
+  "fonte": "Etapa 10, p. 2, l. 184, 187"
+ },
+ {
+  "id": "cp-7-c03",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
+  "tema": "Fundamentos",
+  "pergunta": "Que artigo trata dos princípios das relações internacionais?",
+  "resposta": [
+   "O art. 4º"
+  ],
+  "fonte": "Etapa 10, p. 2, l. 162"
+ },
+ {
+  "id": "cp-7-c04",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.2",
+  "tema": "Fundamentos",
+  "pergunta": "Que forma de democracia o parágrafo único do art. 1º consagra?",
+  "resposta": [
+   "A democracia semidireta (representantes eleitos ou diretamente)"
+  ],
+  "fonte": "Etapa 10, p. 2, l. 157-158"
+ },
+ {
+  "id": "cp-7-c05",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
+  "tema": "Federação",
+  "pergunta": "Quem é soberano na federação brasileira: os entes federados ou a República Federativa?",
+  "resposta": [
+   "A República Federativa; os entes são autônomos"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 246"
+ },
+ {
+  "id": "cp-7-c06",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
+  "tema": "Federação",
+  "pergunta": "Que quatro capacidades compõem a autonomia dos entes federados?",
+  "resposta": [
+   "Auto-organização",
+   "Autogoverno",
+   "Autoadministração",
+   "Autolegislação"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 245"
+ },
+ {
+  "id": "cp-7-c07",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
+  "tema": "Federação",
+  "pergunta": "Os territórios federais são entes federados?",
+  "resposta": [
+   "Não; integram a União"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 248"
+ },
+ {
+  "id": "cp-7-c08",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+  "tema": "Competências",
+  "pergunta": "Qual artigo da Constituição trata da competência comum (material) de todos os entes?",
+  "resposta": [
+   "O art. 23"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 265"
+ },
+ {
+  "id": "cp-7-c09",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+  "tema": "Competências",
+  "pergunta": "Quem exerce a competência legislativa concorrente (art. 24)?",
+  "resposta": [
+   "A União (normas gerais) e os Estados e o DF (suplementar)"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 271"
+ },
+ {
+  "id": "cp-7-c10",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+  "tema": "Competências",
+  "pergunta": "A quem cabe a competência remanescente (art. 25, § 1º)?",
+  "resposta": [
+   "Aos Estados"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 275"
+ },
+ {
+  "id": "cp-7-c11",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+  "tema": "Competências",
+  "pergunta": "Por que a competência do Distrito Federal é chamada cumulativa?",
+  "resposta": [
+   "Reúne as competências de Estado e de Município; o DF não pode ser dividido em Municípios"
+  ],
+  "explicacao": "Art. 32.",
+  "fonte": "Etapa 10, p. 3, l. 290, 291"
+ },
+ {
+  "id": "cp-7-c12",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
+  "tema": "Criação de entes",
+  "pergunta": "Que dois atos exige a criação de novo Estado por subdivisão (art. 18, § 3º)?",
+  "resposta": [
+   "Plebiscito da população diretamente interessada",
+   "Lei complementar do Congresso Nacional"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 238-239"
+ },
+ {
+  "id": "cp-7-c13",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
+  "tema": "Criação de entes",
+  "pergunta": "Por que ato se criam Municípios (art. 18, § 4º)?",
+  "resposta": [
+   "Por lei estadual, dentro do período fixado em lei complementar federal, após plebiscito"
+  ],
+  "fonte": "Etapa 10, p. 3, l. 240, 241"
+ },
+ {
+  "id": "cp-7-c14",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
+  "tema": "Federalismo",
+  "pergunta": "Federalismo dual ou cooperativo: qual modelo a Constituição de 1988 adotou?",
+  "resposta": [
+   "O cooperativo (competências compartilhadas, art. 23)"
+  ],
+  "fonte": "Etapa 10, p. 4, l. 316"
+ },
+ {
+  "id": "cp-7-c15",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
+  "tema": "Federalismo",
+  "pergunta": "A federação brasileira nasceu por agregação ou por desagregação?",
+  "resposta": [
+   "Por desagregação (Estado unitário que se descentralizou, 1889-1891)"
+  ],
+  "fonte": "Etapa 10, p. 4, l. 326"
+ },
+ {
+  "id": "cp-7-c16",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
+  "tema": "Federalismo",
+  "pergunta": "Que obra e que tese de Abrucio descrevem a federação brasileira pós-redemocratização?",
+  "resposta": [
+   "Os barões da federação (1998): governadores centrais, federalismo estadualista"
+  ],
+  "fonte": "Etapa 10, p. 4, l. 333, 336"
+ },
+ {
+  "id": "cp-7-c17",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
+  "tema": "Federalismo",
+  "pergunta": "Qual a tese de Marta Arretche sobre a federação brasileira?",
+  "resposta": [
+   "A União concentra a autoridade legislativa; a execução é descentralizada e a regulação, centralizada"
+  ],
+  "explicacao": "Obra: Democracia, federalismo e centralização no Brasil (2012).",
+  "fonte": "Etapa 10, p. 4, l. 340, 341"
+ },
+ {
+  "id": "cp-7-c18",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
+  "tema": "Plebiscito e referendo",
+  "pergunta": "Plebiscito ou referendo: qual é convocado antes do ato legislativo?",
+  "resposta": [
+   "O plebiscito"
+  ],
+  "explicacao": "Mnemônico: PLEbiscito é PRÉvio; REferendo é REtroativo.",
+  "fonte": "Etapa 10, p. 5, l. 397"
+ },
+ {
+  "id": "cp-7-c19",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
+  "tema": "Plebiscito e referendo",
+  "pergunta": "O que cabe ao povo no referendo?",
+  "resposta": [
+   "Ratificar ou rejeitar o ato legislativo ou administrativo já editado"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 399"
+ },
+ {
+  "id": "cp-7-c20",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
+  "tema": "Plebiscito e referendo",
+  "pergunta": "Qual foi o resultado do referendo de 2005 sobre o comércio de armas de fogo e munição?",
+  "resposta": [
+   "A proibição foi rejeitada"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 433, 434"
+ },
+ {
+  "id": "cp-7-c21",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
+  "tema": "Convocação",
+  "pergunta": "Por meio de que ato são convocados plebiscito e referendo nacionais?",
+  "resposta": [
+   "Decreto legislativo"
+  ],
+  "explicacao": "Lei nº 9.709/1998, art. 3º.",
+  "fonte": "Etapa 10, p. 5, l. 401"
+ },
+ {
+  "id": "cp-7-c22",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
+  "tema": "Convocação",
+  "pergunta": "Que apoio exige a proposta de decreto legislativo de plebiscito ou referendo?",
+  "resposta": [
+   "Um terço dos membros de qualquer das Casas do Congresso"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 447"
+ },
+ {
+  "id": "cp-7-c23",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
+  "tema": "Iniciativa popular",
+  "pergunta": "Que requisitos tem a iniciativa popular de projeto de lei (Lei nº 9.709/1998, art. 13)?",
+  "resposta": [
+   "1% do eleitorado nacional",
+   "Pelo menos cinco Estados",
+   "0,3% dos eleitores em cada um"
+  ],
+  "explicacao": "Mnemônico: 1 – 5 – 0,3.",
+  "fonte": "Etapa 10, p. 5, l. 403, 404"
+ },
+ {
+  "id": "cp-7-c24",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
+  "tema": "Iniciativa popular",
+  "pergunta": "A que Casa do Congresso se apresenta o projeto de iniciativa popular?",
+  "resposta": [
+   "À Câmara dos Deputados"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 403"
+ },
+ {
+  "id": "cp-7-c25",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
+  "tema": "Iniciativa popular",
+  "pergunta": "Cite duas leis originadas de iniciativa popular.",
+  "resposta": [
+   "Lei nº 9.840/1999 (compra de votos)",
+   "Lei Complementar nº 135/2010 (Ficha Limpa)"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 444, 445"
+ },
+ {
+  "id": "cp-7-c26",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
+  "tema": "Iniciativa popular",
+  "pergunta": "A Constituição prevê iniciativa popular de emenda constitucional ou recall no plano federal?",
+  "resposta": [
+   "Não prevê nenhum dos dois"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 448, 449"
+ },
+ {
+  "id": "cp-7-c27",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
+  "tema": "Consultas municipais",
+  "pergunta": "Até quantos dias antes das eleições a consulta municipal deve ser encaminhada à Justiça Eleitoral?",
+  "resposta": [
+   "90 dias"
+  ],
+  "explicacao": "Art. 14, § 12.",
+  "fonte": "Etapa 10, p. 4, l. 384"
+ },
+ {
+  "id": "cp-7-c28",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
+  "tema": "Consultas municipais",
+  "pergunta": "Pode haver propaganda gratuita no rádio e na TV nas consultas populares municipais?",
+  "resposta": [
+   "Não (art. 14, § 13)"
+  ],
+  "fonte": "Etapa 10, p. 4, l. 386"
+ },
+ {
+  "id": "cp-7-c29",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.5",
+  "tema": "Participação",
+  "pergunta": "Em que ano foi criada a Comissão de Legislação Participativa da Câmara e o que ela recebe?",
+  "resposta": [
+   "2001; sugestões legislativas de associações, sindicatos e outras entidades da sociedade civil"
+  ],
+  "fonte": "Etapa 10, p. 8, l. 779"
+ },
+ {
+  "id": "cp-7-c30",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
+  "tema": "Órgãos",
+  "pergunta": "Quantos deputados e quantos senadores compõem o Congresso Nacional?",
+  "resposta": [
+   "513 deputados",
+   "81 senadores"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 494, 501"
+ },
+ {
+  "id": "cp-7-c31",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
+  "tema": "Órgãos",
+  "pergunta": "Qual a duração do mandato de deputado e de senador?",
+  "resposta": [
+   "Deputado: quatro anos",
+   "Senador: oito anos"
+  ],
+  "fonte": "Etapa 10, p. 5, l. 495, 502"
+ },
+ {
+  "id": "cp-7-c32",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
+  "tema": "Órgãos",
+  "pergunta": "Quais são os dois períodos da sessão legislativa?",
+  "resposta": [
+   "2 de fevereiro a 17 de julho",
+   "1º de agosto a 22 de dezembro"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 521"
+ },
+ {
+  "id": "cp-7-c33",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
+  "tema": "Órgãos",
+  "pergunta": "Em que data toma posse o Presidente da República a partir de 2027?",
+  "resposta": [
+   "5 de janeiro do ano seguinte à eleição (EC nº 111/2021)"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 529, 530"
+ },
+ {
+  "id": "cp-7-c34",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
+  "tema": "Órgãos",
+  "pergunta": "Quantos ministros tem o STF e como são escolhidos?",
+  "resposta": [
+   "Onze, nomeados pelo Presidente após aprovação do Senado por maioria absoluta"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 539"
+ },
+ {
+  "id": "cp-7-c35",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
+  "tema": "Voto",
+  "pergunta": "Para quem o alistamento e o voto são facultativos (art. 14, § 1º, II)?",
+  "resposta": [
+   "Analfabetos",
+   "Maiores de setenta anos",
+   "Maiores de dezesseis e menores de dezoito anos"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 552, 553"
+ },
+ {
+  "id": "cp-7-c36",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
+  "tema": "Voto",
+  "pergunta": "Quem são os inalistáveis (art. 14, § 2º)?",
+  "resposta": [
+   "Os estrangeiros e, durante o serviço militar obrigatório, os conscritos"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 574"
+ },
+ {
+  "id": "cp-7-c37",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
+  "tema": "Elegibilidade",
+  "pergunta": "Qual a idade mínima para Presidente, Vice-Presidente e Senador?",
+  "resposta": [
+   "35 anos"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 558, 560"
+ },
+ {
+  "id": "cp-7-c38",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
+  "tema": "Elegibilidade",
+  "pergunta": "Qual a idade mínima para Governador e Vice-Governador?",
+  "resposta": [
+   "30 anos"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 562, 564"
+ },
+ {
+  "id": "cp-7-c39",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
+  "tema": "Elegibilidade",
+  "pergunta": "Qual a idade mínima para Deputado, Prefeito e Vice-Prefeito e para Vereador?",
+  "resposta": [
+   "Deputado, Prefeito e Vice-Prefeito: 21 anos",
+   "Vereador: 18 anos"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 566, 568, 570, 572"
+ },
+ {
+  "id": "cp-7-c40",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
+  "tema": "Elegibilidade",
+  "pergunta": "O analfabeto pode votar e pode ser votado?",
+  "resposta": [
+   "Pode votar (facultativo), mas é inelegível"
+  ],
+  "fonte": "Etapa 10, p. 6, l. 574-575"
+ },
+ {
+  "id": "cp-7-c41",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
+  "tema": "Atualidade",
+  "pergunta": "Que quórum exige a aprovação de emenda constitucional?",
+  "resposta": [
+   "Três quintos, em dois turnos, em cada Casa"
+  ],
+  "fonte": "Etapa 10, p. 7, l. 626"
+ },
+ {
+  "id": "cp-7-c42",
+  "no": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
+  "tema": "Atualidade",
+  "pergunta": "Que votação restava para a PEC nº 18/2025 no Senado na data de corte do material?",
+  "resposta": [
+   "Votação em dois turnos no Plenário, com pelo menos 49 votos"
+  ],
+  "fonte": "Etapa 10, p. 7, l. 622"
+ },
+ {
+  "id": "cp-e05-c61",
+  "no": "est-a05-r7",
+  "topico": "cp-7",
+  "tema": "Início da Nova República",
+  "pergunta": "A partir de que ano se conta a Nova República?",
+  "resposta": [
+   "1985"
+  ],
+  "explicacao": "Com a eleição indireta de Tancredo Neves e José Sarney pelo Colégio Eleitoral.",
+  "fonte": "Aula 05, p. 86",
+  "citacao": "A Nova República é o nome que damos a fase da História da República a partir de 1985",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c62",
+  "no": "est-a05-r7",
+  "topico": "cp-7",
+  "tema": "Eleição de 1985",
+  "pergunta": "Quantos votos a chapa Neves/Sarney obteve no Colégio Eleitoral?",
+  "resposta": [
+   "480 votos"
+  ],
+  "explicacao": "Contra 180 votos de Paulo Maluf.",
+  "fonte": "Aula 05, p. 87",
+  "citacao": "a chapa Neves/Sarney saiu vencedora com 480 votos, contra 180 dados a Paulo Maluf.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c63",
+  "no": "est-a05-r7",
+  "topico": "cp-7",
+  "tema": "Voto dos analfabetos",
+  "pergunta": "Depois de quanto tempo os analfabetos voltaram a ter direito ao voto com a redemocratização?",
+  "resposta": [
+   "Cem anos"
+  ],
+  "explicacao": "A exclusão vinha da Lei Saraiva (1881).",
+  "fonte": "Aula 05, p. 87",
+  "citacao": "Pela primeira vez em Cem anos, os analfabetos passaram a ter o direito ao voto.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c64",
+  "no": "est-a05-r7.1",
+  "topico": "cp-7",
+  "tema": "EC 25/1985",
+  "pergunta": "Pelo sistema de maioria absoluta em quantos turnos a EC 25/1985 previu a eleição direta para presidente?",
+  "resposta": [
+   "Dois turnos"
+  ],
+  "explicacao": "A emenda também revogou a fidelidade partidária e liberou regras para organização de partidos.",
+  "fonte": "Aula 05, p. 87",
+  "citacao": "estabelecimento de eleições diretas para presidente (ainda que não se tenha denido data para o pleito) pelo sistema de maioria absoluta em dois turnos",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c65",
+  "no": "est-a05-r7.2",
+  "topico": "cp-7",
+  "tema": "Instalação da Constituinte",
+  "pergunta": "Em que data foi instalada a Assembleia Nacional Constituinte?",
+  "resposta": [
+   "1º de fevereiro de 1987"
+  ],
+  "explicacao": "Composta por parlamentares eleitos em 1986; trabalhos de cerca de 20 meses.",
+  "fonte": "Aula 05, p. 88",
+  "citacao": "A Assembleia Nacional Constituinte foi instalada em 1ª de fevereiro de 1987",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c66",
+  "no": "est-a05-r7.2.1",
+  "topico": "cp-7",
+  "tema": "Voto facultativo (art. 14)",
+  "pergunta": "A partir de que idade o voto é facultativo para os idosos na CF/1988?",
+  "resposta": [
+   "Maiores de 70 anos"
+  ],
+  "explicacao": "Também facultativo para analfabetos e para maiores de 16 e menores de 18.",
+  "fonte": "Aula 05, p. 96",
+  "citacao": "b) os maiores de setenta anos",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c67",
+  "no": "est-a05-r7.2.2",
+  "topico": "cp-7",
+  "tema": "Recursos estrangeiros (art. 17)",
+  "pergunta": "De quem os partidos não podem receber recursos financeiros, segundo o art. 17?",
+  "resposta": [
+   "Entidade ou governo estrangeiros"
+  ],
+  "explicacao": "Preceito ao lado do caráter nacional, da prestação de contas e do funcionamento parlamentar.",
+  "fonte": "Aula 05, p. 97",
+  "citacao": "proibição de recebimento de recursos nanceiros de entidade ou governo estrangeiros",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c68",
+  "no": "est-a05-r7.2.3",
+  "topico": "cp-7",
+  "tema": "Cláusula de desempenho",
+  "pergunta": "Quantos Deputados Federais eleitos dão ao partido acesso ao fundo partidário e ao rádio e TV, pela via alternativa?",
+  "resposta": [
+   "Quinze (em 1/3 das UFs)"
+  ],
+  "explicacao": "A outra via é 3% dos votos válidos para a Câmara, com 2% em um terço das UFs.",
+  "fonte": "Aula 05, p. 98",
+  "citacao": "tiverem elegido pelo menos quinze Deputados Federais distribuídos em pelo menos um terço das unidades da Federação.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c69",
+  "no": "est-a05-r7.3",
+  "topico": "cp-7",
+  "tema": "Cédula oficial de 1955",
+  "pergunta": "A partir de 1955, quem passou a confeccionar e distribuir a cédula oficial?",
+  "resposta": [
+   "A Justiça Eleitoral"
+  ],
+  "explicacao": "Antes, as cédulas eram feitas pelos partidos e candidatos, o que favorecia os partidos mais estruturados.",
+  "fonte": "Aula 05, p. 103",
+  "citacao": "em 1955, quando uma nova lei introduziu a cédula ocial, que passou a ser confeccionada e distribuída pela Justiça Eleitoral.",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c70",
+  "no": "est-a05-r7.3.1",
+  "topico": "cp-7",
+  "tema": "Urna eletrônica em 1996",
+  "pergunta": "Em quantos municípios a urna eletrônica foi usada nas eleições de 1996?",
+  "resposta": [
+   "57"
+  ],
+  "explicacao": "Em 1998, foram 537 municípios (10% do total).",
+  "fonte": "Aula 05, p. 103",
+  "citacao": "Nas eleições municipais de 1996, a urna eletrônica foi usada em 57 municípios",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c71",
+  "no": "est-a05-r7.3.2",
+  "topico": "cp-7",
+  "tema": "Comparecimento eleitoral",
+  "pergunta": "Qual foi o comparecimento médio dos eleitores inscritos entre 1986 e 1998, segundo Jairo Nicolau?",
+  "resposta": [
+   "Cerca de 86%"
+  ],
+  "explicacao": "O voto obrigatório contribui para o percentual alto.",
+  "fonte": "Aula 05, p. 104",
+  "citacao": "Em média, cerca de 86% dos eleitores inscritos votaram nas eleições entre 1986 e 1998",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c72",
+  "no": "est-a05-r8",
+  "topico": "cp-7",
+  "tema": "Fechamento por Deodoro",
+  "pergunta": "Qual presidente levou ao fechamento do Legislativo em 1891?",
+  "resposta": [
+   "Deodoro da Fonseca"
+  ],
+  "explicacao": "Impasse entre presidente e Congresso sobre limites de atuação e reformas; terminou com sua renúncia.",
+  "fonte": "Aula 05, p. 85",
+  "citacao": "No caso de Deodoro da Fonseca, o impasse entre presidente e Congresso sobre limites de atuação e reformas levou ao fechamento do Legislativo.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c73",
+  "no": "est-a05-r8",
+  "topico": "cp-7",
+  "tema": "Justificativa na ditadura",
+  "pergunta": "Que argumento legitimou o fechamento do Congresso durante a ditadura militar?",
+  "resposta": [
+   "Combate à subversão e à instabilidade"
+  ],
+  "explicacao": "Na Era Vargas, o argumento foram crises políticas e discursos de ameaça à ordem.",
+  "fonte": "Aula 05, p. 85",
+  "citacao": "o argumento do combate à subversão e à instabilidade legitimou o fechamento do Congresso",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c74",
+  "no": "est-a05-r8.1",
+  "topico": "cp-7",
+  "tema": "Super-presidencialismo",
+  "pergunta": "Como se chama a tendência de forte concentração de poder nas mãos do presidente da República?",
+  "resposta": [
+   "Super-presidencialismo"
+  ],
+  "explicacao": "Em momentos de tensão, o Executivo se sobrepõe ao Legislativo.",
+  "fonte": "Aula 05, p. 85",
+  "citacao": "a tendência ao super-presidencialismo, ou seja, a forte concentração de poder nas mãos do presidente da República.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c75",
+  "no": "est-a05-r8.2",
+  "topico": "cp-7",
+  "tema": "Pacote de Abril",
+  "pergunta": "Que episódio de 1977, no governo Geisel, fechou temporariamente o Congresso?",
+  "resposta": [
+   "Pacote de Abril"
+  ],
+  "explicacao": "Na tabela: 1966 recesso (Castelo Branco); 1968 AI-5 e fechamento (Costa e Silva); 1977 fechamento temporário (Geisel).",
+  "fonte": "Aula 05, p. 86",
+  "citacao": "Fechamento temporário (“Pacote de Abril”)",
+  "aulaOrigem": "05"
+ }
 ]

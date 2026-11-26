@@ -77,7 +77,7 @@
   "mecanismo": "F3",
   "evidencia": "Essa concepção é formulada de modo clássico por Thomas Hobbes , para quem os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.",
   "trechoDecisivo": "Essa concepção é formulada de modo clássico por Thomas Hobbes , para quem os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.",
-  "comentario": "Item errado. O texto da aula diz: \"Essa concepção é formulada de modo clássico por Thomas Hobbes , para quem os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.\" (Estratégia, Aula 04, p. 7). A formulação clássica da procuração é de Hobbes; Burke é o autor do mandato independente. Versão correta: \"A representação como relação de procuração, formulada de modo clássico por Thomas Hobbes, supõe que os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.\"",
+  "comentario": "Item errado. O texto da aula diz: \"Essa concepção é formulada de modo clássico por Thomas Hobbes , para quem os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.\" (Estratégia, Aula 04, p. 7). O item troca o autor por Edmund Burke, que é o autor do mandato independente. Atenção: a atribuição da procuração com mandato vinculado a Hobbes é da aula; na literatura, Hobbes dá autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII). Versão correta, nos termos da aula: \"A representação como relação de procuração, formulada de modo clássico por Thomas Hobbes, supõe que os indivíduos transferem poder e autoridade ao representante, que passa a agir em seu nome.\"",
   "ref": "Estratégia, Aula 04, p. 7",
   "vacina": "Ao ver \"Edmund Burke\", confira se a aula diz \"Thomas Hobbes\".",
   "origem": "inédito Claude",
@@ -88,7 +88,8 @@
   "concorda_gabarito": true,
   "concorda_mecanismo": true,
   "status_revisao": "ok",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Atenção: a Aula 04 (p. 7) atribui essa concepção a Hobbes. Na literatura, Hobbes dá ao soberano autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII; Pitkin, 1967, cap. 2); o mandato vinculado liga-se à tradição medieval e a Rousseau. Os kits cp-3 e a literatura prevalecem."
  },
  {
   "id": "cp-e04-q05",
@@ -232,12 +233,12 @@
   "no": "est-a04-r1.3",
   "topico": "cp-3",
   "tema": "Representação por presença (descritiva)",
-  "enunciado": "Julgue o item a seguir, a respeito da representação política. A representação por presença, elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young, propõe que o Parlamento reflita não apenas a vontade, mas também a diversidade real da sociedade em gênero, raça, etnia e classe.",
+  "enunciado": "Julgue o item a seguir, a respeito da representação política. A representação por presença, associada pela aula à representação descritiva de Pitkin, propõe que o Parlamento reflita não apenas a vontade, mas também a diversidade real da sociedade em gênero, raça, etnia e classe.",
   "gabarito": "C",
   "mecanismo": "V1",
-  "evidencia": "elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)",
-  "trechoDecisivo": "elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)",
-  "comentario": "Item certo. O texto da aula diz: \"elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)\" (Estratégia, Aula 04, p. 33). Identifica as autoras e o alcance da representação por presença.",
+  "evidencia": "Hanna Pitkin define representação por presença por meio do que ela chama de Representação Descritiva",
+  "trechoDecisivo": "Hanna Pitkin define representação por presença por meio do que ela chama de Representação Descritiva",
+  "comentario": "Item certo. O texto da aula diz: \"Hanna Pitkin define representação por presença por meio do que ela chama de Representação Descritiva\" (Estratégia, Aula 04, p. 33). A assertiva liga presença à dimensão descritiva e não atribui a autoria do termo. Autoria do termo: Anne Phillips (1994/1995), e não Pitkin; Young (2000) criticou e reformulou a ideia.",
   "ref": "Estratégia, Aula 04, p. 33",
   "vacina": "Ao ver representação por presença (descritiva), compare cada termo com o texto da aula; paráfrase fiel é certa.",
   "origem": "inédito Claude",
@@ -247,14 +248,15 @@
   "concorda_gabarito": true,
   "concorda_mecanismo": true,
   "status_revisao": "ok",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação."
  },
  {
   "id": "cp-e04-q12",
   "no": "est-a04-r1.3.1",
   "topico": "cp-3",
   "tema": "Conceito de representação descritiva",
-  "enunciado": "Julgue o item a seguir, a respeito da representação política. Na representação descritiva, que Pitkin associa à representação por presença, o representante se assemelha aos representados ao partilharem exclusivamente raça e gênero, funcionando como espelho da população no corpo legislativo.",
+  "enunciado": "Julgue o item a seguir, a respeito da representação política. Na representação descritiva, associada à representação por presença, o representante se assemelha aos representados ao partilharem exclusivamente raça e gênero, funcionando como espelho da população no corpo legislativo.",
   "gabarito": "E",
   "mecanismo": "F2",
   "evidencia": "Esse tipo de representação ocorre quando o representante se assemelha aos representados ao partilharem características semelhantes, como raça, gênero, classe, profissão ou localização geográfica",
@@ -270,7 +272,8 @@
   "concorda_gabarito": true,
   "concorda_mecanismo": true,
   "status_revisao": "ok",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação."
  },
  {
   "id": "cp-e04-q13",

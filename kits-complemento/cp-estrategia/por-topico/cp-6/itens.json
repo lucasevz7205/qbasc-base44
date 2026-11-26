@@ -88,7 +88,8 @@
   "concorda_gabarito": true,
   "concorda_mecanismo": true,
   "status_revisao": "ok",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula (p. 12) fala em \"autonomia organizacional\"; o kit cp-6 (Mainwaring e Scully, 1995) fala em \"organização partidária sólida\". Tratam da mesma dimensão."
  },
  {
   "id": "cp-e04-q21",
@@ -338,7 +339,8 @@
   "concorda_gabarito": true,
   "concorda_mecanismo": false,
   "status_revisao": "ok",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula (p. 12) fala em \"autonomia organizacional\"; o kit cp-6 (Mainwaring e Scully, 1995) fala em \"organização partidária sólida\". Tratam da mesma dimensão."
  },
  {
   "id": "cp-e04-q32",

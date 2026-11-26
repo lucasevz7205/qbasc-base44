@@ -60,14 +60,15 @@
   "no": "est-a04-r2.1",
   "topico": "cp-6",
   "tema": "Definições de autores",
-  "pergunta": "Para Burke (1790), o partido é um grupo de homens unidos para promover o quê?",
+  "pergunta": "Para Burke, o partido é um grupo de homens unidos para promover o quê?",
   "resposta": [
    "Interesse nacional"
   ],
   "explicacao": "Com base em algum princípio com o qual todos concordam.",
   "fonte": "Aula 04, p. 10",
   "citacao": "Partido é um grupo de homens unidos para a promoção, pelo seu esforço conjunto, do interesse nacional",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "A aula (p. 10) data a definição em 1790; o kit cp-6 a data em 1770 (Thoughts on the Cause of the Present Discontents). O ano foi retirado da pergunta."
  },
  {
   "id": "cp-e04-c22",
@@ -209,7 +210,8 @@
   "explicacao": "Estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
   "fonte": "Aula 04, p. 12",
   "citacao": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula (p. 12) fala em \"autonomia organizacional\"; o kit cp-6 (Mainwaring e Scully, 1995) fala em \"organização partidária sólida\". Tratam da mesma dimensão."
  },
  {
   "id": "cp-e04-c32",
@@ -730,7 +732,8 @@
   "explicacao": "Pela variável ideológica.",
   "fonte": "Aula 04, p. 42",
   "citacao": "diferenciou entre sistemas multipartidários fragmentados e polarizados",
-  "aulaOrigem": "04"
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula usa \"fragmentados e polarizados\" (p. 42); o kit cp-6 usa \"pluralismo moderado × polarizado\". Sartori: moderado e polarizado são os dois tipos de multipartidarismo."
  },
  {
   "id": "cp-e04-c69",
