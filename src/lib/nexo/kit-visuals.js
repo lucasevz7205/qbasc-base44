@@ -28,7 +28,7 @@ export const KIT_PUZZLES=Object.freeze([
       ['r4.3','competição centrífuga']
     ],
     stages:[
-      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'ladder',
+      {id:'escada',label:'Ordem dos tipos',node:'r4.2',layout:'pipeline',
         instruction:'Encaixe os sete tipos na ordem da tipologia. Os dois primeiros degraus são não competitivos.',
         pieces:[piece('atomizado','Atomizado'),piece('hegemonico','Hegemônico'),piece('moderado','Pluralismo moderado'),piece('unico','Partido único'),piece('bipartidarismo','Bipartidarismo'),piece('polarizado','Pluralismo polarizado'),piece('predominante','Predominante')],
         slots:[
