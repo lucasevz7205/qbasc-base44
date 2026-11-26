@@ -59,6 +59,28 @@ export function ganSourcePassages(materials, { topicId, targetNodeLabel, targetN
   }).slice(0, 4).map(({ score: _score, ...source }) => source);
 }
 
+export const GAN_MAP_EXERCISE_PREFIX = 'Com base no mapa, julgue o item: ';
+
+// Notes are evidence only for exercises explicitly relative to the map.
+export function ganMapExercisePassages({ mapa, targetNodeId }) {
+  const nodes = Array.isArray(mapa?.nodes) ? mapa.nodes : [];
+  const selected = nodes.find(node => node.id === targetNodeId);
+  if (!selected) return [];
+  const scoped = [selected, ...nodes.filter(node => node.parent === selected.id && node.id !== selected.id)];
+  const used = new Set();
+  return scoped.flatMap((node, index) => {
+    const body = compact(node.summary);
+    if (body.length < 32 || used.has(body)) return [];
+    used.add(body);
+    return [{
+      id: 'mapa:' + index,
+      titulo: 'Notas do mapa · ' + node.label,
+      natureza: 'mapa',
+      texto: body.slice(0, 1500),
+    }];
+  }).slice(0, 4);
+}
+
 export function verifyGanEvidence(fundamento, sources) {
   const fonteId = text(fundamento?.fonteId).slice(0, 220);
   const trecho = text(fundamento?.trecho).slice(0, 1600);

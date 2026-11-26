@@ -1,0 +1,76 @@
+{
+  "topico": "pl-1",
+  "materia": "pl",
+  "centro": "Procedimento e matérias legislativas (jurisprudência STF)",
+  "ramos": [
+    {
+      "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4",
+      "t": "Ministério Público e polícias",
+      "x": {
+        "e": "Bloco sobre como se organizam o Ministério Público estadual, a Polícia Civil (conciliação de crimes leves) e a Polícia Penal. O fio condutor é quem pode criar ou mudar a estrutura (lei complementar, lei ordinária, decreto) e até onde vão as competências de cada órgão.",
+        "src": "Informativos STF 1235–1237 (trechos 13, 29, 42)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1",
+          "t": "Lei orgânica do MP estadual",
+          "x": {
+            "e": "Na ADI 2.039/RS, o STF declarou inconstitucionais a alteração da lei orgânica do MP estadual feita por lei ordinária e as prerrogativas indevidas dadas ao Procurador-Geral de Justiça (PGJ). \"Lei orgânica\" é a lei que organiza o órgão; a Constituição exige que seja lei complementar, aprovada por quórum mais exigente e para temas reservados.",
+            "src": "Informativos STF 1235–1237 (trechos 34, 42, 43, 44)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.1",
+              "t": "Reserva de lei complementar",
+              "x": {
+                "e": "O art. 128, § 5º, reserva à lei complementar a organização do MP estadual. Se fizerem isso por lei ordinária, há \"vício formal insanável\": defeito na forma de criar a lei que não se corrige nem aprovando com quórum qualificado (maioria maior) nem com a sanção do governador (aprovação final do chefe do Executivo). A destituição do Procurador-Geral exige maioria absoluta dos membros da Assembleia (trecho 44).",
+                "src": "Informativos STF 1235–1237 (trechos 42, 43)"
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5",
+      "t": "Processo legislativo e competência",
+      "x": {
+        "e": "Bloco que reúne os pontos de \"como a lei é feita e quem pode fazê-la\" que aparecem dentro dos julgados: o que o Judiciário não revisa (interna corporis), quem tem a iniciativa de certas leis, os limites de emendas à Constituição e a competência da União. \"Processo legislativo\" é o caminho que uma norma percorre até virar lei ou emenda.",
+        "src": "Informativos STF 1235–1237 (trechos 8, 40, 51, 36)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.1",
+          "t": "Ritmo da votação é interna corporis",
+          "x": {
+            "e": "Na ADI 7.635/MA, o STF disse que votar a lei com pressa não a torna inválida. \"Interna corporis\" (assuntos internos da casa legislativa) são questões do regimento e da rotina do Legislativo, que o Judiciário em regra não revisa. A exceção é a ofensa a regra constitucional específica.",
+            "src": "Informativos STF 1235–1237 (trechos 8)"
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.2",
+          "t": "PEC estadual sem interstício mínimo",
+          "x": {
+            "e": "Na ADI 7.508/AM, o STF afirmou que a PEC (proposta de emenda à Constituição) estadual só precisa de votação em dois turnos e maioria qualificada. \"Interstício\" é o intervalo mínimo entre os dois turnos; se só o regimento interno o prevê, descumpri-lo é interna corporis, sem vício constitucional.",
+            "src": "Informativos STF 1235–1237 (trechos 40, 41)"
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.3",
+          "t": "Iniciativa reservada vale para emenda estadual",
+          "x": {
+            "e": "Na ADI 7.937 MC-Ref/PE, o STF suspendeu, em medida cautelar, parte de emenda à Constituição estadual, proposta por parlamentares, que liberava pagar em dinheiro férias e licença-prêmio não gozadas. \"Iniciativa reservada\" é quando só o chefe do Executivo pode propor certa matéria; regime jurídico e remuneração dos servidores são dele, mesmo se a mudança vier por emenda à Constituição. Com a suspensão, volta a valer a proibição da Constituição de Pernambuco.",
+            "src": "Informativos STF 1235–1237 (trechos 35, 51, 52, 53, 54)"
+          },
+          "f": []
+        }
+      ]
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22": {}
+  }
+}

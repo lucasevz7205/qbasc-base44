@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { distinctRoundQuestions, pickQuestionRound } from '@/lib/study-session-rules';
+import { filterFlashcardDeck } from '@/lib/flashcard-review';
 import { StudyClockProvider } from '@/lib/StudyClockContext';
 
 const KEY = 'qb-uikit-v2';
@@ -341,11 +342,19 @@ export function QBStudyProvider({ children }) {
         }
       }
       if (nextView === 'flashcards' && !arg?.resume) {
+        const unseen = !arg?.scheduledReview && arg?.filter === 'unseen';
+        const initialQueue = unseen ? filterFlashcardDeck(
+          QB_DATA.flashcards.filter(card => (!arg.topicId || card.topicId === arg.topicId)
+            && (!Array.isArray(arg.cardIds) || arg.cardIds.includes(card.id))),
+          QB_DATA.reviews,
+          'unseen',
+        ).map(card => card.id) : arg?.cardIds;
         setCards({
           idx: 0, flipped: false, ratings: [], topicId: arg?.topicId, sessionId: crypto.randomUUID(),
           ...(arg?.scheduledReview ? { scheduledReview: true } : {}),
           ...(arg?.concept ? { concept: arg.concept, scopeCardIds: [...new Set(arg.cardIds || [])] } : {}),
-          ...(arg?.scheduledReview || Array.isArray(arg?.cardIds) ? { queue: [...new Set(arg.cardIds || [])] } : {}),
+          ...(unseen ? { filter: 'unseen' } : {}),
+          ...(arg?.scheduledReview || Array.isArray(initialQueue) ? { queue: [...new Set(initialQueue || [])] } : {}),
         });
       }
       if (nextView === 'study' && (arg === 'mapa' || (!arg && !['questions', 'flashcards'].includes(activeView)))) {
@@ -396,7 +405,7 @@ export function QBStudyProvider({ children }) {
       }
       setBackTo(from);
       if (r.view === 'flashcards') {
-        go('flashcards', { topicId: intent.topicId });
+        go('flashcards', { topicId: intent.topicId, filter: intent.filter });
         return;
       }
       if (intent.action === 'node-questions') {

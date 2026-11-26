@@ -48,7 +48,7 @@ export default function FlashcardSessionView({ cards, setCards, go, backTo }) {
     const queue = filterFlashcardDeck(fullDeck, D.reviews, filter, QB_PLAN.today, studyDate).map(c => c.id);
     setError('');
     setSuggestion(null);
-    setCards(c => ({ ...c, idx: 0, flipped: false, ratings: [], filter, queue }));
+    setCards(c => ({ ...c, idx: 0, flipped: false, ratings: [], errados: [], repescagem: false, filter, queue }));
   };
   const previousReview = card ? D.reviews[card.id] || {} : {};
   const options = flashcardOptions(previousReview, reviewDay(new Date()));

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-i25",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.1",
+    "contexto": "Lei ordinária do Estado do Rio Grande do Sul alterou a lei orgânica e o estatuto do Ministério Público estadual. O projeto foi aprovado pela Assembleia Legislativa e sancionado pelo governador. A norma foi impugnada na ADI 2.039/RS.",
+    "comando": "Considerando o art. 128, § 5º, da Constituição Federal e a decisão do STF na ADI 2.039/RS, julgue o item a seguir.",
+    "enunciado": "Lei ordinária do Estado do Rio Grande do Sul alterou a lei orgânica e o estatuto do Ministério Público estadual. O projeto foi aprovado pela Assembleia Legislativa e sancionado pelo governador. A norma foi impugnada na ADI 2.039/RS. Considerando o art. 128, § 5º, da Constituição Federal e a decisão do STF na ADI 2.039/RS, julgue o item a seguir. A organização do Ministério Público estadual por lei ordinária, em matéria reservada à lei complementar pelo art. 128, § 5º, da Constituição, configura vício material de inconstitucionalidade, insuscetível de convalidação pela sanção do governador.",
+    "gabarito": "E",
+    "gabaritoDiscriminador": "E",
+    "comentario": "CF, art. 128, § 5º; ADI 2.039/RS: inconstitucionalidade “por afronta à reserva de lei complementar”. Usar a espécie normativa errada é defeito na forma de produzir a lei: vício formal (não material), insanável, que não se corrige por quórum qualificado nem pela sanção. O item troca formal por material.",
+    "mecanismo": "F3",
+    "evidencia": "trecho 42: “É inconstitucional – por afronta à reserva de lei complementar (CF/1988, art. 128, § 5º) – a alteração da lei orgânica e do estatuto do Ministério Público estadual promovida por lei ordinária”; trecho 43 (comentário do resumo): “O vício formal é insanável”",
+    "vacina": "Lei ordinária em matéria de lei complementar = vício formal insanável (nem sanção nem quórum corrigem).",
+    "origem": "inédito Claude",
+    "fonte": "resumo Legislativo Facilitado (Informativo STF nº 1237) — fonte secundária; conferir inteiro teor",
+    "ref": "ADI 2.039/RS (vício formal, não material) · resumo Legislativo Facilitado (Informativo STF nº 1237) — fonte secundária; conferir inteiro teor",
+    "tema": "Ministério Público e polícias"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-i29",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.1",
+    "contexto": "Na ADI 7.635/MA, questionou-se lei maranhense que elevou a alíquota modal do ICMS, aplicável à generalidade das operações, de 20% para 22% e, depois, para 23%. Alegou-se ofensa à seletividade em função da essencialidade e vício decorrente da tramitação acelerada do projeto na Assembleia Legislativa.",
+    "comando": "Considerando as normas constitucionais do processo legislativo e a decisão do STF na ADI 7.635/MA, julgue o item a seguir.",
+    "enunciado": "Na ADI 7.635/MA, questionou-se lei maranhense que elevou a alíquota modal do ICMS, aplicável à generalidade das operações, de 20% para 22% e, depois, para 23%. Alegou-se ofensa à seletividade em função da essencialidade e vício decorrente da tramitação acelerada do projeto na Assembleia Legislativa. Considerando as normas constitucionais do processo legislativo e a decisão do STF na ADI 7.635/MA, julgue o item a seguir. A tramitação acelerada do projeto que elevou a alíquota modal do ICMS maranhense não compromete sua validade, porque o ritmo do processo legislativo é matéria interna corporis, salvo ofensa a regra constitucional específica.",
+    "gabarito": "C",
+    "gabaritoDiscriminador": "C",
+    "comentario": "ADI 7.635/MA. O resumo: “a pressa na votação da lei não a torna inválida, pois o ritmo do processo legislativo é matéria interna corporis, salvo ofensa a regra constitucional específica”. O item traz a regra e a exceção real (ofensa a regra constitucional específica), que costuma soar como ressalva inventada.",
+    "mecanismo": "V4",
+    "evidencia": "trecho 8: “a pressa na votação da lei não a torna inválida, pois o ritmo do processo legislativo é matéria interna corporis, salvo ofensa a regra constitucional específica”",
+    "vacina": "Ritmo de votação é interna corporis; o Judiciário só entra se houver ofensa a regra constitucional específica.",
+    "origem": "inédito Claude",
+    "fonte": "resumo Legislativo Facilitado (Informativo STF nº 1235) — fonte secundária; conferir inteiro teor",
+    "ref": "ADI 7.635/MA (interna corporis) · resumo Legislativo Facilitado (Informativo STF nº 1235) — fonte secundária; conferir inteiro teor",
+    "tema": "Processo legislativo e competência"
+  }
+]

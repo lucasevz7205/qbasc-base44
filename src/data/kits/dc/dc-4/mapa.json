@@ -1,0 +1,123 @@
+{
+  "topico": "dc-4",
+  "materia": "dc",
+  "centro": "Servidores públicos e remuneração (jurisprudência STF)",
+  "ramos": [
+    {
+      "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2",
+      "t": "Tribunais de Contas",
+      "x": {
+        "e": "Bloco sobre os Tribunais de Contas estaduais e seu Ministério Público, em que o STF aplica a \"simetria\": os estados devem seguir, no que couber, o modelo federal (TCU). Os três julgados tratam do nome de um cargo, do prazo de prescrição e da remuneração do MP de Contas.",
+        "src": "Informativos STF 1235–1237 (trechos 10, 39, 45)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1",
+          "t": "Cargo que não é de auditoria não se chama \"Auditor\"",
+          "x": {
+            "e": "Na ADI 7.388/BA, julgada parcialmente procedente, o STF anulou só a mudança de nome do cargo, e manteve as demais alterações. No modelo federal, \"auditor\" é reservado a cargo de atividades técnicas de alta complexidade; o nome deve corresponder à natureza e à responsabilidade das atribuições. Segundo o resumo de terceiro, a banca costuma misturar a parte inválida com a válida.",
+            "src": "Informativos STF 1235–1237 (trechos 2, 10, 11, 12)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.1",
+              "t": "Parte inválida: a denominação",
+              "x": {
+                "e": "Trocar o nome de Agente de Controle Externo para \"Auditor de Contas Públicas\", havendo no quadro uma carreira própria de auditoria, ofende a simetria (copiar o modelo federal). Ou seja, o nome sugere uma função que o cargo não exerce.",
+                "src": "Informativos STF 1235–1237 (trechos 10, 11)"
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.2",
+              "t": "Parte válida: escolaridade e restabelecimento",
+              "x": {
+                "e": "Elevar a escolaridade exigida para ingresso, sem mudar as atribuições, e restabelecer um cargo em extinção são válidos. Não há \"provimento derivado\" (colocar servidor em cargo de outra carreira sem concurso); é isso que a Súmula Vinculante 43 proíbe. Aqui só mudam os requisitos para futuros ingressos.",
+                "src": "Informativos STF 1235–1237 (trechos 10, 11, 12)"
+              },
+              "f": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3",
+      "t": "Servidores e remuneração",
+      "x": {
+        "e": "Bloco sobre quanto e como o servidor recebe: piso nacional dos professores, hora extra de quem ganha subsídio e teto de remuneração nos estados. \"Subsídio\" é o pagamento em parcela única, sem adicionais; \"teto\" é o limite máximo de remuneração.",
+        "src": "Informativos STF 1235–1237 (trechos 18, 23, 26, 52)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1",
+          "t": "Piso do magistério para temporários (Tema 1.308)",
+          "x": {
+            "e": "No ARE 1.487.739 ED-segundos/PE, o STF decidiu que o piso salarial nacional do magistério vale também para professores temporários da educação básica pública, e modulou os efeitos no julgamento dos embargos. \"Piso\" é o menor salário permitido; \"temporário\" é o contratado por prazo determinado. O direito ao piso não some: a modulação só define desde quando ele é exigível.",
+            "src": "Informativos STF 1235–1237 (trechos 18, 23, 24, 25)"
+          },
+          "f": [
+            {
+              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.1",
+              "t": "Datas da modulação",
+              "x": {
+                "e": "Quem já pagava o piso aos temporários não sofre cobrança retroativa; quem não pagava passa a pagar a partir de 01.01.2027. Ficam ressalvadas as ações em curso até 16.04.2026 (data do julgamento do mérito) e as sentenças já transitadas em julgado (decisões definitivas, sem mais recurso, chamadas de coisa julgada) no mesmo sentido do precedente. Cuidado para não trocar as duas datas.",
+                "src": "Informativos STF 1235–1237 (trechos 23, 24, 25)"
+              },
+              "f": []
+            },
+            {
+              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.2",
+              "t": "Embargos só para modular",
+              "x": {
+                "e": "\"Embargos de declaração\" são o recurso para corrigir omissão, contradição ou obscuridade da decisão. Aqui o STF reconheceu que não havia nenhuma delas, mas acolheu em parte os embargos unicamente para modular os efeitos, protegendo o ato jurídico perfeito (ato já concluído conforme a lei da época) e a coisa julgada.",
+                "src": "Informativos STF 1235–1237 (trechos 24, 25)"
+              },
+              "f": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.2",
+          "t": "Subsídio e hora extra do policial penal",
+          "x": {
+            "e": "Na ADI 7.469/SC, o STF considerou inconstitucional a interpretação que impede pagar o serviço extraordinário (hora extra) do policial penal quando, por interesse da Administração, ele não consegue tirar a folga compensatória no prazo de 3 meses previsto em lei. O subsídio (arts. 39, § 4º, e 144, § 9º) proíbe somar adicionais pelo trabalho normal do cargo, mas não impede pagar o extraordinário. A compensação por folga continua válida; o que não pode é o serviço extra ser gratuito.",
+            "src": "Informativos STF 1235–1237 (trechos 18, 26, 27, 28)"
+          },
+          "f": []
+        },
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.3",
+          "t": "Teto único estadual mantido",
+          "x": {
+            "e": "Na ADI 7.937 MC-Ref/PE, o STF manteve, por ora, a norma que fixa o subsídio dos desembargadores do Tribunal de Justiça como teto único dos servidores estaduais (art. 37, § 12). \"MC-Ref\" é medida cautelar referendada pelo Plenário: decisão provisória, em cognição sumária (análise rápida), e não julgamento de mérito. O tema interessa a todo o funcionalismo e, por si só, não aumenta despesa.",
+            "src": "Informativos STF 1235–1237 (trechos 52, 53, 54)"
+          },
+          "f": []
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4",
+      "t": "Ministério Público e polícias",
+      "x": {
+        "e": "Bloco sobre como se organizam o Ministério Público estadual, a Polícia Civil (conciliação de crimes leves) e a Polícia Penal. O fio condutor é quem pode criar ou mudar a estrutura (lei complementar, lei ordinária, decreto) e até onde vão as competências de cada órgão.",
+        "src": "Informativos STF 1235–1237 (trechos 13, 29, 42)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.3",
+          "t": "Carreira da Polícia Penal em São Paulo",
+          "x": {
+            "e": "Na ADI 7.781/SP, o STF validou quase toda a lei complementar paulista (LC 1.416/2024) sobre a carreira de policial penal. Pontos válidos: subordinação à Secretaria da Administração Penitenciária; progressão e promoção reguladas por decreto; limite de até 70% da última categoria dos níveis I a VI nas promoções; infrações disciplinares sobre críticas a superiores e manifestações públicas, se proporcionais e sem impedir reivindicações de trabalho nem direitos sindicais e associativos. A ação não foi conhecida quanto ao § 4º do art. 34, por falta de interesse de agir (nenhum interesse que justifique a ação).",
+            "src": "Informativos STF 1235–1237 (trechos 18, 29, 30, 31, 32)"
+          },
+          "f": []
+        }
+      ]
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22": {}
+  }
+}

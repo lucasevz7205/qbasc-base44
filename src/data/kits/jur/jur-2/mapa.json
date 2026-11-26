@@ -25,7 +25,8 @@
               "x": {
                 "e": "A regra de que a empresa não pode ter como atividade principal compra e venda, locação ou arrendamento de imóveis vale só para fusão, incorporação, cisão e extinção de empresa, não para a integralização. \"Ratio decidendi\" é a razão central de uma decisão (diferente do \"obiter dictum\", comentário solto); o STF disse que isso já era a razão central do Tema 796. Por isso os arts. 36 e 37 do CTN, que exigiam empresa não imobiliária, não foram recepcionados (deixaram de valer) nessa parte.",
                 "src": "Informativos STF 1235–1237 (trechos 3, 4, 5)"
-              }
+              },
+              "f": []
             },
             {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.1.2",
@@ -33,7 +34,8 @@
               "x": {
                 "e": "A imunidade vai só até o valor do capital social que está sendo integralizado; o que passar disso pode ser tributado. O município ainda pode provar \"simulação\" (fingir uma operação para esconder a verdadeira) ou \"fraude à lei\" (usar a imunidade só para fugir do imposto). Ou seja, incondicionada não significa ilimitada.",
                 "src": "Informativos STF 1235–1237 (trechos 3, 4, 5, 6)"
-              }
+              },
+              "f": []
             }
           ]
         },
@@ -51,7 +53,8 @@
               "x": {
                 "e": "\"Seletividade\" é cobrar menos do que é essencial e mais do que é supérfluo; no ICMS a Constituição diz que ele \"poderá\" ser seletivo, então o estado não é obrigado a adotá-la. Se adotar, não pode tributar o essencial acima da alíquota geral. No Maranhão, a alíquota sobre energia (consumo residencial acima de 500 kWh/mês) e comunicação era 27%, e a geral, 18%.",
                 "src": "Informativos STF 1235–1237 (trechos 7, 8, 9)"
-              }
+              },
+              "f": []
             },
             {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.2.2",
@@ -59,7 +62,8 @@
               "x": {
                 "e": "\"Modulação\" é o STF escolher a partir de quando a decisão vale, para não desorganizar situações antigas. Aqui, a inconstitucionalidade produz efeitos a partir do exercício financeiro de 2024 (o ano fiscal), ressalvadas as ações ajuizadas até 05.02.2021, que ficam ressalvadas da modulação. São duas datas fáceis de trocar.",
                 "src": "Informativos STF 1235–1237 (trechos 7, 8, 10)"
-              }
+              },
+              "f": []
             }
           ]
         },
@@ -69,7 +73,8 @@
           "x": {
             "e": "Na ADI 7.635/MA, o STF validou a subida da alíquota geral (\"modal\", a que vale para a maioria dos produtos e serviços) de 20% para 22% e depois 23%. Seletividade só impede cobrar o essencial acima da alíquota geral; não obriga a manter alíquota reduzida. Subir a alíquota geral, portanto, é permitido.",
             "src": "Informativos STF 1235–1237 (trechos 7, 8, 9)"
-          }
+          },
+          "f": []
         },
         {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.4",
@@ -77,7 +82,8 @@
           "x": {
             "e": "No RE 592.616/RS (Tema 118), o STF decidiu que o ISS não entra na base de cálculo do PIS e da COFINS. Isso porque o ISS é um \"ingresso transitório\": dinheiro que passa pela contabilidade da empresa só para ser repassado ao município ou ao DF, sem ser receita dela. É o mesmo raciocínio do Tema 69, que já havia tirado o ICMS dessa base; o pedido de compensação não foi analisado (matéria infraconstitucional) e não houve honorários, por ser mandado de segurança.",
             "src": "Informativos STF 1235–1237 (trechos 17, 19, 20, 21, 22)"
-          }
+          },
+          "f": []
         },
         {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.5",
@@ -93,7 +99,8 @@
               "x": {
                 "e": "Dos 100% do ICMS, 25% pertencem aos municípios. Desses 25%, no mínimo 65% são divididos pelo valor adicionado (o que cada território produz de riqueza) e até 35% seguem lei estadual, com pelo menos 10 pontos percentuais ligados a indicadores de aprendizagem e equidade na educação. Segundo o resumo de terceiro, a banca costuma trocar esses números.",
                 "src": "Informativos STF 1235–1237 (trechos 48, 49, 50)"
-              }
+              },
+              "f": []
             },
             {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r1.5.2",
@@ -101,7 +108,8 @@
               "x": {
                 "e": "O estado tem liberdade para definir o rateio da parte variável (até 35%), então os municípios não têm direito subjetivo (direito que possam exigir) a manter o critério ambiental. \"Vedação ao retrocesso\" é a ideia de que direitos já conquistados não podem ser reduzidos; o STF disse que ela não foi violada, nem a autonomia municipal, nem o núcleo de proteção do art. 225 (meio ambiente).",
                 "src": "Informativos STF 1235–1237 (trechos 48, 49, 50)"
-              }
+              },
+              "f": []
             }
           ]
         }
@@ -116,38 +124,13 @@
       },
       "f": [
         {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1",
-          "t": "Cargo que não é de auditoria não se chama \"Auditor\"",
-          "x": {
-            "e": "Na ADI 7.388/BA, julgada parcialmente procedente, o STF anulou só a mudança de nome do cargo, e manteve as demais alterações. No modelo federal, \"auditor\" é reservado a cargo de atividades técnicas de alta complexidade; o nome deve corresponder à natureza e à responsabilidade das atribuições. Segundo o resumo de terceiro, a banca costuma misturar a parte inválida com a válida.",
-            "src": "Informativos STF 1235–1237 (trechos 2, 10, 11, 12)"
-          },
-          "f": [
-            {
-              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.1",
-              "t": "Parte inválida: a denominação",
-              "x": {
-                "e": "Trocar o nome de Agente de Controle Externo para \"Auditor de Contas Públicas\", havendo no quadro uma carreira própria de auditoria, ofende a simetria (copiar o modelo federal). Ou seja, o nome sugere uma função que o cargo não exerce.",
-                "src": "Informativos STF 1235–1237 (trechos 10, 11)"
-              }
-            },
-            {
-              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.2",
-              "t": "Parte válida: escolaridade e restabelecimento",
-              "x": {
-                "e": "Elevar a escolaridade exigida para ingresso, sem mudar as atribuições, e restabelecer um cargo em extinção são válidos. Não há \"provimento derivado\" (colocar servidor em cargo de outra carreira sem concurso); é isso que a Súmula Vinculante 43 proíbe. Aqui só mudam os requisitos para futuros ingressos.",
-                "src": "Informativos STF 1235–1237 (trechos 10, 11, 12)"
-              }
-            }
-          ]
-        },
-        {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.2",
           "t": "Prescrição de 5 anos fixada na Constituição estadual",
           "x": {
             "e": "Na ADI 7.508/AM, o STF validou emenda à Constituição do Amazonas que dá 5 anos ao Tribunal de Contas para julgar e apreciar contas. \"Prescrição\" é a perda do prazo para o órgão agir. O termo inicial (quando o prazo começa a contar) é a data do fato, salvo quando a irregularidade decorre de omissão na prestação de contas.",
             "src": "Informativos STF 1235–1237 (trechos 34, 39, 40, 41)"
-          }
+          },
+          "f": []
         },
         {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.3",
@@ -163,7 +146,8 @@
               "x": {
                 "e": "O Ministério Público que atua junto ao Tribunal de Contas é \"especial\": está vinculado ao Tribunal, não faz parte do MP comum (estadual ou da União) e não tem autonomia administrativa nem orçamentária (não administra sozinho seu pessoal e seu orçamento). Por isso não cabe tratá-lo como o MP comum quanto à remuneração.",
                 "src": "Informativos STF 1235–1237 (trechos 46, 47)"
-              }
+              },
+              "f": []
             },
             {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.3.2",
@@ -171,7 +155,8 @@
               "x": {
                 "e": "O art. 130 manda aplicar ao MP de Contas as regras do MP comum só quanto a direitos, vedações e \"investidura\" (a forma de ingressar no cargo), não quanto à remuneração. A lei capixaba falava também em remuneração, e o STF derrubou só essa palavra. Segundo o resumo de terceiro, a banca tenta trocar \"investidura\" por \"remuneração\".",
                 "src": "Informativos STF 1235–1237 (trechos 46, 47)"
-              }
+              },
+              "f": []
             }
           ]
         }
@@ -194,38 +179,15 @@
           },
           "f": [
             {
-              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.1",
-              "t": "Datas da modulação",
-              "x": {
-                "e": "Quem já pagava o piso aos temporários não sofre cobrança retroativa; quem não pagava passa a pagar a partir de 01.01.2027. Ficam ressalvadas as ações em curso até 16.04.2026 (data do julgamento do mérito) e as sentenças já transitadas em julgado (decisões definitivas, sem mais recurso, chamadas de coisa julgada) no mesmo sentido do precedente. Cuidado para não trocar as duas datas.",
-                "src": "Informativos STF 1235–1237 (trechos 23, 24, 25)"
-              }
-            },
-            {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.2",
               "t": "Embargos só para modular",
               "x": {
                 "e": "\"Embargos de declaração\" são o recurso para corrigir omissão, contradição ou obscuridade da decisão. Aqui o STF reconheceu que não havia nenhuma delas, mas acolheu em parte os embargos unicamente para modular os efeitos, protegendo o ato jurídico perfeito (ato já concluído conforme a lei da época) e a coisa julgada.",
                 "src": "Informativos STF 1235–1237 (trechos 24, 25)"
-              }
+              },
+              "f": []
             }
           ]
-        },
-        {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.2",
-          "t": "Subsídio e hora extra do policial penal",
-          "x": {
-            "e": "Na ADI 7.469/SC, o STF considerou inconstitucional a interpretação que impede pagar o serviço extraordinário (hora extra) do policial penal quando, por interesse da Administração, ele não consegue tirar a folga compensatória no prazo de 3 meses previsto em lei. O subsídio (arts. 39, § 4º, e 144, § 9º) proíbe somar adicionais pelo trabalho normal do cargo, mas não impede pagar o extraordinário. A compensação por folga continua válida; o que não pode é o serviço extra ser gratuito.",
-            "src": "Informativos STF 1235–1237 (trechos 18, 26, 27, 28)"
-          }
-        },
-        {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.3",
-          "t": "Teto único estadual mantido",
-          "x": {
-            "e": "Na ADI 7.937 MC-Ref/PE, o STF manteve, por ora, a norma que fixa o subsídio dos desembargadores do Tribunal de Justiça como teto único dos servidores estaduais (art. 37, § 12). \"MC-Ref\" é medida cautelar referendada pelo Plenário: decisão provisória, em cognição sumária (análise rápida), e não julgamento de mérito. O tema interessa a todo o funcionalismo e, por si só, não aumenta despesa.",
-            "src": "Informativos STF 1235–1237 (trechos 52, 53, 54)"
-          }
         }
       ]
     },
@@ -246,20 +208,13 @@
           },
           "f": [
             {
-              "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.1",
-              "t": "Reserva de lei complementar",
-              "x": {
-                "e": "O art. 128, § 5º, reserva à lei complementar a organização do MP estadual. Se fizerem isso por lei ordinária, há \"vício formal insanável\": defeito na forma de criar a lei que não se corrige nem aprovando com quórum qualificado (maioria maior) nem com a sanção do governador (aprovação final do chefe do Executivo). A destituição do Procurador-Geral exige maioria absoluta dos membros da Assembleia (trecho 44).",
-                "src": "Informativos STF 1235–1237 (trechos 42, 43)"
-              }
-            },
-            {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.1.2",
               "t": "PGJ não é chefe de Poder; sem avocação",
               "x": {
                 "e": "O PGJ chefia o Ministério Público, mas não é chefe de Poder (os Poderes são só três), então não pode ter prerrogativas de chefe de Poder. \"Avocar\" inquérito policial é o PGJ tomar para si um inquérito já em andamento, o que é vedado porque não há hierarquia entre MP e polícia. O MP pode investigar, mas com procedimentos formais, prazos e controle do juiz.",
                 "src": "Informativos STF 1235–1237 (trechos 42, 44)"
-              }
+              },
+              "f": []
             }
           ]
         },
@@ -269,15 +224,8 @@
           "x": {
             "e": "Na ADI 6.251/SP, o STF validou o decreto paulista que criou, dentro da Polícia Civil, os Núcleos Especiais Criminais (NECRIMs), para conciliar e mediar infrações de menor potencial ofensivo (crimes leves). É exercício do \"poder regulamentar\": o Executivo organizando sua rotina interna por decreto, sem mexer na Lei 9.099/1995, sem criar cargo (os núcleos são chefiados por delegados já existentes) nem órgão (são subdivisões). O juiz continua sendo quem homologa o acordo, depois de ouvir o MP.",
             "src": "Informativos STF 1235–1237 (trechos 2, 13, 14, 15, 16)"
-          }
-        },
-        {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.3",
-          "t": "Carreira da Polícia Penal em São Paulo",
-          "x": {
-            "e": "Na ADI 7.781/SP, o STF validou quase toda a lei complementar paulista (LC 1.416/2024) sobre a carreira de policial penal. Pontos válidos: subordinação à Secretaria da Administração Penitenciária; progressão e promoção reguladas por decreto; limite de até 70% da última categoria dos níveis I a VI nas promoções; infrações disciplinares sobre críticas a superiores e manifestações públicas, se proporcionais e sem impedir reivindicações de trabalho nem direitos sindicais e associativos. A ação não foi conhecida quanto ao § 4º do art. 34, por falta de interesse de agir (nenhum interesse que justifique a ação).",
-            "src": "Informativos STF 1235–1237 (trechos 18, 29, 30, 31, 32)"
-          }
+          },
+          "f": []
         }
       ]
     },
@@ -290,28 +238,13 @@
       },
       "f": [
         {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.1",
-          "t": "Ritmo da votação é interna corporis",
-          "x": {
-            "e": "Na ADI 7.635/MA, o STF disse que votar a lei com pressa não a torna inválida. \"Interna corporis\" (assuntos internos da casa legislativa) são questões do regimento e da rotina do Legislativo, que o Judiciário em regra não revisa. A exceção é a ofensa a regra constitucional específica.",
-            "src": "Informativos STF 1235–1237 (trechos 8)"
-          }
-        },
-        {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.2",
           "t": "PEC estadual sem interstício mínimo",
           "x": {
             "e": "Na ADI 7.508/AM, o STF afirmou que a PEC (proposta de emenda à Constituição) estadual só precisa de votação em dois turnos e maioria qualificada. \"Interstício\" é o intervalo mínimo entre os dois turnos; se só o regimento interno o prevê, descumpri-lo é interna corporis, sem vício constitucional.",
             "src": "Informativos STF 1235–1237 (trechos 40, 41)"
-          }
-        },
-        {
-          "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.3",
-          "t": "Iniciativa reservada vale para emenda estadual",
-          "x": {
-            "e": "Na ADI 7.937 MC-Ref/PE, o STF suspendeu, em medida cautelar, parte de emenda à Constituição estadual, proposta por parlamentares, que liberava pagar em dinheiro férias e licença-prêmio não gozadas. \"Iniciativa reservada\" é quando só o chefe do Executivo pode propor certa matéria; regime jurídico e remuneração dos servidores são dele, mesmo se a mudança vier por emenda à Constituição. Com a suspensão, volta a valer a proibição da Constituição de Pernambuco.",
-            "src": "Informativos STF 1235–1237 (trechos 35, 51, 52, 53, 54)"
-          }
+          },
+          "f": []
         },
         {
           "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.4",
@@ -327,7 +260,8 @@
               "x": {
                 "e": "\"Não incidência\" é a situação em que o tributo simplesmente não é cobrado. Só fica protegida do poder de reforma (art. 60, § 4º, IV) a desoneração ligada de forma inerente e indispensável a um direito fundamental. Aqui a proteção era legítima, mas maior do que o necessário para uma vida digna, e a revogação não atinge o núcleo essencial de nenhum direito.",
                 "src": "Informativos STF 1235–1237 (trechos 35, 36, 38)"
-              }
+              },
+              "f": []
             },
             {
               "id": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r5.4.2",
@@ -335,7 +269,8 @@
               "x": {
                 "e": "O legislador ainda pode instituir benefício parecido, respeitando legalidade (previsão em lei) e isonomia (tratamento igual). O resumo de terceiro afirma que essa regra já caiu em prova (não verificado na fonte).",
                 "src": "Informativos STF 1235–1237 (trechos 36, 37, 38)"
-              }
+              },
+              "f": []
             }
           ]
         },
@@ -345,7 +280,8 @@
           "x": {
             "e": "\"Competência privativa da União\" é a matéria que só a lei federal pode regular (como direito processual penal e direito civil). Na ADI 7.508/AM, o STF disse que prescrição no Tribunal de Contas é matéria administrativa e, sem lei federal, os estados podem preencher a lacuna; ainda apelou ao Congresso por uma lei nacional. Na ADI 6.251/SP, o decreto da Polícia Civil não legisla sobre processo penal.",
             "src": "Informativos STF 1235–1237 (trechos 13, 14, 40)"
-          }
+          },
+          "f": []
         }
       ]
     }

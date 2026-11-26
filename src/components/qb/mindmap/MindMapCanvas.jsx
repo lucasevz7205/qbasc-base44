@@ -6,11 +6,26 @@ const MASTERY = {
   correct: ['circle-check', 'var(--state-correct)', 'Domínio demonstrado'],
   incorrect: ['circle-x', 'var(--state-incorrect)', 'Erros recentes'],
   'no-evidence': ['circle-dashed', 'var(--state-no-evidence)', 'Sem evidência'],
+  insufficient: ['semicircle', 'var(--state-progress)', 'Dados insuficientes'],
   progress: ['loader-circle', 'var(--state-progress)', 'Em estudo'],
 };
 
 function NodeRates({ performance }) {
   if (!performance) return null;
+  if (performance.remaining) {
+    const { remaining, requiredQuestions, requiredFlashcards } = performance;
+    const missing = [
+      requiredQuestions && '1 questão',
+      requiredFlashcards && '1 flashcard',
+    ].filter(Boolean);
+    const flexible = remaining - requiredQuestions - requiredFlashcards;
+    if (flexible) missing.push(flexible === 1 ? '1 questão ou flashcard' : flexible + ' entre questões e flashcards');
+    return (
+      <span style={{ font: '600 11px/1.3 var(--font-mono)', color: 'var(--state-progress)', whiteSpace: 'normal' }}>
+        Para avaliar: {missing.join(' + ')}
+      </span>
+    );
+  }
   const entries = [['Q', 'Questões', performance.questions], ['FC', 'Flashcards', performance.flashcards]];
   const shown = entries.filter(([, , value]) => value.rate !== null);
   if (!shown.length) return null;
@@ -476,7 +491,7 @@ export default function MindMapCanvas({
         <IconButton variant="solid" size="sm" icon="locate-fixed" label="Centralizar no nó selecionado" onClick={() => centerOn(selectedId || tree.root)} />
       </div>
       <div style={{ position: 'absolute', bottom: 14, left: 16, display: 'flex', gap: 14, flexWrap: 'wrap', zIndex: 2, font: '400 12px/1 var(--font-body)', color: 'var(--text-muted)' }}>
-        {['correct', 'incorrect', 'progress', 'no-evidence'].map((k) => (
+        {['correct', 'incorrect', 'progress', 'insufficient'].map((k) => (
           <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
             <Icon name={MASTERY[k][0]} size={14} color={MASTERY[k][1]} />
             {MASTERY[k][2]}

@@ -1,0 +1,596 @@
+[
+  {
+    "id": "ti-5-3-c01",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "O que separa a IA generativa dos sistemas tradicionais que apenas classificam ou analisam dados?",
+    "resposta": [
+      "Cria conteúdo inédito"
+    ],
+    "fonte": "Aula 15, p. 51",
+    "explicacao": "Novos textos, imagens, áudios ou vídeos, em vez de apenas classificar ou analisar."
+  },
+  {
+    "id": "ti-5-3-c02",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.1",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Em relação aos dados de treino, como são os dados gerados pela IA generativa em qualidade, diversidade e conteúdo?",
+    "resposta": [
+      "Semelhantes em qualidade e diversidade",
+      "Únicos em conteúdo"
+    ],
+    "fonte": "Aula 15, p. 51"
+  },
+  {
+    "id": "ti-5-3-c03",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.2",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Se duas pessoas fizerem o mesmo pedido a uma IA generativa, o que pode acontecer com as respostas?",
+    "resposta": [
+      "Podem ser diferentes",
+      "Ambas coerentes e plausíveis, mas não idênticas"
+    ],
+    "explicacao": "A saída é calculada por probabilidade, não recuperada de uma base de respostas prontas.",
+    "fonte": "Aula 15, p. 53-54"
+  },
+  {
+    "id": "ti-5-3-c04",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.1.3",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "A partir de que ano os modelos generativos se popularizaram, segundo a aula?",
+    "resposta": [
+      "2022"
+    ],
+    "fonte": "Aula 15, p. 51; Mapa IA, p. 6"
+  },
+  {
+    "id": "ti-5-3-c05",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Como se chamam as estruturas de larga escala, treinadas com dados massivos multimodais, que viabilizam a IA generativa?",
+    "resposta": [
+      "Modelos de base (foundation models)"
+    ],
+    "fonte": "Aula 15, p. 51 e 57"
+  },
+  {
+    "id": "ti-5-3-c06",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2.1",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Por qual processo um modelo de base é adaptado a uma tarefa específica sem reconstrução completa?",
+    "resposta": [
+      "Ajuste fino (fine-tuning)"
+    ],
+    "fonte": "Aula 15, p. 57-58"
+  },
+  {
+    "id": "ti-5-3-c07",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.2.2",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Qual é o princípio de funcionamento central dos modelos de base?",
+    "resposta": [
+      "Distribuição de probabilidade"
+    ],
+    "fonte": "Aula 15, p. 51; Mapa IA, p. 6",
+    "explicacao": "O modelo avalia qual elemento é o mais provável a seguir."
+  },
+  {
+    "id": "ti-5-3-c08",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Qual é a primeira etapa do ciclo de desenvolvimento de um modelo de IA generativa?",
+    "resposta": [
+      "Coleta, limpeza e organização dos dados"
+    ],
+    "fonte": "Aula 15, p. 52"
+  },
+  {
+    "id": "ti-5-3-c09",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3.1",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Que etapas vêm logo depois do treinamento e calibram o modelo para comportamentos mais úteis, seguros e coerentes?",
+    "resposta": [
+      "Fine-tuning",
+      "Alinhamento"
+    ],
+    "fonte": "Aula 15, p. 52"
+  },
+  {
+    "id": "ti-5-3-c10",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3.2",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Como se chama a fase, iniciada com a implantação, em que o modelo gera efetivamente conteúdo a partir das entradas?",
+    "resposta": [
+      "Inferência"
+    ],
+    "fonte": "Aula 15, p. 52; Mapa IA, p. 6"
+  },
+  {
+    "id": "ti-5-3-c11",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r1.3.2",
+    "tema": "Conceito e funcionamento",
+    "pergunta": "Qual é a última etapa do ciclo de desenvolvimento, já com o modelo em uso real?",
+    "resposta": [
+      "Monitoramento (com atualização, correção ou retreinamento)"
+    ],
+    "fonte": "Aula 15, p. 52"
+  },
+  {
+    "id": "ti-5-3-c12",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Que probabilidade o modelo discriminativo modela?",
+    "resposta": [
+      "P(Y|X), probabilidade condicional"
+    ],
+    "fonte": "Aula 15, p. 62"
+  },
+  {
+    "id": "ti-5-3-c13",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1.1",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Cite três exemplos clássicos de modelos discriminativos dados pela aula.",
+    "resposta": [
+      "Regressão logística",
+      "SVM (máquinas de vetores de suporte)",
+      "BERT"
+    ],
+    "fonte": "Aula 15, p. 62"
+  },
+  {
+    "id": "ti-5-3-c14",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1.1",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Que tipo de modelo os sistemas de recomendação e os mecanismos de busca aplicam com frequência?",
+    "resposta": [
+      "Discriminativo"
+    ],
+    "fonte": "Aula 15, p. 62"
+  },
+  {
+    "id": "ti-5-3-c15",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.2",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Que distribuição o modelo generativo modela?",
+    "resposta": [
+      "P(X,Y), distribuição conjunta"
+    ],
+    "fonte": "Aula 15, p. 62"
+  },
+  {
+    "id": "ti-5-3-c16",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.2.1",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Além de prever categorias, o que a modelagem de P(X,Y) permite ao modelo generativo?",
+    "resposta": [
+      "Gerar novas amostras semelhantes aos dados originais"
+    ],
+    "fonte": "Aula 15, p. 62-63"
+  },
+  {
+    "id": "ti-5-3-c17",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r2.1",
+    "tema": "Generativo × discriminativo",
+    "pergunta": "Em que tipo de tarefa o modelo discriminativo tende a ter maior precisão e eficiência que o generativo?",
+    "resposta": [
+      "Tarefas específicas de reconhecimento"
+    ],
+    "fonte": "Aula 15, p. 63"
+  },
+  {
+    "id": "ti-5-3-c18",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Com que representação numérica o LLM trabalha internamente, em vez de palavras?",
+    "resposta": [
+      "Embeddings (vetores) de tokens"
+    ],
+    "fonte": "Aula 15, p. 67"
+  },
+  {
+    "id": "ti-5-3-c19",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Em que arquitetura, introduzida em 2017, se baseiam os LLMs?",
+    "resposta": [
+      "Transformer"
+    ],
+    "fonte": "Aula 15, p. 66"
+  },
+  {
+    "id": "ti-5-3-c20",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Que mecanismo do Transformer avalia quais partes do contexto são mais relevantes a cada etapa?",
+    "resposta": [
+      "Mecanismo de atenção"
+    ],
+    "fonte": "Aula 15, p. 67"
+  },
+  {
+    "id": "ti-5-3-c21",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.1.2",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Como se chama o modo de gerar texto token por token, prevendo cada elemento com base nos anteriores?",
+    "resposta": [
+      "Autorregressivo"
+    ],
+    "fonte": "Aula 15, p. 67"
+  },
+  {
+    "id": "ti-5-3-c22",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.2",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Como se chama o modelo que opera sobre apenas um tipo de informação?",
+    "resposta": [
+      "Unimodal"
+    ],
+    "fonte": "Aula 15, p. 59"
+  },
+  {
+    "id": "ti-5-3-c23",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.2.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Onde os embeddings das diferentes modalidades são projetados num modelo multimodal?",
+    "resposta": [
+      "Num espaço latente comum"
+    ],
+    "fonte": "Aula 15, p. 70"
+  },
+  {
+    "id": "ti-5-3-c24",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Quais são os três modelos generativos não textuais citados pela aula?",
+    "resposta": [
+      "GANs",
+      "VAEs",
+      "Modelos de difusão"
+    ],
+    "fonte": "Aula 15, p. 70"
+  },
+  {
+    "id": "ti-5-3-c25",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Quais são as duas redes que competem numa GAN?",
+    "resposta": [
+      "Geradora",
+      "Discriminadora"
+    ],
+    "fonte": "Aula 15, p. 76"
+  },
+  {
+    "id": "ti-5-3-c26",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.1",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Como se chama o fenômeno em que a geradora da GAN passa a produzir um número restrito de tipos de dados?",
+    "resposta": [
+      "Colapso de modo"
+    ],
+    "fonte": "Aula 15, p. 77"
+  },
+  {
+    "id": "ti-5-3-c27",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.2",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Quais são as duas redes principais de um VAE?",
+    "resposta": [
+      "Codificador (encoder)",
+      "Decodificador (decoder)"
+    ],
+    "fonte": "Aula 15, p. 78"
+  },
+  {
+    "id": "ti-5-3-c28",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.2",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "Em relação às GANs, que vantagem de treinamento os VAEs oferecem?",
+    "resposta": [
+      "Maior estabilidade de treinamento"
+    ],
+    "explicacao": "Em troca, tendem a gerar resultados menos nítidos.",
+    "fonte": "Aula 15, p. 78"
+  },
+  {
+    "id": "ti-5-3-c29",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r3.3.3",
+    "tema": "Arquiteturas e modelos",
+    "pergunta": "A partir de quê os modelos de difusão constroem imagens gradualmente?",
+    "resposta": [
+      "Ruído"
+    ],
+    "fonte": "Aula 15, p. 70-71 e 79"
+  },
+  {
+    "id": "ti-5-3-c30",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Qual ferramenta a aula descreve como versátil e generalista, voltada a conversação, texto e código?",
+    "resposta": [
+      "ChatGPT"
+    ],
+    "fonte": "Aula 15, p. 100"
+  },
+  {
+    "id": "ti-5-3-c31",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.1",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Que limitação de qualidade a tabela comparativa aponta para o ChatGPT?",
+    "resposta": [
+      "Pode alucinar"
+    ],
+    "fonte": "Aula 15, p. 100"
+  },
+  {
+    "id": "ti-5-3-c32",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.2",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "A que pacote de aplicativos o Microsoft Copilot está integrado?",
+    "resposta": [
+      "Microsoft 365"
+    ],
+    "fonte": "Aula 15, p. 100",
+    "explicacao": "Word, Excel, PowerPoint, Outlook e Teams."
+  },
+  {
+    "id": "ti-5-3-c33",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.1.3",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Até que ordem de grandeza de tokens vai o contexto longo do Google Gemini, segundo a tabela da aula?",
+    "resposta": [
+      "Milhões de tokens"
+    ],
+    "fonte": "Aula 15, p. 100"
+  },
+  {
+    "id": "ti-5-3-c34",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.2",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Qual ferramenta da OpenAI é especializada em gerar imagens a partir de descrições textuais?",
+    "resposta": [
+      "DALL·E"
+    ],
+    "fonte": "Aula 15, p. 95"
+  },
+  {
+    "id": "ti-5-3-c35",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.2.1",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Que recurso do DALL·E remove ou substitui elementos dentro de uma imagem existente?",
+    "resposta": [
+      "Inpainting"
+    ],
+    "fonte": "Aula 15, p. 96"
+  },
+  {
+    "id": "ti-5-3-c36",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r4.2.1",
+    "tema": "Exemplos de ferramentas",
+    "pergunta": "Que recurso do DALL·E expande a cena para além dos limites originais?",
+    "resposta": [
+      "Outpainting"
+    ],
+    "fonte": "Aula 15, p. 96"
+  },
+  {
+    "id": "ti-5-3-c37",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1",
+    "tema": "Casos de uso",
+    "pergunta": "Sob que lei a aula exige proteger os dados pessoais no uso de IA no setor público?",
+    "resposta": [
+      "LGPD"
+    ],
+    "fonte": "Aula 15, p. 127"
+  },
+  {
+    "id": "ti-5-3-c38",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1.1",
+    "tema": "Casos de uso",
+    "pergunta": "Quais duas tarefas de leitura de documentos a aula atribui à IA na Administração Pública?",
+    "resposta": [
+      "Classificar documentos automaticamente",
+      "Extrair informações importantes"
+    ],
+    "fonte": "Aula 15, p. 127"
+  },
+  {
+    "id": "ti-5-3-c39",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1.1",
+    "tema": "Casos de uso",
+    "pergunta": "Além de ler documentos, quais duas tarefas de produção a aula atribui à IA na Administração Pública?",
+    "resposta": [
+      "Sugerir encaminhamentos",
+      "Redigir minutas ou relatórios"
+    ],
+    "fonte": "Aula 15, p. 127"
+  },
+  {
+    "id": "ti-5-3-c40",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.1.2",
+    "tema": "Casos de uso",
+    "pergunta": "Que técnica ajuda as auditorias internas a localizar pontos fora da curva em licitações e pagamentos?",
+    "resposta": [
+      "Detecção de anomalias"
+    ],
+    "fonte": "Aula 15, p. 127"
+  },
+  {
+    "id": "ti-5-3-c41",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.2",
+    "tema": "Casos de uso",
+    "pergunta": "Quem deve revisar os resultados gerados pela IA na auditoria?",
+    "resposta": [
+      "Auditores humanos"
+    ],
+    "fonte": "Aula 15, p. 111"
+  },
+  {
+    "id": "ti-5-3-c42",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.2.1",
+    "tema": "Casos de uso",
+    "pergunta": "Quais três documentos a IA generativa pode preparar com base nos achados da equipe de auditoria?",
+    "resposta": [
+      "Minutas de relatórios",
+      "Sumários executivos",
+      "Pareceres iniciais"
+    ],
+    "fonte": "Aula 15, p. 110-111"
+  },
+  {
+    "id": "ti-5-3-c43",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3",
+    "tema": "Casos de uso",
+    "pergunta": "Na pesquisa jurídica, que tecnologia permite compreender o contexto das expressões jurídicas?",
+    "resposta": [
+      "Processamento de linguagem natural (PLN)"
+    ],
+    "fonte": "Aula 15, p. 114"
+  },
+  {
+    "id": "ti-5-3-c44",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3.1",
+    "tema": "Casos de uso",
+    "pergunta": "O que a análise semântica encontra que a busca por palavras-chave não encontra?",
+    "resposta": [
+      "Resultados descritos de forma diferente ou com sinônimos"
+    ],
+    "fonte": "Aula 15, p. 114"
+  },
+  {
+    "id": "ti-5-3-c45",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r5.3.2",
+    "tema": "Casos de uso",
+    "pergunta": "Sobre quais três temas veículos como Reuters e Associated Press geram notícias automaticamente?",
+    "resposta": [
+      "Resultados financeiros",
+      "Jogos esportivos",
+      "Boletins meteorológicos"
+    ],
+    "fonte": "Aula 15, p. 117"
+  },
+  {
+    "id": "ti-5-3-c46",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "De que característica do modelo decorrem as alucinações?",
+    "resposta": [
+      "Natureza estatística (prevê a sequência mais provável de palavras)"
+    ],
+    "fonte": "Aula 15, p. 35; Mapa IA, p. 3"
+  },
+  {
+    "id": "ti-5-3-c47",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.1",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Embora falsa, como a informação alucinada costuma ser apresentada ao usuário?",
+    "resposta": [
+      "Com elevada confiança e verossimilhança"
+    ],
+    "fonte": "Aula 15, p. 35; Mapa IA, p. 3"
+  },
+  {
+    "id": "ti-5-3-c48",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.2",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Por que o modelo não informa leis ou eventos recentes?",
+    "resposta": [
+      "Conhecimento limitado ao corte de treinamento"
+    ],
+    "fonte": "Aula 15, p. 36"
+  },
+  {
+    "id": "ti-5-3-c49",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.3",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Que técnica identifica conteúdos gerados por IA no combate à desinformação?",
+    "resposta": [
+      "Marcas d'água digitais (watermarking)"
+    ],
+    "fonte": "Aula 15, p. 28; Mapa IA, p. 3"
+  },
+  {
+    "id": "ti-5-3-c50",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.4",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Que autoria a legislação atual tradicionalmente presume?",
+    "resposta": [
+      "Humana"
+    ],
+    "fonte": "Aula 15, p. 29; Mapa IA, p. 3"
+  },
+  {
+    "id": "ti-5-3-c51",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.4",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Que direitos, distintos do autoral, protegem a imagem, a voz e a identidade da pessoa contra deepfakes?",
+    "resposta": [
+      "Direitos da personalidade"
+    ],
+    "fonte": "Aula 15, p. 29"
+  },
+  {
+    "id": "ti-5-3-c52",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.1.5",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Que tipo de viés faz uma IA de recrutamento penalizar mulheres porque os contratados anteriores eram majoritariamente homens?",
+    "resposta": [
+      "Viés histórico"
+    ],
+    "fonte": "Aula 15, p. 33"
+  },
+  {
+    "id": "ti-5-3-c53",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Quais são os três deveres do usuário de sistemas de IA?",
+    "resposta": [
+      "Verificar",
+      "Editar",
+      "Validar"
+    ],
+    "fonte": "Aula 15, p. 37; Mapa IA, p. 4"
+  },
+  {
+    "id": "ti-5-3-c54",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.1",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Quais são os três princípios da matriz FAT?",
+    "resposta": [
+      "Fairness (justiça)",
+      "Accountability (responsabilidade)",
+      "Transparency (transparência)"
+    ],
+    "fonte": "Aula 15, p. 26; Mapa IA, p. 3"
+  },
+  {
+    "id": "ti-5-3-c55",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.1",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "Qual princípio da matriz FAT exige que os sistemas evitem discriminação entre grupos sociais?",
+    "resposta": [
+      "Fairness (justiça)"
+    ],
+    "fonte": "Aula 15, p. 26"
+  },
+  {
+    "id": "ti-5-3-c56",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.2",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "O que caracteriza a abordagem human-in-the-loop?",
+    "resposta": [
+      "A decisão final depende de validação humana"
+    ],
+    "fonte": "Aula 15, p. 37; Mapa IA, p. 4"
+  },
+  {
+    "id": "ti-5-3-c57",
+    "no": "kit-arr-ti-5.3-ia-generativa-conceitos-exemplos-e-casos-2026-11-25-r6.2.2",
+    "tema": "Riscos e IA responsável",
+    "pergunta": "O que caracteriza a abordagem human-on-the-loop?",
+    "resposta": [
+      "IA autônoma sob vigilância humana constante"
+    ],
+    "fonte": "Aula 15, p. 37; Mapa IA, p. 4"
+  }
+]

@@ -155,3 +155,54 @@ test('a rodada GAN encerra após uma reposição por lote', async () => {
   assert.equal(calls, 2);
   assert.equal(result.entries.length, 0);
 });
+
+test('rodada pessoal repõe as questões que não foram gravadas após o confronto', async () => {
+  const parts = ['A', 'B', 'C', 'D', 'E'].map(id => ({ target: { id }, count: 4 }));
+  const calls = [];
+  const result = await runGanRound(parts, async (target, count) => {
+    calls.push([target.id, count]);
+    const questoes = Array.from({ length: count }, (_, i) => ({ id: calls.length + '-' + i }));
+    const ready = calls.length <= 5 ? (target.id === 'A' ? 2 : 0)
+      : calls.length <= 10 ? count - 1 : count;
+    return { questoes, registros: questoes.slice(0, ready) };
+  }, () => false, { targetSaved: true });
+
+  assert.deepEqual(calls, [
+    ['A', 4], ['B', 4], ['C', 4], ['D', 4], ['E', 4],
+    ['A', 2], ['B', 4], ['C', 4], ['D', 4], ['E', 4],
+    ['A', 1], ['B', 1], ['C', 1], ['D', 1], ['E', 1],
+  ]);
+  assert.equal(result.entries.filter(entry => entry.status === 'saved').length, 20);
+  assert.equal(result.entries.filter(entry => entry.status === 'pending').length, 23);
+});
+
+test('rodada pessoal respeita orçamento e não insiste em nó sem fonte', async () => {
+  const noSource = { id: 'sem-fonte' };
+  const parts = [{ target: noSource, count: 4 }, { target: node, count: 4 }, { target: noSource, count: 2 }];
+  const calls = [];
+  const result = await runGanRound(parts, async target => {
+    calls.push(target.id);
+    if (target === noSource) {
+      return { falha: { etapa: 'contexto', codigo: 'fonte-insuficiente', mensagem: 'Sem texto para este nó.' } };
+    }
+    return { questoes: [{ id: String(calls.length) }] };
+  }, () => false, { targetSaved: true });
+
+  assert.deepEqual(calls, [noSource.id, node.id, node.id, node.id]);
+  assert.equal(result.entries.length, 3);
+  assert.ok(result.entries.every(entry => entry.status === 'pending'));
+  assert.match(result.failure, /Sem texto para este nó/);
+});
+
+test('rodada pessoal respeita descarte durante uma reposição', async () => {
+  let calls = 0;
+  let discard = false;
+  const result = await runGanRound([{ target: node, count: 4 }], async () => {
+    calls++;
+    if (calls === 2) discard = true;
+    return { questoes: [{ id: String(calls) }] };
+  }, () => discard, { targetSaved: true });
+
+  assert.equal(calls, 2);
+  assert.equal(result, null);
+});

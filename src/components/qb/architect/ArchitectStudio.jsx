@@ -43,7 +43,8 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   }, [open, mode]);
 
   const [toolState, setToolState] = React.useState(toolProp || 'socratico');
-  const available = dock ? COMPACT_TOOLS : TOOLS;
+  const isAdmin = user?.role === 'admin';
+  const available = (dock ? COMPACT_TOOLS : TOOLS).filter(item => item.id !== 'cards' || isAdmin);
   const tools = personal ? available.filter(item => item.id !== 'cornell' && item.id !== 'cards') : available;
   const requestedTool = toolProp || toolState;
   const tool = clockOnly ? 'study-clock' : tools.some(item => item.id === requestedTool) ? requestedTool : 'socratico';

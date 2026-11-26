@@ -1,0 +1,563 @@
+{
+  "topico": "cp-8",
+  "materia": "cp",
+  "centro": "Temas relevantes de política internacional e brasileira contemporânea",
+  "ramos": [
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r1",
+      "t": "Teorias para julgar a atualidade",
+      "cor": 1,
+      "x": {
+        "e": "Bloco com as correntes de Relações Internacionais que servem de ferramenta para classificar fatos recentes. O realismo vê Estados em busca de poder sob a anarquia; o liberalismo destaca a interdependência e as instituições; o construtivismo diz que a anarquia é o que os Estados fazem dela. A banca combina um fato do noticiário com um conceito que não muda, e é o conceito que decide o item.",
+        "trap": "Trocar o autor ou a corrente: atribuir a Waltz a natureza humana, a Keohane o neorrealismo, a Bull a frase de Wendt.",
+        "src": "Etapa 11, p. 3, l. 69-70, 83-86 e 96-109; Etapa 12, p. 3-4, l. 145-193"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r1.1",
+          "t": "Realismo clássico × neorrealismo",
+          "n": "Morgenthau = natureza humana; Waltz = estrutura",
+          "x": {
+            "e": "Realismo clássico (Hans Morgenthau, A política entre as nações, 1948): política internacional é luta pelo poder, com o interesse definido em termos de poder e raiz na natureza humana. Neorrealismo ou realismo estrutural (Kenneth Waltz, Teoria da política internacional, 1979): a anarquia, isto é, a ausência de autoridade acima dos Estados, e a distribuição de capacidades explicam o comportamento; daí a balança de poder e a tese de que a bipolaridade seria mais estável. Polaridade é o número de grandes potências (uni, bi ou multipolaridade).",
+            "trap": "Para Waltz a causa é a estrutura anárquica, não a natureza humana egoísta. Outro par: o realismo defensivo busca segurança; maximizar poder é tese do realismo ofensivo (Mearsheimer).",
+            "src": "Etapa 11, p. 3, l. 99-105; p. 4, l. 124; p. 9, l. 450-453; Etapa 12, p. 3, l. 149-150; p. 5, l. 234-235 e 250"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r1.2",
+          "t": "Interdependência complexa",
+          "n": "Keohane e Nye, 1977: múltiplos canais",
+          "x": {
+            "e": "Conceito de Robert Keohane e Joseph Nye (Poder e interdependência, 1977), no campo do liberalismo e do institucionalismo neoliberal: há múltiplos canais de contato entre sociedades e a força militar perde utilidade. Para o institucionalismo, as instituições reduzem custos e incertezas e favorecem a cooperação.",
+            "trap": "Descrevê-la pelo uso preponderante da força militar e por um único canal, o diplomático (item 2 da Etapa 12, errado).",
+            "src": "Etapa 11, p. 3, l. 104-109; Etapa 12, p. 6, l. 291-292; p. 8, l. 413"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r1.3",
+          "t": "Construtivismo e Escola Inglesa",
+          "n": "Wendt, 1992; Bull, 1977",
+          "x": {
+            "e": "Construtivismo (Alexander Wendt, artigo de 1992): interesses e identidades são construídos socialmente, e \"a anarquia é o que os Estados fazem dela\"; por isso a anarquia admite padrões variados de cooperação e de conflito. Escola Inglesa (Hedley Bull, A sociedade anárquica, 1977): mesmo sem governo mundial, há uma sociedade internacional com regras e instituições comuns.",
+            "trap": "Atribuir a frase da anarquia a Bull, ou a sociedade internacional a Wendt.",
+            "src": "Etapa 11, p. 4, l. 115-121; Etapa 12, p. 6, l. 296-297; p. 8, l. 414"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r1.4",
+          "t": "Anarquia não é governo supranacional",
+          "n": "A ONU é organização intergovernamental",
+          "x": {
+            "e": "Anarquia internacional é a ausência de autoridade acima dos Estados, não dentro deles: internamente, cada Estado é soberano. A ONU não é governo supranacional, e sim organização intergovernamental, na qual os Estados conservam a soberania; o veto dos cinco permanentes mostra isso.",
+            "trap": "Justificar a ONU como governo supranacional pela falta de autoridade dentro dos Estados (Cebraspe 2013, ANTT, errado).",
+            "src": "Etapa 11, p. 3, l. 103; p. 6, l. 264-268; p. 9, l. 456-458"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2",
+      "t": "Conceitos e teses do pós-Guerra Fria",
+      "cor": 2,
+      "x": {
+        "e": "Vocabulário que a banca usa para classificar fatos: soft e hard power, multilateralismo e unilateralismo, globalização e regionalismo, além das teses de Fukuyama e Huntington. O item descreve um fato recente e pede a classificação correta.",
+        "trap": "Conceito certo associado ao autor ou ao exemplo errado.",
+        "src": "Etapa 11, p. 4, l. 123-137; Etapa 12, p. 4, l. 157-158; p. 5, l. 225-226"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2.1",
+          "t": "Soft power × hard power",
+          "n": "Atração, não coerção (Nye, 1990)",
+          "x": {
+            "e": "Soft power é a capacidade de obter resultados pela atração (cultura, valores, políticas), e não pela coerção; o termo é de Joseph Nye (1990). Hard power é a coerção, militar ou econômica, como sanções e ameaças.",
+            "trap": "Dizer que o soft power se baseia em coerção econômica ou em sanções.",
+            "src": "Etapa 11, p. 4, l. 125-127; Etapa 12, p. 4, l. 157; p. 5, l. 237; p. 6, l. 301-302; p. 8, l. 415"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2.2",
+          "t": "Multilateralismo × unilateralismo",
+          "n": "Três ou mais Estados, princípios gerais de conduta",
+          "x": {
+            "e": "Multilateralismo é a coordenação entre três ou mais Estados com base em princípios gerais de conduta, como as regras da OMC. O material lhe opõe o unilateralismo ao tratar das tarifas dos EUA e das \"medidas unilaterais\" a que responde a Lei de Reciprocidade Econômica.",
+            "ex": "A COP30 é citada como multilateralismo ambiental, com decisões que dependem do consenso das partes.",
+            "src": "Etapa 11, p. 4, l. 127-128; p. 5, l. 200-201; p. 10, l. 506-509 e 538-541"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2.3",
+          "t": "Globalização e regionalismo",
+          "n": "Fluxos reduzem a autonomia, mas não uniformizam",
+          "x": {
+            "e": "Globalização é a intensificação dos fluxos de bens, capitais, informação e pessoas, com efeitos sobre a autonomia dos Estados; ela não uniformiza a governança global, que segue fragmentada entre organizações (ONU, OMC, FMI), foros informais (G20, BRICS) e blocos regionais. Regionalismo é a integração entre Estados de uma região, em tipos que formam uma sequência: área de livre comércio, união aduaneira, mercado comum e união econômica.",
+            "trap": "Dizer que a globalização confere uniformidade à governança global (ABIN 2018, errado).",
+            "src": "Etapa 11, p. 4, l. 128-133; p. 6, l. 274-276; p. 9, l. 462-464"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2.4",
+          "t": "Fukuyama × Huntington",
+          "n": "Fim da história × choque de civilizações",
+          "x": {
+            "e": "Francis Fukuyama (artigo de 1989, livro de 1992): fim da história, segundo o qual a democracia liberal seria o ponto final da evolução ideológica. Samuel Huntington (artigo de 1993, livro de 1996): choque de civilizações, segundo o qual os conflitos seriam travados sobretudo entre civilizações.",
+            "trap": "Trocar os autores das duas teses.",
+            "src": "Etapa 11, p. 4, l. 135-137; Etapa 12, p. 4, l. 158"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3",
+      "t": "ONU e Conselho de Segurança",
+      "cor": 3,
+      "x": {
+        "e": "A ONU nasce da Carta de São Francisco (1945). A prova cobra a composição do Conselho de Segurança, quem tem veto, o pleito brasileiro e a escolha do secretário-geral, que em 2026 estava em curso.",
+        "trap": "Dar veto a todos os membros do Conselho ou ao Brasil.",
+        "src": "Etapa 11, p. 4, l. 141-145; Etapa 12, p. 4, l. 159"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3.1",
+          "t": "Cinco permanentes com veto, dez eletivos",
+          "n": "EUA, China, Rússia, França, Reino Unido",
+          "x": {
+            "e": "Os cinco membros permanentes (EUA, China, Rússia, França e Reino Unido) têm veto: o voto contrário de qualquer deles impede a aprovação de resoluções sobre questões não procedimentais. Os dez eletivos têm mandato de dois anos e não têm veto.",
+            "trap": "\"Todos os membros do Conselho de Segurança têm direito de veto\" é errado.",
+            "src": "Etapa 11, p. 4, l. 142-143; Etapa 12, p. 4, l. 159; p. 5, l. 238; p. 6, l. 306-307; p. 8, l. 416"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3.2",
+          "t": "Reforma do Conselho e G4",
+          "n": "Brasil pleiteia assento com Alemanha, Índia e Japão",
+          "x": {
+            "e": "O Brasil não é membro permanente: pleiteia o assento no G4, com Alemanha, Índia e Japão. A União Africana, pelo Consenso de Ezulwini (2005), reivindica dois assentos permanentes com veto e mais assentos eletivos. As declarações do BRICS apoiam reforma abrangente da ONU, inclusive do Conselho. A reforma exige emenda à Carta aprovada por dois terços da Assembleia Geral e ratificada pelos cinco permanentes.",
+            "trap": "Dizer que o Brasil, por integrar o G4, tem veto, ou que o BRICS não se posiciona sobre a reforma.",
+            "src": "Etapa 11, p. 4, l. 143-144; p. 9, l. 467-476; Etapa 12, p. 5, l. 246; p. 8, l. 426"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3.3",
+          "t": "Escolha do secretário-geral",
+          "n": "Conselho recomenda; Assembleia Geral nomeia",
+          "x": {
+            "e": "O secretário-geral é nomeado pela Assembleia Geral por recomendação do Conselho de Segurança, recomendação sujeita ao veto dos permanentes. O mandato de António Guterres termina no fim de 2026. Até 7/10/2026, após cinco sondagens informais (30/7, 21/8, 18/9, 29/9 e 7/10), nenhum candidato tinha vantagem consolidada: Rebeca Grynspan (Costa Rica) liderava, seguida de Rafael Grossi (Argentina); Michelle Bachelet (Chile), apoiada pelo Brasil, retirou a candidatura em 19 de setembro, depois de obter 1 voto favorável e 11 contrários na terceira sondagem.",
+            "trap": "Inverter os papéis: a Assembleia não recomenda e o Conselho não nomeia.",
+            "src": "Etapa 11, p. 4, l. 144-145; p. 5, l. 222-228; Etapa 12, p. 7, l. 358-360 e 366-367"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4",
+      "t": "OMC, Bretton Woods, OTAN, G20, BRICS e Mercosul",
+      "cor": 4,
+      "x": {
+        "e": "Instituições econômicas, de segurança e arranjos regionais que a prova cobra por origem, composição e regra decisiva. Muitos itens se decidem por um nome ou uma data: etapa inicial da OMC, membros do BRICS, situação da Venezuela no Mercosul. O próprio material recomenda reconferir datas de adesão e presidências rotativas antes da prova.",
+        "src": "Etapa 11, p. 4, l. 139-170 (quadro com colunas desalinhadas na extração; leitura por correspondência de linhas, conferida com o gabarito comentado, p. 9-10)"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4.1",
+          "t": "OMC: consultas antes do painel",
+          "n": "Órgão de Apelação paralisado desde dez./2019",
+          "x": {
+            "e": "A OMC foi criada pelo Acordo de Marrakesh (1994), funciona desde 1º/1/1995 e sucede o GATT. Na solução de controvérsias, a fase de consultas é obrigatória e anterior ao eventual painel, que é o julgamento da controvérsia. O Órgão de Apelação está paralisado desde dezembro de 2019 por falta de nomeações, mas consultas e painéis continuam funcionando.",
+            "trap": "Chamar a OMC inteira de paralisada, ou tratar consultas e painel como a mesma fase.",
+            "src": "Etapa 11, p. 4, l. 144-150; p. 10, l. 500-503; Etapa 12, p. 4, l. 161; p. 7, l. 337-338; p. 8, l. 419"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4.2",
+          "t": "Bretton Woods, OTAN e G20",
+          "n": "1944; 1949; 1999 e 2008",
+          "x": {
+            "e": "FMI e Banco Mundial vêm da Conferência de Bretton Woods (1944), cuidam de estabilidade financeira e desenvolvimento e têm votos ponderados por cotas. A OTAN vem do Tratado de Washington (1949): defesa coletiva (art. 5º), com adesão da Finlândia (2023) e da Suécia (2024). O G20 reúne ministros de finanças desde 1999 e cúpulas de líderes desde 2008; é o principal foro de coordenação econômica, e o Brasil o presidiu em 2024.",
+            "trap": "Trocar 1999 (ministros de finanças) por 2008 (cúpulas de líderes) no G20.",
+            "src": "Etapa 11, p. 4, l. 148-160"
+          },
+          "tabela": [
+            [
+              "FMI e Banco Mundial",
+              [
+                "Bretton Woods, 1944",
+                "Votos ponderados por cotas"
+              ]
+            ],
+            [
+              "OTAN",
+              [
+                "Tratado de Washington, 1949",
+                "Defesa coletiva (art. 5º)",
+                "Finlândia 2023, Suécia 2024"
+              ]
+            ],
+            [
+              "G20",
+              [
+                "Ministros de finanças, 1999",
+                "Cúpulas de líderes desde 2008",
+                "Presidência brasileira em 2024"
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4.3",
+          "t": "BRICS: agrupamento informal",
+          "n": "Sem tratado constitutivo, tarifa comum nem secretariado",
+          "x": {
+            "e": "O BRICS não é bloco econômico: é agrupamento informal de coordenação política e econômica, sem tratado constitutivo, tarifa comum nem secretariado. A sigla BRIC surgiu em 2009, e a África do Sul entrou em 2011; a ampliação anunciada em 2023 efetivou-se em 2024 (Egito, Etiópia, Irã e Emirados Árabes Unidos) e em 2025 (Indonésia). O Novo Banco de Desenvolvimento (NBD) e o Arranjo Contingente de Reservas (ACR) vêm da Cúpula de Fortaleza (2014); o NBD tem sede em Xangai e admite qualquer membro da ONU. O Brasil presidiu o grupo em 2025, e a Índia preside em 2026 (18ª cúpula).",
+            "trap": "Chamar o BRICS de bloco econômico por ter NBD e ACR; restringir o NBD a membros do BRICS.",
+            "src": "Etapa 11, p. 4, l. 155-157 e 162-163; p. 9, l. 479-482; p. 10, l. 488-492"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4.4",
+          "t": "Mercosul: Venezuela suspensa",
+          "n": "Bolívia é Estado Parte desde julho de 2024",
+          "x": {
+            "e": "O Mercosul nasce do Tratado de Assunção (1991) e do Protocolo de Ouro Preto (1994) e é união aduaneira imperfeita. Fundadores: Argentina, Brasil, Paraguai e Uruguai (enunciado da questão 8). A Venezuela está suspensa desde 2016 (cláusula democrática do Protocolo de Ushuaia, aplicada em 2017). A Bolívia foi incorporada como Estado Parte em julho de 2024, com prazo para adotar as normas do bloco.",
+            "trap": "Tratar a Venezuela como membro pleno e a Bolívia como país em adesão (CACD 2025, errado).",
+            "src": "Etapa 11, p. 4, l. 158-159 e 165-167; p. 7, l. 323-324 (enunciado da questão 8); p. 10, l. 495-497"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5",
+      "t": "O Brasil e o art. 4º da Constituição",
+      "cor": 5,
+      "x": {
+        "e": "Base constitucional da política externa: dez princípios (art. 4º, I a X), o parágrafo único sobre integração latino-americana e a repartição de competências sobre tratados. A banca usa pegadinhas de localização (conteúdo verdadeiro no dispositivo errado) e de eficácia.",
+        "src": "Etapa 11, p. 5, l. 176-187"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.1",
+          "t": "Dez princípios das relações internacionais",
+          "n": "Art. 4º, incisos I a X",
+          "x": {
+            "e": "São eles: independência nacional; prevalência dos direitos humanos; autodeterminação dos povos; não intervenção; igualdade entre os Estados; defesa da paz; solução pacífica dos conflitos; repúdio ao terrorismo e ao racismo (inciso VIII); cooperação entre os povos para o progresso da humanidade; concessão de asilo político (inciso X). Não intervenção (IV) e prevalência dos direitos humanos (II) podem entrar em tensão.",
+            "ex": "Mnemônico do material: INDE-PREVA-AUTO-NÃO-IGUAL-PAZ-SOLUÇÃO-REPÚDIO-COOPERA-ASILO.",
+            "src": "Etapa 11, p. 5, l. 178-181; p. 10, l. 512-515; Etapa 12, p. 4, l. 164-167; p. 5, l. 252"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.2",
+          "t": "Integração latino-americana",
+          "n": "Parágrafo único do art. 4º",
+          "x": {
+            "e": "O parágrafo único determina que a República busque a integração econômica, política, social e cultural dos povos da América Latina, visando à formação de uma comunidade latino-americana de nações. É a base constitucional do Mercosul e das iniciativas de integração sul-americana.",
+            "trap": "[classificação analítica, não está na fonte] Trocar América Latina por América do Sul.",
+            "src": "Etapa 11, p. 5, l. 181-182; p. 10, l. 523-525; Etapa 12, p. 6, l. 316-317"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.3",
+          "t": "Art. 4º não é art. 3º nem 5º",
+          "n": "Pegadinha de localização",
+          "x": {
+            "e": "Não intervenção e asilo político são princípios das relações internacionais (art. 4º), não objetivos fundamentais da República (art. 3º). A vedação de extraditar estrangeiro por crime político ou de opinião existe, mas está no art. 5º, LII, entre os direitos individuais; o princípio do art. 4º próximo do tema é a concessão de asilo político (inciso X).",
+            "trap": "Conteúdo verdadeiro, enquadramento falso.",
+            "src": "Etapa 11, p. 8, l. 362-363; p. 10, l. 518-520; Etapa 12, p. 5, l. 239-241; p. 6, l. 311-312; p. 8, l. 417"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.4",
+          "t": "Princípios com eficácia normativa",
+          "n": "Vinculam Presidente, Congresso e Judiciário",
+          "x": {
+            "e": "Os princípios do art. 4º são normas constitucionais com eficácia jurídica, não meras diretrizes programáticas: vinculam o Presidente na condução da política externa, o Congresso na apreciação de tratados e o Judiciário; o STF os invoca, por exemplo, em extradições.",
+            "trap": "\"Meras diretrizes programáticas sem eficácia normativa\" (TJ-PA 2025, errado).",
+            "src": "Etapa 11, p. 8, l. 382-385; p. 10, l. 528-533"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.5",
+          "t": "Tratados: Presidente celebra, Congresso resolve",
+          "n": "Art. 84, VIII; art. 49, I; art. 5º, § 3º",
+          "x": {
+            "e": "O Presidente celebra tratados (art. 84, VIII), sujeitos a referendo do Congresso Nacional, que resolve definitivamente sobre tratados que acarretem encargos ou compromissos gravosos ao patrimônio nacional (art. 49, I). Tratados de direitos humanos aprovados em cada Casa, em dois turnos, por três quintos dos votos equivalem às emendas constitucionais (art. 5º, § 3º). Na prática da Câmara, o acordo chega por mensagem presidencial e tramita como projeto de decreto legislativo, começando pela Câmara e passando pela Comissão de Relações Exteriores e de Defesa Nacional.",
+            "ex": "O acordo Mercosul-UE foi aprovado pelo Decreto Legislativo nº 14, de 17/3/2026, e promulgado por decreto em 28/4/2026.",
+            "trap": "[classificação analítica, não está na fonte] Atribuir o referendo só ao Senado.",
+            "src": "Etapa 11, p. 5, l. 184-187 e 215-216; Etapa 12, p. 4, l. 198-199"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6",
+      "t": "Fatos internacionais de 2025 e 2026",
+      "cor": 6,
+      "x": {
+        "e": "Fatos datados, com data de corte em 15/10/2026, e o conceito que a banca associa a cada um. Itens de atualidade costumam se decidir por um único detalhe: quem decidiu, em que data, com que alcance. O que mudou depois da data de corte precisa ser reconferido.",
+        "src": "Etapa 11, p. 3, l. 76-79 e 93-94; p. 5-6, l. 189-239"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.1",
+          "t": "Tarifas dos EUA sobre o Brasil",
+          "n": "IEEPA derrubada; Seção 301 mantida",
+          "x": {
+            "e": "Em 2025 os EUA elevaram para até 50% a tarifa sobre parte dos produtos brasileiros com base na IEEPA, a lei de poderes econômicos de emergência. Em fevereiro de 2026 a Suprema Corte dos EUA decidiu que a lei não dava ao presidente autoridade para impor tarifas, e essas tarifas foram encerradas; permaneceram as da Seção 301. Conceitos: unilateralismo × multilateralismo; solução de controvérsias na OMC.",
+            "src": "Etapa 11, p. 5, l. 193-201; Etapa 12, p. 6, l. 267"
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.1.1",
+              "t": "IEEPA derrubada pela Suprema Corte",
+              "n": "Fevereiro de 2026",
+              "x": {
+                "e": "IEEPA é a lei norte-americana de poderes econômicos de emergência. A Suprema Corte dos EUA decidiu que ela não autorizava o presidente a impor tarifas, e as tarifas baseadas nela foram encerradas; as demais tarifas adicionais permaneceram. A data exata (20/2/2026) aparece só no resumo da Etapa 12.",
+                "trap": "Dizer que a Corte confirmou a autoridade do presidente, ou que a decisão eliminou todas as tarifas adicionais.",
+                "src": "Etapa 11, p. 5, l. 193-196; p. 10, l. 544-546; Etapa 12, p. 5, l. 243-245; p. 6, l. 267; p. 7, l. 327-329 e 342; p. 8, l. 420"
+              }
+            },
+            {
+              "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.1.2",
+              "t": "Seção 301 e consultas na OMC",
+              "n": "Não discriminação do GATT 1994",
+              "x": {
+                "e": "A Seção 301 da lei comercial norte-americana gera tarifas por investigação comercial: ficaram 25% (investigação específica sobre o Brasil) e 12,5% (investigação sobre trabalho forçado que abrangeu 60 economias). Contra elas, o Brasil pediu consultas aos EUA no sistema de solução de controvérsias da OMC em julho de 2026, alegando violação do princípio da não discriminação do GATT 1994. Antes, a Lei nº 15.122/2025 (Lei de Reciprocidade Econômica, de projeto do Senado) autorizou o Executivo a suspender concessões em resposta a medidas unilaterais.",
+                "trap": "A data do pedido diverge na própria fonte: 27/7/2026 (seção 10.4 e resumo) e 30/7/2026 (gabarito da questão 16). Não decorar o dia sem reconferir.",
+                "src": "Etapa 11, p. 5, l. 196-201; p. 10, l. 538-541 e 546-547; Etapa 12, p. 6, l. 267"
+              }
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.2",
+          "t": "Captura de Maduro",
+          "n": "3 de janeiro de 2026",
+          "x": {
+            "e": "Em 3/1/2026 forças dos EUA capturaram Nicolás Maduro em Caracas e o levaram a Nova York para responder a acusações criminais. A vice-presidente Delcy Rodríguez assumiu a presidência interina; em março, EUA e Venezuela restabeleceram relações diplomáticas; não havia data para novas eleições, e negociações entre governo e oposição começaram em agosto. Conceitos: soberania, não intervenção e autodeterminação (art. 4º).",
+            "src": "Etapa 11, p. 5, l. 205-209"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.3",
+          "t": "Acordo Mercosul-UE",
+          "n": "Aplicação provisória desde 1º/5/2026",
+          "x": {
+            "e": "O acordo comercial interino foi assinado em Assunção e passou a ser aplicado provisoriamente em 1º de maio de 2026, por decisão do Conselho da União Europeia, depois da aprovação pelo Congresso (Decreto Legislativo nº 14, de 17/3/2026) e da promulgação brasileira por decreto (28/4). O Parlamento Europeu remetera o texto ao Tribunal de Justiça da UE em janeiro. Aplicação provisória é a execução antecipada de parte do acordo antes da conclusão de todos os procedimentos internos; não é ratificação plena. Foi negociado entre os dois blocos (acordo inter-regional), não no âmbito da OMC.",
+            "trap": "\"Entrou em vigor de forma definitiva\" ou \"todos os procedimentos foram concluídos\" (errados). A fonte diverge sobre a data de assinatura e sobre o órgão europeu que decidiu a aplicação provisória (ver pendências do manifesto).",
+            "src": "Etapa 11, p. 5, l. 213-218; p. 10, l. 500-502; p. 11, l. 554-557; Etapa 12, p. 4, l. 162-164; p. 5, l. 242; p. 8, l. 422-423"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.4",
+          "t": "Outros marcos de contexto",
+          "n": "Ucrânia, Gaza, COP30, Amigos da Paz",
+          "x": {
+            "e": "Pano de fundo de itens de atualidade: a guerra iniciada com a invasão russa da Ucrânia (fevereiro de 2022) seguia sem acordo de paz em 15/10/2026, apesar das negociações trilaterais em Genebra (fevereiro de 2026); em Gaza vigora desde 10/10/2025 um cessar-fogo formalmente mantido, com violações diárias relatadas e sem avanço da segunda fase (desarmamento do Hamas); os EUA têm eleições de meio de mandato em 3/11/2026.",
+            "src": "Etapa 11, p. 6, l. 234-239"
+          },
+          "f": [
+            {
+              "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.4.1",
+              "t": "COP30 e Acordo de Paris",
+              "n": "Belém, nov./2025; saída dos EUA não inédita",
+              "x": {
+                "e": "COP é a Conferência das Partes sobre Mudança do Clima; a 30ª foi em Belém, em novembro de 2025, presidida pelo Brasil, e terminou com um pacote de decisões adotadas por consenso que reafirmou o Acordo de Paris e tratou de adaptação, financiamento climático, transição justa e gênero. A saída dos EUA do Acordo de Paris anunciada em janeiro de 2025 não foi inédita: houve notificação em 2017, retirada efetivada em novembro de 2020 e retorno em 2021.",
+                "trap": "O adjetivo \"inédita\" torna errado o item sobre a saída dos EUA.",
+                "src": "Etapa 11, p. 6, l. 238-239; p. 7, l. 343-345; p. 9, l. 443-446; p. 10, l. 506-509; p. 11, l. 566-569"
+              }
+            },
+            {
+              "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.4.2",
+              "t": "Grupo de Amigos da Paz",
+              "n": "Brasil e China, setembro de 2024",
+              "x": {
+                "e": "Lançado por Brasil e China em setembro de 2024, à margem da Assembleia Geral da ONU, a partir de seis pontos dos dois países sobre a guerra na Ucrânia: cessar-fogo, negociação com participação de todas as partes e solução política com base na Carta da ONU. Expressa a posição brasileira de não alinhamento e de solução pacífica dos conflitos (art. 4º, VII).",
+                "src": "Etapa 11, p. 9, l. 428-432; p. 11, l. 560-563"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7",
+      "t": "Eleições e relações entre Poderes (Cargo 11)",
+      "cor": 7,
+      "x": {
+        "e": "Parte exigida só do Cargo 11 (Registro e Redação). Junta os números da eleição geral de 2026 e os episódios de relação entre Executivo, Legislativo e Judiciário, sempre com a regra constitucional por trás do fato: maioria absoluta no primeiro turno, cláusula de desempenho, aprovação de ministros pelo Senado, derrubada de veto. Os números da eleição são provisórios até a diplomação.",
+        "src": "Etapa 12, p. 2, l. 52-93; p. 5, l. 229-230"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7.1",
+          "t": "Eleições gerais de 2026",
+          "n": "1º turno em 4/10; 2º turno em 25/10",
+          "x": {
+            "e": "Primeiro turno em 4/10/2026, com comparecimento de 78,92%; nenhum candidato a Presidente obteve maioria absoluta dos votos válidos (excluídos brancos e nulos, art. 77), e o segundo turno foi marcado para 25/10/2026, entre Flávio Bolsonaro (PL) e Luiz Inácio Lula da Silva (PT). Na Câmara: 513 eleitos, PL com 121 cadeiras (maior bancada desde 1988), 21 partidos representados, 301 reeleitos, 183 em primeiro mandato e 29 ex-deputados de volta (renovação de 35,67%). A cláusula de desempenho (art. 17, § 3º, EC 97/2017) é aferida pela federação como se fosse um só partido (Lei 9.096/1995, art. 11-A): 14 dos 30 partidos a superaram. O Senado renovou dois terços. Posse: Presidente em 5/1/2027 (EC 111/2021); deputados e senadores em 1º/2/2027.",
+            "trap": "Contar brancos e nulos na maioria absoluta; trocar 5 de janeiro por 1º de janeiro.",
+            "src": "Etapa 12, p. 2, l. 58-71; p. 7, l. 375-376; p. 8, l. 427; p. 9, l. 448-459; p. 10, l. 504-511"
+          },
+          "tabela": [
+            [
+              "Presidente",
+              [
+                "Sem maioria absoluta em 4/10",
+                "2º turno em 25/10",
+                "Posse em 5/1/2027"
+              ]
+            ],
+            [
+              "Câmara",
+              [
+                "513 eleitos",
+                "PL com 121",
+                "21 partidos",
+                "Renovação de 35,67%"
+              ]
+            ],
+            [
+              "Cláusula",
+              [
+                "Federação conta como um partido",
+                "14 de 30 partidos acima"
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7.2",
+          "t": "Condenação do ex-presidente (2025)",
+          "n": "Primeira Turma do STF, 11/9/2025",
+          "x": {
+            "e": "Em 11/9/2025, a Primeira Turma do STF condenou o ex-presidente Jair Bolsonaro e outros réus por tentativa de golpe de Estado; a pena do ex-presidente foi fixada em 27 anos e 3 meses, e o cumprimento começou em 25/11/2025, após o trânsito em julgado (fim dos recursos). Conceitos: judicialização e responsabilização.",
+            "src": "Etapa 12, p. 2, l. 76-79; p. 3, l. 99-101"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7.3",
+          "t": "PEC da Blindagem rejeitada",
+          "n": "CCJ do Senado, 24/9/2025, 26 × 0",
+          "x": {
+            "e": "A PEC 3/2021, conhecida como PEC da Blindagem, aprovada pela Câmara, ampliava a exigência de autorização parlamentar para processos contra congressistas. Em 24/9/2025, a CCJ (Comissão de Constituição e Justiça) do Senado a rejeitou por 26 votos a 0. Conceitos: bicameralismo e imunidades.",
+            "src": "Etapa 12, p. 2, l. 79-83; p. 3, l. 101-102"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7.4",
+          "t": "Indicação de Messias ao STF rejeitada",
+          "n": "Senado, 29/4/2026, 42 × 34",
+          "x": {
+            "e": "Em 29/4/2026 o Senado rejeitou, por 42 votos a 34, a indicação de Jorge Messias ao STF. A escolha do ministro é do Presidente, que o nomeia depois de aprovada a escolha pela maioria absoluta do Senado (art. 101, parágrafo único); por isso a rejeição não contraria a Constituição.",
+            "trap": "Dizer que a rejeição violou competência exclusiva do Presidente.",
+            "src": "Etapa 12, p. 2, l. 84-88; p. 8, l. 386-387 e 428; p. 9, l. 465-466; p. 10, l. 515-517"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r7.5",
+          "t": "Veto da Dosimetria derrubado",
+          "n": "30/4/2026; Lei nº 15.402/2026",
+          "x": {
+            "e": "O PL da Dosimetria reduz penas de crimes contra o Estado Democrático de Direito. O Presidente o vetou em 8/1/2026; em 30/4/2026 o Congresso derrubou o veto (Câmara 318 × 144; Senado 49 × 24). A derrubada exige a maioria absoluta dos deputados e dos senadores, em sessão conjunta (art. 66, § 4º). A Lei nº 15.402/2026 foi promulgada pelo presidente do Senado em 8 de maio e, em 9 de maio, teve a aplicação às execuções penais do 8 de janeiro suspensa por cautelar do ministro Alexandre de Moraes (ADIs 7.966 e 7.967), até o julgamento do Plenário do STF.",
+            "trap": "Dois terços ou votação separada por Casa (errado).",
+            "src": "Etapa 12, p. 2, l. 83-93; p. 8, l. 393-394 e 429; p. 9, l. 472-474; p. 10, l. 521-524"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8",
+      "t": "Agenda do Congresso e conceitos (Cargo 11)",
+      "cor": 8,
+      "x": {
+        "e": "Propostas em pauta no segundo semestre de 2026 e o vocabulário da ciência política para julgar a atualidade. A banca cobra a tramitação (PEC em dois turnos, por três quintos, nas duas Casas, com promulgação pelas Mesas) e o conceito certo com o autor certo.",
+        "src": "Etapa 12, p. 3, l. 104-143"
+      },
+      "f": [
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8.1",
+          "t": "PEC da Segurança Pública",
+          "n": "PEC 18/2025; retirada de pauta em 15/10",
+          "x": {
+            "e": "Aprovada pela Câmara em março de 2026; texto-base aprovado na CCJ do Senado em 2/9; em 14/10 a CCJ concluiu a análise sem votar os três destaques (declarados prejudicados pela ausência dos autores) e enviou o texto ao Plenário, que aprovou calendário especial para os dois turnos; em 15/10 a votação foi retirada de pauta. A aprovação na CCJ não dispensa a votação no Plenário.",
+            "trap": "Dizer que a PEC aprovada na CCJ já pode ser promulgada.",
+            "src": "Etapa 12, p. 3, l. 108-112; p. 8, l. 400-401 e 430"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8.2",
+          "t": "EC 141/2026: fim da escala 6x1",
+          "n": "75 × 1 no Senado; promulgada em 16/10/2026",
+          "x": {
+            "e": "A PEC 221/2019 foi aprovada pela Câmara em 27/5/2026 (472 × 22 e 461 × 19), pela CCJ do Senado em 2/9 e pelo Plenário do Senado em 14/10/2026, nos dois turnos, por 75 votos a 1, sem alteração do texto da Câmara, com calendário especial que dispensou os interstícios regimentais (intervalos entre turnos). Foi promulgada pelas Mesas da Câmara e do Senado como Emenda Constitucional nº 141, em 16/10/2026. Reduz a jornada semanal máxima de 44 para 40 horas, de forma gradual, com dois dias de descanso.",
+            "trap": "Atribuir a promulgação a outro órgão: emenda é promulgada pelas Mesas. Atenção: a promulgação (16/10/2026) é posterior à data de corte de 15/10/2026, embora registrada na própria fonte.",
+            "src": "Etapa 12, p. 3, l. 114-119 e 124-125"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8.3",
+          "t": "Regras de PEC e anualidade",
+          "n": "Três quintos, dois turnos; art. 60, III; art. 16",
+          "x": {
+            "e": "PEC: votação em dois turnos no Plenário de cada Casa, com três quintos dos votos, e promulgação pelas Mesas (bicameralismo simétrico). A iniciativa por assembleias legislativas exige mais da metade das unidades da Federação (ao menos 14 das 27), cada uma pela maioria relativa de seus membros (art. 60, III). Pela anualidade eleitoral (art. 16), o novo Código Eleitoral (PLP 112/2021), aprovado pela Câmara em 2021 e ainda no Senado, não se aplicou a 2026.",
+            "trap": "Onze assembleias não bastam para propor PEC.",
+            "src": "Etapa 12, p. 3, l. 121-125; p. 8, l. 430; p. 10, l. 528-529"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8.4",
+          "t": "Polarização afetiva e erosão democrática",
+          "n": "Levitsky e Ziblatt: tolerância mútua e reserva",
+          "x": {
+            "e": "Polarização afetiva é a antipatia entre eleitores de grupos políticos rivais, além da divergência de ideias. Erosão democrática é o enfraquecimento gradual de instituições democráticas por governantes eleitos, sem ruptura aberta. Levitsky e Ziblatt (Como as democracias morrem, 2018) apontam a tolerância mútua e a reserva institucional como normas informais, as \"grades de proteção\", que protegem as democracias contra essa erosão.",
+            "trap": "Atribuir as grades de proteção a Linz, ou tratá-las como normas escritas.",
+            "src": "Etapa 12, p. 3, l. 129-136; p. 4, l. 191; p. 8, l. 407-408; p. 9, l. 436"
+          }
+        },
+        {
+          "id": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r8.5",
+          "t": "Populismo, coalizão e judicialização",
+          "n": "Mudde, 2004; Abranches, 1988; Tate e Vallinder, 1995",
+          "x": {
+            "e": "Populismo é o discurso que opõe um povo virtuoso a uma elite corrupta; Cas Mudde (2004) o trata como ideologia \"fina\". Presidencialismo de coalizão (Abranches, 1988) é o governo sustentado por coalizão multipartidária. Judicialização da política (Tate e Vallinder, 1995) é a expansão do Judiciário sobre decisões políticas.",
+            "trap": "Atribuir o populismo como ideologia fina a Laclau.",
+            "src": "Etapa 12, p. 3, l. 134-143; p. 4, l. 193-194 (quadro com colunas desalinhadas; correspondência pela ordem das linhas)"
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "Tarifas: unilateralismo × multilateralismo",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r2.2",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.1"
+    },
+    {
+      "rotulo": "Consultas são a fase inicial da OMC",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r4.1",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.1.2"
+    },
+    {
+      "rotulo": "Acordo aprovado por decreto legislativo",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.5",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.3"
+    },
+    {
+      "rotulo": "Veto dos permanentes na recomendação",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3.1",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r3.3"
+    },
+    {
+      "rotulo": "Não intervenção e autodeterminação",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.1",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.2"
+    },
+    {
+      "rotulo": "Solução pacífica dos conflitos (art. 4º, VII)",
+      "de": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r5.1",
+      "para": "kit-arr-cp-8-temas-relevantes-de-politica-internacion-2026-11-25-r6.4.2"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-CP-8-temas-relevantes-de-politica-internacion-2026-11-25": {}
+  }
+}

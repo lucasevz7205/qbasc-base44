@@ -1,0 +1,91 @@
+[
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c12",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1",
+    "pergunta": "No modelo federal de controle externo, a denominação \"auditor\" fica reservada a que tipo de cargo?",
+    "resposta": [
+      "Cargo de atividades técnicas de alta complexidade"
+    ],
+    "explicacao": "O nome do cargo tem de corresponder à natureza e à responsabilidade das atribuições.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 11 e 12",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c13",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.1",
+    "pergunta": "Na ADI 7.388/BA, qual alteração da lei baiana sobre o cargo de Agente de Controle Externo foi declarada inconstitucional?",
+    "resposta": [
+      "A troca do nome para \"Auditor de Contas Públicas\""
+    ],
+    "explicacao": "Havia no quadro carreira própria de auditoria, o que rompe a simetria com o modelo federal.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 10 e 11",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c14",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r2.1.2",
+    "pergunta": "Por que elevar a escolaridade de ingresso em cargo do Tribunal de Contas, sem mudar as atribuições, não ofende a Súmula Vinculante 43?",
+    "resposta": [
+      "Não há provimento derivado",
+      "Só mudam os requisitos para futuros ingressos"
+    ],
+    "explicacao": "Também foi válido restabelecer o cargo em extinção; a ADI foi apenas parcialmente procedente.",
+    "fonte": "ADI 7.388/BA — informativo 1235, trechos 10, 11 e 12",
+    "tema": "Tribunais de Contas"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c19",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1",
+    "pergunta": "No Tema 1.308, o piso salarial nacional do magistério passou a alcançar, além dos efetivos, quais professores?",
+    "resposta": [
+      "Os contratados temporariamente na educação básica pública"
+    ],
+    "explicacao": "A modulação não retira o direito ao piso; só define desde quando ele é exigível.",
+    "fonte": "ARE 1.487.739 ED-segundos/PE (Tema 1.308) — informativo 1236, trechos 23 e 24",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c20",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.1.1",
+    "pergunta": "Para o ente que ainda não pagava o piso aos professores temporários, a partir de que data a obrigação vale?",
+    "resposta": [
+      "01.01.2027"
+    ],
+    "explicacao": "Quem já pagava não sofre cobrança retroativa; ficam ressalvadas as ações em curso até 16.04.2026 e a coisa julgada no mesmo sentido.",
+    "fonte": "ARE 1.487.739 ED-segundos/PE (Tema 1.308) — informativo 1236, trechos 23, 24 e 25",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c22",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.2",
+    "pergunta": "Na ADI 7.469/SC, o que é devido ao policial penal pago por subsídio que, por interesse da Administração, não consegue tirar a folga compensatória no prazo legal?",
+    "resposta": [
+      "Pagamento do serviço extraordinário (hora extra)"
+    ],
+    "explicacao": "O subsídio veda adicionais pelo trabalho ordinário, não pelo extraordinário; a compensação por folga em 3 meses continua válida.",
+    "fonte": "ADI 7.469/SC — informativo 1236, trechos 26, 27 e 28",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c23",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r3.3",
+    "pergunta": "Na ADI 7.937 MC-Ref/PE, qual parâmetro foi mantido, por ora, como limite remuneratório único dos servidores de Pernambuco?",
+    "resposta": [
+      "O subsídio dos desembargadores do Tribunal de Justiça"
+    ],
+    "explicacao": "É medida cautelar referendada (cognição sumária), não julgamento de mérito.",
+    "fonte": "ADI 7.937 MC-Ref/PE (CF, art. 37, § 12) — informativo 1237, trechos 52, 53 e 54",
+    "tema": "Servidores e remuneração"
+  },
+  {
+    "id": "KIT-ARR-JUR-2-jurisprudencia-facilitada-informativos-s-2026-11-22-c28",
+    "no": "kit-arr-jur-2-jurisprudencia-facilitada-informativos-s-2026-11-22-r4.3",
+    "pergunta": "Na ADI 7.781/SP, a que órgão a carreira de policial penal paulista pode ficar subordinada?",
+    "resposta": [
+      "Secretaria da Administração Penitenciária"
+    ],
+    "explicacao": "A Constituição não exige que as polícias respondam diretamente ao governador.",
+    "fonte": "ADI 7.781/SP — informativo 1236, trechos 29 e 30",
+    "tema": "Ministério Público e polícias"
+  }
+]

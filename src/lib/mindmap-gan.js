@@ -1,6 +1,6 @@
 const asText = (v, max = 12000) => String(v == null ? "" : v).trim().slice(0, max);
 
-import { verifyGanEvidence } from './gan-grounding.js';
+import { GAN_MAP_EXERCISE_PREFIX, verifyGanEvidence } from './gan-grounding.js';
 
 import { CEBRASPE_V1_TAXONOMY, CEBRASPE_V1_GENERATION_RULES, mechanismForKey } from './cebraspe-v1-taxonomy.js';
 
@@ -143,6 +143,10 @@ export function normalizeGanConfrontation(generatorItems, discriminatorItems, ma
       if (fundamentacaoCega.verificacao !== "trecho_localizado") motivosConfronto.push("O trecho decisivo do julgamento cego não foi localizado no acervo enviado.");
       if (!fundamentacaoCega.explicacao) motivosConfronto.push("O julgamento cego não explicou a regra usada para resolver o item.");
       if (fundamentacaoCega.limitacao) motivosConfronto.push(fundamentacaoCega.limitacao);
+      if (fundamentacaoCega.natureza === "mapa"
+        && (!options.mapExercise || !genStatement.startsWith(GAN_MAP_EXERCISE_PREFIX))) {
+        motivosConfronto.push("Notas do mapa só fundamentam exercícios explicitamente limitados ao mapa.");
+      }
       if (["anotacoes", "resumo"].includes(fundamentacaoCega.natureza)) motivosConfronto.push("A fundamentação disponível é uma anotação ou resumo e requer conferência na fonte original.");
       if (!blindKeyMatch || discVerdict !== "APROVADA" || ganScore === null || ganScore < 65 || falhasDetectadas.length || motivosConfronto.length) {
         statusConfronto = "divergencia_bloqueada";

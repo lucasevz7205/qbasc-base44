@@ -1,0 +1,821 @@
+{
+  "topico": "da-8-2",
+  "materia": "da",
+  "centro": "Ação pública em redes de cooperação, articulação interinstitucional e parcerias (8.2)",
+  "ramos": [
+    {
+      "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1",
+      "t": "Redes de cooperação: teoria",
+      "cor": 1,
+      "x": {
+        "e": "Bloco que define a rede de políticas e explica por que o Estado passou a agir assim. Parte de Sonia Fleury (2005): rede é estrutura policêntrica, sem chefe único, que liga atores públicos e privados por objetivos comuns. Liga-se ao 8.1 porque a rede é o modo de coordenação da Nova Governança Pública.",
+        "trap": "Descrever a rede como estrutura hierárquica com centro único, ou ligar a rede à Nova Gestão Pública.",
+        "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 2-5 (texto extraído, l. 55-191)"
+      },
+      "refs_prekit": [
+        75,
+        77,
+        78,
+        80
+      ],
+      "f": [
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1",
+          "t": "Conceito e origem",
+          "x": {
+            "e": "Diz o que é a rede (Fleury e Börzel), onde ela fica na sequência dos modos de coordenação e que fatores a fizeram surgir.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 2-3 (texto extraído, l. 55-93)"
+          },
+          "refs_prekit": [
+            75,
+            76,
+            77
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1.1",
+              "t": "Estrutura policêntrica, sem chefe único",
+              "n": "Fleury: atores ligados por objetivos comuns",
+              "x": {
+                "e": "Policêntrica quer dizer com vários centros de decisão: nenhum ator manda sozinho. Os atores, públicos e privados, ligam-se por objetivos comuns e por relações horizontais (sem subordinação) de interdependência (um depende do outro).",
+                "trap": "\"Redes são estruturas hierárquicas com centro único\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 2-3 (texto extraído, l. 56-82)"
+              },
+              "refs_prekit": [
+                75
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1.2",
+              "t": "Terceiro modo de coordenação",
+              "n": "Hierarquia → mercado → redes",
+              "x": {
+                "e": "Modo de coordenação é a forma de alinhar a ação de muitos atores. A sequência é hierarquia (administração tradicional), mercado (Nova Gestão Pública) e redes (Nova Governança Pública); para Miller, citado por Fleury, a rede é um terceiro tipo de estrutura social, distinto do mercado e da hierarquia.",
+                "trap": "Trocar Nova Governança Pública (redes) por Nova Gestão Pública (mercado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 2-3 (texto extraído, l. 61-73)"
+              },
+              "refs_prekit": [
+                75,
+                76
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1.3",
+              "t": "Por que as redes surgiram",
+              "n": "Complexidade, democratização, descentralização, globalização",
+              "x": {
+                "e": "Cinco fatores: problemas mais complexos (exigem mais atores e recursos), democratização (novos atores querem participar), descentralização (fragmenta a autoridade e pede nova coordenação), globalização (economia sai das fronteiras, política social fica no território) e limites do governo central, somados ao crescimento do terceiro setor.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 3 (texto extraído, l. 85-93)"
+              },
+              "refs_prekit": [
+                77
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.2",
+          "t": "Marcas e tipos de rede",
+          "x": {
+            "e": "As cinco características que descrevem uma rede e duas classificações: a de Börzel, por cinco critérios, e a de Mandell, pela forma de coordenação.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 3-4 (texto extraído, l. 96-141)"
+          },
+          "refs_prekit": [
+            77,
+            78
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.2.1",
+              "t": "Cinco características",
+              "n": "Interdependência, horizontalidade, policentrismo, confiança, flexibilidade",
+              "x": {
+                "e": "Interdependência (os atores dependem uns dos outros, sem hierarquia), horizontalidade (membros semiautônomos que mantêm a própria identidade), policentrismo (a gestão não é papel exclusivo de um ator), confiança e valores compartilhados (geram capital social e um objetivo comum acima dos interesses individuais) e flexibilidade (redes se formam e se desfazem constantemente).",
+                "trap": "Atribuir a uma característica a definição de outra (ex.: identidade preservada = flexibilidade).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 3 (texto extraído, l. 96-112)"
+              },
+              "refs_prekit": [
+                77
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.2.2",
+              "t": "Börzel e Mandell",
+              "n": "5 critérios; mediada × não mediada",
+              "x": {
+                "e": "Börzel classifica redes por grau de institucionalização (estáveis ou instáveis), número de participantes (restritas ou abertas), configuração da política (setoriais ou transetoriais), tipo de atores e função (de problemas, profissionais, intergovernamentais ou de produtores) e equilíbrio de poder (homogêneas ou heterogêneas). Mandell separa a coordenação não mediada (voluntária, entre iguais) da mediada (imposta por autoridade legal ou articulada por agência designada).",
+                "trap": "Chamar de não mediada a coordenação imposta por autoridade legal.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 123-141)"
+              },
+              "refs_prekit": [
+                78
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.3",
+          "t": "Gestão da rede e papel do Estado",
+          "x": {
+            "e": "Mostra o que muda para quem gere a rede e por que a rede não significa Estado mais fraco: o Estado se transforma e continua dirigindo, agora em rede.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 5 (texto extraído, l. 174-189)"
+          },
+          "refs_prekit": [
+            80
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.3.1",
+              "t": "Gestor negociador",
+              "n": "Deixa de ser executor de planos",
+              "x": {
+                "e": "Gerir rede exige negociar consensos, definir regras, distribuir recursos e construir decisões coletivas. Por isso decisão, planejamento e avaliação pedem abordagens diferentes das usadas em hierarquias, e o gestor deixa de ser executor de planos para ser negociador.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 5 (texto extraído, l. 174-179)"
+              },
+              "refs_prekit": []
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.3.2",
+              "t": "Transformação, não enfraquecimento",
+              "n": "Funções essenciais não são delegadas",
+              "x": {
+                "e": "A liderança do governo local na articulação de atores indica que o Estado se transforma, e não que se enfraquece. Fleury alerta que redes não são solução universal: funções essenciais, como garantir direitos sociais e regular, não podem ser totalmente delegadas. Castells propõe o Estado-rede, marcado por subsidiariedade, flexibilidade, coordenação, participação cidadã, transparência e aprendizagem contínua.",
+                "trap": "\"Com as redes, o Estado perde a função de coordenação\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 5 (texto extraído, l. 182-189)"
+              },
+              "refs_prekit": [
+                80
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2",
+      "t": "Vantagens e limites das redes",
+      "cor": 2,
+      "x": {
+        "e": "Bloco de balanço: o que a rede ganha (recursos, democracia, compromisso) e o que perde (accountability, rapidez, estabilidade, inclusão, igualdade de poder). É onde a banca arma a afirmação absoluta, como a de que redes eliminam a desigualdade de poder.",
+        "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 144-163)"
+      },
+      "refs_prekit": [
+        78,
+        79
+      ],
+      "f": [
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.1",
+          "t": "Vantagens",
+          "x": {
+            "e": "Ganhos de recursos e de legitimidade democrática, presença pública sem burocracia e gestão adaptativa com metas negociadas.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 144-151)"
+          },
+          "refs_prekit": [
+            78,
+            79
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.1.1",
+              "t": "Recursos, democracia e presença sem burocracia",
+              "n": "Organizações próximas dos problemas",
+              "x": {
+                "e": "A rede mobiliza mais recursos e diversidade de perspectivas e define prioridades de forma mais democrática, porque reúne organizações próximas dos problemas. Garante presença pública sem criar estrutura burocrática.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 145-148)"
+              },
+              "refs_prekit": [
+                78,
+                79
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.1.2",
+              "t": "Gestão adaptativa e compromisso",
+              "n": "Monitoramento para gerir, não para controlar",
+              "x": {
+                "e": "Gestão adaptativa é usar o monitoramento como instrumento de gestão, e não de controle. As metas resultam de negociação, o que gera compromisso e sustentabilidade.",
+                "trap": "Dizer que, na rede, o monitoramento é instrumento de controle.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 149-151)"
+              },
+              "refs_prekit": [
+                79
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.2",
+          "t": "Limites e problemas",
+          "x": {
+            "e": "Seis desvantagens listadas no material: accountability difícil, lentidão, responsabilidade diluída, instabilidade, exclusão e poder desigual.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 154-163)"
+          },
+          "refs_prekit": [
+            79
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.2.1",
+              "t": "Accountability difícil e responsabilidade diluída",
+              "n": "Muitos participantes, contas difíceis",
+              "x": {
+                "e": "Accountability é prestar contas e responder pelos atos. Com muitos participantes públicos e privados, fica complicado prestar contas do recurso público; e ter objetivos comuns não garante efetividade (responsabilidade diluída).",
+                "trap": "\"A rede torna a accountability mais clara\" (errado: torna mais difícil).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 155-158)"
+              },
+              "refs_prekit": [
+                79
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.2.2",
+              "t": "Lentidão, instabilidade e exclusão",
+              "n": "Consenso leva tempo",
+              "x": {
+                "e": "Construir consenso leva tempo e pode não servir para questões urgentes (lentidão). Um participante pode sair num momento crítico (instabilidade). Critérios de participação pouco claros podem deixar grupos ou regiões de fora (exclusão).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 157-161)"
+              },
+              "refs_prekit": [
+                79
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.2.3",
+              "t": "Poder desigual persiste",
+              "n": "Policentrismo não elimina desigualdade",
+              "x": {
+                "e": "Policêntrico significa que a gestão é distribuída, mas isso não iguala o poder dos membros: a estrutura policêntrica não elimina a desigualdade de poder entre eles.",
+                "trap": "\"As redes eliminam a desigualdade de poder\" (errado: ela persiste, segundo Fleury).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 4 (texto extraído, l. 162-163); Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 13 (texto extraído, l. 638-638)"
+              },
+              "refs_prekit": [
+                79,
+                93
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3",
+      "t": "Articulação interinstitucional",
+      "cor": 3,
+      "x": {
+        "e": "Articular instituições é coordenar órgãos, setores e entes federativos que precisam agir juntos numa mesma política. Os instrumentos são os arranjos institucionais, a intersetorialidade (e a transversalidade) e a cooperação federativa, com destaque para os consórcios públicos (CF, art. 241; Lei 11.107/2005).",
+        "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 5-7 (texto extraído, l. 194-290)"
+      },
+      "refs_prekit": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "f": [
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.1",
+          "t": "Arranjos institucionais",
+          "x": {
+            "e": "Arranjo institucional é o conjunto de regras e processos que define como os atores de uma política se coordenam. A CF/1988 descentralizou as políticas sociais para os municípios, muitos deles sem capacidade técnica e financeira, o que exigiu arranjos que combinam atores e níveis de governo.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 5-6 (texto extraído, l. 202-231)"
+          },
+          "refs_prekit": [
+            80,
+            81
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.1.1",
+              "t": "Conceito e ambiente × arranjo",
+              "n": "Regras gerais × regras de cada política",
+              "x": {
+                "e": "Para Pires e Gomide, arranjo é a combinação de regras, mecanismos e processos que definem como atores e interesses se coordenam na implementação de uma política específica. O ambiente institucional traz as regras gerais do sistema político, econômico e social; o arranjo traz as regras específicas de cada política, e são os arranjos que dão ao Estado capacidade de execução.",
+                "trap": "Atribuir ao ambiente institucional a capacidade de execução que vem dos arranjos.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 5 (texto extraído, l. 203-209)"
+              },
+              "refs_prekit": [
+                80
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.1.2",
+              "t": "Arranjos complexos: três coordenações",
+              "n": "Horizontal, vertical, sociedade civil",
+              "x": {
+                "e": "Arranjos complexos envolvem muitos agentes públicos e privados, heterogêneos, em várias etapas do ciclo da política, e rompem com o modelo hierárquico, fragmentado e setorial por coordenação horizontal (entre setores do mesmo governo), coordenação vertical (entre União, estados e municípios) e interação com a sociedade civil (conselhos, fóruns, comitês e parcerias).",
+                "ex": "Bolsa Família e Minha Casa Minha Vida, com bancos e empresas na implementação; SUS.",
+                "trap": "Chamar de vertical a coordenação entre secretarias do mesmo governo.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 6 (texto extraído, l. 224-231)"
+              },
+              "refs_prekit": [
+                81
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.2",
+          "t": "Intersetorialidade e transversalidade",
+          "x": {
+            "e": "Dois modos de articular políticas. A doutrina não tem consenso sobre a diferença e usa os termos muitas vezes como intercambiáveis (um no lugar do outro).",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 6 (texto extraído, l. 234-242)"
+          },
+          "refs_prekit": [
+            81,
+            82
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.2.1",
+              "t": "Ações conjuntas × perspectivas transversais",
+              "n": "Sem consenso doutrinário na distinção",
+              "x": {
+                "e": "Intersetorialidade: articulação entre políticas por ações conjuntas para superar a fragmentação no atendimento, onde já há órgãos responsáveis (ex.: saúde e assistência social). Transversalidade: incorporar perspectivas de grupos e temas estratégicos (mulheres, negros, indígenas, direitos humanos) ao conjunto das ações de governo, em geral com órgão criado só para coordenar.",
+                "trap": "Afirmar distinção categórica e pacífica entre os termos.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 6 (texto extraído, l. 235-242)"
+              },
+              "refs_prekit": [
+                81,
+                82
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.3",
+          "t": "Consórcios públicos (Lei 11.107/2005)",
+          "x": {
+            "e": "Instrumento de cooperação federativa: a CF, art. 241, manda os entes disciplinarem por lei os consórcios públicos e os convênios de cooperação, autorizando a gestão associada de serviços públicos (serviço prestado em conjunto por mais de um ente). Quem forma o consórcio são os entes da Federação.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 6-7 (texto extraído, l. 245-290)"
+          },
+          "refs_prekit": [
+            82,
+            83
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.3.1",
+              "t": "Participação da União",
+              "n": "Só com os estados dos municípios",
+              "x": {
+                "e": "A União só participa de consórcio com municípios se também participarem todos os estados em que esses municípios estejam (art. 1º, § 2º).",
+                "trap": "\"A União pode consorciar-se só com municípios\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 6 (texto extraído, l. 255-257)"
+              },
+              "refs_prekit": [
+                82,
+                94
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.3.2",
+              "t": "Forma jurídica e constituição",
+              "n": "Associação pública na indireta de todos",
+              "x": {
+                "e": "O consórcio pode ser associação pública (pessoa de direito público) ou pessoa jurídica de direito privado (art. 1º, § 1º; art. 6º). O de direito público integra a administração indireta de todos os entes consorciados (art. 6º, § 1º). Constitui-se por contrato, precedido de protocolo de intenções (art. 3º) ratificado por lei (art. 5º).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 6 (texto extraído, l. 259-267)"
+              },
+              "refs_prekit": [
+                82
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r3.3.3",
+              "t": "Rateio, programa e prerrogativas",
+              "n": "Rateio = recursos; programa = obrigações",
+              "x": {
+                "e": "Contrato de rateio é o único meio de os entes repassarem recursos ao consórcio (art. 8º). Contrato de programa regula as obrigações de um ente na gestão associada (art. 13). O consórcio pode firmar convênios e contratos, receber auxílios, desapropriar e ser contratado sem licitação pelos entes consorciados (art. 2º, § 1º).",
+                "trap": "Trocar contrato de rateio por contrato de programa, ou contrato de programa por protocolo de intenções.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 7 (texto extraído, l. 280-286)"
+              },
+              "refs_prekit": [
+                83,
+                92,
+                93
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4",
+      "t": "Parcerias com o setor privado: concessão e PPP",
+      "cor": 4,
+      "x": {
+        "e": "O Estado delega a uma empresa privada a prestação de um serviço ou a construção e gestão de infraestrutura, por prazo longo, e continua responsável por regular e fiscalizar. A diferença central é quem paga o parceiro: na concessão comum, só o usuário (tarifa); na PPP, o Estado também paga, ou paga tudo.",
+        "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 7-9 (texto extraído, l. 294-415)"
+      },
+      "refs_prekit": [
+        83,
+        84,
+        85,
+        86
+      ],
+      "f": [
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.1",
+          "t": "Concessão comum e permissão (Lei 8.987/1995)",
+          "x": {
+            "e": "Delegação de serviço público remunerada pela tarifa do usuário; não é PPP (Lei 11.079/2004, art. 2º, § 3º). A permissão é a delegação a título precário.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 7 (texto extraído, l. 303-313)"
+          },
+          "refs_prekit": [
+            83,
+            84
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.1.1",
+              "t": "Concessão × permissão e responsabilidade",
+              "n": "Pessoa física só na permissão",
+              "x": {
+                "e": "Concessão: delegação mediante licitação (concorrência ou diálogo competitivo) a pessoa jurídica ou consórcio de empresas, por sua conta e risco e por prazo determinado (art. 2º, II). Permissão: delegação a título precário, mediante licitação, a pessoa física ou jurídica (art. 2º, IV). A concessionária responde pelos prejuízos ao poder concedente, aos usuários ou a terceiros, e a fiscalização pública não exclui nem atenua essa responsabilidade (art. 25).",
+                "trap": "Admitir pessoa física como concessionária.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 7 (texto extraído, l. 304-313)"
+              },
+              "refs_prekit": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.2",
+          "t": "PPP: modalidades, diretrizes e garantias",
+          "x": {
+            "e": "PPP é o contrato administrativo de concessão na modalidade patrocinada ou administrativa (art. 2º). Tem diretrizes próprias (art. 4º) e garantias de pagamento ao parceiro privado (art. 8º).",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 7-9 (texto extraído, l. 316-408)"
+          },
+          "refs_prekit": [
+            84,
+            86
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.2.1",
+              "t": "Quem remunera em cada modalidade",
+              "n": "Tarifa + contraprestação × só contraprestação",
+              "x": {
+                "e": "Patrocinada: concessão de serviço ou obra da Lei 8.987/1995 com tarifa do usuário mais contraprestação (pagamento) do parceiro público. Administrativa: prestação de serviços de que a administração é usuária direta ou indireta, paga pela contraprestação do parceiro público. Concessão comum, paga só pela tarifa, não é PPP.",
+                "ex": "Doutrina: rodovia com pedágio insuficiente (patrocinada); presídio ou hospital (administrativa). Os exemplos não são texto de lei.",
+                "trap": "Concessão comum dita como PPP.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 8 (texto extraído, l. 329-345)"
+              },
+              "refs_prekit": [
+                83,
+                84
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.2.2",
+              "t": "Diretrizes e garantias",
+              "n": "Regulação e poder de polícia indelegáveis",
+              "x": {
+                "e": "Diretrizes (art. 4º): eficiência; respeito a usuários e parceiros; indelegabilidade (proibição de transferir ao privado) das funções de regulação, jurisdicional, de poder de polícia e de outras exclusivas do Estado; responsabilidade fiscal; transparência; repartição objetiva de riscos; sustentabilidade financeira e vantagens socioeconômicas. Garantias (art. 8º): vinculação de receitas, fundos especiais, seguro, garantia de organismos internacionais ou instituições financeiras e fundos garantidores, entre outras; na esfera federal, o FGP (art. 16).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 9 (texto extraído, l. 395-408)"
+              },
+              "refs_prekit": [
+                86
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.3",
+          "t": "Vedações, prazos e limites",
+          "x": {
+            "e": "Os números do regime da PPP: valor mínimo, período mínimo, vigência e teto de despesa, além do objeto único proibido, da SPE e do momento da contraprestação.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 8-9 (texto extraído, l. 347-392)"
+          },
+          "refs_prekit": [
+            84,
+            85,
+            86
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.3.1",
+              "t": "Valor, período e objeto único",
+              "n": "R$ 10 mi; 5 anos; sem objeto único",
+              "x": {
+                "e": "É vedada PPP com valor inferior a R$ 10 milhões (art. 2º, § 4º, I), com período de prestação do serviço inferior a 5 anos (II) ou com objeto único de fornecimento de mão de obra, fornecimento e instalação de equipamentos ou execução de obra pública (III).",
+                "trap": "\"PPP pode ter como objeto apenas a execução de obra\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 8 (texto extraído, l. 352-360)"
+              },
+              "refs_prekit": [
+                84,
+                85
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.3.2",
+              "t": "Vigência, SPE, contraprestação e licitação",
+              "n": "5 a 35 anos; paga depois de disponível",
+              "x": {
+                "e": "Vigência de 5 a 35 anos, incluída eventual prorrogação (art. 5º, I). Antes do contrato, constitui-se sociedade de propósito específico (SPE: empresa criada só para implantar e gerir o objeto, art. 9º). A contraprestação pública vem obrigatoriamente depois da disponibilização do serviço (art. 7º). Licitação por concorrência ou diálogo competitivo (art. 10).",
+                "trap": "\"PPP pode ter vigência de 40 anos\"; \"o Estado paga antes de o serviço estar disponível\" (errados).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 8 (texto extraído, l. 362-374)"
+              },
+              "refs_prekit": [
+                85
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r4.3.3",
+              "t": "Limites de despesa",
+              "n": "União 1%; demais entes 5%",
+              "x": {
+                "e": "A União limita as despesas com PPP a 1% da RCL (art. 22). Estados, DF e municípios cuja despesa passe de 5% da RCL perdem garantias e transferências voluntárias da União (art. 28).",
+                "trap": "Trocar transferências voluntárias por obrigatórias, ou inverter 1% e 5%.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 8-9 (texto extraído, l. 376-392)"
+              },
+              "refs_prekit": [
+                85,
+                86
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5",
+      "t": "Terceiro setor: OS, OSCIP e OSC",
+      "cor": 5,
+      "x": {
+        "e": "Terceiro setor são entidades privadas sem fins lucrativos que atuam em atividades de interesse público. O Estado se associa a elas por três regimes, cada um com seu instrumento: OS (contrato de gestão), OSCIP (termo de parceria) e OSC no MROSC (termo de colaboração, termo de fomento ou acordo de cooperação). Grave o par título + instrumento: é a maior fonte de pegadinhas do 8.2.",
+        "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 9-12 (texto extraído, l. 418-584)"
+      },
+      "refs_prekit": [
+        33,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "f": [
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1",
+          "t": "Organizações sociais (Lei 9.637/1998)",
+          "x": {
+            "e": "Entidade privada sem fins lucrativos que recebe do Executivo o título de OS por decisão discricionária e se vincula ao Estado por contrato de gestão, com fomento público (recursos, bens e servidores).",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 442-461)"
+          },
+          "refs_prekit": [
+            87,
+            88
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1.1",
+              "t": "Qualificação discricionária",
+              "n": "Conveniência e oportunidade do ministro",
+              "x": {
+                "e": "OS são pessoas jurídicas privadas sem fins lucrativos, qualificadas pelo Executivo, que atuam em ensino, pesquisa científica, desenvolvimento tecnológico, meio ambiente, cultura e saúde (art. 1º). Discricionária quer dizer que a qualificação depende de aprovação quanto à conveniência e oportunidade do ministro da área (art. 2º, II).",
+                "trap": "Dizer que a qualificação de OS é vinculada (essa é a da OSCIP).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 443-447)"
+              },
+              "refs_prekit": [
+                87
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1.2",
+              "t": "Conselho de administração",
+              "n": "20-40% Poder Público; 20-30% sociedade civil",
+              "x": {
+                "e": "O conselho de administração (órgão de direção da OS) tem 20% a 40% de representantes do Poder Público e 20% a 30% da sociedade civil; juntos, os dois grupos devem passar de 50% do conselho (art. 3º).",
+                "trap": "Trocar os percentuais ou o \"mais de 50%\".",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 448-450)"
+              },
+              "refs_prekit": [
+                87
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1.3",
+              "t": "Contrato de gestão e fomento",
+              "n": "Bens sem licitação; servidor cedido",
+              "x": {
+                "e": "O vínculo é o contrato de gestão (art. 5º), que fixa metas e critérios de desempenho e segue legalidade, impessoalidade, moralidade, publicidade e economicidade (art. 7º). Fomento: recursos orçamentários e bens públicos com permissão de uso sem licitação (art. 12) e cessão de servidores com ônus para a origem (art. 14).",
+                "trap": "Trocar contrato de gestão por termo de parceria.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 451-456)"
+              },
+              "refs_prekit": [
+                87,
+                88
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1.4",
+              "t": "Desqualificação e ADI 1923",
+              "n": "Procedimento público, objetivo e impessoal",
+              "x": {
+                "e": "Desqualificar (retirar o título) exige processo administrativo com ampla defesa (art. 16). Na ADI 1923 (2015), o STF julgou as OS constitucionais, mas exigiu procedimento público, objetivo e impessoal para o contrato de gestão, para as contratações da OS e para a seleção de pessoal, mantido o controle do Tribunal de Contas e do Ministério Público.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 457-461)"
+              },
+              "refs_prekit": [
+                88
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.2",
+          "t": "OSCIP (Lei 9.790/1999)",
+          "x": {
+            "e": "Título concedido pelo Ministério da Justiça por ato vinculado a entidades com 3 anos de funcionamento regular, fora do rol de vedadas, e que se vinculam ao Estado por termo de parceria.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 10-11 (texto extraído, l. 464-491)"
+          },
+          "refs_prekit": [
+            88,
+            89
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.2.1",
+              "t": "Qualificação vinculada e tempo mínimo",
+              "n": "Ministério da Justiça; 30 dias; 3 anos",
+              "x": {
+                "e": "Vinculado quer dizer que, cumpridos os requisitos (arts. 1º, § 2º, 5º e 6º), o título tem de ser concedido. Quem concede é o Ministério da Justiça, que decide em 30 dias. A entidade precisa de funcionamento regular há pelo menos 3 anos (art. 1º).",
+                "trap": "\"A qualificação como OSCIP é discricionária\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 465-468)"
+              },
+              "refs_prekit": [
+                88
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.2.2",
+              "t": "Entidades vedadas",
+              "n": "OS e cooperativas não podem ser OSCIP",
+              "x": {
+                "e": "Não podem ser OSCIP (art. 2º): sociedades comerciais; sindicatos e associações de classe; instituições religiosas; organizações partidárias; entidades de benefício mútuo; operadoras de planos de saúde; hospitais e escolas privados não gratuitos; organizações sociais; cooperativas; fundações públicas e entidades criadas por órgão público; organizações creditícias do sistema financeiro.",
+                "trap": "\"OS podem ser qualificadas também como OSCIP\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 10 (texto extraído, l. 469-476)"
+              },
+              "refs_prekit": [
+                88,
+                94
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.2.3",
+              "t": "Termo de parceria e dirigentes",
+              "n": "Consulta aos Conselhos de Políticas Públicas",
+              "x": {
+                "e": "O vínculo é o termo de parceria (art. 9º), precedido de consulta aos Conselhos de Políticas Públicas da área, com metas, prazos, indicadores de resultado e prestação de contas (art. 10). Os dirigentes podem ser remunerados, se o estatuto previr, a valores de mercado (art. 4º, VI). A qualificação se perde a pedido ou por processo administrativo ou judicial com ampla defesa; qualquer cidadão, não anônimo, pode pedir (arts. 7º e 8º).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 10-11 (texto extraído, l. 477-491)"
+              },
+              "refs_prekit": [
+                89
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3",
+          "t": "MROSC (Lei 13.019/2014)",
+          "x": {
+            "e": "Marco Regulatório das Organizações da Sociedade Civil: rege as parcerias com OSC sem criar título de qualificação. A seleção se faz, em regra, por chamamento público (processo de seleção aberto), e o instrumento depende de quem propõe e de haver repasse.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, pp. 11-12 (texto extraído, l. 494-551)"
+          },
+          "refs_prekit": [
+            89,
+            90,
+            91
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.1",
+              "t": "Quem é OSC e os três instrumentos",
+              "n": "Colaboração (administração) × fomento (OSC)",
+              "x": {
+                "e": "OSC é a entidade privada sem fins lucrativos que não distribui resultados, certas cooperativas sociais e organizações religiosas com atividades de interesse público e cunho social (art. 2º, I). Termo de colaboração: proposto pela administração, com repasse. Termo de fomento: proposto pela OSC, com repasse. Acordo de cooperação: sem repasse de recursos, e sem chamamento público, salvo comodato, doação de bens ou compartilhamento patrimonial.",
+                "trap": "Trocar termo de colaboração por termo de fomento; dizer acordo de cooperação \"com transferência de recursos\".",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 11 (texto extraído, l. 495-511)"
+              },
+              "refs_prekit": [
+                89,
+                90
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.2",
+              "t": "Chamamento público e exceções",
+              "n": "Emenda parlamentar, dispensa, inexigibilidade",
+              "x": {
+                "e": "Chamamento público é a regra para termos de colaboração e de fomento (art. 24). Não é exigido quando os recursos vêm de emenda parlamentar à lei orçamentária (art. 29). É dispensável (art. 30) na urgência por paralisação de atividade relevante, por até 180 dias; em guerra, calamidade ou grave perturbação da ordem; em programa de proteção a pessoas ameaçadas; e em educação, saúde ou assistência social com OSC previamente credenciada. É inexigível (art. 31) quando a competição é inviável.",
+                "trap": "\"O chamamento público é sempre obrigatório\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 11 (texto extraído, l. 516-524); 5. Entidades paraestatais e terceiro setor (D Adm) (texto extraído, l. 4815-4864)"
+              },
+              "refs_prekit": [
+                90,
+                94
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.3",
+              "t": "Tempo mínimo e PMIS",
+              "n": "1 ano município; 3 anos União; PMIS não obriga",
+              "x": {
+                "e": "A OSC precisa de tempo mínimo de existência com cadastro ativo no CNPJ: 1, 2 ou 3 anos conforme a parceria seja municipal, estadual/distrital ou federal, segundo o material 8.2 (art. 33, V, a). O texto da lei transcrito no curso de DA diz \"Municípios, do Distrito Federal ou dos Estados e da União\" (l. 5074-5076) e admite redução dos prazos por ato de cada ente (l. 5078). As duas fontes coincidem em 1 ano para município e 3 anos para a União; para estados há divergência de redação entre elas. O PMIS (Procedimento de Manifestação de Interesse Social, arts. 18 a 21) permite que OSCs, movimentos sociais e cidadãos proponham parcerias, mas não obriga a abrir chamamento nem o substitui.",
+                "trap": "\"O PMIS obriga a abertura de chamamento\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 11 (texto extraído, l. 525-529); 5. Entidades paraestatais e terceiro setor (D Adm) (texto extraído, l. 5070-5076)"
+              },
+              "refs_prekit": [
+                90,
+                91
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.4",
+              "t": "Atuação em rede",
+              "n": "Celebrante responde; mais de 5 anos de CNPJ",
+              "x": {
+                "e": "Duas ou mais OSCs podem atuar em rede (art. 35-A). A OSC celebrante (a que assina com a administração) continua integralmente responsável e precisa ter mais de 5 anos de CNPJ e capacidade para supervisionar a rede; as executantes assinam com ela um termo de atuação em rede. É o ponto em que o MROSC encontra as redes da Parte A.",
+                "trap": "Dizer que a responsável perante o Estado é a OSC executante.",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 12 (texto extraído, l. 540-544)"
+              },
+              "refs_prekit": []
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.5",
+              "t": "O que o MROSC não alcança",
+              "n": "Contrato de gestão e termo de parceria ficam fora",
+              "x": {
+                "e": "A Lei 13.019/2014 não se aplica (art. 3º) aos contratos de gestão com OS, aos termos de parceria com OSCIP, às parcerias com serviços sociais autônomos e aos convênios com entidades filantrópicas complementares ao SUS (CF, art. 199, § 1º).",
+                "trap": "\"O MROSC se aplica aos contratos de gestão e termos de parceria\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 12 (texto extraído, l. 545-550)"
+              },
+              "refs_prekit": []
+            }
+          ]
+        },
+        {
+          "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.4",
+          "t": "Origem e entidades fora da administração",
+          "x": {
+            "e": "Explica de onde vem a parceria com o terceiro setor (a publicização do PDRAE de 1995) e situa os serviços sociais autônomos, que colaboram com o Estado sem integrar a administração.",
+            "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 9 (texto extraído, l. 429-431); Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 12 (texto extraído, l. 553-558)"
+          },
+          "refs_prekit": [
+            33,
+            91,
+            94
+          ],
+          "f": [
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.4.1",
+              "t": "Serviços sociais autônomos (Sistema S)",
+              "n": "Privados, sem concurso, com controle do TC",
+              "x": {
+                "e": "Sistema S são entidades como SESI, SENAI, SESC e SENAC. Para o STF (RE 789874, 2014), são pessoas jurídicas de direito privado que não integram a administração pública, embora colaborem com ela; por isso não precisam fazer concurso público. Financiados por contribuições compulsórias (tributos), prestam contas desses recursos ao Tribunal de Contas.",
+                "trap": "\"O Sistema S integra a administração indireta e faz concurso\" (errado).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 12 (texto extraído, l. 553-558)"
+              },
+              "refs_prekit": [
+                91,
+                94
+              ]
+            },
+            {
+              "id": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.4.2",
+              "t": "Publicização",
+              "n": "PDRAE 1995: serviços não exclusivos",
+              "x": {
+                "e": "Publicização é a transferência de serviços não exclusivos do Estado (saúde, educação, cultura, pesquisa) para o setor público não estatal, isto é, para entidades privadas sem fins lucrativos. Prevista no PDRAE (Plano Diretor da Reforma do Aparelho do Estado, 1995), deu origem às OS.",
+                "ex": "Universidades, hospitais, centros de pesquisa e museus (Reformas Administrativas, l. 2050-2052).",
+                "src": "Redes de cooperação, articulação e parcerias — material de estudo (tópico 8.2).pdf, p. 9 (texto extraído, l. 429-431); 3. 2. Reformas Administrativas (cópi.pdf (texto extraído, l. 2042-2052); 3. 2. Reformas Administrativas (cópi.pdf (texto extraído, l. 3485-3503)"
+              },
+              "refs_prekit": [
+                33
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "A atuação em rede do MROSC aplica a lógica das redes de cooperação",
+      "de": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.3.4",
+      "para": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1.1"
+    },
+    {
+      "rotulo": "Rede como modo de coordenação explica a gestão adaptativa",
+      "de": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r1.1.2",
+      "para": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r2.1.2"
+    },
+    {
+      "rotulo": "A publicização deu origem às OS",
+      "de": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.4.2",
+      "para": "kit-arr-da-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25-r5.1.1"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-DA-8.2-acao-publica-em-redes-de-cooperacao-arti-2026-11-25": {}
+  }
+}

@@ -26,7 +26,9 @@ function Recommendation({ item }) {
       {item.fundamentacaoCega && (
         <section className="qb-gan-review__evidence" aria-label="Fonte do julgamento cego">
           <Badge tone={item.fundamentacaoCega.verificacao === 'trecho_localizado' ? 'correct' : 'attention'}>
-            {item.fundamentacaoCega.verificacao === 'trecho_localizado' ? 'Trecho localizado no acervo' : 'Fonte pendente de conferência'}
+            {item.fundamentacaoCega.verificacao === 'trecho_localizado'
+              ? (item.fundamentacaoCega.natureza === 'mapa' ? 'Trecho localizado nas notas do mapa' : 'Trecho localizado no acervo')
+              : 'Fonte pendente de conferência'}
           </Badge>
           {item.fundamentacaoCega.titulo && <p><strong>Material:</strong> {item.fundamentacaoCega.titulo}</p>}
           {item.fundamentacaoCega.natureza && <p><strong>Tipo de texto:</strong> {item.fundamentacaoCega.natureza}</p>}

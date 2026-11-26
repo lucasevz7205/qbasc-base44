@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { ganSourcePassages, verifyGanEvidence } from '../src/lib/gan-grounding.js';
+import { GAN_MAP_EXERCISE_PREFIX, ganMapExercisePassages, ganSourcePassages, verifyGanEvidence } from '../src/lib/gan-grounding.js';
 import { normalizeGanConfrontation } from '../src/lib/mindmap-gan.js';
 import { approveGanReview, ganReviewDraft } from '../src/lib/gan-review.js';
 import { buildGanQuestionRecord } from '../src/lib/gan-queue.js';
@@ -91,4 +91,36 @@ test('anotação ou resumo coincidente e refinamento escrito pela revisora reque
   } });
   assert.equal(refined.aprovadas.length, 0);
   assert.equal(refined.bloqueadas.length, 1);
+});
+
+test('exercício pelo mapa usa somente notas substanciais do nó e de filhos diretos', () => {
+  const notes = ganMapExercisePassages({
+    targetNodeId: 'n',
+    mapa: { nodes: [
+      { id: 'p', label: 'Raiz', summary: 'A regra de outro nó não deve fundamentar este exercício.' },
+      { id: 'n', parent: 'p', label: 'Competência', summary: original.referenceText },
+      { id: 'child', parent: 'n', label: 'Prazo', summary: 'O prazo regulamentar começa na data do recebimento.' },
+      { id: 'empty', parent: 'n', label: 'Etiqueta', summary: 'Sem regra' },
+      { id: 'other', parent: 'p', label: 'Outro ramo', summary: 'Informação que deve ficar fora do contexto usado.' },
+    ] },
+  });
+  assert.equal(notes.length, 2);
+  assert.equal(notes[0].natureza, 'mapa');
+  assert.equal(notes[0].texto, original.referenceText);
+  assert.equal(notes[1].titulo, 'Notas do mapa · Prazo');
+  assert.deepEqual(ganMapExercisePassages({ mapa: map, targetNodeId: 'outro' }), []);
+});
+
+test('notas fundamentam só um exercício explicitamente limitado ao mapa e com evidência literal', () => {
+  const mapSources = [{ ...sources[0], natureza: 'mapa' }];
+  const scoped = { ...input, enunciado: GAN_MAP_EXERCISE_PREFIX + input.enunciado, comentario: 'O dirigente tem competência decisória.' };
+  const run = (item, options = {}, judge = judgment) => normalizeGanConfrontation([item], [judge], map, { sources: mapSources, ...options });
+  assert.equal(run(input, { mapExercise: true }).bloqueadas.length, 1);
+  assert.equal(run(scoped).bloqueadas.length, 1);
+  const result = run(scoped, { mapExercise: true });
+  assert.equal(result.aprovadas.length, 1);
+  assert.equal(result.aprovadas[0].fundamentacaoCega.natureza, 'mapa');
+  assert.equal(run(scoped, { mapExercise: true }, {
+    ...judgment, fundamento: { ...judgment.fundamento, trecho: 'Trecho que não existe nas notas.' },
+  }).bloqueadas.length, 1);
 });
