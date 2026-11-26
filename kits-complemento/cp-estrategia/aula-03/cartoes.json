@@ -1,0 +1,1379 @@
+[
+ {
+  "id": "cp-e03-c01",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual camada do sistema político descreve como o poder é distribuído geograficamente?",
+  "resposta": [
+   "Forma de Estado"
+  ],
+  "explicacao": "A forma de Estado trata da organização espacial e territorial do poder (centralização ou descentralização).",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "Esse conceito destina-se a descrever como o poder é distribuído geograficamente"
+ },
+ {
+  "id": "cp-e03-c02",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual é a palavra-chave da forma de governo?",
+  "resposta": [
+   "Autoridade"
+  ],
+  "explicacao": "A forma de governo trata de quem detém o poder, de sua legitimidade e de como a autoridade é transmitida.",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "Assim, a palavra chave é aqui AUTORIDADE"
+ },
+ {
+  "id": "cp-e03-c03",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Qual é a noção-chave do sistema de governo?",
+  "resposta": [
+   "Divisão e relação entre poderes"
+  ],
+  "explicacao": "O sistema de governo trata de como o poder está dividido e de como seus detentores se relacionam.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "Aqui a noção chave é DIVISÂO e RELAÇÃO ENTRE PODERES"
+ },
+ {
+  "id": "cp-e03-c04",
+  "no": "est-a03-r1",
+  "topico": "cp-2",
+  "tema": "Sistema político: forma, sistema e regime",
+  "pergunta": "Segundo Duverger, que distinção o regime político assume num grupo social?",
+  "resposta": [
+   "Entre governantes e governados"
+  ],
+  "explicacao": "Duverger define regime político, em sentido amplo, pela forma da distinção entre governantes e governados.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "chama-se regime político a forma que, num dado grupo social, assume a distinção entre governantes governados"
+ },
+ {
+  "id": "cp-e03-c05",
+  "no": "est-a03-r1.1",
+  "topico": "cp-2",
+  "tema": "Forma de Estado",
+  "pergunta": "Quais são as formas de Estado mais comuns?",
+  "resposta": [
+   "Estado Unitário",
+   "Estado Federado"
+  ],
+  "explicacao": "A forma de Estado descreve a organização territorial do poder; o Brasil é Estado Federado.",
+  "fonte": "Aula 03, p. 5",
+  "citacao": "As formas de Estado mais comuns incluem: Estado Unitário e Estado Federado"
+ },
+ {
+  "id": "cp-e03-c06",
+  "no": "est-a03-r1.2",
+  "topico": "cp-2",
+  "tema": "Forma de governo",
+  "pergunta": "Qual é a forma de governo do Brasil?",
+  "resposta": [
+   "República"
+  ],
+  "explicacao": "Forma de governo do Brasil, segundo a aula.",
+  "fonte": "Aula 03, p. 6",
+  "citacao": "Forma de Governo: República"
+ },
+ {
+  "id": "cp-e03-c07",
+  "no": "est-a03-r1.3",
+  "topico": "cp-2",
+  "tema": "Sistema de governo",
+  "pergunta": "Qual é o sistema de governo do Brasil?",
+  "resposta": [
+   "Presidencialista"
+  ],
+  "explicacao": "Sistema de governo do Brasil, segundo a aula.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "Sistema de Governo: Presidencialista"
+ },
+ {
+  "id": "cp-e03-c08",
+  "no": "est-a03-r1.4",
+  "topico": "cp-2",
+  "tema": "Regime político",
+  "pergunta": "Qual é o regime político do Brasil?",
+  "resposta": [
+   "Democrático"
+  ],
+  "explicacao": "Regime político do Brasil; o art. 1º da CF/88 fala em Estado Democrático de Direito.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "Regime Político: Democrático"
+ },
+ {
+  "id": "cp-e03-c09",
+  "no": "est-a03-r2",
+  "topico": "cp-4",
+  "tema": "Teoria da separação dos poderes: origens e Montesquieu",
+  "pergunta": "Em qual obra Aristóteles desenvolveu a ideia de divisão das funções de governo?",
+  "resposta": [
+   "A Política"
+  ],
+  "explicacao": "Aristóteles é o marco histórico inicial da teoria da separação dos poderes.",
+  "fonte": "Aula 03, p. 8",
+  "citacao": "em sua obra A Política, desenvolveu a ideia de divisão das funções de governo"
+ },
+ {
+  "id": "cp-e03-c10",
+  "no": "est-a03-r2",
+  "topico": "cp-4",
+  "tema": "Teoria da separação dos poderes: origens e Montesquieu",
+  "pergunta": "Qual pensador delineou a teoria mais acabada da separação dos poderes?",
+  "resposta": [
+   "Montesquieu"
+  ],
+  "explicacao": "A teoria evoluiu da Antiguidade grega, passou por Locke e chegou à forma acabada em Montesquieu.",
+  "fonte": "Aula 03, p. 8",
+  "citacao": "até Montesquieu delinear a teoria mais acabada da Separação dos Poderes"
+ },
+ {
+  "id": "cp-e03-c11",
+  "no": "est-a03-r2",
+  "topico": "cp-4",
+  "tema": "Teoria da separação dos poderes: origens e Montesquieu",
+  "pergunta": "Por que, a rigor, não seria correto falar em divisão do Poder em três?",
+  "resposta": [
+   "O Poder é uno e indivisível"
+  ],
+  "explicacao": "O Poder do Estado é único; o que se distribui são funções exercidas por órgãos diferentes.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "pelo fato de o Poder ser uno e indivisível, não seria correto falarmos em divisão em três Poderes"
+ },
+ {
+  "id": "cp-e03-c12",
+  "no": "est-a03-r2.1",
+  "topico": "cp-4",
+  "tema": "Antiguidade e Locke",
+  "pergunta": "Quais três partes do governo Aristóteles distinguiu?",
+  "resposta": [
+   "Deliberativa",
+   "Magistratura",
+   "Jurisdição"
+  ],
+  "explicacao": "Nelas já se nota o embrião das funções deliberativa, executiva e judicial.",
+  "fonte": "Aula 03, p. 9",
+  "citacao": "1 - poder deliberativo, o qual decidia sobre os negócios do Estado [...] 2 - magistratura, uma espécie de função executiva [...] 3 - o exercício da jurisdição"
+ },
+ {
+  "id": "cp-e03-c13",
+  "no": "est-a03-r2.1.1",
+  "topico": "cp-4",
+  "tema": "Locke: Legislativo supremo",
+  "pergunta": "Na teoria de Locke, qual poder é o supremo?",
+  "resposta": [
+   "Legislativo"
+  ],
+  "explicacao": "Por isso, segundo Bobbio, Locke tende à subordinação do Executivo, e não ao equilíbrio.",
+  "fonte": "Aula 03, p. 10",
+  "citacao": "Locke indica o Poder Legislativo como poder supremo em toda comunidade civil"
+ },
+ {
+  "id": "cp-e03-c14",
+  "no": "est-a03-r2.1.2",
+  "topico": "cp-4",
+  "tema": "Locke: poder federativo",
+  "pergunta": "Em Locke, de que trata o poder federativo?",
+  "resposta": [
+   "Guerra e paz (questões externas)"
+  ],
+  "explicacao": "O executivo cuida das questões internas; o federativo, das externas.",
+  "fonte": "Aula 03, p. 10",
+  "citacao": "o poder federativo trata sobre questões de ordem do Estado relacionada ao poder de guerra e de paz"
+ },
+ {
+  "id": "cp-e03-c15",
+  "no": "est-a03-r2.1.2",
+  "topico": "cp-4",
+  "tema": "Locke: poder federativo",
+  "pergunta": "Em Locke, dentro de qual poder fica o federativo?",
+  "resposta": [
+   "Executivo"
+  ],
+  "explicacao": "Por isso a teoria de Locke é, a rigor, bipartite.",
+  "fonte": "Aula 03, p. 10",
+  "citacao": "o Poder Federativo não seria propriamente um terceiro Poder, ele está inserido no Poder Executivo"
+ },
+ {
+  "id": "cp-e03-c16",
+  "no": "est-a03-r2.2",
+  "topico": "cp-4",
+  "tema": "Montesquieu: funções, equipotência e impeachment",
+  "pergunta": "Em qual obra Montesquieu expôs a separação dos poderes?",
+  "resposta": [
+   "Do Espírito das Leis (1748)"
+  ],
+  "explicacao": "Nela as funções legislativa, executiva e judiciária cabem a poderes diferentes, como condição da liberdade.",
+  "fonte": "Aula 03, p. 11",
+  "citacao": "ficaram consubstanciados na obra Do Espírito das Leis (1748)"
+ },
+ {
+  "id": "cp-e03-c17",
+  "no": "est-a03-r2.2.1",
+  "topico": "cp-4",
+  "tema": "Equipotência",
+  "pergunta": "Por qual outro nome é conhecida a teoria dos poderes de Montesquieu?",
+  "resposta": [
+   "Equipotência"
+  ],
+  "explicacao": "A separação comporta independência de cada poder e sua equivalência aos demais.",
+  "fonte": "Aula 03, p. 14",
+  "citacao": "A teoria dos poderes de Montesquieu é conhecida como separação ou equipotência dos poderes"
+ },
+ {
+  "id": "cp-e03-c18",
+  "no": "est-a03-r2.2.2",
+  "topico": "cp-4",
+  "tema": "Impeachment em Montesquieu",
+  "pergunta": "No impeachment descrito por Montesquieu, qual é o papel do poder legislativo?",
+  "resposta": [
+   "Acusador"
+  ],
+  "explicacao": "Em geral, o legislativo não pode julgar; só pode acusar.",
+  "fonte": "Aula 03, p. 13",
+  "citacao": "Logo, ele só pode ser acusador"
+ },
+ {
+  "id": "cp-e03-c19",
+  "no": "est-a03-r2.2.2",
+  "topico": "cp-4",
+  "tema": "Impeachment em Montesquieu",
+  "pergunta": "Segundo Montesquieu, perante quem a parte legislativa do povo faz a acusação?",
+  "resposta": [
+   "Parte legislativa dos nobres"
+  ],
+  "explicacao": "Os nobres não têm os mesmos interesses nem as mesmas paixões do povo.",
+  "fonte": "Aula 03, p. 13",
+  "citacao": "que a parte legislativa do povo faça a acusação perante a parte legislativa dos nobres"
+ },
+ {
+  "id": "cp-e03-c20",
+  "no": "est-a03-r2.3",
+  "topico": "cp-4",
+  "tema": "Base constitucional brasileira",
+  "pergunta": "Que proteção constitucional a separação dos Poderes recebe na CF/88?",
+  "resposta": [
+   "Cláusula pétrea"
+  ],
+  "explicacao": "O art. 60, § 4º, III, impede emenda tendente a abolir a separação dos Poderes.",
+  "fonte": "Aula 03, p. 7",
+  "citacao": "a abolição da separação dos Poderes é proibida, tratandose de cláusula pétrea"
+ },
+ {
+  "id": "cp-e03-c21",
+  "no": "est-a03-r3",
+  "topico": "cp-4",
+  "tema": "Freios e contrapesos (checks and balances)",
+  "pergunta": "Quais autores foram além de Montesquieu e desenvolveram a teoria dos freios e contrapesos?",
+  "resposta": [
+   "Os Federalistas"
+  ],
+  "explicacao": "Os autores de \"Os Federalistas\" complementaram a teoria com o controle recíproco entre os poderes.",
+  "fonte": "Aula 03, p. 15",
+  "citacao": "Contudo, os autores federalistas foram além, desenvolveram o que ficou conhecido como Teoria dos"
+ },
+ {
+  "id": "cp-e03-c22",
+  "no": "est-a03-r3",
+  "topico": "cp-4",
+  "tema": "Freios e contrapesos (checks and balances)",
+  "pergunta": "Segundo Piçarra, o que a prática dos freios e contrapesos produziu entre os poderes?",
+  "resposta": [
+   "Predominância cíclica de cada um"
+  ],
+  "explicacao": "Não houve equilíbrio permanente entre os poderes separados.",
+  "fonte": "Aula 03, p. 16",
+  "citacao": "mas sim a predominância cíclica de cada um deles"
+ },
+ {
+  "id": "cp-e03-c23",
+  "no": "est-a03-r3",
+  "topico": "cp-4",
+  "tema": "Freios e contrapesos (checks and balances)",
+  "pergunta": "Segundo Moraes, como se chama o contraste que um Poder exerce para restabelecer o equilíbrio?",
+  "resposta": [
+   "Contrapeso"
+  ],
+  "explicacao": "Conter o outro Poder é o freio; restabelecer o equilíbrio é o contrapeso.",
+  "fonte": "Aula 03, p. 16",
+  "citacao": "o contraste constitucional que um outro pode exercer para contê-lo (freio) ou para restabelecer o equilíbrio (contrapeso)"
+ },
+ {
+  "id": "cp-e03-c24",
+  "no": "est-a03-r3.1",
+  "topico": "cp-4",
+  "tema": "Objetivo liberal",
+  "pergunta": "Quais são os objetivos liberais clássicos do sistema de freios e contrapesos?",
+  "resposta": [
+   "Evitar a tirania",
+   "Limitar a autoridade",
+   "Preservar a liberdade individual"
+  ],
+  "explicacao": "É uma técnica de controle com objetivo liberal clássico.",
+  "fonte": "Aula 03, p. 15",
+  "citacao": "1) Evitar a tirania; 2) Limitar a autoridade impedindo arbitrariedades; 3) Preservar a liberdade individual"
+ },
+ {
+  "id": "cp-e03-c25",
+  "no": "est-a03-r3.2",
+  "topico": "cp-4",
+  "tema": "Judiciário no modelo norte-americano",
+  "pergunta": "Por qual mecanismo o Judiciário norte-americano exerce seu veto?",
+  "resposta": [
+   "Declaração de inconstitucionalidade"
+  ],
+  "explicacao": "Em Montesquieu o Judiciário seria neutro; na doutrina norte-americana tem mais peso.",
+  "fonte": "Aula 03, p. 16",
+  "citacao": "quando promove a declaração de inconstitucionalidade"
+ },
+ {
+  "id": "cp-e03-c26",
+  "no": "est-a03-r3.2",
+  "topico": "cp-4",
+  "tema": "Judiciário no modelo norte-americano",
+  "pergunta": "Em qual Constituição o Brasil adotou o modelo norte-americano de divisão dos poderes?",
+  "resposta": [
+   "1891"
+  ],
+  "explicacao": "O Brasil importou o modelo dos EUA na Constituição Republicana.",
+  "fonte": "Aula 03, p. 16",
+  "citacao": "a Constituição Republicana do Brasil de 1891 passou a adotar o modelo de divisão dos poderes"
+ },
+ {
+  "id": "cp-e03-c27",
+  "no": "est-a03-r3.3",
+  "topico": "cp-4",
+  "tema": "Controle institucional, não moral",
+  "pergunta": "Para os Federalistas, de que ordem é o controle sobre os poderes?",
+  "resposta": [
+   "Institucional"
+  ],
+  "explicacao": "Não é de ordem moral: não depende de povo virtuoso.",
+  "fonte": "Aula 03, p. 24",
+  "citacao": "o controle sobre os poderes, a fim de garantir a liberdade e evitar a tirania e todo tipo de abuso de poder não é de ordem moral, mas sim institucional"
+ },
+ {
+  "id": "cp-e03-c28",
+  "no": "est-a03-r3.3.1",
+  "topico": "cp-4",
+  "tema": "Natureza humana",
+  "pergunta": "Segundo Madison, por quem os seres humanos são governados?",
+  "resposta": [
+   "Por seus semelhantes"
+  ],
+  "explicacao": "Como não são governados por anjos, o controle sobre o poder é essencial.",
+  "fonte": "Aula 03, p. 23",
+  "citacao": "os seres humanos não são governados por anjos, mas sim por seus semelhantes"
+ },
+ {
+  "id": "cp-e03-c29",
+  "no": "est-a03-r3.3.1",
+  "topico": "cp-4",
+  "tema": "Natureza humana",
+  "pergunta": "Segundo Hamilton, como são os seres humanos por natureza?",
+  "resposta": [
+   "Ambiciosos, vingativos e ávidos"
+  ],
+  "explicacao": "Visão realista, às vezes pessimista, da natureza humana em \"O Federalista\" n. 6.",
+  "fonte": "Aula 03, p. 23",
+  "citacao": "os seres humanos são, por natureza, \"ambiciosos, vingativos e ávidos\""
+ },
+ {
+  "id": "cp-e03-c30",
+  "no": "est-a03-r4",
+  "topico": "cp-4",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Em qual país está a origem filosófica do presidencialismo?",
+  "resposta": [
+   "Estados Unidos"
+  ],
+  "explicacao": "A Constituição dos EUA de 1787 estabeleceu o sistema presidencialista.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "O presidencialismo tem suas origens na filosofia política dos Estados Unidos"
+ },
+ {
+  "id": "cp-e03-c31",
+  "no": "est-a03-r4",
+  "topico": "cp-4",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Segundo Darcy Azambuja, a separação entre os poderes significa ausência de quê?",
+  "resposta": [
+   "Subordinação"
+  ],
+  "explicacao": "Separação não é oposição: os poderes são independentes e colaboram.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "essa separação não é oposição entre eles, mas sim ausência de subordinação"
+ },
+ {
+  "id": "cp-e03-c32",
+  "no": "est-a03-r4",
+  "topico": "cp-4",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Segundo Bonavides, de onde o Presidente deriva seus poderes?",
+  "resposta": [
+   "Diretamente da Nação"
+  ],
+  "explicacao": "Princípio da derivação dos poderes da Nação.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "O Presidente deriva seus poderes diretamente da Nação"
+ },
+ {
+  "id": "cp-e03-c33",
+  "no": "est-a03-r4",
+  "topico": "cp-4",
+  "tema": "Presidencialismo: noções gerais",
+  "pergunta": "Quem pode derrubar o veto presidencial?",
+  "resposta": [
+   "O Legislativo"
+  ],
+  "explicacao": "O veto nega total ou parcialmente as leis, mas não é absoluto.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "Lembrando que o Legislativo tem o poder de derrubar o veto"
+ },
+ {
+  "id": "cp-e03-c34",
+  "no": "est-a03-r4.1",
+  "topico": "cp-4",
+  "tema": "Definição e separação",
+  "pergunta": "Em comparação ao parlamentarismo, como é a distribuição de competências no presidencialismo?",
+  "resposta": [
+   "Mais equânime"
+  ],
+  "explicacao": "Cada ramo tem funções distintas e é independente.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "a distribuição de competências é mais equânime"
+ },
+ {
+  "id": "cp-e03-c35",
+  "no": "est-a03-r4.2",
+  "topico": "cp-4",
+  "tema": "Chefia de Estado e de governo",
+  "pergunta": "Quais chefias o Presidente da República acumula no presidencialismo?",
+  "resposta": [
+   "Chefe de Estado",
+   "Chefe de Governo"
+  ],
+  "explicacao": "Chefia de Estado (representação) e de governo (direção da administração).",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções"
+ },
+ {
+  "id": "cp-e03-c36",
+  "no": "est-a03-r4.2",
+  "topico": "cp-4",
+  "tema": "Chefia de Estado e de governo",
+  "pergunta": "Como se classifica a chefia de governo no presidencialismo, exercida só pelo Presidente?",
+  "resposta": [
+   "Unipessoal"
+  ],
+  "explicacao": "A definição das diretrizes do Executivo cabe exclusivamente ao Presidente.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "Chefia de Governo Unipessoal"
+ },
+ {
+  "id": "cp-e03-c37",
+  "no": "est-a03-r4.2.1",
+  "topico": "cp-4",
+  "tema": "Eleição direta",
+  "pergunta": "Como se denomina o traço do presidencialismo em que o voto recai na figura do candidato?",
+  "resposta": [
+   "Personalismo"
+  ],
+  "explicacao": "Por isso um partido com menos votos pode eleger o Presidente.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "pois o voto é na figura do candidato, caracterizando o personalismo"
+ },
+ {
+  "id": "cp-e03-c38",
+  "no": "est-a03-r4.2.2",
+  "topico": "cp-4",
+  "tema": "Mandato determinado",
+  "pergunta": "Em que hipótese o Presidente deixa o cargo antes do fim do mandato fixo?",
+  "resposta": [
+   "Impeachment"
+  ],
+  "explicacao": "Só em circunstâncias graves.",
+  "fonte": "Aula 03, p. 19",
+  "citacao": "exceto em casos de impeachment sob circunstâncias graves"
+ },
+ {
+  "id": "cp-e03-c39",
+  "no": "est-a03-r4.3",
+  "topico": "cp-4",
+  "tema": "Gabinete e alianças",
+  "pergunta": "Que política os ministros devem seguir no presidencialismo?",
+  "resposta": [
+   "A do Presidente"
+  ],
+  "explicacao": "Não seguem a sua própria política nem a do partido.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "os ministros devem seguir a política do presidente e não sua ou do seu partido"
+ },
+ {
+  "id": "cp-e03-c40",
+  "no": "est-a03-r4.3",
+  "topico": "cp-4",
+  "tema": "Gabinete e alianças",
+  "pergunta": "No Brasil, de que costumam resultar os ministérios?",
+  "resposta": [
+   "Alianças e acordos políticos"
+  ],
+  "explicacao": "Acordos entre o chefe do Executivo, seu partido e os partidos da base aliada.",
+  "fonte": "Aula 03, p. 20",
+  "citacao": "os ministérios são fruto de alianças e acordos políticos"
+ },
+ {
+  "id": "cp-e03-c41",
+  "no": "est-a03-r4.4",
+  "topico": "cp-4",
+  "tema": "Veto e iniciativa",
+  "pergunta": "Que risco o poder de veto do Presidente busca evitar?",
+  "resposta": [
+   "Ditadura legislativa"
+  ],
+  "explicacao": "O veto permite ao Presidente interferir no processo legislativo.",
+  "fonte": "Aula 03, p. 21",
+  "citacao": "O Presidente tem o poder de veto para evitar o risco de uma ditadura legislativa"
+ },
+ {
+  "id": "cp-e03-c42",
+  "no": "est-a03-r5",
+  "topico": "cp-4",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Qual evento marca o início do presidencialismo no Brasil?",
+  "resposta": [
+   "Proclamação da República (1889)"
+  ],
+  "explicacao": "Movimento predominantemente militar que destituiu a monarquia.",
+  "fonte": "Aula 03, p. 24",
+  "citacao": "Seu início remonta à Proclamação da República em 1889"
+ },
+ {
+  "id": "cp-e03-c43",
+  "no": "est-a03-r5",
+  "topico": "cp-4",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Em que ano a população reafirmou em plebiscito o presidencialismo após a CF/88?",
+  "resposta": [
+   "1993"
+  ],
+  "explicacao": "A população votou pela manutenção do sistema presidencialista.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "Essa escolha foi posteriormente reafirmada pelo plebiscito de 1993"
+ },
+ {
+  "id": "cp-e03-c44",
+  "no": "est-a03-r5",
+  "topico": "cp-4",
+  "tema": "Presidencialismo no Brasil: história e Constituições",
+  "pergunta": "Qual Constituição quebrou a função do Poder Legislativo no Estado Novo?",
+  "resposta": [
+   "1937"
+  ],
+  "explicacao": "O regime ditatorial de Vargas diminuiu o papel do Legislativo.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "Constituição de 1937 Houve uma quebra na função do Poder Legislativo"
+ },
+ {
+  "id": "cp-e03-c45",
+  "no": "est-a03-r5.1",
+  "topico": "cp-4",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Que crise originou o parlamentarismo de 1961?",
+  "resposta": [
+   "Renúncia de Jânio Quadros"
+  ],
+  "explicacao": "Seguiu-se a resistência à posse de João Goulart; o Presidente passou a ser escolhido indiretamente pelo Congresso.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "política que envolveu a renúncia do presidente Jânio Quadros e a subsequente resistência à posse do vice-presidente João Goulart"
+ },
+ {
+  "id": "cp-e03-c46",
+  "no": "est-a03-r5.1",
+  "topico": "cp-4",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Como terminou a experiência parlamentarista de 1961-63?",
+  "resposta": [
+   "Plebiscito de 1963"
+  ],
+  "explicacao": "O eleitorado escolheu o retorno ao presidencialismo.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "terminando com o retorno ao presidencialismo em 1963 após um plebiscito no qual o eleitorado escolheu o presidencialismo"
+ },
+ {
+  "id": "cp-e03-c47",
+  "no": "est-a03-r5.1",
+  "topico": "cp-4",
+  "tema": "Primeira República e parlamentarismo de 1961-63",
+  "pergunta": "Nas mãos de quem estava o poder na República Velha?",
+  "resposta": [
+   "Oligarquias locais"
+  ],
+  "explicacao": "Refletia os interesses da elite agrária, com eleitorado restrito.",
+  "fonte": "Aula 03, p. 24",
+  "citacao": "O poder estava largamente nas mãos de oligarquias locais"
+ },
+ {
+  "id": "cp-e03-c48",
+  "no": "est-a03-r5.2",
+  "topico": "cp-4",
+  "tema": "Constituições de 1891 a 1967",
+  "pergunta": "Como a Constituição de 1934 qualificava os três Poderes entre si?",
+  "resposta": [
+   "Independentes e coordenados"
+  ],
+  "explicacao": "Manteve os três poderes clássicos de Montesquieu.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "os Poderes Legislativo, Executivo e Judiciário, independentes e coordenados entre si"
+ },
+ {
+  "id": "cp-e03-c49",
+  "no": "est-a03-r5.2.1",
+  "topico": "cp-4",
+  "tema": "Constituição de 1946",
+  "pergunta": "O que a Constituição de 1946 vedou a qualquer dos Poderes?",
+  "resposta": [
+   "Delegar atribuições"
+  ],
+  "explicacao": "A CF/1946 retornou à tripartição de Montesquieu.",
+  "fonte": "Aula 03, p. 27",
+  "citacao": "§ 2o - É vedado a qualquer dos Poderes delegar atribuições"
+ },
+ {
+  "id": "cp-e03-c50",
+  "no": "est-a03-r5.2.2",
+  "topico": "cp-4",
+  "tema": "Constituição de 1967 e regime militar",
+  "pergunta": "Sob a Constituição de 1967, em qual Poder houve centralização?",
+  "resposta": [
+   "Executivo Federal"
+  ],
+  "explicacao": "A divisão dos Poderes continuou formalmente prevista no Regime Militar.",
+  "fonte": "Aula 03, p. 28",
+  "citacao": "Apesar de estar prevista formalmente a divisão dos Poderes, houve a centralização no Poder Executivo Federal"
+ },
+ {
+  "id": "cp-e03-c51",
+  "no": "est-a03-r5.3",
+  "topico": "cp-4",
+  "tema": "Constituição de 1988 e plebiscito de 1993",
+  "pergunta": "Que modelo o projeto inicial da Constituinte sugeria?",
+  "resposta": [
+   "Parlamentarista"
+  ],
+  "explicacao": "Acabou prevalecendo o presidencialismo.",
+  "fonte": "Aula 03, p. 25",
+  "citacao": "Embora o projeto inicial sugerisse um modelo parlamentarista"
+ },
+ {
+  "id": "cp-e03-c52",
+  "no": "est-a03-r5.3",
+  "topico": "cp-4",
+  "tema": "Constituição de 1988 e plebiscito de 1993",
+  "pergunta": "Que espécie normativa o Presidente pode editar na CF/88, diferindo do esquema de Montesquieu?",
+  "resposta": [
+   "Medidas provisórias"
+  ],
+  "explicacao": "O Presidente também tem iniciativa legislativa e elabora leis delegadas.",
+  "fonte": "Aula 03, p. 28",
+  "citacao": "como também pode editar medidas provisórias (art. 62)"
+ },
+ {
+  "id": "cp-e03-c53",
+  "no": "est-a03-r6",
+  "topico": "cp-4",
+  "tema": "Relações Executivo-Legislativo e governabilidade",
+  "pergunta": "Qual princípio decorre do art. 5º, XXXV, da CF/88?",
+  "resposta": [
+   "Inafastabilidade do controle judicial"
+  ],
+  "explicacao": "O Judiciário pode rever decisões de outros Poderes que lesem direitos.",
+  "fonte": "Aula 03, p. 28",
+  "citacao": "princípio da inafastabilidade do controle judicial"
+ },
+ {
+  "id": "cp-e03-c54",
+  "no": "est-a03-r6",
+  "topico": "cp-4",
+  "tema": "Relações Executivo-Legislativo e governabilidade",
+  "pergunta": "Qual cientista político cunhou a expressão presidencialismo de coalizão?",
+  "resposta": [
+   "Sérgio Abranches"
+  ],
+  "explicacao": "Artigo de 1988 na Revista DADOS.",
+  "fonte": "Aula 03, p. 30",
+  "citacao": "o Cientista Político Sérgio Abranches publicou na Revista DADOS"
+ },
+ {
+  "id": "cp-e03-c55",
+  "no": "est-a03-r6",
+  "topico": "cp-4",
+  "tema": "Relações Executivo-Legislativo e governabilidade",
+  "pergunta": "Qual cientista político apontou a rigidez do presidencialismo em crises?",
+  "resposta": [
+   "Juan Linz"
+  ],
+  "explicacao": "Linz contrasta o presidencialismo com o parlamentarismo em crises.",
+  "fonte": "Aula 03, p. 32",
+  "citacao": "uma observação do cientista político espanhol Juan Linz sobre a rigidez do"
+ },
+ {
+  "id": "cp-e03-c56",
+  "no": "est-a03-r6",
+  "topico": "cp-4",
+  "tema": "Relações Executivo-Legislativo e governabilidade",
+  "pergunta": "Segundo Bonavides, por qual maioria o Congresso rejeita o veto?",
+  "resposta": [
+   "Maioria absoluta"
+  ],
+  "explicacao": "Por isso o veto é faculdade relativa.",
+  "fonte": "Aula 03, p. 33",
+  "citacao": "via de regra se dá através de votação legislativa, por maioria absoluta"
+ },
+ {
+  "id": "cp-e03-c57",
+  "no": "est-a03-r6.1",
+  "topico": "cp-4",
+  "tema": "Funções típicas, atípicas e controles recíprocos",
+  "pergunta": "Além de criar leis, qual é o poder típico do Legislativo?",
+  "resposta": [
+   "Fiscalização"
+  ],
+  "explicacao": "Fiscaliza pontos do Executivo.",
+  "fonte": "Aula 03, p. 29",
+  "citacao": "tem o poder típico de fiscalização de alguns pontos do Executivo"
+ },
+ {
+  "id": "cp-e03-c58",
+  "no": "est-a03-r6.1.1",
+  "topico": "cp-4",
+  "tema": "Controles recíprocos",
+  "pergunta": "Quem auxilia as Casas Legislativas no controle externo?",
+  "resposta": [
+   "Tribunais de Contas"
+  ],
+  "explicacao": "Um dos mecanismos de controle de um Poder sobre o outro.",
+  "fonte": "Aula 03, p. 29",
+  "citacao": "Controle externo por meio das Casas Legislativas, auxiliadas pelos Tribunais de Contas"
+ },
+ {
+  "id": "cp-e03-c59",
+  "no": "est-a03-r6.1.2",
+  "topico": "cp-4",
+  "tema": "Ações coordenadas e mandado de injunção",
+  "pergunta": "Qual remédio constitucional permite ao Judiciário suprir déficit de outro Poder?",
+  "resposta": [
+   "Mandado de injunção"
+  ],
+  "explicacao": "O Judiciário atua desde que provocado.",
+  "fonte": "Aula 03, p. 30",
+  "citacao": "como quando é utilizado o remédio constitucional mandado de injunção"
+ },
+ {
+  "id": "cp-e03-c60",
+  "no": "est-a03-r6.1.2",
+  "topico": "cp-4",
+  "tema": "Ações coordenadas e mandado de injunção",
+  "pergunta": "Para quais leis todos os Poderes precisam convergir?",
+  "resposta": [
+   "Leis orçamentárias"
+  ],
+  "explicacao": "Os orçamentos são construídos coletivamente.",
+  "fonte": "Aula 03, p. 30",
+  "citacao": "todos os Poderes precisam convergir para as leis orçamentárias"
+ },
+ {
+  "id": "cp-e03-c61",
+  "no": "est-a03-r6.2",
+  "topico": "cp-4",
+  "tema": "Presidencialismo de coalizão",
+  "pergunta": "De que passam a depender a governabilidade e a governança no presidencialismo de coalizão?",
+  "resposta": [
+   "Coalizão majoritária no Congresso"
+  ],
+  "explicacao": "O partido do presidente dificilmente tem maioria sozinho.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "passam a depender da formação de uma coalizão majoritária no Congresso"
+ },
+ {
+  "id": "cp-e03-c62",
+  "no": "est-a03-r6.2.1",
+  "topico": "cp-4",
+  "tema": "Definição de coalizão",
+  "pergunta": "O que os partidos compartilham numa coalizão governamental?",
+  "resposta": [
+   "Recursos políticos"
+  ],
+  "explicacao": "Para alcançar metas em comum.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "As coalizões governamentais são acordos em que os partidos políticos concordam em compartilhar recursos políticos"
+ },
+ {
+  "id": "cp-e03-c63",
+  "no": "est-a03-r6.2.1",
+  "topico": "cp-4",
+  "tema": "Definição de coalizão",
+  "pergunta": "Além do presidencialismo, em que sistema de governo ocorrem coalizões?",
+  "resposta": [
+   "Parlamentarismo"
+  ],
+  "explicacao": "Coalizões não são traço só brasileiro nem só presidencialista.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "tampouco são exclusivamente presidencialistas, também ocorrem no parlamentarismo"
+ },
+ {
+  "id": "cp-e03-c64",
+  "no": "est-a03-r6.2.2",
+  "topico": "cp-4",
+  "tema": "Eleição presidencial e maioria",
+  "pergunta": "Segundo Abranches, por qual voto é eleita a Câmara dos Deputados?",
+  "resposta": [
+   "Proporcional"
+  ],
+  "explicacao": "O Senado é eleito por voto majoritário simples.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "A Câmara é eleita pelo voto proporcional"
+ },
+ {
+  "id": "cp-e03-c65",
+  "no": "est-a03-r6.2.2",
+  "topico": "cp-4",
+  "tema": "Eleição presidencial e maioria",
+  "pergunta": "Segundo Abranches, por qual voto é eleito o presidente?",
+  "resposta": [
+   "Direto majoritário nacional"
+  ],
+  "explicacao": "Deputados e senadores têm nos estados seu colégio eleitoral.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "o presidente é eleito pelo voto direto majoritário do eleitorado nacional"
+ },
+ {
+  "id": "cp-e03-c66",
+  "no": "est-a03-r6.2.3",
+  "topico": "cp-4",
+  "tema": "Instabilidade estrutural",
+  "pergunta": "Que tendência do sistema partidário agrava a instabilidade do presidencialismo dependente de coalizões grandes?",
+  "resposta": [
+   "Fragmentação"
+  ],
+  "explicacao": "Elemento estrutural de instabilidade da governança.",
+  "fonte": "Aula 03, p. 31",
+  "citacao": "em um sistema partidário com tendência à fragmentação"
+ },
+ {
+  "id": "cp-e03-c67",
+  "no": "est-a03-r6.3",
+  "topico": "cp-4",
+  "tema": "Crises e rigidez do sistema",
+  "pergunta": "Segundo Linz, quais são as duas saídas de crise no presidencialismo?",
+  "resposta": [
+   "Eleição",
+   "Impeachment"
+  ],
+  "explicacao": "Em ambos os casos a qualidade da democracia fica comprometida.",
+  "fonte": "Aula 03, p. 32",
+  "citacao": "o presidencialismo brasileiro tem em apenas duas portas de saída: eleição ou os processos de impeachment"
+ },
+ {
+  "id": "cp-e03-c68",
+  "no": "est-a03-r6.4",
+  "topico": "cp-4",
+  "tema": "Agenda, veto e produção legislativa",
+  "pergunta": "Segundo Bonavides, quem fica com a última palavra sobre o veto?",
+  "resposta": [
+   "O Congresso"
+  ],
+  "explicacao": "O Congresso aceita ou rejeita o veto do Presidente.",
+  "fonte": "Aula 03, p. 33",
+  "citacao": "ficando assim a última palavra com o Congresso"
+ },
+ {
+  "id": "cp-e03-c69",
+  "no": "est-a03-r6.4.1",
+  "topico": "cp-4",
+  "tema": "Produção legislativa parlamentar após 2008",
+  "pergunta": "A partir de que ano cresce a produção legislativa de origem parlamentar, segundo Almeida?",
+  "resposta": [
+   "2008"
+  ],
+  "explicacao": "Início de uma fase de dominância congressual.",
+  "fonte": "Aula 03, p. 34",
+  "citacao": "a partir de 2008 observa-se um aumento substancial da produção legislativa de origem parlamentar"
+ },
+ {
+  "id": "cp-e03-c70",
+  "no": "est-a03-r6.4.1",
+  "topico": "cp-4",
+  "tema": "Produção legislativa parlamentar após 2008",
+  "pergunta": "Qual bloco informal se fortaleceu no rearranjo político descrito por Almeida?",
+  "resposta": [
+   "Centrão"
+  ],
+  "explicacao": "Rearranjo associado à mudança na produção legislativa.",
+  "fonte": "Aula 03, p. 34",
+  "citacao": "o fortalecimento do bloco informal conhecido como Centrão"
+ },
+ {
+  "id": "cp-e03-c71",
+  "no": "est-a03-r6.4.2",
+  "topico": "cp-4",
+  "tema": "Pandemia e falta de coordenação",
+  "pergunta": "Na pandemia de Covid-19, qual Poder protagonizou as medidas emergenciais?",
+  "resposta": [
+   "Legislativo"
+  ],
+  "explicacao": "O Executivo optou pelo isolamento político.",
+  "fonte": "Aula 03, p. 34",
+  "citacao": "o que obrigou o Legislativo a assumir o protagonismo na aprovação de medidas emergenciais"
+ },
+ {
+  "id": "cp-e03-c72",
+  "no": "est-a03-r7",
+  "topico": "cp-4",
+  "tema": "Judicialização de políticas públicas e ativismo judicial",
+  "pergunta": "Em sociedades com que tipo de constituição a judicialização é característica?",
+  "resposta": [
+   "Extensas e programáticas"
+  ],
+  "explicacao": "Como a brasileira.",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "especialmente em sociedades marcadas por constituições extensas e programáticas"
+ },
+ {
+  "id": "cp-e03-c73",
+  "no": "est-a03-r7",
+  "topico": "cp-4",
+  "tema": "Judicialização de políticas públicas e ativismo judicial",
+  "pergunta": "Segundo Campante, que crise leva a sociedade a recorrer ao Judiciário?",
+  "resposta": [
+   "Crise de legitimidade do Legislativo"
+  ],
+  "explicacao": "Baixa confiança no Congresso, fragmentação, personalismo e clientelismo.",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "b) Crise de legitimidade do Legislativo Como lembra Rubens Goyatá Campante"
+ },
+ {
+  "id": "cp-e03-c74",
+  "no": "est-a03-r7",
+  "topico": "cp-4",
+  "tema": "Judicialização de políticas públicas e ativismo judicial",
+  "pergunta": "Segundo o balanço crítico da aula, a judicialização é reflexo de quê?",
+  "resposta": [
+   "Tensões e lacunas da democracia"
+  ],
+  "explicacao": "Não é fenômeno patológico.",
+  "fonte": "Aula 03, p. 37",
+  "citacao": "mas um reflexo das tensões e lacunas da democracia brasileira"
+ },
+ {
+  "id": "cp-e03-c75",
+  "no": "est-a03-r7",
+  "topico": "cp-4",
+  "tema": "Judicialização de políticas públicas e ativismo judicial",
+  "pergunta": "Como se chama a postura proativa e interpretativa dos juízes além dos limites tradicionais?",
+  "resposta": [
+   "Ativismo judicial"
+  ],
+  "explicacao": "Judicialização não é sinônimo de ativismo judicial.",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "Já o ativismo judicial refere-se à postura proativa e interpretativa dos juízes"
+ },
+ {
+  "id": "cp-e03-c76",
+  "no": "est-a03-r7.1",
+  "topico": "cp-4",
+  "tema": "Conceito de judicialização",
+  "pergunta": "Qual fenômeno consiste em conflitos políticos chegarem ao Judiciário e serem decididos por ele?",
+  "resposta": [
+   "Judicialização"
+  ],
+  "explicacao": "Fenômeno distinto do ativismo judicial (postura).",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "A judicialização diz respeito ao fato de que conflitos políticos chegam ao Judiciário e são decididos por ele"
+ },
+ {
+  "id": "cp-e03-c77",
+  "no": "est-a03-r7.1.1",
+  "topico": "cp-4",
+  "tema": "Supremocracia",
+  "pergunta": "Que nome Oscar Vilhena Vieira dá à forma de governo em que o Judiciário ocupa o topo da hierarquia decisória?",
+  "resposta": [
+   "Supremocracia"
+  ],
+  "explicacao": "O Judiciário fica acima dos demais Poderes, sem os mesmos mecanismos de accountability.",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "Vieira (2011), quando \"supremocracia\" [...] e o Judiciário ocupa o topo da hierarquia decisória"
+ },
+ {
+  "id": "cp-e03-c78",
+  "no": "est-a03-r7.2",
+  "topico": "cp-4",
+  "tema": "Condições da judicialização no Brasil",
+  "pergunta": "Que expansão, destacada por Campante, fortalece a busca por soluções judiciais?",
+  "resposta": [
+   "Da cultura dos direitos"
+  ],
+  "explicacao": "Valorização de direitos subjetivos e coletivos e atuação de movimentos sociais.",
+  "fonte": "Aula 03, p. 36",
+  "citacao": "c) Expansão da cultura dos direitos Campante também destaca"
+ },
+ {
+  "id": "cp-e03-c79",
+  "no": "est-a03-r7.2.1",
+  "topico": "cp-4",
+  "tema": "Engenharia constitucional",
+  "pergunta": "Segundo Arantes, o que o Judiciário brasileiro pode controlar?",
+  "resposta": [
+   "Leis",
+   "Políticas públicas",
+   "Políticos"
+  ],
+  "explicacao": "Todo o ciclo da política democrática fica sob vigilância judicial.",
+  "fonte": "Aula 03, p. 35",
+  "citacao": "No Brasil, existe a possibilidade de que o Judiciário controle as leis, controle as políticas públicas e controle os políticos"
+ },
+ {
+  "id": "cp-e03-c80",
+  "no": "est-a03-r7.2.2",
+  "topico": "cp-4",
+  "tema": "Judicialização como processo histórico",
+  "pergunta": "Como Campante propõe compreender a judicialização?",
+  "resposta": [
+   "Como processo, não evento isolado"
+  ],
+  "explicacao": "Transformação gradual nas formas de exercício do poder.",
+  "fonte": "Aula 03, p. 36",
+  "citacao": "Campante propõe que se compreenda a judicialização como um processo e não um evento isolado"
+ },
+ {
+  "id": "cp-e03-c81",
+  "no": "est-a03-r7.3",
+  "topico": "cp-4",
+  "tema": "Riscos e potencialidades",
+  "pergunta": "Que risco da judicialização envolve um corpo técnico não eleito?",
+  "resposta": [
+   "Supremacia sobre as decisões públicas"
+  ],
+  "explicacao": "Risco para a democracia apontado no balanço crítico.",
+  "fonte": "Aula 03, p. 37",
+  "citacao": "Supremacia de um corpo técnico e não eleito sobre as decisões públicas"
+ },
+ {
+  "id": "cp-e03-c82",
+  "no": "est-a03-r7.3",
+  "topico": "cp-4",
+  "tema": "Riscos e potencialidades",
+  "pergunta": "Qual potencialidade da judicialização diz respeito às falhas das instituições em agir?",
+  "resposta": [
+   "Correção de omissões institucionais"
+  ],
+  "explicacao": "Potencialidade democrática apontada no balanço crítico.",
+  "fonte": "Aula 03, p. 37",
+  "citacao": "Correção de omissões institucionais"
+ },
+ {
+  "id": "cp-e03-c83",
+  "no": "est-a03-r7.3.1",
+  "topico": "cp-4",
+  "tema": "Assimetria democrática (Avritzer)",
+  "pergunta": "Segundo Avritzer, a quem o Judiciário tende a responder mais prontamente?",
+  "resposta": [
+   "Elites econômicas",
+   "Partidos"
+  ],
+  "explicacao": "Responde menos às demandas dos grupos populares.",
+  "fonte": "Aula 03, p. 37",
+  "citacao": "o Judiciário brasileiro tende a responder mais prontamente às demandas das elites econômicas e às ações de partidos"
+ },
+ {
+  "id": "cp-e03-c84",
+  "no": "est-a03-r7.3.1",
+  "topico": "cp-4",
+  "tema": "Assimetria democrática (Avritzer)",
+  "pergunta": "Como Avritzer denomina o risco de desigualdade no acesso ao Judiciário?",
+  "resposta": [
+   "Assimetria democrática"
+  ],
+  "explicacao": "Gera desigualdade de acesso e de efetividade dos direitos.",
+  "fonte": "Aula 03, p. 37",
+  "citacao": "Avritzer alerta ainda para o risco da assimetria democrática"
+ },
+ {
+  "id": "cp-e03-c85",
+  "no": "est-a03-r7.4",
+  "topico": "cp-4",
+  "tema": "Ativismo judicial: visões e autocontenção",
+  "pergunta": "Segundo Gonet Branco, o que críticos e entusiastas concordam que o ativismo implica?",
+  "resposta": [
+   "Afastamento do juiz das funções rotineiras"
+  ],
+  "explicacao": "Apoiadores veem virtudes corretivas; opositores, quebra da separação dos poderes.",
+  "fonte": "Aula 03, p. 40",
+  "citacao": "essa postura implica um afastamento do juiz do que seria esperado em suas funções rotineiras"
+ },
+ {
+  "id": "cp-e03-c86",
+  "no": "est-a03-r7.4.1",
+  "topico": "cp-4",
+  "tema": "Visão positiva do ativismo",
+  "pergunta": "Em qual corrente os defensores do ativismo costumam embasar seus argumentos?",
+  "resposta": [
+   "Neoconstitucionalismo"
+  ],
+  "explicacao": "Predominância dos princípios sobre as regras e nova hermenêutica.",
+  "fonte": "Aula 03, p. 39",
+  "citacao": "Os defensores do ativismo muitas vezes embasam seus argumentos nos princípios do \"neoconstitucionalismo\""
+ },
+ {
+  "id": "cp-e03-c87",
+  "no": "est-a03-r7.4.1",
+  "topico": "cp-4",
+  "tema": "Visão positiva do ativismo",
+  "pergunta": "Em qual lei o STF enquadrou a homofobia e a transfobia?",
+  "resposta": [
+   "Lei do Racismo"
+  ],
+  "explicacao": "ADO 26 e MI 4733, até que o Congresso edite lei sobre a matéria.",
+  "fonte": "Aula 03, p. 40",
+  "citacao": "como tipo penal definido na Lei do Racismo (Lei 7.716/1989)"
+ },
+ {
+  "id": "cp-e03-c88",
+  "no": "est-a03-r7.4.2",
+  "topico": "cp-4",
+  "tema": "Visão negativa e decisionismo",
+  "pergunta": "Na perspectiva negativa, a que o ativismo conduz o juiz?",
+  "resposta": [
+   "Voluntarismo ou decisionismo judicial"
+  ],
+  "explicacao": "É visto como transgressão das fronteiras da função jurisdicional.",
+  "fonte": "Aula 03, p. 40",
+  "citacao": "conduzindo o juiz ao voluntarismo ou ao \"decisionismo judicial\""
+ },
+ {
+  "id": "cp-e03-c89",
+  "no": "est-a03-r7.4.3",
+  "topico": "cp-4",
+  "tema": "Autocontenção judicial",
+  "pergunta": "Qual é o oposto do ativismo judicial?",
+  "resposta": [
+   "Autocontenção judicial"
+  ],
+  "explicacao": "O Judiciário reduz sua interferência nos outros Poderes.",
+  "fonte": "Aula 03, p. 41",
+  "citacao": "O oposto do ativismo é a autocontenção judicial"
+ },
+ {
+  "id": "cp-e03-c90",
+  "no": "est-a03-r8",
+  "topico": "cp-4",
+  "tema": "Capacidades estatais, governança e democracia",
+  "pergunta": "Quantas dimensões interdependentes abrange o conceito de capacidades estatais?",
+  "resposta": [
+   "Três"
+  ],
+  "explicacao": "Administrativa, política e relacional.",
+  "fonte": "Aula 03, p. 41",
+  "citacao": "conceito abrange três dimensões interdependentes"
+ },
+ {
+  "id": "cp-e03-c91",
+  "no": "est-a03-r8",
+  "topico": "cp-4",
+  "tema": "Capacidades estatais, governança e democracia",
+  "pergunta": "Segundo o IPEA, que paradoxo o Brasil vive desde a CF/88?",
+  "resposta": [
+   "Ampliação de direitos versus fragilidade institucional"
+  ],
+  "explicacao": "Direitos ampliados, capacidades estatais limitadas.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "O paradoxo brasileiro: ampliação de direitos versus fragilidade institucional"
+ },
+ {
+  "id": "cp-e03-c92",
+  "no": "est-a03-r8",
+  "topico": "cp-4",
+  "tema": "Capacidades estatais, governança e democracia",
+  "pergunta": "Que eixo de fortalecimento das capacidades estatais visa coibir práticas patrimonialistas?",
+  "resposta": [
+   "Controle social e transparência"
+  ],
+  "explicacao": "Também aumenta a confiança da população.",
+  "fonte": "Aula 03, p. 43",
+  "citacao": "Controle social e transparência , para aumentar a confiança da população e coibir práticas patrimonialistas"
+ },
+ {
+  "id": "cp-e03-c93",
+  "no": "est-a03-r8",
+  "topico": "cp-4",
+  "tema": "Capacidades estatais, governança e democracia",
+  "pergunta": "Quem propôs o conceito de capacidade governativa?",
+  "resposta": [
+   "Maria Helena de Castro Santos"
+  ],
+  "explicacao": "Conceito que sintetiza governabilidade e governança.",
+  "fonte": "Aula 03, p. 44",
+  "citacao": "A capacidade governativa, conforme discutida por Maria Helena de Castro Santos"
+ },
+ {
+  "id": "cp-e03-c94",
+  "no": "est-a03-r8.1",
+  "topico": "cp-4",
+  "tema": "Três dimensões das capacidades estatais",
+  "pergunta": "Qual dimensão das capacidades estatais reúne infraestrutura organizacional, recursos humanos e instrumentos técnicos?",
+  "resposta": [
+   "Administrativa"
+  ],
+  "explicacao": "Permite ao Estado executar tarefas com competência.",
+  "fonte": "Aula 03, p. 41",
+  "citacao": "Capacidade administrativa : infraestrutura organizacional, recursos humanos e instrumentos técnicos"
+ },
+ {
+  "id": "cp-e03-c95",
+  "no": "est-a03-r8.1.1",
+  "topico": "cp-4",
+  "tema": "Capacidade política",
+  "pergunta": "Qual capacidade estatal consiste em articular interesses e construir consensos?",
+  "resposta": [
+   "Política"
+  ],
+  "explicacao": "Inclui exercer liderança legítima nas arenas institucionais e sociais.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "política : Capacidade habilidade de articular interesses, construir consensos"
+ },
+ {
+  "id": "cp-e03-c96",
+  "no": "est-a03-r8.1.2",
+  "topico": "cp-4",
+  "tema": "Capacidade relacional e autonomia enraizada",
+  "pergunta": "Qual capacidade estatal trata da qualidade da interação entre Estado e sociedade civil?",
+  "resposta": [
+   "Relacional"
+  ],
+  "explicacao": "Envolve responsividade, confiança e accountability.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "relacional: Capacidade qualidade da interação entre Estado a sociedade civil"
+ },
+ {
+  "id": "cp-e03-c97",
+  "no": "est-a03-r8.1.2",
+  "topico": "cp-4",
+  "tema": "Capacidade relacional e autonomia enraizada",
+  "pergunta": "Como Peter Evans denomina o Estado que combina autonomia técnica com conexões sociais densas?",
+  "resposta": [
+   "Autonomia enraizada"
+  ],
+  "explicacao": "Garante eficácia e legitimidade das políticas públicas.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "Peter Evans denomina de \"autonomia enraizada\""
+ },
+ {
+  "id": "cp-e03-c98",
+  "no": "est-a03-r8.2",
+  "topico": "cp-4",
+  "tema": "Ampliação de direitos e fragilidade institucional",
+  "pergunta": "Que fator expressa a desigualdade institucional entre União, estados e municípios?",
+  "resposta": [
+   "Assimetrias federativas"
+  ],
+  "explicacao": "Um dos fatores do descompasso entre direitos e capacidades estatais.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "Assimetrias federativas, com forte desigualdade institucional entre União, estados e municípios"
+ },
+ {
+  "id": "cp-e03-c99",
+  "no": "est-a03-r8.3",
+  "topico": "cp-4",
+  "tema": "Democracia substantiva",
+  "pergunta": "Além da participação e das eleições, de que depende a efetividade da democracia?",
+  "resposta": [
+   "Capacidade do Estado de realizar direitos"
+  ],
+  "explicacao": "Avritzer fala em democracia substantiva.",
+  "fonte": "Aula 03, p. 42",
+  "citacao": "mas da capacidade do Estado de realizar os direitos prometidos constitucionalmente"
+ },
+ {
+  "id": "cp-e03-c100",
+  "no": "est-a03-r8.3.1",
+  "topico": "cp-4",
+  "tema": "Exigências do Estado democrático",
+  "pergunta": "Que mecanismos de controle o Estado democrático deve garantir?",
+  "resposta": [
+   "Interno e externo"
+  ],
+  "explicacao": "Ao lado de políticas universais, serviços de qualidade e transparência.",
+  "fonte": "Aula 03, p. 43",
+  "citacao": "Garantir mecanismos de controle interno e externo"
+ },
+ {
+  "id": "cp-e03-c101",
+  "no": "est-a03-r8.3.2",
+  "topico": "cp-4",
+  "tema": "Profissionalização da burocracia",
+  "pergunta": "Quais medidas compõem a profissionalização da burocracia?",
+  "resposta": [
+   "Concursos de qualidade",
+   "Formação continuada",
+   "Valorização dos servidores"
+  ],
+  "explicacao": "Eixo de fortalecimento das capacidades estatais.",
+  "fonte": "Aula 03, p. 43",
+  "citacao": "com concursos de qualidade, formação continuada e valorização dos servidores públicos"
+ },
+ {
+  "id": "cp-e03-c102",
+  "no": "est-a03-r8.4",
+  "topico": "cp-4",
+  "tema": "Governabilidade, governança e capacidade governativa",
+  "pergunta": "Em qual área o conceito de capacidade governativa é mais usado?",
+  "resposta": [
+   "Ciência Política"
+  ],
+  "explicacao": "Mais usado na Ciência Política do que em Administração.",
+  "fonte": "Aula 03, p. 44",
+  "citacao": "Este conceito, mais usado na Ciência Política do que em Administração"
+ },
+ {
+  "id": "cp-e03-c103",
+  "no": "est-a03-r8.4.1",
+  "topico": "cp-4",
+  "tema": "Governabilidade",
+  "pergunta": "A que está diretamente relacionada a governabilidade?",
+  "resposta": [
+   "Legitimidade do governo"
+  ],
+  "explicacao": "Governo exitoso é mais legítimo.",
+  "fonte": "Aula 03, p. 44",
+  "citacao": "Por isso, está diretamente relacionado à legitimidade do governo"
+ },
+ {
+  "id": "cp-e03-c104",
+  "no": "est-a03-r8.4.2",
+  "topico": "cp-4",
+  "tema": "Governança",
+  "pergunta": "Qual conceito foca no exercício prático do poder e nas interações entre Estado e sociedade?",
+  "resposta": [
+   "Governança"
+  ],
+  "explicacao": "Governabilidade foca nas condições sistêmicas.",
+  "fonte": "Aula 03, p. 46",
+  "citacao": "\"governança\" foca no exercício prático desse poder e nas interações entre Estado e sociedade"
+ },
+ {
+  "id": "cp-e03-c105",
+  "no": "est-a03-r8.4.3",
+  "topico": "cp-4",
+  "tema": "Capacidade governativa",
+  "pergunta": "Qual conceito Santos propôs para integrar governabilidade e governança?",
+  "resposta": [
+   "Capacidade governativa"
+  ],
+  "explicacao": "Une a dimensão operacional e a política do Estado.",
+  "fonte": "Aula 03, p. 45",
+  "citacao": "Capacidade Governativa é um conceito proposto por Santos para integrar e superar as limitações dos conceitos de governabilidade e governança"
+ }
+]

@@ -1,0 +1,797 @@
+[
+ {
+  "id": "cp-e02-q01",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q02",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q03",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q04",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q05",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q06",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q07",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q08",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q09",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q10",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q11",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q12",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Contradição frontal e interna (cada estado soberano x governo confederado soberano); ponto deslocado para o instrumento de atuação.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Origem do federalismo e a Confederação\", conforme o material da Aula 02. Na definição clássica de Estado Confederado, cada estado mantém sua soberania, e o governo confederado, com poderes limitados, lida com questões de interesse comum por meio de leis.",
+  "novo_comentario": "Errado. A fonte diz: \"o governo central ou confederado tem poderes limitados e geralmente só lida com questões de interesse comum por meio de acordos gerais e tratados – não existem leis\" (Estratégia, Aula 02, p. 9). O item altera um único ponto: traz \"por meio de leis\", mas o texto traz \"por meio de acordos gerais e tratados – não existem leis\". Versão correta: Na definição clássica de Estado Confederado, cada estado mantém sua soberania, e o governo confederado, com poderes limitados, lida com questões de interesse comum por meio de acordos gerais e tratados."
+ },
+ {
+  "id": "cp-e02-q13",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q14",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q15",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q16",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q17",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q18",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q19",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q20",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "CORRIGIDO",
+  "motivo": "Retirada a atribuição ao art. 1º da CF: o artigo não fixa o presidencialismo (erro da fonte); item C não pode depender disso.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Forma de governo: monarquia e república\", conforme o material da Aula 02. Segundo a aula, o Brasil adotou a forma republicana de governo, a forma federativa de Estado, o sistema de governo presidencialista e o regime político democrático.",
+  "novo_comentario": "Certo. A fonte diz: \"O Brasil adotou a forma republicana de governo, forma federativa de Estado (Estado Federado), sistema de governo presidencialista e regime político democrático\" (Estratégia, Aula 02, p. 21). A assertiva reproduz esse conteúdo. A remissão da aula ao art. 1º da CF foi omitida porque o art. 1º não trata do sistema de governo."
+ },
+ {
+  "id": "cp-e02-q21",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q22",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q23",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q24",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q25",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "A frase atribuída a Bonavides (p. 24) conflita com o texto de Temer (p. 29) e com a doutrina (presidencialismo consoa com a tripartição); item dependeria de possível erro da fonte. Ponto deslocado para a concentração de poder no parlamentarismo.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Sistema de governo: divisão e relação entre poderes\", conforme o material da Aula 02. No parlamentarismo, uma parte das funções executivas é transferida para o Legislativo, o que resulta em concentração de poder no Executivo, colocando-o em posição superior à do Legislativo.",
+  "novo_comentario": "Errado. A fonte diz: \"Isso resulta em uma concentração de poder no Legislativo, colocando-o em posição superior à do Executivo\" (Estratégia, Aula 02, p. 24; no mesmo sentido, texto de Michel Temer, p. 29). O item altera um único ponto: troca \"Legislativo\" por \"Executivo\" como o poder que concentra funções. Versão correta: No parlamentarismo, uma parte das funções executivas é transferida para o Legislativo, o que resulta em concentração de poder no Legislativo, colocando-o em posição superior à do Executivo."
+ },
+ {
+  "id": "cp-e02-q26",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q27",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q28",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q29",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q30",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q31",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q32",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q33",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q34",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Comentário citava trecho truncado do texto embaralhado da p. 31; trecho reconstruído. Mecanismo F5 incorreto (não há ressalva removida): é F3 (responsabilidade política no lugar de responsabilidade por crime).",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Impedimento (impeachment) do presidente\", conforme o material da Aula 02. No presidencialismo, se não houver crime cometido, o Presidente da República pode ser destituído por perda de apoio político no parlamento, como ocorre com o Primeiro Ministro no parlamentarismo.",
+  "novo_comentario": "Errado. A fonte (p. 31, texto com diagramação embaralhada, reconstruído) diz que no presidencialismo só há duas formas institucionalizadas de mudar o governo: \"novas eleições após o término do mandato\" ou \"o processo de impeachment\", por \"crime de responsabilidade e não política - como no parlamentarismo\", e que, \"se não houver crime cometido, o Presidente da República não pode ser destituído\", independentemente de \"perda de apoio político no parlamento\". O item troca a responsabilidade por crime pela responsabilidade política, própria do parlamentarismo. Versão correta: No presidencialismo, se não houver crime cometido, o Presidente da República não pode ser destituído por perda de apoio político no parlamento, diferentemente do Primeiro Ministro no parlamentarismo.",
+  "novo_mecanismo": "F3"
+ },
+ {
+  "id": "cp-e02-q35",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q36",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Ponto alterado (Câmara x Senado) é dado factual de quadro de notícia, contingente e não verificável na data da prova; item reescrito para cobrar a exigência de emenda constitucional.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Debate sobre o semipresidencialismo no Brasil\", conforme o material da Aula 02. Está em debate no Brasil a implantação do semipresidencialismo, que, para ser adotado, exige mudar a Constituição, a qual define o atual sistema político do país.",
+  "novo_comentario": "Certo. A fonte diz: \"Está em debate no Brasil [...] discussões sobre implantação do semipresidencialismo. Para que seja implantado, é preciso mudar a Constituição, que define o atual sistema político do Brasil.\" (Estratégia, Aula 02, p. 33). A assertiva reproduz esse conteúdo.",
+  "novo_gabarito": "C",
+  "novo_mecanismo": "V2"
+ },
+ {
+  "id": "cp-e02-q37",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q38",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q39",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q40",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Retirada a cauda causal \"e por isso eles aplicaram a separação de poderes\", que criava absurdo causal; mantido o ponto único (aplicavam/havia).",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Controle entre poderes e crises de governo\", conforme o material da Aula 02. Para os Federalistas, as condições sociais para um \"governo misto\" se aplicavam aos Estados Unidos, uma vez que ali havia aristocracia nobre.",
+  "novo_comentario": "Errado. A fonte diz que os Federalistas buscavam novas bases para defender um governo popular nos Estados Unidos, \"onde as condições sociais para um 'governo misto' não se aplicavam - uma vez que não havia aristocracia nobre\" (Estratégia, Aula 02, pp. 34-35). O item afirma o oposto quanto à existência de aristocracia nobre. Versão correta: Para os Federalistas, as condições sociais para um \"governo misto\" não se aplicavam aos Estados Unidos, uma vez que ali não havia aristocracia nobre.",
+  "novo_mecanismo": "F3"
+ },
+ {
+  "id": "cp-e02-q41",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q42",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "CORRIGIDO",
+  "motivo": "Enunciado e gabarito corretos; mecanismo registrado F1 está errado: o item acrescenta \"apenas\" (restrição indevida) = F2.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Divisão do poder em três esferas\", conforme o material da Aula 02. Entre os remédios dos Federalistas aos males da república está a divisão do poder em três esferas harmônicas e independentes, com o papel de funcionar como freios e contrapesos apenas contra abusos do Executivo.",
+  "novo_comentario": "Errado. A fonte diz: \"Divisão do poder em três esferas harmônicas e independentes com o papel de serem o sistema de freios e contrapesos para todo tipo de abuso do poder dos homens no governo.\" (Estratégia, Aula 02, p. 11). O item altera um único ponto: traz \"apenas contra abusos do Executivo\", mas o texto traz \"para todo tipo de abuso do poder dos homens no governo\". Versão correta: Entre os remédios dos Federalistas aos males da república está a divisão do poder em três esferas harmônicas e independentes, com o papel de funcionar como freios e contrapesos para todo tipo de abuso do poder dos homens no governo.",
+  "novo_mecanismo": "F2"
+ },
+ {
+  "id": "cp-e02-q43",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q44",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q45",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q46",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q47",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q48",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q49",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q50",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q51",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q52",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q53",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Retirada a remissão ao art. 1º da CF (erro da fonte), para manter um único ponto de falsidade (troca forma de Estado x forma de governo).",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Regime político\", conforme o material da Aula 02. Segundo a aula, o Brasil adotou a forma republicana de Estado, a forma federativa de governo, o sistema de governo presidencialista e o regime político democrático.",
+  "novo_comentario": "Errado. A fonte diz: \"O Brasil adotou a forma republicana de governo, forma federativa de Estado (Estado Federado), sistema de governo presidencialista e regime político democrático\" (Estratégia, Aula 02, p. 21). O item troca os rótulos: república passa a ser \"forma de Estado\" e federação, \"forma de governo\". Versão correta: o Brasil adotou a forma republicana de governo e a forma federativa de Estado."
+ },
+ {
+  "id": "cp-e02-q54",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "DESCARTAR",
+  "motivo": "Depende do erro da fonte na p. 36 (\"sistema e governo\") e de esquema ambíguo; o conteúdo afirmado (regime dentro do sistema de governo) não é sustentável."
+ },
+ {
+  "id": "cp-e02-q55",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q56",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "DESCARTAR",
+  "motivo": "Depende de erro conceitual da fonte (p. 37): confunde democracia direta/indireta com eleição direta/indireta do Presidente; o item ensinaria conceito contrário à doutrina."
+ },
+ {
+  "id": "cp-e02-q57",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q58",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q59",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "CORRIGIDO",
+  "motivo": "O item alterava dois pontos (ano e regiões); mantido só o ano.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Autocracia e transição de regime\", conforme o material da Aula 02. A partir das experiências de mudança de regime político acontecidas desde 1989, no sul da Europa e na América Latina, surgiram teóricos da transição, conhecida como transitologia, que analisam a passagem dos regimes autoritários para os democráticos.",
+  "novo_comentario": "Errado. A fonte diz: \"A partir das experiências de mudança de regime político acontecidas, desde 1974, no sul da Europa e na América Latina, surgiram vários teóricos [...] teorias da transição - ou, transitologia\" (Estratégia, Aula 02, p. 38). O item altera um único ponto: traz \"desde 1989\", mas o texto traz \"desde 1974\"."
+ },
+ {
+  "id": "cp-e02-q60",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q61",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "DESCARTAR",
+  "motivo": "Item metatextual (o que a aula traz, relatório V-Dem de março de 2023); não cobra conteúdo de Ciência Política."
+ },
+ {
+  "id": "cp-e02-q62",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q63",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q64",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q65",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q66",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q67",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q68",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q69",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "DESCARTAR",
+  "motivo": "Item metatextual (\"temas tratados desde a primeira aula\") e redundante com q67."
+ },
+ {
+  "id": "cp-e02-q70",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "DESCARTAR",
+  "motivo": "Item metatextual sobre a ordem de exposição da aula; não cobra conteúdo."
+ },
+ {
+  "id": "cp-e02-q71",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q72",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q73",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q74",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q75",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q76",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q77",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q78",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q79",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q80",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q81",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q82",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q83",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q84",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q85",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q86",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q87",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q88",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q89",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q90",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q91",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q92",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q93",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q94",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "CORRIGIDO",
+  "motivo": "O conector \"apesar da ampliação do sufrágio\" não está na fonte (que diz \"até a ampliação\") e criava segundo ponto de falsidade.",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de \"Oligarquia competitiva\", conforme o material da Aula 02. No esquema de Dahl, a oligarquia competitiva corresponde a um regime com baixa contestação pública e alta inclusividade, como a Inglaterra do século XIX até a ampliação do sufrágio, em 1867 e 1884.",
+  "novo_comentario": "Errado. A fonte diz: \"A) Correto. A Inglaterra tinha alta contestação e baixa inclusividade\" e, no quadro, \"Alta [contestação] Baixa [participação] Oligarquia Competitiva\" (Estratégia, Aula 02, pp. 52-53). O item inverte as dimensões: traz \"baixa contestação pública e alta inclusividade\". Versão correta: a oligarquia competitiva combina alta contestação pública e baixa inclusividade, como a Inglaterra do século XIX até a ampliação do sufrágio."
+ },
+ {
+  "id": "cp-e02-q95",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q96",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q97",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q98",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q99",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q100",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q101",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q102",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q103",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q104",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confirmado na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q105",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos. Trecho p. 37 íntegro (quadro iniciado na p. 36)."
+ },
+ {
+  "id": "cp-e02-q106",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos. Inversão forma/sistema é uma só troca; 'Estado federado' consta da fonte."
+ },
+ {
+  "id": "cp-e02-q107",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos. Frase da Indireta está íntegra na fonte (embaralhamento só atinge a parte da Direta); 'diretamente' não muda o sentido."
+ },
+ {
+  "id": "cp-e02-q108",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e02-q109",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos. Não associa Habermas ao tipo."
+ },
+ {
+  "id": "cp-e02-q110",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos. Não associa Rawls ao tipo."
+ }
+]

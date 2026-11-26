@@ -1,0 +1,1169 @@
+[
+ {
+  "id": "cp-e02-c74",
+  "no": "est-a02-r6",
+  "topico": "cp-1",
+  "tema": "Regime político",
+  "pergunta": "Segundo Maurice Duverger, a que diz respeito o regime político?",
+  "resposta": [
+   "Estrutura global da realidade política"
+  ],
+  "explicacao": "Com todo o seu complexo institucional e ideológico.",
+  "fonte": "Aula 02, p. 35",
+  "citacao": "Regime político diz respeito à estrutura global da realidade política, com todo o seu complexo institucional e ideológico, segundo Maurice Duverger.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c75",
+  "no": "est-a02-r6",
+  "topico": "cp-1",
+  "tema": "Regime político",
+  "pergunta": "Em regra, quais dois regimes políticos os autores tratam?",
+  "resposta": [
+   "Democrático",
+   "Ditatorial"
+  ],
+  "explicacao": "Ligados às liberdades e ao grau de participação.",
+  "fonte": "Aula 02, p. 37",
+  "citacao": "Em regra, os autores tratam de o Regime Democrático e Regime Ditatorial",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c76",
+  "no": "est-a02-r6",
+  "topico": "cp-1",
+  "tema": "Regime político",
+  "pergunta": "Qual é o regime político do Brasil?",
+  "resposta": [
+   "Democrático"
+  ],
+  "explicacao": "Estado Federado, República, presidencialismo e regime democrático.",
+  "fonte": "Aula 02, p. 37",
+  "citacao": "Regime Político: Democrático",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c77",
+  "no": "est-a02-r6",
+  "topico": "cp-1",
+  "tema": "Regime político",
+  "pergunta": "O regime político trata da forma como o que é exercido?",
+  "resposta": [
+   "O poder"
+  ],
+  "explicacao": "Quais regras e instituições estabelecem o exercício do poder político.",
+  "fonte": "Aula 02, p. 36",
+  "citacao": "aqui estamos falando da forma como o poder é exercido",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c78",
+  "no": "est-a02-r6.1",
+  "topico": "cp-1",
+  "tema": "Regime político e os demais aspectos do Estado",
+  "pergunta": "Segundo alguns autores citados na Aula 02, em que outro aspecto o regime político estaria contido?",
+  "resposta": [
+   "Sistema de governo"
+  ],
+  "explicacao": "A fonte grafa \"sistema e governo\" (erro de digitação).",
+  "fonte": "Aula 02, p. 36",
+  "citacao": "Alguns autores afirmam que o regime político está dentro do sistema e governo.",
+  "aulaOrigem": "02",
+  "nota": "Posição minoritária citada na aula. O kit cp-1 trata regime e sistema de governo como camadas separadas, e a própria aula as separa nos quadros das pp. 36-37."
+ },
+ {
+  "id": "cp-e02-c79",
+  "no": "est-a02-r6.2",
+  "topico": "cp-1",
+  "tema": "Regime democrático e autocrático",
+  "pergunta": "Nos regimes democráticos, em que está fundada a ideia de soberania?",
+  "resposta": [
+   "Participação popular"
+  ],
+  "explicacao": "Há partidos, eleições e liberdade de imprensa e de associação.",
+  "fonte": "Aula 02, p. 37",
+  "citacao": "A ideia de soberania está fundada na participação popular.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c80",
+  "no": "est-a02-r6.2.1",
+  "topico": "cp-1",
+  "tema": "Democracia direta e indireta",
+  "pergunta": "Como a Aula 02 define a democracia indireta quanto ao exercício do poder?",
+  "resposta": [
+   "Uso exclusivo de representantes"
+  ],
+  "explicacao": "Na semidireta há mistura. A definição pela escolha do Presidente (p. 37) confunde eleição indireta com democracia indireta e não é adotada aqui. Critério: forma de exercício do poder (Bobbio; José Afonso da Silva).",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "Democracia indireta, uso exclusivo de representante no exercício de poder",
+  "aulaOrigem": "02",
+  "nota": "Corrigido segundo a literatura: democracia indireta não se define pela forma de escolha do Presidente; \"democracia indireta é conceito diverso de eleições indiretas\" (José Afonso da Silva)."
+ },
+ {
+  "id": "cp-e02-c81",
+  "no": "est-a02-r6.2.2",
+  "topico": "cp-1",
+  "tema": "Mecanismos de participação semidireta",
+  "pergunta": "Quais mecanismos de participação popular existem nos regimes democráticos, além das eleições?",
+  "resposta": [
+   "Plebiscito",
+   "Referendo",
+   "Projetos de lei apresentados pelo povo"
+  ],
+  "explicacao": "Há também conselhos populares e audiências públicas.",
+  "fonte": "Aula 02, p. 37",
+  "citacao": "Esses mecanismos são o plebiscito, o referendo e a possibilidade de o povo apresentar projetos de lei.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c82",
+  "no": "est-a02-r6.2.2",
+  "topico": "cp-1",
+  "tema": "Mecanismos de participação semidireta",
+  "pergunta": "Além de plebiscito, referendo e iniciativa de leis, que outros mecanismos de participação a aula cita?",
+  "resposta": [
+   "Conselhos populares",
+   "Audiências públicas"
+  ],
+  "explicacao": "Mecanismos para além das eleições.",
+  "fonte": "Aula 02, p. 37",
+  "citacao": "Além disso há conselhos populares, audiências públicas, entre outros mecanismos de participação",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c83",
+  "no": "est-a02-r6.2.3",
+  "topico": "cp-1",
+  "tema": "Autocracia (regime autocrático)",
+  "pergunta": "Qual é o outro nome do regime autocrático?",
+  "resposta": [
+   "Ditatorial"
+  ],
+  "explicacao": "Nega liberdades individuais e políticas.",
+  "fonte": "Aula 02, p. 38",
+  "citacao": "O Regime Autocrático (ou ditatorial) se caracteriza, pelo menos do ponto de vista político, por negar",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c84",
+  "no": "est-a02-r6.3",
+  "topico": "cp-1",
+  "tema": "Autocracia e transição de regime",
+  "pergunta": "Desde que ano as mudanças de regime no sul da Europa e na América Latina inspiraram as teorias da transição?",
+  "resposta": [
+   "1974"
+  ],
+  "explicacao": "São as teorias da transição.",
+  "fonte": "Aula 02, p. 38",
+  "citacao": "A partir das experiências de mudança de regime político acontecidas, desde 1974, no sul da Europa e na América Latina",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c85",
+  "no": "est-a02-r6.3",
+  "topico": "cp-1",
+  "tema": "Autocracia e transição de regime",
+  "pergunta": "Como são conhecidas as teorias que analisam a transição de regime político?",
+  "resposta": [
+   "Transitologia"
+  ],
+  "explicacao": "Analisam a passagem de regimes autoritários para democráticos.",
+  "fonte": "Aula 02, p. 38",
+  "citacao": "são as conhecidas teorias da transição - ou, transitologia",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c86",
+  "no": "est-a02-r6.3",
+  "topico": "cp-1",
+  "tema": "Autocracia e transição de regime",
+  "pergunta": "Que tipo de democracia pode surgir se crises econômicas forem geridas sem transparência e envolvimento da sociedade?",
+  "resposta": [
+   "Democracias delegativas"
+  ],
+  "explicacao": "Elemento 6 da sistematização das transições.",
+  "fonte": "Aula 02, p. 39",
+  "citacao": "devem ser realizadas com transparência e envolvimento da sociedade para evitar a criação de \"democracias delegativas\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c87",
+  "no": "est-a02-r6.3.1",
+  "topico": "cp-1",
+  "tema": "Democracia com defeitos de nascença",
+  "pergunta": "Que \"defeitos de nascença\" a transição deve evitar na nova democracia?",
+  "resposta": [
+   "Falta de institucionalização",
+   "Características personalistas"
+  ],
+  "explicacao": "Elemento 4 da sistematização das transições.",
+  "fonte": "Aula 02, p. 39",
+  "citacao": "como falta de institucionalização ou características personalistas",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c88",
+  "no": "est-a02-r6.4",
+  "topico": "cp-1",
+  "tema": "Tipos de democracia (sistematização)",
+  "pergunta": "De qual plataforma vêm os mapas agregados à sistematização dos tipos de democracia?",
+  "resposta": [
+   "V-Dem"
+  ],
+  "explicacao": "Dados do relatório de março de 2023.",
+  "fonte": "Aula 02, p. 58",
+  "citacao": "Agreguei à definição os mapas disponíveis na plataforma do V-Dem",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c89",
+  "no": "est-a02-r6.4.1",
+  "topico": "cp-1",
+  "tema": "Democracia deliberativa",
+  "pergunta": "Qual tipo de democracia se concentra no processo de decisão motivado pela razão pública, focada no bem comum?",
+  "resposta": [
+   "Deliberativa"
+  ],
+  "explicacao": "Contrasta com apelos emocionais, interesses paroquiais ou coerção.",
+  "fonte": "Aula 02, p. 58",
+  "citacao": "Um processo deliberativo é aquele em que a razão pública, focada no bem comum, motiva as decisões políticas",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c90",
+  "no": "est-a02-r6.4.1",
+  "topico": "cp-1",
+  "tema": "Democracia deliberativa",
+  "pergunta": "Para a democracia deliberativa, a democracia exige mais do que o quê?",
+  "resposta": [
+   "Agregação de preferências existentes"
+  ],
+  "explicacao": "Exige diálogo respeitoso entre participantes informados.",
+  "fonte": "Aula 02, p. 58",
+  "citacao": "a democracia exige mais do que uma agregação de preferências existentes",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c91",
+  "no": "est-a02-r6.4.2",
+  "topico": "cp-1",
+  "tema": "Democracia igualitária",
+  "pergunta": "Qual tipo de democracia sustenta que desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais?",
+  "resposta": [
+   "Igualitária"
+  ],
+  "explicacao": "Alcançada com igual proteção de direitos, igual distribuição de recursos e igual acesso ao poder.",
+  "fonte": "Aula 02, p. 59",
+  "citacao": "A democracia igualitária sustenta que as desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c92",
+  "no": "est-a02-r6.4.3",
+  "topico": "cp-1",
+  "tema": "Democracia eleitoral",
+  "pergunta": "Qual tipo de democracia tem como valor central tornar os governantes responsivos aos cidadãos?",
+  "resposta": [
+   "Eleitoral"
+  ],
+  "explicacao": "Por competição pela aprovação do eleitorado, com sufrágio amplo e eleições limpas.",
+  "fonte": "Aula 02, p. 60",
+  "citacao": "A democracia eleitoral busca incorporar o valor central de tornar os governantes responsivos aos cidadãos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c93",
+  "no": "est-a02-r6.4.4",
+  "topico": "cp-1",
+  "tema": "Democracia liberal",
+  "pergunta": "Qual tipo de democracia julga a qualidade democrática pelos limites impostos ao governo?",
+  "resposta": [
+   "Liberal"
+  ],
+  "explicacao": "Adota visão \"negativa\" do poder político.",
+  "fonte": "Aula 02, p. 61",
+  "citacao": "na medida em que julga a qualidade da democracia pelos limites impostos ao governo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c94",
+  "no": "est-a02-r6.4.5",
+  "topico": "cp-1",
+  "tema": "Democracia participativa",
+  "pergunta": "Qual tipo de democracia prefere, sempre que possível, o governo direto pelos cidadãos?",
+  "resposta": [
+   "Participativa"
+  ],
+  "explicacao": "Preocupa-se com a delegação de autoridade a representantes.",
+  "fonte": "Aula 02, p. 62",
+  "citacao": "Portanto, o governo direto pelos cidadãos é preferido sempre que possível.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c95",
+  "no": "est-a02-r7",
+  "topico": "cp-1",
+  "tema": "Democracia na história",
+  "pergunta": "Em perspectiva histórica, a democracia se relaciona à salvaguarda de quais direitos?",
+  "resposta": [
+   "Liberdade",
+   "Igualdade",
+   "Participação política"
+  ],
+  "explicacao": "Direitos fundamentais do ser humano.",
+  "fonte": "Aula 02, p. 40",
+  "citacao": "dos direitos de liberdade, igualdade e participação política",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c96",
+  "no": "est-a02-r7",
+  "topico": "cp-1",
+  "tema": "Democracia na história",
+  "pergunta": "Depois de liberdade e igualdade, a partir de qual chave a aula propõe pensar a democracia?",
+  "resposta": [
+   "Participação"
+  ],
+  "explicacao": "Liberdade e igualdade vêm das aulas anteriores.",
+  "fonte": "Aula 02, p. 40",
+  "citacao": "Agora, precisamos pensar a partir da chave PARTICIPAÇÃO",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c97",
+  "no": "est-a02-r7",
+  "topico": "cp-1",
+  "tema": "Democracia na história",
+  "pergunta": "Na Idade Média, que tipo de estratificação social tornava impossível uma verdadeira democracia?",
+  "resposta": [
+   "Sistemas estamentais"
+  ],
+  "explicacao": "Acesso a privilégios e deveres rigidamente definido.",
+  "fonte": "Aula 02, p. 43",
+  "citacao": "a sociedade estava estratificada em sistemas estamentais",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c98",
+  "no": "est-a02-r7",
+  "topico": "cp-1",
+  "tema": "Democracia na história",
+  "pergunta": "Como Hobbes descreveu o monarca soberano dos séculos XV a XVIII?",
+  "resposta": [
+   "Leviatã"
+  ],
+  "explicacao": "Os indivíduos eram tratados como súditos.",
+  "fonte": "Aula 02, p. 43",
+  "citacao": "enquanto o monarca era considerado soberano, um \"Leviatã\", como Hobbes o descreveu",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c99",
+  "no": "est-a02-r7.1",
+  "topico": "cp-1",
+  "tema": "Democracia na Grécia Antiga",
+  "pergunta": "Em que local de Atenas o povo reunido exercia diretamente o poder político?",
+  "resposta": [
+   "Ágora"
+  ],
+  "explicacao": "Atenas é considerada o berço da democracia.",
+  "fonte": "Aula 02, p. 41",
+  "citacao": "onde o povo, reunido na Ágora, praticava o exercício direto e imediato do poder político",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c100",
+  "no": "est-a02-r7.1",
+  "topico": "cp-1",
+  "tema": "Democracia na Grécia Antiga",
+  "pergunta": "Quais grupos estavam excluídos da democracia ateniense?",
+  "resposta": [
+   "Mulheres",
+   "Escravos",
+   "Estrangeiros"
+  ],
+  "explicacao": "Apenas 40 mil de 320 mil pessoas eram cidadãs.",
+  "fonte": "Aula 02, p. 41",
+  "citacao": "da democracia ateniense estavam excluídos: Mulheres Escravos Estrangeiros",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c101",
+  "no": "est-a02-r7.1",
+  "topico": "cp-1",
+  "tema": "Democracia na Grécia Antiga",
+  "pergunta": "Como era frequentemente chamada a democracia governamental grega, que não tolerava os abusos do Estado Monárquico?",
+  "resposta": [
+   "Isonomia"
+  ],
+  "explicacao": "Magistrados eram eleitos por sorteio.",
+  "fonte": "Aula 02, p. 41",
+  "citacao": "frequentemente chamada de isonomia",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c102",
+  "no": "est-a02-r7.1.1",
+  "topico": "cp-1",
+  "tema": "Críticas à democracia grega",
+  "pergunta": "Como críticos rigorosos qualificam a democracia grega?",
+  "resposta": [
+   "Elitista e restrita"
+  ],
+  "explicacao": "Ainda assim, é um marco na história política.",
+  "fonte": "Aula 02, p. 42",
+  "citacao": "Alguns críticos rigorosos argumentam que a democracia grega não era verdadeiramente democrática, mas sim elitista e restrita.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c103",
+  "no": "est-a02-r7.2",
+  "topico": "cp-1",
+  "tema": "Democracia na Roma Antiga",
+  "pergunta": "Que forma de exercício político predominou em Roma?",
+  "resposta": [
+   "Representativa"
+  ],
+  "explicacao": "Na Grécia prevaleceu a democracia direta.",
+  "fonte": "Aula 02, p. 42",
+  "citacao": "em Roma predominou a forma representativa de exercício político",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c104",
+  "no": "est-a02-r7.2",
+  "topico": "cp-1",
+  "tema": "Democracia na Roma Antiga",
+  "pergunta": "Qual é o significado de \"República\"?",
+  "resposta": [
+   "Coisa pública"
+  ],
+  "explicacao": "Roma aprimorou a ideia de República e de representação.",
+  "fonte": "Aula 02, p. 42",
+  "citacao": "cujo significado é \"coisa pública\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c105",
+  "no": "est-a02-r7.2",
+  "topico": "cp-1",
+  "tema": "Democracia na Roma Antiga",
+  "pergunta": "Na Monarquia Romana, em que organização política o Conselho de Anciãos se transformou?",
+  "resposta": [
+   "Senado"
+  ],
+  "explicacao": "Suas funções eram selecionar reis e assessorar o monarca.",
+  "fonte": "Aula 02, p. 42",
+  "citacao": "o Conselho de Anciãos se transformou em uma organização política mais complexa, o SENADO",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c106",
+  "no": "est-a02-r7.3",
+  "topico": "cp-1",
+  "tema": "Era moderna e revoluções liberais",
+  "pergunta": "Por meio de que instrumento as revoluções liberais buscavam ampliar a cidadania e limitar o poder?",
+  "resposta": [
+   "Constituições"
+  ],
+  "explicacao": "Independência dos EUA (1776) e Revolução Francesa (1789).",
+  "fonte": "Aula 02, p. 43",
+  "citacao": "limitar o poder e estabelecer sistemas formais de justiça por meio de Constituições",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c107",
+  "no": "est-a02-r7.3.1",
+  "topico": "cp-1",
+  "tema": "Sufrágio universal como luta social (Lefort)",
+  "pergunta": "Para Claude Lefort, seria uma aberração considerar a democracia exclusivamente como o quê?",
+  "resposta": [
+   "Burguesa"
+  ],
+  "explicacao": "Obra: A invenção democrática (1983).",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "seria uma aberração considerar a democracia como algo exclusivamente burguês",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c108",
+  "no": "est-a02-r7.3.1",
+  "topico": "cp-1",
+  "tema": "Sufrágio universal como luta social (Lefort)",
+  "pergunta": "Segundo Lefort, o que foi preciso para o estabelecimento do sufrágio universal?",
+  "resposta": [
+   "Luta social"
+  ],
+  "explicacao": "Os oprimidos tiveram de se fazer ouvir.",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "Foi preciso uma luta social para o estabelecimento do sufrágio universal",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c109",
+  "no": "est-a02-r7.3.2",
+  "topico": "cp-1",
+  "tema": "Tocqueville e Mill: igualdade x liberdade",
+  "pergunta": "Que dilema a aula associa a Tocqueville e Stuart Mill?",
+  "resposta": [
+   "Igualdade x liberdade"
+  ],
+  "explicacao": "Ambos viam ameaças à liberdade também na maioria.",
+  "fonte": "Aula 02, p. 12",
+  "citacao": "Alexis de Tocqueville e Stuart Mill e o dilema da igualdade X liberdade",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c110",
+  "no": "est-a02-r7.3.2.1",
+  "topico": "cp-1",
+  "tema": "Tocqueville: igualdade e despotismo majoritário",
+  "pergunta": "Que risco Tocqueville previu no crescente igualitarismo?",
+  "resposta": [
+   "Despotismo majoritário"
+  ],
+  "explicacao": "A igualdade poderia limitar a liberdade.",
+  "fonte": "Aula 02, p. 13",
+  "citacao": "previu que o crescente igualitarismo poderia limitar a liberdade e levar a uma forma de despotismo majoritário",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c111",
+  "no": "est-a02-r7.3.2.1",
+  "topico": "cp-1",
+  "tema": "Tocqueville: igualdade e despotismo majoritário",
+  "pergunta": "Qual medida de Tocqueville evitaria uma sociedade de massas despótica?",
+  "resposta": [
+   "Incentivo à participação política"
+  ],
+  "explicacao": "Ao lado do espírito de cidadania, solidariedade e sociedade civil fortalecida.",
+  "fonte": "Aula 02, p. 13",
+  "citacao": "Incentivo à participação política, pois a não participação poderia levar a uma sociedade de massas despótica",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c112",
+  "no": "est-a02-r7.3.2.2",
+  "topico": "cp-1",
+  "tema": "Mill: tirania da maioria e três liberdades",
+  "pergunta": "Para Mill, em que hipótese o governo deveria interferir nas liberdades individuais?",
+  "resposta": [
+   "Para evitar danos a outros"
+  ],
+  "explicacao": "Exemplo da aula: restrição ao cigarro em locais públicos.",
+  "fonte": "Aula 02, p. 14",
+  "citacao": "o governo só deveria interferir nas liberdades individuais para evitar que indivíduos causassem danos a outros",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c113",
+  "no": "est-a02-r7.3.2.2",
+  "topico": "cp-1",
+  "tema": "Mill: tirania da maioria e três liberdades",
+  "pergunta": "Quais três tipos de liberdade Mill sistematiza em \"Sobre a Liberdade\"?",
+  "resposta": [
+   "Consciência",
+   "Ser diferente",
+   "Associação"
+  ],
+  "explicacao": "Mill também se preocupava com a tirania da maioria.",
+  "fonte": "Aula 02, p. 14",
+  "citacao": "Liberdade de consciência [...] Liberdade de ser diferente [...] Liberdade de associação",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c114",
+  "no": "est-a02-r7.4",
+  "topico": "cp-1",
+  "tema": "Democracia contemporânea: soberania popular, representação e voto",
+  "pergunta": "Em que está fundada a democracia no mundo contemporâneo?",
+  "resposta": [
+   "Soberania popular"
+  ],
+  "explicacao": "Efetivada por representação e voto.",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "A democracia no mundo contemporâneo está fundada na soberania popular",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c115",
+  "no": "est-a02-r7.4",
+  "topico": "cp-1",
+  "tema": "Democracia contemporânea: soberania popular, representação e voto",
+  "pergunta": "Segundo Bobbio, por que os debates do século XIX identificaram a forma representativa como a mais praticável?",
+  "resposta": [
+   "Compatível com o Estado liberal"
+  ],
+  "explicacao": "A reunião de todos em assembleias não seria viável.",
+  "fonte": "Aula 02, p. 44",
+  "citacao": "caminharam para identificar a forma representativa como a mais praticável por ser compatível com o Estado liberal",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c116",
+  "no": "est-a02-r7.4.1",
+  "topico": "cp-1",
+  "tema": "Três tradições do pensamento político (Bobbio)",
+  "pergunta": "Na teoria aristotélica das três formas de governo, como se define a aristocracia?",
+  "resposta": [
+   "Governo de poucos"
+  ],
+  "explicacao": "Monarquia: governo de um só; democracia: governo de todos os cidadãos.",
+  "fonte": "Aula 02, p. 45",
+  "citacao": "e da aristocracia, como Governo de poucos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c117",
+  "no": "est-a02-r7.4.1",
+  "topico": "cp-1",
+  "tema": "Três tradições do pensamento político (Bobbio)",
+  "pergunta": "Na teoria moderna de Maquiavel, quais são as duas formas históricas de governo?",
+  "resposta": [
+   "Monarquia",
+   "República"
+  ],
+  "explicacao": "A democracia é uma forma de república.",
+  "fonte": "Aula 02, p. 45",
+  "citacao": "as formas históricas de Governo são essencialmente duas: a monarquia e a república",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c118",
+  "no": "est-a02-r7.4.2",
+  "topico": "cp-1",
+  "tema": "Partidos políticos nas democracias atuais",
+  "pergunta": "Segundo Tocqueville, o que são os partidos?",
+  "resposta": [
+   "Um mal inerente aos governos livres"
+  ],
+  "explicacao": "Burke, ao contrário, os vê como respeitáveis.",
+  "fonte": "Aula 02, p. 45",
+  "citacao": "os partidos são um mal inerente aos governos livres",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c119",
+  "no": "est-a02-r7.4.2",
+  "topico": "cp-1",
+  "tema": "Partidos políticos nas democracias atuais",
+  "pergunta": "Para Edmund Burke, os partidos são instrumento de quê?",
+  "resposta": [
+   "Governo livre"
+  ],
+  "explicacao": "Fundamentados em princípios comuns.",
+  "fonte": "Aula 02, p. 46",
+  "citacao": "os partidos são respeitáveis e são um instrumento de governo livre",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c120",
+  "no": "est-a02-r7.4.3",
+  "topico": "cp-1",
+  "tema": "Schumpeter: abordagem elitista",
+  "pergunta": "Para Schumpeter, a democracia é disputa entre quem pela conquista dos votos?",
+  "resposta": [
+   "Elites políticas"
+  ],
+  "explicacao": "O objetivo é controlar o Estado.",
+  "fonte": "Aula 02, p. 47",
+  "citacao": "a democracia é um sistema de disputa entre elites políticas pela conquista dos votos do eleitorado",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c121",
+  "no": "est-a02-r7.4.3",
+  "topico": "cp-1",
+  "tema": "Schumpeter: abordagem elitista",
+  "pergunta": "Por que, para Schumpeter, não é possível identificar uma vontade popular unificada?",
+  "resposta": [
+   "As pessoas são diferentes"
+  ],
+  "explicacao": "Têm ambições, desejos e interesses diversos.",
+  "fonte": "Aula 02, p. 46",
+  "citacao": "uma vez que as pessoas são naturalmente diferentes e têm ambições, desejos e interesses diversos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c122",
+  "no": "est-a02-r7.4.3.1",
+  "topico": "cp-1",
+  "tema": "Democracia como método",
+  "pergunta": "Para Schumpeter, a democracia é um método ou procedimento de quê?",
+  "resposta": [
+   "Escolha de líderes por eleições"
+  ],
+  "explicacao": "Não é um sistema de decisões racionais e informadas dos cidadãos.",
+  "fonte": "Aula 02, p. 47",
+  "citacao": "ele vê a democracia como um método ou procedimento de escolha de líderes políticos por meio de eleições",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c123",
+  "no": "est-a02-r8",
+  "topico": "cp-1",
+  "tema": "Teorias e crise da democracia",
+  "pergunta": "Que abordagem a aula atribui a Robert Dahl?",
+  "resposta": [
+   "Pluralista"
+  ],
+  "explicacao": "Dahl analisa democratização e oposição pública.",
+  "fonte": "Aula 02, p. 48",
+  "citacao": "Robert Dahl (abordagem pluralista)",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c124",
+  "no": "est-a02-r8",
+  "topico": "cp-1",
+  "tema": "Teorias e crise da democracia",
+  "pergunta": "Que teoria da democracia a Aula 02 associa a Carole Pateman?",
+  "resposta": [
+   "Democracia participativa"
+  ],
+  "explicacao": "O título da seção a chama de \"abordagem institucionalista\", rótulo que destoa do corpo do texto e do kit cp-1.",
+  "fonte": "Aula 02, p. 53",
+  "citacao": "Pateman é uma teórica política britânica conhecida por seu trabalho na área da teoria democrática",
+  "aulaOrigem": "02",
+  "nota": "Rótulo \"institucionalista\" aparece só no título da seção (p. 53); o kit cp-1 trata Pateman como teórica da democracia participativa."
+ },
+ {
+  "id": "cp-e02-c125",
+  "no": "est-a02-r8",
+  "topico": "cp-1",
+  "tema": "Teorias e crise da democracia",
+  "pergunta": "Que abordagem a aula atribui a Joseph Schumpeter?",
+  "resposta": [
+   "Elitista"
+  ],
+  "explicacao": "Democracia como disputa entre elites.",
+  "fonte": "Aula 02, p. 46",
+  "citacao": "Joseph Schumpeter (abordagem elitista)",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c126",
+  "no": "est-a02-r8",
+  "topico": "cp-1",
+  "tema": "Teorias e crise da democracia",
+  "pergunta": "Com qual autor italiano a aula fixa as características do Regime Democrático Contemporâneo?",
+  "resposta": [
+   "Norberto Bobbio"
+  ],
+  "explicacao": "Sem elas não haveria legitimidade democrática.",
+  "fonte": "Aula 02, p. 57",
+  "citacao": "Com o italiano Bobbio, podemos fixar um conjunto de características que ajudam a definir o Regime Democrático Contemporâneo",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c127",
+  "no": "est-a02-r8.1",
+  "topico": "cp-1",
+  "tema": "Características da democracia contemporânea (Bobbio e Bonavides)",
+  "pergunta": "Segundo Paulo Bonavides, qual é a fonte de legitimação do poder na democracia atual?",
+  "resposta": [
+   "Soberania popular"
+  ],
+  "explicacao": "Primeiro dos oito traços listados.",
+  "fonte": "Aula 02, p. 57",
+  "citacao": "1) a soberania popular como fonte de legitimação do poder",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c128",
+  "no": "est-a02-r8.1.1",
+  "topico": "cp-1",
+  "tema": "Bobbio: nove características",
+  "pergunta": "Segundo Bobbio, que direito da minoria nenhuma decisão por maioria deve limitar, de modo especial?",
+  "resposta": [
+   "Tornar-se maioria"
+  ],
+  "explicacao": "Em paridade de condições.",
+  "fonte": "Aula 02, p. 57",
+  "citacao": "nenhuma decisão tomada por maioria deve limitar os direitos da minoria, de um modo especial o direito de tornar-se maioria",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c129",
+  "no": "est-a02-r8.1.1",
+  "topico": "cp-1",
+  "tema": "Bobbio: nove características",
+  "pergunta": "Segundo Bobbio, que princípio vale para as eleições e para as decisões do órgão político supremo?",
+  "resposta": [
+   "Maioria numérica"
+  ],
+  "explicacao": "Sétima característica.",
+  "fonte": "Aula 02, p. 57",
+  "citacao": "vale o princípio da maioria numérica",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c130",
+  "no": "est-a02-r8.1.2",
+  "topico": "cp-1",
+  "tema": "Bonavides: oito traços da democracia atual",
+  "pergunta": "Segundo Bonavides, com o que o sufrágio universal é combinado na democracia atual?",
+  "resposta": [
+   "Pluralidade de candidatos e de partidos"
+  ],
+  "explicacao": "Segundo traço.",
+  "fonte": "Aula 02, p. 58",
+  "citacao": "o sufrágio universal combinado com uma pluralidade de candidatos e de partidos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c131",
+  "no": "est-a02-r8.1.2",
+  "topico": "cp-1",
+  "tema": "Bonavides: oito traços da democracia atual",
+  "pergunta": "Que mecanismo a aula cita como exemplo da limitação do poder dos governantes, no traço de Bonavides?",
+  "resposta": [
+   "Impeachment"
+  ],
+  "explicacao": "Junto com a temporalidade dos mandatos.",
+  "fonte": "Aula 02, p. 58",
+  "citacao": "basta pensar na possibilidade do mecanismo do impeachment",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c132",
+  "no": "est-a02-r8.2",
+  "topico": "cp-1",
+  "tema": "Dahl: contestação pública e participação",
+  "pergunta": "Em Dahl, a que diz respeito o direito de participação?",
+  "resposta": [
+   "Inclusão igualitária dos cidadãos"
+  ],
+  "explicacao": "A outra dimensão é a contestação pública.",
+  "fonte": "Aula 02, p. 49",
+  "citacao": "O direito de participação diz respeito à inclusão igualitária dos cidadãos no processo político",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c133",
+  "no": "est-a02-r8.2",
+  "topico": "cp-1",
+  "tema": "Dahl: contestação pública e participação",
+  "pergunta": "Quais três condições Dahl considera essenciais para a responsividade do governo?",
+  "resposta": [
+   "Formular preferências",
+   "Expressar preferências",
+   "Igual consideração das preferências"
+  ],
+  "explicacao": "São fundamentais para a democracia genuína.",
+  "fonte": "Aula 02, p. 49",
+  "citacao": "Capacidade de formular preferências [...] Capacidade de expressar preferências",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c134",
+  "no": "est-a02-r8.2.1",
+  "topico": "cp-1",
+  "tema": "Poliarquia e graus de regime",
+  "pergunta": "Que conceito Dahl usa para regimes relativamente democráticos, mas não plenamente?",
+  "resposta": [
+   "Poliarquia"
+  ],
+  "explicacao": "Alta contestação e alta participação.",
+  "fonte": "Aula 02, p. 51",
+  "citacao": "para descrever regimes que são relativamente democráticos, mas não plenamente",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c135",
+  "no": "est-a02-r8.2.1",
+  "topico": "cp-1",
+  "tema": "Poliarquia e graus de regime",
+  "pergunta": "Em que posição do espaço de Dahl se situa a democracia ideal?",
+  "resposta": [
+   "Canto superior direito"
+  ],
+  "explicacao": "Onde contestação e participação são altas.",
+  "fonte": "Aula 02, p. 51",
+  "citacao": "a democracia ideal pode ser representada no canto superior direito do espaço definido por essas duas dimensões",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c136",
+  "no": "est-a02-r8.2.1.1",
+  "topico": "cp-1",
+  "tema": "Poliarquia",
+  "pergunta": "Qual regime de Dahl combina alta contestação pública e alta participação?",
+  "resposta": [
+   "Poliarquia"
+  ],
+  "explicacao": "Mesmo assim não atinge o ideal democrático.",
+  "fonte": "Aula 02, p. 52",
+  "citacao": "Alta Alta Poliarquia",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c137",
+  "no": "est-a02-r8.2.1.2",
+  "topico": "cp-1",
+  "tema": "Oligarquia competitiva",
+  "pergunta": "Qual regime de Dahl combina alta contestação pública e baixa participação?",
+  "resposta": [
+   "Oligarquia competitiva"
+  ],
+  "explicacao": "Exemplo da aula: Inglaterra do século XIX.",
+  "fonte": "Aula 02, p. 52",
+  "citacao": "Alta Baixa Oligarquia Competitiva",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c138",
+  "no": "est-a02-r8.2.1.2",
+  "topico": "cp-1",
+  "tema": "Oligarquia competitiva",
+  "pergunta": "O movimento de hegemonia fechada para oligarquia competitiva representa o quê?",
+  "resposta": [
+   "Liberalização do regime"
+  ],
+  "explicacao": "Maior contestação pública.",
+  "fonte": "Aula 02, p. 50",
+  "citacao": "uma maior liberalização do regime",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c139",
+  "no": "est-a02-r8.2.1.3",
+  "topico": "cp-1",
+  "tema": "Hegemonia fechada",
+  "pergunta": "Qual regime de Dahl combina baixa contestação pública e baixa participação?",
+  "resposta": [
+   "Hegemonia fechada"
+  ],
+  "explicacao": "Ponto de partida do gráfico dahlsiano.",
+  "fonte": "Aula 02, p. 52",
+  "citacao": "Baixa Baixa Hegemonia Fechada",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c140",
+  "no": "est-a02-r8.2.1.4",
+  "topico": "cp-1",
+  "tema": "Hegemonia inclusiva",
+  "pergunta": "Qual regime de Dahl combina baixa contestação pública e alta participação?",
+  "resposta": [
+   "Hegemonia inclusiva"
+  ],
+  "explicacao": "A aula usa a URSS como exemplo.",
+  "fonte": "Aula 02, p. 52",
+  "citacao": "Baixa Alta Hegemonia Inclusiv",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c141",
+  "no": "est-a02-r8.2.2",
+  "topico": "cp-1",
+  "tema": "Garantias institucionais de Dahl",
+  "pergunta": "Quantas garantias institucionais Dahl identifica?",
+  "resposta": [
+   "Oito"
+  ],
+  "explicacao": "Ex.: liberdade de expressão, direito de voto, eleições livres e justas.",
+  "fonte": "Aula 02, p. 49",
+  "citacao": "o autor identifica oito garantias institucionais necessárias",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c142",
+  "no": "est-a02-r8.3",
+  "topico": "cp-1",
+  "tema": "Pateman e Habermas: participação e deliberação",
+  "pergunta": "Para Pateman, além de instituições representativas livres, o que é necessário à democracia?",
+  "resposta": [
+   "Um cidadão participativo"
+  ],
+  "explicacao": "Exige processos de socialização participativos.",
+  "fonte": "Aula 02, p. 54",
+  "citacao": "É necessário um cidadão participativo.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c143",
+  "no": "est-a02-r8.3.1",
+  "topico": "cp-1",
+  "tema": "Pateman: função educativa da participação",
+  "pergunta": "Na \"Teoria Contemporânea da Democracia\", segundo Pateman, qual é a função da participação?",
+  "resposta": [
+   "Proteção"
+  ],
+  "explicacao": "Proteção do indivíduo contra decisões arbitrárias dos líderes.",
+  "fonte": "Aula 02, p. 53",
+  "citacao": "a função da participação nessa teoria é apenas de proteção",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c144",
+  "no": "est-a02-r8.3.1",
+  "topico": "cp-1",
+  "tema": "Pateman: função educativa da participação",
+  "pergunta": "Para Pateman, qual é a principal função da participação na teoria participativa?",
+  "resposta": [
+   "Educativa"
+  ],
+  "explicacao": "No aspecto psicológico e na aquisição de práticas democráticas.",
+  "fonte": "Aula 02, p. 54",
+  "citacao": "é educativa; educativa no mais amplo sentido da palavra",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c145",
+  "no": "est-a02-r8.3.2",
+  "topico": "cp-1",
+  "tema": "Habermas: ética do agir comunicativo",
+  "pergunta": "Como se chama a abordagem de Habermas baseada em três princípios de comunicação aberta?",
+  "resposta": [
+   "Ética do agir comunicativo"
+  ],
+  "explicacao": "Regras: inclusão, participação e comunicação livre de violência e coação.",
+  "fonte": "Aula 02, p. 54",
+  "citacao": "O pensador desenvolveu uma abordagem conhecida como \"ética do agir comunicativo\"",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c146",
+  "no": "est-a02-r8.3.2",
+  "topico": "cp-1",
+  "tema": "Habermas: ética do agir comunicativo",
+  "pergunta": "Qual regra de Habermas garante que nenhum interlocutor seja impedido de exercer seus direitos?",
+  "resposta": [
+   "Comunicação livre de violência e coação"
+  ],
+  "explicacao": "As outras regras são inclusão e participação.",
+  "fonte": "Aula 02, p. 55",
+  "citacao": "enfatiza a importância de garantir que nenhum interlocutor seja impedido",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c147",
+  "no": "est-a02-r8.4",
+  "topico": "cp-1",
+  "tema": "Crise da democracia e autocratização",
+  "pergunta": "Como a aula denomina o atual movimento de regressão democrática no mundo?",
+  "resposta": [
+   "Onda de autocratização"
+  ],
+  "explicacao": "Hoje há mais autocracias fechadas do que democracias liberais.",
+  "fonte": "Aula 02, p. 63",
+  "citacao": "Assim, vivemos uma onda de autocratização.",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c148",
+  "no": "est-a02-r8.4",
+  "topico": "cp-1",
+  "tema": "Crise da democracia e autocratização",
+  "pergunta": "Que país deixou de ser considerado democracia em alguns índices internacionais em 2019?",
+  "resposta": [
+   "Índia"
+  ],
+  "explicacao": "Exemplo notável de regressão democrática.",
+  "fonte": "Aula 02, p. 63",
+  "citacao": "Um exemplo notável é a Índia, que, com sua vasta população, deixou de ser considerada uma democracia em alguns índices internacionais em 2019",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c149",
+  "no": "est-a02-r8.4.1",
+  "topico": "cp-1",
+  "tema": "Classificação de regimes pelo V-Dem",
+  "pergunta": "Na classificação do V-Dem, em qual categoria não há sequer eleições livres e multipartidárias?",
+  "resposta": [
+   "Autocracias fechadas"
+  ],
+  "explicacao": "Quatro categorias no total.",
+  "fonte": "Aula 02, p. 64",
+  "citacao": "Autocracias fechadas: não há sequer eleições livres e multipartidárias",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c150",
+  "no": "est-a02-r8.4.1",
+  "topico": "cp-1",
+  "tema": "Classificação de regimes pelo V-Dem",
+  "pergunta": "Na classificação do V-Dem, em qual categoria há eleições, mas restrições a liberdades comprometem a legitimidade dos pleitos?",
+  "resposta": [
+   "Autocracias eleitorais"
+  ],
+  "explicacao": "Restrições à associação ou à expressão.",
+  "fonte": "Aula 02, p. 64",
+  "citacao": "há eleições, mas restrições a liberdades como a de associação ou a de expressão comprometem a legitimidade dos pleitos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c151",
+  "no": "est-a02-r8.4.1",
+  "topico": "cp-1",
+  "tema": "Classificação de regimes pelo V-Dem",
+  "pergunta": "Na classificação do V-Dem, qual categoria tem eleições legítimas, mas problemas significativos na garantia de direitos?",
+  "resposta": [
+   "Democracias eleitorais"
+  ],
+  "explicacao": "Nas democracias liberais, há também controle do Executivo.",
+  "fonte": "Aula 02, p. 64",
+  "citacao": "há eleições multipartidárias legítimas, livres e justas, mas a garantia de direitos e o funcionamento institucional ainda têm problemas significativos",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c152",
+  "no": "est-a02-r8.4.2",
+  "topico": "cp-1",
+  "tema": "Causas da autocratização",
+  "pergunta": "Segundo autores como Levitsky e Ziblatt, como líderes autocráticos eleitos minam a democracia?",
+  "resposta": [
+   "Gradualmente, por dentro"
+  ],
+  "explicacao": "Sem fechar explicitamente as instituições.",
+  "fonte": "Aula 02, p. 65",
+  "citacao": "gradualmente minam a democracia por dentro",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c153",
+  "no": "est-a02-r8.4.2",
+  "topico": "cp-1",
+  "tema": "Causas da autocratização",
+  "pergunta": "Qual causa da autocratização envolve eleitores questionando a eficácia e a identificação com os partidos existentes?",
+  "resposta": [
+   "Crise de representação"
+  ],
+  "explicacao": "Outras: crises econômicas, redes sociais, polarização.",
+  "fonte": "Aula 02, p. 65",
+  "citacao": "Crise de Representação: há uma histórica crise de representação em vários países",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c154",
+  "no": "est-a02-r8.4.3",
+  "topico": "cp-1",
+  "tema": "Democracia digital",
+  "pergunta": "Quais princípios a democracia digital fortalece?",
+  "resposta": [
+   "Transparência",
+   "Deliberação",
+   "Participação"
+  ],
+  "explicacao": "Ela complementa, sem substituir, a representação tradicional.",
+  "fonte": "Aula 02, p. 66",
+  "citacao": "fortalecendo os princípios de transparência, deliberação e participação",
+  "aulaOrigem": "02"
+ },
+ {
+  "id": "cp-e02-c155",
+  "no": "est-a02-r8.4.3",
+  "topico": "cp-1",
+  "tema": "Democracia digital",
+  "pergunta": "Que dimensão, indispensável à democracia segundo O'Donnell, é favorecida pela transparência digital?",
+  "resposta": [
+   "Accountability"
+  ],
+  "explicacao": "Governos ficam mais sujeitos ao escrutínio público.",
+  "fonte": "Aula 02, p. 66",
+  "citacao": "Outro efeito direto da transparência digital é o favorecimento dos processos de accountability",
+  "aulaOrigem": "02"
+ }
+]

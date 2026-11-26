@@ -1,0 +1,493 @@
+[
+ {
+  "id": "cp-e04-c01",
+  "no": "est-a04-r1",
+  "topico": "cp-3",
+  "tema": "Representação política: conceito e dimensões",
+  "pergunta": "Segundo Bobbio, a representação política permite o exercício do poder por meio de quê?",
+  "resposta": [
+   "Delegação"
+  ],
+  "explicacao": "Os governantes agem em nome dos governados, com mediação de normas e instituições.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "um mecanismo político que permite o exercício do poder por meio de delegação, em que os governantes agem em nome dos governados",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c02",
+  "no": "est-a04-r1",
+  "topico": "cp-3",
+  "tema": "Representação política: conceito e dimensões",
+  "pergunta": "Segundo a Aula 04, que tipo de mandato a representação como relação de procuração fundamenta?",
+  "resposta": [
+   "Mandato vinculado"
+  ],
+  "explicacao": "Nele não há autonomia decisória do representante. Atenção: a Aula 04 (p. 7) atribui essa concepção a Hobbes. Na literatura, Hobbes dá ao soberano autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII; Pitkin, 1967, cap. 2); o mandato vinculado liga-se à tradição medieval e a Rousseau. Os kits cp-3 e a literatura prevalecem.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "Essa forma de representação fundamenta o chamado mandato vinculado, no qual não há autonomia decisória do representante",
+  "aulaOrigem": "04",
+  "nota": "Atenção: a Aula 04 (p. 7) atribui essa concepção a Hobbes. Na literatura, Hobbes dá ao soberano autorização ampla e irrevogável (Leviatã, cap. XVI a XVIII; Pitkin, 1967, cap. 2); o mandato vinculado liga-se à tradição medieval e a Rousseau. Os kits cp-3 e a literatura prevalecem."
+ },
+ {
+  "id": "cp-e04-c03",
+  "no": "est-a04-r1",
+  "topico": "cp-3",
+  "tema": "Representação política: conceito e dimensões",
+  "pergunta": "Qual autor expressou a ideia de que o representante não é porta-voz de vontades particulares, mas agente que delibera pela coletividade?",
+  "resposta": [
+   "Edmund Burke"
+  ],
+  "explicacao": "É a concepção de mandato independente.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "Essa concepção é expressa de forma emblemática por Edmund Burke, ao sustentar que o representante não deve ser mero porta-voz de vontades particulares",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c04",
+  "no": "est-a04-r1",
+  "topico": "cp-3",
+  "tema": "Representação política: conceito e dimensões",
+  "pergunta": "Qual concepção de mandato a teoria política moderna consagrou como expressão da soberania popular em contextos plurais?",
+  "resposta": [
+   "Mandato livre"
+  ],
+  "explicacao": "O representante é agente do interesse público, não porta-voz individual.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "A teoria política moderna consagrou o mandato livre como expressão da soberania popular em contextos plurais",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c05",
+  "no": "est-a04-r1.1",
+  "topico": "cp-3",
+  "tema": "Dimensões da representação (Pitkin)",
+  "pergunta": "Quantas dimensões complementares da representação Hanna Pitkin distingue?",
+  "resposta": [
+   "Quatro"
+  ],
+  "explicacao": "Formal, simbólica, descritiva e substantiva.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "Hanna Pitkin aprofunda essa discussão ao distinguir quatro dimensões complementares da",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c06",
+  "no": "est-a04-r1.1.1",
+  "topico": "cp-3",
+  "tema": "Formal",
+  "pergunta": "Na dimensão formal da representação (Pitkin), o que existe entre representante e representados?",
+  "resposta": [
+   "Autorização",
+   "prestação de contas"
+  ],
+  "explicacao": "A dimensão formal se define pela autorização e pela prestação de contas.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "formal, quando há autorização e prestação de contas",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c07",
+  "no": "est-a04-r1.1.2",
+  "topico": "cp-3",
+  "tema": "Simbólica",
+  "pergunta": "Em qual dimensão de Pitkin o representante encarna valores ou identidades coletivas?",
+  "resposta": [
+   "Simbólica"
+  ],
+  "explicacao": "A dimensão simbólica liga o representante a valores e identidades.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "quando o representante encarna valores ou identidades coletivas",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c08",
+  "no": "est-a04-r1.1.3",
+  "topico": "cp-3",
+  "tema": "Descritiva",
+  "pergunta": "Em qual dimensão de Pitkin o representante reflete a composição social do eleitorado?",
+  "resposta": [
+   "Descritiva"
+  ],
+  "explicacao": "A dimensão descritiva é a base da representação por presença.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "descritiva, quando reflete a composição social do eleitorado",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c09",
+  "no": "est-a04-r1.1.4",
+  "topico": "cp-3",
+  "tema": "Substantiva",
+  "pergunta": "Em qual dimensão de Pitkin o representante atua efetivamente em favor dos interesses dos representados?",
+  "resposta": [
+   "Substantiva"
+  ],
+  "explicacao": "A dimensão substantiva olha para a atuação, não para a forma ou a semelhança.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "substantiva, quando atua efetivamente em favor dos interesses dos representados",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c10",
+  "no": "est-a04-r1.2",
+  "topico": "cp-3",
+  "tema": "Mandato livre e mandato imperativo",
+  "pergunta": "No mandato imperativo, qual é o papel do representante diante dos eleitores?",
+  "resposta": [
+   "Mero executor da vontade deles"
+  ],
+  "explicacao": "Segundo Bonavides, o mandato imperativo é típico de regimes autoritários; no livre, há autonomia.",
+  "fonte": "Aula 04, p. 7",
+  "citacao": "no mandato imperativo, típico de regimes autoritários, o representante é mero executor da vontade de seus eleitores",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c11",
+  "no": "est-a04-r1.3",
+  "topico": "cp-3",
+  "tema": "Representação por presença (descritiva)",
+  "pergunta": "Com que dimensão de Pitkin a Aula 04 associa a representação por presença?",
+  "resposta": [
+   "Representação descritiva"
+  ],
+  "explicacao": "Parlamento que reflete a diversidade real da sociedade. Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação.",
+  "fonte": "Aula 04, p. 33",
+  "citacao": "Hanna Pitkin define representação por presença por meio do que ela chama de Representação Descritiva",
+  "aulaOrigem": "04",
+  "nota": "Atenção: a Aula 04 (p. 33) atribui a representação por presença a Pitkin e a Young. O termo \"política de presença\" é de Anne Phillips (artigo de 1994 na Constellations e livro The Politics of Presence, 1995, cap. 1); Pitkin formulou a representação descritiva. Página exata do artigo de 1994 e das obras de Pitkin: pendente de confirmação."
+ },
+ {
+  "id": "cp-e04-c12",
+  "no": "est-a04-r1.3.1",
+  "topico": "cp-3",
+  "tema": "Conceito de representação descritiva",
+  "pergunta": "Na representação descritiva, em vez de \"agir\", o que se espera do representante?",
+  "resposta": [
+   "\"Ser\" (espelho dos representados)"
+  ],
+  "explicacao": "O representante partilha características como raça, gênero, classe, profissão ou localização.",
+  "fonte": "Aula 04, p. 33",
+  "citacao": "Não se trata, nesse caso, de \"agir\" (fazer algo), mas de \"ser\" algo",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c13",
+  "no": "est-a04-r1.3.2",
+  "topico": "cp-3",
+  "tema": "Limite da presença",
+  "pergunta": "O que a simples presença do representante não garante frente ao grupo identitário?",
+  "resposta": [
+   "Responsividade"
+  ],
+  "explicacao": "Sem conexão com a representação substancial, a presença pode ser limitada.",
+  "fonte": "Aula 04, p. 34",
+  "citacao": "pode ser bastante limitado porque presença não garante, em si responsividade frente ao grupo identitário",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c14",
+  "no": "est-a04-r1.4",
+  "topico": "cp-3",
+  "tema": "Crise da representação e abstenção",
+  "pergunta": "A crise de representação revela descompasso entre a legitimidade formal do voto e qual outra legitimidade?",
+  "resposta": [
+   "Substantiva (da atuação política)"
+  ],
+  "explicacao": "A sensação é de que \"os representantes não representam\".",
+  "fonte": "Aula 04, p. 24",
+  "citacao": "revela um descompasso entre a legitimidade formal do voto e a legitimidade substantiva da atuação política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c15",
+  "no": "est-a04-r1.4.1",
+  "topico": "cp-3",
+  "tema": "Abstenção como sintoma",
+  "pergunta": "Qual comportamento eleitoral é tratado como sintoma da crise da representação?",
+  "resposta": [
+   "Abstenção"
+  ],
+  "explicacao": "A abstenção põe em xeque a eficácia do sistema de representação.",
+  "fonte": "Aula 04, p. 25",
+  "citacao": "a abstenção alimenta debates sobre a crise da representação política, colocando em xeque a eficácia do sistema de representação",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c16",
+  "no": "est-a04-r1.4.2",
+  "topico": "cp-3",
+  "tema": "Conexão eleitoral (Mayhew)",
+  "pergunta": "Segundo a literatura da conexão eleitoral, quando se constrói a representação?",
+  "resposta": [
+   "Ao longo do mandato"
+  ],
+  "explicacao": "Não se esgota no voto: depende de visibilidade, prestação de contas e atendimento às bases.",
+  "fonte": "Aula 04, p. 24",
+  "citacao": "A representação, nesse sentido, não se esgota no momento do voto, mas se constrói ao longo do mandato",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c112",
+  "no": "est-a04-r7",
+  "topico": "cp-3",
+  "tema": "Democracia digital, accountability e redes sociais",
+  "pergunta": "Segundo Vera Regina da Rosa Pereira, as redes tornam o controle social sobre o poder público um processo com quais características?",
+  "resposta": [
+   "Imediato",
+   "desintermediado",
+   "de baixo custo"
+  ],
+  "explicacao": "Rompe a dependência das instituições tradicionais e da mídia de massa.",
+  "fonte": "Aula 04, p. 30",
+  "citacao": "transformarem o controle social sobre o poder público em um processo imediato, desintermediado e de baixo custo",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c113",
+  "no": "est-a04-r7",
+  "topico": "cp-3",
+  "tema": "Democracia digital, accountability e redes sociais",
+  "pergunta": "Quais manifestações no Brasil exemplificam a articulação espontânea da sociedade via redes?",
+  "resposta": [
+   "Junho de 2013",
+   "março de 2015"
+  ],
+  "explicacao": "A sociedade refutou a mediação de partidos.",
+  "fonte": "Aula 04, p. 30",
+  "citacao": "As manifestações de junho de 2013 e março de 2015 no Brasil",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c114",
+  "no": "est-a04-r7",
+  "topico": "cp-3",
+  "tema": "Democracia digital, accountability e redes sociais",
+  "pergunta": "Que efeito a difusão de informação em grande escala tem sobre a assimetria informacional?",
+  "resposta": [
+   "Diminui"
+  ],
+  "explicacao": "Reduz o abismo entre o que o governo e o povo sabem.",
+  "fonte": "Aula 04, p. 30",
+  "citacao": "A difusão de informação em grande escala ajuda a diminuir a assimetria informacional",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c115",
+  "no": "est-a04-r7",
+  "topico": "cp-3",
+  "tema": "Democracia digital, accountability e redes sociais",
+  "pergunta": "Como a institucionalidade política muitas vezes reage à pressão digital?",
+  "resposta": [
+   "Impermeável ou lenta"
+  ],
+  "explicacao": "A \"revolta digital\" expõe fragilidades, mas a resposta institucional tarda.",
+  "fonte": "Aula 04, p. 31",
+  "citacao": "a institucionalidade política muitas vezes permanece impermeável ou lenta em responder a essa nova forma de pressão",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c116",
+  "no": "est-a04-r7.1",
+  "topico": "cp-3",
+  "tema": "Accountability vertical e horizontal (O’Donnell)",
+  "pergunta": "Segundo O’Donnell, a efetividade da representação depende de mecanismos capazes de fazer o quê com os agentes políticos?",
+  "resposta": [
+   "Controlar",
+   "fiscalizar",
+   "responsabilizar"
+  ],
+  "explicacao": "Ao longo do exercício do mandato.",
+  "fonte": "Aula 04, p. 8",
+  "citacao": "a efetividade da representação depende da existência de mecanismos institucionais capazes de controlar, fiscalizar e responsabilizar os agentes políticos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c117",
+  "no": "est-a04-r7.1.1",
+  "topico": "cp-3",
+  "tema": "Accountability vertical",
+  "pergunta": "Quem exerce principalmente a accountability vertical?",
+  "resposta": [
+   "Cidadãos (pelas eleições)"
+  ],
+  "explicacao": "Distinção de O’Donnell.",
+  "fonte": "Aula 04, p. 8",
+  "citacao": "accountability vertical, exercida principalmente pelos cidadãos por meio das eleições",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c118",
+  "no": "est-a04-r7.1.2",
+  "topico": "cp-3",
+  "tema": "Accountability horizontal",
+  "pergunta": "Quem realiza a accountability horizontal?",
+  "resposta": [
+   "Instituições estatais autônomas"
+  ],
+  "explicacao": "Fiscalizam e controlam mutuamente o exercício do poder.",
+  "fonte": "Aula 04, p. 8",
+  "citacao": "realizada por instituições estatais autônomas que fiscalizam e controlam mutuamente o exercício do poder",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c119",
+  "no": "est-a04-r7.2",
+  "topico": "cp-3",
+  "tema": "Contrademocracia (Rosanvallon)",
+  "pergunta": "Que práticas exercidas pelos cidadãos sobre os governantes caracterizam a contrademocracia de Rosanvallon?",
+  "resposta": [
+   "Vigilância",
+   "desconfiança",
+   "controle"
+  ],
+  "explicacao": "Cidadania ativa e permanente, não só nas eleições.",
+  "fonte": "Aula 04, p. 26",
+  "citacao": "desconfiança e controle exercidas pelos cidadãos sobre os governantes",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c120",
+  "no": "est-a04-r7.2",
+  "topico": "cp-3",
+  "tema": "Contrademocracia (Rosanvallon)",
+  "pergunta": "O que a crise da representação implica para a democracia representativa, segundo a aula?",
+  "resposta": [
+   "Reconfiguração"
+  ],
+  "explicacao": "Não implica seu esgotamento.",
+  "fonte": "Aula 04, p. 26",
+  "citacao": "A crise da representação não implica o esgotamento da democracia representativa, mas a sua reconfiguração",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c121",
+  "no": "est-a04-r7.2.1",
+  "topico": "cp-3",
+  "tema": "Complementa, não substitui",
+  "pergunta": "Qual é a relação da contrademocracia com a representação?",
+  "resposta": [
+   "Complementa"
+  ],
+  "explicacao": "Amplia mecanismos de fiscalização e responsabilização, sem substituir.",
+  "fonte": "Aula 04, p. 26",
+  "citacao": "não substitui a representação, mas a complementa, ampliando os mecanismos de fiscalização e responsabilização",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c122",
+  "no": "est-a04-r7.3",
+  "topico": "cp-3",
+  "tema": "Accountability societal e redes",
+  "pergunta": "O que a democracia digital cria entre governantes e governados?",
+  "resposta": [
+   "Canais de interação direta"
+  ],
+  "explicacao": "Para informar, fiscalizar e deliberar.",
+  "fonte": "Aula 04, p. 30",
+  "citacao": "Criar novos canais de interação direta entre governantes e governados para informar, fiscalizar e deliberar",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c123",
+  "no": "est-a04-r7.3.1",
+  "topico": "cp-3",
+  "tema": "Mobilização e indignação",
+  "pergunta": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em quê?",
+  "resposta": [
+   "Mobilização"
+  ],
+  "explicacao": "O controle social passa a atuar ininterruptamente.",
+  "fonte": "Aula 04, p. 31",
+  "citacao": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em mobilização",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c124",
+  "no": "est-a04-r7.3.2",
+  "topico": "cp-3",
+  "tema": "Limite da mobilização online",
+  "pergunta": "O que a mobilização online e a indignação nas redes ainda não garantiram?",
+  "resposta": [
+   "Mudanças efetivas de conduta ética institucional"
+  ],
+  "explicacao": "Alerta da autora sobre o limite do empoderamento digital.",
+  "fonte": "Aula 04, p. 31",
+  "citacao": "a mobilização online e a indignação nas redes ainda não garantiram mudanças efetivas de conduta ética na ordem política institucional",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c125",
+  "no": "est-a04-r7.4",
+  "topico": "cp-3",
+  "tema": "Redes sociais e propaganda eleitoral",
+  "pergunta": "Qual centro do TSE, instituído em 2024, atua no enfrentamento à desinformação?",
+  "resposta": [
+   "CIEDDE"
+  ],
+  "explicacao": "Centro Integrado de Enfrentamento à Desinformação e Defesa da Democracia.",
+  "fonte": "Aula 04, p. 57",
+  "citacao": "Centro Integrado de Enfrentamento à Desinformação e Defesa da Democracia (CIEDDE), instituído em 2024",
+  "topicoOriginal": "cp-5",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c126",
+  "no": "est-a04-r7.4",
+  "topico": "cp-3",
+  "tema": "Redes sociais e propaganda eleitoral",
+  "pergunta": "Qual aplicativo permite à população denunciar irregularidades eleitorais?",
+  "resposta": [
+   "Pardal"
+  ],
+  "explicacao": "Mecanismo citado ao lado do CIEDDE.",
+  "fonte": "Aula 04, p. 57",
+  "citacao": "aplicativos como o Pardal",
+  "topicoOriginal": "cp-5",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c127",
+  "no": "est-a04-r7.4.1",
+  "topico": "cp-3",
+  "tema": "Uso das redes pelo eleitor",
+  "pergunta": "Segundo Manoela Dourado, que parcela do eleitorado brasileiro usa as redes sociais como principal fonte de informação sobre candidatos?",
+  "resposta": [
+   "Quase metade"
+  ],
+  "explicacao": "Evidencia o poder de influência das plataformas.",
+  "fonte": "Aula 04, p. 57",
+  "citacao": "quase metade do eleitorado brasileiro utiliza as redes sociais",
+  "topicoOriginal": "cp-5",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c128",
+  "no": "est-a04-r7.4.1",
+  "topico": "cp-3",
+  "tema": "Uso das redes pelo eleitor",
+  "pergunta": "Segundo Rodrigo Piva, qual campanha presidencial marcou a incorporação definitiva das mídias digitais às eleições brasileiras?",
+  "resposta": [
+   "2014"
+  ],
+  "explicacao": "Inaugurou ciclo de mobilização, polarização e informação em tempo real.",
+  "fonte": "Aula 04, p. 57",
+  "citacao": "a campanha presidencial de 2014 marcou o momento em que as mídias digitais se incorporaram definitivamente às eleições brasileiras",
+  "topicoOriginal": "cp-5",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c129",
+  "no": "est-a04-r7.4.2",
+  "topico": "cp-3",
+  "tema": "Fake news e vínculo de confiança",
+  "pergunta": "Em que momento a difusão de fake news é especialmente capaz de alterar percepções?",
+  "resposta": [
+   "Às vésperas das eleições"
+  ],
+  "explicacao": "Também gera crises reputacionais e fragiliza a confiança.",
+  "fonte": "Aula 04, p. 57",
+  "citacao": "A difusão de fake news, especialmente às vésperas das eleições, é capaz de alterar percepções",
+  "topicoOriginal": "cp-5",
+  "aulaOrigem": "04"
+ }
+]

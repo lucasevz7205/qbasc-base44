@@ -1,0 +1,319 @@
+{
+ "topico": "cp-5",
+ "materia": "cp",
+ "centro": "Sistemas eleitorais",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "04"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a04-r6",
+   "t": "Sistema eleitoral: conceito e tipos",
+   "n": "Conjunto de normas que transforma votos em mandatos: majoritário, proporcional e misto.",
+   "x": {
+    "e": "Sistema eleitoral define como o eleitor faz escolhas e como os votos se transformam em mandato.",
+    "src": "Aula 04, p. 44",
+    "cit": "Conjunto de normas que define como o eleitor poderá fazer suas escolhas e como os votos serão contabilizados para ser transformados em mandato",
+    "trap": "Confundir sistema eleitoral (normas de contagem) com sistema partidário (número e relação entre partidos)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r6.1",
+     "t": "Conceito de eleição e tipos",
+     "n": "Eleição é escolha institucionalizada por voto; três tipos principais.",
+     "x": {
+      "e": "Eleição é o processo institucionalizado de escolha de representantes ou governantes por meio do voto.",
+      "src": "Aula 04, p. 44",
+      "cit": "Na Ciência Política, eleição é o processo institucionalizado de escolha de representantes ou governantes por meio do voto"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.1.1",
+       "t": "Três tipos de sistema",
+       "n": "Majoritário, proporcional e misto (combinação dos dois primeiros).",
+       "x": {
+        "e": "Existem três sistemas eleitorais que se destacam: o majoritário, o proporcional e o misto, combinação dos dois primeiros.",
+        "src": "Aula 04, p. 44",
+        "cit": "o sistema majoritário, o sistema proporcional e o sistema misto, que é uma combinação dos dois primeiros"
+       }
+      },
+      {
+       "id": "est-a04-r6.1.2",
+       "t": "Caso brasileiro",
+       "n": "Majoritário para Senado e Executivo; proporcional para Deputados.",
+       "x": {
+        "e": "No Brasil, o sistema majoritário vale para Senadores e titulares do Executivo, e o proporcional para Deputados.",
+        "src": "Aula 04, p. 45",
+        "cit": "Sistema majoritário nas eleições de Senadores e titulares do Poder Executivo; sistema de representação proporcional na eleição de Deputados"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.2",
+     "t": "Sistema majoritário",
+     "n": "Vence o candidato com maioria dos votos válidos no distrito.",
+     "x": {
+      "e": "No sistema majoritário, o candidato que recebe a maioria dos votos válidos no distrito é declarado vencedor.",
+      "src": "Aula 04, p. 45",
+      "cit": "O candidato que recebe a maioria dos votos válidos em um distrito ou circunscrição eleitoral é declarado vencedor"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.2.1",
+       "t": "Maioria absoluta",
+       "n": "Metade dos votos mais um.",
+       "x": {
+        "e": "A maioria absoluta consiste em metade dos votos dos eleitores mais um voto.",
+        "src": "Aula 04, p. 45",
+        "cit": "A maioria absoluta consiste em metade dos votos dos eleitores mais um voto",
+        "trap": "Não confundir maioria absoluta com maioria relativa (simples), em que basta o maior número de votos."
+       }
+      },
+      {
+       "id": "est-a04-r6.2.2",
+       "t": "Maioria relativa ou simples",
+       "n": "Basta o maior número de votos, mesmo sem a metade.",
+       "x": {
+        "e": "Na maioria relativa ou simples, é eleito o candidato com o maior número de votos, mesmo que não alcance a metade dos votos.",
+        "src": "Aula 04, p. 45",
+        "cit": "mesmo que não alcance a metade dos votos"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.3",
+       "t": "Turno único",
+       "n": "Uma única fase; basta maioria simples.",
+       "x": {
+        "e": "No sistema majoritário de turno único exige-se apenas a maioria simples, e o eleito é o mais votado.",
+        "src": "Aula 04, p. 46",
+        "cit": "Em geral, no SISTEMA MAJORITÁRIO DE ÚNICO TURNO - exige-se apenas a maioria simples"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.4",
+       "t": "Turno único no Brasil",
+       "n": "Senador e prefeito em municípios com menos de 200.000 eleitores.",
+       "x": {
+        "e": "No Brasil, o turno único ocorre nas eleições para Senador e para Prefeito em municípios com menos de 200.000 eleitores.",
+        "src": "Aula 04, p. 46",
+        "cit": "Isso ocorre nas eleições para Senador e nas eleições para Prefeito em municípios com menos de 200.000 eleitores"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.5",
+       "t": "Dois turnos",
+       "n": "Eleito no 1º turno só com maioria absoluta dos votos válidos.",
+       "x": {
+        "e": "No sistema majoritário de dois turnos, o candidato só é eleito no primeiro turno se obtiver a maioria absoluta dos votos válidos.",
+        "src": "Aula 04, p. 47",
+        "cit": "O candidato só é eleito no primeiro turno se obtiver a maioria absoluta dos votos válidos, excluindo os votos em branco e nulos",
+        "trap": "No segundo turno basta a maioria dos votos válidos, e não a maioria absoluta."
+       }
+      },
+      {
+       "id": "est-a04-r6.2.6",
+       "t": "Voto sincero x voto estratégico",
+       "n": "Sincero segue a preferência; estratégico (útil) calcula a chance de vitória.",
+       "x": {
+        "e": "No voto sincero, o eleitor escolhe o candidato mais próximo de suas preferências; no voto estratégico, calcula para evitar a vitória de um candidato rejeitado.",
+        "src": "Aula 04, p. 48",
+        "cit": "o eleitor calcula suas escolhas para evitar a vitória de um candidato rejeitado ou"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.7",
+       "t": "Distritão",
+       "n": "Eleitos os mais votados, independentemente do desempenho partidário.",
+       "x": {
+        "e": "O distritão é uma proposta de sistema majoritário em distritos, em que os candidatos mais votados são eleitos independentemente do desempenho partidário.",
+        "src": "Aula 04, p. 49",
+        "cit": "os candidatos mais votados são eleitos independentemente do desempenho partidário"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.3",
+     "t": "Sistema proporcional",
+     "n": "Cadeiras distribuídas conforme a votação de cada partido, com quociente eleitoral e partidário.",
+     "x": {
+      "e": "No sistema proporcional, a distribuição de cadeiras segue a votação de cada partido, e não só a de candidatos.",
+      "src": "Aula 04, p. 50",
+      "cit": "Portanto, o sistema proporcional não leva em consideração apenas o número de votos atribuídos a candidatos, como no sistema majoritário, mas também considera os votos destinados aos partidos"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.3.1",
+       "t": "Origem e objetivo",
+       "n": "Thomas Hare, Andrae e D'Hondt; objetivo de equidade e representação de minorias.",
+       "x": {
+        "e": "Em 1882, D'Hondt publicou o sistema de representação proporcional, que a Conferência de 1886 adotou como modelo.",
+        "src": "Aula 04, p. 49",
+        "cit": "Em 1882, D'Hondt publicou \"Sistema racional e prático de representação proporcional\", no qual delineou seu método",
+        "nota": "Trecho do texto-fonte sobre Thomas Hare e a Conferência de 1886 está embaralhado na extração; apenas a referência a D'Hondt (1882) foi usada como citação literal."
+       }
+      },
+      {
+       "id": "est-a04-r6.3.2",
+       "t": "Voto de legenda e listas",
+       "n": "Voto no candidato também conta para o partido; listas fechada e aberta.",
+       "x": {
+        "e": "No sistema proporcional, ao votar em um candidato você também vota no partido, e é possível votar só na agremiação.",
+        "src": "Aula 04, p. 50",
+        "cit": "é possível votar apenas na agremiação (conhecido como \"voto de legenda\")"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.2.1",
+         "t": "Lista fechada",
+         "n": "Partido define a ordem; eleitor vota no partido.",
+         "x": {
+          "e": "Na lista fechada, os partidos criam listas de candidatos, e os eleitores votam no partido de sua escolha.",
+          "src": "Aula 04, p. 50",
+          "cit": "Os partidos criam listas de candidatos e os eleitores votam no partido de sua escolha"
+         }
+        },
+        {
+         "id": "est-a04-r6.3.2.2",
+         "t": "Lista aberta",
+         "n": "Eleitos os candidatos com mais votos dentro do partido.",
+         "x": {
+          "e": "Na lista aberta, os eleitores votam em candidatos individuais, e os com mais votos no partido são eleitos.",
+          "src": "Aula 04, p. 50",
+          "cit": "Os candidatos com mais votos em um partido são eleitos"
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a04-r6.3.3",
+       "t": "Quociente eleitoral e partidário",
+       "n": "QE = votos válidos / cadeiras; QP = votos do partido / QE.",
+       "x": {
+        "e": "O quociente eleitoral é o número mínimo de votos que um partido precisa atingir para eleger um candidato.",
+        "src": "Aula 04, p. 51",
+        "cit": "Cada partido precisa atingir um número mínimo de votos, chamado de quociente eleitoral (QE), para que um de seus candidatos seja eleito"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.3.1",
+         "t": "Arredondamento do quociente eleitoral",
+         "n": "Fração igual ou menor que meio é desprezada; maior que meio arredonda para cima.",
+         "x": {
+          "e": "O quociente eleitoral é calculado dividindo os votos válidos pelo número de cadeiras, desprezando ou arredondando a fração.",
+          "src": "Aula 04, p. 51",
+          "cit": "desprezando a fração se for igual ou menor que meio e arredondando para cima se for maior"
+         }
+        },
+        {
+         "id": "est-a04-r6.3.3.2",
+         "t": "Quociente partidário",
+         "n": "Votos do partido divididos pelo quociente eleitoral.",
+         "x": {
+          "e": "O quociente partidário é o número de votos do partido dividido pelo quociente eleitoral.",
+          "src": "Aula 04, p. 52",
+          "cit": "Quociente Partidário = Número de Votos do Partido / Quociente Eleitoral",
+          "trap": "No quociente partidário as casas decimais são desconsideradas; no quociente eleitoral a regra de arredondamento é outra."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.3.3",
+         "t": "Votos do partido incluem legenda",
+         "n": "Votos nominais e de legenda somam-se para o partido.",
+         "x": {
+          "e": "Os votos do partido incluem os votos dados aos candidatos desse partido e os votos de legenda.",
+          "src": "Aula 04, p. 52",
+          "cit": "os votos do partido incluem os votos dados aos candidatos desse partido e os votos de legenda"
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a04-r6.3.4",
+       "t": "Distorções: puxadores de votos, federações e fragmentação",
+       "n": "Candidato muito votado puxa outros do mesmo partido; federações somam votos; proporcional tende à fragmentação.",
+       "x": {
+        "e": "Candidatos muito votados ('puxadores de votos') podem eleger outros do mesmo partido com baixa votação.",
+        "src": "Aula 04, p. 54",
+        "cit": "A alta votação alcançada permite que o partido atinja mais de uma vez o quociente eleitoral, assim elevando o seu quociente partidário"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.4.1",
+         "t": "Puxadores de votos",
+         "n": "Votação de um candidato elege outros do mesmo partido.",
+         "x": {
+          "e": "Na lista do partido, o candidato C1, com alta votação, ocupa o primeiro lugar e o segundo é eleito com 20 mil votos.",
+          "src": "Aula 04, p. 55",
+          "cit": "Na lista de candidatos do partido, C1 figura em primeiro lugar em razão de sua alta votação",
+          "nota": "Novo requisito individual (Lei 13.165/2015 e Lei 14.211/2021): o texto-fonte está embaralhado e não permite confirmar o percentual exato; a regra não foi detalhada além da citação literal (p. 54)."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.4.2",
+         "t": "Federações",
+         "n": "Federações entram nos cálculos e somam-se os votos.",
+         "x": {
+          "e": "A Resolução TSE nº 23.677/2021 inclui as federações nos cálculos eleitorais, somando-se os votos.",
+          "src": "Aula 04, p. 55",
+          "cit": "inclui as federações nos cálculos eleitorais, ou seja, somam-se os votos",
+          "nota": "Texto-fonte escreve 'O 10 artigo' (provável 'O art. 10')."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.4.3",
+         "t": "Fragmentação partidária",
+         "n": "Aumento do número de partidos e do peso relativo de cada um.",
+         "x": {
+          "e": "Um dos efeitos associados aos sistemas proporcionais é o aumento da fragmentação partidária.",
+          "src": "Aula 04, p. 56",
+          "cit": "um dos efeitos frequentemente associados aos sistemas proporcionais é o aumento da fragmentação partidária"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.4",
+     "t": "Sistema misto",
+     "n": "Combina elementos do majoritário e do proporcional.",
+     "x": {
+      "e": "O sistema misto combina elementos dos sistemas majoritário e proporcional, com duas abordagens principais.",
+      "src": "Aula 04, p. 56",
+      "cit": "o sistema misto paralelo e o sistema misto compensatório"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.4.1",
+       "t": "Misto paralelo",
+       "n": "Dois votos: um para candidato no distrito, outro para partido; assentos somados.",
+       "x": {
+        "e": "No sistema misto paralelo, os eleitores têm dois votos, e parte dos assentos é preenchida pelos vencedores dos distritos majoritários.",
+        "src": "Aula 04, p. 56",
+        "cit": "Sistema Misto Paralelo: os eleitores têm dois votos - um para um candidato em seu distrito e outro para um partido"
+       }
+      },
+      {
+       "id": "est-a04-r6.4.2",
+       "t": "Misto compensatório",
+       "n": "Votos proporcionais compensam distorções dos distritos majoritários.",
+       "x": {
+        "e": "No sistema misto compensatório, os votos proporcionais são usados para compensar distorções dos distritos majoritários.",
+        "src": "Aula 04, p. 56",
+        "cit": "os votos proporcionais são usados para compensar qualquer distorção que possa ocorrer nos distritos majoritários",
+        "trap": "Não confundir misto paralelo (somatório de assentos) com misto compensatório (correção de distorções)."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  }
+ ],
+ "ligacoes": [],
+ "fontesCentral": {}
+}
