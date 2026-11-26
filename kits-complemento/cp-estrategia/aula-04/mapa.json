@@ -1,0 +1,1090 @@
+{
+ "topico": "cp-6",
+ "materia": "cp",
+ "centro": "Representação política, partidos políticos e sistemas eleitorais",
+ "aula": "04",
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes, Aula 04",
+ "topicosEdital": {
+  "cp-6": "Teoria dos partidos políticos: definição, origem e tipologias (Duverger, catch-all, Katz e Mair), institucionalização, sistemas partidários (Duverger e Sartori) e presidencialismo de coalizão.",
+  "cp-5": "Sistemas eleitorais: conceito de eleição, sistema majoritário (turnos, maiorias), proporcional (quocientes, listas, federações) e misto; propaganda eleitoral na internet.",
+  "cp-3": "Representação política: conceito, dimensões (Pitkin), representação por presença, crise da representação, accountability, contrademocracia e accountability societal via redes."
+ },
+ "ramos": [
+  {
+   "id": "est-a04-r1",
+   "t": "Representação política: conceito e dimensões",
+   "n": "Mecanismo que legitima o poder por delegação: o representante age em nome dos representados.",
+   "x": {
+    "e": "Representação é o mecanismo pelo qual o poder é exercido por delegação, com legitimidade democrática; o foco analítico é legitimidade, responsividade, controle e vínculo, mais do que a legalidade do processo.",
+    "src": "Aula 04, p. 7",
+    "cit": "um mecanismo político que permite o exercício do poder por meio de delegação, em que os governantes agem em nome dos governados",
+    "trap": "Confundir representação política com normas eleitorais ou regras jurídicas do mandato; a aula trata de problema teórico, com foco em legitimidade e responsividade (p. 4)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r1.1",
+     "t": "Dimensões da representação (Pitkin)",
+     "n": "Formal, simbólica, descritiva e substantiva.",
+     "x": {
+      "e": "Hanna Pitkin distingue quatro dimensões complementares da representação; a formal envolve autorização e prestação de contas.",
+      "src": "Aula 04, p. 7",
+      "cit": "formal, quando há autorização e prestação de contas"
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.1.1",
+       "t": "Formal",
+       "n": "Autorização e prestação de contas.",
+       "x": {
+        "e": "Dimensão formal: há autorização e prestação de contas do representante.",
+        "src": "Aula 04, p. 7",
+        "cit": "formal, quando há autorização e prestação de contas"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.2",
+       "t": "Simbólica",
+       "n": "Representante encarna valores ou identidades coletivas.",
+       "x": {
+        "e": "Dimensão simbólica: o representante encarna valores ou identidades coletivas.",
+        "src": "Aula 04, p. 7",
+        "cit": "quando o representante encarna valores ou identidades coletivas"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.3",
+       "t": "Descritiva",
+       "n": "Reflete a composição social do eleitorado.",
+       "x": {
+        "e": "Dimensão descritiva: o representante reflete a composição social do eleitorado.",
+        "src": "Aula 04, p. 7",
+        "cit": "descritiva, quando reflete a composição social do eleitorado"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.4",
+       "t": "Substantiva",
+       "n": "Atua em favor dos interesses dos representados.",
+       "x": {
+        "e": "Dimensão substantiva: atuação efetiva em favor dos interesses dos representados.",
+        "src": "Aula 04, p. 7",
+        "cit": "substantiva, quando atua efetivamente em favor dos interesses dos representados"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r1.2",
+     "t": "Mandato livre e mandato imperativo",
+     "n": "Autonomia do representante versus execução da vontade dos eleitores.",
+     "x": {
+      "e": "No mandato livre o representante atua com autonomia; no mandato imperativo ele é mero executor da vontade dos eleitores.",
+      "src": "Aula 04, p. 7",
+      "cit": "no mandato imperativo, típico de regimes autoritários, o representante é mero executor da vontade de seus eleitores",
+      "trap": "Tratar mandato livre como mandato imperativo; no livre há autonomia decisória, no imperativo não há."
+     }
+    },
+    {
+     "id": "est-a04-r1.3",
+     "t": "Representação por presença (descritiva)",
+     "n": "Representante que se assemelha ao grupo representado: 'ser', e não 'agir'.",
+     "x": {
+      "e": "Representação por presença, elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young, vincula o parlamento à diversidade social (gênero, raça, etnia, classe).",
+      "src": "Aula 04, p. 33",
+      "cit": "elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)",
+      "trap": "Presença (ser parecido com o grupo) não se confunde com representação substantiva (agir em favor do grupo)."
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.3.1",
+       "t": "Conceito de representação descritiva",
+       "n": "Semelhança de características entre representante e representados.",
+       "x": {
+        "e": "Ocorre quando o representante se assemelha aos representados por características como raça, gênero, classe, profissão ou localização geográfica.",
+        "src": "Aula 04, p. 33",
+        "cit": "Esse tipo de representação ocorre quando o representante se assemelha aos representados ao partilharem características semelhantes, como raça, gênero, classe, profissão ou localização geográfica"
+       }
+      },
+      {
+       "id": "est-a04-r1.3.2",
+       "t": "Limite da presença",
+       "n": "Presença não garante responsividade.",
+       "x": {
+        "e": "Muitos autores reconhecem que a presença, sem conexão com a representação substancial, pode ser bastante limitada.",
+        "src": "Aula 04, p. 34",
+        "cit": "pode ser bastante limitado porque presença não garante, em si responsividade frente ao grupo identitário",
+        "nota": "Texto-fonte com trecho embaralhado na extração; a citação foi conferida na página 34."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r1.4",
+     "t": "Crise da representação e abstenção",
+     "n": "Perda de confiança nas instituições mediadoras; abstenção como sintoma.",
+     "x": {
+      "e": "A crise de representação é a percepção de que partidos e parlamentos estão distantes das demandas sociais; a abstenção é sintoma dessa crise.",
+      "src": "Aula 04, p. 24",
+      "cit": "A sensação de que “os representantes não representam” revela um descompasso entre a legitimidade formal do voto e a legitimidade substantiva da atuação política"
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.4.1",
+       "t": "Abstenção como sintoma",
+       "n": "Abstenção expressa insatisfação e alimenta o debate sobre a crise.",
+       "x": {
+        "e": "A abstenção alimenta debates sobre a crise da representação, colocando em xeque a eficácia do sistema de representação.",
+        "src": "Aula 04, p. 25",
+        "cit": "Nesse sentido, a abstenção alimenta debates sobre a crise da representação política, colocando em xeque a eficácia do sistema de representação",
+        "trap": "A abstenção não é apenas apatia: a aula a trata como sinal de insatisfação e de desafio à legitimidade da classe política (p. 26)."
+       }
+      },
+      {
+       "id": "est-a04-r1.4.2",
+       "t": "Conexão eleitoral (Mayhew)",
+       "n": "Representação se constrói ao longo do mandato, não só no voto.",
+       "x": {
+        "e": "A representação não se esgota no voto; constrói-se no mandato por visibilidade, prestação de contas e atendimento às bases.",
+        "src": "Aula 04, p. 24",
+        "cit": "A representação, nesse sentido, não se esgota no momento do voto, mas se constrói ao longo do mandato por meio de estratégias de visibilidade, prestação de contas e atendimento às demandas das bases eleitorais"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r2",
+   "t": "Definição de partido político",
+   "n": "Organização que busca conquistar e manter o poder político.",
+   "x": {
+    "e": "Partido é definido pelo objetivo central de controlar ou influenciar o governo por meio da conquista do poder; a definição varia conforme o autor.",
+    "src": "Aula 04, p. 8",
+    "cit": "Como em quase tudo na Ciência Política a definição de \"partido\" é ampla e depende do autor",
+    "trap": "Tomar uma única definição como universal; a aula recomenda ver a definição por autor e pelo objetivo central."
+   },
+   "f": [
+    {
+     "id": "est-a04-r2.1",
+     "t": "Definições de autores",
+     "n": "Partido: associação com objetivo de conquistar e manter o poder.",
+     "x": {
+      "e": "Diversos autores definem o partido pelo objetivo de conquistar ou manter o poder.",
+      "src": "Aula 04, p. 10",
+      "cit": "o partido pode ser definido pelo seu objetivo central de controlar ou influenciar o governo por meio da conquista do poder"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.1.1",
+       "t": "Lapalombara: organização durável",
+       "n": "Organização cuja vida supera a de seus dirigentes.",
+       "x": {
+        "e": "Para Lapalombara, o partido é uma organização durável, cuja esperança de vida política supera a de seus dirigentes no poder.",
+        "src": "Aula 04, p. 10",
+        "cit": "O Partido é uma organização durável, ou seja, uma organização cuja esperança de vida política seja superior à de seus dirigentes no poder"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.2",
+       "t": "Guarnieri: arena eleitoral e decisória",
+       "n": "Conquista do poder nas arenas eleitoral e decisória.",
+       "x": {
+        "e": "Para Guarnieri, o partido é associação de pessoas que busca o poder atuando na arena eleitoral e na arena decisória.",
+        "src": "Aula 04, p. 10",
+        "cit": "Um partido político é uma associação de pessoas que tem como fim a conquista do poder atuando na arena eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.3",
+       "t": "Bonavides: elementos da definição",
+       "n": "Grupo social, princípio de organização, ideias e interesse de tomar o poder.",
+       "x": {
+        "e": "Bonavides lista elementos do partido, entre eles um grupo social, um princípio de organização, um acervo de ideias e o interesse básico na tomada do poder.",
+        "src": "Aula 04, p. 9",
+        "cit": "(d) um interesse básico em vista: a tomada do poder"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.2",
+     "t": "Partido x associações da sociedade civil",
+     "n": "Partidos disputam o controle do Estado; sindicatos e ONGs apenas influenciam.",
+     "x": {
+      "e": "Associações da sociedade civil influenciam decisões de governo, mas não disputam diretamente o controle do aparelho do Estado.",
+      "src": "Aula 04, p. 11",
+      "cit": "Já as associações da sociedade civil (sindicatos, movimentos sociais, ONGs.) buscam influenciar as decisões políticas dos governos, mas não disputam diretamente o controle do aparelho do estado",
+      "trap": "Classificar sindicato ou ONG como partido: a diferença central é a disputa direta pelo controle do Estado."
+     }
+    },
+    {
+     "id": "est-a04-r2.3",
+     "t": "Abordagens de Nicolau",
+     "n": "Ideológica, sociológica e institucionalista explicam o número de partidos.",
+     "x": {
+      "e": "Segundo Jairo Nicolau, as diferentes definições decorrem de três abordagens: ideológica, sociológica e institucionalista.",
+      "src": "Aula 04, p. 11",
+      "cit": "essas diferentes definições se dão devido a diferentes abordagens que o professor classifica como: a ideológica, a sociológica e a institucionalista"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.3.1",
+       "t": "Abordagem ideológica",
+       "n": "Diversidade de opiniões determina o número de partidos.",
+       "x": {
+        "e": "Na abordagem ideológica, a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos.",
+        "src": "Aula 04, p. 11",
+        "cit": "a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos em uma democracia"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.2",
+       "t": "Abordagem sociológica",
+       "n": "Divisões sociais determinam o número de partidos.",
+       "x": {
+        "e": "Na abordagem sociológica, o número de partidos reflete as divisões sociais e as demandas dos segmentos da sociedade.",
+        "src": "Aula 04, p. 11",
+        "cit": "Portanto, o número de partidos é visto como um reflexo das divisões sociais e das demandas de diferentes segmentos da sociedade"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.3",
+       "t": "Abordagem institucionalista",
+       "n": "Regras institucionais moldam o sistema partidário.",
+       "x": {
+        "e": "A abordagem institucionalista destaca a influência do sistema eleitoral, do sistema de governo e da organização do Estado sobre o sistema partidário.",
+        "src": "Aula 04, p. 11",
+        "cit": "A abordagem institucionalista destaca a influência das estruturas institucionais, como o sistema eleitoral, o sistema de governo e a organização do Estado, sobre o sistema partidário",
+        "trap": "Tratar o sistema eleitoral como efeito, e não como causa, do sistema partidário: na abordagem institucionalista ele molda os partidos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.4",
+     "t": "Institucionalização partidária",
+     "n": "Partido institucionalizado perdura, tem continuidade e compete em várias eleições.",
+     "x": {
+      "e": "A institucionalização partidária indica qualidade da democracia; envolve estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
+      "src": "Aula 04, p. 12",
+      "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.4.1",
+       "t": "Dimensões (Mainwaring)",
+       "n": "Estabilidade eleitoral, enraizamento social, autonomia e legitimidade.",
+       "x": {
+        "e": "Mainwaring destaca quatro dimensões da institucionalização partidária.",
+        "src": "Aula 04, p. 12",
+        "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+       }
+      },
+      {
+       "id": "est-a04-r2.4.2",
+       "t": "Critério de Rose e Mackie",
+       "n": "Partido que perdura de eleição em eleição e compete em pelo menos três pleitos nacionais.",
+       "x": {
+        "e": "Para Rose e Mackie, um partido institucionalizado perdura de eleição em eleição, com continuidade organizacional.",
+        "src": "Aula 04, p. 12",
+        "cit": "um partido institucionalizado é aquele que perdura de eleição em eleição, já que demonstra continuidade organizacional e capacidade de competir em pelo menos três pleitos nacionais",
+        "trap": "Confundir partido institucionalizado com partido grande: o critério é a permanência ao longo de eleições."
+       }
+      },
+      {
+       "id": "est-a04-r2.4.3",
+       "t": "Cláusula de desempenho",
+       "n": "Norma constitucional que se liga à institucionalização.",
+       "x": {
+        "e": "A cláusula de desempenho está prevista no § 3º do art. 17 da Constituição Federal.",
+        "src": "Aula 04, p. 12",
+        "cit": "a atual norma prevista no dispositivo do § 3o do art. 17 da nossa Constituição Federal, a chamada cláusula de desempenho"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r3",
+   "t": "Origem e tipologias dos partidos",
+   "n": "Tipologia de Duverger: origem parlamentar ou externa e a evolução dos modelos.",
+   "x": {
+    "e": "Duverger é o principal referencial da aula; as tipologias tratam da origem dos partidos e dos modelos partidários.",
+    "src": "Aula 04, p. 13",
+    "cit": "Esse é o método de Maurice Duverger - autor que mais cai em provas de concurso e é, nesta aula, nosso principal referencial",
+    "trap": "Usar a história (origem) e as tipologias (modelos) como se fossem a mesma coisa: são dois subcampos que se tocam."
+   },
+   "f": [
+    {
+     "id": "est-a04-r3.1",
+     "t": "Origem parlamentar e externa",
+     "n": "Partido parlamentar nasce no parlamento; partido externo nasce na sociedade civil.",
+     "x": {
+      "e": "Partidos de criação parlamentar nascem de iniciativa de legisladores; partidos de organização externa nascem de organizações da sociedade civil.",
+      "src": "Aula 04, p. 15",
+      "cit": "Um partido de criação parlamentar é uma organização política que se origina e evolui principalmente dentro do contexto das instituições parlamentares"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.1.1",
+       "t": "Criação externa",
+       "n": "Organização externa ao sistema parlamentar e eleitoral.",
+       "x": {
+        "e": "O partido de organização externa é criado por meio de organizações externas ao sistema parlamentar e eleitoral.",
+        "src": "Aula 04, p. 15",
+        "cit": "Um partido de organização externa, como o próprio nome sugere, é criado por meio de organizações externas ao sistema parlamentar e eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r3.1.2",
+       "t": "Sequência histórica",
+       "n": "Primeiro surgiram os partidos parlamentares, depois os externos.",
+       "x": {
+        "e": "Em uma linha do tempo, existiram primeiro os partidos parlamentares e depois os partidos exteriores.",
+        "src": "Aula 04, p. 16",
+        "cit": "podemos afirmar que existiram primeiros os partidos parlamentares e depois os partidos exteriores",
+        "nota": "Texto-fonte: 'primeiros' no lugar de 'primeiro' (erro de concordância); sentido preservado."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.2",
+     "t": "Partido de quadros",
+     "n": "Clubes parlamentares de notáveis, com pouca base social, primeira metade do século XIX.",
+     "x": {
+      "e": "Partidos de quadros surgem na primeira metade do século XIX, dominados por notáveis, com pouca penetração social.",
+      "src": "Aula 04, p. 16",
+      "cit": "Em um primeiro momento, na primeira metade do século XIX, tivemos os partidos de quadros",
+      "trap": "Confundir partido de quadros (notáveis, financiados por poucos ricos) com partido de massas (filiados e contribuições)."
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.2.1",
+       "t": "Objetivo dos partidos de quadros",
+       "n": "Ganhar eleições, fazer acordos e controlar o orçamento.",
+       "x": {
+        "e": "O principal objetivo dos partidos de quadros é ganhar eleições, fazer acordos, conseguir cargos e controlar o orçamento público.",
+        "src": "Aula 04, p. 17",
+        "cit": "Desse modo, seu principal objetivo é ganhar eleições, fazer acordos, conseguir cargos e controlar parcela significativa do orçamento público"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.3",
+     "t": "Partido de massas",
+     "n": "Surge com a ampliação do sufrágio e busca filiados e ideologia marcada.",
+     "x": {
+      "e": "Partidos de massas não buscam apenas resultados eleitorais, mas também maior contato com filiados.",
+      "src": "Aula 04, p. 17",
+      "cit": "Uma das características centrais é que esses partidos não buscam apenas resultados eleitorais, mas também um maior contato com filiados"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.3.1",
+       "t": "Figura do filiado",
+       "n": "O filiado, que financia por pequenas contribuições, substitui os notáveis.",
+       "x": {
+        "e": "É no partido de massas que aparece a figura do filiado partidário.",
+        "src": "Aula 04, p. 17",
+        "cit": "Na verdade, é aí que aparece a figura do filiado partidário"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r4",
+   "t": "Partidos nas democracias contemporâneas: catch-all e cartel",
+   "n": "Do partido de massas ao catch-all e ao partido cartel.",
+   "x": {
+    "e": "O partido catch-all concentra-se na disputa eleitoral imediata; o partido cartel opera a partir do Estado.",
+    "src": "Aula 04, p. 20",
+    "cit": "O Partido Catch-all é caracterizado por sua concentração na disputa eleitoral imediata",
+    "trap": "Confundir catch-all (eleitorado amplo, pouca ideologia) com partido de massas (base de militantes e ideologia marcada)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r4.1",
+     "t": "Partido pega-tudo (catch-all)",
+     "n": "Busca eleitor médio, com discurso difuso e menos ideologia.",
+     "x": {
+      "e": "O partido catch-all procura construir consenso amplo para atrair o eleitor médio, em vez de focar em membros e ativistas.",
+      "src": "Aula 04, p. 20",
+      "cit": "Os partidos que adotam essa abordagem buscam dialogar com um eleitorado que ultrapassa as fronteiras de suas bases sociais originais"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.1.1",
+       "t": "Eleitor como consumidor",
+       "n": "Eleitores são mais consumidores do que participantes ativos.",
+       "x": {
+        "e": "A ideia do partido catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos.",
+        "src": "Aula 04, p. 21",
+        "cit": "A ideia do Partido Catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos"
+       }
+      },
+      {
+       "id": "est-a04-r4.1.2",
+       "t": "Reformas graduais",
+       "n": "Não buscam transformação radical, e sim reformas graduais.",
+       "x": {
+        "e": "Os partidos catch-all não buscam transformações radicais, mas reformas e melhorias graduais.",
+        "src": "Aula 04, p. 21",
+        "cit": "os partidos não buscam transformações radicais, mas sim reformas e melhorias graduais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.2",
+     "t": "Partido cartel (Katz e Mair)",
+     "n": "Três faces do partido: no governo, na base e na central; o cartel fecha o sistema.",
+     "x": {
+      "e": "Katz e Mair observam o enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office.",
+      "src": "Aula 04, p. 22",
+      "cit": "Segundo Katz e Mair, nas últimas décadas observa-se um progressivo enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.2.1",
+       "t": "Partido cartel",
+       "n": "Legendas estabelecidas cooperam para controlar o sistema e reduzir a concorrência.",
+       "x": {
+        "e": "No partido cartel, as legendas estabelecidas cooperam entre si para controlar o sistema político e dificultar a entrada de novos atores.",
+        "src": "Aula 04, p. 22",
+        "cit": "Esse processo culmina no que os autores denominam partido cartel, modelo no qual as legendas estabelecidas cooperam entre si para controlar o sistema político, reduzir a competição efetiva e dificultar a entrada de novos atores",
+        "trap": "Inverter a relação: no cartel os partidos operam a partir do Estado em direção à sociedade, e não o contrário."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.3",
+     "t": "Partidos institucionalizados e papel de representação",
+     "n": "Institucionalização traz previsibilidade; partidos captam a opinião pública.",
+     "x": {
+      "e": "Partidos institucionalizados oferecem previsibilidade às disputas, fortalecem vínculos representativos e reduzem a personalização.",
+      "src": "Aula 04, p. 22",
+      "cit": "Partidos institucionalizados tendem a oferecer maior previsibilidade às disputas eleitorais, fortalecer os vínculos representativos e reduzir a personalização excessiva da política"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.3.1",
+       "t": "Canais legítimos de atuação",
+       "n": "Partidos captam, organizam e transformam em bandeiras as aspirações sociais.",
+       "x": {
+        "e": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública.",
+        "src": "Aula 04, p. 23",
+        "cit": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r5",
+   "t": "Sistemas partidários: Duverger e Sartori",
+   "n": "Classificações de sistemas partidários por número de partidos (Duverger) e relevância ideológica (Sartori).",
+   "x": {
+    "e": "Duverger classifica pelo número de partidos; Sartori acrescenta a profundidade das diferenças ideológicas e a relevância dos partidos.",
+    "src": "Aula 04, p. 37",
+    "cit": "Maurice Duverger e Giovanni Sartori são dois estudiosos da teoria dos partidos políticos que contribuíram para a classificação dos sistemas partidários",
+    "trap": "Achar que Sartori descartou a contagem de partidos: ele a complementa com o critério ideológico."
+   },
+   "f": [
+    {
+     "id": "est-a04-r5.1",
+     "t": "Duverger: unipartidarismo, bipartidarismo e multipartidarismo",
+     "n": "Classificação pelo número de partidos em sistemas contemporâneos.",
+     "x": {
+      "e": "Duverger classifica os sistemas partidários em unipartidarismo, bipartidarismo e multipartidarismo.",
+      "src": "Aula 04, p. 38",
+      "cit": "O unipartidarismo é característico de regimes totalitários",
+      "nota": "Texto-fonte p. 38 traz 'como o e comunismo' (exemplos omitidos na extração); a citação usa só a frase íntegra."
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.1.1",
+       "t": "Unipartidarismo",
+       "n": "Partido único, típico de regimes totalitários, incompatível com a democracia.",
+       "x": {
+        "e": "O sistema unipartidário é incompatível com os princípios democráticos, pois não permite a alternância no poder.",
+        "src": "Aula 04, p. 39",
+        "cit": "O sistema unipartidário é incompatível com os princípios democráticos, uma vez que não permite a alternância no poder"
+       }
+      },
+      {
+       "id": "est-a04-r5.1.2",
+       "t": "Bipartidarismo",
+       "n": "Dois partidos dominantes; elogiado pela estabilidade, criticado pela exclusão de minorias.",
+       "x": {
+        "e": "O bipartidarismo é frequentemente elogiado por sua estabilidade política.",
+        "src": "Aula 04, p. 39",
+        "cit": "Esse sistema é frequentemente elogiado por sua estabilidade política",
+        "trap": "Tratar o bipartidarismo só como virtude: a aula lista críticas (exclusão de minorias, menos escolhas, rigidez)."
+       }
+      },
+      {
+       "id": "est-a04-r5.1.3",
+       "t": "Multipartidarismo",
+       "n": "Três ou mais partidos; risco de pulverização e de governos de coalizão.",
+       "x": {
+        "e": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política.",
+        "src": "Aula 04, p. 40",
+        "cit": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.2",
+     "t": "Sartori: relevância, coalizão e chantagem",
+     "n": "Partido relevante é o que pode formar maioria ou alterar a competição.",
+     "x": {
+      "e": "Sartori propõe que o sistema seja avaliado também pela profundidade das diferenças ideológicas entre os partidos.",
+      "src": "Aula 04, p. 38",
+      "cit": "Sartori argumentou que um sistema partidário não deveria ser avaliado apenas pela quantidade de partidos, mas também pela profundidade das diferenças ideológicas entre eles"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.2.1",
+       "t": "Potencial de coalizão",
+       "n": "Partido relevante é o que pode integrar ou determinar maioria.",
+       "x": {
+        "e": "Um partido é relevante se tiver a capacidade de determinar uma maioria parlamentar; o menor é irrelevante se nunca integra coalizão possível.",
+        "src": "Aula 04, p. 42",
+        "cit": "Potencial de Coalizão: um partido menor é considerado irrelevante se nunca é necessário ou integrado em qualquer coalizão majoritária possível ao longo do tempo"
+       }
+      },
+      {
+       "id": "est-a04-r5.2.2",
+       "t": "Força do partido e tipologias de Sartori",
+       "n": "Força eleitoral (cadeiras) e potencial de coalizão; tipos incluem pluralismo moderado e polarizado.",
+       "x": {
+        "e": "Sartori classificou os sistemas em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados.",
+        "src": "Aula 04, p. 42",
+        "cit": "Sartori classificou os sistemas partidários em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados",
+        "nota": "Resumos (p. 60) dizem que o potencial de chantagem é 'alterar a tática ou vetar decisões'; o texto didático (p. 42) fala em 'modificar o rumo da competição'. 'Vetar decisões' não consta do texto didático."
+       }
+      },
+      {
+       "id": "est-a04-r5.2.3",
+       "t": "Critério ideológico como complemento",
+       "n": "A contagem de partidos continua relevante, mas precisa de análise ideológica.",
+       "x": {
+        "e": "O posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado.",
+        "src": "Aula 04, p. 38",
+        "cit": "Cuidadoooo: esse posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.3",
+     "t": "Presidencialismo de coalizão (Abranches)",
+     "n": "Modelo brasileiro: presidencialismo, multipartidarismo e representação proporcional.",
+     "x": {
+      "e": "O Brasil combina presidencialismo, multipartidarismo e representação proporcional, e organiza o Executivo com grandes coalizões.",
+      "src": "Aula 04, p. 43",
+      "cit": "o Brasil é o único país que, além de combinar a proporcionalidade, o multipartidarismo e o"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.3.1",
+       "t": "Fórmula brasileira",
+       "n": "Combinação de multipartidarismo, presidencialismo e RP de listas abertas.",
+       "x": {
+        "e": "O Brasil adotou uma fórmula que combina multipartidarismo, presidencialismo e representação proporcional de listas abertas.",
+        "src": "Aula 04, p. 41",
+        "cit": "o Brasil, por exemplo, adotou uma fórmula política que combina multipartidarismo, presidencialismo e sistema de representação proporcional de listas abertas"
+       }
+      },
+      {
+       "id": "est-a04-r5.3.2",
+       "t": "Governabilidade e coalizões",
+       "n": "Sem maioria, o governo depende de negociações para formar coalizões.",
+       "x": {
+        "e": "Quando o partido vitorioso não detém a maioria das cadeiras, inicia-se um complexo jogo de negociações para criar coalizões.",
+        "src": "Aula 04, p. 41",
+        "cit": "Quando o partido vitorioso nas eleições não detém a maioria das cadeiras no legislativo, inicia-se um complexo jogo de negociações para criar coalizões capazes de sustentar o governo"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r6",
+   "t": "Sistema eleitoral: conceito e tipos",
+   "n": "Conjunto de normas que transforma votos em mandatos: majoritário, proporcional e misto.",
+   "x": {
+    "e": "Sistema eleitoral define como o eleitor faz escolhas e como os votos se transformam em mandato.",
+    "src": "Aula 04, p. 44",
+    "cit": "Conjunto de normas que define como o eleitor poderá fazer suas escolhas e como os votos serão contabilizados para ser transformados em mandato",
+    "trap": "Confundir sistema eleitoral (normas de contagem) com sistema partidário (número e relação entre partidos)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r6.1",
+     "t": "Conceito de eleição e tipos",
+     "n": "Eleição é escolha institucionalizada por voto; três tipos principais.",
+     "x": {
+      "e": "Eleição é o processo institucionalizado de escolha de representantes ou governantes por meio do voto.",
+      "src": "Aula 04, p. 44",
+      "cit": "Na Ciência Política, eleição é o processo institucionalizado de escolha de representantes ou governantes por meio do voto"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.1.1",
+       "t": "Três tipos de sistema",
+       "n": "Majoritário, proporcional e misto (combinação dos dois primeiros).",
+       "x": {
+        "e": "Existem três sistemas eleitorais que se destacam: o majoritário, o proporcional e o misto, combinação dos dois primeiros.",
+        "src": "Aula 04, p. 44",
+        "cit": "o sistema majoritário, o sistema proporcional e o sistema misto, que é uma combinação dos dois primeiros"
+       }
+      },
+      {
+       "id": "est-a04-r6.1.2",
+       "t": "Caso brasileiro",
+       "n": "Majoritário para Senado e Executivo; proporcional para Deputados.",
+       "x": {
+        "e": "No Brasil, o sistema majoritário vale para Senadores e titulares do Executivo, e o proporcional para Deputados.",
+        "src": "Aula 04, p. 45",
+        "cit": "Sistema majoritário nas eleições de Senadores e titulares do Poder Executivo; sistema de representação proporcional na eleição de Deputados"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.2",
+     "t": "Sistema majoritário",
+     "n": "Vence o candidato com maioria dos votos válidos no distrito.",
+     "x": {
+      "e": "No sistema majoritário, o candidato que recebe a maioria dos votos válidos no distrito é declarado vencedor.",
+      "src": "Aula 04, p. 45",
+      "cit": "O candidato que recebe a maioria dos votos válidos em um distrito ou circunscrição eleitoral é declarado vencedor"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.2.1",
+       "t": "Maioria absoluta",
+       "n": "Metade dos votos mais um.",
+       "x": {
+        "e": "A maioria absoluta consiste em metade dos votos dos eleitores mais um voto.",
+        "src": "Aula 04, p. 45",
+        "cit": "A maioria absoluta consiste em metade dos votos dos eleitores mais um voto",
+        "trap": "Não confundir maioria absoluta com maioria relativa (simples), em que basta o maior número de votos."
+       }
+      },
+      {
+       "id": "est-a04-r6.2.2",
+       "t": "Maioria relativa ou simples",
+       "n": "Basta o maior número de votos, mesmo sem a metade.",
+       "x": {
+        "e": "Na maioria relativa ou simples, é eleito o candidato com o maior número de votos, mesmo que não alcance a metade dos votos.",
+        "src": "Aula 04, p. 45",
+        "cit": "mesmo que não alcance a metade dos votos"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.3",
+       "t": "Turno único",
+       "n": "Uma única fase; basta maioria simples.",
+       "x": {
+        "e": "No sistema majoritário de turno único exige-se apenas a maioria simples, e o eleito é o mais votado.",
+        "src": "Aula 04, p. 46",
+        "cit": "Em geral, no SISTEMA MAJORITÁRIO DE ÚNICO TURNO - exige-se apenas a maioria simples"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.4",
+       "t": "Turno único no Brasil",
+       "n": "Senador e prefeito em municípios com menos de 200.000 eleitores.",
+       "x": {
+        "e": "No Brasil, o turno único ocorre nas eleições para Senador e para Prefeito em municípios com menos de 200.000 eleitores.",
+        "src": "Aula 04, p. 46",
+        "cit": "Isso ocorre nas eleições para Senador e nas eleições para Prefeito em municípios com menos de 200.000 eleitores"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.5",
+       "t": "Dois turnos",
+       "n": "Eleito no 1º turno só com maioria absoluta dos votos válidos.",
+       "x": {
+        "e": "No sistema majoritário de dois turnos, o candidato só é eleito no primeiro turno se obtiver a maioria absoluta dos votos válidos.",
+        "src": "Aula 04, p. 47",
+        "cit": "O candidato só é eleito no primeiro turno se obtiver a maioria absoluta dos votos válidos, excluindo os votos em branco e nulos",
+        "trap": "No segundo turno basta a maioria dos votos válidos, e não a maioria absoluta."
+       }
+      },
+      {
+       "id": "est-a04-r6.2.6",
+       "t": "Voto sincero x voto estratégico",
+       "n": "Sincero segue a preferência; estratégico (útil) calcula a chance de vitória.",
+       "x": {
+        "e": "No voto sincero, o eleitor escolhe o candidato mais próximo de suas preferências; no voto estratégico, calcula para evitar a vitória de um candidato rejeitado.",
+        "src": "Aula 04, p. 48",
+        "cit": "o eleitor calcula suas escolhas para evitar a vitória de um candidato rejeitado ou"
+       }
+      },
+      {
+       "id": "est-a04-r6.2.7",
+       "t": "Distritão",
+       "n": "Eleitos os mais votados, independentemente do desempenho partidário.",
+       "x": {
+        "e": "O distritão é uma proposta de sistema majoritário em distritos, em que os candidatos mais votados são eleitos independentemente do desempenho partidário.",
+        "src": "Aula 04, p. 49",
+        "cit": "os candidatos mais votados são eleitos independentemente do desempenho partidário"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.3",
+     "t": "Sistema proporcional",
+     "n": "Cadeiras distribuídas conforme a votação de cada partido, com quociente eleitoral e partidário.",
+     "x": {
+      "e": "No sistema proporcional, a distribuição de cadeiras segue a votação de cada partido, e não só a de candidatos.",
+      "src": "Aula 04, p. 50",
+      "cit": "Portanto, o sistema proporcional não leva em consideração apenas o número de votos atribuídos a candidatos, como no sistema majoritário, mas também considera os votos destinados aos partidos"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.3.1",
+       "t": "Origem e objetivo",
+       "n": "Thomas Hare, Andrae e D'Hondt; objetivo de equidade e representação de minorias.",
+       "x": {
+        "e": "Em 1882, D'Hondt publicou o sistema de representação proporcional, que a Conferência de 1886 adotou como modelo.",
+        "src": "Aula 04, p. 49",
+        "cit": "Em 1882, D'Hondt publicou \"Sistema racional e prático de representação proporcional\", no qual delineou seu método",
+        "nota": "Trecho do texto-fonte sobre Thomas Hare e a Conferência de 1886 está embaralhado na extração; apenas a referência a D'Hondt (1882) foi usada como citação literal."
+       }
+      },
+      {
+       "id": "est-a04-r6.3.2",
+       "t": "Voto de legenda e listas",
+       "n": "Voto no candidato também conta para o partido; listas fechada e aberta.",
+       "x": {
+        "e": "No sistema proporcional, ao votar em um candidato você também vota no partido, e é possível votar só na agremiação.",
+        "src": "Aula 04, p. 50",
+        "cit": "é possível votar apenas na agremiação (conhecido como \"voto de legenda\")"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.2.1",
+         "t": "Lista fechada",
+         "n": "Partido define a ordem; eleitor vota no partido.",
+         "x": {
+          "e": "Na lista fechada, os partidos criam listas de candidatos, e os eleitores votam no partido de sua escolha.",
+          "src": "Aula 04, p. 50",
+          "cit": "Os partidos criam listas de candidatos e os eleitores votam no partido de sua escolha"
+         }
+        },
+        {
+         "id": "est-a04-r6.3.2.2",
+         "t": "Lista aberta",
+         "n": "Eleitos os candidatos com mais votos dentro do partido.",
+         "x": {
+          "e": "Na lista aberta, os eleitores votam em candidatos individuais, e os com mais votos no partido são eleitos.",
+          "src": "Aula 04, p. 50",
+          "cit": "Os candidatos com mais votos em um partido são eleitos"
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a04-r6.3.3",
+       "t": "Quociente eleitoral e partidário",
+       "n": "QE = votos válidos / cadeiras; QP = votos do partido / QE.",
+       "x": {
+        "e": "O quociente eleitoral é o número mínimo de votos que um partido precisa atingir para eleger um candidato.",
+        "src": "Aula 04, p. 51",
+        "cit": "Cada partido precisa atingir um número mínimo de votos, chamado de quociente eleitoral (QE), para que um de seus candidatos seja eleito"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.3.1",
+         "t": "Arredondamento do quociente eleitoral",
+         "n": "Fração igual ou menor que meio é desprezada; maior que meio arredonda para cima.",
+         "x": {
+          "e": "O quociente eleitoral é calculado dividindo os votos válidos pelo número de cadeiras, desprezando ou arredondando a fração.",
+          "src": "Aula 04, p. 51",
+          "cit": "desprezando a fração se for igual ou menor que meio e arredondando para cima se for maior"
+         }
+        },
+        {
+         "id": "est-a04-r6.3.3.2",
+         "t": "Quociente partidário",
+         "n": "Votos do partido divididos pelo quociente eleitoral.",
+         "x": {
+          "e": "O quociente partidário é o número de votos do partido dividido pelo quociente eleitoral.",
+          "src": "Aula 04, p. 52",
+          "cit": "Quociente Partidário = Número de Votos do Partido / Quociente Eleitoral",
+          "trap": "No quociente partidário as casas decimais são desconsideradas; no quociente eleitoral a regra de arredondamento é outra."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.3.3",
+         "t": "Votos do partido incluem legenda",
+         "n": "Votos nominais e de legenda somam-se para o partido.",
+         "x": {
+          "e": "Os votos do partido incluem os votos dados aos candidatos desse partido e os votos de legenda.",
+          "src": "Aula 04, p. 52",
+          "cit": "os votos do partido incluem os votos dados aos candidatos desse partido e os votos de legenda"
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a04-r6.3.4",
+       "t": "Distorções: puxadores de votos, federações e fragmentação",
+       "n": "Candidato muito votado puxa outros do mesmo partido; federações somam votos; proporcional tende à fragmentação.",
+       "x": {
+        "e": "Candidatos muito votados ('puxadores de votos') podem eleger outros do mesmo partido com baixa votação.",
+        "src": "Aula 04, p. 54",
+        "cit": "A alta votação alcançada permite que o partido atinja mais de uma vez o quociente eleitoral, assim elevando o seu quociente partidário"
+       },
+       "f": [
+        {
+         "id": "est-a04-r6.3.4.1",
+         "t": "Puxadores de votos",
+         "n": "Votação de um candidato elege outros do mesmo partido.",
+         "x": {
+          "e": "Na lista do partido, o candidato C1, com alta votação, ocupa o primeiro lugar e o segundo é eleito com 20 mil votos.",
+          "src": "Aula 04, p. 55",
+          "cit": "Na lista de candidatos do partido, C1 figura em primeiro lugar em razão de sua alta votação",
+          "nota": "Novo requisito individual (Lei 13.165/2015 e Lei 14.211/2021): o texto-fonte está embaralhado e não permite confirmar o percentual exato; a regra não foi detalhada além da citação literal (p. 54)."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.4.2",
+         "t": "Federações",
+         "n": "Federações entram nos cálculos e somam-se os votos.",
+         "x": {
+          "e": "A Resolução TSE nº 23.677/2021 inclui as federações nos cálculos eleitorais, somando-se os votos.",
+          "src": "Aula 04, p. 55",
+          "cit": "inclui as federações nos cálculos eleitorais, ou seja, somam-se os votos",
+          "nota": "Texto-fonte escreve 'O 10 artigo' (provável 'O art. 10')."
+         }
+        },
+        {
+         "id": "est-a04-r6.3.4.3",
+         "t": "Fragmentação partidária",
+         "n": "Aumento do número de partidos e do peso relativo de cada um.",
+         "x": {
+          "e": "Um dos efeitos associados aos sistemas proporcionais é o aumento da fragmentação partidária.",
+          "src": "Aula 04, p. 56",
+          "cit": "um dos efeitos frequentemente associados aos sistemas proporcionais é o aumento da fragmentação partidária"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r6.4",
+     "t": "Sistema misto",
+     "n": "Combina elementos do majoritário e do proporcional.",
+     "x": {
+      "e": "O sistema misto combina elementos dos sistemas majoritário e proporcional, com duas abordagens principais.",
+      "src": "Aula 04, p. 56",
+      "cit": "o sistema misto paralelo e o sistema misto compensatório"
+     },
+     "f": [
+      {
+       "id": "est-a04-r6.4.1",
+       "t": "Misto paralelo",
+       "n": "Dois votos: um para candidato no distrito, outro para partido; assentos somados.",
+       "x": {
+        "e": "No sistema misto paralelo, os eleitores têm dois votos, e parte dos assentos é preenchida pelos vencedores dos distritos majoritários.",
+        "src": "Aula 04, p. 56",
+        "cit": "Sistema Misto Paralelo: os eleitores têm dois votos - um para um candidato em seu distrito e outro para um partido"
+       }
+      },
+      {
+       "id": "est-a04-r6.4.2",
+       "t": "Misto compensatório",
+       "n": "Votos proporcionais compensam distorções dos distritos majoritários.",
+       "x": {
+        "e": "No sistema misto compensatório, os votos proporcionais são usados para compensar distorções dos distritos majoritários.",
+        "src": "Aula 04, p. 56",
+        "cit": "os votos proporcionais são usados para compensar qualquer distorção que possa ocorrer nos distritos majoritários",
+        "trap": "Não confundir misto paralelo (somatório de assentos) com misto compensatório (correção de distorções)."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a04-r7",
+   "t": "Democracia digital, accountability e redes sociais",
+   "n": "Controle social permanente, contrademocracia e desafios das redes no processo eleitoral.",
+   "x": {
+    "e": "A accountability societal ampliou-se com as redes sociais, que tornam o controle social mais imediato e de baixo custo.",
+    "src": "Aula 04, p. 30",
+    "cit": "as redes estão a accountability societal ao transformarem o controle social sobre o poder público em um processo imediato, desintermediado e de baixo custo",
+    "trap": "Tratar as redes como substituto da representação: a aula as descreve como complemento e como campo de desafios (desinformação)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r7.1",
+     "t": "Accountability vertical e horizontal (O’Donnell)",
+     "n": "Vertical: cidadãos pelas eleições; horizontal: instituições que se controlam.",
+     "x": {
+      "e": "O’Donnell distingue a accountability vertical, exercida pelos cidadãos por meio das eleições, da accountability horizontal, realizada por instituições estatais autônomas.",
+      "src": "Aula 04, p. 8",
+      "cit": "O’Donnell distingue a accountability vertical, exercida principalmente pelos cidadãos por meio das eleições, da accountability horizontal"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.1.1",
+       "t": "Accountability vertical",
+       "n": "Exercida pelos cidadãos por meio das eleições.",
+       "x": {
+        "e": "A accountability vertical é exercida principalmente pelos cidadãos por meio das eleições.",
+        "src": "Aula 04, p. 8",
+        "cit": "exercida principalmente pelos cidadãos por meio das eleições"
+       }
+      },
+      {
+       "id": "est-a04-r7.1.2",
+       "t": "Accountability horizontal",
+       "n": "Exercida por instituições estatais autônomas que se controlam mutuamente.",
+       "x": {
+        "e": "A accountability horizontal é realizada por instituições estatais autônomas que fiscalizam e controlam mutuamente o exercício do poder.",
+        "src": "Aula 04, p. 8",
+        "cit": "realizada por instituições estatais autônomas que fiscalizam e controlam mutuamente o exercício do poder"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.2",
+     "t": "Contrademocracia (Rosanvallon)",
+     "n": "Vigilância e desconfiança permanentes dos cidadãos sobre os governantes, como complemento da representação.",
+     "x": {
+      "e": "A contrademocracia expressa uma cidadania ativa e crítica, que atua de maneira permanente, e não apenas nos momentos eleitorais.",
+      "src": "Aula 04, p. 26",
+      "cit": "A contrademocracia expressa uma cidadania mais ativa e crítica, que atua de maneira permanente, e não apenas nos momentos eleitorais"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.2.1",
+       "t": "Complementa, não substitui",
+       "n": "Não substitui a representação; amplia fiscalização e responsabilização.",
+       "x": {
+        "e": "A contrademocracia não substitui a representação, mas a complementa, ampliando os mecanismos de fiscalização e responsabilização.",
+        "src": "Aula 04, p. 26",
+        "cit": "Trata-se de uma forma de participação política que não substitui a representação, mas a complementa, ampliando os mecanismos de fiscalização e responsabilização"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.3",
+     "t": "Accountability societal e redes",
+     "n": "Redes tornam o controle social imediato e desintermediado; surge a democracia digital.",
+     "x": {
+      "e": "A democracia digital cria canais de interação direta entre governantes e governados para informar, fiscalizar e deliberar.",
+      "src": "Aula 04, p. 30",
+      "cit": "Criar novos canais de interação direta entre governantes e governados para informar, fiscalizar e deliberar"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.3.1",
+       "t": "Mobilização e indignação",
+       "n": "Sentimento de impotência vira mobilização contínua.",
+       "x": {
+        "e": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em mobilização.",
+        "src": "Aula 04, p. 31",
+        "cit": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em mobilização"
+       }
+      },
+      {
+       "id": "est-a04-r7.3.2",
+       "t": "Limite da mobilização online",
+       "n": "Indignação nas redes não garantiu mudança institucional automática.",
+       "x": {
+        "e": "A mobilização online e a indignação nas redes ainda não garantiram mudanças efetivas de conduta ética na ordem política institucional.",
+        "src": "Aula 04, p. 31",
+        "cit": "a mobilização online e a indignação nas redes ainda não garantiram mudanças efetivas de conduta ética na ordem política institucional"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.4",
+     "t": "Redes sociais e propaganda eleitoral",
+     "n": "Redes mudaram a propaganda; desafios de desinformação e regulação pela Justiça Eleitoral.",
+     "x": {
+      "e": "A Lei nº 9.504/1997 e a Resolução TSE nº 23.610/2019 buscaram regulamentar a propaganda eleitoral na internet.",
+      "src": "Aula 04, p. 57",
+      "cit": "A Lei nº 9.504/1997 (Lei das Eleições) e a Resolução TSE nº 23.610/2019 buscaram regulamentar a propaganda eleitoral na internet"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.4.1",
+       "t": "Uso das redes pelo eleitor",
+       "n": "Redes são fonte principal de informação para quase metade do eleitorado.",
+       "x": {
+        "e": "Segundo Manoela Dourado, quase metade do eleitorado brasileiro utiliza as redes sociais como principal fonte de informação sobre candidatos e propostas.",
+        "src": "Aula 04, p. 57",
+        "cit": "quase metade do eleitorado brasileiro utiliza as redes sociais"
+       }
+      },
+      {
+       "id": "est-a04-r7.4.2",
+       "t": "Fake news e vínculo de confiança",
+       "n": "Desinformação às vésperas da eleição pode alterar percepções e fragilizar a confiança.",
+       "x": {
+        "e": "A difusão de fake news, especialmente às vésperas das eleições, é capaz de alterar percepções e fragilizar o vínculo de confiança.",
+        "src": "Aula 04, p. 57",
+        "cit": "A difusão de fake news, especialmente às vésperas das eleições, é capaz de alterar percepções, gerar crises reputacionais e fragilizar o vínculo de confiança entre cidadãos e instituições"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "representação depende de partidos e sistemas eleitorais",
+   "de": "est-a04-r1",
+   "para": "est-a04-r2"
+  },
+  {
+   "rotulo": "definição de partido leva às tipologias",
+   "de": "est-a04-r2",
+   "para": "est-a04-r3"
+  },
+  {
+   "rotulo": "origem e evolução explicam catch-all e cartel",
+   "de": "est-a04-r3",
+   "para": "est-a04-r4"
+  },
+  {
+   "rotulo": "número e relevância dos partidos (sistemas partidários)",
+   "de": "est-a04-r4",
+   "para": "est-a04-r5"
+  },
+  {
+   "rotulo": "sistema partidário é moldado pelo sistema eleitoral",
+   "de": "est-a04-r5",
+   "para": "est-a04-r6"
+  },
+  {
+   "rotulo": "redes e contrademocracia complementam a representação",
+   "de": "est-a04-r7",
+   "para": "est-a04-r1"
+  }
+ ],
+ "fontesCentral": {}
+}

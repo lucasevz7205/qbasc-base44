@@ -1,0 +1,820 @@
+[
+ {
+  "id": "cp-e04-q01",
+  "decisao": "CORRIGIDO",
+  "motivo": "O trecho \"com mediação de normas e instituições\" não está na definição atribuída a Bobbio; na fonte é a frase seguinte, do autor da aula. Atribuir a Bobbio torna o C discutível.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito da representação política. Segundo Bobbio, citado na aula, a representação política é um mecanismo que permite o exercício do poder por meio de delegação, em que os governantes agem em nome dos governados."
+ },
+ {
+  "id": "cp-e04-q02",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q03",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q04",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q05",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q06",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q07",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q08",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q09",
+  "decisao": "CORRIGIDO",
+  "motivo": "O acréscimo \"dimensão que se manifesta na atuação do parlamentar após a autorização formal do voto\" não está na fonte e cria um segundo ponto discutível; o erro deve ficar só na troca simbólica/substantiva.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "novo_enunciado": "Julgue o item a seguir, a respeito da representação política. Segundo Pitkin, a representação é substantiva quando o representante encarna valores ou identidades coletivas.",
+  "novo_comentario": "Item errado. O texto da aula diz: \"simbólica, quando o representante encarna valores ou identidades coletivas\" e \"substantiva, quando atua efetivamente em favor dos interesses dos representados\" (Estratégia, Aula 04, p. 7). O item atribui à substantiva a definição da simbólica. Versão correta: \"Segundo Pitkin, a representação é substantiva quando o representante atua efetivamente em favor dos interesses dos representados.\""
+ },
+ {
+  "id": "cp-e04-q10",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q11",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q12",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q13",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q14",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q15",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q16",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q17",
+  "decisao": "CORRIGIDO",
+  "motivo": "\"Os primeiros disputam diretamente o controle do aparelho do Estado\" é inferência; a fonte diz só que a atuação dos partidos envolve, \"em maior ou menor grau, a disputa pelo poder político\" (p. 10-11). O advérbio \"diretamente\" aplicado aos partidos torna o C discutível.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito da definição e da institucionalização dos partidos políticos. Partidos e associações da sociedade civil diferem porque a atuação dos primeiros envolve a disputa pelo poder político, enquanto sindicatos, movimentos sociais e ONGs buscam influenciar as decisões dos governos, sem disputar diretamente o controle do aparelho do Estado."
+ },
+ {
+  "id": "cp-e04-q18",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q19",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2"
+ },
+ {
+  "id": "cp-e04-q20",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q21",
+  "decisao": "CORRIGIDO",
+  "motivo": "O fecho \"e as definições diferem nos demais elementos\" não está na fonte (conclusão acrescentada); retirado.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito da definição e da institucionalização dos partidos políticos. Independentemente do autor, o partido pode ser definido pelo seu objetivo central de controlar ou influenciar o governo por meio da conquista do poder."
+ },
+ {
+  "id": "cp-e04-q22",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q23",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q24",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F4 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q25",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q26",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q27",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q28",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q29",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e04-q30",
+  "decisao": "CORRIGIDO",
+  "motivo": "A fonte diz \"garante estabilidade ao processo eleitoral\"; \"estabilidade eleitoral\" é o nome de uma das dimensões de Mainwaring (q20/q31) e pode confundir. Ajuste para a redação literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito da definição e da institucionalização dos partidos políticos. Na literatura da Ciência Política, a institucionalização é vista como indicador da qualidade da democracia, pois a permanência de partidos sólidos amplia a previsibilidade das disputas, fortalece a representação e garante estabilidade ao processo eleitoral."
+ },
+ {
+  "id": "cp-e04-q31",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego V1 x registrado V2 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q32",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q33",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q34",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q35",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q36",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q37",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q38",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q39",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q40",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q41",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q42",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q43",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q44",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q45",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q46",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q47",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F4 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q48",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q49",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q50",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q51",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q52",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q53",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1"
+ },
+ {
+  "id": "cp-e04-q54",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q55",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q56",
+  "decisao": "CORRIGIDO",
+  "motivo": "A fonte não afirma relação causal (\"o que levou Sartori a propor\"); diz \"Nesse contexto, Giovanni Sartori emergiu como proponente de uma abordagem alternativa\" (p. 37, página embaralhada). Relação causal inventada em item C é contestável.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito dos sistemas partidários. Questionou-se o critério numérico baseado na contagem de partidos porque apenas a quantidade de partidos não capturava a complexidade das dinâmicas políticas e das diferenças ideológicas, e, nesse contexto, Sartori propôs abordagem alternativa."
+ },
+ {
+  "id": "cp-e04-q57",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q58",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q59",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego V1 x registrado V2 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q60",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q61",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q62",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q63",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F4 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q64",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego V1 x registrado V3 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q65",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q66",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F4 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q67",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q68",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q69",
+  "decisao": "CORRIGIDO",
+  "motivo": "A troca de \"como os resultados são produzidos\" por \"quem pode ser candidato\" põe no item uma afirmação verdadeira no mundo real (eleição pressupõe regras de elegibilidade); o candidato recorreria alegando incompletude. Ponto de alteração trocado para o qualificador temporal \"previamente definidas\" (F6), inequívoco.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "novo_enunciado": "Julgue o item a seguir, a respeito dos sistemas eleitorais. A eleição pressupõe regras definidas no curso da apuração sobre quem pode votar (sufrágio), como o voto é exercido (aberto ou secreto) e como os resultados são produzidos, segundo o conceito apresentado na aula.",
+  "novo_comentario": "Item errado. O texto da aula diz: \"que pressupõe regras previamente definidas sobre quem pode votar (sufrágio), como o voto é exercido (aberto ou secreto) e como os resultados são produzidos\" (Estratégia, Aula 04, p. 44). O texto diz \"previamente definidas\"; o item diz \"definidas no curso da apuração\". Versão correta: \"A eleição pressupõe regras previamente definidas sobre quem pode votar (sufrágio), como o voto é exercido (aberto ou secreto) e como os resultados são produzidos.\" Mecanismo: F6 (relação temporal)."
+ },
+ {
+  "id": "cp-e04-q70",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q71",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q72",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q73",
+  "decisao": "DESCARTAR",
+  "motivo": "Ambíguo: o item chama o misto de combinação do proporcional com o \"sistema distrital\"; na literatura e no uso corrente (distrital misto) o componente majoritário é justamente o distrital uninominal, de modo que o gabarito E seria contestado e possivelmente anulado.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q74",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q75",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q76",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q77",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F5"
+ },
+ {
+  "id": "cp-e04-q78",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q79",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q80",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F4 x registrado F3 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q81",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q82",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q83",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q84",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q85",
+  "decisao": "CORRIGIDO",
+  "motivo": "A fonte diz \"o voto pode ter um caráter duplo\"; o item C diz \"tem caráter duplo\", trocando o modal. Em item C não se altera modal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito dos sistemas eleitorais. No sistema proporcional o voto pode ter caráter duplo: ao votar em um candidato o eleitor também vota no partido, sendo possível votar apenas na agremiação, o chamado voto de legenda."
+ },
+ {
+  "id": "cp-e04-q86",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q87",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q88",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q89",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q90",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q91",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q92",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q93",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e04-q94",
+  "decisao": "CORRIGIDO",
+  "motivo": "Página 55 embaralhada no trecho; o fecho \"o que influi na distribuição de cadeiras no sistema proporcional\" é conclusão não presente na fonte. Mantido só o que está legível: inclusão das federações nos cálculos e soma dos votos.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito dos sistemas eleitorais. A Resolução TSE nº 23.677/2021 inclui as federações nos cálculos eleitorais, ou seja, somam-se os votos dos partidos que as compõem."
+ },
+ {
+  "id": "cp-e04-q95",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q96",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego V2 x registrado V1 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2"
+ },
+ {
+  "id": "cp-e04-q97",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q98",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q99",
+  "decisao": "CORRIGIDO",
+  "motivo": "Página 30 embaralhada: o verbo da frase-fonte some na extração (\"as redes estão a accountability societal\"); o contexto fala em \"redefinindo\" e \"Essa redefinição\". \"Ampliam\" não tem apoio literal e torna o C discutível; use \"redefinem\".",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de accountability, democracia digital e redes sociais. Segundo Vera Regina da Rosa Pereira, as redes redefinem a accountability societal ao tornar o controle social sobre o poder público imediato, desintermediado e de baixo custo, sem dependência exclusiva das instituições tradicionais e da mídia de massa."
+ },
+ {
+  "id": "cp-e04-q100",
+  "decisao": "CORRIGIDO",
+  "motivo": "Dois pontos alterados (\"apenas\" e \"ficando a fiscalização a cargo exclusivo do voto\"); deixar um só ponto (F2).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "novo_enunciado": "Julgue o item a seguir, a respeito de accountability, democracia digital e redes sociais. Segundo a aula, a representação política deve ser concebida como um processo contínuo, que articula apenas a autorização eleitoral e o exercício do mandato."
+ },
+ {
+  "id": "cp-e04-q101",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q102",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F6 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q103",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q104",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego V1 x registrado V2 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q105",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q106",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q107",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F3 x registrado F6 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q108",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q109",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e04-q110",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q111",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e04-q112",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e04-q113",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito cego coincide; ponto único verificável na fonte. Mecanismo cego F6 x registrado F4 (ambos defensáveis; manter o registrado).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e04-q114",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos."
+ },
+ {
+  "id": "cp-e04-q115",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo confirmados na classificação cega; ponto único, evidência e ref conferidos."
+ }
+]

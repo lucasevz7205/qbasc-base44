@@ -1,255 +1,416 @@
 {
-  "topico": "cp-7",
-  "materia": "cp",
-  "centro": "Organização política brasileira",
-  "ramos": [
+ "topico": "cp-7",
+ "materia": "cp",
+ "centro": "Organização política brasileira",
+ "ramos": [
+  {
+   "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1",
+   "t": "Fundamentos da República",
+   "cor": 1,
+   "x": {
+    "e": "O art. 1º define a República Federativa do Brasil como união indissolúvel de Estados, Municípios e Distrito Federal, constituída em Estado Democrático de Direito. O parágrafo único consagra a democracia semidireta: todo poder emana do povo, que o exerce por representantes eleitos ou diretamente.",
+    "trap": "Confundir fundamentos (art. 1º) com objetivos (art. 3º).",
+    "src": "Etapa 10, p. 1, l. 12"
+   },
+   "f": [
     {
-      "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1",
-      "t": "Fundamentos da República",
-      "cor": 1,
-      "x": {
-        "e": "O art. 1º define a República Federativa do Brasil como união indissolúvel de Estados, Municípios e Distrito Federal, constituída em Estado Democrático de Direito. O parágrafo único consagra a democracia semidireta: todo poder emana do povo, que o exerce por representantes eleitos ou diretamente.",
-        "trap": "Confundir fundamentos (art. 1º) com objetivos (art. 3º).",
-        "src": "Etapa 10, p. 1, l. 12"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
-          "t": "Fundamentos × objetivos",
-          "n": "SO-CI-DI-VA-PLU × verbos do art. 3º",
-          "x": {
-            "e": "Os cinco fundamentos do art. 1º são a soberania, a cidadania, a dignidade da pessoa humana, os valores sociais do trabalho e da livre iniciativa e o pluralismo político (SO-CI-DI-VA-PLU). O art. 3º enumera objetivos, que começam por verbo (construir, garantir, erradicar, promover). O art. 4º trata dos princípios das relações internacionais.",
-            "trap": "Tratar objetivo do art. 3º (erradicar a pobreza, garantir o desenvolvimento) como fundamento.",
-            "src": "Etapa 10, p. 2, l. 159, 160, 174; p. 7, l. 639"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.2",
-          "t": "Parágrafo único: democracia semidireta",
-          "n": "Representantes eleitos ou diretamente",
-          "x": {
-            "e": "Todo o poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos da Constituição. A combinação de representação e participação direta caracteriza a democracia semidireta, com plebiscito, referendo e iniciativa popular.",
-            "trap": "Dizer que o poder é exercido apenas por representantes, ou apenas diretamente.",
-            "src": "Etapa 10, p. 2, l. 157-158"
-          }
-        }
-      ]
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.1",
+     "t": "Fundamentos × objetivos",
+     "n": "SO-CI-DI-VA-PLU × verbos do art. 3º",
+     "x": {
+      "e": "Os cinco fundamentos do art. 1º são a soberania, a cidadania, a dignidade da pessoa humana, os valores sociais do trabalho e da livre iniciativa e o pluralismo político (SO-CI-DI-VA-PLU). O art. 3º enumera objetivos, que começam por verbo (construir, garantir, erradicar, promover). O art. 4º trata dos princípios das relações internacionais.",
+      "trap": "Tratar objetivo do art. 3º (erradicar a pobreza, garantir o desenvolvimento) como fundamento.",
+      "src": "Etapa 10, p. 2, l. 159, 160, 174; p. 7, l. 639"
+     }
     },
     {
-      "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2",
-      "t": "A federação brasileira",
-      "cor": 2,
-      "x": {
-        "e": "O art. 18 define a organização político-administrativa: União, Estados, Distrito Federal e Municípios, todos autônomos. A autonomia não se confunde com a soberania, que é da República Federativa.",
-        "trap": "Chamar os entes de soberanos.",
-        "src": "Etapa 10, p. 3, l. 236"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
-          "t": "Autonomia × soberania",
-          "n": "Entes autônomos; soberania da República",
-          "x": {
-            "e": "Os entes federados têm auto-organização (constituições estaduais e leis orgânicas), autogoverno (eleição de seus governantes), autoadministração e autolegislação; a soberania pertence à República Federativa. A federação é de três níveis, pois a Constituição de 1988 elevou o Município a ente federado. Os territórios federais integram a União e não são entes federados; hoje não existe nenhum.",
-            "trap": "Dizer que Estados, DF ou Municípios são soberanos, ou que o território é ente federado.",
-            "src": "Etapa 10, p. 3, l. 245, 246, 247, 248"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-          "t": "Repartição de competências",
-          "n": "Exclusiva, comum, concorrente, remanescente, local",
-          "x": {
-            "e": "Exclusiva (material) e privativa (legislativa) da União: arts. 21 e 22. Comum (material), de todos os entes em cooperação: art. 23. Concorrente (legislativa): União edita normas gerais e Estados e DF suplementam: art. 24. Remanescente: Estados (art. 25, § 1º). Interesse local: Municípios (art. 30). Cumulativa: Distrito Federal, com competências de Estado e de Município, vedada sua divisão em Municípios (art. 32).",
-            "trap": "Trocar competência comum (material, todos os entes) por concorrente (legislativa, União, Estados e DF).",
-            "src": "Etapa 10, p. 3, l. 263, 265, 269, 271, 290, 291"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
-          "t": "Criação de Estados e Municípios",
-          "n": "Plebiscito obrigatório",
-          "x": {
-            "e": "Estados podem incorporar-se, subdividir-se ou desmembrar-se mediante aprovação da população diretamente interessada, por plebiscito, e do Congresso Nacional, por lei complementar (art. 18, § 3º). Municípios são criados, incorporados, fundidos e desmembrados por lei estadual, dentro do período fixado em lei complementar federal, com consulta prévia por plebiscito e estudos de viabilidade (art. 18, § 4º).",
-            "trap": "Dispensar o plebiscito ou atribuir a criação de Município à lei complementar federal.",
-            "src": "Etapa 10, p. 3, l. 238-239, 240, 241"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
-          "t": "Modelos de federalismo",
-          "n": "Dual × cooperativo; agregação × desagregação",
-          "x": {
-            "e": "Federalismo dual: esferas separadas, modelo inicial dos Estados Unidos. Federalismo cooperativo: competências compartilhadas e ação conjunta, modelo da Constituição de 1988 (art. 23). Federação por agregação: Estados soberanos se unem (EUA). Por desagregação: Estado unitário se descentraliza (Brasil, 1889-1891). A intervenção federal (arts. 34 a 36) é exceção à autonomia, decretada pelo Presidente nas hipóteses taxativas, com controle do Congresso.",
-            "trap": "Dizer que o Brasil nasceu por agregação ou que a intervenção federal é regra.",
-            "src": "Etapa 10, p. 3, l. 295; p. 4, l. 312, 316, 326"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
-          "t": "Abrucio × Arretche",
-          "n": "Barões da federação × centralização legislativa",
-          "x": {
-            "e": "Fernando Abrucio (Os barões da federação, 1998): governadores como atores centrais após a redemocratização, com forte influência sobre as bancadas federais; federalismo estadualista e predatório. Marta Arretche (Democracia, federalismo e centralização no Brasil, 2012): a União concentra a autoridade legislativa sobre as políticas executadas por estados e municípios; a execução é descentralizada e a regulação, centralizada.",
-            "trap": "Dizer que, para Arretche, estados e municípios regulam livremente as políticas que executam.",
-            "src": "Etapa 10, p. 4, l. 333, 334, 335, 336, 338, 339, 340, 341"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3",
-      "t": "A democracia semidireta",
-      "cor": 3,
-      "x": {
-        "e": "A soberania popular é exercida pelo sufrágio universal e pelo voto direto e secreto e, nos termos da lei, por plebiscito, referendo e iniciativa popular (art. 14). A Lei nº 9.709/1998 regulamenta os instrumentos.",
-        "src": "Etapa 10, p. 4, l. 381"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
-          "t": "Plebiscito × referendo",
-          "n": "PLEbiscito é PRÉvio; REferendo é REtroativo",
-          "x": {
-            "e": "Plebiscito e referendo são consultas ao povo sobre matéria de acentuada relevância, de natureza constitucional, legislativa ou administrativa. O plebiscito é convocado com anterioridade ao ato legislativo ou administrativo; o referendo, com posterioridade, para ratificação ou rejeição. Exemplos: plebiscitos de 1963, 1993 e 2011 (divisão do Pará); referendo de 2005 sobre o comércio de armas, com proposta rejeitada.",
-            "trap": "Inverter o momento das consultas.",
-            "src": "Etapa 10, p. 4, l. 396; p. 5, l. 397, 398, 399, 433, 434"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
-          "t": "Convocação por decreto legislativo",
-          "n": "Proposta de 1/3 de qualquer Casa",
-          "x": {
-            "e": "Nas questões de relevância nacional e no caso do art. 18, § 3º, plebiscito e referendo são convocados por decreto legislativo, por proposta de pelo menos um terço dos membros de qualquer das Casas do Congresso Nacional (Lei nº 9.709/1998, art. 3º). A aprovação do decreto segue a regra geral de maioria. O Presidente da República não os convoca por decreto.",
-            "trap": "Atribuir a convocação ao Presidente da República ou exigir um terço dos membros de ambas as Casas.",
-            "src": "Etapa 10, p. 5, l. 401, 402, 447, 448"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
-          "t": "Iniciativa popular",
-          "n": "1 – 5 – 0,3, perante a Câmara",
-          "x": {
-            "e": "A iniciativa popular consiste na apresentação de projeto de lei à Câmara dos Deputados, subscrito por no mínimo 1% do eleitorado nacional, distribuído por pelo menos cinco Estados, com não menos de 0,3% dos eleitores de cada um deles (Lei nº 9.709/1998, art. 13). Exemplos: Lei nº 9.840/1999 (compra de votos) e Lei Complementar nº 135/2010 (Ficha Limpa). A Constituição não prevê iniciativa popular de emenda constitucional nem recall no plano federal.",
-            "trap": "Apresentar o projeto ao Senado, exigir nove estados ou admitir iniciativa popular de emenda constitucional.",
-            "src": "Etapa 10, p. 5, l. 403, 404, 405, 448, 449"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
-          "t": "Consultas populares municipais",
-          "n": "Com as eleições, sem propaganda gratuita",
-          "x": {
-            "e": "Consultas populares sobre questões locais aprovadas pelas Câmaras Municipais são realizadas concomitantemente às eleições municipais, se encaminhadas à Justiça Eleitoral até 90 dias antes da eleição (art. 14, § 12). As manifestações ocorrem durante as campanhas, sem propaganda gratuita no rádio e na televisão (§ 13).",
-            "trap": "Admitir propaganda gratuita no rádio e na TV, ou prazo diferente de 90 dias.",
-            "src": "Etapa 10, p. 4, l. 382, 383, 384, 386"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.5",
-          "t": "Representação e participação",
-          "n": "Representativa como regra; participativa como complemento",
-          "x": {
-            "e": "A literatura (Pitkin, Dahl e outros) trata a democracia representativa como regra e os mecanismos diretos como complemento. A democracia participativa inclui conselhos de políticas públicas, conferências e orçamento participativo. Na Câmara, a Comissão de Legislação Participativa (2001) recebe sugestões legislativas de associações, sindicatos e outras entidades.",
-            "trap": "Atribuir a Dahl a democracia direta como regra.",
-            "src": "Etapa 10, p. 5, l. 450, 451; p. 8, l. 779"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4",
-      "t": "Órgãos e mandatos",
-      "cor": 4,
-      "x": {
-        "e": "Composição e mandato dos órgãos dos Poderes e requisitos de elegibilidade e de voto.",
-        "src": "Etapa 10, p. 5, l. 484"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
-          "t": "Câmara, Senado e Congresso",
-          "n": "513 × 81; 4 × 8 anos",
-          "x": {
-            "e": "Câmara dos Deputados: 513 deputados, representantes do povo, eleitos pelo sistema proporcional, mandato de quatro anos (arts. 44 e 45). Senado Federal: 81 senadores, três por Estado e pelo DF, eleitos pelo majoritário, mandato de oito anos (art. 46). Congresso Nacional: sessão legislativa de 2 de fevereiro a 17 de julho e de 1º de agosto a 22 de dezembro; a legislatura dura quatro anos.",
-            "trap": "Trocar os mandatos, ou dizer que o mandato do senador tem oito legislaturas.",
-            "src": "Etapa 10, p. 5, l. 494, 495, 501, 502; p. 6, l. 521, 522"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
-          "t": "Presidente, STF e TCU",
-          "n": "Quatro anos, uma reeleição; 11 ministros",
-          "x": {
-            "e": "Presidente da República: chefe de Estado e de governo, mandato de quatro anos, com posse em 5 de janeiro do ano seguinte à eleição a partir de 2027 (EC nº 111/2021) e uma reeleição consecutiva (art. 14, § 5º, EC nº 16/1997). STF: onze ministros nomeados pelo Presidente após aprovação do Senado por maioria absoluta (art. 101). TCU: órgão de controle externo que auxilia o Congresso (art. 71).",
-            "trap": "Dizer que o TCU integra o Poder Judiciário ou que a reeleição é ilimitada.",
-            "src": "Etapa 10, p. 6, l. 529, 530, 539, 546"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
-          "t": "Alistamento e voto",
-          "n": "Obrigatório 18 a 70; facultativo para três grupos",
-          "x": {
-            "e": "O alistamento eleitoral e o voto são obrigatórios para os maiores de dezoito anos e facultativos para os analfabetos, os maiores de setenta anos e os maiores de dezesseis e menores de dezoito anos (art. 14, § 1º). São inalistáveis os estrangeiros e, durante o serviço militar obrigatório, os conscritos (§ 2º).",
-            "trap": "Dizer que o analfabeto não pode votar.",
-            "src": "Etapa 10, p. 6, l. 552, 553, 574"
-          }
-        },
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
-          "t": "Idades mínimas e inelegibilidade",
-          "n": "35 – 30 – 21 – 18; analfabeto vota, mas não é votado",
-          "x": {
-            "e": "Idade mínima (art. 14, § 3º, VI): 35 anos para Presidente, Vice-Presidente e Senador; 30 anos para Governador e Vice-Governador; 21 anos para Deputado federal, estadual ou distrital, Prefeito, Vice-Prefeito e juiz de paz; 18 anos para Vereador. Os analfabetos podem votar, mas são inelegíveis (§ 4º). As demais inelegibilidades estão nos §§ 5º a 9º e na Lei Complementar nº 64/1990, alterada pela Lei da Ficha Limpa.",
-            "trap": "Fixar 30 anos para Senador ou admitir a candidatura do analfabeto.",
-            "src": "Etapa 10, p. 6, l. 558, 560, 562, 564, 566, 568, 570, 572, 574-575"
-          }
-        }
-      ]
-    },
-    {
-      "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5",
-      "t": "Federação e segurança pública em debate",
-      "cor": 5,
-      "x": {
-        "e": "A PEC da Segurança Pública (PEC nº 18/2025) ilustra o federalismo cooperativo e a repartição de competências: a segurança pública é tradicionalmente competência dos Estados, e a proposta amplia a coordenação federal e o papel dos municípios. O resultado final no Senado é posterior à data de corte do material (15/10/2026).",
-        "trap": "Tratar a votação no Senado como concluída: o material a registra como pendente.",
-        "src": "Etapa 10, p. 7, l. 628"
-      },
-      "f": [
-        {
-          "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
-          "t": "PEC da Segurança Pública",
-          "n": "PEC 18/2025: Susp, PRF e polícias municipais",
-          "x": {
-            "e": "A PEC nº 18/2025 foi aprovada pela Câmara em março de 2026. No Senado, a CCJ concluiu a votação em 14 de outubro sem alterações; restava a votação em dois turnos no Plenário, com pelo menos 49 votos. Se aprovada sem mudanças, vai à promulgação, porque já passou pela Câmara. A proposta inclui o Sistema Único de Segurança Pública (Susp) na Constituição, amplia a atuação da Polícia Rodoviária Federal e permite polícias municipais a partir das guardas municipais. Quórum de emenda constitucional: três quintos, em dois turnos, em cada Casa.",
-            "trap": "Afirmar que a PEC já foi promulgada: o resultado no Senado é posterior à data de corte.",
-            "src": "Etapa 10, p. 5, l. 447; p. 7, l. 619, 622, 623, 629"
-          }
-        }
-      ]
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r1.2",
+     "t": "Parágrafo único: democracia semidireta",
+     "n": "Representantes eleitos ou diretamente",
+     "x": {
+      "e": "Todo o poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos da Constituição. A combinação de representação e participação direta caracteriza a democracia semidireta, com plebiscito, referendo e iniciativa popular.",
+      "trap": "Dizer que o poder é exercido apenas por representantes, ou apenas diretamente.",
+      "src": "Etapa 10, p. 2, l. 157-158"
+     }
     }
-  ],
-  "ligacoes": [
+   ]
+  },
+  {
+   "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2",
+   "t": "A federação brasileira",
+   "cor": 2,
+   "x": {
+    "e": "O art. 18 define a organização político-administrativa: União, Estados, Distrito Federal e Municípios, todos autônomos. A autonomia não se confunde com a soberania, que é da República Federativa.",
+    "trap": "Chamar os entes de soberanos.",
+    "src": "Etapa 10, p. 3, l. 236"
+   },
+   "f": [
     {
-      "rotulo": "Competência comum × concorrente",
-      "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
-      "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4"
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.1",
+     "t": "Autonomia × soberania",
+     "n": "Entes autônomos; soberania da República",
+     "x": {
+      "e": "Os entes federados têm auto-organização (constituições estaduais e leis orgânicas), autogoverno (eleição de seus governantes), autoadministração e autolegislação; a soberania pertence à República Federativa. A federação é de três níveis, pois a Constituição de 1988 elevou o Município a ente federado. Os territórios federais integram a União e não são entes federados; hoje não existe nenhum.",
+      "trap": "Dizer que Estados, DF ou Municípios são soberanos, ou que o território é ente federado.",
+      "src": "Etapa 10, p. 3, l. 245, 246, 247, 248"
+     }
     },
     {
-      "rotulo": "Plebiscito obrigatório na criação de entes",
-      "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
-      "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1"
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+     "t": "Repartição de competências",
+     "n": "Exclusiva, comum, concorrente, remanescente, local",
+     "x": {
+      "e": "Exclusiva (material) e privativa (legislativa) da União: arts. 21 e 22. Comum (material), de todos os entes em cooperação: art. 23. Concorrente (legislativa): União edita normas gerais e Estados e DF suplementam: art. 24. Remanescente: Estados (art. 25, § 1º). Interesse local: Municípios (art. 30). Cumulativa: Distrito Federal, com competências de Estado e de Município, vedada sua divisão em Municípios (art. 32).",
+      "trap": "Trocar competência comum (material, todos os entes) por concorrente (legislativa, União, Estados e DF).",
+      "src": "Etapa 10, p. 3, l. 263, 265, 269, 271, 290, 291"
+     }
     },
     {
-      "rotulo": "Segurança pública: competência estadual ampliada",
-      "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
-      "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2"
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
+     "t": "Criação de Estados e Municípios",
+     "n": "Plebiscito obrigatório",
+     "x": {
+      "e": "Estados podem incorporar-se, subdividir-se ou desmembrar-se mediante aprovação da população diretamente interessada, por plebiscito, e do Congresso Nacional, por lei complementar (art. 18, § 3º). Municípios são criados, incorporados, fundidos e desmembrados por lei estadual, dentro do período fixado em lei complementar federal, com consulta prévia por plebiscito e estudos de viabilidade (art. 18, § 4º).",
+      "trap": "Dispensar o plebiscito ou atribuir a criação de Município à lei complementar federal.",
+      "src": "Etapa 10, p. 3, l. 238-239, 240, 241"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4",
+     "t": "Modelos de federalismo",
+     "n": "Dual × cooperativo; agregação × desagregação",
+     "x": {
+      "e": "Federalismo dual: esferas separadas, modelo inicial dos Estados Unidos. Federalismo cooperativo: competências compartilhadas e ação conjunta, modelo da Constituição de 1988 (art. 23). Federação por agregação: Estados soberanos se unem (EUA). Por desagregação: Estado unitário se descentraliza (Brasil, 1889-1891). A intervenção federal (arts. 34 a 36) é exceção à autonomia, decretada pelo Presidente nas hipóteses taxativas, com controle do Congresso.",
+      "trap": "Dizer que o Brasil nasceu por agregação ou que a intervenção federal é regra.",
+      "src": "Etapa 10, p. 3, l. 295; p. 4, l. 312, 316, 326"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.5",
+     "t": "Abrucio × Arretche",
+     "n": "Barões da federação × centralização legislativa",
+     "x": {
+      "e": "Fernando Abrucio (Os barões da federação, 1998): governadores como atores centrais após a redemocratização, com forte influência sobre as bancadas federais; federalismo estadualista e predatório. Marta Arretche (Democracia, federalismo e centralização no Brasil, 2012): a União concentra a autoridade legislativa sobre as políticas executadas por estados e municípios; a execução é descentralizada e a regulação, centralizada.",
+      "trap": "Dizer que, para Arretche, estados e municípios regulam livremente as políticas que executam.",
+      "src": "Etapa 10, p. 4, l. 333, 334, 335, 336, 338, 339, 340, 341"
+     }
     }
-  ],
-  "fontesCentral": {
-    "KIT-ARR-CP-7-organizacao-politica-brasileira-2026-11-26": {}
+   ]
+  },
+  {
+   "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3",
+   "t": "A democracia semidireta",
+   "cor": 3,
+   "x": {
+    "e": "A soberania popular é exercida pelo sufrágio universal e pelo voto direto e secreto e, nos termos da lei, por plebiscito, referendo e iniciativa popular (art. 14). A Lei nº 9.709/1998 regulamenta os instrumentos.",
+    "src": "Etapa 10, p. 4, l. 381"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1",
+     "t": "Plebiscito × referendo",
+     "n": "PLEbiscito é PRÉvio; REferendo é REtroativo",
+     "x": {
+      "e": "Plebiscito e referendo são consultas ao povo sobre matéria de acentuada relevância, de natureza constitucional, legislativa ou administrativa. O plebiscito é convocado com anterioridade ao ato legislativo ou administrativo; o referendo, com posterioridade, para ratificação ou rejeição. Exemplos: plebiscitos de 1963, 1993 e 2011 (divisão do Pará); referendo de 2005 sobre o comércio de armas, com proposta rejeitada.",
+      "trap": "Inverter o momento das consultas.",
+      "src": "Etapa 10, p. 4, l. 396; p. 5, l. 397, 398, 399, 433, 434"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.2",
+     "t": "Convocação por decreto legislativo",
+     "n": "Proposta de 1/3 de qualquer Casa",
+     "x": {
+      "e": "Nas questões de relevância nacional e no caso do art. 18, § 3º, plebiscito e referendo são convocados por decreto legislativo, por proposta de pelo menos um terço dos membros de qualquer das Casas do Congresso Nacional (Lei nº 9.709/1998, art. 3º). A aprovação do decreto segue a regra geral de maioria. O Presidente da República não os convoca por decreto.",
+      "trap": "Atribuir a convocação ao Presidente da República ou exigir um terço dos membros de ambas as Casas.",
+      "src": "Etapa 10, p. 5, l. 401, 402, 447, 448"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.3",
+     "t": "Iniciativa popular",
+     "n": "1 – 5 – 0,3, perante a Câmara",
+     "x": {
+      "e": "A iniciativa popular consiste na apresentação de projeto de lei à Câmara dos Deputados, subscrito por no mínimo 1% do eleitorado nacional, distribuído por pelo menos cinco Estados, com não menos de 0,3% dos eleitores de cada um deles (Lei nº 9.709/1998, art. 13). Exemplos: Lei nº 9.840/1999 (compra de votos) e Lei Complementar nº 135/2010 (Ficha Limpa). A Constituição não prevê iniciativa popular de emenda constitucional nem recall no plano federal.",
+      "trap": "Apresentar o projeto ao Senado, exigir nove estados ou admitir iniciativa popular de emenda constitucional.",
+      "src": "Etapa 10, p. 5, l. 403, 404, 405, 448, 449"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.4",
+     "t": "Consultas populares municipais",
+     "n": "Com as eleições, sem propaganda gratuita",
+     "x": {
+      "e": "Consultas populares sobre questões locais aprovadas pelas Câmaras Municipais são realizadas concomitantemente às eleições municipais, se encaminhadas à Justiça Eleitoral até 90 dias antes da eleição (art. 14, § 12). As manifestações ocorrem durante as campanhas, sem propaganda gratuita no rádio e na televisão (§ 13).",
+      "trap": "Admitir propaganda gratuita no rádio e na TV, ou prazo diferente de 90 dias.",
+      "src": "Etapa 10, p. 4, l. 382, 383, 384, 386"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.5",
+     "t": "Representação e participação",
+     "n": "Representativa como regra; participativa como complemento",
+     "x": {
+      "e": "A literatura (Pitkin, Dahl e outros) trata a democracia representativa como regra e os mecanismos diretos como complemento. A democracia participativa inclui conselhos de políticas públicas, conferências e orçamento participativo. Na Câmara, a Comissão de Legislação Participativa (2001) recebe sugestões legislativas de associações, sindicatos e outras entidades.",
+      "trap": "Atribuir a Dahl a democracia direta como regra.",
+      "src": "Etapa 10, p. 5, l. 450, 451; p. 8, l. 779"
+     }
+    }
+   ]
+  },
+  {
+   "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4",
+   "t": "Órgãos e mandatos",
+   "cor": 4,
+   "x": {
+    "e": "Composição e mandato dos órgãos dos Poderes e requisitos de elegibilidade e de voto.",
+    "src": "Etapa 10, p. 5, l. 484"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.1",
+     "t": "Câmara, Senado e Congresso",
+     "n": "513 × 81; 4 × 8 anos",
+     "x": {
+      "e": "Câmara dos Deputados: 513 deputados, representantes do povo, eleitos pelo sistema proporcional, mandato de quatro anos (arts. 44 e 45). Senado Federal: 81 senadores, três por Estado e pelo DF, eleitos pelo majoritário, mandato de oito anos (art. 46). Congresso Nacional: sessão legislativa de 2 de fevereiro a 17 de julho e de 1º de agosto a 22 de dezembro; a legislatura dura quatro anos.",
+      "trap": "Trocar os mandatos, ou dizer que o mandato do senador tem oito legislaturas.",
+      "src": "Etapa 10, p. 5, l. 494, 495, 501, 502; p. 6, l. 521, 522"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.2",
+     "t": "Presidente, STF e TCU",
+     "n": "Quatro anos, uma reeleição; 11 ministros",
+     "x": {
+      "e": "Presidente da República: chefe de Estado e de governo, mandato de quatro anos, com posse em 5 de janeiro do ano seguinte à eleição a partir de 2027 (EC nº 111/2021) e uma reeleição consecutiva (art. 14, § 5º, EC nº 16/1997). STF: onze ministros nomeados pelo Presidente após aprovação do Senado por maioria absoluta (art. 101). TCU: órgão de controle externo que auxilia o Congresso (art. 71).",
+      "trap": "Dizer que o TCU integra o Poder Judiciário ou que a reeleição é ilimitada.",
+      "src": "Etapa 10, p. 6, l. 529, 530, 539, 546"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.3",
+     "t": "Alistamento e voto",
+     "n": "Obrigatório 18 a 70; facultativo para três grupos",
+     "x": {
+      "e": "O alistamento eleitoral e o voto são obrigatórios para os maiores de dezoito anos e facultativos para os analfabetos, os maiores de setenta anos e os maiores de dezesseis e menores de dezoito anos (art. 14, § 1º). São inalistáveis os estrangeiros e, durante o serviço militar obrigatório, os conscritos (§ 2º).",
+      "trap": "Dizer que o analfabeto não pode votar.",
+      "src": "Etapa 10, p. 6, l. 552, 553, 574"
+     }
+    },
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r4.4",
+     "t": "Idades mínimas e inelegibilidade",
+     "n": "35 – 30 – 21 – 18; analfabeto vota, mas não é votado",
+     "x": {
+      "e": "Idade mínima (art. 14, § 3º, VI): 35 anos para Presidente, Vice-Presidente e Senador; 30 anos para Governador e Vice-Governador; 21 anos para Deputado federal, estadual ou distrital, Prefeito, Vice-Prefeito e juiz de paz; 18 anos para Vereador. Os analfabetos podem votar, mas são inelegíveis (§ 4º). As demais inelegibilidades estão nos §§ 5º a 9º e na Lei Complementar nº 64/1990, alterada pela Lei da Ficha Limpa.",
+      "trap": "Fixar 30 anos para Senador ou admitir a candidatura do analfabeto.",
+      "src": "Etapa 10, p. 6, l. 558, 560, 562, 564, 566, 568, 570, 572, 574-575"
+     }
+    }
+   ]
+  },
+  {
+   "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5",
+   "t": "Federação e segurança pública em debate",
+   "cor": 5,
+   "x": {
+    "e": "A PEC da Segurança Pública (PEC nº 18/2025) ilustra o federalismo cooperativo e a repartição de competências: a segurança pública é tradicionalmente competência dos Estados, e a proposta amplia a coordenação federal e o papel dos municípios. O resultado final no Senado é posterior à data de corte do material (15/10/2026).",
+    "trap": "Tratar a votação no Senado como concluída: o material a registra como pendente.",
+    "src": "Etapa 10, p. 7, l. 628"
+   },
+   "f": [
+    {
+     "id": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
+     "t": "PEC da Segurança Pública",
+     "n": "PEC 18/2025: Susp, PRF e polícias municipais",
+     "x": {
+      "e": "A PEC nº 18/2025 foi aprovada pela Câmara em março de 2026. No Senado, a CCJ concluiu a votação em 14 de outubro sem alterações; restava a votação em dois turnos no Plenário, com pelo menos 49 votos. Se aprovada sem mudanças, vai à promulgação, porque já passou pela Câmara. A proposta inclui o Sistema Único de Segurança Pública (Susp) na Constituição, amplia a atuação da Polícia Rodoviária Federal e permite polícias municipais a partir das guardas municipais. Quórum de emenda constitucional: três quintos, em dois turnos, em cada Casa.",
+      "trap": "Afirmar que a PEC já foi promulgada: o resultado no Senado é posterior à data de corte.",
+      "src": "Etapa 10, p. 5, l. 447; p. 7, l. 619, 622, 623, 629"
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r7",
+   "t": "Nova República e Constituição de 1988",
+   "topico": "cp-7",
+   "n": "Transição negociada, Constituinte e Constituição Cidadã",
+   "x": {
+    "e": "A Nova República começa em 1985 com a eleição indireta de Tancredo Neves e a posse de José Sarney. A EC 25 (1985) restabeleceu a eleição direta para presidente; a Constituição de 1988 consolidou direitos políticos e a organização de partidos.",
+    "src": "Aula 05, p. 86",
+    "cit": "A Nova República é o nome que damos a fase da História da República a partir de 1985",
+    "trap": "A Nova República começa com eleição indireta, não com eleição direta."
+   },
+   "f": [
+    {
+     "id": "est-a05-r7.1",
+     "t": "Emenda Constitucional 25 (1985)",
+     "topico": "cp-11",
+     "n": "Eleições diretas para presidente e flexibilização partidária",
+     "x": {
+      "e": "EC 25 (maio de 1985): estabelecimento de eleições diretas para presidente (por maioria absoluta em dois turnos), eleições municipais em capitais e áreas de segurança nacional, liberação das regras para organização de partidos e coligações em prefeituras; revogou a fidelidade partidária.",
+      "src": "Aula 05, p. 87",
+      "cit": "estabelecimento de eleições diretas para presidente",
+      "trap": "A p. 95 diz que o voto do analfabeto foi conquistado com a EC 25/1985 e constitucionalizado em 1988; a p. 87 não separa EC 25 e CF/1988. Não atribua o voto só à Constituição de 1988 sem essa ressalva."
+     },
+     "nota": "p. 87 e p. 111 (resumo) atribuem a conquista do voto dos analfabetos ao período 1985-1988 sem separar EC 25 e CF; p. 95 diz que o direito foi conquistado com a EC 25/1985 e constitucionalizado em 1988. O mapa segue a p. 95."
+    },
+    {
+     "id": "est-a05-r7.2",
+     "t": "Constituinte e Constituição de 1988",
+     "topico": "cp-7",
+     "n": "Participação popular e Constituição Cidadã",
+     "x": {
+      "e": "A Assembleia Nacional Constituinte foi instalada em 1/2/1987, com parlamentares eleitos em 1986, e durou cerca de 20 meses, com emendas populares. Ulysses Guimarães presidiu a promulgação em 5/10/1988.",
+      "src": "Aula 05, p. 88",
+      "cit": "Esses membros eram os próprios parlamentares da Câmara dos Deputados e do Senado Federal",
+      "trap": "Os constituintes eram os próprios deputados e senadores eleitos em 1986."
+     },
+     "nota": "p. 88 diz \"hoje existem 30 partidos registrados oficialmente\", sem data da consulta: número datado.",
+     "f": [
+      {
+       "id": "est-a05-r7.2.1",
+       "t": "Direitos políticos (art. 14)",
+       "topico": "cp-7",
+       "n": "Sufrágio universal e voto obrigatório a partir de 18 anos",
+       "x": {
+        "e": "Art. 14: sufrágio universal, voto direto e secreto. Alistamento e voto são obrigatórios para maiores de 18 anos e facultativos para analfabetos, maiores de 70 e maiores de 16 e menores de 18.",
+        "src": "Aula 05, p. 96",
+        "cit": "I - obrigatórios para os maiores de dezoito anos; II - facultativos para: a) os analfabetos;",
+        "trap": "Analfabeto tem voto facultativo, mas continua inelegível (cidadania passiva, p. 95)."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.2",
+       "t": "Partidos políticos (art. 17)",
+       "topico": "cp-7",
+       "n": "Criação livre com requisitos constitucionais",
+       "x": {
+        "e": "Art. 17: criação, fusão, incorporação e extinção de partidos são livres, com caráter nacional, vedação de recursos estrangeiros, prestação de contas à Justiça Eleitoral e funcionamento parlamentar de acordo com a lei.",
+        "src": "Aula 05, p. 97",
+        "cit": "É livre a criação, fusão, incorporação e extinção de partidos políticos",
+        "trap": "A liberdade partidária tem requisitos: caráter nacional e prestação de contas são obrigatórios."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.3",
+       "t": "Cláusula de desempenho (art. 17, § 3º)",
+       "topico": "cp-7",
+       "n": "3% dos votos válidos ou 15 deputados federais",
+       "x": {
+        "e": "Para ter fundo partidário e tempo gratuito de rádio e TV, o partido precisa de 3% dos votos válidos para a Câmara (em pelo menos um terço das UFs, com mínimo de 2% em cada) ou de 15 deputados federais em um terço das UFs.",
+        "src": "Aula 05, p. 98",
+        "cit": "obtiverem, nas eleições para a Câmara dos Deputados, no mínimo, 3% (três por cento) dos",
+        "trap": "Eleito por partido que não cumpre o requisito mantém o mandato (§ 5º)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r7.3",
+     "t": "Do voto em cédula à urna eletrônica",
+     "topico": "cp-11",
+     "n": "Cédula de papel até 1996; urna eletrônica a partir de 1996",
+     "x": {
+      "e": "Até 1955 as cédulas eram confeccionadas pelos partidos e candidatos; a partir de 1955 a cédula oficial passou a ser da Justiça Eleitoral, ainda preenchida à mão. A urna eletrônica foi introduzida gradualmente a partir de 1996.",
+      "src": "Aula 05, p. 103",
+      "cit": "Até 1955, o sistema de votação no Brasil era baseado em cédulas de papel confeccionadas",
+      "trap": "Cédula oficial de 1955 não é urna eletrônica: o eleitor ainda preenchia à mão."
+     },
+     "f": [
+      {
+       "id": "est-a05-r7.3.1",
+       "t": "Urna eletrônica (1996)",
+       "topico": "cp-11",
+       "n": "Introdução gradual, com 57 municípios em 1996",
+       "x": {
+        "e": "A urna eletrônica foi usada em 57 municípios em 1996 e em 537 municípios em 1998; reduziu votos nulos e acelerou a apuração.",
+        "src": "Aula 05, p. 103",
+        "cit": "Nas eleições municipais de 1996, a urna eletrônica foi usada em 57 municípios",
+        "trap": "Em 1996 a urna não era nacional: a implantação foi gradual."
+       }
+      },
+      {
+       "id": "est-a05-r7.3.2",
+       "t": "Comparecimento eleitoral",
+       "topico": "cp-11",
+       "n": "Média de 86% entre 1986 e 1998",
+       "x": {
+        "e": "Taxa de comparecimento de cerca de 86% dos inscritos entre 1986 e 1998 (Nicolau). O voto obrigatório contribui para o percentual.",
+        "src": "Aula 05, p. 104",
+        "cit": "Em média, cerca de 86% dos eleitores inscritos votaram nas eleições entre 1986 e 1998",
+        "trap": "A taxa muda conforme o denominador (inscritos, população ou população em idade de votar)."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "05"
+  },
+  {
+   "id": "est-a05-r8",
+   "t": "Crises institucionais e intervenções no Parlamento",
+   "topico": "cp-7",
+   "n": "Intervenções do Executivo sobre o Legislativo nas crises republicanas",
+   "x": {
+    "e": "Em crises (1891, 1930, 1937 e ditadura militar) o Executivo fechou ou dissolveu o Congresso. Essa recorrência caracteriza a tendência ao super-presidencialismo.",
+    "src": "Aula 05, p. 85",
+    "cit": "momentos de crise política frequentemente resultaram em intervenções diretas do Poder Executivo sobre o Parlamento",
+    "trap": "Não confundir super-presidencialismo com presidencialismo formal: o texto fala em desequilíbrio entre os poderes."
+   },
+   "f": [
+    {
+     "id": "est-a05-r8.1",
+     "t": "Super-presidencialismo",
+     "topico": "cp-7",
+     "n": "Concentração de poder no presidente",
+     "x": {
+      "e": "Tendência recorrente de concentração de poder no presidente da República, com o Executivo se sobrepondo ao Legislativo em momentos de conflito.",
+      "src": "Aula 05, p. 85",
+      "cit": "a tendência ao super-presidencialismo, ou seja, a forte concentração de poder nas mãos do",
+      "trap": "O padrão não é exclusivo da ditadura: aparece em 1891, 1930 e 1937 (texto)."
+     }
+    },
+    {
+     "id": "est-a05-r8.2",
+     "t": "Fechamentos e recessos do Congresso",
+     "topico": "cp-7",
+     "n": "Deodoro (1891), Vargas (1930 e 1937), ditadura (1966, 1968 e 1977)",
+     "x": {
+      "e": "Deodoro levou ao fechamento do Legislativo; Vargas dissolveu o Congresso em 1930 e 1937; a ditadura registrou recesso em 1966, fechamento com o AI-5 em 1968 e fechamento temporário em 1977 (Pacote de Abril), conforme a tabela da p. 86.",
+      "src": "Aula 05, p. 85-86",
+      "cit": "No caso de Deodoro da Fonseca, o impasse entre presidente e Congresso sobre limites de atuação e reformas levou ao fechamento do Legislativo.",
+      "trap": "O Pacote de Abril (1977) foi um fechamento temporário do Congresso imposto por decreto."
+     }
+    }
+   ],
+   "aulaOrigem": "05"
   }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Competência comum × concorrente",
+   "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2",
+   "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.4"
+  },
+  {
+   "rotulo": "Plebiscito obrigatório na criação de entes",
+   "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.3",
+   "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r3.1"
+  },
+  {
+   "rotulo": "Segurança pública: competência estadual ampliada",
+   "de": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r5.1",
+   "para": "kit-arr-cp-7-organizacao-politica-brasileira-2026-11-26-r2.2"
+  },
+  {
+   "rotulo": "Crises institucionais -> super-presidencialismo",
+   "de": "est-a05-r8",
+   "para": "est-a05-r8.1"
+  }
+ ],
+ "fontesCentral": {
+  "KIT-ARR-CP-7-organizacao-politica-brasileira-2026-11-26": {}
+ }
 }

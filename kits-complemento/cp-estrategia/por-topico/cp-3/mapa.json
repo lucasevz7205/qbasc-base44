@@ -1,0 +1,296 @@
+{
+ "topico": "cp-3",
+ "materia": "cp",
+ "centro": "Representação política",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "04"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a04-r1",
+   "t": "Representação política: conceito e dimensões",
+   "n": "Mecanismo que legitima o poder por delegação: o representante age em nome dos representados.",
+   "x": {
+    "e": "Representação é o mecanismo pelo qual o poder é exercido por delegação, com legitimidade democrática; o foco analítico é legitimidade, responsividade, controle e vínculo, mais do que a legalidade do processo.",
+    "src": "Aula 04, p. 7",
+    "cit": "um mecanismo político que permite o exercício do poder por meio de delegação, em que os governantes agem em nome dos governados",
+    "trap": "Confundir representação política com normas eleitorais ou regras jurídicas do mandato; a aula trata de problema teórico, com foco em legitimidade e responsividade (p. 4)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r1.1",
+     "t": "Dimensões da representação (Pitkin)",
+     "n": "Formal, simbólica, descritiva e substantiva.",
+     "x": {
+      "e": "Hanna Pitkin distingue quatro dimensões complementares da representação; a formal envolve autorização e prestação de contas.",
+      "src": "Aula 04, p. 7",
+      "cit": "formal, quando há autorização e prestação de contas"
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.1.1",
+       "t": "Formal",
+       "n": "Autorização e prestação de contas.",
+       "x": {
+        "e": "Dimensão formal: há autorização e prestação de contas do representante.",
+        "src": "Aula 04, p. 7",
+        "cit": "formal, quando há autorização e prestação de contas"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.2",
+       "t": "Simbólica",
+       "n": "Representante encarna valores ou identidades coletivas.",
+       "x": {
+        "e": "Dimensão simbólica: o representante encarna valores ou identidades coletivas.",
+        "src": "Aula 04, p. 7",
+        "cit": "quando o representante encarna valores ou identidades coletivas"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.3",
+       "t": "Descritiva",
+       "n": "Reflete a composição social do eleitorado.",
+       "x": {
+        "e": "Dimensão descritiva: o representante reflete a composição social do eleitorado.",
+        "src": "Aula 04, p. 7",
+        "cit": "descritiva, quando reflete a composição social do eleitorado"
+       }
+      },
+      {
+       "id": "est-a04-r1.1.4",
+       "t": "Substantiva",
+       "n": "Atua em favor dos interesses dos representados.",
+       "x": {
+        "e": "Dimensão substantiva: atuação efetiva em favor dos interesses dos representados.",
+        "src": "Aula 04, p. 7",
+        "cit": "substantiva, quando atua efetivamente em favor dos interesses dos representados"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r1.2",
+     "t": "Mandato livre e mandato imperativo",
+     "n": "Autonomia do representante versus execução da vontade dos eleitores.",
+     "x": {
+      "e": "No mandato livre o representante atua com autonomia; no mandato imperativo ele é mero executor da vontade dos eleitores.",
+      "src": "Aula 04, p. 7",
+      "cit": "no mandato imperativo, típico de regimes autoritários, o representante é mero executor da vontade de seus eleitores",
+      "trap": "Tratar mandato livre como mandato imperativo; no livre há autonomia decisória, no imperativo não há."
+     }
+    },
+    {
+     "id": "est-a04-r1.3",
+     "t": "Representação por presença (descritiva)",
+     "n": "Representante que se assemelha ao grupo representado: 'ser', e não 'agir'.",
+     "x": {
+      "e": "Representação por presença, elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young, vincula o parlamento à diversidade social (gênero, raça, etnia, classe).",
+      "src": "Aula 04, p. 33",
+      "cit": "elaborada por Hanna Pitkin e desenvolvida por Iris Marion Young (2000)",
+      "trap": "Presença (ser parecido com o grupo) não se confunde com representação substantiva (agir em favor do grupo)."
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.3.1",
+       "t": "Conceito de representação descritiva",
+       "n": "Semelhança de características entre representante e representados.",
+       "x": {
+        "e": "Ocorre quando o representante se assemelha aos representados por características como raça, gênero, classe, profissão ou localização geográfica.",
+        "src": "Aula 04, p. 33",
+        "cit": "Esse tipo de representação ocorre quando o representante se assemelha aos representados ao partilharem características semelhantes, como raça, gênero, classe, profissão ou localização geográfica"
+       }
+      },
+      {
+       "id": "est-a04-r1.3.2",
+       "t": "Limite da presença",
+       "n": "Presença não garante responsividade.",
+       "x": {
+        "e": "Muitos autores reconhecem que a presença, sem conexão com a representação substancial, pode ser bastante limitada.",
+        "src": "Aula 04, p. 34",
+        "cit": "pode ser bastante limitado porque presença não garante, em si responsividade frente ao grupo identitário",
+        "nota": "Texto-fonte com trecho embaralhado na extração; a citação foi conferida na página 34."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r1.4",
+     "t": "Crise da representação e abstenção",
+     "n": "Perda de confiança nas instituições mediadoras; abstenção como sintoma.",
+     "x": {
+      "e": "A crise de representação é a percepção de que partidos e parlamentos estão distantes das demandas sociais; a abstenção é sintoma dessa crise.",
+      "src": "Aula 04, p. 24",
+      "cit": "A sensação de que “os representantes não representam” revela um descompasso entre a legitimidade formal do voto e a legitimidade substantiva da atuação política"
+     },
+     "f": [
+      {
+       "id": "est-a04-r1.4.1",
+       "t": "Abstenção como sintoma",
+       "n": "Abstenção expressa insatisfação e alimenta o debate sobre a crise.",
+       "x": {
+        "e": "A abstenção alimenta debates sobre a crise da representação, colocando em xeque a eficácia do sistema de representação.",
+        "src": "Aula 04, p. 25",
+        "cit": "Nesse sentido, a abstenção alimenta debates sobre a crise da representação política, colocando em xeque a eficácia do sistema de representação",
+        "trap": "A abstenção não é apenas apatia: a aula a trata como sinal de insatisfação e de desafio à legitimidade da classe política (p. 26)."
+       }
+      },
+      {
+       "id": "est-a04-r1.4.2",
+       "t": "Conexão eleitoral (Mayhew)",
+       "n": "Representação se constrói ao longo do mandato, não só no voto.",
+       "x": {
+        "e": "A representação não se esgota no voto; constrói-se no mandato por visibilidade, prestação de contas e atendimento às bases.",
+        "src": "Aula 04, p. 24",
+        "cit": "A representação, nesse sentido, não se esgota no momento do voto, mas se constrói ao longo do mandato por meio de estratégias de visibilidade, prestação de contas e atendimento às demandas das bases eleitorais"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r7",
+   "t": "Democracia digital, accountability e redes sociais",
+   "n": "Controle social permanente, contrademocracia e desafios das redes no processo eleitoral.",
+   "x": {
+    "e": "A accountability societal ampliou-se com as redes sociais, que tornam o controle social mais imediato e de baixo custo.",
+    "src": "Aula 04, p. 30",
+    "cit": "as redes estão a accountability societal ao transformarem o controle social sobre o poder público em um processo imediato, desintermediado e de baixo custo",
+    "trap": "Tratar as redes como substituto da representação: a aula as descreve como complemento e como campo de desafios (desinformação)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r7.1",
+     "t": "Accountability vertical e horizontal (O’Donnell)",
+     "n": "Vertical: cidadãos pelas eleições; horizontal: instituições que se controlam.",
+     "x": {
+      "e": "O’Donnell distingue a accountability vertical, exercida pelos cidadãos por meio das eleições, da accountability horizontal, realizada por instituições estatais autônomas.",
+      "src": "Aula 04, p. 8",
+      "cit": "O’Donnell distingue a accountability vertical, exercida principalmente pelos cidadãos por meio das eleições, da accountability horizontal"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.1.1",
+       "t": "Accountability vertical",
+       "n": "Exercida pelos cidadãos por meio das eleições.",
+       "x": {
+        "e": "A accountability vertical é exercida principalmente pelos cidadãos por meio das eleições.",
+        "src": "Aula 04, p. 8",
+        "cit": "exercida principalmente pelos cidadãos por meio das eleições"
+       }
+      },
+      {
+       "id": "est-a04-r7.1.2",
+       "t": "Accountability horizontal",
+       "n": "Exercida por instituições estatais autônomas que se controlam mutuamente.",
+       "x": {
+        "e": "A accountability horizontal é realizada por instituições estatais autônomas que fiscalizam e controlam mutuamente o exercício do poder.",
+        "src": "Aula 04, p. 8",
+        "cit": "realizada por instituições estatais autônomas que fiscalizam e controlam mutuamente o exercício do poder"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.2",
+     "t": "Contrademocracia (Rosanvallon)",
+     "n": "Vigilância e desconfiança permanentes dos cidadãos sobre os governantes, como complemento da representação.",
+     "x": {
+      "e": "A contrademocracia expressa uma cidadania ativa e crítica, que atua de maneira permanente, e não apenas nos momentos eleitorais.",
+      "src": "Aula 04, p. 26",
+      "cit": "A contrademocracia expressa uma cidadania mais ativa e crítica, que atua de maneira permanente, e não apenas nos momentos eleitorais"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.2.1",
+       "t": "Complementa, não substitui",
+       "n": "Não substitui a representação; amplia fiscalização e responsabilização.",
+       "x": {
+        "e": "A contrademocracia não substitui a representação, mas a complementa, ampliando os mecanismos de fiscalização e responsabilização.",
+        "src": "Aula 04, p. 26",
+        "cit": "Trata-se de uma forma de participação política que não substitui a representação, mas a complementa, ampliando os mecanismos de fiscalização e responsabilização"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.3",
+     "t": "Accountability societal e redes",
+     "n": "Redes tornam o controle social imediato e desintermediado; surge a democracia digital.",
+     "x": {
+      "e": "A democracia digital cria canais de interação direta entre governantes e governados para informar, fiscalizar e deliberar.",
+      "src": "Aula 04, p. 30",
+      "cit": "Criar novos canais de interação direta entre governantes e governados para informar, fiscalizar e deliberar"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.3.1",
+       "t": "Mobilização e indignação",
+       "n": "Sentimento de impotência vira mobilização contínua.",
+       "x": {
+        "e": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em mobilização.",
+        "src": "Aula 04, p. 31",
+        "cit": "A facilidade de compartilhamento de informações transforma o sentimento de impotência em mobilização"
+       }
+      },
+      {
+       "id": "est-a04-r7.3.2",
+       "t": "Limite da mobilização online",
+       "n": "Indignação nas redes não garantiu mudança institucional automática.",
+       "x": {
+        "e": "A mobilização online e a indignação nas redes ainda não garantiram mudanças efetivas de conduta ética na ordem política institucional.",
+        "src": "Aula 04, p. 31",
+        "cit": "a mobilização online e a indignação nas redes ainda não garantiram mudanças efetivas de conduta ética na ordem política institucional"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r7.4",
+     "t": "Redes sociais e propaganda eleitoral",
+     "n": "Redes mudaram a propaganda; desafios de desinformação e regulação pela Justiça Eleitoral.",
+     "x": {
+      "e": "A Lei nº 9.504/1997 e a Resolução TSE nº 23.610/2019 buscaram regulamentar a propaganda eleitoral na internet.",
+      "src": "Aula 04, p. 57",
+      "cit": "A Lei nº 9.504/1997 (Lei das Eleições) e a Resolução TSE nº 23.610/2019 buscaram regulamentar a propaganda eleitoral na internet"
+     },
+     "f": [
+      {
+       "id": "est-a04-r7.4.1",
+       "t": "Uso das redes pelo eleitor",
+       "n": "Redes são fonte principal de informação para quase metade do eleitorado.",
+       "x": {
+        "e": "Segundo Manoela Dourado, quase metade do eleitorado brasileiro utiliza as redes sociais como principal fonte de informação sobre candidatos e propostas.",
+        "src": "Aula 04, p. 57",
+        "cit": "quase metade do eleitorado brasileiro utiliza as redes sociais"
+       }
+      },
+      {
+       "id": "est-a04-r7.4.2",
+       "t": "Fake news e vínculo de confiança",
+       "n": "Desinformação às vésperas da eleição pode alterar percepções e fragilizar a confiança.",
+       "x": {
+        "e": "A difusão de fake news, especialmente às vésperas das eleições, é capaz de alterar percepções e fragilizar o vínculo de confiança.",
+        "src": "Aula 04, p. 57",
+        "cit": "A difusão de fake news, especialmente às vésperas das eleições, é capaz de alterar percepções, gerar crises reputacionais e fragilizar o vínculo de confiança entre cidadãos e instituições"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "redes e contrademocracia complementam a representação",
+   "de": "est-a04-r7",
+   "para": "est-a04-r1"
+  }
+ ],
+ "fontesCentral": {}
+}

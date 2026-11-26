@@ -1,483 +1,1289 @@
 [
-  {
-    "id": "cp-6-c01",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
-    "tema": "Conceito",
-    "pergunta": "Qual autor define partido como equipe que busca controlar o governo pela vitória em eleições?",
-    "resposta": [
-      "Anthony Downs (1957)"
-    ],
-    "explicacao": "Para Downs, os partidos formulam políticas para ganhar eleições, e não o contrário.",
-    "fonte": "Etapa 09, p. 2, l. 173"
-  },
-  {
-    "id": "cp-6-c02",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
-    "tema": "Conceito",
-    "pergunta": "Para Edmund Burke, o que une os membros de um partido?",
-    "resposta": [
-      "Um princípio com o qual todos concordam, para promover o interesse nacional"
-    ],
-    "fonte": "Etapa 09, p. 2, l. 163"
-  },
-  {
-    "id": "cp-6-c03",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
-    "tema": "Conceito",
-    "pergunta": "Na definição de Weber, o partido busca poder para quem?",
-    "resposta": [
-      "Para seus líderes, dentro de uma organização"
-    ],
-    "explicacao": "Daí resultam vantagens ideais ou materiais para os membros.",
-    "fonte": "Etapa 09, p. 2, l. 167"
-  },
-  {
-    "id": "cp-6-c04",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
-    "tema": "Conceito",
-    "pergunta": "Que três elementos compõem a definição mínima de partido de Sartori?",
-    "resposta": [
-      "Rótulo oficial",
-      "Apresentação em eleições",
-      "Capacidade de levar candidatos a cargos públicos"
-    ],
-    "fonte": "Etapa 09, p. 2, l. 179"
-  },
-  {
-    "id": "cp-6-c05",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.2",
-    "tema": "Funções",
-    "pergunta": "Para Gabriel Almond, a articulação de interesses cabe sobretudo a quem?",
-    "resposta": [
-      "Aos grupos de interesse"
-    ],
-    "explicacao": "Aos partidos cabe a agregação de interesses.",
-    "fonte": "Etapa 09, p. 2, l. 183"
-  },
-  {
-    "id": "cp-6-c06",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.3",
-    "tema": "Downs",
-    "pergunta": "No modelo espacial de Downs, em que condições os partidos convergem para o eleitor mediano?",
-    "resposta": [
-      "Disputa entre dois partidos",
-      "Eleitores concentrados no centro"
-    ],
-    "fonte": "Etapa 09, p. 2, l. 186-187"
-  },
-  {
-    "id": "cp-6-c07",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
-    "tema": "Duverger",
-    "pergunta": "Na classificação de Duverger, de onde nascem os partidos de origem interna?",
-    "resposta": [
-      "De grupos parlamentares e comitês eleitorais"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 221"
-  },
-  {
-    "id": "cp-6-c08",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
-    "tema": "Duverger",
-    "pergunta": "Qual é o exemplo clássico de partido de origem externa em Duverger?",
-    "resposta": [
-      "O Partido Trabalhista britânico"
-    ],
-    "explicacao": "Criado por organização de fora do parlamento (sindicatos).",
-    "fonte": "Etapa 09, p. 3, l. 222-223"
-  },
-  {
-    "id": "cp-6-c09",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
-    "tema": "Duverger",
-    "pergunta": "Qual é a unidade de base do partido de quadros em Duverger?",
-    "resposta": [
-      "O comitê"
-    ],
-    "explicacao": "Mnemônico: Quadros = Comitê; Massa = Seção.",
-    "fonte": "Etapa 09, p. 10, l. 913"
-  },
-  {
-    "id": "cp-6-c10",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
-    "tema": "Duverger",
-    "pergunta": "Como se financia o partido de massa de Duverger?",
-    "resposta": [
-      "Pela contribuição dos membros"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 227-228"
-  },
-  {
-    "id": "cp-6-c11",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
-    "tema": "Duverger",
-    "pergunta": "Que unidades de base Duverger associa aos partidos comunistas e fascistas?",
-    "resposta": [
-      "Célula (comunistas)",
-      "Milícia (fascistas)"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 228-229"
-  },
-  {
-    "id": "cp-6-c12",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
-    "tema": "Modelos",
-    "pergunta": "Quem descreveu o partido pega-tudo (catch-all) e em que ano?",
-    "resposta": [
-      "Otto Kirchheimer, 1966"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 241"
-  },
-  {
-    "id": "cp-6-c13",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
-    "tema": "Modelos",
-    "pergunta": "O que o partido pega-tudo faz com a bagagem ideológica e com o filiado?",
-    "resposta": [
-      "Reduz a bagagem ideológica",
-      "Desvaloriza o filiado"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 243"
-  },
-  {
-    "id": "cp-6-c14",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
-    "tema": "Modelos",
-    "pergunta": "A que tipo de partido Panebianco opõe o partido profissional-eleitoral?",
-    "resposta": [
-      "Ao partido burocrático de massa"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 254"
-  },
-  {
-    "id": "cp-6-c15",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
-    "tema": "Modelos",
-    "pergunta": "A que eleitor se dirige o apelo do partido profissional-eleitoral?",
-    "resposta": [
-      "Ao eleitor de opinião"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 252-253"
-  },
-  {
-    "id": "cp-6-c16",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
-    "tema": "Modelos",
-    "pergunta": "Quem formulou o conceito de partido cartel e em que ano?",
-    "resposta": [
-      "Richard Katz e Peter Mair, 1995"
-    ],
-    "explicacao": "Mnemônico K-P-K: Katz e Mair = kartel.",
-    "fonte": "Etapa 09, p. 3, l. 258, 259"
-  },
-  {
-    "id": "cp-6-c17",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
-    "tema": "Modelos",
-    "pergunta": "Para que os partidos cartel cooperam entre si?",
-    "resposta": [
-      "Para limitar a entrada de novos competidores"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 261-262"
-  },
-  {
-    "id": "cp-6-c18",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
-    "tema": "Oligarquia",
-    "pergunta": "Quem formulou a lei de ferro da oligarquia?",
-    "resposta": [
-      "Robert Michels (Sociologia dos partidos políticos, 1911)"
-    ],
-    "explicacao": "A banca costuma trocar por Weber.",
-    "fonte": "Etapa 09, p. 3, l. 265"
-  },
-  {
-    "id": "cp-6-c19",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
-    "tema": "Oligarquia",
-    "pergunta": "Que três fatores explicam a tendência oligárquica em Michels?",
-    "resposta": [
-      "Necessidade de especialização",
-      "Competência técnica dos líderes",
-      "Apatia das bases"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 266-267"
-  },
-  {
-    "id": "cp-6-c20",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
-    "tema": "Clivagens",
-    "pergunta": "Quais são as quatro clivagens de Lipset e Rokkan?",
-    "resposta": [
-      "Centro × periferia",
-      "Estado × Igreja",
-      "Campo × cidade",
-      "Capital × trabalho"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 270"
-  },
-  {
-    "id": "cp-6-c21",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
-    "tema": "Clivagens",
-    "pergunta": "Pela tese do congelamento, os sistemas partidários dos anos 1960 refletiam as clivagens de que época?",
-    "resposta": [
-      "Dos anos 1920"
-    ],
-    "fonte": "Etapa 09, p. 3, l. 271"
-  },
-  {
-    "id": "cp-6-c22",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
-    "tema": "Sartori",
-    "pergunta": "Que dois critérios Sartori usou para classificar os sistemas partidários?",
-    "resposta": [
-      "Número de partidos relevantes",
-      "Distância ideológica entre eles"
-    ],
-    "fonte": "Etapa 09, p. 4, l. 312-313"
-  },
-  {
-    "id": "cp-6-c23",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
-    "tema": "Sartori",
-    "pergunta": "O que é potencial de chantagem, para Sartori?",
-    "resposta": [
-      "Capacidade de um partido alterar a direção da competição"
-    ],
-    "fonte": "Etapa 09, p. 8, l. 712"
-  },
-  {
-    "id": "cp-6-c24",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
-    "tema": "Sartori",
-    "pergunta": "Na tipologia de Sartori, quais sistemas são não competitivos?",
-    "resposta": [
-      "Partido único",
-      "Partido hegemônico"
-    ],
-    "fonte": "Etapa 09, p. 4, l. 350"
-  },
-  {
-    "id": "cp-6-c25",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
-    "tema": "Sartori",
-    "pergunta": "O que distingue o partido predominante do hegemônico, em Sartori?",
-    "resposta": [
-      "No predominante há competição livre, mas um partido vence seguidamente com maioria absoluta"
-    ],
-    "explicacao": "No hegemônico os outros partidos são satélites e não há alternância possível.",
-    "fonte": "Etapa 09, p. 4, l. 330"
-  },
-  {
-    "id": "cp-6-c26",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
-    "tema": "Sartori",
-    "pergunta": "Quantos partidos relevantes tem o pluralismo moderado de Sartori?",
-    "resposta": [
-      "De três a cinco"
-    ],
-    "fonte": "Etapa 09, p. 4, l. 338"
-  },
-  {
-    "id": "cp-6-c27",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
-    "tema": "Sartori",
-    "pergunta": "Qual é o tipo de competição no pluralismo polarizado?",
-    "resposta": [
-      "Centrífuga"
-    ],
-    "explicacao": "Mnemônico: polarizado foge (centrífugo); moderado converge (centrípeto).",
-    "fonte": "Etapa 09, p. 4, l. 343-344"
-  },
-  {
-    "id": "cp-6-c28",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
-    "tema": "NEP",
-    "pergunta": "Qual é a fórmula do número efetivo de partidos de Laakso e Taagepera?",
-    "resposta": [
-      "NEP = 1 ÷ Σ p²"
-    ],
-    "explicacao": "p = proporção de votos (NEP eleitoral) ou de cadeiras (NEP parlamentar).",
-    "fonte": "Etapa 09, p. 4, l. 354"
-  },
-  {
-    "id": "cp-6-c29",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
-    "tema": "NEP",
-    "pergunta": "Em torno de quanto fica o NEP parlamentar da Câmara eleita em 2026, segundo o cálculo do material?",
-    "resposta": [
-      "Cerca de 7,3 (números provisórios)"
-    ],
-    "fonte": "Etapa 09, p. 4, l. 360"
-  },
-  {
-    "id": "cp-6-c30",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.5",
-    "tema": "Institucionalização",
-    "pergunta": "Quais são as quatro dimensões de institucionalização de Mainwaring e Scully?",
-    "resposta": [
-      "Estabilidade dos padrões de competição",
-      "Raízes dos partidos na sociedade",
-      "Legitimidade dos partidos e das eleições",
-      "Organização partidária sólida"
-    ],
-    "fonte": "Etapa 09, p. 5, l. 372-373"
-  },
-  {
-    "id": "cp-6-c31",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
-    "tema": "Art. 17",
-    "pergunta": "Partidos podem receber recursos de entidade ou governo estrangeiros?",
-    "resposta": [
-      "Não; a Constituição proíbe"
-    ],
-    "fonte": "Etapa 09, p. 5, l. 417-418"
-  },
-  {
-    "id": "cp-6-c32",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
-    "tema": "Art. 17",
-    "pergunta": "Onde os partidos registram seus estatutos?",
-    "resposta": [
-      "No TSE"
-    ],
-    "explicacao": "A personalidade jurídica é adquirida na forma da lei civil (art. 17, § 2º).",
-    "fonte": "Etapa 09, p. 5, l. 419"
-  },
-  {
-    "id": "cp-6-c33",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.2",
-    "tema": "Art. 17",
-    "pergunta": "Em que eleições a Constituição veda as coligações?",
-    "resposta": [
-      "Nas eleições proporcionais"
-    ],
-    "fonte": "Etapa 09, p. 5, l. 410"
-  },
-  {
-    "id": "cp-6-c34",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
-    "tema": "Cláusula",
-    "pergunta": "Que requisitos de votos a cláusula de desempenho exigiu na legislatura seguinte às eleições de 2026?",
-    "resposta": [
-      "2,5% dos votos válidos, com 1,5% em pelo menos um terço das UFs"
-    ],
-    "explicacao": "Alternativa: 13 deputados distribuídos em um terço das UFs (EC nº 97/2017).",
-    "fonte": "Etapa 09, p. 5, l. 424-425"
-  },
-  {
-    "id": "cp-6-c35",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
-    "tema": "Cláusula",
-    "pergunta": "Quantos deputados federais a cláusula exigiu na legislatura seguinte às eleições de 2026?",
-    "resposta": [
-      "13, distribuídos em pelo menos um terço das UFs"
-    ],
-    "fonte": "Etapa 09, p. 5, l. 426"
-  },
-  {
-    "id": "cp-6-c36",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
-    "tema": "Cláusula",
-    "pergunta": "A partir de que eleições valem os patamares de 3% dos votos ou 15 deputados?",
-    "resposta": [
-      "Das eleições de 2030"
-    ],
-    "fonte": "Etapa 09, p. 5, l. 422"
-  },
-  {
-    "id": "cp-6-c37",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
-    "tema": "Cláusula",
-    "pergunta": "O que o partido que não atinge a cláusula de desempenho perde?",
-    "resposta": [
-      "Recursos do fundo partidário",
-      "Acesso gratuito ao rádio e à televisão"
-    ],
-    "explicacao": "Os eleitos mantêm o mandato (art. 17, § 5º).",
-    "fonte": "Etapa 09, p. 5, l. 412-413"
-  },
-  {
-    "id": "cp-6-c38",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
-    "tema": "Federação",
-    "pergunta": "Por quanto tempo, no mínimo, os partidos devem permanecer em uma federação?",
-    "resposta": [
-      "Quatro anos"
-    ],
-    "fonte": "Etapa 09, p. 6, l. 478"
-  },
-  {
-    "id": "cp-6-c39",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
-    "tema": "Federação",
-    "pergunta": "Federação × fusão: em qual delas os partidos mantêm a identidade?",
-    "resposta": [
-      "Na federação"
-    ],
-    "explicacao": "Na fusão, os partidos deixam de existir e formam um novo.",
-    "fonte": "Etapa 09, p. 8, l. 722, 725"
-  },
-  {
-    "id": "cp-6-c40",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
-    "tema": "Federação",
-    "pergunta": "Após a ADI 7.021 (2025), até quando a federação precisa estar registrada no TSE?",
-    "resposta": [
-      "Seis meses antes da eleição"
-    ],
-    "fonte": "Etapa 09, p. 6, l. 480-481"
-  },
-  {
-    "id": "cp-6-c41",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
-    "tema": "Fidelidade",
-    "pergunta": "Em que decisão o STF afastou a perda do mandato por infidelidade para cargos majoritários?",
-    "resposta": [
-      "ADI 5081 (2015)"
-    ],
-    "fonte": "Etapa 09, p. 6, l. 517-518"
-  },
-  {
-    "id": "cp-6-c42",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
-    "tema": "Financiamento",
-    "pergunta": "Em que decisão o STF vedou as doações de empresas a campanhas e partidos?",
-    "resposta": [
-      "ADI 4650 (2015)"
-    ],
-    "fonte": "Etapa 09, p. 6, l. 522"
-  },
-  {
-    "id": "cp-6-c43",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
-    "tema": "Brasil 2026",
-    "pergunta": "Quantos partidos superaram a cláusula de desempenho em 2026, segundo os números provisórios?",
-    "resposta": [
-      "14 dos 30 partidos registrados"
-    ],
-    "fonte": "Etapa 09, p. 7, l. 572"
-  },
-  {
-    "id": "cp-6-c44",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
-    "tema": "Brasil 2026",
-    "pergunta": "Por que a federação PSOL-Rede ficou abaixo da cláusula em 2026, apesar de 4,9% dos votos e 15 eleitos?",
-    "resposta": [
-      "Atingiu 1,5% em só oito UFs e seus eleitos não se distribuíam por nove UFs"
-    ],
-    "fonte": "Etapa 09, p. 7, l. 574-575"
-  },
-  {
-    "id": "cp-6-c45",
-    "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
-    "tema": "Câmara",
-    "pergunta": "Que bancada mínima permite a um partido escolher líder na Câmara?",
-    "resposta": [
-      "Um centésimo da Câmara (seis deputados)"
-    ],
-    "explicacao": "RICD, art. 9º, caput e § 4º.",
-    "fonte": "Etapa 09, p. 9, l. 859"
-  }
+ {
+  "id": "cp-6-c01",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+  "tema": "Conceito",
+  "pergunta": "Qual autor define partido como equipe que busca controlar o governo pela vitória em eleições?",
+  "resposta": [
+   "Anthony Downs (1957)"
+  ],
+  "explicacao": "Para Downs, os partidos formulam políticas para ganhar eleições, e não o contrário.",
+  "fonte": "Etapa 09, p. 2, l. 173"
+ },
+ {
+  "id": "cp-6-c02",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+  "tema": "Conceito",
+  "pergunta": "Para Edmund Burke, o que une os membros de um partido?",
+  "resposta": [
+   "Um princípio com o qual todos concordam, para promover o interesse nacional"
+  ],
+  "fonte": "Etapa 09, p. 2, l. 163"
+ },
+ {
+  "id": "cp-6-c03",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+  "tema": "Conceito",
+  "pergunta": "Na definição de Weber, o partido busca poder para quem?",
+  "resposta": [
+   "Para seus líderes, dentro de uma organização"
+  ],
+  "explicacao": "Daí resultam vantagens ideais ou materiais para os membros.",
+  "fonte": "Etapa 09, p. 2, l. 167"
+ },
+ {
+  "id": "cp-6-c04",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.1",
+  "tema": "Conceito",
+  "pergunta": "Que três elementos compõem a definição mínima de partido de Sartori?",
+  "resposta": [
+   "Rótulo oficial",
+   "Apresentação em eleições",
+   "Capacidade de levar candidatos a cargos públicos"
+  ],
+  "fonte": "Etapa 09, p. 2, l. 179"
+ },
+ {
+  "id": "cp-6-c05",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.2",
+  "tema": "Funções",
+  "pergunta": "Para Gabriel Almond, a articulação de interesses cabe sobretudo a quem?",
+  "resposta": [
+   "Aos grupos de interesse"
+  ],
+  "explicacao": "Aos partidos cabe a agregação de interesses.",
+  "fonte": "Etapa 09, p. 2, l. 183"
+ },
+ {
+  "id": "cp-6-c06",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r1.3",
+  "tema": "Downs",
+  "pergunta": "No modelo espacial de Downs, em que condições os partidos convergem para o eleitor mediano?",
+  "resposta": [
+   "Disputa entre dois partidos",
+   "Eleitores concentrados no centro"
+  ],
+  "fonte": "Etapa 09, p. 2, l. 186-187"
+ },
+ {
+  "id": "cp-6-c07",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
+  "tema": "Duverger",
+  "pergunta": "Na classificação de Duverger, de onde nascem os partidos de origem interna?",
+  "resposta": [
+   "De grupos parlamentares e comitês eleitorais"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 221"
+ },
+ {
+  "id": "cp-6-c08",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.1",
+  "tema": "Duverger",
+  "pergunta": "Qual é o exemplo clássico de partido de origem externa em Duverger?",
+  "resposta": [
+   "O Partido Trabalhista britânico"
+  ],
+  "explicacao": "Criado por organização de fora do parlamento (sindicatos).",
+  "fonte": "Etapa 09, p. 3, l. 222-223"
+ },
+ {
+  "id": "cp-6-c09",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+  "tema": "Duverger",
+  "pergunta": "Qual é a unidade de base do partido de quadros em Duverger?",
+  "resposta": [
+   "O comitê"
+  ],
+  "explicacao": "Mnemônico: Quadros = Comitê; Massa = Seção.",
+  "fonte": "Etapa 09, p. 10, l. 913"
+ },
+ {
+  "id": "cp-6-c10",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+  "tema": "Duverger",
+  "pergunta": "Como se financia o partido de massa de Duverger?",
+  "resposta": [
+   "Pela contribuição dos membros"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 227-228"
+ },
+ {
+  "id": "cp-6-c11",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.2",
+  "tema": "Duverger",
+  "pergunta": "Que unidades de base Duverger associa aos partidos comunistas e fascistas?",
+  "resposta": [
+   "Célula (comunistas)",
+   "Milícia (fascistas)"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 228-229"
+ },
+ {
+  "id": "cp-6-c12",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+  "tema": "Modelos",
+  "pergunta": "Quem descreveu o partido pega-tudo (catch-all) e em que ano?",
+  "resposta": [
+   "Otto Kirchheimer, 1966"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 241"
+ },
+ {
+  "id": "cp-6-c13",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.3",
+  "tema": "Modelos",
+  "pergunta": "O que o partido pega-tudo faz com a bagagem ideológica e com o filiado?",
+  "resposta": [
+   "Reduz a bagagem ideológica",
+   "Desvaloriza o filiado"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 243"
+ },
+ {
+  "id": "cp-6-c14",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
+  "tema": "Modelos",
+  "pergunta": "A que tipo de partido Panebianco opõe o partido profissional-eleitoral?",
+  "resposta": [
+   "Ao partido burocrático de massa"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 254"
+ },
+ {
+  "id": "cp-6-c15",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.4",
+  "tema": "Modelos",
+  "pergunta": "A que eleitor se dirige o apelo do partido profissional-eleitoral?",
+  "resposta": [
+   "Ao eleitor de opinião"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 252-253"
+ },
+ {
+  "id": "cp-6-c16",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
+  "tema": "Modelos",
+  "pergunta": "Quem formulou o conceito de partido cartel e em que ano?",
+  "resposta": [
+   "Richard Katz e Peter Mair, 1995"
+  ],
+  "explicacao": "Mnemônico K-P-K: Katz e Mair = kartel.",
+  "fonte": "Etapa 09, p. 3, l. 258, 259"
+ },
+ {
+  "id": "cp-6-c17",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r2.5",
+  "tema": "Modelos",
+  "pergunta": "Para que os partidos cartel cooperam entre si?",
+  "resposta": [
+   "Para limitar a entrada de novos competidores"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 261-262"
+ },
+ {
+  "id": "cp-6-c18",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
+  "tema": "Oligarquia",
+  "pergunta": "Quem formulou a lei de ferro da oligarquia?",
+  "resposta": [
+   "Robert Michels (Sociologia dos partidos políticos, 1911)"
+  ],
+  "explicacao": "A banca costuma trocar por Weber.",
+  "fonte": "Etapa 09, p. 3, l. 265"
+ },
+ {
+  "id": "cp-6-c19",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.1",
+  "tema": "Oligarquia",
+  "pergunta": "Que três fatores explicam a tendência oligárquica em Michels?",
+  "resposta": [
+   "Necessidade de especialização",
+   "Competência técnica dos líderes",
+   "Apatia das bases"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 266-267"
+ },
+ {
+  "id": "cp-6-c20",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
+  "tema": "Clivagens",
+  "pergunta": "Quais são as quatro clivagens de Lipset e Rokkan?",
+  "resposta": [
+   "Centro × periferia",
+   "Estado × Igreja",
+   "Campo × cidade",
+   "Capital × trabalho"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 270"
+ },
+ {
+  "id": "cp-6-c21",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r3.2",
+  "tema": "Clivagens",
+  "pergunta": "Pela tese do congelamento, os sistemas partidários dos anos 1960 refletiam as clivagens de que época?",
+  "resposta": [
+   "Dos anos 1920"
+  ],
+  "fonte": "Etapa 09, p. 3, l. 271"
+ },
+ {
+  "id": "cp-6-c22",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
+  "tema": "Sartori",
+  "pergunta": "Que dois critérios Sartori usou para classificar os sistemas partidários?",
+  "resposta": [
+   "Número de partidos relevantes",
+   "Distância ideológica entre eles"
+  ],
+  "fonte": "Etapa 09, p. 4, l. 312-313"
+ },
+ {
+  "id": "cp-6-c23",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.1",
+  "tema": "Sartori",
+  "pergunta": "O que é potencial de chantagem, para Sartori?",
+  "resposta": [
+   "Capacidade de um partido alterar a direção da competição"
+  ],
+  "fonte": "Etapa 09, p. 8, l. 712"
+ },
+ {
+  "id": "cp-6-c24",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
+  "tema": "Sartori",
+  "pergunta": "Na tipologia de Sartori, quais sistemas são não competitivos?",
+  "resposta": [
+   "Partido único",
+   "Partido hegemônico"
+  ],
+  "fonte": "Etapa 09, p. 4, l. 350"
+ },
+ {
+  "id": "cp-6-c25",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.2",
+  "tema": "Sartori",
+  "pergunta": "O que distingue o partido predominante do hegemônico, em Sartori?",
+  "resposta": [
+   "No predominante há competição livre, mas um partido vence seguidamente com maioria absoluta"
+  ],
+  "explicacao": "No hegemônico os outros partidos são satélites e não há alternância possível.",
+  "fonte": "Etapa 09, p. 4, l. 330"
+ },
+ {
+  "id": "cp-6-c26",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
+  "tema": "Sartori",
+  "pergunta": "Quantos partidos relevantes tem o pluralismo moderado de Sartori?",
+  "resposta": [
+   "De três a cinco"
+  ],
+  "fonte": "Etapa 09, p. 4, l. 338"
+ },
+ {
+  "id": "cp-6-c27",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.3",
+  "tema": "Sartori",
+  "pergunta": "Qual é o tipo de competição no pluralismo polarizado?",
+  "resposta": [
+   "Centrífuga"
+  ],
+  "explicacao": "Mnemônico: polarizado foge (centrífugo); moderado converge (centrípeto).",
+  "fonte": "Etapa 09, p. 4, l. 343-344"
+ },
+ {
+  "id": "cp-6-c28",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
+  "tema": "NEP",
+  "pergunta": "Qual é a fórmula do número efetivo de partidos de Laakso e Taagepera?",
+  "resposta": [
+   "NEP = 1 ÷ Σ p²"
+  ],
+  "explicacao": "p = proporção de votos (NEP eleitoral) ou de cadeiras (NEP parlamentar).",
+  "fonte": "Etapa 09, p. 4, l. 354"
+ },
+ {
+  "id": "cp-6-c29",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.4",
+  "tema": "NEP",
+  "pergunta": "Em torno de quanto fica o NEP parlamentar da Câmara eleita em 2026, segundo o cálculo do material?",
+  "resposta": [
+   "Cerca de 7,3 (números provisórios)"
+  ],
+  "fonte": "Etapa 09, p. 4, l. 360"
+ },
+ {
+  "id": "cp-6-c30",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r4.5",
+  "tema": "Institucionalização",
+  "pergunta": "Quais são as quatro dimensões de institucionalização de Mainwaring e Scully?",
+  "resposta": [
+   "Estabilidade dos padrões de competição",
+   "Raízes dos partidos na sociedade",
+   "Legitimidade dos partidos e das eleições",
+   "Organização partidária sólida"
+  ],
+  "fonte": "Etapa 09, p. 5, l. 372-373"
+ },
+ {
+  "id": "cp-6-c31",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
+  "tema": "Art. 17",
+  "pergunta": "Partidos podem receber recursos de entidade ou governo estrangeiros?",
+  "resposta": [
+   "Não; a Constituição proíbe"
+  ],
+  "fonte": "Etapa 09, p. 5, l. 417-418"
+ },
+ {
+  "id": "cp-6-c32",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.1",
+  "tema": "Art. 17",
+  "pergunta": "Onde os partidos registram seus estatutos?",
+  "resposta": [
+   "No TSE"
+  ],
+  "explicacao": "A personalidade jurídica é adquirida na forma da lei civil (art. 17, § 2º).",
+  "fonte": "Etapa 09, p. 5, l. 419"
+ },
+ {
+  "id": "cp-6-c33",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.2",
+  "tema": "Art. 17",
+  "pergunta": "Em que eleições a Constituição veda as coligações?",
+  "resposta": [
+   "Nas eleições proporcionais"
+  ],
+  "fonte": "Etapa 09, p. 5, l. 410"
+ },
+ {
+  "id": "cp-6-c34",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+  "tema": "Cláusula",
+  "pergunta": "Que requisitos de votos a cláusula de desempenho exigiu na legislatura seguinte às eleições de 2026?",
+  "resposta": [
+   "2,5% dos votos válidos, com 1,5% em pelo menos um terço das UFs"
+  ],
+  "explicacao": "Alternativa: 13 deputados distribuídos em um terço das UFs (EC nº 97/2017).",
+  "fonte": "Etapa 09, p. 5, l. 424-425"
+ },
+ {
+  "id": "cp-6-c35",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+  "tema": "Cláusula",
+  "pergunta": "Quantos deputados federais a cláusula exigiu na legislatura seguinte às eleições de 2026?",
+  "resposta": [
+   "13, distribuídos em pelo menos um terço das UFs"
+  ],
+  "fonte": "Etapa 09, p. 5, l. 426"
+ },
+ {
+  "id": "cp-6-c36",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+  "tema": "Cláusula",
+  "pergunta": "A partir de que eleições valem os patamares de 3% dos votos ou 15 deputados?",
+  "resposta": [
+   "Das eleições de 2030"
+  ],
+  "fonte": "Etapa 09, p. 5, l. 422"
+ },
+ {
+  "id": "cp-6-c37",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.3",
+  "tema": "Cláusula",
+  "pergunta": "O que o partido que não atinge a cláusula de desempenho perde?",
+  "resposta": [
+   "Recursos do fundo partidário",
+   "Acesso gratuito ao rádio e à televisão"
+  ],
+  "explicacao": "Os eleitos mantêm o mandato (art. 17, § 5º).",
+  "fonte": "Etapa 09, p. 5, l. 412-413"
+ },
+ {
+  "id": "cp-6-c38",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+  "tema": "Federação",
+  "pergunta": "Por quanto tempo, no mínimo, os partidos devem permanecer em uma federação?",
+  "resposta": [
+   "Quatro anos"
+  ],
+  "fonte": "Etapa 09, p. 6, l. 478"
+ },
+ {
+  "id": "cp-6-c39",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+  "tema": "Federação",
+  "pergunta": "Federação × fusão: em qual delas os partidos mantêm a identidade?",
+  "resposta": [
+   "Na federação"
+  ],
+  "explicacao": "Na fusão, os partidos deixam de existir e formam um novo.",
+  "fonte": "Etapa 09, p. 8, l. 722, 725"
+ },
+ {
+  "id": "cp-6-c40",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.4",
+  "tema": "Federação",
+  "pergunta": "Após a ADI 7.021 (2025), até quando a federação precisa estar registrada no TSE?",
+  "resposta": [
+   "Seis meses antes da eleição"
+  ],
+  "fonte": "Etapa 09, p. 6, l. 480-481"
+ },
+ {
+  "id": "cp-6-c41",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
+  "tema": "Fidelidade",
+  "pergunta": "Em que decisão o STF afastou a perda do mandato por infidelidade para cargos majoritários?",
+  "resposta": [
+   "ADI 5081 (2015)"
+  ],
+  "fonte": "Etapa 09, p. 6, l. 517-518"
+ },
+ {
+  "id": "cp-6-c42",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r5.5",
+  "tema": "Financiamento",
+  "pergunta": "Em que decisão o STF vedou as doações de empresas a campanhas e partidos?",
+  "resposta": [
+   "ADI 4650 (2015)"
+  ],
+  "fonte": "Etapa 09, p. 6, l. 522"
+ },
+ {
+  "id": "cp-6-c43",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
+  "tema": "Brasil 2026",
+  "pergunta": "Quantos partidos superaram a cláusula de desempenho em 2026, segundo os números provisórios?",
+  "resposta": [
+   "14 dos 30 partidos registrados"
+  ],
+  "fonte": "Etapa 09, p. 7, l. 572"
+ },
+ {
+  "id": "cp-6-c44",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.1",
+  "tema": "Brasil 2026",
+  "pergunta": "Por que a federação PSOL-Rede ficou abaixo da cláusula em 2026, apesar de 4,9% dos votos e 15 eleitos?",
+  "resposta": [
+   "Atingiu 1,5% em só oito UFs e seus eleitos não se distribuíam por nove UFs"
+  ],
+  "fonte": "Etapa 09, p. 7, l. 574-575"
+ },
+ {
+  "id": "cp-6-c45",
+  "no": "kit-arr-cp-6-teoria-dos-partidos-politicos-2026-11-26-r6.2",
+  "tema": "Câmara",
+  "pergunta": "Que bancada mínima permite a um partido escolher líder na Câmara?",
+  "resposta": [
+   "Um centésimo da Câmara (seis deputados)"
+  ],
+  "explicacao": "RICD, art. 9º, caput e § 4º.",
+  "fonte": "Etapa 09, p. 9, l. 859"
+ },
+ {
+  "id": "cp-e04-c17",
+  "no": "est-a04-r2",
+  "topico": "cp-6",
+  "tema": "Definição de partido político",
+  "pergunta": "Segundo José Jairo Gomes, o partido é formado pela livre associação de pessoas com que tipo de organização?",
+  "resposta": [
+   "Estável"
+  ],
+  "explicacao": "Finalidade: alcançar ou manter de maneira legítima o poder político-estatal.",
+  "fonte": "Aula 04, p. 9",
+  "citacao": "a entidade formada pela livre associação de pessoas com organização estável",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c18",
+  "no": "est-a04-r2",
+  "topico": "cp-6",
+  "tema": "Definição de partido político",
+  "pergunta": "Segundo Bobbio, Matteucci e Pasquino, em qual esfera se movem os partidos?",
+  "resposta": [
+   "Esfera do poder político"
+  ],
+  "explicacao": "É a característica comum de formações muito diversas.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "cuja característica comum é a de se moverem na esfera do poder político",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c19",
+  "no": "est-a04-r2",
+  "topico": "cp-6",
+  "tema": "Definição de partido político",
+  "pergunta": "Para Schumpeter, o partido é um grupo que age de comum acordo na luta de concorrência por quê?",
+  "resposta": [
+   "Poder político"
+  ],
+  "explicacao": "Definição de Schumpeter (1961), citada entre as menos cobradas.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "Um grupo cujos membros se propõem a agir de comum acordo na luta de concorrência pelo poder político",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c20",
+  "no": "est-a04-r2",
+  "topico": "cp-6",
+  "tema": "Definição de partido político",
+  "pergunta": "Independentemente do autor, por qual objetivo central o partido pode ser definido?",
+  "resposta": [
+   "Controlar ou influenciar o governo"
+  ],
+  "explicacao": "Por meio da conquista do poder.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "o partido pode ser definido pelo seu objetivo central de controlar ou influenciar o governo por meio da conquista do poder",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c21",
+  "no": "est-a04-r2.1",
+  "topico": "cp-6",
+  "tema": "Definições de autores",
+  "pergunta": "Para Burke, o partido é um grupo de homens unidos para promover o quê?",
+  "resposta": [
+   "Interesse nacional"
+  ],
+  "explicacao": "Com base em algum princípio com o qual todos concordam.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "Partido é um grupo de homens unidos para a promoção, pelo seu esforço conjunto, do interesse nacional",
+  "aulaOrigem": "04",
+  "nota": "A aula (p. 10) data a definição em 1790; o kit cp-6 a data em 1770 (Thoughts on the Cause of the Present Discontents). O ano foi retirado da pergunta."
+ },
+ {
+  "id": "cp-e04-c22",
+  "no": "est-a04-r2.1.1",
+  "topico": "cp-6",
+  "tema": "Lapalombara: organização durável",
+  "pergunta": "Para Lapalombara, a esperança de vida política do partido deve ser superior à de quem?",
+  "resposta": [
+   "Seus dirigentes no poder"
+  ],
+  "explicacao": "É o critério de organização durável.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "O Partido é uma organização durável, ou seja, uma organização cuja esperança de vida política seja superior à de seus dirigentes no poder",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c23",
+  "no": "est-a04-r2.1.2",
+  "topico": "cp-6",
+  "tema": "Guarnieri: arena eleitoral e decisória",
+  "pergunta": "Para Guarnieri, além da arena eleitoral, em qual arena o partido atua?",
+  "resposta": [
+   "Decisória"
+  ],
+  "explicacao": "Na arena decisória, conquista e mantém maiorias.",
+  "fonte": "Aula 04, p. 10",
+  "citacao": "e na arena decisória conquistando e mantendo maiorias",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c24",
+  "no": "est-a04-r2.1.3",
+  "topico": "cp-6",
+  "tema": "Bonavides: elementos da definição",
+  "pergunta": "Para Bonavides, qual é o interesse básico em vista na composição do partido?",
+  "resposta": [
+   "Tomada do poder"
+  ],
+  "explicacao": "Ao lado de grupo social, princípio de organização, acervo de ideias e sentimento de conservação do poder.",
+  "fonte": "Aula 04, p. 9",
+  "citacao": "(d) um interesse básico em vista: a tomada do poder",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c25",
+  "no": "est-a04-r2.2",
+  "topico": "cp-6",
+  "tema": "Partido x associações da sociedade civil",
+  "pergunta": "Sindicatos, movimentos sociais e ONGs influenciam decisões, mas não disputam diretamente o quê?",
+  "resposta": [
+   "Controle do aparelho do Estado"
+  ],
+  "explicacao": "É o que diferencia partidos de associações da sociedade civil.",
+  "fonte": "Aula 04, p. 11",
+  "citacao": "buscam influenciar as decisões políticas dos governos, mas não disputam diretamente o controle do aparelho do estado",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c26",
+  "no": "est-a04-r2.3",
+  "topico": "cp-6",
+  "tema": "Abordagens de Nicolau",
+  "pergunta": "Qual cientista político brasileiro classifica as definições de partido em abordagens ideológica, sociológica e institucionalista?",
+  "resposta": [
+   "Jairo Nicolau"
+  ],
+  "explicacao": "Jairo Marconi Nicolau.",
+  "fonte": "Aula 04, p. 11",
+  "citacao": "Segundo o cientista político brasileiro Jairo Marconi Nicolau, essas diferentes definições se dão devido a diferentes abordagens",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c27",
+  "no": "est-a04-r2.3.1",
+  "topico": "cp-6",
+  "tema": "Abordagem ideológica",
+  "pergunta": "Na abordagem ideológica, qual é o principal determinante do número de partidos?",
+  "resposta": [
+   "Diversidade de opiniões e visões"
+  ],
+  "explicacao": "Quanto mais diversa a paisagem ideológica, mais partidos.",
+  "fonte": "Aula 04, p. 11",
+  "citacao": "a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos em uma democracia",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c28",
+  "no": "est-a04-r2.3.2",
+  "topico": "cp-6",
+  "tema": "Abordagem sociológica",
+  "pergunta": "Na abordagem sociológica, o número de partidos é reflexo de quê?",
+  "resposta": [
+   "Divisões sociais"
+  ],
+  "explicacao": "E das demandas de diferentes segmentos da sociedade.",
+  "fonte": "Aula 04, p. 11",
+  "citacao": "o número de partidos é visto como um reflexo das divisões sociais e das demandas de diferentes segmentos da sociedade",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c29",
+  "no": "est-a04-r2.3.3",
+  "topico": "cp-6",
+  "tema": "Abordagem institucionalista",
+  "pergunta": "Quais estruturas a abordagem institucionalista destaca como influentes sobre o sistema partidário?",
+  "resposta": [
+   "Sistema eleitoral",
+   "sistema de governo",
+   "organização do Estado"
+  ],
+  "explicacao": "As instituições criam o cenário em que os partidos operam.",
+  "fonte": "Aula 04, p. 11",
+  "citacao": "A abordagem institucionalista destaca a influência das estruturas institucionais, como o sistema eleitoral, o sistema de governo e a organização do Estado",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c30",
+  "no": "est-a04-r2.4",
+  "topico": "cp-6",
+  "tema": "Institucionalização partidária",
+  "pergunta": "Na literatura da Ciência Política, a institucionalização partidária é vista como indicador de quê?",
+  "resposta": [
+   "Qualidade da democracia"
+  ],
+  "explicacao": "Partidos sólidos ampliam a previsibilidade e a estabilidade eleitoral.",
+  "fonte": "Aula 04, p. 12",
+  "citacao": "a institucionalização é vista como um indicador da qualidade da democracia",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c31",
+  "no": "est-a04-r2.4.1",
+  "topico": "cp-6",
+  "tema": "Dimensões (Mainwaring)",
+  "pergunta": "Quantas dimensões principais Mainwaring atribui à institucionalização partidária?",
+  "resposta": [
+   "Quatro"
+  ],
+  "explicacao": "Estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
+  "fonte": "Aula 04, p. 12",
+  "citacao": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos",
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula (p. 12) fala em \"autonomia organizacional\"; o kit cp-6 (Mainwaring e Scully, 1995) fala em \"organização partidária sólida\". Tratam da mesma dimensão."
+ },
+ {
+  "id": "cp-e04-c32",
+  "no": "est-a04-r2.4.2",
+  "topico": "cp-6",
+  "tema": "Critério de Rose e Mackie",
+  "pergunta": "Para Rose e Mackie, o partido institucionalizado compete em pelo menos quantos pleitos nacionais?",
+  "resposta": [
+   "Três"
+  ],
+  "explicacao": "Perdura de eleição em eleição, com continuidade organizacional.",
+  "fonte": "Aula 04, p. 12",
+  "citacao": "capacidade de competir em pelo menos três pleitos nacionais",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c33",
+  "no": "est-a04-r2.4.3",
+  "topico": "cp-6",
+  "tema": "Cláusula de desempenho",
+  "pergunta": "Qual norma constitucional brasileira a perspectiva da institucionalização partidária reforça?",
+  "resposta": [
+   "Cláusula de desempenho"
+  ],
+  "explicacao": "Prevista no art. 17, § 3º, da Constituição (fonte, não resposta).",
+  "fonte": "Aula 04, p. 12",
+  "citacao": "a atual norma prevista no dispositivo do § 3o do art. 17 da nossa Constituição Federal, a chamada cláusula de desempenho",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c34",
+  "no": "est-a04-r3",
+  "topico": "cp-6",
+  "tema": "Origem e tipologias dos partidos",
+  "pergunta": "Qual autor é o principal referencial da aula sobre origem e tipologia dos partidos e o que mais cai em provas?",
+  "resposta": [
+   "Maurice Duverger"
+  ],
+  "explicacao": "Seu método usa a história para compreender as formas de organização partidária.",
+  "fonte": "Aula 04, p. 13",
+  "citacao": "Esse é o método de Maurice Duverger - autor que mais cai em provas de concurso",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c35",
+  "no": "est-a04-r3",
+  "topico": "cp-6",
+  "tema": "Origem e tipologias dos partidos",
+  "pergunta": "O debate sobre modelos de partidos se desenvolveu sobretudo a partir da consolidação de quê, no pós-Segunda Guerra?",
+  "resposta": [
+   "Moderna democracia de massas"
+  ],
+  "explicacao": "Debate desenvolvido sobre os partidos contemporâneos.",
+  "fonte": "Aula 04, p. 13",
+  "citacao": "a partir da consolidação da moderna democracia de massas no contexto do pós-Segunda Guerra Mundial",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c36",
+  "no": "est-a04-r3",
+  "topico": "cp-6",
+  "tema": "Origem e tipologias dos partidos",
+  "pergunta": "A origem dos partidos políticos está intrinsecamente ligada a quais processos?",
+  "resposta": [
+   "Desenvolvimento da democracia",
+   "aumento do sufrágio popular"
+  ],
+  "explicacao": "A evolução dos partidos reflete a evolução das sociedades democráticas.",
+  "fonte": "Aula 04, p. 14",
+  "citacao": "desenvolvimento da democracia e ao aumento do sufrágio popular",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c37",
+  "no": "est-a04-r3.1",
+  "topico": "cp-6",
+  "tema": "Origem parlamentar e externa",
+  "pergunta": "Onde se origina e evolui principalmente o partido de criação parlamentar?",
+  "resposta": [
+   "Instituições parlamentares"
+  ],
+  "explicacao": "Nasce da iniciativa de legisladores (Duverger).",
+  "fonte": "Aula 04, p. 15",
+  "citacao": "Um partido de criação parlamentar é uma organização política que se origina e evolui principalmente dentro do contexto das instituições parlamentares",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c38",
+  "no": "est-a04-r3.1.1",
+  "topico": "cp-6",
+  "tema": "Criação externa",
+  "pergunta": "Por quem podem ser fundados os partidos de organização externa?",
+  "resposta": [
+   "Grupos da sociedade civil",
+   "sindicatos",
+   "associações"
+  ],
+  "explicacao": "Também organizações religiosas e outros movimentos sociais.",
+  "fonte": "Aula 04, p. 15",
+  "citacao": "Eles podem ser fundados por grupos da sociedade civil, sindicatos, associações, organizações religiosas, ou outros movimentos sociais",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c39",
+  "no": "est-a04-r3.1.2",
+  "topico": "cp-6",
+  "tema": "Sequência histórica",
+  "pergunta": "Numa linha do tempo, quais partidos surgiram primeiro?",
+  "resposta": [
+   "Partidos parlamentares"
+  ],
+  "explicacao": "Depois vieram os partidos exteriores; hoje coexistem os dois.",
+  "fonte": "Aula 04, p. 16",
+  "citacao": "podemos afirmar que existiram primeiros os partidos parlamentares e depois os partidos exteriores",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c40",
+  "no": "est-a04-r3.2",
+  "topico": "cp-6",
+  "tema": "Partido de quadros",
+  "pergunta": "Em que período surgiram os partidos de quadros?",
+  "resposta": [
+   "Primeira metade do século XIX"
+  ],
+  "explicacao": "Clubes parlamentares de notáveis.",
+  "fonte": "Aula 04, p. 16",
+  "citacao": "Em um primeiro momento, na primeira metade do século XIX, tivemos os partidos de quadros",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c41",
+  "no": "est-a04-r3.2",
+  "topico": "cp-6",
+  "tema": "Partido de quadros",
+  "pergunta": "Qual era a penetração social dos partidos de quadros?",
+  "resposta": [
+   "Pouca ou nenhuma"
+  ],
+  "explicacao": "Eram meros clubes parlamentares, num contexto de baixa participação.",
+  "fonte": "Aula 04, p. 16",
+  "citacao": "Eram meros clubes parlamentres com pouca ou nenhuma penetração social",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c42",
+  "no": "est-a04-r3.2.1",
+  "topico": "cp-6",
+  "tema": "Objetivo dos partidos de quadros",
+  "pergunta": "Além de ganhar eleições, fazer acordos e conseguir cargos, os partidos de quadros buscam controlar parcela significativa de quê?",
+  "resposta": [
+   "Orçamento público"
+  ],
+  "explicacao": "Funcionam com recursos obtidos pela atuação no aparelho do Estado.",
+  "fonte": "Aula 04, p. 17",
+  "citacao": "seu principal objetivo é ganhar eleições, fazer acordos, conseguir cargos e controlar parcela significativa do orçamento público",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c43",
+  "no": "est-a04-r3.3",
+  "topico": "cp-6",
+  "tema": "Partido de massas",
+  "pergunta": "A partir de que período surgem os partidos de massa?",
+  "resposta": [
+   "Segunda metade do século XIX"
+  ],
+  "explicacao": "Criados por grupos fora da arena do Estado e do Parlamento (Duverger).",
+  "fonte": "Aula 04, p. 17",
+  "citacao": "Sobretudo a partir da segunda metade do século XIX, grupos que estavam fora da arena do Estado e do Parlamento buscaram criar organizações partidárias",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c44",
+  "no": "est-a04-r3.3.1",
+  "topico": "cp-6",
+  "tema": "Figura do filiado",
+  "pergunta": "Qual figura aparece com os partidos de massa?",
+  "resposta": [
+   "Filiado partidário"
+  ],
+  "explicacao": "Substitui o financiamento dos notáveis por pequenas contribuições.",
+  "fonte": "Aula 04, p. 17",
+  "citacao": "Na verdade, é aí que aparece a figura do filiado partidário",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c45",
+  "no": "est-a04-r4",
+  "topico": "cp-6",
+  "tema": "Partidos nas democracias contemporâneas: catch-all e cartel",
+  "pergunta": "Quem cunhou a expressão \"Partido Catch-all\"?",
+  "resposta": [
+   "Otto Kirchheimer"
+  ],
+  "explicacao": "Em 1966, num cenário de desideologização.",
+  "fonte": "Aula 04, p. 20",
+  "citacao": "cunhado por Otto Kirchheimer",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c46",
+  "no": "est-a04-r4",
+  "topico": "cp-6",
+  "tema": "Partidos nas democracias contemporâneas: catch-all e cartel",
+  "pergunta": "O que o Estado de Bem-Estar Social atenuou no cenário que deu origem ao partido catch-all?",
+  "resposta": [
+   "Polarização política"
+  ],
+  "explicacao": "Forneceu rede de segurança social e serviços públicos.",
+  "fonte": "Aula 04, p. 20",
+  "citacao": "O Estado de Bem-Estar Social desempenhou um papel importante nesse cenário, atenuando a polarização política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c47",
+  "no": "est-a04-r4",
+  "topico": "cp-6",
+  "tema": "Partidos nas democracias contemporâneas: catch-all e cartel",
+  "pergunta": "No partido cartel, a relação com a sociedade se inverte: a partir de onde os partidos passam a operar?",
+  "resposta": [
+   "Do Estado"
+  ],
+  "explicacao": "Em vez de levar demandas sociais ao Estado, operam do Estado para a sociedade.",
+  "fonte": "Aula 04, p. 22",
+  "citacao": "passam a operar a partir do Estado em direção à sociedade",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c48",
+  "no": "est-a04-r4.1",
+  "topico": "cp-6",
+  "tema": "Partido pega-tudo (catch-all)",
+  "pergunta": "Em que se concentra o partido catch-all?",
+  "resposta": [
+   "Disputa eleitoral imediata"
+  ],
+  "explicacao": "Busca o eleitor médio, além das bases originais.",
+  "fonte": "Aula 04, p. 20",
+  "citacao": "O Partido Catch-all é caracterizado por sua concentração na disputa eleitoral imediata",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c49",
+  "no": "est-a04-r4.1.1",
+  "topico": "cp-6",
+  "tema": "Eleitor como consumidor",
+  "pergunta": "No modelo catch-all, os eleitores são mais o quê do que participantes ativos?",
+  "resposta": [
+   "Consumidores"
+  ],
+  "explicacao": "Analogia com o consumo de massa.",
+  "fonte": "Aula 04, p. 21",
+  "citacao": "em que os eleitores são mais consumidores do que participantes ativos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c50",
+  "no": "est-a04-r4.1.2",
+  "topico": "cp-6",
+  "tema": "Reformas graduais",
+  "pergunta": "Em vez de transformações radicais, o que buscam os partidos catch-all?",
+  "resposta": [
+   "Reformas graduais"
+  ],
+  "explicacao": "Reformas e melhorias graduais.",
+  "fonte": "Aula 04, p. 21",
+  "citacao": "os partidos não buscam transformações radicais, mas sim reformas e melhorias graduais",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c51",
+  "no": "est-a04-r4.2",
+  "topico": "cp-6",
+  "tema": "Partido cartel (Katz e Mair)",
+  "pergunta": "Segundo Katz e Mair, qual face do partido se enfraqueceu nas últimas décadas?",
+  "resposta": [
+   "Party on the ground"
+  ],
+  "explicacao": "Fortaleceram-se o party in public office e o party in central office.",
+  "fonte": "Aula 04, p. 22",
+  "citacao": "observa-se um progressivo enfraquecimento do party on the ground",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c52",
+  "no": "est-a04-r4.2.1",
+  "topico": "cp-6",
+  "tema": "Partido cartel",
+  "pergunta": "Como Katz e Mair chamam o modelo em que legendas estabelecidas cooperam para controlar o sistema e barrar novos atores?",
+  "resposta": [
+   "Partido cartel"
+  ],
+  "explicacao": "Reduz a competição efetiva.",
+  "fonte": "Aula 04, p. 22",
+  "citacao": "Esse processo culmina no que os autores denominam partido cartel",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c53",
+  "no": "est-a04-r4.3",
+  "topico": "cp-6",
+  "tema": "Partidos institucionalizados e papel de representação",
+  "pergunta": "O que os partidos institucionalizados tendem a reduzir na política?",
+  "resposta": [
+   "Personalização excessiva"
+  ],
+  "explicacao": "Também dão previsibilidade às disputas e fortalecem vínculos representativos.",
+  "fonte": "Aula 04, p. 22",
+  "citacao": "Partidos institucionalizados tendem a oferecer maior previsibilidade às disputas eleitorais, fortalecer os vínculos representativos e reduzir a personalização excessiva da política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c54",
+  "no": "est-a04-r4.3.1",
+  "topico": "cp-6",
+  "tema": "Canais legítimos de atuação",
+  "pergunta": "Segundo o trecho citado na aula, a normalidade democrática depende da existência de quê?",
+  "resposta": [
+   "Mecanismos de comunicação e de participação"
+  ],
+  "explicacao": "A ausência deles pode induzir resposta violenta de setores excluídos.",
+  "fonte": "Aula 04, p. 23",
+  "citacao": "a normalidade democrática depende da existência de tais “mecanismos de comunicação e de participação”",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c55",
+  "no": "est-a04-r5",
+  "topico": "cp-6",
+  "tema": "Sistemas partidários: Duverger e Sartori",
+  "pergunta": "Qual distinção ganhou destaque nas primeiras tipologias de sistemas partidários?",
+  "resposta": [
+   "Bipartidário x multipartidário"
+  ],
+  "explicacao": "Raiz na obra de Duverger.",
+  "fonte": "Aula 04, p. 37",
+  "citacao": "a diferença entre sistemas bipartidários e multipartidários",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c56",
+  "no": "est-a04-r5",
+  "topico": "cp-6",
+  "tema": "Sistemas partidários: Duverger e Sartori",
+  "pergunta": "Qual critério de classificação de sistemas partidários passou a ser questionado?",
+  "resposta": [
+   "Critério numérico"
+  ],
+  "explicacao": "A simples contagem não captava as diferenças ideológicas.",
+  "fonte": "Aula 04, p. 37",
+  "citacao": "o critério numérico baseado na simples contagem de partidos começou a ser questionado",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c57",
+  "no": "est-a04-r5",
+  "topico": "cp-6",
+  "tema": "Sistemas partidários: Duverger e Sartori",
+  "pergunta": "Qual autor emergiu como proponente de uma abordagem alternativa à simples contagem de partidos?",
+  "resposta": [
+   "Giovanni Sartori"
+  ],
+  "explicacao": "Incluiu o grau de polarização ideológica.",
+  "fonte": "Aula 04, p. 37",
+  "citacao": "Nesse contexto, Giovanni Sartori emergiu como proponente de uma abordagem alternativa",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c58",
+  "no": "est-a04-r5.1",
+  "topico": "cp-6",
+  "tema": "Duverger: unipartidarismo, bipartidarismo e multipartidarismo",
+  "pergunta": "Em quantas categorias principais Duverger classifica os sistemas partidários contemporâneos?",
+  "resposta": [
+   "Três"
+  ],
+  "explicacao": "Unipartidarismo, bipartidarismo e multipartidarismo.",
+  "fonte": "Aula 04, p. 38",
+  "citacao": "podem ser classificados em três principais",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c59",
+  "no": "est-a04-r5.1.1",
+  "topico": "cp-6",
+  "tema": "Unipartidarismo",
+  "pergunta": "De que tipo de regime o unipartidarismo é característico, segundo Duverger?",
+  "resposta": [
+   "Regime totalitário"
+  ],
+  "explicacao": "Exemplos: fascismo, nazismo e comunismo.",
+  "fonte": "Aula 04, p. 38",
+  "citacao": "O unipartidarismo é característico de regimes totalitários",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c60",
+  "no": "est-a04-r5.1.1",
+  "topico": "cp-6",
+  "tema": "Unipartidarismo",
+  "pergunta": "Por que o sistema unipartidário é incompatível com a democracia?",
+  "resposta": [
+   "Não permite alternância no poder"
+  ],
+  "explicacao": "E sufoca qualquer dissidência política.",
+  "fonte": "Aula 04, p. 39",
+  "citacao": "O sistema unipartidário é incompatível com os princípios democráticos, uma vez que não permite a alternância no poder",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c61",
+  "no": "est-a04-r5.1.2",
+  "topico": "cp-6",
+  "tema": "Bipartidarismo",
+  "pergunta": "Por qual qualidade o bipartidarismo é frequentemente elogiado?",
+  "resposta": [
+   "Estabilidade política"
+  ],
+  "explicacao": "Regras claras e alternância no poder.",
+  "fonte": "Aula 04, p. 39",
+  "citacao": "Esse sistema é frequentemente elogiado por sua estabilidade política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c62",
+  "no": "est-a04-r5.1.2",
+  "topico": "cp-6",
+  "tema": "Bipartidarismo",
+  "pergunta": "Segundo Bonavides, que papel cabe ao partido derrotado no bipartidarismo?",
+  "resposta": [
+   "Oposição"
+  ],
+  "explicacao": "O encargo de exercer o papel de oposição.",
+  "fonte": "Aula 04, p. 39",
+  "citacao": "cabe ao partido derrotado o encargo de exercer o importante papel de oposição",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c63",
+  "no": "est-a04-r5.1.3",
+  "topico": "cp-6",
+  "tema": "Multipartidarismo",
+  "pergunta": "Quantos partidos, no mínimo, participam da competição no multipartidarismo?",
+  "resposta": [
+   "Três"
+  ],
+  "explicacao": "Três ou mais partidos.",
+  "fonte": "Aula 04, p. 40",
+  "citacao": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c64",
+  "no": "est-a04-r5.1.3",
+  "topico": "cp-6",
+  "tema": "Multipartidarismo",
+  "pergunta": "Segundo Duverger, a que pode levar o multipartidarismo exagerado?",
+  "resposta": [
+   "Pulverização excessiva das opiniões"
+  ],
+  "explicacao": "Profusão de partidos pequenos e instáveis enfraquece o sistema.",
+  "fonte": "Aula 04, p. 40",
+  "citacao": "pode enfraquecer o sistema político e levar a uma pulverização excessiva das opiniões",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c65",
+  "no": "est-a04-r5.2",
+  "topico": "cp-6",
+  "tema": "Sartori: relevância, coalizão e chantagem",
+  "pergunta": "Além da quantidade de partidos, por qual critério Sartori propõe avaliar o sistema partidário?",
+  "resposta": [
+   "Profundidade das diferenças ideológicas"
+  ],
+  "explicacao": "A qualidade das divisões políticas vira dimensão crítica.",
+  "fonte": "Aula 04, p. 38",
+  "citacao": "Sartori argumentou que um sistema partidário não deveria ser avaliado apenas pela quantidade de partidos, mas também pela profundidade das diferenças ideológicas entre eles",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c66",
+  "no": "est-a04-r5.2.1",
+  "topico": "cp-6",
+  "tema": "Potencial de coalizão",
+  "pergunta": "Para Sartori, quando um partido menor é considerado irrelevante pelo potencial de coalizão?",
+  "resposta": [
+   "Quando nunca integra coalizão majoritária possível"
+  ],
+  "explicacao": "É relevante se pode determinar uma maioria parlamentar.",
+  "fonte": "Aula 04, p. 42",
+  "citacao": "um partido menor é considerado irrelevante se nunca é necessário ou integrado em qualquer coalizão majoritária possível ao longo do tempo",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c67",
+  "no": "est-a04-r5.2.2",
+  "topico": "cp-6",
+  "tema": "Força do partido e tipologias de Sartori",
+  "pergunta": "Para Sartori, como se mede a força eleitoral de um partido?",
+  "resposta": [
+   "Número de cadeiras no parlamento"
+  ],
+  "explicacao": "Somada ao potencial de coalizão.",
+  "fonte": "Aula 04, p. 42",
+  "citacao": "a força de um partido é evidenciada por sua força eleitoral, representada pelo número de cadeiras que ocupa no parlamento",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c68",
+  "no": "est-a04-r5.2.2",
+  "topico": "cp-6",
+  "tema": "Força do partido e tipologias de Sartori",
+  "pergunta": "Sartori diferenciou os sistemas multipartidários fragmentados de quais outros?",
+  "resposta": [
+   "Polarizados"
+  ],
+  "explicacao": "Pela variável ideológica.",
+  "fonte": "Aula 04, p. 42",
+  "citacao": "diferenciou entre sistemas multipartidários fragmentados e polarizados",
+  "aulaOrigem": "04",
+  "nota": "Terminologia: a aula usa \"fragmentados e polarizados\" (p. 42); o kit cp-6 usa \"pluralismo moderado × polarizado\". Sartori: moderado e polarizado são os dois tipos de multipartidarismo."
+ },
+ {
+  "id": "cp-e04-c69",
+  "no": "est-a04-r5.2.3",
+  "topico": "cp-6",
+  "tema": "Critério ideológico como complemento",
+  "pergunta": "Na visão de Sartori, que lugar a contagem de partidos ainda ocupa na análise?",
+  "resposta": [
+   "Continua relevante"
+  ],
+  "explicacao": "Deve ser acompanhada de análise das diferenças ideológicas.",
+  "fonte": "Aula 04, p. 38",
+  "citacao": "A contagem de partidos ainda é relevante",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c70",
+  "no": "est-a04-r5.3",
+  "topico": "cp-6",
+  "tema": "Presidencialismo de coalizão (Abranches)",
+  "pergunta": "Como Abranches chama o traço brasileiro de organizar o Executivo com base em grandes coalizões?",
+  "resposta": [
+   "Presidencialismo de coalizão"
+  ],
+  "explicacao": "Combinado com proporcionalidade, multipartidarismo e \"presidencialismo imperial\".",
+  "fonte": "Aula 04, p. 43",
+  "citacao": "organiza o Executivo com base em grandes coalizões [...] \"presidencialismo de coalizão\"",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c71",
+  "no": "est-a04-r5.3",
+  "topico": "cp-6",
+  "tema": "Presidencialismo de coalizão (Abranches)",
+  "pergunta": "Segundo Abranches, o que o sistema partidário precisa expressar?",
+  "resposta": [
+   "A ordem social real"
+  ],
+  "explicacao": "As regras institucionais se adaptam à realidade social.",
+  "fonte": "Aula 04, p. 42",
+  "citacao": "o sistema partidário precisa expressar a ordem social real",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c72",
+  "no": "est-a04-r5.3.1",
+  "topico": "cp-6",
+  "tema": "Fórmula brasileira",
+  "pergunta": "Que tipo de lista integra a fórmula brasileira com multipartidarismo e presidencialismo?",
+  "resposta": [
+   "Lista aberta"
+  ],
+  "explicacao": "Representação proporcional de listas abertas.",
+  "fonte": "Aula 04, p. 41",
+  "citacao": "combina multipartidarismo, presidencialismo e sistema de representação proporcional de listas abertas",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c73",
+  "no": "est-a04-r5.3.2",
+  "topico": "cp-6",
+  "tema": "Governabilidade e coalizões",
+  "pergunta": "O que se inicia quando o partido vitorioso não detém a maioria das cadeiras no legislativo?",
+  "resposta": [
+   "Negociações para formar coalizões"
+  ],
+  "explicacao": "Os acordos tendem a ser instáveis.",
+  "fonte": "Aula 04, p. 41",
+  "citacao": "inicia-se um complexo jogo de negociações para criar coalizões capazes de sustentar o governo",
+  "aulaOrigem": "04"
+ }
 ]

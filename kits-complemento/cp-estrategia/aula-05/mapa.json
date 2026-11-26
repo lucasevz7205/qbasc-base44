@@ -1,0 +1,822 @@
+{
+ "topico": "cp-10",
+ "materia": "cp",
+ "centro": "Formação do Estado brasileiro (Império e República), partidos e voto desde 1930, regime militar, crises institucionais, Nova República e urna eletrônica",
+ "aula": "05",
+ "fonte": "Estratégia Concursos, Ciência Política para Câmara dos Deputados (ARR), Prof. Ale Lopes, Aula 05",
+ "topicosEdital": {
+  "cp-10": "Formação do Estado brasileiro: Independência, Constituição de 1824 e Poder Moderador, Regência e Segundo Reinado, Constituição de 1891 e Estado Novo, Regime Militar e Nova República como etapas da formação do Estado.",
+  "cp-11": "História do voto e dos partidos: voto censitário e Lei Saraiva, voto aberto e coronelismo, partidos de 1930 a 1985, Código de 1932, bipartidarismo, Lei Orgânica de 1979, cédula e urna eletrônica.",
+  "cp-7": "Organização política brasileira: federalismo e presidencialismo, crises institucionais e super-presidencialismo, Constituição de 1988 (direitos políticos, partidos e cláusula de desempenho) e Nova República."
+ },
+ "ramos": [
+  {
+   "id": "est-a05-r1",
+   "t": "Império: formação do Estado brasileiro",
+   "topico": "cp-10",
+   "n": "Independência conduzida pela elite e Constituição outorgada de 1824",
+   "x": {
+    "e": "O Estado brasileiro começa com a Independência (1822) e a primeira Constituição (1824). Em 1808 a Corte portuguesa veio para o Rio de Janeiro; em 1815 o Brasil passou a Reino; em 1821 a Revolução do Porto fez D. João VI voltar a Portugal e deixou D. Pedro como regente.",
+    "src": "Aula 05, p. 5",
+    "cit": "Ocialmente, o Estado brasileiro inicia-se com a Independência em 1822 e tem a primeira",
+    "trap": "O período colonial não é o marco do Estado brasileiro para esta aula: o texto começa em 1822."
+   },
+   "nota": "p. 4 diz que a aula trata dos \"tópicos 9, 12 e 13 do Edital\" (numeração do curso). Aqui a correspondência usada é cp-10 (principal), cp-11 e cp-7, conforme a especificação; a numeração do edital oficial não foi conferida.",
+   "f": [
+    {
+     "id": "est-a05-r1.1",
+     "t": "Independência feita pela elite",
+     "topico": "cp-10",
+     "n": "A elite conduziu a Independência sem participação popular",
+     "x": {
+      "e": "D. Pedro proclamou a independência em 7/9/1822 com apoio da elite econômica (José Bonifácio e a princesa Leopoldina articularam o movimento). Para o texto, o processo foi \"de cima para baixo\", sem alterar as estruturas desiguais da colônia.",
+      "src": "Aula 05, p. 10",
+      "cit": "Note que todo este processo foi realizado pela elite econômica brasileira em aliança com o príncipe regente e SEM a participação popular.",
+      "trap": "Não supor participação popular decisiva na Independência: o texto afirma o contrário."
+     }
+    },
+    {
+     "id": "est-a05-r1.2",
+     "t": "Constituição de 1824 e Poder Moderador",
+     "topico": "cp-10",
+     "n": "Carta outorgada, não elaborada por Assembleia eleita",
+     "x": {
+      "e": "Após a dissolução da Assembleia Constituinte (1823), D. Pedro I outorgou a Constituição de 1824, que organizou o Estado como Unitário e Monarquia Constitucional e criou o Poder Moderador.",
+      "src": "Aula 05, p. 12",
+      "cit": "Assim, D. Pedro I outorgou a primeira Constituição brasileira em 25 de março de 1824.",
+      "trap": "A Constituição de 1824 foi outorgada (imposta), sem eleições para constituintes; não é fruto de Assembleia eleita."
+     },
+     "f": [
+      {
+       "id": "est-a05-r1.2.1",
+       "t": "Poder Moderador como quarto poder",
+       "topico": "cp-10",
+       "n": "Poder do Imperador acima dos três poderes",
+       "x": {
+        "e": "O Poder Moderador era um poder acima do Executivo, do Legislativo e do Judiciário, exercido pelo Imperador. Por ele, o Imperador controlava na prática os demais poderes.",
+        "src": "Aula 05, p. 18",
+        "cit": "o Imperador tinha um poder extra, acima dos 3 poderes, o chamado PODER MODERADOR.",
+        "trap": "Poder Moderador não é o Executivo: é prerrogativa do Imperador, acima dos três poderes."
+       }
+      },
+      {
+       "id": "est-a05-r1.2.2",
+       "t": "Atribuições do Poder Moderador",
+       "topico": "cp-10",
+       "n": "Nomear e destituir ministros, dissolver a Câmara, adiar senadores",
+       "x": {
+        "e": "Lista do texto: nomear e destituir ministros e senadores, dissolver a Câmara dos Deputados, vetar leis, adiar a escolha de senadores indicados pelas províncias e nomear presidentes de província.",
+        "src": "Aula 05, p. 19-20",
+        "cit": "O Poder Moderador conferia ao Imperador a prerrogativa de destituir e nomear ministros, dissolver a Câmara dos Deputados",
+        "trap": "Nomear presidentes de província e adiar senadores eram atribuições do Imperador, não do Legislativo."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r1.3",
+     "t": "Regência, Ato Adicional e Segundo Reinado",
+     "topico": "cp-10",
+     "n": "Centralização versus descentralização até o Segundo Reinado",
+     "x": {
+      "e": "Com a abdicação de D. Pedro I (1831) abriu-se a Regência. O Ato Adicional de 1834 deu autonomia às províncias, com Assembleias Legislativas Provinciais. Em 1837 a revisão do Ato, sob Araújo Lima (regressista), recuperou atribuições do poder central. Em 1840 veio o Golpe da Maioridade.",
+      "src": "Aula 05, p. 27",
+      "cit": "Nesse contexto, ocorreu a promulgação do Ato Adicional de 1834, uma emenda constitucional de cunho liberal.",
+      "trap": "O Ato Adicional não durou sem alteração: foi revisto em 1837 pelos regressistas."
+     },
+     "f": [
+      {
+       "id": "est-a05-r1.3.1",
+       "t": "Golpe da Maioridade",
+       "topico": "cp-10",
+       "n": "Fim das Regências com D. Pedro II no trono",
+       "x": {
+        "e": "Em 1840, o Golpe da Maioridade colocou D. Pedro II no trono e encerrou o período das Regências.",
+        "src": "Aula 05, p. 28",
+        "cit": "A situação política foi parcialmente amenizada em 1840, com o chamado Golpe da Maioridade.",
+        "trap": "Golpe da Maioridade (1840) é posterior ao Ato Adicional (1834) e à revisão de 1837."
+       }
+      },
+      {
+       "id": "est-a05-r1.3.2",
+       "t": "Parlamentarismo de 1847 (às avessas)",
+       "topico": "cp-10",
+       "n": "Presidente do Conselho escolhido pelo Imperador",
+       "x": {
+        "e": "Em 1847 criou-se o cargo de Presidente do Conselho de Ministros. Como o Poder Moderador permitia ao Imperador escolhê-lo, o texto chama o arranjo de \"parlamentarismo às avessas\".",
+        "src": "Aula 05, p. 31",
+        "cit": "Para tanto, em 1847 instituiu o parlamentarismo.",
+        "trap": "No parlamentarismo do Império quem escolhia o chefe de governo era o Imperador, não o partido majoritário."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r2",
+   "t": "Voto e partidos no Império",
+   "topico": "cp-11",
+   "n": "Voto censitário e partidos de quadros endógenos",
+   "x": {
+    "e": "No Império o voto era censitário e indireto. Os \"partidos\" do Primeiro Reinado eram correntes de opinião; no Segundo Reinado, Liberais (luzia) e Conservadores (saquarema) disputaram o poder.",
+    "src": "Aula 05, p. 13",
+    "cit": "estamos nos referindo a correntes de opinião, já que esses grupos não se organizavam como uma instituição",
+    "trap": "Partidos do Primeiro Reinado não eram partidos modernos: eram correntes de opinião e clubes."
+   },
+   "f": [
+    {
+     "id": "est-a05-r2.1",
+     "t": "Voto censitário de 1824",
+     "topico": "cp-11",
+     "n": "Renda definia quem votava e quem podia ser votado",
+     "x": {
+      "e": "Eleição indireta e censitária: votava quem tinha renda mínima (cidadão ativo, eleitor de paróquia); ser votado exigia renda maior (cidadão passivo, eleitor de província). Para deputado a renda mínima era de 400 mil réis; para senador, 800 mil réis.",
+      "src": "Aula 05, p. 24",
+      "cit": "Quem tinha a partir de 200 mil réis votava e poderia ser votado (cidadão passivo).",
+      "trap": "Cidadão ativo é quem vota; cidadão passivo é quem pode ser votado. Não são sinônimos."
+     }
+    },
+    {
+     "id": "est-a05-r2.2",
+     "t": "Liberais e Conservadores",
+     "topico": "cp-11",
+     "n": "Luzia e saquarema: facções da mesma elite",
+     "x": {
+      "e": "Liberais (luzia) e conservadores (saquarema) eram ambos monarquistas e escravocratas; divergiam sobre a forma de Estado (centralização ou descentralização) e sobre questões administrativas.",
+      "src": "Aula 05, p. 30",
+      "cit": "Apesar de ambos defenderem a monarquia e a escravidão, tinham visões distintas sobre o",
+      "trap": "Não atribuir aos partidos imperiais divergências sobre liberdades civis ou reformas sociais: o texto aponta centralização e descentralização."
+     },
+     "f": [
+      {
+       "id": "est-a05-r2.2.1",
+       "t": "Frase-síntese dos partidos imperiais",
+       "topico": "cp-11",
+       "n": "Mesma elite no poder, com alternância de grupos",
+       "x": {
+        "e": "Frase do texto (p. 30): \"nada se assemelha mais a um saquarema do que um luzia no poder\". Luzia = liberal; saquarema = conservador. A frase diz que, no poder, os dois grupos eram parecidos, não que eram idênticos em tudo.",
+        "src": "Aula 05, p. 30",
+        "cit": "nada se assemelha mais a um saquarema do que um luzia no poder",
+        "trap": "A frase não diz que os partidos eram idênticos em tudo: diz que, no poder, eram parecidos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r2.3",
+     "t": "Reformas eleitorais do Império",
+     "topico": "cp-11",
+     "n": "Lei dos Círculos (1855) e Lei Saraiva (1881)",
+     "x": {
+      "e": "Duas reformas: a Lei dos Círculos (1855) criou o voto distrital; a Lei Saraiva (1881) estabeleceu eleições diretas e excluiu os analfabetos, tornando o eleitorado mais restrito.",
+      "src": "Aula 05, p. 33",
+      "cit": "Essa reforma criou o voto distrital.",
+      "trap": "Lei Saraiva não ampliou o eleitorado: o texto diz que ele se tornou mais excludente."
+     },
+     "f": [
+      {
+       "id": "est-a05-r2.3.1",
+       "t": "Lei dos Círculos (1855)",
+       "topico": "cp-11",
+       "n": "Um deputado por distrito, com maioria absoluta",
+       "x": {
+        "e": "Províncias divididas em distritos (\"círculos\"), cada um elegendo um representante. Se ninguém atingisse maioria absoluta, havia nova votação entre os mais votados.",
+        "src": "Aula 05, p. 33",
+        "cit": "O sistema adotado foi o de maioria absoluta, no qual, caso nenhum candidato obtivesse 50% mais 1 dos votos",
+        "trap": "Lei dos Círculos é voto distrital com maioria absoluta, não representação proporcional."
+       }
+      },
+      {
+       "id": "est-a05-r2.3.2",
+       "t": "Lei Saraiva (1881)",
+       "topico": "cp-11",
+       "n": "Eleições diretas, analfabetos excluídos",
+       "x": {
+        "e": "A Lei Saraiva estabeleceu eleições diretas e tornou elegíveis imigrantes comerciantes ou industriais; permitiu a participação de não católicos; excluiu os analfabetos. Em 1872 eram 1.097.698 votantes; em 1886, 117.022 eleitores (texto).",
+        "src": "Aula 05, p. 38",
+        "cit": "A legislação proibiu a participação política de analfabetos, seja como eleitores ou como candidatos.",
+        "trap": "Lei Saraiva excluiu analfabetos e restringiu o eleitorado; não é marco de ampliação do voto."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r3",
+   "t": "República Velha (1889-1930): Constituição de 1891 e oligarquias",
+   "topico": "cp-10",
+   "n": "Federalismo e presidencialismo com voto controlado pelas oligarquias",
+   "x": {
+    "e": "A República (1889) e a Constituição de 1891 instituíram o federalismo e o presidencialismo. Na prática o sistema era controlado por oligarquias estaduais e por coronéis, com voto aberto e pouca participação.",
+    "src": "Aula 05, p. 40",
+    "cit": "Com a Proclamação da República em 1889, o Brasil abandonou seu status de Império e abraçou",
+    "trap": "A mudança formal (federalismo, voto masculino) não significou participação ampla: o texto fala em controle oligárquico."
+   },
+   "f": [
+    {
+     "id": "est-a05-r3.1",
+     "t": "Constituição de 1891: federalismo e presidencialismo",
+     "topico": "cp-7",
+     "n": "Estados autônomos e presidente eleito por sufrágio direto",
+     "x": {
+      "e": "As antigas províncias viraram estados-membros, com autonomia econômica e administrativa. O presidente era eleito por sufrágio direto para mandato de quatro anos. O texto anota a tripartição de poderes e a vitaliciedade do Judiciário.",
+      "src": "Aula 05, p. 40-41",
+      "cit": "transformando as antigas províncias em estados-membros",
+      "trap": "O presidencialismo de 1891 rompeu com o Poder Moderador: não há mais quarto poder."
+     }
+    },
+    {
+     "id": "est-a05-r3.2",
+     "t": "Voto aberto, alistamento e degola",
+     "topico": "cp-11",
+     "n": "Voto a descoberto e fraude controlada pelas lideranças locais",
+     "x": {
+      "e": "Voto aberto (a descoberto) permitia controlar o eleitor; o alistamento era feito por comissão de cinco membros locais; a Comissão de Verificação de Poderes podia recusar diplomas de oposicionistas.",
+      "src": "Aula 05, p. 45",
+      "cit": "O voto a descoberto foi um dos principais responsáveis pela ausência de lisura das eleições realizadas no período.",
+      "trap": "Voto universal masculino não quer dizer voto secreto: o voto era aberto."
+     },
+     "f": [
+      {
+       "id": "est-a05-r3.2.1",
+       "t": "Degola",
+       "topico": "cp-11",
+       "n": "Recusa de diploma pela Comissão de Verificação de Poderes",
+       "x": {
+        "e": "Degola é a recusa do diploma de candidatos da oposição pela Comissão de Verificação de Poderes da Câmara, ainda que tivessem vencido a eleição.",
+        "src": "Aula 05, p. 46",
+        "cit": "a degola, feita no âmbito da Comissão",
+        "trap": "Degola não é resultado da urna: ocorria depois da eleição, na Câmara."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r3.3",
+     "t": "Coronelismo e Política dos Governadores",
+     "topico": "cp-11",
+     "n": "Coronéis e troca de favores ligados ao governo estadual",
+     "x": {
+      "e": "Política dos Governadores (Campos Sales, 1898-1902): o presidente não intervinha nos conflitos regionais e garantia o controle do Executivo sobre o Congresso; o arranjo sustentou a política do café-com-leite até 1930.",
+      "src": "Aula 05, p. 42",
+      "cit": "pleno controle do Executivo sobre o Congresso, o acordo incluiu manobras políticas",
+      "trap": "Coronelismo não se reduz à violência: envolve mandonismo e clientelismo, como o texto explica."
+     },
+     "f": [
+      {
+       "id": "est-a05-r3.3.1",
+       "t": "Coronelismo (Vítor Nunes Leal)",
+       "topico": "cp-11",
+       "n": "Sistema de poder local ligado ao governo estadual",
+       "x": {
+        "e": "Fenômeno de 1889 a 1930: líderes locais (coronéis) controlavam eleições e áreas rurais. O termo foi formulado por Vítor Nunes Leal em \"Coronelismo, enxada e voto\" (1948).",
+        "src": "Aula 05, p. 43",
+        "cit": "O coronelismo é um fenômeno político brasileiro que teve seu auge durante a Primeira República, entre 1889 e 1930.",
+        "trap": "O coronel não age sozinho: o sistema se apoiava em compromissos com o governo estadual."
+       }
+      },
+      {
+       "id": "est-a05-r3.3.2",
+       "t": "Mandonismo e clientelismo",
+       "topico": "cp-11",
+       "n": "Mando pessoal local e troca de favores por votos",
+       "x": {
+        "e": "Mandonismo é o controle político e social exercido pelo coronel. Clientelismo é a distribuição de favores ou recursos públicos em troca de apoio político ou lealdade pessoal.",
+        "src": "Aula 05, p. 44",
+        "cit": "Clientelismo: O clientelismo, por outro lado, envolve a prática de políticos, incluindo os coronéis, distribuírem favores ou recursos públicos em troca de apoio político ou lealdade",
+        "trap": "Mandonismo e clientelismo são características do coronelismo, não sinônimos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r3.4",
+     "t": "Partidos regionais e fim da Primeira República",
+     "topico": "cp-11",
+     "n": "Federação de partidos regionais e Aliança Liberal",
+     "x": {
+      "e": "No início da República havia uma \"federação de partidos\" regionais, formados dentro do parlamento. Em 1930 a aliança São Paulo-Minas se rompeu, a Aliança Liberal (Vargas) perdeu a eleição, mas assumiu o poder após o movimento de 1930.",
+      "src": "Aula 05, p. 42-50",
+      "cit": "no início da República existia uma \"federação de partidos\"",
+      "trap": "Os partidos da Primeira República eram de quadros e endógenos, não partidos de massa."
+     },
+     "f": [
+      {
+       "id": "est-a05-r3.4.1",
+       "t": "Revolução de 1930",
+       "topico": "cp-10",
+       "n": "Vargas perdeu a eleição e assumiu pelo movimento",
+       "x": {
+        "e": "Vargas (Aliança Liberal, com João Pessoa como vice) perdeu a eleição de março de 1930 para Júlio Prestes. Após o assassinato de João Pessoa, em julho, o movimento mobilizou tropas e Vargas assumiu em 3/11/1930.",
+        "src": "Aula 05, p. 50",
+        "cit": "Em 3 de novembro de 1930, Getúlio Vargas assumiu o cargo de presidente provisório",
+        "trap": "Vargas não chegou à Presidência pelo voto de 1930: perdeu a eleição."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r4",
+   "t": "Partidos e voto de 1930 a 1964",
+   "topico": "cp-11",
+   "n": "Código de 1932, Estado Novo, Lei Agamenon e Constituição de 1946",
+   "x": {
+    "e": "O Código Eleitoral de 1932 trouxe voto secreto, voto feminino e Justiça Eleitoral. O Estado Novo (1937-1945) extinguiu temporariamente os partidos. A Lei Agamenon (1945) e a Constituição de 1946 reconstruíram o sistema de partidos nacionais.",
+    "src": "Aula 05, p. 51-54",
+    "cit": "O marco inicial desse movimento foi a promulgação do Código Eleitoral de 1932 pelo Governo Provisório",
+    "trap": "O Código de 1932 não criou partido nacional: o texto diz que o Brasil não deu esse passo naquela época."
+   },
+   "nota": "Texto escreve \"Lei Agamenon\" (p. 54); a grafia do nome da lei não foi conferida com fonte externa.",
+   "f": [
+    {
+     "id": "est-a05-r4.1",
+     "t": "Código de 1932 e Constituição de 1934",
+     "topico": "cp-11",
+     "n": "Representação classista e partidos ainda estaduais",
+     "x": {
+      "e": "O Código de 1932 criou a representação classista (40 vagas: 18 sindicatos, 17 patronais, 3 profissionais liberais, 2 funcionários públicos). A Constituição de 1934 manteve eleições disputadas por partidos estaduais.",
+      "src": "Aula 05, p. 52",
+      "cit": "resultando em eleições ainda disputadas por partidos estaduais em vez de agremiações nacionais.",
+      "trap": "Representação classista é de associações profissionais, não de partidos."
+     }
+    },
+    {
+     "id": "est-a05-r4.2",
+     "t": "Estado Novo (1937-1945)",
+     "topico": "cp-10",
+     "n": "Golpe de 1937 e Constituição outorgada",
+     "x": {
+      "e": "O Golpe de 1937 deu origem ao Estado Novo e à Constituição outorgada de inspiração fascista. Os partidos foram extintos temporariamente; a tentativa de partido único (Legião Cívica Brasileira) não prosperou.",
+      "src": "Aula 05, p. 53",
+      "cit": "Durante o Estado Novo, houve uma extinção temporária de todos os partidos políticos no Brasil",
+      "trap": "Estado Novo extinguiu os partidos, mas o partido único (Legião Cívica Brasileira) não se consolidou."
+     }
+    },
+    {
+     "id": "est-a05-r4.3",
+     "t": "Lei Agamenon, Constituição de 1946 e partidos nacionais",
+     "topico": "cp-11",
+     "n": "Partidos de âmbito nacional e candidatura partidária",
+     "x": {
+      "e": "A Lei Agamenon (1945) exigiu partido de âmbito nacional (10 mil assinaturas em pelo menos 5 estados), candidatura partidária obrigatória e representação proporcional. A Constituição de 1946 reconheceu explicitamente os partidos nacionais.",
+      "src": "Aula 05, p. 54",
+      "cit": "O partido político deveria ter âmbito nacional, com 10 mil assinaturas distribuídas em pelo menos 5 Estados",
+      "trap": "A Lei Agamenon é de 1945; a Constituição de 1946 é outra norma, promulgada depois."
+     },
+     "f": [
+      {
+       "id": "est-a05-r4.3.1",
+       "t": "PSD, UDN, PTB e PCB",
+       "topico": "cp-11",
+       "n": "Quatro partidos de destaque entre 1946 e 1965",
+       "x": {
+        "e": "PSD (formado por ex-interventores e burocracia varguista), UDN (antigetulistas, com diretórios na maioria dos municípios), PTB (apoiado pelo Ministério do Trabalho e pelos sindicatos; o que mais cresceu) e PCB (legenda proibida de 1947 a 1985).",
+        "src": "Aula 05, p. 56",
+        "cit": "o PCB teve sua legenda proibida entre 1947 e 1985",
+        "trap": "O PCB foi o único dos quatro sem legenda legal no período de 1947 a 1985."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r5",
+   "t": "Crise de 1961-1964 e o golpe",
+   "topico": "cp-10",
+   "n": "Renúncia de Jânio, parlamentarismo, Reformas de Base e golpe",
+   "x": {
+    "e": "Entre 1961 e 1964: renúncia de Jânio, parlamentarismo como solução para dar posse a Jango, plebiscito de 1963 que restaurou o presidencialismo, Reformas de Base (13/3/1964) e golpe de 31/3/1964.",
+    "src": "Aula 05, p. 64",
+    "cit": "Em 2 de setembro de 1961, a Câmara dos Deputados e o Senado Federal aprovaram o Ato",
+    "trap": "O parlamentarismo de 1961 não foi escolhido por plebiscito: foi aprovado pelo Congresso antes da consulta de 1963."
+   },
+   "f": [
+    {
+     "id": "est-a05-r5.1",
+     "t": "Renúncia de Jânio e posse de Jango",
+     "topico": "cp-10",
+     "n": "Solução parlamentarista para a posse do vice",
+     "x": {
+      "e": "Jânio renunciou em 25/8/1961. Ministros militares se manifestaram contra a posse do vice João Goulart; o Congresso aprovou uma solução parlamentarista que garantiu a posse e reduziu os poderes do presidente.",
+      "src": "Aula 05, p. 63",
+      "cit": "Foi então que os parlamentares do Congresso Nacional apresentaram uma solução para, ao mesmo tempo, garantir a posse de Jango e diminuir os poderes do Presidente da República",
+      "trap": "A solução parlamentarista veio do Congresso, não de consulta popular."
+     },
+     "f": [
+      {
+       "id": "est-a05-r5.1.1",
+       "t": "Plebiscito de 1963",
+       "topico": "cp-10",
+       "n": "Eleitorado rejeitou o parlamentarismo",
+       "x": {
+        "e": "Consulta de 1963: mais de 11,5 milhões votaram e quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo. Jango passou a ter todos os poderes de presidente.",
+        "src": "Aula 05, p. 65",
+        "cit": "quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo.",
+        "trap": "O texto usa \"referendo\" e \"plebiscito\" para a mesma consulta de 1963."
+       },
+       "nota": "p. 65 chama a consulta de 1963 de \"Referendo\" e, depois, de \"plebiscito\". Tratado como a mesma consulta."
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r5.2",
+     "t": "Reformas de Base e polarização",
+     "topico": "cp-10",
+     "n": "Programa de Jango que radicalizou o campo conservador",
+     "x": {
+      "e": "Reformas de Base lançadas no comício da Central (13/3/1964): agrária, urbana, educacional, eleitoral e tributária, além da Lei de Remessa de Lucros. Para o texto, as reformas não alteravam a propriedade privada; a polarização que geraram foi o estopim da crise.",
+      "src": "Aula 05, p. 67",
+      "cit": "as Reformas de Base de Jango não tinham um caráter comunista",
+      "trap": "A ameaça comunista usada pelos opositores era discurso do momento; o texto cita historiadores que a contestam."
+     },
+     "f": [
+      {
+       "id": "est-a05-r5.2.1",
+       "t": "Reforma eleitoral de Jango",
+       "topico": "cp-11",
+       "n": "Voto aos analfabetos e aos soldados, legalização do PCB",
+       "x": {
+        "e": "A proposta de reforma eleitoral previa voto para analfabetos (cerca de 60% da população adulta) e para soldados, além da legalização do Partido Comunista.",
+        "src": "Aula 05, p. 66",
+        "cit": "Concessão do direito de voto aos analfabetos, representando aproximadamente 60% da população adulta.",
+        "trap": "A proposta de 1964 não se efetivou; o voto dos analfabetos só foi constitucionalizado em 1988 (p. 95)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r5.3",
+     "t": "Golpe de 31 de março de 1964",
+     "topico": "cp-10",
+     "n": "Golpe militar e eleição indireta de Castelo Branco",
+     "x": {
+      "e": "As Forças Armadas deram o golpe em 31/3/1964. Em 11/4/1964 o Congresso elegeu indiretamente, sem oposição, o general Castelo Branco. O texto trata o episódio como ruptura institucional que depôs presidente eleito.",
+      "src": "Aula 05, p. 74",
+      "cit": "Diz-se Golpe porque tratou-se de uma ruptura institucional que depôs um Presidente",
+      "trap": "Golpe é a ruptura que depõe presidente eleito, independentemente dos motivos alegados."
+     },
+     "f": [
+      {
+       "id": "est-a05-r5.3.1",
+       "t": "Golpe civil-militar (debate historiográfico)",
+       "topico": "cp-10",
+       "n": "Apoio civil e militar à ruptura",
+       "x": {
+        "e": "Historiadores citados (Daniel Aarão Reis, Ângela de Castro Gomes, Jorge Ferreira) falam em golpe civil-militar: apoio de líderes políticos, governadores, Congresso e imprensa, além das Forças Armadas.",
+        "src": "Aula 05, p. 74",
+        "cit": "pois contou com o apoio de setores civis da sociedade como líderes políticos, governadores de Estado, Congresso Nacional",
+        "trap": "Não confundir golpe militar (protagonismo das Forças Armadas) com golpe civil-militar (apoio civil)."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r6",
+   "t": "Regime militar (1964-1985)",
+   "topico": "cp-7",
+   "n": "Autoritarismo, Atos Institucionais e eleições controladas",
+   "x": {
+    "e": "Ditadura civil-militar de 1964 até meados dos anos 1980: o Executivo prevalece sobre o Legislativo e o Judiciário, sustentado por Atos Institucionais, Lei de Segurança Nacional (1967) e órgãos de repressão.",
+    "src": "Aula 05, p. 76",
+    "cit": "um regime político que privilegiava a autoridade do Estado em relação às liberdades individuais",
+    "trap": "O regime não tinha canais de diálogo com a sociedade nem com o Congresso, segundo o texto."
+   },
+   "f": [
+    {
+     "id": "est-a05-r6.1",
+     "t": "Atos Institucionais e Congresso fechado",
+     "topico": "cp-7",
+     "n": "AI modificam a Constituição; o Congresso foi fechado",
+     "x": {
+      "e": "Os Atos Institucionais (AI) se sobrepunham à Constituição e podiam modificá-la; os Atos Complementares regulamentavam os AI. O Congresso foi fechado mais de uma vez; entre 1968 e 1969 ficou fechado por 10 meses.",
+      "src": "Aula 05, p. 76",
+      "cit": "É um conjunto de normas que se sobrepunham até mesmo à Constituição Federal",
+      "trap": "AI não era lei comum: podia modificar até a Constituição Federal."
+     }
+    },
+    {
+     "id": "est-a05-r6.2",
+     "t": "Eleições e reformas eleitorais do regime",
+     "topico": "cp-11",
+     "n": "Eleições indiretas, voto vinculado e proibição do voto em legenda",
+     "x": {
+      "e": "Código Eleitoral de 1965: voto vinculado, proibição de coligação nas eleições proporcionais, multas para quem não votava. Cargos majoritários passaram a ser indiretos; em 1982 não se podia votar na legenda.",
+      "src": "Aula 05, p. 77",
+      "cit": "obrigatoriedade de o eleitor votar em candidatos do mesmo partido nas eleições para deputado federal e estadual",
+      "trap": "Voto vinculado: o eleitor só podia votar em candidatos do mesmo partido para deputado federal e estadual."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.2.1",
+       "t": "Lei Falcão (1976)",
+       "topico": "cp-11",
+       "n": "Propaganda no rádio restrita ao currículo do candidato",
+       "x": {
+        "e": "A Lei Falcão (ministro Armando Falcão) restringiu a propaganda eleitoral no rádio à apresentação de um resumo da biografia do candidato, sem posições políticas nem propostas.",
+        "src": "Aula 05, p. 79",
+        "cit": "sem posições políticas ou apresentação de propostas e programas",
+        "trap": "A Lei Falcão proibia a exposição de propostas no rádio: não era simples limite de tempo."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r6.3",
+     "t": "Bipartidarismo: ARENA e MDB",
+     "topico": "cp-11",
+     "n": "Dois partidos criados pelo regime: apoio e oposição controlada",
+     "x": {
+      "e": "O AI-2 extinguiu os partidos existentes. O AC-4 exigia 120 deputados federais e 20 senadores para formar uma legenda. Na prática seria possível três partidos, mas a maioria dos congressistas aderiu à legenda de apoio ao regime e só dois se formaram: ARENA (apoio ao governo) e MDB (oposição).",
+      "src": "Aula 05, p. 78",
+      "cit": "Foi o AI-2 o instrumento político que extinguiu todos os partidos políticos.",
+      "trap": "O bipartidarismo resultou da extinção dos partidos e de regras restritivas, não de uma proibição expressa de criar partidos."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.3.1",
+       "t": "ARENA e MDB",
+       "topico": "cp-11",
+       "n": "Partido de apoio ao governo e oposição tolerada",
+       "x": {
+        "e": "ARENA: partido de apoio ao governo militar. MDB: partido de oposição, mas controlada e considerada moderada pelo sistema.",
+        "src": "Aula 05, p. 79",
+        "cit": "Movimento Democrático Brasileiro (MDB): partido de oposição ao Governo, mas uma",
+        "trap": "MDB era oposição controlada, não oposição livre."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r6.4",
+     "t": "Abertura e fim do bipartidarismo (1979)",
+     "topico": "cp-11",
+     "n": "Lei da Anistia e Lei Orgânica dos Partidos de 1979",
+     "x": {
+      "e": "A Lei da Anistia (agosto de 1979) e a Lei Orgânica dos Partidos (novembro de 1979) dissolveram ARENA e MDB e permitiram novos partidos (PDS e PMDB como sucessores; PP, PTB, PDT e PT).",
+      "src": "Aula 05, p. 82",
+      "cit": "A Arena e o MDB foram dissolvidos e, logo em seguida, de forma independente e autônoma do Estado, foram criados 6 novos partidos.",
+      "trap": "PDS é sucessor da ARENA e PMDB é sucessor do MDB; não são partidos criados do zero."
+     },
+     "f": [
+      {
+       "id": "est-a05-r6.4.1",
+       "t": "Partido dos Trabalhadores (PT)",
+       "topico": "cp-11",
+       "n": "Primeiro partido de massas, de formação exógena",
+       "x": {
+        "e": "O PT foi fundado por sindicalistas, ativistas de movimentos sociais e intelectuais. Para Raquel Meneguello, foi o primeiro partido de massas, de formação exógena.",
+        "src": "Aula 05, p. 82",
+        "cit": "o PT foi a principal novidade nesse quadro político-institucional partidário porque foi o primeiro partido de massas",
+        "trap": "Partido de formação exógena nasce da sociedade civil; o de quadros (endógeno) nasce no parlamento."
+       }
+      },
+      {
+       "id": "est-a05-r6.4.2",
+       "t": "Diretas Já (1983-1984)",
+       "topico": "cp-7",
+       "n": "Campanha popular sem eleição direta em 1985",
+       "x": {
+        "e": "A campanha Diretas Já (1983) tomou as ruas; a Emenda Dante, de eleição direta para presidente, não atingiu os votos necessários. A eleição de 1985 foi indireta.",
+        "src": "Aula 05, p. 83",
+        "cit": "Contudo, a proposta não atingiu o número de votos necessários para ser aprovada.",
+        "trap": "A campanha Diretas Já não resultou em eleição direta em 1985: a eleição foi indireta pelo Colégio Eleitoral."
+       }
+      },
+      {
+       "id": "est-a05-r6.4.3",
+       "t": "Eleição indireta de Figueiredo (1978)",
+       "topico": "cp-7",
+       "n": "Colégio Eleitoral elegeu o general Figueiredo",
+       "x": {
+        "e": "Após Geisel, o Colégio Eleitoral elegeu o general Figueiredo. O texto indica a votação de 335 a 266 para Figueiredo e Euler Bentes Monteiro.",
+        "src": "Aula 05, p. 80",
+        "cit": "Após o Presidente General Ernesto Geisel, o Colégio Eleitoral elegeu o General Figueiredo para",
+        "trap": "A eleição era indireta: o Colégio Eleitoral, não o voto popular."
+       },
+       "nota": "Os números de votação (335 x 266, p. 80) não foram conferidos com fonte externa."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r7",
+   "t": "Nova República e Constituição de 1988",
+   "topico": "cp-7",
+   "n": "Transição negociada, Constituinte e Constituição Cidadã",
+   "x": {
+    "e": "A Nova República começa em 1985 com a eleição indireta de Tancredo Neves e a posse de José Sarney. A EC 25 (1985) restabeleceu a eleição direta para presidente; a Constituição de 1988 consolidou direitos políticos e a organização de partidos.",
+    "src": "Aula 05, p. 86",
+    "cit": "A Nova República é o nome que damos a fase da História da República a partir de 1985",
+    "trap": "A Nova República começa com eleição indireta, não com eleição direta."
+   },
+   "f": [
+    {
+     "id": "est-a05-r7.1",
+     "t": "Emenda Constitucional 25 (1985)",
+     "topico": "cp-11",
+     "n": "Eleições diretas para presidente e flexibilização partidária",
+     "x": {
+      "e": "EC 25 (maio de 1985): estabelecimento de eleições diretas para presidente (por maioria absoluta em dois turnos), eleições municipais em capitais e áreas de segurança nacional, liberação das regras para organização de partidos e coligações em prefeituras; revogou a fidelidade partidária.",
+      "src": "Aula 05, p. 87",
+      "cit": "estabelecimento de eleições diretas para presidente",
+      "trap": "A p. 95 diz que o voto do analfabeto foi conquistado com a EC 25/1985 e constitucionalizado em 1988; a p. 87 não separa EC 25 e CF/1988. Não atribua o voto só à Constituição de 1988 sem essa ressalva."
+     },
+     "nota": "p. 87 e p. 111 (resumo) atribuem a conquista do voto dos analfabetos ao período 1985-1988 sem separar EC 25 e CF; p. 95 diz que o direito foi conquistado com a EC 25/1985 e constitucionalizado em 1988. O mapa segue a p. 95."
+    },
+    {
+     "id": "est-a05-r7.2",
+     "t": "Constituinte e Constituição de 1988",
+     "topico": "cp-7",
+     "n": "Participação popular e Constituição Cidadã",
+     "x": {
+      "e": "A Assembleia Nacional Constituinte foi instalada em 1/2/1987, com parlamentares eleitos em 1986, e durou cerca de 20 meses, com emendas populares. Ulysses Guimarães presidiu a promulgação em 5/10/1988.",
+      "src": "Aula 05, p. 88",
+      "cit": "Esses membros eram os próprios parlamentares da Câmara dos Deputados e do Senado Federal",
+      "trap": "Os constituintes eram os próprios deputados e senadores eleitos em 1986."
+     },
+     "nota": "p. 88 diz \"hoje existem 30 partidos registrados oficialmente\", sem data da consulta: número datado.",
+     "f": [
+      {
+       "id": "est-a05-r7.2.1",
+       "t": "Direitos políticos (art. 14)",
+       "topico": "cp-7",
+       "n": "Sufrágio universal e voto obrigatório a partir de 18 anos",
+       "x": {
+        "e": "Art. 14: sufrágio universal, voto direto e secreto. Alistamento e voto são obrigatórios para maiores de 18 anos e facultativos para analfabetos, maiores de 70 e maiores de 16 e menores de 18.",
+        "src": "Aula 05, p. 96",
+        "cit": "I - obrigatórios para os maiores de dezoito anos; II - facultativos para: a) os analfabetos;",
+        "trap": "Analfabeto tem voto facultativo, mas continua inelegível (cidadania passiva, p. 95)."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.2",
+       "t": "Partidos políticos (art. 17)",
+       "topico": "cp-7",
+       "n": "Criação livre com requisitos constitucionais",
+       "x": {
+        "e": "Art. 17: criação, fusão, incorporação e extinção de partidos são livres, com caráter nacional, vedação de recursos estrangeiros, prestação de contas à Justiça Eleitoral e funcionamento parlamentar de acordo com a lei.",
+        "src": "Aula 05, p. 97",
+        "cit": "É livre a criação, fusão, incorporação e extinção de partidos políticos",
+        "trap": "A liberdade partidária tem requisitos: caráter nacional e prestação de contas são obrigatórios."
+       }
+      },
+      {
+       "id": "est-a05-r7.2.3",
+       "t": "Cláusula de desempenho (art. 17, § 3º)",
+       "topico": "cp-7",
+       "n": "3% dos votos válidos ou 15 deputados federais",
+       "x": {
+        "e": "Para ter fundo partidário e tempo gratuito de rádio e TV, o partido precisa de 3% dos votos válidos para a Câmara (em pelo menos um terço das UFs, com mínimo de 2% em cada) ou de 15 deputados federais em um terço das UFs.",
+        "src": "Aula 05, p. 98",
+        "cit": "obtiverem, nas eleições para a Câmara dos Deputados, no mínimo, 3% (três por cento) dos",
+        "trap": "Eleito por partido que não cumpre o requisito mantém o mandato (§ 5º)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a05-r7.3",
+     "t": "Do voto em cédula à urna eletrônica",
+     "topico": "cp-11",
+     "n": "Cédula de papel até 1996; urna eletrônica a partir de 1996",
+     "x": {
+      "e": "Até 1955 as cédulas eram confeccionadas pelos partidos e candidatos; a partir de 1955 a cédula oficial passou a ser da Justiça Eleitoral, ainda preenchida à mão. A urna eletrônica foi introduzida gradualmente a partir de 1996.",
+      "src": "Aula 05, p. 103",
+      "cit": "Até 1955, o sistema de votação no Brasil era baseado em cédulas de papel confeccionadas",
+      "trap": "Cédula oficial de 1955 não é urna eletrônica: o eleitor ainda preenchia à mão."
+     },
+     "f": [
+      {
+       "id": "est-a05-r7.3.1",
+       "t": "Urna eletrônica (1996)",
+       "topico": "cp-11",
+       "n": "Introdução gradual, com 57 municípios em 1996",
+       "x": {
+        "e": "A urna eletrônica foi usada em 57 municípios em 1996 e em 537 municípios em 1998; reduziu votos nulos e acelerou a apuração.",
+        "src": "Aula 05, p. 103",
+        "cit": "Nas eleições municipais de 1996, a urna eletrônica foi usada em 57 municípios",
+        "trap": "Em 1996 a urna não era nacional: a implantação foi gradual."
+       }
+      },
+      {
+       "id": "est-a05-r7.3.2",
+       "t": "Comparecimento eleitoral",
+       "topico": "cp-11",
+       "n": "Média de 86% entre 1986 e 1998",
+       "x": {
+        "e": "Taxa de comparecimento de cerca de 86% dos inscritos entre 1986 e 1998 (Nicolau). O voto obrigatório contribui para o percentual.",
+        "src": "Aula 05, p. 104",
+        "cit": "Em média, cerca de 86% dos eleitores inscritos votaram nas eleições entre 1986 e 1998",
+        "trap": "A taxa muda conforme o denominador (inscritos, população ou população em idade de votar)."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a05-r8",
+   "t": "Crises institucionais e intervenções no Parlamento",
+   "topico": "cp-7",
+   "n": "Intervenções do Executivo sobre o Legislativo nas crises republicanas",
+   "x": {
+    "e": "Em crises (1891, 1930, 1937 e ditadura militar) o Executivo fechou ou dissolveu o Congresso. Essa recorrência caracteriza a tendência ao super-presidencialismo.",
+    "src": "Aula 05, p. 85",
+    "cit": "momentos de crise política frequentemente resultaram em intervenções diretas do Poder Executivo sobre o Parlamento",
+    "trap": "Não confundir super-presidencialismo com presidencialismo formal: o texto fala em desequilíbrio entre os poderes."
+   },
+   "f": [
+    {
+     "id": "est-a05-r8.1",
+     "t": "Super-presidencialismo",
+     "topico": "cp-7",
+     "n": "Concentração de poder no presidente",
+     "x": {
+      "e": "Tendência recorrente de concentração de poder no presidente da República, com o Executivo se sobrepondo ao Legislativo em momentos de conflito.",
+      "src": "Aula 05, p. 85",
+      "cit": "a tendência ao super-presidencialismo, ou seja, a forte concentração de poder nas mãos do",
+      "trap": "O padrão não é exclusivo da ditadura: aparece em 1891, 1930 e 1937 (texto)."
+     }
+    },
+    {
+     "id": "est-a05-r8.2",
+     "t": "Fechamentos e recessos do Congresso",
+     "topico": "cp-7",
+     "n": "Deodoro (1891), Vargas (1930 e 1937), ditadura (1966, 1968 e 1977)",
+     "x": {
+      "e": "Deodoro levou ao fechamento do Legislativo; Vargas dissolveu o Congresso em 1930 e 1937; a ditadura registrou recesso em 1966, fechamento com o AI-5 em 1968 e fechamento temporário em 1977 (Pacote de Abril), conforme a tabela da p. 86.",
+      "src": "Aula 05, p. 85-86",
+      "cit": "No caso de Deodoro da Fonseca, o impasse entre presidente e Congresso sobre limites de atuação e reformas levou ao fechamento do Legislativo.",
+      "trap": "O Pacote de Abril (1977) foi um fechamento temporário do Congresso imposto por decreto."
+     }
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Independência feita por elite sem povo -> Poder Moderador da Carta de 1824",
+   "de": "est-a05-r1.1",
+   "para": "est-a05-r1.2"
+  },
+  {
+   "rotulo": "Poder Moderador -> parlamentarismo às avessas de 1847",
+   "de": "est-a05-r1.2.1",
+   "para": "est-a05-r1.3.2"
+  },
+  {
+   "rotulo": "Descentralização provincial (Ato Adicional) -> federalismo de 1891",
+   "de": "est-a05-r1.3",
+   "para": "est-a05-r3.1"
+  },
+  {
+   "rotulo": "Voto censitário -> Lei Saraiva exclui analfabetos",
+   "de": "est-a05-r2.1",
+   "para": "est-a05-r2.3.2"
+  },
+  {
+   "rotulo": "Voto aberto e coronelismo -> Código de 1932 com voto secreto",
+   "de": "est-a05-r3.2",
+   "para": "est-a05-r4.1"
+  },
+  {
+   "rotulo": "Federação de partidos regionais -> partidos nacionais de 1946",
+   "de": "est-a05-r3.4",
+   "para": "est-a05-r4.3"
+  },
+  {
+   "rotulo": "Parlamentarismo de 1961 -> plebiscito de 1963 -> golpe de 1964",
+   "de": "est-a05-r5.1.1",
+   "para": "est-a05-r5.3"
+  },
+  {
+   "rotulo": "Golpe de 1964 -> AI-2 e bipartidarismo",
+   "de": "est-a05-r5.3",
+   "para": "est-a05-r6.3"
+  },
+  {
+   "rotulo": "Lei Orgânica de 1979 -> PT, partido de massas",
+   "de": "est-a05-r6.4",
+   "para": "est-a05-r6.4.1"
+  },
+  {
+   "rotulo": "Diretas Já sem êxito -> eleição indireta de 1985 e EC 25",
+   "de": "est-a05-r6.4.2",
+   "para": "est-a05-r7.1"
+  },
+  {
+   "rotulo": "Crises institucionais -> super-presidencialismo",
+   "de": "est-a05-r8",
+   "para": "est-a05-r8.1"
+  }
+ ],
+ "fontesCentral": {}
+}

@@ -1,0 +1,898 @@
+[
+ {
+  "id": "cp-e00-q01",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q02",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q03",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q04",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q05",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q06",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado V1 difere do cego V2, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q07",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q08",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q09",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Original fazia contradição frontal (\"resolução não violenta... com a destruição do lado mais fraco\") e acrescentava \"para preservar a ordem social\", que não está na fonte (aparecia também na versão correta). Ponto único novo: modal \"necessariamente\".",
+  "novo_enunciado": "Philippe Schmitter define a função da política como a resolução não violenta de conflitos entre indivíduos e grupos, o que implica que a política necessariamente põe fim aos conflitos em disputa.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F4",
+  "novo_comentario": "Errado. A aula diz: \"Isso implica que a política não necessariamente põe fim aos conflitos, mas os canaliza e transforma em formas não destrutivas para as partes envolvidas e a sociedade como um todo\" (Aula 00, p. 12-13). A assertiva altera um único ponto: usa \"necessariamente põe fim aos conflitos\" no lugar de \"não necessariamente põe fim aos conflitos, mas os canaliza e transforma em formas não destrutivas\". Versão correta: Philippe Schmitter define a função da política como a resolução não violenta de conflitos entre indivíduos e grupos, sem destruir nenhum dos lados em conflito; a política não necessariamente põe fim aos conflitos, mas os canaliza e transforma em formas não destrutivas."
+ },
+ {
+  "id": "cp-e00-q10",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q11",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q12",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "CORRIGIDO",
+  "motivo": "Item C acrescentava nexo causal (\"razão pela qual\") que a fonte não estabelece; reescrito com coordenação simples para não ficar discutível.",
+  "novo_enunciado": "A Banca adota a noção de que Ciência Política é Ciência do Estado, e o foco principal do que o candidato precisa saber é o poder político do Estado.",
+  "novo_comentario": "Certo. A aula diz: \"a Banca adota a noção de que Ciência Política é Ciência do Estado. O foco principal do que você precisa saber é o poder político do Estado.\" (Aula 00, p. 9). A assertiva reproduz os dois enunciados da aula, sem acrescentar relação de causa entre eles."
+ },
+ {
+  "id": "cp-e00-q13",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q14",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q15",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q16",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q17",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q18",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q19",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q20",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q21",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Troca por Hannah Arendt é discutível: a própria aula (p. 10 e 23) atribui a Arendt a noção de espaço público, o que abre recurso. Trocado por autor sem esse conceito.",
+  "novo_enunciado": "As teorias da comunicação política, incluindo o conceito de espaço público de Max Weber, ajudam a entender como os meios de comunicação e a opinião pública influenciam o debate político.",
+  "novo_comentario": "Errado. A aula diz: \"As teorias da comunicação política, incluindo o conceito de \"espaço público\" de Jürgen Habermas, ajudam a entender como os meios de comunicação e a opinião pública influenciam o debate político\" (Aula 00, p. 29-30). A assertiva altera um único ponto: usa \"Max Weber\" no lugar de \"Jürgen Habermas\". Versão correta: As teorias da comunicação política, incluindo o conceito de espaço público de Jürgen Habermas, ajudam a entender como os meios de comunicação e a opinião pública influenciam o debate político."
+ },
+ {
+  "id": "cp-e00-q22",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q23",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q24",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q25",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Item dependia do erro da fonte \"poder = dominação\" (p. 21): o comentário ensinava como correta a equivalência que Weber não faz (Macht e Herrschaft são conceitos distintos). Reescrito sobre a definição de dominação, que é correta.",
+  "novo_enunciado": "De acordo com Max Weber, a dominação é a certeza de se encontrar obediência para ordens específicas dentro de determinado grupo de pessoas.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F4",
+  "novo_comentario": "Errado. A aula diz: \"a dominação é a probabilidade de se encontrar obediência para ordens específicas dentro de determinado grupo de pessoas\" (Aula 00, p. 21). A assertiva altera um único ponto: usa \"a certeza\" no lugar de \"a probabilidade\". Versão correta: De acordo com Max Weber, a dominação é a probabilidade de se encontrar obediência para ordens específicas dentro de determinado grupo de pessoas."
+ },
+ {
+  "id": "cp-e00-q26",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q27",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "CORRIGIDO",
+  "motivo": "Original era negação frontal (\"não pode ser usado\"), vedada pelo método. Novo ponto único: quantificador \"muitas vezes\" trocado por \"raramente\".",
+  "novo_enunciado": "Segundo a aula, as dimensões política, econômica e ideológica do poder raramente se sobrepõem, embora o poder econômico possa ser usado para influenciar a política.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F4",
+  "novo_comentario": "Errado. A aula diz: \"Essas dimensões do poder, muitas vezes, se sobrepõem e interagem. Por exemplo, o poder econômico pode ser usado para influenciar a política\" (Aula 00, p. 22). A assertiva altera um único ponto: usa \"raramente se sobrepõem\" no lugar de \"muitas vezes, se sobrepõem e interagem\". Versão correta: Segundo a aula, as dimensões política, econômica e ideológica do poder muitas vezes se sobrepõem e interagem; por exemplo, o poder econômico pode ser usado para influenciar a política."
+ },
+ {
+  "id": "cp-e00-q28",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q29",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "\"Burocrático\" no lugar de \"legal-racional\" é anulável: a dominação legal é tipicamente chamada de legal-burocrática na literatura weberiana. Novo ponto único: número de tipos e acréscimo de tipo inexistente.",
+  "novo_enunciado": "Weber distinguiu quatro tipos ideais, ou tipos puros, de dominação legítima relacionados ao poder: o tradicional, o carismático, o legal-racional e o democrático.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F4",
+  "novo_comentario": "Errado. A aula diz: \"Weber distinguiu três tipos ideais (ou tipos puros) de dominação legítima relacionados ao poder: tradicional, carismática e legal-racional.\" (Aula 00, p. 21). A assertiva altera um único ponto: usa \"quatro tipos ... e o democrático\" no lugar de \"três tipos ideais ... tradicional, carismática e legal-racional\". Versão correta: Weber distinguiu três tipos ideais, ou tipos puros, de dominação legítima relacionados ao poder: o tradicional, o carismático e o legal-racional."
+ },
+ {
+  "id": "cp-e00-q30",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q31",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q32",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q33",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado F4 difere do cego F3, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q34",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q35",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado F4 difere do cego F1, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q36",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q37",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado F3 difere do cego F2, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q38",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q39",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q40",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Enunciado alterava dois pontos (classes trabalhadoras e \"romper\"/\"alterar a relação\"), e a versão correta do comentário misturava texto falso (\"alterar a relação de classe\"). Reduzido a um ponto.",
+  "novo_enunciado": "Karl Marx via o poder como um instrumento utilizado pelas classes trabalhadoras para manter seu controle sobre os meios de produção e, assim, preservar seu domínio econômico.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F3",
+  "novo_comentario": "Errado. A aula diz: \"Ele via o poder como um instrumento utilizado pelas classes dominantes para manter seu controle sobre os meios de produção e, assim, preservar seu domínio econômico sobre as classes trabalhadoras\" (Aula 00, p. 22). A assertiva altera um único ponto: usa \"classes trabalhadoras\" no lugar de \"classes dominantes\". Versão correta: Karl Marx via o poder como um instrumento utilizado pelas classes dominantes para manter seu controle sobre os meios de produção e, assim, preservar seu domínio econômico sobre as classes trabalhadoras."
+ },
+ {
+  "id": "cp-e00-q41",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado V2 difere do cego V1, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q42",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q43",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q44",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q45",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q46",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "CORRIGIDO",
+  "motivo": "Original era autocontraditório (nega o controle sobre a morte e chama isso de necropolítica): absurdo, não pegadinha. Novo ponto único: contexto de aplicação.",
+  "novo_enunciado": "Segundo Achille Mbembe, a necropolítica se refere ao exercício do poder estatal sobre a vida e a morte das populações, especialmente em contextos de estabilidade democrática e de paz.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F3",
+  "novo_comentario": "Errado. A aula diz: \"a necropolítica se refere ao exercício do poder estatal sobre a vida e a morte das populações, especialmente em contextos de conflito, guerra e opressão\" (Aula 00, p. 24). A assertiva altera um único ponto: usa \"estabilidade democrática e de paz\" no lugar de \"conflito, guerra e opressão\". Versão correta: Segundo Achille Mbembe, a necropolítica se refere ao exercício do poder estatal sobre a vida e a morte das populações, especialmente em contextos de conflito, guerra e opressão."
+ },
+ {
+  "id": "cp-e00-q47",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q48",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q49",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q50",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Original era incoerente por dentro (persuasão que se manifesta no medo, na ameaça e na violência física). Troca por conceito vizinho (meio do poder econômico).",
+  "novo_enunciado": "A aula conclui que o meio específico do Poder Político é a posse de bens, característica que percorre a História das civilizações.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F3",
+  "novo_comentario": "Errado. A aula diz: \"podemos concluir que o MEIO específico do Poder Político é a força. Guarde isso!! Essa característica percorre a História das civilizações\" (Aula 00, p. 25). A assertiva altera um único ponto: usa \"a posse de bens\" no lugar de \"a força\". Versão correta: A aula conclui que o meio específico do Poder Político é a força, característica que percorre a História das civilizações. A posse de bens é o que caracteriza o Poder Econômico (p. 24)."
+ },
+ {
+  "id": "cp-e00-q51",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q52",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado V2 difere do cego V1, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q53",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q54",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q55",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q56",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Trocar Hobbes por Locke torna o item discutível: a teoria de Locke também descreve a passagem do estado de natureza ao Estado civil, de modo que a assertiva seria verdadeira fora da aula. Novo ponto único dentro da tese hobbesiana.",
+  "novo_enunciado": "Segundo Hobbes, a passagem do estado de natureza ao Estado civil ocorreu quando os indivíduos confiaram a diferentes corpos, independentes entre si, a autorização para usar a força contra todos.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F4",
+  "novo_comentario": "Errado. A aula diz: \"para o confiar a uma única pessoa, ou a um único corpo (o Estado), a autorização para usar a força contra todos\" (Aula 00, p. 27). A assertiva altera um único ponto: usa \"a diferentes corpos, independentes entre si\" no lugar de \"a uma única pessoa, ou a um único corpo (o Estado)\". Versão correta: Segundo Hobbes, a passagem do estado de natureza ao Estado civil ocorreu quando os indivíduos renunciaram ao direito de usar a própria força para o confiar a uma única pessoa, ou a um único corpo, o Estado."
+ },
+ {
+  "id": "cp-e00-q57",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q58",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q59",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q60",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Enunciado e versão correta inventavam nexo causal (\"o que a torna indissociável\") ausente da fonte. Mantido só o ponto alterado.",
+  "novo_enunciado": "A teoria política, empreendimento intelectual que percorre toda a trajetória das sociedades ocidentais e é indissociável da construção histórica dessas sociedades, abriga uma única perspectiva ideológica dominante.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F2",
+  "novo_comentario": "Errado. A aula diz: \"A teoria política é um empreendimento intelectual que percorre toda a trajetória das sociedades ocidentais e é indissociável da construção histórica dessas sociedades como comunidades propriamente políticas. Por fim, a teoria política abriga ilimitado pluralismo de perspectivas ideológicas e visões de mundo\" (Aula 00, p. 31). A assertiva altera um único ponto: usa \"uma única perspectiva ideológica dominante\" no lugar de \"ilimitado pluralismo de perspectivas ideológicas e visões de mundo\". Versão correta: A teoria política, empreendimento intelectual que percorre toda a trajetória das sociedades ocidentais e é indissociável da construção histórica dessas sociedades, abriga ilimitado pluralismo de perspectivas ideológicas e visões de mundo."
+ },
+ {
+  "id": "cp-e00-q61",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado V3 difere do cego V1, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q62",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Dois pontos alterados e, pior, a \"versão correta\" do comentário ensinava como verdadeira a conclusão falsa \"a abordagem teórica adotada na questão de prova é irrelevante\" (a aula diz o contrário: \"Atente-se sempre para esse referencial\"). Conclusão removida.",
+  "novo_enunciado": "Segundo a aula, ao tratar das abordagens teóricas da Ciência Política, é consenso nas Ciências Sociais que o mesmo objeto deve ser observado a partir de um único ângulo.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F2",
+  "novo_comentario": "Errado. A aula diz: \"É consenso nas Ciências Sociais de que o mesmo objeto pode ser observado a partir de diferentes ângulos e mobilizando diferentes elementos. Atente-se sempre para esse referencial ao fazer uma questão de prova\" (Aula 00, p. 32). A assertiva altera um único ponto: usa \"deve ser observado a partir de um único ângulo\" no lugar de \"pode ser observado a partir de diferentes ângulos\". Versão correta: É consenso nas Ciências Sociais que o mesmo objeto pode ser observado a partir de diferentes ângulos e mobilizando diferentes elementos; por isso, o candidato deve atentar sempre para o referencial teórico da questão."
+ },
+ {
+  "id": "cp-e00-q63",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q64",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q65",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q66",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q67",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q68",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q69",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q70",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q71",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q72",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q73",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q74",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "A descrição atribuída a Skocpol (instituições moldam políticas públicas) é defensável na literatura real (abordagem centrada no Estado/polity), logo o E seria anulável. Novo ponto único: obra trocada pela de Putnam, autor vizinho na mesma lista.",
+  "novo_enunciado": "Theda Skocpol, autora de Comunidade e Democracia: a Experiência da Itália Moderna, examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política e os movimentos sociais.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F3",
+  "novo_comentario": "Errado. A aula diz: \"Theda Skocpol - Autora de \"Estado e Revolução Social: a Dinâmica da Política Revolucionária\" (1979). Skocpol examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política e os movimentos sociais\" (Aula 00, p. 35). A assertiva altera um único ponto: usa \"Comunidade e Democracia: a Experiência da Itália Moderna\" no lugar de \"Estado e Revolução Social: a Dinâmica da Política Revolucionária\". Versão correta: Theda Skocpol, autora de Estado e Revolução Social, examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política e os movimentos sociais. Comunidade e Democracia (1993) é obra de Robert Putnam."
+ },
+ {
+  "id": "cp-e00-q75",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q76",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q77",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q78",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q79",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q80",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q81",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "CORRIGIDO",
+  "motivo": "Enunciado alterava três pontos (atemporais, fora da história, temas universais) e a \"versão correta\" do comentário continuava falsa (\"porque se colocaram fora da história\"). Reduzido a um ponto: a causa da sobrevivência das ideias.",
+  "novo_enunciado": "Segundo Francisco Weffort, as ideias dos clássicos sobreviveram ao seu tempo e chegaram até nós precisamente porque esses pensadores se colocaram fora da história de sua própria época.",
+  "novo_gabarito": "E",
+  "novo_mecanismo": "F6",
+  "novo_comentario": "Errado. A aula diz: \"Não pretendemos afirmar, com isso, que os clássicos se coloquem fora da história. Pelo contrário, são, com frequência, os que pensaram, de modo mais profundo, os temas de sua própria época. E foi precisamente porque pensaram de modo radical o seu tempo que sobreviveram a ele e chegaram até nós\" (Aula 00, p. 40). A assertiva altera um único ponto: usa \"porque esses pensadores se colocaram fora da história de sua própria época\" no lugar de \"porque pensaram de modo radical o seu tempo\". Versão correta: Segundo Francisco Weffort, as ideias dos clássicos sobreviveram ao seu tempo e chegaram até nós precisamente porque esses pensadores pensaram de modo radical o seu tempo; os clássicos não são atemporais."
+ },
+ {
+  "id": "cp-e00-q82",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q83",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "DESCARTAR",
+  "motivo": "Depende do erro da fonte na p. 42 (\"É bom lembrar que John Locke já afirmava a necessidade da divisão do poder\"), passagem sinalizada como problemática; a versão correta ensinaria essa frase como dado de prova. Não há como reformular o item sem apoiar nesse trecho."
+ },
+ {
+  "id": "cp-e00-q84",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q85",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q86",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q87",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q88",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. A p. 41 fala em \"virtù cívica... virtude do governante\", em tensão com a p. 19; o item se apoia na p. 19, que é a leitura correta, e não depende do trecho problemático."
+ },
+ {
+  "id": "cp-e00-q89",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado F5 difere do cego F6, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q90",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q91",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q92",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q93",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q94",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q95",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q96",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q97",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q98",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q99",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q100",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q101",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q102",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q103",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q104",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "CORRIGIDO",
+  "motivo": "Item C acrescentava nexo causal (\"e por isso defende\") que a fonte não estabelece; trocado por coordenação.",
+  "novo_enunciado": "Amartya Sen foca em avaliar a justiça considerando as capacidades das pessoas e argumenta que a justiça não se limita à distribuição de recursos.",
+  "novo_comentario": "Certo. A aula diz: \"Amartya Sen, por sua vez, foca em avaliar a justiça considerando as 'capacidades' das pessoas. Ele argumenta que a justiça não se limita à distribuição de recursos, mas deve incluir a capacidade real das pessoas de buscar vidas significativas.\" (Aula 00, p. 52). A assertiva reproduz esse trecho em paráfrase fiel."
+ },
+ {
+  "id": "cp-e00-q105",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q106",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q107",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q108",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q109",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q110",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "CORRIGIDO",
+  "motivo": "Gabarito e enunciado corretos, mas o comentário e a evidência citam o trecho truncado pela diagramação em colunas da p. 45 (\"beneficiassem as\"), sem o termo decisivo. Comentário reescrito com o trecho reconstruído da coluna \"Diferença\".",
+  "novo_comentario": "Errado. A aula diz: \"Rawls defendeu que as desigualdades sociais e econômicas devem ser estruturadas de forma a beneficiar os menos privilegiados na sociedade. Ele permitiu desigualdades apenas na medida em que beneficiassem as pessoas menos favorecidas e fossem justificadas pelo bem-estar geral da sociedade\" (Aula 00, p. 45 (coluna \"Diferença\", texto reconstruído da diagramação em duas colunas)). A assertiva altera um único ponto: usa \"as pessoas mais privilegiadas\" no lugar de \"as pessoas menos favorecidas\". Versão correta: Pelo princípio da diferença, Rawls permitiu desigualdades apenas na medida em que beneficiassem as pessoas menos favorecidas e fossem justificadas pelo bem-estar geral da sociedade.",
+  "nova_evidencia": "Ele permitiu desigualdades apenas na medida em que beneficiassem as pessoas menos favorecidas e fossem justificadas pelo bem-estar geral da sociedade."
+ },
+ {
+  "id": "cp-e00-q111",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q112",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q113",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte. Mecanismo registrado F6 difere do cego F3, sem impacto no gabarito."
+ },
+ {
+  "id": "cp-e00-q114",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q115",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q116",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q117",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q118",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q119",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ },
+ {
+  "id": "cp-e00-q120",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito confere com a classificação cega; ponto único e evidência sustentada pela fonte."
+ }
+]

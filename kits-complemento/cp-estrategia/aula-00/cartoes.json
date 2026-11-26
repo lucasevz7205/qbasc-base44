@@ -1,0 +1,2528 @@
+[
+ {
+  "id": "cp-e00-c01",
+  "no": "est-a00-r1",
+  "topico": "cp-0",
+  "tema": "Ciência Política: sentidos de política e objeto",
+  "pergunta": "Para efeitos de prova, como pode ser definida a Ciência Política?",
+  "resposta": [
+   "Ciência do Estado"
+  ],
+  "explicacao": "A banca adota essa noção; o foco é o poder político do Estado.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "para efeitos de prova, poderíamos definir a Ciência Política como a Ciência do Estado"
+ },
+ {
+  "id": "cp-e00-c02",
+  "no": "est-a00-r1",
+  "topico": "cp-0",
+  "tema": "Ciência Política: sentidos de política e objeto",
+  "pergunta": "Qual é o foco principal do que a banca cobra em Ciência Política?",
+  "resposta": [
+   "Poder político do Estado"
+  ],
+  "explicacao": "Por isso as duas primeiras aulas têm papel estrutural na preparação.",
+  "fonte": "Aula 00, p. 9",
+  "citacao": "O foco principal do que você precisa saber é o poder político do Estado"
+ },
+ {
+  "id": "cp-e00-c03",
+  "no": "est-a00-r1",
+  "topico": "cp-0",
+  "tema": "Ciência Política: sentidos de política e objeto",
+  "pergunta": "Quais são os dois objetos prioritários da Ciência Política?",
+  "resposta": [
+   "Poder",
+   "Estado"
+  ],
+  "explicacao": "Cada um com suas instituições; a CP os analisa com estatística e normas.",
+  "fonte": "Aula 00, p. 5",
+  "citacao": "para analisar seus dois objetos prioritários: o Poder (e suas instituições) e o Estado (e suas instituições)"
+ },
+ {
+  "id": "cp-e00-c04",
+  "no": "est-a00-r1",
+  "topico": "cp-0",
+  "tema": "Ciência Política: sentidos de política e objeto",
+  "pergunta": "De que forma a Cebraspe cobra Ciência Política?",
+  "resposta": [
+   "Conceitual e analítica"
+  ],
+  "explicacao": "Prioriza teorias clássicas, modelos institucionais e o funcionamento real das democracias.",
+  "fonte": "Aula 00, p. 5",
+  "citacao": "A CEBRASPE cobra Ciência Política de forma conceitual e analítica"
+ },
+ {
+  "id": "cp-e00-c05",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Que característica do conceito de política indica que ele tem múltiplos sentidos?",
+  "resposta": [
+   "Polissemia"
+  ],
+  "explicacao": "Como vários outros conceitos da CP, política admite várias acepções.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "Política é conceito polissêmico"
+ },
+ {
+  "id": "cp-e00-c06",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Que dualidade fundamental atravessa as múltiplas acepções de política?",
+  "resposta": [
+   "Liberdade/violência"
+  ],
+  "explicacao": "Arendt representa o polo da liberdade; Weber, o da violência (dominação).",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "as múltiplas acepções transitam dentro dessa dualidade fundamental: liberdade/violência"
+ },
+ {
+  "id": "cp-e00-c07",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Que autora referencia a vertente filosófica da política, que caminha para o bem comum?",
+  "resposta": [
+   "Hannah Arendt"
+  ],
+  "explicacao": "É a vertente mais filosófica e ampla; a outra, científica, é de Weber.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "uma mais filosófica e ampla, referenciada em Hannah Arendt"
+ },
+ {
+  "id": "cp-e00-c08",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Que autor elaborou a vertente científica e pragmática da política, ligada à luta pela dominação?",
+  "resposta": [
+   "Max Weber"
+  ],
+  "explicacao": "É a vertente oposta à filosófica de Arendt.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "outra mais científica e pragmática, elaborada por Max Weber"
+ },
+ {
+  "id": "cp-e00-c09",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Segundo Bobbio, a que noções a ideia de política passou a se associar cada vez mais?",
+  "resposta": [
+   "Doutrina do Estado",
+   "Ciência do Estado",
+   "Poder de Estado"
+  ],
+  "explicacao": "Política passa a ser coisa de Estado, atividade realizada no âmbito do Estado.",
+  "fonte": "Aula 00, p. 12",
+  "citacao": "a ideia de política foi cada vez se associando mais e mais com as noções noção de \"doutrina do Estado\", \"Ciência do Estado\", \"poder de Estado\""
+ },
+ {
+  "id": "cp-e00-c10",
+  "no": "est-a00-r1.1",
+  "topico": "cp-0",
+  "tema": "Sentidos de política",
+  "pergunta": "Que autor apresenta uma concepção dualista da política: luta pelo poder e esforço de ordem e justiça?",
+  "resposta": [
+   "Maurice Duverger"
+  ],
+  "explicacao": "A aula grafa o nome como Durverger, citando Introdução à Política.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "Leia a concepção dualista trazida pelo mestre Durverger"
+ },
+ {
+  "id": "cp-e00-c11",
+  "no": "est-a00-r1.1.1",
+  "topico": "cp-0",
+  "tema": "Arendt: política como prática da liberdade",
+  "pergunta": "Para Hannah Arendt, a política é a prática de quê?",
+  "resposta": [
+   "Da liberdade"
+  ],
+  "explicacao": "A política surge num espaço público de indivíduos livres e iguais que deliberam.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "para Hannah Arendt, a política é a prática da liberdade"
+ },
+ {
+  "id": "cp-e00-c12",
+  "no": "est-a00-r1.1.1",
+  "topico": "cp-0",
+  "tema": "Arendt: política como prática da liberdade",
+  "pergunta": "Na visão de Arendt, qual é a única forma legítima de persuasão na política?",
+  "resposta": [
+   "A palavra"
+  ],
+  "explicacao": "A plena liberdade exige igualdade: o acesso à palavra deve ser assegurado a todos.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "a palavra se torna a única forma legítima de persuasão"
+ },
+ {
+  "id": "cp-e00-c13",
+  "no": "est-a00-r1.1.2",
+  "topico": "cp-0",
+  "tema": "Weber: luta pela direção do Estado",
+  "pergunta": "Para Weber, a política é a luta pela direção de quê?",
+  "resposta": [
+   "Do Estado"
+  ],
+  "explicacao": "Especialmente do Estado Moderno, que reivindica o monopólio do uso legítimo da força física.",
+  "fonte": "Aula 00, p. 12",
+  "citacao": "a política é a luta pela direção do Estado"
+ },
+ {
+  "id": "cp-e00-c14",
+  "no": "est-a00-r1.1.2",
+  "topico": "cp-0",
+  "tema": "Weber: luta pela direção do Estado",
+  "pergunta": "Em que ano Weber proferiu, em Munique, a conferência em que definiu política?",
+  "resposta": [
+   "1919"
+  ],
+  "explicacao": "A conferência foi proferida na Universidade de Munique, em janeiro.",
+  "fonte": "Aula 00, p. 12",
+  "citacao": "em janeiro de 1919, forneceu sua própria definição de política"
+ },
+ {
+  "id": "cp-e00-c15",
+  "no": "est-a00-r1.1.3",
+  "topico": "cp-0",
+  "tema": "Schmitter: quatro categorias de análise",
+  "pergunta": "Na classificação de Schmitter, que categoria é o quadro social concreto e estabelecido em que os atores interagem?",
+  "resposta": [
+   "Instituições"
+  ],
+  "explicacao": "Incluem Estado, Constituição, sistemas eleitorais, partidos e parlamentos.",
+  "fonte": "Aula 00, p. 13",
+  "citacao": "Instituições: Representam o quadro social concreto e estabelecido no qual os atores interagem"
+ },
+ {
+  "id": "cp-e00-c16",
+  "no": "est-a00-r1.1.3",
+  "topico": "cp-0",
+  "tema": "Schmitter: quatro categorias de análise",
+  "pergunta": "Na classificação de Schmitter, que categoria corresponde aos meios usados pelos atores?",
+  "resposta": [
+   "Recursos"
+  ],
+  "explicacao": "Podem ser materiais, simbólicos ou organizacionais.",
+  "fonte": "Aula 00, p. 13",
+  "citacao": "Recursos: Referem-se aos meios utilizados pelos atores para alcançar seus objetivos"
+ },
+ {
+  "id": "cp-e00-c17",
+  "no": "est-a00-r1.1.3",
+  "topico": "cp-0",
+  "tema": "Schmitter: quatro categorias de análise",
+  "pergunta": "Na classificação de Schmitter, que categoria corresponde às consequências da atividade política para a sociedade?",
+  "resposta": [
+   "Funções"
+  ],
+  "explicacao": "Podem reforçar a ordem social ou provocar mudanças.",
+  "fonte": "Aula 00, p. 14",
+  "citacao": "Funções: São as consequências da atividade política para a sociedade como um todo"
+ },
+ {
+  "id": "cp-e00-c18",
+  "no": "est-a00-r1.1.4",
+  "topico": "cp-0",
+  "tema": "Schmitter: resolução não violenta de conflitos",
+  "pergunta": "Para Schmitter, qual é a função da política?",
+  "resposta": [
+   "Resolução não violenta de conflitos"
+  ],
+  "explicacao": "A política canaliza os conflitos sem destruir nenhum dos lados.",
+  "fonte": "Aula 00, p. 12",
+  "citacao": "define a função da política como a resolução não violenta de conflitos entre indivíduos e grupos"
+ },
+ {
+  "id": "cp-e00-c19",
+  "no": "est-a00-r1.1.4",
+  "topico": "cp-0",
+  "tema": "Schmitter: resolução não violenta de conflitos",
+  "pergunta": "Para Schmitter, quantas condições uma ação social precisa atender para ser política?",
+  "resposta": [
+   "Duas"
+  ],
+  "explicacao": "A ação deve ser controversa e os atores devem reconhecer limitações recíprocas nas demandas.",
+  "fonte": "Aula 00, p. 13",
+  "citacao": "para que uma ação social possa ser considerada política duas condições precisam ser atendidas"
+ },
+ {
+  "id": "cp-e00-c20",
+  "no": "est-a00-r1.1.5",
+  "topico": "cp-0",
+  "tema": "Giddens: política como uso e contestação do poder",
+  "pergunta": "Segundo Giddens, além de utilizado, o que acontece com o poder por meio da política?",
+  "resposta": [
+   "É contestado"
+  ],
+  "explicacao": "A política envolve também resistência e contestação do poder.",
+  "fonte": "Aula 00, p. 12",
+  "citacao": "a política é o meio pelo qual o poder é tanto utilizado quanto contestado"
+ },
+ {
+  "id": "cp-e00-c21",
+  "no": "est-a00-r1.1.6",
+  "topico": "cp-0",
+  "tema": "Duverger: duas concepções da política",
+  "pergunta": "Na concepção de Duverger da política como luta, o que o poder permite a quem o tem?",
+  "resposta": [
+   "Assegurar dominância sobre a sociedade"
+  ],
+  "explicacao": "E dela tirar partido.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "o poder permite a alguns que o têm assegurar a sua dominância sobre a sociedade"
+ },
+ {
+  "id": "cp-e00-c22",
+  "no": "est-a00-r1.1.6",
+  "topico": "cp-0",
+  "tema": "Duverger: duas concepções da política",
+  "pergunta": "Na concepção de Duverger da política como ordem e justiça, o que o poder protege?",
+  "resposta": [
+   "Interesse geral e bem comum"
+  ],
+  "explicacao": "Contra a pressão das reivindicações particulares.",
+  "fonte": "Aula 00, p. 10",
+  "citacao": "o poder permite a proteção do interesse geral e do bem comum contra a pressão das reivindicações particulares"
+ },
+ {
+  "id": "cp-e00-c23",
+  "no": "est-a00-r1.2",
+  "topico": "cp-0",
+  "tema": "CP como ciência do Estado e objetos históricos",
+  "pergunta": "Quem propôs a definição clássica de CP como estudo dos acontecimentos, instituições e ideias políticas?",
+  "resposta": [
+   "Paulo Bonavides"
+  ],
+  "explicacao": "A definição inclui um elemento temporal: passado, presente e futuro.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "Veja uma definição clássica proposta pelo professor Paulo Bonavides"
+ },
+ {
+  "id": "cp-e00-c24",
+  "no": "est-a00-r1.2",
+  "topico": "cp-0",
+  "tema": "CP como ciência do Estado e objetos históricos",
+  "pergunta": "Que elemento da definição de Bonavides obriga a pensar os objetos da CP no tempo?",
+  "resposta": [
+   "Elemento temporal"
+  ],
+  "explicacao": "Os temas são vistos no que foram, no que são e no que podem vir a ser.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "a definição de Bonavides traz um elemento temporal"
+ },
+ {
+  "id": "cp-e00-c25",
+  "no": "est-a00-r1.2",
+  "topico": "cp-0",
+  "tema": "CP como ciência do Estado e objetos históricos",
+  "pergunta": "Além de sistemas e partidos, que comportamento a CP também estuda?",
+  "resposta": [
+   "Comportamento dos eleitores"
+  ],
+  "explicacao": "O escopo inclui ainda a influência da mídia na política.",
+  "fonte": "Aula 00, p. 9",
+  "citacao": "até o estudo do comportamento dos eleitores e da influência da mídia na política"
+ },
+ {
+  "id": "cp-e00-c26",
+  "no": "est-a00-r1.2.1",
+  "topico": "cp-0",
+  "tema": "Objeto da CP (Bonavides)",
+  "pergunta": "Segundo Bonavides, em que dois sentidos a CP estuda acontecimentos, instituições e ideias políticas?",
+  "resposta": [
+   "Teórico (doutrina)",
+   "Prático (arte)"
+  ],
+  "explicacao": "Referidos ao passado, ao presente e às possibilidades futuras.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "tanto em sentido teórico (doutrina) como em sentido prático (arte)"
+ },
+ {
+  "id": "cp-e00-c27",
+  "no": "est-a00-r1.2.2",
+  "topico": "cp-0",
+  "tema": "Objetos históricos e mutáveis",
+  "pergunta": "Que duas características têm os objetos da política?",
+  "resposta": [
+   "Históricos",
+   "Sempre mutáveis"
+  ],
+  "explicacao": "Por isso a questão deve ser lida no tempo histórico a que se refere.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "Os objetos da política são históricos [...] Os objetos da política são sempre mutáveis"
+ },
+ {
+  "id": "cp-e00-c28",
+  "no": "est-a00-r1.2.2",
+  "topico": "cp-0",
+  "tema": "Objetos históricos e mutáveis",
+  "pergunta": "Nas questões, a que o candidato deve atentar por causa da historicidade dos objetos políticos?",
+  "resposta": [
+   "Tempo histórico de referência"
+  ],
+  "explicacao": "Consequência prática do caráter histórico e mutável dos objetos.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "atente-se ao tempo histórico a que a questão faz referência"
+ },
+ {
+  "id": "cp-e00-c29",
+  "no": "est-a00-r1.2.3",
+  "topico": "cp-0",
+  "tema": "Perguntas que a CP investiga",
+  "pergunta": "Além de como os governos são formados, que mecanismos a CP investiga?",
+  "resposta": [
+   "De participação política"
+  ],
+  "explicacao": "Investiga também políticas públicas e a busca de justiça e igualdade.",
+  "fonte": "Aula 00, p. 9",
+  "citacao": "Quais são os mecanismos de participação política?"
+ },
+ {
+  "id": "cp-e00-c30",
+  "no": "est-a00-r1.3",
+  "topico": "cp-0",
+  "tema": "Relação com as demais Ciências Sociais",
+  "pergunta": "Entre as Ciências Sociais, como a aula qualifica a Ciência Política?",
+  "resposta": [
+   "A mais hard"
+  ],
+  "explicacao": "Por isso se serve muito da estatística e das normas.",
+  "fonte": "Aula 00, p. 5",
+  "citacao": "Ciência Política é a ciência mais hard entre as Ciências Sociais"
+ },
+ {
+  "id": "cp-e00-c31",
+  "no": "est-a00-r1.3",
+  "topico": "cp-0",
+  "tema": "Relação com as demais Ciências Sociais",
+  "pergunta": "Quais professores lembram que a CP se aproxima de outras áreas das Ciências Sociais?",
+  "resposta": [
+   "Azambuja",
+   "Bonavides"
+  ],
+  "explicacao": "Citados como referência para a interdisciplinaridade da CP.",
+  "fonte": "Aula 00, p. 9",
+  "citacao": "Os professores Azambuja e Bonavides não nos deixam esquecer"
+ },
+ {
+  "id": "cp-e00-c32",
+  "no": "est-a00-r1.3.1",
+  "topico": "cp-0",
+  "tema": "Estatística e normas",
+  "pergunta": "De que dois instrumentos a CP se serve muito para analisar seus objetos?",
+  "resposta": [
+   "Estatística",
+   "Normas"
+  ],
+  "explicacao": "Os objetos prioritários são o Poder e o Estado.",
+  "fonte": "Aula 00, p. 5",
+  "citacao": "ela se serve muito da estatística e das normas"
+ },
+ {
+  "id": "cp-e00-c33",
+  "no": "est-a00-r1.3.2",
+  "topico": "cp-0",
+  "tema": "Aproximação com outras áreas",
+  "pergunta": "De que áreas das Ciências Sociais a CP se aproxima?",
+  "resposta": [
+   "Sociologia e Antropologia",
+   "História e Direito",
+   "Economia"
+  ],
+  "explicacao": "Entre outras, segundo Azambuja e Bonavides.",
+  "fonte": "Aula 00, p. 9",
+  "citacao": "como a Sociologia, Antropologia, História, Direito, Economia, entre outras"
+ },
+ {
+  "id": "cp-e00-c34",
+  "no": "est-a00-r1.4",
+  "topico": "cp-0",
+  "tema": "Papel da CP na sociedade",
+  "pergunta": "Que pensadores contratualistas ajudam a CP a explicar como os governos são formados?",
+  "resposta": [
+   "Hobbes",
+   "Locke",
+   "Rousseau"
+  ],
+  "explicacao": "Contribuição de promover a compreensão.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "teoria contratualista de pensadores como Thomas Hobbes, John Locke e Jean-Jacques Rousseau"
+ },
+ {
+  "id": "cp-e00-c35",
+  "no": "est-a00-r1.4",
+  "topico": "cp-0",
+  "tema": "Papel da CP na sociedade",
+  "pergunta": "Que autores, no papel da CP, fundamentam a teoria da justiça?",
+  "resposta": [
+   "John Rawls",
+   "Robert Nozick"
+  ],
+  "explicacao": "Base para questões de equidade e distribuição de recursos.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "os trabalhos de John Rawls e Robert Nozick"
+ },
+ {
+  "id": "cp-e00-c36",
+  "no": "est-a00-r1.4",
+  "topico": "cp-0",
+  "tema": "Papel da CP na sociedade",
+  "pergunta": "Que autor propôs as noções de poder suave e poder duro na análise internacional?",
+  "resposta": [
+   "Joseph Nye"
+  ],
+  "explicacao": "Contribuição de melhorar a tomada de decisões.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "como proposta por Joseph Nye em sua teoria deo \"poder suave\" e \"poder duro\""
+ },
+ {
+  "id": "cp-e00-c37",
+  "no": "est-a00-r1.4",
+  "topico": "cp-0",
+  "tema": "Papel da CP na sociedade",
+  "pergunta": "Que autor é referência na análise de sistemas eleitorais para representar melhor os cidadãos?",
+  "resposta": [
+   "Maurice Duverger"
+  ],
+  "explicacao": "Contribuição de desenvolver a democracia.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "A análise de sistemas eleitorais, como proposto por Maurice Duverger"
+ },
+ {
+  "id": "cp-e00-c38",
+  "no": "est-a00-r1.4.1",
+  "topico": "cp-0",
+  "tema": "Desenvolver a democracia",
+  "pergunta": "Que autores da teoria democrática ajudam a identificar elementos de uma democracia saudável?",
+  "resposta": [
+   "Robert Dahl",
+   "Carole Pateman"
+  ],
+  "explicacao": "Como a competição política e a participação cidadã.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "Os trabalhos de Robert Dahl e Carole Pateman sobre a teoria democrática"
+ },
+ {
+  "id": "cp-e00-c39",
+  "no": "est-a00-r1.4.2",
+  "topico": "cp-0",
+  "tema": "Fomentar o debate público",
+  "pergunta": "Que conceito de Habermas ajuda a entender a influência da mídia e da opinião pública no debate?",
+  "resposta": [
+   "Espaço público"
+  ],
+  "explicacao": "Parte das teorias da comunicação política.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "incluindo o conceito de \"espaço público\" de Jürgen Habermas"
+ },
+ {
+  "id": "cp-e00-c40",
+  "no": "est-a00-r1.4.3",
+  "topico": "cp-0",
+  "tema": "Promover a compreensão",
+  "pergunta": "Que autores servem de referência para a transição da monarquia para a democracia?",
+  "resposta": [
+   "Norberto Bobbio",
+   "Robert Dahl"
+  ],
+  "explicacao": "Usados na contribuição de promover a compreensão.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "utilizando as obras de Norberto Bobbio e Robert Dahl como referência"
+ },
+ {
+  "id": "cp-e00-c41",
+  "no": "est-a00-r1.4.4",
+  "topico": "cp-0",
+  "tema": "Melhorar a tomada de decisões",
+  "pergunta": "Que autor realizou estudos de políticas públicas para avaliar o impacto de abordagens de política?",
+  "resposta": [
+   "Theodore Lowi"
+  ],
+  "explicacao": "Contribuição de melhorar a tomada de decisões.",
+  "fonte": "Aula 00, p. 29",
+  "citacao": "como os realizados por Theodore Lowi"
+ },
+ {
+  "id": "cp-e00-c42",
+  "no": "est-a00-r2",
+  "topico": "cp-0",
+  "tema": "Poder: conceito, meios, dimensões e autores",
+  "pergunta": "Como a aula define, de início, o poder?",
+  "resposta": [
+   "Controle, mudança ou influência sobre outros"
+  ],
+  "explicacao": "Fenômeno pelo qual indivíduo ou grupo controla, muda ou influencia o comportamento alheio.",
+  "fonte": "Aula 00, p. 8",
+  "citacao": "poder é o fenômeno pelo qual um indivíduo ou grupo exerce controle, promove mudanças ou influencia o comportamento de outros"
+ },
+ {
+  "id": "cp-e00-c43",
+  "no": "est-a00-r2",
+  "topico": "cp-0",
+  "tema": "Poder: conceito, meios, dimensões e autores",
+  "pergunta": "Em que obra Bobbio traz a definição de poder usada na aula?",
+  "resposta": [
+   "Dicionário de Política"
+  ],
+  "explicacao": "Poder como relação entre dois sujeitos.",
+  "fonte": "Aula 00, p. 20",
+  "citacao": "uma definição trazida por Norberto Bobbio em Dicionário de Política"
+ },
+ {
+  "id": "cp-e00-c44",
+  "no": "est-a00-r2",
+  "topico": "cp-0",
+  "tema": "Poder: conceito, meios, dimensões e autores",
+  "pergunta": "Para Bobbio, o poder político pertence a que categoria de poder?",
+  "resposta": [
+   "Do homem sobre outro homem"
+  ],
+  "explicacao": "Não à do poder do homem sobre a natureza.",
+  "fonte": "Aula 00, p. 20",
+  "citacao": "o poder político pertence à categoria do poder do homem sobre outro homem"
+ },
+ {
+  "id": "cp-e00-c45",
+  "no": "est-a00-r2",
+  "topico": "cp-0",
+  "tema": "Poder: conceito, meios, dimensões e autores",
+  "pergunta": "Além da disputa pela direção do Estado, onde o poder geralmente se manifesta?",
+  "resposta": [
+   "Relações entre indivíduos, grupos ou entidades"
+  ],
+  "explicacao": "Envolve influenciar, controlar ou afetar o comportamento dos outros.",
+  "fonte": "Aula 00, p. 21",
+  "citacao": "o poder geralmente se manifesta nas relações entre indivíduos, grupos ou entidades"
+ },
+ {
+  "id": "cp-e00-c46",
+  "no": "est-a00-r2.1",
+  "topico": "cp-0",
+  "tema": "Dominação (Weber) e relação (Bobbio)",
+  "pergunta": "Para Weber, o poder equivale a quê?",
+  "resposta": [
+   "Dominação"
+  ],
+  "explicacao": "Capacidade de obter obediência.",
+  "fonte": "Aula 00, p. 21",
+  "citacao": "de acordo com Max Weber, poder é igual a dominação"
+ },
+ {
+  "id": "cp-e00-c47",
+  "no": "est-a00-r2.1",
+  "topico": "cp-0",
+  "tema": "Dominação (Weber) e relação (Bobbio)",
+  "pergunta": "Como Weber define dominação?",
+  "resposta": [
+   "Probabilidade de encontrar obediência"
+  ],
+  "explicacao": "Para ordens específicas dentro de determinado grupo.",
+  "fonte": "Aula 00, p. 21",
+  "citacao": "a dominação é a probabilidade de se encontrar obediência para ordens específicas dentro de determinado grupo de pessoas"
+ },
+ {
+  "id": "cp-e00-c48",
+  "no": "est-a00-r2.1.1",
+  "topico": "cp-0",
+  "tema": "Três tipos de dominação legítima",
+  "pergunta": "Quais são os três tipos ideais de dominação legítima de Weber?",
+  "resposta": [
+   "Tradicional",
+   "Carismática",
+   "Legal-racional"
+  ],
+  "explicacao": "Também chamados tipos puros.",
+  "fonte": "Aula 00, p. 21",
+  "citacao": "três tipos ideais (ou tipos puros) de dominação legítima relacionados ao poder: tradicional, carismática e legal-racional"
+ },
+ {
+  "id": "cp-e00-c49",
+  "no": "est-a00-r2.1.2",
+  "topico": "cp-0",
+  "tema": "Autoridade como poder legítimo",
+  "pergunta": "Que conceito Weber introduziu como forma legítima de poder?",
+  "resposta": [
+   "Autoridade"
+  ],
+  "explicacao": "Autoridade é poder legítimo.",
+  "fonte": "Aula 00, p. 21",
+  "citacao": "Ele também introduziu o conceito de autoridade como uma forma legítima de poder"
+ },
+ {
+  "id": "cp-e00-c50",
+  "no": "est-a00-r2.2",
+  "topico": "cp-0",
+  "tema": "Meios do poder: econômico, ideológico e político",
+  "pergunta": "O que estabelece a natureza do poder?",
+  "resposta": [
+   "Os meios usados para exercê-lo"
+  ],
+  "explicacao": "Daí a distinção entre poder econômico, ideológico e político.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "Dos meios que se usa para exercer o poder, estabelece-se a natureza dele"
+ },
+ {
+  "id": "cp-e00-c51",
+  "no": "est-a00-r2.2",
+  "topico": "cp-0",
+  "tema": "Meios do poder: econômico, ideológico e político",
+  "pergunta": "Quais são os três meios de exercício do poder?",
+  "resposta": [
+   "Econômico",
+   "Ideológico",
+   "Político"
+  ],
+  "explicacao": "O ideológico inclui o religioso.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "Poder Econômico [...] Poder Ideológico (inclui o religioso) [...] Poder Político"
+ },
+ {
+  "id": "cp-e00-c52",
+  "no": "est-a00-r2.2",
+  "topico": "cp-0",
+  "tema": "Meios do poder: econômico, ideológico e político",
+  "pergunta": "A abordagem de que autor melhor se relaciona aos meios específicos de poder?",
+  "resposta": [
+   "Pierre Bourdieu"
+  ],
+  "explicacao": "A aula grafa Bourdie; ele trata o poder em termos de capital.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "A abordagem de Pierre Bourdie é a que melhor poderia ser usada para relacionar"
+ },
+ {
+  "id": "cp-e00-c53",
+  "no": "est-a00-r2.2.1",
+  "topico": "cp-0",
+  "tema": "Poder econômico",
+  "pergunta": "Por que mecanismo o possuidor de abundância de bens determina o comportamento de quem está em penúria?",
+  "resposta": [
+   "Promessa e concessão de vantagens"
+  ],
+  "explicacao": "Ilustra o poder econômico.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "mediante a promessa e concessão de vantagens"
+ },
+ {
+  "id": "cp-e00-c54",
+  "no": "est-a00-r2.2.2",
+  "topico": "cp-0",
+  "tema": "Poder ideológico",
+  "pergunta": "Em que meio de exercício do poder se enquadra o poder religioso?",
+  "resposta": [
+   "Ideológico"
+  ],
+  "explicacao": "O poder ideológico inclui o religioso.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "Poder Ideológico (inclui o religioso)"
+ },
+ {
+  "id": "cp-e00-c55",
+  "no": "est-a00-r2.2.3",
+  "topico": "cp-0",
+  "tema": "Poder político: força como meio",
+  "pergunta": "Qual é o meio específico do poder político?",
+  "resposta": [
+   "A força"
+  ],
+  "explicacao": "Característica que percorre a história das civilizações.",
+  "fonte": "Aula 00, p. 25",
+  "citacao": "o MEIO específico do Poder Político é a força"
+ },
+ {
+  "id": "cp-e00-c56",
+  "no": "est-a00-r2.3",
+  "topico": "cp-0",
+  "tema": "Dimensões do poder",
+  "pergunta": "Quais são as dimensões mais proeminentes do poder na sociedade?",
+  "resposta": [
+   "Política",
+   "Econômica",
+   "Ideológica ou intelectual"
+  ],
+  "explicacao": "Elas se sobrepõem e interagem.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "o poder na sociedade possui várias dimensões, das quais as mais proeminentes são"
+ },
+ {
+  "id": "cp-e00-c57",
+  "no": "est-a00-r2.3",
+  "topico": "cp-0",
+  "tema": "Dimensões do poder",
+  "pergunta": "No exemplo da aula, o poder econômico pode ser usado para influenciar o quê?",
+  "resposta": [
+   "A política"
+  ],
+  "explicacao": "Mostra a interação entre as dimensões do poder.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "o poder econômico pode ser usado para influenciar a política"
+ },
+ {
+  "id": "cp-e00-c58",
+  "no": "est-a00-r2.3",
+  "topico": "cp-0",
+  "tema": "Dimensões do poder",
+  "pergunta": "No exemplo da aula, o poder ideológico pode afetar que decisões?",
+  "resposta": [
+   "Econômicas"
+  ],
+  "explicacao": "Mostra a interação entre as dimensões do poder.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "o poder ideológico pode afetar as decisões econômicas"
+ },
+ {
+  "id": "cp-e00-c59",
+  "no": "est-a00-r2.3.1",
+  "topico": "cp-0",
+  "tema": "Dimensão política",
+  "pergunta": "Que dimensão do poder inclui criar leis e fazer cumprir as regras?",
+  "resposta": [
+   "Política"
+  ],
+  "explicacao": "Poder exercido por instituições políticas, governos e autoridades.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "Inclui o poder de criar leis, tomar decisões políticas e fazer cumprir as regras"
+ },
+ {
+  "id": "cp-e00-c60",
+  "no": "est-a00-r2.3.2",
+  "topico": "cp-0",
+  "tema": "Dimensão econômica",
+  "pergunta": "Que dimensão do poder está ligada ao controle de dinheiro, propriedades e meios de produção?",
+  "resposta": [
+   "Econômica"
+  ],
+  "explicacao": "Exercida por empresas, corporações e indivíduos influentes nos negócios.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "Refere-se ao poder que está ligado ao controle dos recursos econômicos, como dinheiro, propriedades e meios de produção"
+ },
+ {
+  "id": "cp-e00-c61",
+  "no": "est-a00-r2.3.3",
+  "topico": "cp-0",
+  "tema": "Dimensão ideológica ou intelectual",
+  "pergunta": "Que dimensão do poder envolve influência sobre cultura, educação e meios de comunicação?",
+  "resposta": [
+   "Ideológica ou intelectual"
+  ],
+  "explicacao": "Capacidade de moldar ideias, crenças e valores.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "Envolve influência sobre a cultura, a educação, os meios de comunicação e a disseminação de ideias"
+ },
+ {
+  "id": "cp-e00-c62",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor vê o poder como expressão da relação de classe e da propriedade dos meios de produção?",
+  "resposta": [
+   "Karl Marx"
+  ],
+  "explicacao": "Poder como instrumento das classes dominantes.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "O poder, para Marx, é uma expressão da relação de classe e da propriedade dos meios de produção"
+ },
+ {
+  "id": "cp-e00-c63",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor relaciona o poder à coesão e à solidariedade social?",
+  "resposta": [
+   "Émile Durkheim"
+  ],
+  "explicacao": "O poder pode unir indivíduos, sobretudo por normas e valores compartilhados.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "explorou a noção de poder em relação à coesão e à solidariedade social"
+ },
+ {
+  "id": "cp-e00-c64",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autora vê o poder como inerente à condição humana?",
+  "resposta": [
+   "Hannah Arendt"
+  ],
+  "explicacao": "A política é o domínio onde o poder se manifesta.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Arendt argumentou que o poder é inerente à condição humana"
+ },
+ {
+  "id": "cp-e00-c65",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor afirma que o poder também produz conhecimento, normas e subjetividade?",
+  "resposta": [
+   "Michel Foucault"
+  ],
+  "explicacao": "Poder não só repressivo, mas produtivo e regulador.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "mas também à produção de conhecimento, normas e formas de subjetividade"
+ },
+ {
+  "id": "cp-e00-c66",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor discutiu a sobreposição de círculos sociais?",
+  "resposta": [
+   "Georg Simmel"
+  ],
+  "explicacao": "Pessoas envolvidas em várias redes com diferentes graus de poder.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Simmel também discutiu o conceito de \"sobreposição de círculos sociais\""
+ },
+ {
+  "id": "cp-e00-c67",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor aborda o poder em termos de capital?",
+  "resposta": [
+   "Pierre Bourdieu"
+  ],
+  "explicacao": "Capital econômico, cultural e social.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Pierre Bourdieu aborda o poder em termos de capital"
+ },
+ {
+  "id": "cp-e00-c68",
+  "no": "est-a00-r2.4",
+  "topico": "cp-0",
+  "tema": "Concepções de poder de autores clássicos",
+  "pergunta": "Que autor camaronês escreveu Necropolítica e Crítica da razão negra?",
+  "resposta": [
+   "Achille Mbembe"
+  ],
+  "explicacao": "Teórico dos estudos pós-coloniais.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Achille Mbembe, autor das obras \"Crítica da razão negra [11]\" e \"Necropolítica [12]\""
+ },
+ {
+  "id": "cp-e00-c69",
+  "no": "est-a00-r2.4.1",
+  "topico": "cp-0",
+  "tema": "Marx: instrumento das classes dominantes",
+  "pergunta": "Para Marx, o poder é instrumento de quem?",
+  "resposta": [
+   "Das classes dominantes"
+  ],
+  "explicacao": "Para manter o controle sobre os meios de produção.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "Ele via o poder como um instrumento utilizado pelas classes dominantes"
+ },
+ {
+  "id": "cp-e00-c70",
+  "no": "est-a00-r2.4.2",
+  "topico": "cp-0",
+  "tema": "Durkheim: coesão e anomia",
+  "pergunta": "Que estado de desintegração social o poder previne, segundo Durkheim?",
+  "resposta": [
+   "Anomia"
+  ],
+  "explicacao": "O poder é necessário para manter a ordem social.",
+  "fonte": "Aula 00, p. 22",
+  "citacao": "o poder é necessário para manter a ordem social e prevenir a anomia"
+ },
+ {
+  "id": "cp-e00-c71",
+  "no": "est-a00-r2.4.3",
+  "topico": "cp-0",
+  "tema": "Arendt: capacidade de agir em conjunto",
+  "pergunta": "Como Arendt define o poder?",
+  "resposta": [
+   "Capacidade de agir em conjunto"
+  ],
+  "explicacao": "Com outros, para alcançar objetivos políticos.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Ela definiu o poder como a capacidade de agir em conjunto com outros para alcançar objetivos políticos"
+ },
+ {
+  "id": "cp-e00-c72",
+  "no": "est-a00-r2.4.4",
+  "topico": "cp-0",
+  "tema": "Foucault: poder difuso e produtivo",
+  "pergunta": "Para Foucault, o que é o poder, em vez de algo que um grupo possui?",
+  "resposta": [
+   "Rede de relações e estratégias"
+  ],
+  "explicacao": "Fenômeno difuso que permeia instituições e práticas sociais.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "mas sim uma rede de relações e estratégias que moldam o comportamento das pessoas"
+ },
+ {
+  "id": "cp-e00-c73",
+  "no": "est-a00-r2.4.5",
+  "topico": "cp-0",
+  "tema": "Simmel: influência nas interações",
+  "pergunta": "Para Simmel, onde se manifesta o poder como forma de influência?",
+  "resposta": [
+   "Nas interações sociais"
+  ],
+  "explicacao": "Pode ser fonte de coesão ou de conflito.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "Georg Simmel viu o poder como uma forma de influência que se manifesta nas interações sociais"
+ },
+ {
+  "id": "cp-e00-c74",
+  "no": "est-a00-r2.4.6",
+  "topico": "cp-0",
+  "tema": "Bourdieu: poder e capital",
+  "pergunta": "Para Bourdieu, que formas de capital moldam o poder?",
+  "resposta": [
+   "Econômico",
+   "Cultural",
+   "Social"
+  ],
+  "explicacao": "O poder depende da quantidade e qualidade desses recursos.",
+  "fonte": "Aula 00, p. 23",
+  "citacao": "como o capital econômico, cultural e social"
+ },
+ {
+  "id": "cp-e00-c75",
+  "no": "est-a00-r2.4.7",
+  "topico": "cp-0",
+  "tema": "Mbembe: necropolítica",
+  "pergunta": "Que nome Mbembe deu ao exercício do poder sobre a morte?",
+  "resposta": [
+   "Necropolítica"
+  ],
+  "explicacao": "Exercício do poder estatal sobre a vida e a morte das populações.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "exercício de poder sobre a morte ele deu o nome de \"necropolítica\""
+ },
+ {
+  "id": "cp-e00-c76",
+  "no": "est-a00-r3",
+  "topico": "cp-0",
+  "tema": "Poder político e Estado: força, monopólio e legitimidade",
+  "pergunta": "Em que se baseia o poder político?",
+  "resposta": [
+   "Posse dos instrumentos de força física"
+  ],
+  "explicacao": "Definição próxima à de Weber.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "o poder político se baseia na posse dos instrumentos mediante os quais se exerce a força física"
+ },
+ {
+  "id": "cp-e00-c77",
+  "no": "est-a00-r3",
+  "topico": "cp-0",
+  "tema": "Poder político e Estado: força, monopólio e legitimidade",
+  "pergunta": "O poder político é o poder coator em que sentido?",
+  "resposta": [
+   "No sentido mais estrito"
+  ],
+  "explicacao": "Baseia-se nos instrumentos de força física.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "é o poder coator no sentido mais estrito da palavra"
+ },
+ {
+  "id": "cp-e00-c78",
+  "no": "est-a00-r3",
+  "topico": "cp-0",
+  "tema": "Poder político e Estado: força, monopólio e legitimidade",
+  "pergunta": "Quem tem legitimidade para atuar com força física em nome do coletivo?",
+  "resposta": [
+   "Agentes e órgãos de segurança pública"
+  ],
+  "explicacao": "Consequência do monopólio estatal da força.",
+  "fonte": "Aula 00, p. 25",
+  "citacao": "só os agentes e órgãos de segurança pública possuem a legitimidade para, em nome do coletivo, atuar com força física"
+ },
+ {
+  "id": "cp-e00-c79",
+  "no": "est-a00-r3.1",
+  "topico": "cp-0",
+  "tema": "Força como meio do poder político",
+  "pergunta": "Que instrumentos de força física a aula cita como base do poder político?",
+  "resposta": [
+   "Armas de toda espécie e potência"
+  ],
+  "explicacao": "O poder político é o poder coator.",
+  "fonte": "Aula 00, p. 24",
+  "citacao": "(as armas de toda a espécie e potência)"
+ },
+ {
+  "id": "cp-e00-c80",
+  "no": "est-a00-r3.1",
+  "topico": "cp-0",
+  "tema": "Força como meio do poder político",
+  "pergunta": "O que a possibilidade de recorrer à força não significa?",
+  "resposta": [
+   "Que tudo se resolva pela força"
+  ],
+  "explicacao": "A força é central, mas não exclusiva.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "a possibilidade de recorrer à força não significa que tudo se resolva por meio do uso dela"
+ },
+ {
+  "id": "cp-e00-c81",
+  "no": "est-a00-r3.1.1",
+  "topico": "cp-0",
+  "tema": "Força é condição necessária, não suficiente",
+  "pergunta": "Que tipo de condição é o uso da força para a existência do poder político?",
+  "resposta": [
+   "Necessária, mas não suficiente"
+  ],
+  "explicacao": "A força é central, mas não basta.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "Esse uso da força é uma condição necessária, mas não suficiente para a existência do Poder Político"
+ },
+ {
+  "id": "cp-e00-c82",
+  "no": "est-a00-r3.1.2",
+  "topico": "cp-0",
+  "tema": "Formas de exercício da força",
+  "pergunta": "Quais são formas de exercício da força?",
+  "resposta": [
+   "Medo",
+   "Ameaça",
+   "Violência física"
+  ],
+  "explicacao": "Entre outras.",
+  "fonte": "Aula 00, p. 25",
+  "citacao": "O medo, a ameaça, a violência física, entre outros"
+ },
+ {
+  "id": "cp-e00-c83",
+  "no": "est-a00-r3.2",
+  "topico": "cp-0",
+  "tema": "Monopólio do uso legítimo da força (Weber)",
+  "pergunta": "Para Weber, que entidade passou a deter o monopólio do uso legítimo da força?",
+  "resposta": [
+   "O Estado"
+  ],
+  "explicacao": "Resultado do processo histórico de centralização do poder.",
+  "fonte": "Aula 00, p. 25",
+  "citacao": "resultou no \"monopólio do uso legítimo da força\" por uma entidade, o Estado"
+ },
+ {
+  "id": "cp-e00-c84",
+  "no": "est-a00-r3.2",
+  "topico": "cp-0",
+  "tema": "Monopólio do uso legítimo da força (Weber)",
+  "pergunta": "Dentro de que limite o Estado contemporâneo reivindica o monopólio da violência física legítima?",
+  "resposta": [
+   "Determinado território"
+  ],
+  "explicacao": "Definição de Weber em Ciência e Política.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "dentro dos limites de determinado território"
+ },
+ {
+  "id": "cp-e00-c85",
+  "no": "est-a00-r3.2.1",
+  "topico": "cp-0",
+  "tema": "Centralização e incriminação da violência",
+  "pergunta": "Que processo acompanhou a monopolização da força física pelo Estado?",
+  "resposta": [
+   "Incriminação e punição da violência não autorizada"
+  ],
+  "explicacao": "Atos de violência de pessoas não autorizadas passam a ser crime.",
+  "fonte": "Aula 00, p. 25",
+  "citacao": "acompanhou, concomitantemente, o processo de incriminação e punição de todos os atos de violência"
+ },
+ {
+  "id": "cp-e00-c86",
+  "no": "est-a00-r3.2.2",
+  "topico": "cp-0",
+  "tema": "Estado como fonte do 'direito' à violência",
+  "pergunta": "Para Weber, em que casos outros grupos ou indivíduos podem usar violência?",
+  "resposta": [
+   "Quando o Estado tolera"
+  ],
+  "explicacao": "O Estado é a única fonte do direito à violência.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "a não ser nos casos em que o Estado o tolere"
+ },
+ {
+  "id": "cp-e00-c87",
+  "no": "est-a00-r3.3",
+  "topico": "cp-0",
+  "tema": "Legitimidade e renúncia à força (Hobbes)",
+  "pergunta": "Em que autor está uma hipótese do surgimento da legitimidade do Estado?",
+  "resposta": [
+   "Hobbes"
+  ],
+  "explicacao": "Renúncia ao uso da própria força em favor do Estado.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "Uma hipótese do surgimento dessa legitimidade que os homens e a sociedade enxergam no Estado, está na teoria de Hobbes"
+ },
+ {
+  "id": "cp-e00-c88",
+  "no": "est-a00-r3.3",
+  "topico": "cp-0",
+  "tema": "Legitimidade e renúncia à força (Hobbes)",
+  "pergunta": "Em Hobbes, a quem os indivíduos confiaram a autorização para usar a força contra todos?",
+  "resposta": [
+   "Única pessoa ou único corpo (Estado)"
+  ],
+  "explicacao": "Após renunciarem ao uso da própria força.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "para o confiar a uma única pessoa, ou a um único corpo (o Estado)"
+ },
+ {
+  "id": "cp-e00-c89",
+  "no": "est-a00-r3.3.1",
+  "topico": "cp-0",
+  "tema": "Estado de natureza e renúncia da força",
+  "pergunta": "Como Hobbes caracteriza o estado de natureza?",
+  "resposta": [
+   "Guerra de todos contra todos"
+  ],
+  "explicacao": "Dele se passa ao Estado civil pela renúncia à própria força.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "a passagem do Estado de natureza (a guerra de todos contra todos) ao Estado civil"
+ },
+ {
+  "id": "cp-e00-c90",
+  "no": "est-a00-r3.3.2",
+  "topico": "cp-0",
+  "tema": "Por que a força: denominador comum",
+  "pergunta": "Numa sociedade complexa, o que só o recurso à força impede?",
+  "resposta": [
+   "Desagregação do grupo"
+  ],
+  "explicacao": "Denominador comum dos clássicos da política.",
+  "fonte": "Aula 00, p. 27",
+  "citacao": "só o recurso à força impede, em última instância, a desagregação do grupo"
+ },
+ {
+  "id": "cp-e00-c91",
+  "no": "est-a00-r4",
+  "topico": "cp-0",
+  "tema": "Teoria política e principais abordagens",
+  "pergunta": "De que disciplinas a teoria política agrega especialmente contribuições?",
+  "resposta": [
+   "Filosofia política",
+   "História das ideias políticas"
+  ],
+  "explicacao": "Definição da ABCP.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "especialmente, da filosofia política e da história das ideias políticas"
+ },
+ {
+  "id": "cp-e00-c92",
+  "no": "est-a00-r4",
+  "topico": "cp-0",
+  "tema": "Teoria política e principais abordagens",
+  "pergunta": "Que associação forneceu a definição de teoria política adotada na aula?",
+  "resposta": [
+   "ABCP"
+  ],
+  "explicacao": "Associação Brasileira de Ciência Política.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "Associação Brasileira de Ciência Política (ABCP)"
+ },
+ {
+  "id": "cp-e00-c93",
+  "no": "est-a00-r4",
+  "topico": "cp-0",
+  "tema": "Teoria política e principais abordagens",
+  "pergunta": "Como se relacionam as duas maneiras de compreender a teoria política?",
+  "resposta": [
+   "Distintas, mas não inconciliáveis"
+  ],
+  "explicacao": "Normativa e histórica.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "de duas maneiras distintas, mas não inconciliáveis"
+ },
+ {
+  "id": "cp-e00-c94",
+  "no": "est-a00-r4",
+  "topico": "cp-0",
+  "tema": "Teoria política e principais abordagens",
+  "pergunta": "Qual é o consenso das Ciências Sociais sobre observar um mesmo objeto?",
+  "resposta": [
+   "Pode ser observado de diferentes ângulos"
+  ],
+  "explicacao": "Daí a pluralidade de abordagens teóricas.",
+  "fonte": "Aula 00, p. 32",
+  "citacao": "o mesmo objeto pode ser observado a partir de diferentes ângulos"
+ },
+ {
+  "id": "cp-e00-c95",
+  "no": "est-a00-r4.1",
+  "topico": "cp-0",
+  "tema": "Teoria política: normativa e histórica (ABCP)",
+  "pergunta": "Quais são as duas maneiras de compreender a teoria política?",
+  "resposta": [
+   "Normativa",
+   "Histórica"
+  ],
+  "explicacao": "Distintas, mas não inconciliáveis.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "como teoria política normativa e como teoria política histórica"
+ },
+ {
+  "id": "cp-e00-c96",
+  "no": "est-a00-r4.1",
+  "topico": "cp-0",
+  "tema": "Teoria política: normativa e histórica (ABCP)",
+  "pergunta": "Qual é um objeto de investigação da teoria política histórica?",
+  "resposta": [
+   "Ideias de autores clássicos"
+  ],
+  "explicacao": "Também conceitos centrais e embates ideológicos.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "tomando como objetos de investigação as ideias de autores clássicos"
+ },
+ {
+  "id": "cp-e00-c97",
+  "no": "est-a00-r4.1.1",
+  "topico": "cp-0",
+  "tema": "Teoria normativa",
+  "pergunta": "Que vertente da teoria política projeta o dever ser da ordem política?",
+  "resposta": [
+   "Normativa"
+  ],
+  "explicacao": "Envolve reflexão crítica sobre a realidade.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "A primeira envolve o esforço de reflexão crítica sobre realidade e a projeção do dever ser da ordem política"
+ },
+ {
+  "id": "cp-e00-c98",
+  "no": "est-a00-r4.1.2",
+  "topico": "cp-0",
+  "tema": "Teoria histórica",
+  "pergunta": "Que vertente elabora narrativas sobre a tradição do pensamento político?",
+  "resposta": [
+   "Histórica"
+  ],
+  "explicacao": "Toma como objeto as ideias de autores clássicos.",
+  "fonte": "Aula 00, p. 30",
+  "citacao": "a segunda elabora narrativas sobre o desenvolvimento da própria tradição do pensamento político"
+ },
+ {
+  "id": "cp-e00-c99",
+  "no": "est-a00-r4.2",
+  "topico": "cp-0",
+  "tema": "Pluralismo, elitismo e poliarquia",
+  "pergunta": "Qual é a palavra-chave do pluralismo?",
+  "resposta": [
+   "Grupos de interesse"
+  ],
+  "explicacao": "Sociedade composta por vários grupos que competem.",
+  "fonte": "Aula 00, p. 32",
+  "citacao": "Palavra-Chave: Grupos de Interesse"
+ },
+ {
+  "id": "cp-e00-c100",
+  "no": "est-a00-r4.2",
+  "topico": "cp-0",
+  "tema": "Pluralismo, elitismo e poliarquia",
+  "pergunta": "Qual é a palavra-chave do elitismo?",
+  "resposta": [
+   "Elite governante"
+  ],
+  "explicacao": "Poder concentrado num pequeno grupo.",
+  "fonte": "Aula 00, p. 33",
+  "citacao": "Palavra-Chave: Elite Governante"
+ },
+ {
+  "id": "cp-e00-c101",
+  "no": "est-a00-r4.2",
+  "topico": "cp-0",
+  "tema": "Pluralismo, elitismo e poliarquia",
+  "pergunta": "Que questão o elitismo levanta sobre a democracia?",
+  "resposta": [
+   "Sua verdadeira representatividade"
+  ],
+  "explicacao": "Decisões moldadas por elites, independentemente da vontade popular.",
+  "fonte": "Aula 00, p. 33",
+  "citacao": "Esta abordagem levanta questões sobre a verdadeira representatividade da democracia"
+ },
+ {
+  "id": "cp-e00-c102",
+  "no": "est-a00-r4.2.1",
+  "topico": "cp-0",
+  "tema": "Pluralismo (Robert A. Dahl)",
+  "pergunta": "Qual é o autor de referência do pluralismo?",
+  "resposta": [
+   "Robert A. Dahl"
+  ],
+  "explicacao": "Palavra-chave: grupos de interesse.",
+  "fonte": "Aula 00, p. 32",
+  "citacao": "Autor de Referência: Robert A. Dahl"
+ },
+ {
+  "id": "cp-e00-c103",
+  "no": "est-a00-r4.2.1",
+  "topico": "cp-0",
+  "tema": "Pluralismo (Robert A. Dahl)",
+  "pergunta": "Para o pluralismo, como o poder é distribuído na sociedade?",
+  "resposta": [
+   "De forma difusa"
+  ],
+  "explicacao": "Grupos competem por recursos e influência.",
+  "fonte": "Aula 00, p. 32",
+  "citacao": "o poder é distribuído de forma difusa na sociedade"
+ },
+ {
+  "id": "cp-e00-c104",
+  "no": "est-a00-r4.2.2",
+  "topico": "cp-0",
+  "tema": "Elitismo (C. Wright Mills)",
+  "pergunta": "Qual é o autor de referência do elitismo?",
+  "resposta": [
+   "C. Wright Mills"
+  ],
+  "explicacao": "Destacou a concentração de poder numa elite governante.",
+  "fonte": "Aula 00, p. 33",
+  "citacao": "Autor de Referência: C. Wright Mills"
+ },
+ {
+  "id": "cp-e00-c105",
+  "no": "est-a00-r4.2.3",
+  "topico": "cp-0",
+  "tema": "Poliarquia (Robert Dahl)",
+  "pergunta": "O que Dahl busca medir com o conceito de poliarquia?",
+  "resposta": [
+   "Grau de democratização"
+  ],
+  "explicacao": "Poliarquia é forma ideal de regime baseada em alguns elementos.",
+  "fonte": "Aula 00, p. 38",
+  "citacao": "A ele interessa medir o grau de democratização"
+ },
+ {
+  "id": "cp-e00-c106",
+  "no": "est-a00-r4.2.3",
+  "topico": "cp-0",
+  "tema": "Poliarquia (Robert Dahl)",
+  "pergunta": "Que elemento da poliarquia garante acesso a ampla gama de perspectivas?",
+  "resposta": [
+   "Fontes de informação diversificadas"
+  ],
+  "explicacao": "Como mídia independente e pluralidade de vozes.",
+  "fonte": "Aula 00, p. 38",
+  "citacao": "Fontes de informação diversificadas"
+ },
+ {
+  "id": "cp-e00-c107",
+  "no": "est-a00-r4.3",
+  "topico": "cp-0",
+  "tema": "Marxismo, institucionalismo e behaviorismo",
+  "pergunta": "Qual é o autor de referência do marxismo como abordagem?",
+  "resposta": [
+   "Karl Marx"
+  ],
+  "explicacao": "Palavra-chave: luta de classes.",
+  "fonte": "Aula 00, p. 33",
+  "citacao": "Autor de Referência: Karl Marx"
+ },
+ {
+  "id": "cp-e00-c108",
+  "no": "est-a00-r4.3",
+  "topico": "cp-0",
+  "tema": "Marxismo, institucionalismo e behaviorismo",
+  "pergunta": "Qual é o autor de referência do institucionalismo?",
+  "resposta": [
+   "David Easton"
+  ],
+  "explicacao": "Palavra-chave: instituições políticas.",
+  "fonte": "Aula 00, p. 34",
+  "citacao": "Autor de Referência: David Easton"
+ },
+ {
+  "id": "cp-e00-c109",
+  "no": "est-a00-r4.3",
+  "topico": "cp-0",
+  "tema": "Marxismo, institucionalismo e behaviorismo",
+  "pergunta": "Qual é a palavra-chave do behaviorismo?",
+  "resposta": [
+   "Comportamento político"
+  ],
+  "explicacao": "Uso de métodos científicos para analisar voto e decisões.",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Palavra-Chave: Comportamento Político"
+ },
+ {
+  "id": "cp-e00-c110",
+  "no": "est-a00-r4.3.1",
+  "topico": "cp-0",
+  "tema": "Marxismo: luta de classes",
+  "pergunta": "O que o marxismo enfatiza como motor de mudança política e social?",
+  "resposta": [
+   "Luta de classes"
+  ],
+  "explicacao": "Analisa as estruturas de classe na sociedade.",
+  "fonte": "Aula 00, p. 33",
+  "citacao": "enfatiza a luta de classes como um motor de mudança política e social"
+ },
+ {
+  "id": "cp-e00-c111",
+  "no": "est-a00-r4.3.2",
+  "topico": "cp-0",
+  "tema": "Institucionalismo e neoinstitucionalismo",
+  "pergunta": "Segundo o institucionalismo, o que tem impacto significativo na governança?",
+  "resposta": [
+   "As regras do jogo político"
+  ],
+  "explicacao": "Foco nas instituições políticas.",
+  "fonte": "Aula 00, p. 34",
+  "citacao": "as regras do jogo político têm um impacto significativo na governança"
+ },
+ {
+  "id": "cp-e00-c112",
+  "no": "est-a00-r4.3.2",
+  "topico": "cp-0",
+  "tema": "Institucionalismo e neoinstitucionalismo",
+  "pergunta": "Que abordagem considera as interações bidirecionais entre instituições e atores políticos?",
+  "resposta": [
+   "Neoinstitucionalismo"
+  ],
+  "explicacao": "Amplia o institucionalismo clássico.",
+  "fonte": "Aula 00, p. 34",
+  "citacao": "também considera as interações complexas e bidirecionais entre instituições e atores políticos"
+ },
+ {
+  "id": "cp-e00-c113",
+  "no": "est-a00-r4.3.2",
+  "topico": "cp-0",
+  "tema": "Institucionalismo e neoinstitucionalismo",
+  "pergunta": "Além das formais, que instituições o neoinstitucionalismo inclui na análise?",
+  "resposta": [
+   "Informais"
+  ],
+  "explicacao": "Inclui normas e culturas políticas.",
+  "fonte": "Aula 00, p. 34",
+  "citacao": "Esta abordagem também inclui a análise de instituições informais"
+ },
+ {
+  "id": "cp-e00-c114",
+  "no": "est-a00-r4.3.2.1",
+  "topico": "cp-0",
+  "tema": "Putnam: capital social e instituições",
+  "pergunta": "Que tema marca o trabalho de Robert Putnam?",
+  "resposta": [
+   "Capital social"
+  ],
+  "explicacao": "E como as instituições afetam governança e participação.",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Putnam é conhecido por seu trabalho sobre capital social"
+ },
+ {
+  "id": "cp-e00-c115",
+  "no": "est-a00-r4.3.2.2",
+  "topico": "cp-0",
+  "tema": "Skocpol: Estado e dinâmica política",
+  "pergunta": "Que autora examina como o Estado pode influenciar a dinâmica política e os movimentos sociais?",
+  "resposta": [
+   "Theda Skocpol"
+  ],
+  "explicacao": "Autora de Estado e Revolução Social (1979).",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Skocpol examina como as instituições governamentais, como o Estado, podem influenciar a dinâmica política"
+ },
+ {
+  "id": "cp-e00-c116",
+  "no": "est-a00-r4.3.2.3",
+  "topico": "cp-0",
+  "tema": "Pierson: instituições e políticas públicas",
+  "pergunta": "Que autor explora como as instituições políticas moldam as políticas públicas?",
+  "resposta": [
+   "Paul Pierson"
+  ],
+  "explicacao": "E como mudanças institucionais afetam as políticas.",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Pierson explora como as instituições políticas moldam as políticas públicas"
+ },
+ {
+  "id": "cp-e00-c117",
+  "no": "est-a00-r4.3.3",
+  "topico": "cp-0",
+  "tema": "Behaviorismo (V. O. Key Jr.)",
+  "pergunta": "Qual é o autor de referência do behaviorismo?",
+  "resposta": [
+   "V. O. Key Jr."
+  ],
+  "explicacao": "Palavra-chave: comportamento político.",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Autor de Referência: V.O. Key Jr."
+ },
+ {
+  "id": "cp-e00-c118",
+  "no": "est-a00-r4.3.3",
+  "topico": "cp-0",
+  "tema": "Behaviorismo (V. O. Key Jr.)",
+  "pergunta": "Que tipo de pesquisa exemplifica o behaviorismo?",
+  "resposta": [
+   "Pesquisas de opinião pública"
+  ],
+  "explicacao": "Medem atitudes dos eleitores sobre candidatos e questões.",
+  "fonte": "Aula 00, p. 35",
+  "citacao": "Pesquisas de opinião pública que medem as atitudes dos eleitores"
+ },
+ {
+  "id": "cp-e00-c119",
+  "no": "est-a00-r4.4",
+  "topico": "cp-0",
+  "tema": "Funcionalismo e estruturalismo",
+  "pergunta": "Qual é a palavra-chave do funcionalismo?",
+  "resposta": [
+   "Funções sociais"
+  ],
+  "explicacao": "Instituições desempenham funções específicas na sociedade.",
+  "fonte": "Aula 00, p. 36",
+  "citacao": "Palavra-Chave: Funções Sociais"
+ },
+ {
+  "id": "cp-e00-c120",
+  "no": "est-a00-r4.4",
+  "topico": "cp-0",
+  "tema": "Funcionalismo e estruturalismo",
+  "pergunta": "Qual é a palavra-chave do estruturalismo?",
+  "resposta": [
+   "Estruturas sociais"
+  ],
+  "explicacao": "Estruturas subjacentes moldam o comportamento.",
+  "fonte": "Aula 00, p. 36",
+  "citacao": "Palavra-Chave: Estruturas Sociais"
+ },
+ {
+  "id": "cp-e00-c121",
+  "no": "est-a00-r4.4.1",
+  "topico": "cp-0",
+  "tema": "Funcionalismo (Talcott Parsons)",
+  "pergunta": "Qual é o autor de referência do funcionalismo?",
+  "resposta": [
+   "Talcott Parsons"
+  ],
+  "explicacao": "Palavra-chave: funções sociais.",
+  "fonte": "Aula 00, p. 36",
+  "citacao": "Autor de Referência: Talcott Parsons"
+ },
+ {
+  "id": "cp-e00-c122",
+  "no": "est-a00-r4.4.2",
+  "topico": "cp-0",
+  "tema": "Estruturalismo (Althusser e Poulantzas)",
+  "pergunta": "Que autores marxistas usam o estruturalismo na Ciência Política?",
+  "resposta": [
+   "Louis Althusser",
+   "Nicos Poulantzas"
+  ],
+  "explicacao": "Na antropologia, a referência é Lévi-Strauss.",
+  "fonte": "Aula 00, p. 36",
+  "citacao": "há dois autores marxistas que fazem uso dessa abordagem: Louis Althusser e Nicos Poulantzas"
+ },
+ {
+  "id": "cp-e00-c123",
+  "no": "est-a00-r4.4.2",
+  "topico": "cp-0",
+  "tema": "Estruturalismo (Althusser e Poulantzas)",
+  "pergunta": "Quem é o autor estruturalista renomado na antropologia?",
+  "resposta": [
+   "Claude Lévi-Strauss"
+  ],
+  "explicacao": "Na CP, Althusser e Poulantzas.",
+  "fonte": "Aula 00, p. 36",
+  "citacao": "temos um autor renomado desta perspectiva, Claude Lévi-Strauss"
+ },
+ {
+  "id": "cp-e00-c124",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Segundo Weffort, o que significa dizer que um pensador é clássico?",
+  "resposta": [
+   "Suas ideias permanecem"
+  ],
+  "explicacao": "Sobreviveram ao seu tempo e fazem parte da nossa atualidade.",
+  "fonte": "Aula 00, p. 40",
+  "citacao": "Dizer que um pensador é um clássico significa dizer que suas ideias permanecem"
+ },
+ {
+  "id": "cp-e00-c125",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Para Weffort, por que os clássicos sobreviveram ao seu tempo?",
+  "resposta": [
+   "Pensaram de modo radical o seu tempo"
+  ],
+  "explicacao": "Os clássicos não estão fora da história.",
+  "fonte": "Aula 00, p. 40",
+  "citacao": "foi precisamente porque pensaram de modo radical o seu tempo que sobreviveram a ele"
+ },
+ {
+  "id": "cp-e00-c126",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Para Weffort, os clássicos são parte da nossa atualidade por serem parte de quê?",
+  "resposta": [
+   "Das nossas raízes"
+  ],
+  "explicacao": "Os clássicos não são atemporais.",
+  "fonte": "Aula 00, p. 40",
+  "citacao": "Eles são parte da nossa atualidade porque são parte das nossas raízes"
+ },
+ {
+  "id": "cp-e00-c127",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Para Weffort, os clássicos são a declaração de quê?",
+  "resposta": [
+   "Da nossa historicidade"
+  ],
+  "explicacao": "Fecho da citação de Weffort.",
+  "fonte": "Aula 00, p. 40",
+  "citacao": "a declaração da nossa historicidade"
+ },
+ {
+  "id": "cp-e00-c128",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Em que ordem a aula apresenta os teóricos clássicos?",
+  "resposta": [
+   "Cronológica"
+  ],
+  "explicacao": "Como desenvolvimento histórico do debate sobre poder, política e Estado.",
+  "fonte": "Aula 00, p. 40",
+  "citacao": "vou apresentar teóricos clássicos, em ordem cronológica"
+ },
+ {
+  "id": "cp-e00-c129",
+  "no": "est-a00-r5",
+  "topico": "cp-0",
+  "tema": "História das ideias políticas: teóricos clássicos",
+  "pergunta": "Quem é considerado o pai da Ciência Política moderna?",
+  "resposta": [
+   "Maquiavel"
+  ],
+  "explicacao": "Rompeu com as tradições clássica e medieval.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "é considerado o \"pai da Ciência Política moderna\""
+ },
+ {
+  "id": "cp-e00-c130",
+  "no": "est-a00-r5.0",
+  "topico": "cp-0",
+  "tema": "Aristóteles: política e a cidade (polis)",
+  "pergunta": "Como Aristóteles denominava o melhor governo possível?",
+  "resposta": [
+   "Politeia"
+  ],
+  "explicacao": "A política implicava a busca da justiça e do melhor governo.",
+  "fonte": "Aula 00, p. 11",
+  "citacao": "que ele denominava \"politeia.\""
+ },
+ {
+  "id": "cp-e00-c131",
+  "no": "est-a00-r5.0",
+  "topico": "cp-0",
+  "tema": "Aristóteles: política e a cidade (polis)",
+  "pergunta": "Para Aristóteles, qual era o objetivo final da política?",
+  "resposta": [
+   "Bem comum"
+  ],
+  "explicacao": "Arendt segue essa tradição clássica grega.",
+  "fonte": "Aula 00, p. 11",
+  "citacao": "Sua visão enfatizava o \"bem comum\" como o objetivo final da política"
+ },
+ {
+  "id": "cp-e00-c132",
+  "no": "est-a00-r5.0",
+  "topico": "cp-0",
+  "tema": "Aristóteles: política e a cidade (polis)",
+  "pergunta": "Para Aristóteles, que tipo de animal é o homem?",
+  "resposta": [
+   "Animal cívico (político)"
+  ],
+  "explicacao": "Mais social do que abelhas e outros animais gregários.",
+  "fonte": "Aula 00, p. 11",
+  "citacao": "um homem é um animal cívico (político)"
+ },
+ {
+  "id": "cp-e00-c133",
+  "no": "est-a00-r5.1",
+  "topico": "cp-0",
+  "tema": "Maquiavel e o realismo político",
+  "pergunta": "Em que obra, de 1513, Maquiavel propôs analisar a política como ela é?",
+  "resposta": [
+   "O Príncipe"
+  ],
+  "explicacao": "Verità effettuale delle cose.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "Em O Príncipe (1513), Maquiavel propôs"
+ },
+ {
+  "id": "cp-e00-c134",
+  "no": "est-a00-r5.1",
+  "topico": "cp-0",
+  "tema": "Maquiavel e o realismo político",
+  "pergunta": "Para Maquiavel, qual é a lógica própria da política?",
+  "resposta": [
+   "Luta pelo poder, manutenção e expansão"
+  ],
+  "explicacao": "A política não se reduz a princípios morais ou religiosos.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "Ela tem sua própria lógica: a luta pelo poder, sua manutenção e expansão"
+ },
+ {
+  "id": "cp-e00-c135",
+  "no": "est-a00-r5.1",
+  "topico": "cp-0",
+  "tema": "Maquiavel e o realismo político",
+  "pergunta": "Com que tradições Maquiavel rompeu?",
+  "resposta": [
+   "Clássica",
+   "Medieval"
+  ],
+  "explicacao": "Que associavam a política ao bem comum, à moral ou à religião.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "rompeu com a tradição clássica (Aristóteles, Cícero) e medieval"
+ },
+ {
+  "id": "cp-e00-c136",
+  "no": "est-a00-r5.1.1",
+  "topico": "cp-0",
+  "tema": "Virtù e fortuna",
+  "pergunta": "Em Maquiavel, o que é a fortuna?",
+  "resposta": [
+   "Acaso, sorte ou circunstâncias externas"
+  ],
+  "explicacao": "O governante deve controlá-la pela virtù.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "o acaso, a sorte ou as circunstâncias externas"
+ },
+ {
+  "id": "cp-e00-c137",
+  "no": "est-a00-r5.1.1",
+  "topico": "cp-0",
+  "tema": "Virtù e fortuna",
+  "pergunta": "Em Maquiavel, por meio de que o governante habilidoso controla a fortuna?",
+  "resposta": [
+   "Virtù"
+  ],
+  "explicacao": "Virtù é capacidade de agir com inteligência, astúcia e força.",
+  "fonte": "Aula 00, p. 19",
+  "citacao": "O governante habilidoso deve controlar a fortuna por meio da virtù"
+ },
+ {
+  "id": "cp-e00-c138",
+  "no": "est-a00-r5.1.2",
+  "topico": "cp-0",
+  "tema": "Política distinta da moral",
+  "pergunta": "Para Maquiavel, de que outra ética a ética política é distinta?",
+  "resposta": [
+   "Ética individual"
+  ],
+  "explicacao": "O governante pode agir contra a moral comum pela estabilidade do Estado.",
+  "fonte": "Aula 00, p. 20",
+  "citacao": "a ética política é distinta da ética individual"
+ },
+ {
+  "id": "cp-e00-c139",
+  "no": "est-a00-r5.1.3",
+  "topico": "cp-0",
+  "tema": "Maquiavel e o Estado moderno",
+  "pergunta": "Que ideia Maquiavel antecipa como fundador do Estado moderno?",
+  "resposta": [
+   "Soberania"
+  ],
+  "explicacao": "E a centralidade do Estado na vida social.",
+  "fonte": "Aula 00, p. 20",
+  "citacao": "Maquiavel antecipa a ideia de soberania e da centralidade do Estado"
+ },
+ {
+  "id": "cp-e00-c140",
+  "no": "est-a00-r5.2",
+  "topico": "cp-0",
+  "tema": "Contratualistas: Hobbes, Locke e Rousseau",
+  "pergunta": "Em que obra Hobbes desenvolveu seu conceito de contrato social?",
+  "resposta": [
+   "Leviatã"
+  ],
+  "explicacao": "Contrato como base da paz e da ordem.",
+  "fonte": "Aula 00, p. 41",
+  "citacao": "em sua obra \"Leviatã\""
+ },
+ {
+  "id": "cp-e00-c141",
+  "no": "est-a00-r5.2",
+  "topico": "cp-0",
+  "tema": "Contratualistas: Hobbes, Locke e Rousseau",
+  "pergunta": "Em que obra Locke desenvolveu direitos naturais e governo limitado?",
+  "resposta": [
+   "Dois Tratados sobre o Governo Civil"
+  ],
+  "explicacao": "Locke viveu de 1632 a 1704.",
+  "fonte": "Aula 00, p. 41",
+  "citacao": "conceitos desenvolvidos em \"Dois Tratados sobre o Governo Civil\""
+ },
+ {
+  "id": "cp-e00-c142",
+  "no": "est-a00-r5.2",
+  "topico": "cp-0",
+  "tema": "Contratualistas: Hobbes, Locke e Rousseau",
+  "pergunta": "Em que obra Rousseau desenvolveu contrato social e vontade geral?",
+  "resposta": [
+   "Do Contrato Social"
+  ],
+  "explicacao": "Rousseau viveu de 1712 a 1778.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "em sua obra \"Do Contrato Social\""
+ },
+ {
+  "id": "cp-e00-c143",
+  "no": "est-a00-r5.2.1",
+  "topico": "cp-0",
+  "tema": "Hobbes: contrato social e Leviatã",
+  "pergunta": "Para Hobbes, como era a vida no estado de natureza?",
+  "resposta": [
+   "Solitária, pobre, sórdida, brutal e curta"
+  ],
+  "explicacao": "Cenário de guerra geral.",
+  "fonte": "Aula 00, p. 41",
+  "citacao": "\"solitária, pobre, sórdida, brutal e curta\""
+ },
+ {
+  "id": "cp-e00-c144",
+  "no": "est-a00-r5.2.1",
+  "topico": "cp-0",
+  "tema": "Hobbes: contrato social e Leviatã",
+  "pergunta": "Em Hobbes, em troca de que os indivíduos renunciam a parte da liberdade natural?",
+  "resposta": [
+   "Proteção do Estado"
+  ],
+  "explicacao": "Estabelecem um governo soberano centralizado.",
+  "fonte": "Aula 00, p. 41",
+  "citacao": "em troca de proteção do Estado"
+ },
+ {
+  "id": "cp-e00-c145",
+  "no": "est-a00-r5.2.2",
+  "topico": "cp-0",
+  "tema": "Locke: direitos naturais e governo limitado",
+  "pergunta": "Que direitos naturais Locke considerava inalienáveis?",
+  "resposta": [
+   "Vida",
+   "Liberdade",
+   "Propriedade"
+  ],
+  "explicacao": "Anteriores ao governo.",
+  "fonte": "Aula 00, p. 41",
+  "citacao": "os direitos naturais, como vida, liberdade e propriedade, eram inalienáveis"
+ },
+ {
+  "id": "cp-e00-c146",
+  "no": "est-a00-r5.2.2",
+  "topico": "cp-0",
+  "tema": "Locke: direitos naturais e governo limitado",
+  "pergunta": "Para Locke, quando a revolução é justificada?",
+  "resposta": [
+   "Quando o governo não protege os direitos"
+  ],
+  "explicacao": "Direito à rebelião.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "a revolução era justificada quando o governo não protegia os direitos dos cidadãos"
+ },
+ {
+  "id": "cp-e00-c147",
+  "no": "est-a00-r5.2.3",
+  "topico": "cp-0",
+  "tema": "Rousseau: contrato e vontade geral",
+  "pergunta": "Para Rousseau, o que a vontade geral representa?",
+  "resposta": [
+   "Interesse comum de toda a sociedade"
+  ],
+  "explicacao": "É soberana (soberania popular).",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "representa o interesse comum de toda a sociedade e é soberana"
+ },
+ {
+  "id": "cp-e00-c148",
+  "no": "est-a00-r5.3",
+  "topico": "cp-0",
+  "tema": "Separação de poderes, federalismo e liberdade",
+  "pergunta": "Em que obra Montesquieu apresentou a separação de poderes?",
+  "resposta": [
+   "O Espírito das Leis"
+  ],
+  "explicacao": "Ramos independentes que se controlam mutuamente.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "apresentada em \"O Espírito das Leis\""
+ },
+ {
+  "id": "cp-e00-c149",
+  "no": "est-a00-r5.3",
+  "topico": "cp-0",
+  "tema": "Separação de poderes, federalismo e liberdade",
+  "pergunta": "Qual federalista é chamado de Pai da Constituição dos EUA?",
+  "resposta": [
+   "James Madison"
+  ],
+  "explicacao": "Centrado em checks and balances.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "James Madison, frequentemente chamado de \"Pai da Constituição\""
+ },
+ {
+  "id": "cp-e00-c150",
+  "no": "est-a00-r5.3",
+  "topico": "cp-0",
+  "tema": "Separação de poderes, federalismo e liberdade",
+  "pergunta": "Em que obra Tocqueville estudou a experiência democrática nos EUA?",
+  "resposta": [
+   "A Democracia na América"
+  ],
+  "explicacao": "Observou como a igualdade influenciava a cultura política americana.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "conhecido por sua obra \"A Democracia na América\""
+ },
+ {
+  "id": "cp-e00-c151",
+  "no": "est-a00-r5.3",
+  "topico": "cp-0",
+  "tema": "Separação de poderes, federalismo e liberdade",
+  "pergunta": "Em que obra Mill explorou o utilitarismo e a liberdade individual?",
+  "resposta": [
+   "Sobre a Liberdade"
+  ],
+  "explicacao": "Mill viveu de 1806 a 1873.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "em sua obra \"Sobre a Liberdade\""
+ },
+ {
+  "id": "cp-e00-c152",
+  "no": "est-a00-r5.3.1",
+  "topico": "cp-0",
+  "tema": "Montesquieu: separação de poderes",
+  "pergunta": "Quais são os ramos de governo propostos por Montesquieu?",
+  "resposta": [
+   "Legislativo",
+   "Executivo",
+   "Judiciário"
+  ],
+  "explicacao": "Independentes e com poder de controle recíproco.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "três ramos independentes: legislativo, executivo e judiciário"
+ },
+ {
+  "id": "cp-e00-c153",
+  "no": "est-a00-r5.3.1",
+  "topico": "cp-0",
+  "tema": "Montesquieu: separação de poderes",
+  "pergunta": "Que autor já afirmava, antes de Montesquieu, a necessidade de dividir o poder para evitar a tirania?",
+  "resposta": [
+   "John Locke"
+  ],
+  "explicacao": "Lembrete da aula ao tratar de Montesquieu.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "John Locke já afirmava a necessidade da divisão do poder para evitar a tirania"
+ },
+ {
+  "id": "cp-e00-c154",
+  "no": "est-a00-r5.3.2",
+  "topico": "cp-0",
+  "tema": "Federalistas: Hamilton, Madison e Jay",
+  "pergunta": "Quem são os autores dos Federalist Papers?",
+  "resposta": [
+   "Alexander Hamilton",
+   "James Madison",
+   "John Jay"
+  ],
+  "explicacao": "Defenderam a ratificação da Constituição dos EUA.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "Alexander Hamilton, James Madison e John Jay, conhecidos coletivamente como os Federalistas"
+ },
+ {
+  "id": "cp-e00-c155",
+  "no": "est-a00-r5.3.2",
+  "topico": "cp-0",
+  "tema": "Federalistas: Hamilton, Madison e Jay",
+  "pergunta": "Qual federalista foi o primeiro Chefe de Justiça dos EUA?",
+  "resposta": [
+   "John Jay"
+  ],
+  "explicacao": "Contribuiu com menos ensaios que Hamilton e Madison.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "como o primeiro Chefe de Justiça dos Estados Unidos"
+ },
+ {
+  "id": "cp-e00-c156",
+  "no": "est-a00-r5.3.2",
+  "topico": "cp-0",
+  "tema": "Federalistas: Hamilton, Madison e Jay",
+  "pergunta": "Em que ideia estava centrada a teoria política de Madison?",
+  "resposta": [
+   "Checks and balances"
+  ],
+  "explicacao": "Equilibrar os poderes do governo para evitar a tirania.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "Sua teoria política estava centrada na ideia de Checks and Balances"
+ },
+ {
+  "id": "cp-e00-c157",
+  "no": "est-a00-r5.3.3",
+  "topico": "cp-0",
+  "tema": "Tocqueville: descentralização e participação",
+  "pergunta": "Para Tocqueville, o que era vital para preservar a liberdade e a democracia?",
+  "resposta": [
+   "Descentralização do poder e autonomia local"
+  ],
+  "explicacao": "Junto da sociedade civil e da participação dos cidadãos.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "a descentralização do poder e a autonomia local eram vitais"
+ },
+ {
+  "id": "cp-e00-c158",
+  "no": "est-a00-r5.3.4",
+  "topico": "cp-0",
+  "tema": "Mill: utilitarismo e liberdade",
+  "pergunta": "Com base em que o utilitarismo avalia a moralidade?",
+  "resposta": [
+   "Maximização da felicidade"
+  ],
+  "explicacao": "Mill foi proponente do utilitarismo.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "avalia a moralidade com base na maximização da felicidade"
+ },
+ {
+  "id": "cp-e00-c159",
+  "no": "est-a00-r5.3.4",
+  "topico": "cp-0",
+  "tema": "Mill: utilitarismo e liberdade",
+  "pergunta": "Para Mill, qual é o limite da liberdade individual?",
+  "resposta": [
+   "Não prejudicar os outros"
+  ],
+  "explicacao": "A sociedade deve permitir a máxima liberdade possível.",
+  "fonte": "Aula 00, p. 43",
+  "citacao": "desde que não prejudicasse os outros"
+ },
+ {
+  "id": "cp-e00-c160",
+  "no": "est-a00-r5.4",
+  "topico": "cp-0",
+  "tema": "Weber: racionalização e tipos de autoridade",
+  "pergunta": "Que exemplo de racionalização Weber explorou?",
+  "resposta": [
+   "A burocracia moderna"
+  ],
+  "explicacao": "E seus efeitos sobre sociedade e organizações.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "Weber explorou como a burocracia moderna era um exemplo de racionalização"
+ },
+ {
+  "id": "cp-e00-c161",
+  "no": "est-a00-r5.4",
+  "topico": "cp-0",
+  "tema": "Weber: racionalização e tipos de autoridade",
+  "pergunta": "Em que se baseia a autoridade legal-racional, para Weber?",
+  "resposta": [
+   "Regras e leis"
+  ],
+  "explicacao": "A tradicional baseia-se na tradição; a carismática, no carisma pessoal.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "legal-racional (baseada em regras e leis)"
+ },
+ {
+  "id": "cp-e00-c162",
+  "no": "est-a00-r5.5",
+  "topico": "cp-0",
+  "tema": "Hegel: dialética e Estado racional",
+  "pergunta": "Como Hegel via o Estado?",
+  "resposta": [
+   "Manifestação mais elevada da vontade racional"
+  ],
+  "explicacao": "Da vontade racional da sociedade.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "Ele via o Estado como a manifestação mais elevada da vontade racional da sociedade"
+ },
+ {
+  "id": "cp-e00-c163",
+  "no": "est-a00-r5.5",
+  "topico": "cp-0",
+  "tema": "Hegel: dialética e Estado racional",
+  "pergunta": "Quais são os momentos da dialética aplicada por Hegel à história?",
+  "resposta": [
+   "Tese",
+   "Antítese",
+   "Síntese"
+  ],
+  "explicacao": "Contradições dialéticas levam a maior racionalidade.",
+  "fonte": "Aula 00, p. 42",
+  "citacao": "Hegel aplicou a dialética (tese, antítese, síntese)"
+ },
+ {
+  "id": "cp-e00-c164",
+  "no": "est-a00-r6",
+  "topico": "cp-0",
+  "tema": "Teoria da justiça: Rawls e Sen",
+  "pergunta": "Em que ano foi publicada Uma Teoria da Justiça, de Rawls?",
+  "resposta": [
+   "1971"
+  ],
+  "explicacao": "Uma das obras mais importantes da filosofia política do século XX.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "publicada em 1971"
+ },
+ {
+  "id": "cp-e00-c165",
+  "no": "est-a00-r6",
+  "topico": "cp-0",
+  "tema": "Teoria da justiça: Rawls e Sen",
+  "pergunta": "Em que perspectiva especialistas situam a teoria rawlsiana?",
+  "resposta": [
+   "Contratualista"
+  ],
+  "explicacao": "Rawls usa um contrato hipotético.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "a teoria rawlsiana incorpora-se na perspectiva contratualista"
+ },
+ {
+  "id": "cp-e00-c166",
+  "no": "est-a00-r6",
+  "topico": "cp-0",
+  "tema": "Teoria da justiça: Rawls e Sen",
+  "pergunta": "Quais autores centram a noção de justiça no resumo da aula?",
+  "resposta": [
+   "John Rawls",
+   "Amartya Sen"
+  ],
+  "explicacao": "Rawls com dois princípios; Sen com as capacidades.",
+  "fonte": "Aula 00, p. 52",
+  "citacao": "No contexto das teorias de John Rawls e Amartya Sen"
+ },
+ {
+  "id": "cp-e00-c167",
+  "no": "est-a00-r6.1",
+  "topico": "cp-0",
+  "tema": "Rawls: justiça como equidade",
+  "pergunta": "Qual era o principal objetivo de Rawls?",
+  "resposta": [
+   "Estrutura ética para uma sociedade justa"
+  ],
+  "explicacao": "Base para a organização de uma sociedade justa.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "O principal objetivo de Rawls era desenvolver uma estrutura ética"
+ },
+ {
+  "id": "cp-e00-c168",
+  "no": "est-a00-r6.1",
+  "topico": "cp-0",
+  "tema": "Rawls: justiça como equidade",
+  "pergunta": "Como ficou conhecido o conceito de justiça proposto por Rawls?",
+  "resposta": [
+   "Justiça como equidade"
+  ],
+  "explicacao": "Princípios escolhidos sob o véu da ignorância.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "ficou conhecido como \"justiça como equidade.\""
+ },
+ {
+  "id": "cp-e00-c169",
+  "no": "est-a00-r6.1.1",
+  "topico": "cp-0",
+  "tema": "Véu da ignorância (posição original)",
+  "pergunta": "Que dispositivo imaginário faz as pessoas escolherem princípios sem conhecer sua posição social?",
+  "resposta": [
+   "Véu da ignorância"
+  ],
+  "explicacao": "Garante escolhas sem viés de interesse pessoal.",
+  "fonte": "Aula 00, p. 44",
+  "citacao": "Rawls começou sua investigação considerando o \"véu da ignorância"
+ },
+ {
+  "id": "cp-e00-c170",
+  "no": "est-a00-r6.1.1",
+  "topico": "cp-0",
+  "tema": "Véu da ignorância (posição original)",
+  "pergunta": "Como se chama a posição de escolha sob o véu da ignorância?",
+  "resposta": [
+   "Posição original"
+  ],
+  "explicacao": "Projetada para garantir escolhas justas.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "Essa posição original sob o véu da ignorância"
+ },
+ {
+  "id": "cp-e00-c171",
+  "no": "est-a00-r6.1.2",
+  "topico": "cp-0",
+  "tema": "Contrato social hipotético",
+  "pergunta": "Para Rawls, por meio de que tipo de contrato social se alcança a justiça?",
+  "resposta": [
+   "Contrato social hipotético"
+  ],
+  "explicacao": "Não por um contrato social direto.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "mas por meio de um \"contrato social hipotético,\""
+ },
+ {
+  "id": "cp-e00-c172",
+  "no": "est-a00-r6.2",
+  "topico": "cp-0",
+  "tema": "Os dois princípios de justiça",
+  "pergunta": "Quantos princípios fundamentais de justiça Rawls formulou?",
+  "resposta": [
+   "Dois"
+  ],
+  "explicacao": "Liberdade e diferença.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "Rawls formulou dois princípios fundamentais de justiça"
+ },
+ {
+  "id": "cp-e00-c173",
+  "no": "est-a00-r6.2",
+  "topico": "cp-0",
+  "tema": "Os dois princípios de justiça",
+  "pergunta": "Os princípios de Rawls visam uma sociedade justa construída com base em quê?",
+  "resposta": [
+   "Igualdade básica de oportunidades"
+  ],
+  "explicacao": "Além da proteção das liberdades e da atenção aos menos favorecidos.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "seja construída com base na igualdade básica de oportunidades"
+ },
+ {
+  "id": "cp-e00-c174",
+  "no": "est-a00-r6.2.1",
+  "topico": "cp-0",
+  "tema": "Princípio da liberdade",
+  "pergunta": "Que liberdades integram o conjunto básico do princípio da liberdade de Rawls?",
+  "resposta": [
+   "Pensamento",
+   "Expressão",
+   "Religião"
+  ],
+  "explicacao": "E a capacidade de participar ativamente da vida política.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "liberdade de pensamento, expressão,"
+ },
+ {
+  "id": "cp-e00-c175",
+  "no": "est-a00-r6.2.2",
+  "topico": "cp-0",
+  "tema": "Princípio da diferença",
+  "pergunta": "Pelo princípio da diferença, desigualdades são admitidas na medida em que beneficiem quem?",
+  "resposta": [
+   "Os menos favorecidos"
+  ],
+  "explicacao": "E sejam justificadas pelo bem-estar geral.",
+  "fonte": "Aula 00, p. 45",
+  "citacao": "desigualdades apenas na medida em que beneficiassem as [...] pessoas menos favorecidas e fossem justificadas pelo bem"
+ },
+ {
+  "id": "cp-e00-c176",
+  "no": "est-a00-r6.3",
+  "topico": "cp-0",
+  "tema": "Amartya Sen: capacidades",
+  "pergunta": "Para Amartya Sen, a justiça deve ser avaliada considerando o quê das pessoas?",
+  "resposta": [
+   "Capacidades"
+  ],
+  "explicacao": "Capacidade real de buscar vidas significativas.",
+  "fonte": "Aula 00, p. 52",
+  "citacao": "foca em avaliar a justiça considerando as \"capacidades\" das pessoas"
+ },
+ {
+  "id": "cp-e00-c177",
+  "no": "est-a00-r6.3",
+  "topico": "cp-0",
+  "tema": "Amartya Sen: capacidades",
+  "pergunta": "Para Sen, a justiça não se limita a quê?",
+  "resposta": [
+   "Distribuição de recursos"
+  ],
+  "explicacao": "Deve incluir a capacidade real das pessoas.",
+  "fonte": "Aula 00, p. 52",
+  "citacao": "a justiça não se limita à distribuição de recursos"
+ },
+ {
+  "id": "cp-e00-c178",
+  "no": "est-a00-r7",
+  "topico": "cp-0",
+  "tema": "Cultura política (Almond e Verba) e métodos empíricos",
+  "pergunta": "Que estudos Almond e Verba inauguraram?",
+  "resposta": [
+   "Cultura política"
+  ],
+  "explicacao": "Mudança de foco nas análises políticas.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "eles inaugurarem os estudos de \"cultura política\""
+ },
+ {
+  "id": "cp-e00-c179",
+  "no": "est-a00-r7",
+  "topico": "cp-0",
+  "tema": "Cultura política (Almond e Verba) e métodos empíricos",
+  "pergunta": "Que método empírico a pesquisa em cultura política frequentemente usa?",
+  "resposta": [
+   "Pesquisas de opinião (surveys)"
+  ],
+  "explicacao": "Para coletar dados quantitativos e qualitativos.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "utiliza métodos empíricos, como pesquisas de opinião (surveys)"
+ },
+ {
+  "id": "cp-e00-c180",
+  "no": "est-a00-r7.1",
+  "topico": "cp-0",
+  "tema": "Cultura cívica (Almond e Verba)",
+  "pergunta": "Qual é o conceito central de Almond e Verba?",
+  "resposta": [
+   "Cultura cívica"
+  ],
+  "explicacao": "Atitudes, valores e padrões que influenciam a participação política.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "O conceito central de Almond e Verba é a \"cultura cívica,\""
+ },
+ {
+  "id": "cp-e00-c181",
+  "no": "est-a00-r7.1",
+  "topico": "cp-0",
+  "tema": "Cultura cívica (Almond e Verba)",
+  "pergunta": "Em que ano foi publicada The Civic Culture?",
+  "resposta": [
+   "1963"
+  ],
+  "explicacao": "Subtítulo: Political Attitudes and Democracy in Five Nations.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "Democracy in Five Nations\" (1963)"
+ },
+ {
+  "id": "cp-e00-c182",
+  "no": "est-a00-r7.1.1",
+  "topico": "cp-0",
+  "tema": "Três tipos de cultura cívica",
+  "pergunta": "Quais são os três tipos de cultura cívica de Almond e Verba?",
+  "resposta": [
+   "Paroquial",
+   "Sujeita",
+   "Participativa"
+  ],
+  "explicacao": "Influenciam a participação política e a estabilidade democrática.",
+  "fonte": "Aula 00, p. 52",
+  "citacao": "três tipos de cultura cívica: paroquial, sujeita e participativa"
+ },
+ {
+  "id": "cp-e00-c183",
+  "no": "est-a00-r7.1.2",
+  "topico": "cp-0",
+  "tema": "Estudo comparativo em cinco países",
+  "pergunta": "Em quantos países Almond e Verba compararam a cultura cívica?",
+  "resposta": [
+   "Cinco"
+  ],
+  "explicacao": "Estados Unidos, Grã-Bretanha, Alemanha, México e Itália.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "realizaram um estudo comparativo da cultura cívica em cinco países"
+ },
+ {
+  "id": "cp-e00-c184",
+  "no": "est-a00-r7.1.2",
+  "topico": "cp-0",
+  "tema": "Estudo comparativo em cinco países",
+  "pergunta": "Que países Almond e Verba compararam, além dos Estados Unidos?",
+  "resposta": [
+   "Grã-Bretanha e Alemanha",
+   "México",
+   "Itália"
+  ],
+  "explicacao": "Estudo comparativo das atitudes políticas e da participação cívica.",
+  "fonte": "Aula 00, p. 49",
+  "citacao": "Unidos, Grã-Bretanha, Alemanha, México e Itália"
+ },
+ {
+  "id": "cp-e00-c185",
+  "no": "est-a00-r7.2",
+  "topico": "cp-0",
+  "tema": "Cultura política e métodos empíricos",
+  "pergunta": "De que estudos a abordagem da cultura política se afastou?",
+  "resposta": [
+   "Estudos formalistas das instituições"
+  ],
+  "explicacao": "Que tradicionalmente dominavam a disciplina.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "afastamento dos estudos mais formalistas das instituições políticas"
+ },
+ {
+  "id": "cp-e00-c186",
+  "no": "est-a00-r7.2",
+  "topico": "cp-0",
+  "tema": "Cultura política e métodos empíricos",
+  "pergunta": "Que condições da democracia a cultura política passou a considerar?",
+  "resposta": [
+   "Condições sociais"
+  ],
+  "explicacao": "Com foco em atitudes políticas e práticas de voto.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "a importância de considerar as condições sociais da democracia"
+ },
+ {
+  "id": "cp-e00-c187",
+  "no": "est-a00-r7.2",
+  "topico": "cp-0",
+  "tema": "Cultura política e métodos empíricos",
+  "pergunta": "Que tipo de análise tem papel fundamental no campo da cultura política?",
+  "resposta": [
+   "Comparativa"
+  ],
+  "explicacao": "Permite identificar padrões e tendências entre contextos.",
+  "fonte": "Aula 00, p. 48",
+  "citacao": "A análise comparativa desempenha um papel fundamental nesse campo"
+ },
+ {
+  "id": "cp-e00-c188",
+  "no": "est-a00-r7.2.1",
+  "topico": "cp-0",
+  "tema": "Pesquisa qualitativa",
+  "pergunta": "Que tipo de pesquisa coleta dados não numéricos, como entrevistas e documentos?",
+  "resposta": [
+   "Qualitativa"
+  ],
+  "explicacao": "Explora questões complexas e o significado dos fenômenos.",
+  "fonte": "Aula 00, p. 50",
+  "citacao": "Esta abordagem envolve a coleta de dados não numéricos"
+ },
+ {
+  "id": "cp-e00-c189",
+  "no": "est-a00-r7.2.2",
+  "topico": "cp-0",
+  "tema": "Pesquisa quantitativa",
+  "pergunta": "Que técnicas a pesquisa quantitativa costuma usar?",
+  "resposta": [
+   "Estatísticas"
+  ],
+  "explicacao": "Para identificar tendências e relações entre variáveis.",
+  "fonte": "Aula 00, p. 50",
+  "citacao": "muitas vezes usando técnicas estatísticas para identificar tendências"
+ },
+ {
+  "id": "cp-e00-c190",
+  "no": "est-a00-r7.2.3",
+  "topico": "cp-0",
+  "tema": "Estudo de caso e comparação de sistemas",
+  "pergunta": "Que método analisa a fundo um evento político específico?",
+  "resposta": [
+   "Estudo de caso"
+  ],
+  "explicacao": "Para compreender causas e consequências.",
+  "fonte": "Aula 00, p. 50",
+  "citacao": "Os estudos de caso analisam a fundo um evento ou fenômeno político específico"
+ },
+ {
+  "id": "cp-e00-c191",
+  "no": "est-a00-r7.2.3",
+  "topico": "cp-0",
+  "tema": "Estudo de caso e comparação de sistemas",
+  "pergunta": "O que a comparação de sistemas políticos ajuda a identificar?",
+  "resposta": [
+   "Padrões e diferenças"
+  ],
+  "explicacao": "Nas estruturas e no funcionamento político.",
+  "fonte": "Aula 00, p. 50",
+  "citacao": "Comparar sistemas políticos diferentes ajuda a identificar padrões e diferenças"
+ }
+]

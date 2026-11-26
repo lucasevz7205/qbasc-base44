@@ -1,0 +1,996 @@
+{
+ "topico": "cp-2",
+ "materia": "cp",
+ "centro": "Sistema político brasileiro: Estado federado, forma e sistema de governo, regime político e democracia",
+ "aula": "02",
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes, Aula 02",
+ "topicosEdital": {
+  "cp-1": "Regime político (conceito, democracia e autocracia, transição de regime) e teorias da democracia (história, Schumpeter, Dahl, Pateman, Habermas, crise da democracia).",
+  "cp-2": "Sistema político e instituições; forma de Estado (Estado unitário e federado, arranjos federativos); forma de governo (monarquia e república); sistema de governo (parlamentarismo, presidencialismo, semipresidencialismo) e controle entre poderes."
+ },
+ "ramos": [
+  {
+   "id": "est-a02-r1",
+   "t": "Sistema político e instituições",
+   "n": "Instituições são o que compõe o sistema político",
+   "x": {
+    "e": "O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político, garantir a organização administrativa e os processos políticos de tomada de decisão.",
+    "src": "Aula 02, p. 5",
+    "cit": "O sistema político de um país é formado pelo conjunto de instituições políticas que existem para definir a constituição do poder político"
+   },
+   "f": [
+    {
+     "id": "est-a02-r1.1",
+     "t": "Instituições: definição materialista e normativa",
+     "n": "Instituição pode ser estrutura material ou conjunto de regras",
+     "x": {
+      "e": "Duas definições de instituições: a materialista (estruturas materiais do poder, como órgãos do Estado) e a normativa (regras, rotinas, valores, normas e crenças).",
+      "src": "Aula 02, p. 5",
+      "cit": "conjunto de regras e rotinas correlacionadas, valores, normas, crenças, modelos cognitivos.",
+      "trap": "Instituição não é só órgão: na definição normativa são regras e rotinas."
+     }
+    },
+    {
+     "id": "est-a02-r1.2",
+     "t": "Três aspectos da organização do Estado (Pedro Lenza)",
+     "n": "Três camadas: forma de governo, sistema de governo e forma de Estado",
+     "x": {
+      "e": "Segundo a sistematização de Pedro Lenza, a organização do Estado tem três aspectos: forma de governo (República ou Monarquia), sistema de governo (presidencialismo ou parlamentarismo) e forma de Estado (Estado unitário ou Federação).",
+      "src": "Aula 02, p. 6",
+      "cit": "forma de governo: República ou Monarquia; sistema de governo: presidencialismo ou parlamentarismo; forma de Estado: Estado unitário ou Federação.",
+      "trap": "Forma de Estado (unitário ou federado) não é forma de governo (república ou monarquia).",
+      "nota": "Divergência de numeração: a p. 4 diz que a aula trata dos 'tópicos 3 e 4 do Edital'; neste mapa a numeração segue o cargo 11 (cp-1 Regimes políticos, cp-2 Sistemas e formas de governo)."
+     }
+    },
+    {
+     "id": "est-a02-r1.3",
+     "t": "Soberania x autonomia",
+     "n": "Soberania é poder de autodeterminação; autonomia é administrar o próprio, dentro da soberania",
+     "x": {
+      "e": "A soberania é o poder de autodeterminação do Estado, que só encontra limites na determinação do próprio Estado. A autonomia é a capacidade das entidades estatais internas (Estados-membros, Distrito Federal e Municípios) de compor seu governo e prover sua administração segundo o ordenamento jurídico vigente.",
+      "src": "Aula 02, p. 10",
+      "cit": "É o poder de autodeterminação",
+      "trap": "Soberania é do Estado (Nação); autonomia é das entidades internas, dentro do ordenamento jurídico. Não são sinônimos.",
+      "nota": "Trecho da p. 10 com a ordem de leitura embaralhada no texto-fonte; o cit acima é a parte legível."
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r2",
+   "t": "Forma de Estado: unitário e federado",
+   "n": "Estado federado divide o poder entre governo central e unidades autônomas",
+   "x": {
+    "e": "No Estado unitário o poder é centralizado em um governo nacional; no Estado federado o poder é compartilhado entre um governo central e unidades políticas autônomas.",
+    "src": "Aula 02, p. 7",
+    "cit": "O Estado Unitário é uma forma de organização política em que o poder político é centralizado em um único governo nacional"
+   },
+   "f": [
+    {
+     "id": "est-a02-r2.1",
+     "t": "Estado federado e autonomia dos entes",
+     "n": "Cada unidade federada tem constituição e autoridade legislativa própria",
+     "x": {
+      "e": "Nas unidades autônomas do Estado federado, cada uma tem constituição própria e competência legislativa sobre questões específicas (auto-organização, autoadministração e autolegislação). O governo federal cuida de temas nacionais, como defesa, política externa e moeda.",
+      "src": "Aula 02, p. 7",
+      "cit": "Cada uma dessas unidades políticas autônomas possui sua própria constituição e autoridade legislativa para tomar decisões sobre questões específicas",
+      "trap": "Autonomia dos estados não é soberania: a soberania é do Estado Federal."
+     }
+    },
+    {
+     "id": "est-a02-r2.2",
+     "t": "Origem do federalismo e a Confederação",
+     "n": "A Confederação fracassou; a Federação combina soberania única com autonomias",
+     "x": {
+      "e": "Na Confederação, os estados se unem voluntariamente, mantêm a soberania e o governo central não tem poder de império. A fórmula federalista criou uma soberania una e indivisível, com autonomia para os entes.",
+      "src": "Aula 02, p. 9",
+      "cit": "Um Estado Confederado, na definição clássica, é uma forma de organização política em que vários estados ou entidades políticas independentes se unem voluntariamente para formar uma associação ou liga",
+      "trap": "Confederação: poder central sem império; Federação: soberania una e indivisível."
+     }
+    },
+    {
+     "id": "est-a02-r2.3",
+     "t": "Federalismo segundo Dalmo Dallari",
+     "n": "Base jurídica é a Constituição; não existe secessão",
+     "x": {
+      "e": "Para Dallari, a base jurídica do Estado Federal é a Constituição, não um tratado. Os entes federados perdem a condição de Estados independentes, e não há direito de secessão, pois a soberania é exclusiva do Estado Federal.",
+      "src": "Aula 02, p. 16",
+      "cit": "A base jurídica fundamental de um Estado Federal é a Constituição, não um tratado ou acordo.",
+      "trap": "No Estado Federal não existe o direito de secessão, diferente da Confederação."
+     }
+    },
+    {
+     "id": "est-a02-r2.4",
+     "t": "Arranjos federativos (Maria das Graças Rua)",
+     "n": "Três arranjos: dual, centralizado e cooperativo",
+     "x": {
+      "e": "Maria das Graças Rua sistematiza três arranjos federativos (dual, centralizado e cooperativo) e, quanto à hierarquia entre os entes, a distinção entre federalismo simétrico e assimétrico.",
+      "src": "Aula 02, p. 17",
+      "cit": "As Federações podem adotar diferentes tipos de arranjos federativos: federalismo dual, federalismo centralizado e federalismo cooperativo."
+     },
+     "f": [
+      {
+       "id": "est-a02-r2.4.1",
+       "t": "Federalismo dual",
+       "n": "Separação rígida de soberanias, cada ente age na sua esfera",
+       "x": {
+        "e": "No federalismo dual há separação rígida de soberanias entre o governo federal e os estados, mesmo que compartilhem o território, e cada ente age de forma independente na sua esfera de competência.",
+        "src": "Aula 02, p. 17",
+        "cit": "O federalismo dual é caracterizado pela separação rígida de soberanias entre o governo federal e os estados"
+       }
+      },
+      {
+       "id": "est-a02-r2.4.2",
+       "t": "Federalismo centralizado e cooperativo",
+       "n": "Centralizado: políticas formuladas pela União; cooperativo: ações conjuntas",
+       "x": {
+        "e": "No federalismo centralizado, os estados e municípios executam diretrizes federais. No cooperativo, há graus variados de intervenção federal e ações conjuntas entre os níveis de governo, mantendo as unidades autonomia decisória e capacidade de financiamento.",
+        "src": "Aula 02, p. 17",
+        "cit": "Esse arranjo permite graus variados de intervenção do governo federal e envolve ações conjuntas entre os diferentes níveis de governo",
+        "trap": "No federalismo centralizado os entes subnacionais executam, não formulam, as políticas."
+       }
+      },
+      {
+       "id": "est-a02-r2.4.3",
+       "t": "Federalismo simétrico e assimétrico",
+       "n": "Assimétrico: estados de mesmo nível com competências diferentes",
+       "x": {
+        "e": "No federalismo simétrico os estados de igual nível têm competências semelhantes e o mesmo número de senadores. No assimétrico, não têm as mesmas competências nem necessariamente o mesmo número de senadores. A fonte observa que a Constituição brasileira trata os estados de modo idêntico, o que é um 'erro de simetria'.",
+        "src": "Aula 02, p. 17",
+        "cit": "No federalismo assimétrico, os estados de igual nível não exercem as mesmas competências e não necessariamente têm o mesmo número de representantes no Senado.",
+        "trap": "O Brasil é descrito pela fonte com 'erro de simetria' (p. 18), não como exemplo de assimetria pura."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r3",
+   "t": "Forma de governo: monarquia e república",
+   "n": "Forma de governo responde a quem exerce a autoridade e como ela é transmitida",
+   "x": {
+    "e": "Forma de governo diz respeito ao modo pelo qual o poder se organiza e se exerce, quem tem a autoridade legítima e como se chegou a essa autoridade.",
+    "src": "Aula 02, p. 21",
+    "cit": "A forma de governo determina a estrutura fundamental de como um país é governado."
+   },
+   "f": [
+    {
+     "id": "est-a02-r3.1",
+     "t": "Monarquia",
+     "n": "Chefe de Estado com poder em geral hereditário",
+     "x": {
+      "e": "Na monarquia, o chefe de Estado geralmente detém o poder por hereditariedade, e a legitimidade costuma vir da história ou da tradição. Nas monarquias constitucionais, o governo é conduzido pelo parlamento.",
+      "src": "Aula 02, p. 21",
+      "cit": "um dos sistemas mais antigos e tradicionais, a monarquia é caracterizada por um chefe de Estado que geralmente detém o poder por hereditariedade",
+      "trap": "Monarquia constitucional: o monarca reina, mas não governa; a direção do Estado cabe ao parlamento."
+     }
+    },
+    {
+     "id": "est-a02-r3.2",
+     "t": "República",
+     "n": "Poder não hereditário, baseado em representação e soberania popular",
+     "x": {
+      "e": "Na república, o poder não é hereditário nem vinculado a uma família ou monarca; o chefe de Estado e/ou de governo não tem cargo hereditário e sua autoridade é limitada pela constituição ou por leis.",
+      "src": "Aula 02, p. 22",
+      "cit": "a República é uma forma de governo na qual o poder político não é hereditário e não está vinculado a uma única família ou monarca",
+      "trap": "Na república o cargo não é hereditário, mas a fonte não diz que todo chefe de governo é eleito diretamente."
+     }
+    },
+    {
+     "id": "est-a02-r3.3",
+     "t": "República: forma e conteúdo (Rui Barbosa)",
+     "n": "Forma republicana não basta: importa o conteúdo, a justiça e a liberdade",
+     "x": {
+      "e": "Rui Barbosa definiu a república pela forma (três poderes, sendo os dois primeiros derivados de eleição popular), mas alertou que a forma sem conteúdo, valores e princípios republicanos não basta.",
+      "src": "Aula 02, p. 23",
+      "cit": "A república é a democracia e a liberdade na lei.",
+      "trap": "A forma republicana (quem escolhe) não garante o conteúdo republicano (justiça e liberdade)."
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r4",
+   "t": "Sistema de governo: divisão e relação entre poderes",
+   "n": "Sistema de governo trata da divisão de poderes e de como eles se relacionam",
+   "x": {
+    "e": "O sistema de governo se refere à divisão do poder entre Executivo, Legislativo e Judiciário e à relação entre eles, o que define parlamentarismo, presidencialismo e, na fonte, semipresidencialismo.",
+    "src": "Aula 02, p. 23",
+    "cit": "Sistema de Governo se refere a como o poder político está dividido e como os detentores do poder se relacionam."
+   },
+   "f": [
+    {
+     "id": "est-a02-r4.1",
+     "t": "Parlamentarismo",
+     "n": "Executivo sai do Parlamento e depende da sua confiança",
+     "x": {
+      "e": "No parlamentarismo, o Executivo emerge do Parlamento e é responsável perante ele. O chefe de governo (primeiro-ministro) é indicado pelo chefe de Estado e assume após aprovação do parlamento.",
+      "src": "Aula 02, p. 25",
+      "cit": "O Chefe de Governo (Primeiro Ministro) é indicado pelo Chefe de Estado e assume o cargo após a aprovação pelo parlamento."
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.1.1",
+       "t": "Chefe de Estado e chefe de Governo",
+       "n": "Chefe de Estado é representativo; governo é chefiado pelo primeiro-ministro",
+       "x": {
+        "e": "No parlamentarismo, o chefe de Estado (monarca ou presidente) não participa das decisões políticas de governo e tem papel representativo. O chefe de governo é a figura central do poder executivo.",
+        "src": "Aula 02, p. 25",
+        "cit": "No parlamentarismo, o Chefe de Estado (monarca ou Presidente da República) não participa das decisões políticas de governo",
+        "trap": "Em república parlamentarista existe presidente, mas ele não é o chefe de governo."
+       }
+      },
+      {
+       "id": "est-a02-r4.1.2",
+       "t": "Responsabilidade política e voto de desconfiança",
+       "n": "Perda da maioria ou voto de desconfiança derruba o primeiro-ministro",
+       "x": {
+        "e": "O primeiro-ministro não tem mandato de prazo determinado. A perda da maioria parlamentar ou um voto de desconfiança podem levar à sua demissão.",
+        "src": "Aula 02, p. 25",
+        "cit": "A perda da maioria parlamentar ou um voto de desconfiança podem determinar a demissão do Primeiro Ministro.",
+        "trap": "No parlamentarismo o primeiro-ministro não tem mandato fixo."
+       }
+      },
+      {
+       "id": "est-a02-r4.1.3",
+       "t": "Dissolução do parlamento",
+       "n": "Dissolução pode ocorrer por interesse do primeiro-ministro",
+       "x": {
+        "e": "O parlamento pode ser dissolvido quando o primeiro-ministro acredita que eleições gerais ampliarão sua maioria, ou quando recebe voto de desconfiança mas acredita que o parlamento está em desacordo com a vontade popular.",
+        "src": "Aula 02, p. 26",
+        "cit": "A dissolução do parlamento pode ocorrer quando o Primeiro Ministro acredita que a realização de eleições gerais pode resultar em uma ampliação de sua maioria parlamentar."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r4.2",
+     "t": "Presidencialismo",
+     "n": "Presidente acumula chefia de Estado e de governo e tem mandato fixo",
+     "x": {
+      "e": "No presidencialismo, o presidente é chefe de Estado e de governo e é eleito diretamente pelo povo, com mandato fixo. O Executivo não depende de confiança do Legislativo para se manter.",
+      "src": "Aula 02, p. 27",
+      "cit": "No presidencialismo, o Presidente da República é tanto o Chefe de Estado quanto o Chefe de Governo, acumulando ambas as funções."
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.2.1",
+       "t": "Eleição direta e mandato fixo",
+       "n": "Presidente eleito pelo povo com prazo determinado",
+       "x": {
+        "e": "O presidente é escolhido diretamente pelo povo, e o prazo fixo do mandato evita uma monarquia eletiva.",
+        "src": "Aula 02, p. 27",
+        "cit": "O Presidente da República é escolhido diretamente pelo povo em eleições populares, não apenas pelos parlamentares.",
+        "trap": "O presidente é eleito pelo povo, não pelos parlamentares."
+       }
+      },
+      {
+       "id": "est-a02-r4.2.2",
+       "t": "Veto presidencial",
+       "n": "Veto evita a ditadura legislativa; é relativo e pode ser derrubado",
+       "x": {
+        "e": "O presidente tem poder de veto para evitar o risco de uma ditadura legislativa. Ele é meramente impeditivo e relativo, podendo o Congresso rejeitá-lo, em regra por maioria de dois terços.",
+        "src": "Aula 02, p. 32",
+        "cit": "caráter relativo daquela faculdade, meramente impeditiva, sem efeito absoluto",
+        "trap": "O veto é relativo: o Congresso pode rejeitá-lo (p. 32)."
+       }
+      },
+      {
+       "id": "est-a02-r4.2.3",
+       "t": "Impedimento (impeachment) do presidente",
+       "n": "Presidente só cai por crime de responsabilidade",
+       "x": {
+        "e": "Como o presidente tem legitimidade popular direta e mandato fixo, a saída do cargo se dá por processo de responsabilidade por crime, e não por perda de apoio político, como no parlamentarismo.",
+        "src": "Aula 02, p. 31",
+        "cit": "Se não houver crime cometido, o Presidente da República não pode ser",
+        "trap": "No presidencialismo, perda de apoio político não derruba o presidente.",
+        "nota": "O trecho da p. 31 que trata das formas de derrubar o governo está embaralhado no texto-fonte; a regra do crime de responsabilidade foi conferida pela parte legível da p. 31 e pela opinião de Temer na p. 29 (que não é a regra de direito)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r4.3",
+     "t": "Semipresidencialismo",
+     "n": "Sistema misto com presidente eleito e primeiro-ministro dependente do parlamento",
+     "x": {
+      "e": "No semipresidencialismo coexistem dois centros de poder: um presidente eleito diretamente pelo povo e um primeiro-ministro responsável pela condução do governo e dependente da confiança do Parlamento.",
+      "src": "Aula 02, p. 32",
+      "cit": "O semipresidencialismo é um sistema de governo misto, situado entre o presidencialismo e o parlamentarismo, no qual coexistem dois centros de poder político"
+     },
+     "f": [
+      {
+       "id": "est-a02-r4.3.1",
+       "t": "Debate sobre o semipresidencialismo no Brasil",
+       "n": "Está em debate, mas exigiria mudança constitucional",
+       "x": {
+        "e": "A fonte informa que há debate na Câmara dos Deputados sobre implantar o semipresidencialismo, o que exigiria mudar a Constituição, que define hoje o sistema brasileiro.",
+        "src": "Aula 02, p. 33",
+        "cit": "Está em debate no Brasil, mais especificamente na Câmara dos Deputados, discussões sobre implantação do semipresidencialismo.",
+        "trap": "O Brasil é presidencialista (p. 21 e 37); o semipresidencialismo é apenas tema de debate."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r5",
+   "t": "Controle entre poderes e crises de governo",
+   "n": "Controle entre poderes é institucional, não moral",
+   "x": {
+    "e": "Como os poderes se controlam e como cada sistema lida com crises: a separação de poderes é mantida por freios e contrapesos.",
+    "src": "Aula 02, p. 34",
+    "cit": "Afinal, como Madison nos lembra, os seres humanos não são governados por anjos, mas sim por seus semelhantes"
+   },
+   "f": [
+    {
+     "id": "est-a02-r5.1",
+     "t": "Natureza humana e freios e contrapesos",
+     "n": "O poder precisa de contrapoder para não ser abusado",
+     "x": {
+      "e": "Os Federalistas partem de uma visão realista da natureza humana: quem tem poder tende a abusar dele, então o poder deve ser controlado por um contrapoder, o sistema de freios e contrapesos.",
+      "src": "Aula 02, p. 34",
+      "cit": "é necessário que haja um contrapoder - sistema de freios e contrapesos",
+      "trap": "Freios e contrapesos têm base em Montesquieu, mas os Federalistas trazem nuances próprias."
+     },
+     "f": [
+      {
+       "id": "est-a02-r5.1.1",
+       "t": "Divisão do poder em três esferas",
+       "n": "Três poderes harmônicos e independentes, com freios e contrapesos",
+       "x": {
+        "e": "Primeiro remédio dos Federalistas para os 'males da república': dividir o poder em três esferas harmônicas e independentes, com o papel de ser o sistema de freios e contrapesos contra todo tipo de abuso.",
+        "src": "Aula 02, p. 11",
+        "cit": "Divisão do poder em três esferas harmônicas e independentes",
+        "trap": "O primeiro remédio é a divisão do poder, não a proteção de minorias (que é o segundo)."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.2",
+       "t": "Direitos das minorias e proporcionalidade",
+       "n": "Segundo remédio: direitos plenos das minorias e representação proporcional",
+       "x": {
+        "e": "Segundo remédio: garantir os direitos plenos de expressão das minorias políticas, criando o critério de proporcionalidade na representação política.",
+        "src": "Aula 02, p. 11",
+        "cit": "Os direitos plenos de expressão das minorias políticas",
+        "trap": "A proporcionalidade é critério de representação, não de divisão de poderes."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.3",
+       "t": "Senado e controle dos Estados",
+       "n": "Senado mantém o controle da União pelos Estados federados",
+       "x": {
+        "e": "Terceiro remédio: a criação do Senado como forma de manter o controle do Governo da União pelos Estados federados.",
+        "src": "Aula 02, p. 11",
+        "cit": "A criação do Senado como forma de manter o controle do Governo da União pelos Estados Federados",
+        "trap": "O Senado, no remédio dos Federalistas, serve de controle dos Estados sobre a União."
+       }
+      },
+      {
+       "id": "est-a02-r5.1.4",
+       "t": "Declaração de Direitos (Bill of Rights)",
+       "n": "Quarto remédio: direitos civis em dez emendas",
+       "x": {
+        "e": "Quarto remédio: a Declaração de Direitos Civis (Bill of Rights), com dez emendas à Constituição.",
+        "src": "Aula 02, p. 12",
+        "cit": "A Declaração de Direitos Civis (Bill of rights - 10 emendas à Constituição)",
+        "trap": "O Bill of Rights são as dez emendas; não é o mesmo que a separação de poderes."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r5.2",
+     "t": "Controle institucional, não moral",
+     "n": "O controle entre poderes é de ordem institucional",
+     "x": {
+      "e": "Para os Federalistas, a separação de poderes não se apoia num povo virtuoso, mas em conter os interesses e ambições de quem busca poder. Por isso o controle entre poderes é institucional, e não moral.",
+      "src": "Aula 02, p. 35",
+      "cit": "não é de ordem moral, mas sim institucional",
+      "trap": "A separação de poderes não depende de virtude moral dos governantes."
+     }
+    },
+    {
+     "id": "est-a02-r5.3",
+     "t": "Crises: parlamentarismo e presidencialismo",
+     "n": "Parlamentarismo resolve crise trocando o gabinete; presidencialismo tende a mais tensão",
+     "x": {
+      "e": "No parlamentarismo, crises de governo são enfrentadas com a dissolução do gabinete. No presidencialismo, a legitimidade popular direta do presidente e o mandato fixo geram potencial de conflito com o Legislativo.",
+      "src": "Aula 02, p. 30",
+      "cit": "No parlamentarismo, as crises de governo, crises políticas e até mesmo crises econômicas geralmente são enfrentadas com a dissolução do Gabinete"
+     },
+     "f": [
+      {
+       "id": "est-a02-r5.3.1",
+       "t": "Presidencialismo e tensão entre poderes",
+       "n": "Presidencialismo é mais propenso a tensões entre Executivo e Legislativo",
+       "x": {
+        "e": "A fonte afirma que o presidencialismo tende a gerar mais tensões, pois a legitimidade popular do presidente pode gerar conflito com o Legislativo, e a estabilidade depende da maioria parlamentar e do prestígio do presidente.",
+        "src": "Aula 02, p. 31",
+        "cit": "O presidencialismo é um sistema que tende a gerar mais tensões.",
+        "trap": "No parlamentarismo a governabilidade é quase pressuposta; no presidencialismo não é garantida."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r5.4",
+     "t": "Regime de coalizão",
+     "n": "Em parlamentos multipartidários, o consenso sustenta a chefia de gabinete",
+     "x": {
+      "e": "Nos parlamentos multipartidários, o regime de coalizão é fundamental: o Legislativo deve chegar a um amplo consenso ao definir o nome para a chefia de gabinete, garantindo legitimidade e governabilidade.",
+      "src": "Aula 02, p. 31",
+      "cit": "Regime de Coalizão: Nos parlamentos multipartidaristas, o regime de coalizão é fundamental para o sistema.",
+      "trap": "A fonte aplica o regime de coalizão aos parlamentos multipartidaristas (p. 31); não o trate como regra geral de todo sistema."
+     }
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r6",
+   "t": "Regime político",
+   "n": "Regime político é a estrutura global da realidade política, com instituições e ideologia",
+   "x": {
+    "e": "Regime político diz respeito à estrutura global da realidade política, com todo o seu complexo institucional e ideológico, segundo Maurice Duverger. Trata da forma como o poder é exercido.",
+    "src": "Aula 02, p. 35",
+    "cit": "Regime político diz respeito à estrutura global da realidade política, com todo o seu complexo institucional e ideológico, segundo Maurice Duverger."
+   },
+   "f": [
+    {
+     "id": "est-a02-r6.1",
+     "t": "Regime político e os demais aspectos do Estado",
+     "n": "Regime político se distingue de forma e sistema de governo",
+     "x": {
+      "e": "A fonte diz que alguns autores incluem o regime político dentro do sistema de governo. Para o caso brasileiro, o quadro separa Estado federado, forma de governo, sistema de governo e regime político.",
+      "src": "Aula 02, p. 36",
+      "cit": "Alguns autores afirmam que o regime político está dentro do sistema e governo.",
+      "trap": "Regime político não é forma de governo nem sistema de governo; são camadas diferentes.",
+      "nota": "Texto-fonte da p. 36 traz 'sistema e governo' (provável 'sistema de governo'). A classificação do Brasil está na p. 37."
+     }
+    },
+    {
+     "id": "est-a02-r6.2",
+     "t": "Regime democrático e autocrático",
+     "n": "Democracia tem partidos, eleições e liberdade de imprensa e associação",
+     "x": {
+      "e": "Nos regimes democráticos há partidos, eleições, liberdade de imprensa e de associação e a soberania se funda na participação popular. Nos regimes autocráticos, as liberdades políticas são negadas. O Brasil é classificado como regime político democrático.",
+      "src": "Aula 02, p. 37",
+      "cit": "Nos Regimes Democráticos, há partidos, há eleições, liberdade de imprensa e de associação."
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.2.1",
+       "t": "Democracia direta e indireta",
+       "n": "Indireta: uso exclusivo de representantes",
+       "x": {
+        "e": "Na democracia indireta o poder é exercido exclusivamente por representantes (p. 44); na direta, pelo povo; na semidireta há mistura. A p. 37 define pela escolha do Presidente, critério que confunde eleição indireta com democracia indireta.",
+        "src": "Aula 02, p. 44",
+        "cit": "Democracia indireta, uso exclusivo de representante no exercício de poder",
+        "trap": "Democracia indireta não é eleição indireta: o Presidente brasileiro é eleito diretamente e a democracia é semidireta.",
+        "nota": "Definição pela escolha do presidente (p. 37). A p. 44 define direta/indireta pelo exercício do poder (direta = povo; indireta = representantes; semidireta = mistura), outro critério. Não são a mesma definição; ligado a r7.4."
+       }
+      },
+      {
+       "id": "est-a02-r6.2.2",
+       "t": "Mecanismos de participação semidireta",
+       "n": "Plebiscito, referendo e projeto de lei de iniciativa popular",
+       "x": {
+        "e": "Dentro dos regimes democráticos há mecanismos de participação popular além das eleições, como plebiscito, referendo e a possibilidade de o povo apresentar projetos de lei. O Brasil adota a democracia semidireta.",
+        "src": "Aula 02, p. 37",
+        "cit": "Esses mecanismos são o plebiscito, o referendo e a possibilidade de o povo apresentar projetos de lei.",
+        "trap": "Na democracia semidireta, a maior parte das decisões é tomada por representantes eleitos."
+       }
+      },
+      {
+       "id": "est-a02-r6.2.3",
+       "t": "Autocracia (regime autocrático)",
+       "n": "Autocracia nega liberdades e restringe o pluralismo",
+       "x": {
+        "e": "O regime autocrático ou ditatorial se caracteriza, do ponto de vista político, por negar as liberdades individuais e políticas, restringir o pluripartidarismo e impor censura ou licença prévia.",
+        "src": "Aula 02, p. 38",
+        "cit": "O Regime Autocrático (ou ditatorial) se caracteriza, pelo menos do ponto de vista político, por negar"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r6.3",
+     "t": "Autocracia e transição de regime",
+     "n": "Transição: teorias da transitologia analisam a passagem para a democracia",
+     "x": {
+      "e": "A transitologia estuda a passagem de regimes autoritários para democráticos, a partir de experiências desde 1974 no sul da Europa e na América Latina. A fonte lista onze elementos a analisar, como estrutura econômica e social, acordos entre forças políticas, cultura política e liderança da transição.",
+      "src": "Aula 02, p. 38",
+      "cit": "A partir das experiências de mudança de regime político acontecidas, desde 1974, no sul da Europa e na América Latina"
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.3.1",
+       "t": "Democracia com defeitos de nascença",
+       "n": "Avaliar se a transição evita falta de institucionalização",
+       "x": {
+        "e": "Na transição é preciso avaliar se a nova democracia não nasce com 'defeitos de nascença', como falta de institucionalização ou características personalistas.",
+        "src": "Aula 02, p. 39",
+        "cit": "É crucial avaliar se a transição está ocorrendo de forma a evitar que a nova democracia tenha"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r6.4",
+     "t": "Tipos de democracia (sistematização)",
+     "n": "Cinco tipos: deliberativa, igualitária, eleitoral, liberal e participativa",
+     "x": {
+      "e": "A fonte sistematiza cinco tipos de democracia, criados a partir do debate teórico: deliberativa, igualitária, eleitoral, liberal e participativa. Cada um tem um eixo próprio (processo, igualdade, competição, limites ao governo, participação).",
+      "src": "Aula 02, p. 58",
+      "cit": "vamos trazer a sistematização dos tipos de democracia criados a partir de todo o debate teórico"
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.4.1",
+       "t": "Democracia deliberativa",
+       "n": "Decisão pela razão pública, com diálogo",
+       "x": {
+        "e": "A democracia deliberativa concentra-se no processo pelo qual as decisões são tomadas: a razão pública, focada no bem comum, motiva as decisões, em contraste com apelos emocionais, vínculos solidários, interesses paroquiais ou coerção. Autor associado (p. 59): Habermas.",
+        "src": "Aula 02, p. 58",
+        "cit": "Democracia Deliberativa: A democracia deliberativa concentra-se no processo pelo qual as decisões são tomadas em um corpo político",
+        "trap": "Democracia deliberativa não é só agregar preferências existentes: exige diálogo respeitoso."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.2",
+       "t": "Democracia igualitária",
+       "n": "Igualdade material e de acesso ao poder",
+       "x": {
+        "e": "A democracia igualitária sustenta que as desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais. É alcançada quando direitos são protegidos igualmente, recursos são distribuídos igualmente e grupos têm igual acesso ao poder. Autor associado (p. 60): Rawls.",
+        "src": "Aula 02, p. 59",
+        "cit": "A democracia igualitária sustenta que as desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais",
+        "trap": "O eixo é a igualdade material e de acesso ao poder, não só o voto igual."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.3",
+       "t": "Democracia eleitoral",
+       "n": "Governantes responsivos por competição eleitoral",
+       "x": {
+        "e": "A democracia eleitoral busca tornar os governantes responsivos aos cidadãos pela competição eleitoral, com sufrágio amplo, eleições limpas e eleição do chefe do Executivo. Autor associado (p. 61): Schumpeter, que define a democracia como método de competição para a conquista do poder.",
+        "src": "Aula 02, p. 60",
+        "cit": "A democracia eleitoral busca incorporar o valor central de tornar os governantes responsivos aos cidadãos",
+        "trap": "Na eleitoral o foco é a competição eleitoral; não é a participação ativa de todos os processos (isso é a participativa)."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.4",
+       "t": "Democracia liberal",
+       "n": "Limites ao governo e proteção de minorias",
+       "x": {
+        "e": "A democracia liberal protege direitos individuais e de grupos minoritários contra a tirania do Estado e a tirania da maioria. Adota visão negativa do poder: julga a qualidade da democracia pelos limites impostos ao governo. Autor associado (p. 62): Mill.",
+        "src": "Aula 02, p. 61",
+        "cit": "A democracia liberal enfatiza a importância de proteger os direitos individuais e dos grupos minoritários contra a tirania do estado e a tirania da maioria",
+        "trap": "Democracia liberal julga pelos limites ao governo (visão negativa), não pela participação."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.5",
+       "t": "Democracia participativa",
+       "n": "Participação ativa em todos os processos, eleitorais e não eleitorais",
+       "x": {
+        "e": "A democracia participativa enfatiza a participação ativa dos cidadãos em todos os processos políticos, eleitorais e não eleitorais, e prefere o governo direto pelos cidadãos sempre que possível. Autora associada (p. 62): Carole Pateman.",
+        "src": "Aula 02, p. 62",
+        "cit": "A democracia participativa enfatiza a participação ativa dos cidadãos em todos os processos políticos, eleitorais e não eleitorais",
+        "trap": "Participativa é oposta à delegação exclusiva a representantes; não é o mesmo que a democracia eleitoral.",
+        "nota": "Na fonte, o 'Autor Associado' vem logo após a definição de cada tipo (pp. 59-62), por isso a atribuição de Habermas, Rawls, Schumpeter, Mill e Pateman segue essa ordem."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r7",
+   "t": "Democracia na história",
+   "n": "Democracia evoluiu de Atenas à era moderna com ampliação da participação",
+   "x": {
+    "e": "A democracia se relaciona ao reconhecimento e à salvaguarda dos direitos de liberdade, igualdade e participação política; a fonte a percorre historicamente.",
+    "src": "Aula 02, p. 40",
+    "cit": "a democracia está intrinsecamente relacionada ao reconhecimento e à salvaguarda dos direitos fundamentais do ser humano, ou seja, dos direitos de liberdade, igualdade e participação política"
+   },
+   "f": [
+    {
+     "id": "est-a02-r7.1",
+     "t": "Democracia na Grécia Antiga",
+     "n": "Atenas: democracia direta, com exclusões",
+     "x": {
+      "e": "Em Atenas, o povo reunido na Ágora exercia diretamente o poder político. Mulheres, escravos e estrangeiros estavam excluídos, e a fonte cita críticos que dizem que a democracia grega era elitista e restrita.",
+      "src": "Aula 02, p. 41",
+      "cit": "Assim, a Grécia, especificamente Atenas, é considerada o berço da democracia, onde o povo, reunido na Ágora, praticava o exercício direto e imediato do poder político"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.1.1",
+       "t": "Críticas à democracia grega",
+       "n": "Democracia grega seria elitista e restrita",
+       "x": {
+        "e": "Críticos argumentam que a democracia grega não era verdadeiramente democrática, mas elitista e restrita; mesmo assim é um marco na história política.",
+        "src": "Aula 02, p. 42",
+        "cit": "Alguns críticos rigorosos argumentam que a democracia grega não era verdadeiramente democrática, mas sim elitista e restrita.",
+        "trap": "A democracia ateniense excluía mulheres, escravos e estrangeiros."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r7.2",
+     "t": "Democracia na Roma Antiga",
+     "n": "Roma: predomínio da forma representativa",
+     "x": {
+      "e": "Em Roma, na República, prevaleceu a forma representativa de exercício político, em razão da extensão territorial e da inserção da plebe na política.",
+      "src": "Aula 02, p. 42",
+      "cit": "enquanto na Grécia Antiga prevaleceu a democracia direta, em Roma predominou a forma representativa de exercício político",
+      "trap": "Não confunda Roma (representativa) com Atenas (direta)."
+     }
+    },
+    {
+     "id": "est-a02-r7.3",
+     "t": "Era moderna e revoluções liberais",
+     "n": "Revoluções liberais ampliaram a cidadania por meio de Constituições",
+     "x": {
+      "e": "As revoluções liberais, como a Independência dos Estados Unidos (1776) e a Revolução Francesa (1789), buscavam ampliar a cidadania, limitar o poder e estabelecer sistemas formais de justiça por meio de Constituições.",
+      "src": "Aula 02, p. 43",
+      "cit": "As revoluções liberais burguesas, como a Independência dos Estados Unidos em 1776 e a Revolução Francesa em 1789, compartilhavam o objetivo de ampliar a cidadania"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.3.1",
+       "t": "Sufrágio universal como luta social (Lefort)",
+       "n": "O sufrágio universal foi conquistado por luta social",
+       "x": {
+        "e": "Para Claude Lefort, a democracia não é exclusivamente burguesa: foi preciso luta social dos oprimidos para o estabelecimento do sufrágio universal, e a ampliação de direitos continua.",
+        "src": "Aula 02, p. 44",
+        "cit": "Foi preciso uma luta social para o estabelecimento do sufrágio universal",
+        "nota": "A frase do texto-fonte diz 'sufrágio universal - sem a participação feminina' e não fecha o sentido; a fonte não detalha a data do voto feminino."
+       }
+      },
+      {
+       "id": "est-a02-r7.3.2",
+       "t": "Tocqueville e Mill: igualdade x liberdade",
+       "n": "Dilema entre liberdade e igualdade; risco da tirania da maioria",
+       "x": {
+        "e": "Tocqueville e Mill são clássicos do dilema entre liberdade e igualdade: a ameaça à liberdade vem também da maioria. Tocqueville viu o risco do despotismo majoritário no igualitarismo; Mill, a tirania da maioria e as liberdades individuais.",
+        "src": "Aula 02, p. 12",
+        "cit": "Alexis de Tocqueville e Stuart Mill e o dilema da igualdade X liberdade"
+       },
+       "f": [
+        {
+         "id": "est-a02-r7.3.2.1",
+         "t": "Tocqueville: igualdade e despotismo majoritário",
+         "n": "Igualdade pode levar à tirania da maioria e ao conformismo",
+         "x": {
+          "e": "Tocqueville considerava que a igualdade de condições nas democracias modernas pode levar à conformidade e ao despotismo majoritário. Para conciliar liberdade e igualdade, propunha espírito de cidadania, solidariedade, participação política e sociedade civil fortalecida.",
+          "src": "Aula 02, p. 13",
+          "cit": "previu que o crescente igualitarismo poderia limitar a liberdade e levar a uma forma de despotismo majoritário",
+          "trap": "Tocqueville não defendia o socialismo; a fonte o descreve criticando o partido único."
+         }
+        },
+        {
+         "id": "est-a02-r7.3.2.2",
+         "t": "Mill: tirania da maioria e três liberdades",
+         "n": "Governo legítimo pode oprimir a minoria; liberdade de consciência, de ser diferente e de associação",
+         "x": {
+          "e": "Para Mill, um governo legitimamente eleito pode se tornar tirânico ao representar a maioria; a tirania da maioria se refere à opressão da minoria. Ele sistematiza três liberdades: consciência, ser diferente e associação, e admite intervenção do Estado apenas para evitar danos a outros.",
+          "src": "Aula 02, p. 14",
+          "cit": "A liberdade do indivíduo deve ser, portanto, limitada; ele não pode fazer de si mesmo",
+          "trap": "Para Mill o governo só deve interferir na liberdade para evitar danos a outros; não é intervenção livre."
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r7.4",
+     "t": "Democracia contemporânea: soberania popular, representação e voto",
+     "n": "Democracia atual: livre escolha de governantes pela maioria, por votação",
+     "x": {
+      "e": "Na democracia contemporânea, a soberania popular se efetiva por meio da representação e do voto. A democracia é, em regra, indireta ou semidireta, e o Brasil está na classificação semidireta.",
+      "src": "Aula 02, p. 45",
+      "cit": "podemos pensar a definição da democracia atual como um sistema governamental formado pela livre escolha de governantes (os representantes) pela maioria da população, por meio de votações"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.4.1",
+       "t": "Três tradições do pensamento político (Bobbio)",
+       "n": "Aristóteles, medieval e Maquiavel fundamentam a democracia",
+       "x": {
+        "e": "Bobbio lista três tradições: a teoria clássica aristotélica das três formas de governo, a teoria medieval da soberania popular e a teoria moderna de Maquiavel, em que a democracia é uma forma de república.",
+        "src": "Aula 02, p. 45",
+        "cit": "a teoria clássica, divulgada como teoria aristotélica, das três formas de Governo",
+        "trap": "Na teoria moderna de Maquiavel, a democracia é apenas uma forma de república."
+       }
+      },
+      {
+       "id": "est-a02-r7.4.2",
+       "t": "Partidos políticos nas democracias atuais",
+       "n": "Partidos atuam no governo e na competição pelos votos",
+       "x": {
+        "e": "Além do voto e da representação, as democracias atuais têm partidos políticos, que atuam tanto no sistema de governo quanto na competição pelos votos.",
+        "src": "Aula 02, p. 45",
+        "cit": "Além do voto e da representação, outra característica das democracias atuais é a existência de Partidos Políticos que atuam no sistema de governos e no sistema de competição pelos votos."
+       }
+      },
+      {
+       "id": "est-a02-r7.4.3",
+       "t": "Schumpeter: abordagem elitista",
+       "n": "Democracia como disputa de elites por votos, método de escolha de líderes",
+       "x": {
+        "e": "Para Schumpeter, a vontade popular não é unificada e o eleitor pode decidir de forma emocional. A democracia é um método de escolha de líderes por eleições, em disputa entre elites pelo controle do Estado.",
+        "src": "Aula 02, p. 47",
+        "cit": "Assim, temos que a democracia é um sistema de disputa entre elites políticas pela conquista dos votos do eleitorado a fim de controlarem o Estado."
+       },
+       "f": [
+        {
+         "id": "est-a02-r7.4.3.1",
+         "t": "Democracia como método",
+         "n": "Democracia é procedimento de escolha de líderes, não decisão racional do povo",
+         "x": {
+          "e": "Schumpeter vê a democracia como método ou procedimento de escolha de líderes políticos por meio de eleições, e não como um sistema em que os cidadãos tomam decisões racionais e informadas.",
+          "src": "Aula 02, p. 47",
+          "cit": "ele vê a democracia como um método ou procedimento de escolha de líderes políticos por meio de eleições",
+          "trap": "Para Schumpeter, a democracia não é um sistema de decisões racionais e informadas dos cidadãos."
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "est-a02-r8",
+   "t": "Teorias e crise da democracia",
+   "n": "Teorias da democracia e a crise atual de regimes democráticos",
+   "x": {
+    "e": "Características da democracia contemporânea (Bobbio e Bonavides), teorias de Dahl, Pateman e Habermas, e a crise atual dos regimes democráticos, tratada como autocratização gradual.",
+    "src": "Aula 02, p. 57",
+    "cit": "Com o italiano Bobbio, podemos fixar um conjunto de características que ajudam a definir o Regime Democrático Contemporâneo"
+   },
+   "f": [
+    {
+     "id": "est-a02-r8.1",
+     "t": "Características da democracia contemporânea (Bobbio e Bonavides)",
+     "n": "Nove características (Bobbio) e oito traços (Bonavides) definem a democracia contemporânea",
+     "x": {
+      "e": "Bobbio lista nove características do regime democrático contemporâneo, sem as quais não há legitimidade democrática. Bonavides lista oito traços que a democracia atual reúne: soberania popular como fonte de legitimação, sufrágio com pluralidade de candidatos e partidos, separação de poderes, igualdade perante a lei, representação, limitação do poder, Estado de Direito e presença das minorias.",
+      "src": "Aula 02, p. 57",
+      "cit": "1) o órgão político máximo, responsável pela função legislativa, deve ser composto de membros direta ou indiretamente eleitos pelo povo"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.1.1",
+       "t": "Bobbio: nove características",
+       "n": "Eleitos, voto igual, confiança do Parlamento e direito das minorias",
+       "x": {
+        "e": "Entre as nove características de Bobbio: o órgão legislativo supremo é composto por eleitos (1); todos os eleitores têm voto igual (4); a maioria não pode limitar os direitos da minoria (8); e o Governo deve gozar de confiança do Parlamento ou de chefe do Executivo eleito pelo povo (9).",
+        "src": "Aula 02, p. 57",
+        "cit": "9) o órgão do Governo deve gozar de confiança do Parlamento ou do chefe do poder executivo",
+        "trap": "A característica 9 admite confiança do Parlamento OU de chefe do Executivo eleito pelo povo; não exige as duas."
+       }
+      },
+      {
+       "id": "est-a02-r8.1.2",
+       "t": "Bonavides: oito traços da democracia atual",
+       "n": "Soberania popular, pluralismo, separação de poderes e presença das minorias",
+       "x": {
+        "e": "Bonavides diz que a democracia atual reúne, de forma conjunta, oito traços. Entre eles: a soberania popular como fonte de legitimação do poder; o sufrágio universal com pluralidade de candidatos e de partidos; a separação de poderes; e a presença das minorias políticas.",
+        "src": "Aula 02, p. 57",
+        "cit": "1) a soberania popular como fonte de legitimação do poder",
+        "trap": "A lista de Bonavides tem oito pontos; não confunda com os nove de Bobbio."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.2",
+     "t": "Dahl: contestação pública e participação",
+     "n": "Regimes variam em contestação pública e direito de participação",
+     "x": {
+      "e": "Robert Dahl define contestação pública como a capacidade de oposição se organizar de forma aberta e legal, e direito de participação como a inclusão igualitária. Os regimes se movem nessas duas dimensões.",
+      "src": "Aula 02, p. 49",
+      "cit": "refere-se à capacidade de grupos políticos ou opositores ao governo se organizarem de maneira aberta e legal"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.2.1",
+       "t": "Poliarquia e graus de regime",
+       "n": "Poliarquia: regimes relativamente democráticos, mas não plenamente",
+       "x": {
+        "e": "Dahl usa o conceito de poliarquia para descrever regimes relativamente democráticos, com altos níveis de contestação e de participação, mas que não atingem o ideal democrático.",
+        "src": "Aula 02, p. 51",
+        "cit": "para descrever regimes que são relativamente democráticos, mas não plenamente",
+        "trap": "Poliarquia não é a democracia ideal, que fica no canto superior direito do gráfico."
+       },
+       "f": [
+        {
+         "id": "est-a02-r8.2.1.1",
+         "t": "Poliarquia",
+         "n": "Alta contestação e alta participação",
+         "x": {
+          "e": "Poliarquia é o regime com alta contestação pública e alta participação, relativamente democrático, mas que não atinge o ideal democrático.",
+          "src": "Aula 02, p. 52",
+          "cit": "Alta Alta Poliarquia",
+          "trap": "Poliarquia não é o ideal democrático pleno (canto superior direito)."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.2",
+         "t": "Oligarquia competitiva",
+         "n": "Alta contestação e baixa participação",
+         "x": {
+          "e": "Oligarquia competitiva tem contestação pública ampla e participação baixa. Movimento de hegemonia fechada para oligarquia competitiva é liberalização do regime.",
+          "src": "Aula 02, p. 52",
+          "cit": "Alta Baixa Oligarquia Competitiva",
+          "trap": "A oligarquia competitiva tem contestação, mas não participação ampla; por isso não é poliarquia."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.3",
+         "t": "Hegemonia fechada",
+         "n": "Baixa contestação e baixa participação",
+         "x": {
+          "e": "Hegemonia fechada é o regime em que a contestação pública é limitada e a participação é baixa.",
+          "src": "Aula 02, p. 50",
+          "cit": "onde a contestação pública é limitada, para uma oligarquia competitiva",
+          "trap": "Hegemonia fechada tem baixa contestação e baixa participação (canto inferior esquerdo)."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.4",
+         "t": "Hegemonia inclusiva",
+         "n": "Baixa contestação e alta participação",
+         "x": {
+          "e": "Hegemonia inclusiva tem alta participação e baixa contestação pública, como o exemplo da URSS que a fonte usa.",
+          "src": "Aula 02, p. 53",
+          "cit": "A URSS tinha alta inclusividade e baixa contestação, por isso é hegemonia inclusiva",
+          "trap": "Hegemonia inclusiva é alta participação com baixa contestação; não é o mesmo que poliarquia."
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a02-r8.2.2",
+       "t": "Garantias institucionais de Dahl",
+       "n": "Oito garantias institucionais",
+       "x": {
+        "e": "Dahl identifica oito garantias institucionais, entre elas liberdade de formar organizações, liberdade de expressão, direito de voto e eleições livres e justas, que permitem contestação e participação.",
+        "src": "Aula 02, p. 49",
+        "cit": "Liberdade de formar e aderir a organizações."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.3",
+     "t": "Pateman e Habermas: participação e deliberação",
+     "n": "Participação e deliberação vão além das instituições representativas",
+     "x": {
+      "e": "Pateman defende a participação como função educativa, e Habermas, a deliberação pública com regras de inclusão, participação e comunicação livre de violência.",
+      "src": "Aula 02, p. 54",
+      "cit": "Mas, nessa teoria, a existência de instituições representativas e livres não é suficiente para garantir a democracia"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.3.1",
+       "t": "Pateman: função educativa da participação",
+       "n": "Participação forma cidadãos participativos",
+       "x": {
+        "e": "Para Carole Pateman, a participação tem função educativa, no sentido psicológico e de aquisição de práticas e procedimentos democráticos. Na teoria contemporânea (p. 53), a função da participação é apenas de proteção do indivíduo.",
+        "src": "Aula 02, p. 53-54",
+        "cit": "é educativa; educativa no mais amplo sentido da palavra",
+        "trap": "Na teoria contemporânea (Schumpeter, Dahl) a função da participação é só de proteção."
+       }
+      },
+      {
+       "id": "est-a02-r8.3.2",
+       "t": "Habermas: ética do agir comunicativo",
+       "n": "Três regras: inclusão, participação e comunicação livre de violência",
+       "x": {
+        "e": "Habermas propõe a ética do agir comunicativo com três regras: inclusão de todos que podem agir e falar, direito de participação e de questionar, e comunicação livre de violência e coação.",
+        "src": "Aula 02, p. 55",
+        "cit": "enfatiza a importância de garantir que nenhum interlocutor seja impedido",
+        "trap": "Entre as regras de Habermas não há 'regra da coerção'; a regra é de comunicação livre de coação."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.4",
+     "t": "Crise da democracia e autocratização",
+     "n": "Democracias recuam por autocratização gradual, com redes sociais e polarização",
+     "x": {
+      "e": "A fonte fala em onda de autocratização: líderes eleitos minam a democracia por dentro, com crises de representação e econômicas, polarização, desinformação e ataques às instituições.",
+      "src": "Aula 02, p. 63",
+      "cit": "Assim, vivemos uma onda de autocratização."
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.4.1",
+       "t": "Classificação de regimes pelo V-Dem",
+       "n": "Quatro categorias: autocracias fechadas, autocracias eleitorais, democracias eleitorais e democracias liberais",
+       "x": {
+        "e": "O V-Dem classifica regimes em autocracias fechadas, autocracias eleitorais, democracias eleitorais e democracias liberais. Nas autocracias eleitorais há eleições, mas restrições a liberdades comprometem a legitimidade dos pleitos.",
+        "src": "Aula 02, p. 64",
+        "cit": "Autocracias eleitorais: há eleições, mas restrições a liberdades como a de associação ou a de expressão comprometem a legitimidade dos pleitos",
+        "trap": "Autocracia eleitoral tem eleições; autocracia fechada não tem sequer eleições livres e multipartidárias."
+       }
+      },
+      {
+       "id": "est-a02-r8.4.2",
+       "t": "Causas da autocratização",
+       "n": "Crise de representação, crises econômicas, redes sociais e polarização",
+       "x": {
+        "e": "A fonte sistematiza as causas: crise de representação, crises econômicas, espetacularização da política, redes sociais e desinformação, polarização tóxica, naturalização da violência política e ataques às instituições.",
+        "src": "Aula 02, p. 65",
+        "cit": "Crise de Representação: há uma histórica crise de representação em vários países"
+       }
+      },
+      {
+       "id": "est-a02-r8.4.3",
+       "t": "Democracia digital",
+       "n": "A democracia digital complementa, sem substituir, a representação",
+       "x": {
+        "e": "A democracia digital não substitui as formas tradicionais de representação, mas as complementa, fortalecendo transparência, deliberação e participação. Traz também desafios, como desinformação e manipulação algorítmica.",
+        "src": "Aula 02, p. 66",
+        "cit": "Trata-se de um modelo que não substitui as formas tradicionais de representação, mas que as complementa"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "forma de Estado depende da divisão de unidades",
+   "de": "est-a02-r2",
+   "para": "est-a02-r1"
+  },
+  {
+   "rotulo": "forma e sistema de governo compõem a organização do Estado",
+   "de": "est-a02-r3",
+   "para": "est-a02-r4"
+  },
+  {
+   "rotulo": "sistema de governo exige controle entre poderes",
+   "de": "est-a02-r4",
+   "para": "est-a02-r5"
+  },
+  {
+   "rotulo": "regime político engloba o sistema de governo (Duverger)",
+   "de": "est-a02-r6",
+   "para": "est-a02-r4"
+  },
+  {
+   "rotulo": "história que leva ao conceito contemporâneo",
+   "de": "est-a02-r7",
+   "para": "est-a02-r8"
+  },
+  {
+   "rotulo": "crise da democracia afeta o regime político",
+   "de": "est-a02-r8.4",
+   "para": "est-a02-r6"
+  },
+  {
+   "rotulo": "direta/indireta: p. 37 (escolha do presidente) e p. 44 (exercício do poder)",
+   "de": "est-a02-r7.4",
+   "para": "est-a02-r6.2.1"
+  },
+  {
+   "rotulo": "tipos de democracia (pp. 58-62) são a face conceitual da democracia contemporânea",
+   "de": "est-a02-r6.4",
+   "para": "est-a02-r8.1"
+  }
+ ],
+ "fontesCentral": {}
+}

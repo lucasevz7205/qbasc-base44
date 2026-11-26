@@ -1,0 +1,537 @@
+[
+ {
+  "id": "cp-e04-c74",
+  "no": "est-a04-r6",
+  "topico": "cp-5",
+  "tema": "Sistema eleitoral: conceito e tipos",
+  "pergunta": "Segundo Jairo Nicolau, o sistema eleitoral define como os votos serão contabilizados para ser transformados em quê?",
+  "resposta": [
+   "Mandato"
+  ],
+  "explicacao": "E como o eleitor poderá fazer suas escolhas.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "como os votos serão contabilizados para ser transformados em mandato",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c75",
+  "no": "est-a04-r6",
+  "topico": "cp-5",
+  "tema": "Sistema eleitoral: conceito e tipos",
+  "pergunta": "O que é responsável por organizar e conduzir as eleições, convertendo votos em mandatos?",
+  "resposta": [
+   "Sistema eleitoral"
+  ],
+  "explicacao": "Conjunto de técnicas e procedimentos.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "O sistema eleitoral desempenha um papel fundamental na democracia, pois é responsável por organizar e conduzir as eleições",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c76",
+  "no": "est-a04-r6",
+  "topico": "cp-5",
+  "tema": "Sistema eleitoral: conceito e tipos",
+  "pergunta": "Como se chama a regra que define quem pode votar?",
+  "resposta": [
+   "Sufrágio"
+  ],
+  "explicacao": "Uma das regras prévias que a eleição pressupõe.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "regras previamente definidas sobre quem pode votar (sufrágio)",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c77",
+  "no": "est-a04-r6",
+  "topico": "cp-5",
+  "tema": "Sistema eleitoral: conceito e tipos",
+  "pergunta": "No Brasil, que diploma consagrou tanto o sistema majoritário quanto o proporcional?",
+  "resposta": [
+   "Constituição"
+  ],
+  "explicacao": "Os dois sistemas convivem por cargo.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "No Brasil, a Constituição consagrou tanto o sistema majoritário quanto o sistema proporcional",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c78",
+  "no": "est-a04-r6.1",
+  "topico": "cp-5",
+  "tema": "Conceito de eleição e tipos",
+  "pergunta": "Na Ciência Política, a eleição é a escolha institucionalizada de representantes por meio de quê?",
+  "resposta": [
+   "Voto"
+  ],
+  "explicacao": "Mecanismo central da democracia representativa.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "eleição é o processo institucionalizado de escolha de representantes ou governantes por meio do voto",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c79",
+  "no": "est-a04-r6.1.1",
+  "topico": "cp-5",
+  "tema": "Três tipos de sistema",
+  "pergunta": "Qual sistema eleitoral combina os sistemas majoritário e proporcional?",
+  "resposta": [
+   "Misto"
+  ],
+  "explicacao": "Os três sistemas que se destacam.",
+  "fonte": "Aula 04, p. 44",
+  "citacao": "o sistema misto, que é uma combinação dos dois primeiros",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c80",
+  "no": "est-a04-r6.1.2",
+  "topico": "cp-5",
+  "tema": "Caso brasileiro",
+  "pergunta": "No Brasil, qual sistema eleitoral se aplica à eleição de Deputados?",
+  "resposta": [
+   "Proporcional"
+  ],
+  "explicacao": "O majoritário vale para Senadores e chefes do Executivo.",
+  "fonte": "Aula 04, p. 45",
+  "citacao": "sistema de representação proporcional na eleição de Deputados",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c81",
+  "no": "est-a04-r6.1.2",
+  "topico": "cp-5",
+  "tema": "Caso brasileiro",
+  "pergunta": "No Brasil, qual sistema eleitoral se aplica à eleição de Senadores?",
+  "resposta": [
+   "Majoritário"
+  ],
+  "explicacao": "Também para titulares do Poder Executivo.",
+  "fonte": "Aula 04, p. 45",
+  "citacao": "Sistema majoritário nas eleições de Senadores e titulares do Poder Executivo",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c82",
+  "no": "est-a04-r6.2",
+  "topico": "cp-5",
+  "tema": "Sistema majoritário",
+  "pergunta": "Qual princípio é a base do sistema eleitoral majoritário?",
+  "resposta": [
+   "Representação da maioria"
+  ],
+  "explicacao": "Vence quem tem a maioria dos votos válidos no distrito.",
+  "fonte": "Aula 04, p. 45",
+  "citacao": "O sistema eleitoral majoritário tem como base o princípio da representação da maioria",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c83",
+  "no": "est-a04-r6.2.1",
+  "topico": "cp-5",
+  "tema": "Maioria absoluta",
+  "pergunta": "Em que consiste a maioria absoluta?",
+  "resposta": [
+   "Metade dos votos mais um"
+  ],
+  "explicacao": "Se o total for ímpar, é o primeiro inteiro acima da fração.",
+  "fonte": "Aula 04, p. 45",
+  "citacao": "A maioria absoluta consiste em metade dos votos dos eleitores mais um voto",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c84",
+  "no": "est-a04-r6.2.2",
+  "topico": "cp-5",
+  "tema": "Maioria relativa ou simples",
+  "pergunta": "Na maioria relativa ou simples, o eleito precisa de quanto dos votos?",
+  "resposta": [
+   "Basta ser o mais votado, mesmo sem a metade"
+  ],
+  "explicacao": "Não considera a totalidade dos votantes.",
+  "fonte": "Aula 04, p. 45",
+  "citacao": "mesmo que não alcance a metade dos votos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c85",
+  "no": "est-a04-r6.2.3",
+  "topico": "cp-5",
+  "tema": "Turno único",
+  "pergunta": "Que maioria se exige no sistema majoritário de turno único?",
+  "resposta": [
+   "Maioria simples"
+  ],
+  "explicacao": "O mais votado vence em fase única.",
+  "fonte": "Aula 04, p. 46",
+  "citacao": "Em geral, no SISTEMA MAJORITÁRIO DE ÚNICO TURNO - exige-se apenas a maioria simples",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c86",
+  "no": "est-a04-r6.2.4",
+  "topico": "cp-5",
+  "tema": "Turno único no Brasil",
+  "pergunta": "No Brasil, o Prefeito é eleito em turno único em municípios com quantos eleitores?",
+  "resposta": [
+   "Menos de 200.000"
+  ],
+  "explicacao": "O Senador também é eleito em turno único.",
+  "fonte": "Aula 04, p. 46",
+  "citacao": "nas eleições para Prefeito em municípios com menos de 200.000 eleitores",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c87",
+  "no": "est-a04-r6.2.5",
+  "topico": "cp-5",
+  "tema": "Dois turnos",
+  "pergunta": "No sistema majoritário de dois turnos, que maioria o candidato precisa para vencer no primeiro turno?",
+  "resposta": [
+   "Maioria absoluta dos votos válidos"
+  ],
+  "explicacao": "Excluídos brancos e nulos.",
+  "fonte": "Aula 04, p. 47",
+  "citacao": "O candidato só é eleito no primeiro turno se obtiver a maioria absoluta dos votos válidos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c88",
+  "no": "est-a04-r6.2.5",
+  "topico": "cp-5",
+  "tema": "Dois turnos",
+  "pergunta": "Quais votos são excluídos do cálculo da maioria absoluta no primeiro turno?",
+  "resposta": [
+   "Brancos e nulos"
+  ],
+  "explicacao": "Conta-se só voto válido.",
+  "fonte": "Aula 04, p. 47",
+  "citacao": "excluindo os votos em branco e nulos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c89",
+  "no": "est-a04-r6.2.5",
+  "topico": "cp-5",
+  "tema": "Dois turnos",
+  "pergunta": "Segundo Duverger, os sistemas de dois turnos são mais favoráveis a quais partidos?",
+  "resposta": [
+   "Pequenos partidos"
+  ],
+  "explicacao": "O eleitor tende a votar de forma sincera no primeiro turno.",
+  "fonte": "Aula 04, p. 47",
+  "citacao": "Duverger sustentou que os sistemas de dois turnos são mais favoráveis para os pequenos partidos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c90",
+  "no": "est-a04-r6.2.6",
+  "topico": "cp-5",
+  "tema": "Voto sincero x voto estratégico",
+  "pergunta": "Qual é o outro nome do voto estratégico?",
+  "resposta": [
+   "Voto útil"
+  ],
+  "explicacao": "O eleitor calcula para evitar a vitória de um rejeitado.",
+  "fonte": "Aula 04, p. 48",
+  "citacao": "Já no voto estratégico — também chamado de voto útil",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c91",
+  "no": "est-a04-r6.2.6",
+  "topico": "cp-5",
+  "tema": "Voto sincero x voto estratégico",
+  "pergunta": "Que tipo de voto os sistemas de dois turnos tendem a estimular no primeiro turno?",
+  "resposta": [
+   "Voto sincero"
+  ],
+  "explicacao": "O estratégico fica para o segundo turno.",
+  "fonte": "Aula 04, p. 49",
+  "citacao": "Sistemas de dois turnos tendem a estimular o voto sincero no primeiro turno e o voto estratégico no segundo",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c92",
+  "no": "est-a04-r6.2.7",
+  "topico": "cp-5",
+  "tema": "Distritão",
+  "pergunta": "Que efeito sobre os partidos é atribuído ao \"distritão\"?",
+  "resposta": [
+   "Enfraquecimento"
+  ],
+  "explicacao": "Também reduz a proporcionalidade e intensifica a personalização.",
+  "fonte": "Aula 04, p. 49",
+  "citacao": "esse modelo é criticado por enfraquecer os partidos políticos, reduzir a proporcionalidade e intensificar a personalização da política",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c93",
+  "no": "est-a04-r6.3",
+  "topico": "cp-5",
+  "tema": "Sistema proporcional",
+  "pergunta": "Qual é a ênfase do sistema proporcional ao buscar representar ampla variedade de correntes no Parlamento?",
+  "resposta": [
+   "Inclusão das minorias"
+  ],
+  "explicacao": "Busca um parlamento que reflita fielmente as correntes da sociedade.",
+  "fonte": "Aula 04, p. 50",
+  "citacao": "dando ênfase à inclusão das minorias",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c94",
+  "no": "est-a04-r6.3",
+  "topico": "cp-5",
+  "tema": "Sistema proporcional",
+  "pergunta": "Qual norma introduziu o sistema proporcional no Brasil?",
+  "resposta": [
+   "Código Eleitoral de 1932"
+  ],
+  "explicacao": "Concebido para quebrar o poder das oligarquias estaduais.",
+  "fonte": "Aula 04, p. 50",
+  "citacao": "O sistema proporcional foi introduzido pelo Código Eleitoral de 1932",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c95",
+  "no": "est-a04-r6.3.1",
+  "topico": "cp-5",
+  "tema": "Origem e objetivo",
+  "pergunta": "A qual político londrino se atribuem as raízes do sistema proporcional, delineado em 1859?",
+  "resposta": [
+   "Thomas Hare"
+  ],
+  "explicacao": "Carl Andrae aplicou a ideia na Dinamarca em 1855.",
+  "fonte": "Aula 04, p. 49",
+  "citacao": "Thomas Hare, que o delineou em meados do",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c96",
+  "no": "est-a04-r6.3.1",
+  "topico": "cp-5",
+  "tema": "Origem e objetivo",
+  "pergunta": "Quem publicou em 1882 \"Sistema racional e prático de representação proporcional\"?",
+  "resposta": [
+   "Victor D'Hondt"
+  ],
+  "explicacao": "Seu método foi adotado como modelo na Conferência de 1886.",
+  "fonte": "Aula 04, p. 49",
+  "citacao": "Em 1882, D'Hondt publicou",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c97",
+  "no": "est-a04-r6.3.2",
+  "topico": "cp-5",
+  "tema": "Voto de legenda e listas",
+  "pergunta": "Como se chama o voto dado apenas ao partido no sistema proporcional?",
+  "resposta": [
+   "Voto de legenda"
+  ],
+  "explicacao": "Só o partido recebe o voto.",
+  "fonte": "Aula 04, p. 50",
+  "citacao": "é possível votar apenas na agremiação (conhecido como \"voto de legenda\")",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c98",
+  "no": "est-a04-r6.3.2.1",
+  "topico": "cp-5",
+  "tema": "Lista fechada",
+  "pergunta": "Na lista fechada, o que define a alocação dos assentos?",
+  "resposta": [
+   "Ordem pré-estabelecida da lista"
+  ],
+  "explicacao": "Dá ao partido alto controle sobre quem se elege.",
+  "fonte": "Aula 04, p. 50",
+  "citacao": "A alocação de assentos é feita com base na ordem pré-estabelecida das listas partidárias",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c99",
+  "no": "est-a04-r6.3.2.2",
+  "topico": "cp-5",
+  "tema": "Lista aberta",
+  "pergunta": "Na lista aberta, quais candidatos do partido são eleitos?",
+  "resposta": [
+   "Os mais votados"
+  ],
+  "explicacao": "Dá mais poder ao eleitor.",
+  "fonte": "Aula 04, p. 50",
+  "citacao": "Os candidatos com mais votos em um partido são eleitos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c100",
+  "no": "est-a04-r6.3.3",
+  "topico": "cp-5",
+  "tema": "Quociente eleitoral e partidário",
+  "pergunta": "Como se calcula o quociente eleitoral?",
+  "resposta": [
+   "Votos válidos ÷ número de cadeiras"
+  ],
+  "explicacao": "Votos válidos incluem candidatos e legenda.",
+  "fonte": "Aula 04, p. 51",
+  "citacao": "O quociente eleitoral é calculado dividindo o número de votos válidos pelo número de cadeiras a serem preenchidas",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c101",
+  "no": "est-a04-r6.3.3.1",
+  "topico": "cp-5",
+  "tema": "Arredondamento do quociente eleitoral",
+  "pergunta": "No cálculo do quociente eleitoral, o que se faz com fração igual ou menor que meio?",
+  "resposta": [
+   "Despreza-se"
+  ],
+  "explicacao": "Se maior que meio, arredonda-se para cima.",
+  "fonte": "Aula 04, p. 51",
+  "citacao": "desprezando a fração se for igual ou menor que meio e arredondando para cima se for maior",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c102",
+  "no": "est-a04-r6.3.3.2",
+  "topico": "cp-5",
+  "tema": "Quociente partidário",
+  "pergunta": "Como se calcula o quociente partidário?",
+  "resposta": [
+   "Votos do partido ÷ quociente eleitoral"
+  ],
+  "explicacao": "Indica quantas cadeiras o partido obtém.",
+  "fonte": "Aula 04, p. 52",
+  "citacao": "Quociente Partidário = Número de Votos do Partido / Quociente Eleitoral",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c103",
+  "no": "est-a04-r6.3.3.2",
+  "topico": "cp-5",
+  "tema": "Quociente partidário",
+  "pergunta": "No quociente partidário, o que acontece com as casas decimais?",
+  "resposta": [
+   "São desconsideradas"
+  ],
+  "explicacao": "Regra registrada no exemplo da aula.",
+  "fonte": "Aula 04, p. 53",
+  "citacao": "quando a conta resulta em casas decimais, estas são desconsideradas",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c104",
+  "no": "est-a04-r6.3.3.3",
+  "topico": "cp-5",
+  "tema": "Votos do partido incluem legenda",
+  "pergunta": "Quais votos compõem os votos do partido no sistema proporcional?",
+  "resposta": [
+   "Votos nos candidatos",
+   "votos de legenda"
+  ],
+  "explicacao": "Somam-se ambos.",
+  "fonte": "Aula 04, p. 52",
+  "citacao": "os votos do partido incluem os votos dados aos candidatos desse partido e os votos de legenda",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c105",
+  "no": "est-a04-r6.3.4",
+  "topico": "cp-5",
+  "tema": "Distorções: puxadores de votos, federações e fragmentação",
+  "pergunta": "Como é chamado o candidato cuja votação expressiva elege outros do mesmo partido com baixa votação?",
+  "resposta": [
+   "Puxador de votos"
+  ],
+  "explicacao": "Gera \"transferência\" de votos.",
+  "fonte": "Aula 04, p. 54",
+  "citacao": "É muito criticada a transferência de votos dos chamados candidatos “puxadores de votos”",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c106",
+  "no": "est-a04-r6.3.4.1",
+  "topico": "cp-5",
+  "tema": "Puxadores de votos",
+  "pergunta": "Em 2002, qual candidato do Prona, o deputado federal mais votado do país, elegeu outros concorrentes do partido?",
+  "resposta": [
+   "Enéas Carneiro"
+  ],
+  "explicacao": "Cerca de 1,55 milhão de votos; elegeu mais cinco.",
+  "fonte": "Aula 04, p. 55",
+  "citacao": "Nas eleições de 2002, Enéas Carneiro obteve cerca de 1,55 milhão de votos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c107",
+  "no": "est-a04-r6.3.4.2",
+  "topico": "cp-5",
+  "tema": "Federações",
+  "pergunta": "Nos cálculos eleitorais, o que acontece com os votos dos partidos federados?",
+  "resposta": [
+   "Somam-se"
+  ],
+  "explicacao": "A federação atua como se fosse uma só legenda.",
+  "fonte": "Aula 04, p. 55",
+  "citacao": "inclui as federações nos cálculos eleitorais, ou seja, somam-se os votos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c108",
+  "no": "est-a04-r6.3.4.3",
+  "topico": "cp-5",
+  "tema": "Fragmentação partidária",
+  "pergunta": "Quais indicadores a Ciência Política usa para medir a fragmentação partidária?",
+  "resposta": [
+   "Índice de fracionalização dos votos",
+   "número efetivo de partidos"
+  ],
+  "explicacao": "Medem dispersão ou concentração do poder partidário.",
+  "fonte": "Aula 04, p. 56",
+  "citacao": "indicadores como o índice de fracionalização dos votos e o número efetivo de partidos",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c109",
+  "no": "est-a04-r6.4",
+  "topico": "cp-5",
+  "tema": "Sistema misto",
+  "pergunta": "Quais são as duas abordagens principais de sistema eleitoral misto?",
+  "resposta": [
+   "Paralelo",
+   "compensatório"
+  ],
+  "explicacao": "Combinam elementos majoritários e proporcionais.",
+  "fonte": "Aula 04, p. 56",
+  "citacao": "o sistema misto paralelo e o sistema misto compensatório",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c110",
+  "no": "est-a04-r6.4.1",
+  "topico": "cp-5",
+  "tema": "Misto paralelo",
+  "pergunta": "No sistema misto paralelo, quantos votos tem o eleitor?",
+  "resposta": [
+   "Dois"
+  ],
+  "explicacao": "Um no candidato do distrito, outro no partido.",
+  "fonte": "Aula 04, p. 56",
+  "citacao": "os eleitores têm dois votos - um para um candidato em seu distrito e outro para um partido",
+  "aulaOrigem": "04"
+ },
+ {
+  "id": "cp-e04-c111",
+  "no": "est-a04-r6.4.2",
+  "topico": "cp-5",
+  "tema": "Misto compensatório",
+  "pergunta": "No sistema misto compensatório, para que servem os votos proporcionais?",
+  "resposta": [
+   "Compensar distorções dos distritos majoritários"
+  ],
+  "explicacao": "Os eleitores também têm dois votos.",
+  "fonte": "Aula 04, p. 56",
+  "citacao": "os votos proporcionais são usados para compensar qualquer distorção que possa ocorrer nos distritos majoritários",
+  "aulaOrigem": "04"
+ }
+]

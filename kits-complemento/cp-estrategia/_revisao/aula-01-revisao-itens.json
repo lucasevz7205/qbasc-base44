@@ -1,0 +1,696 @@
+[
+ {
+  "id": "cp-e01-q01",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q02",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q03",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V1 difere da registrada V2; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q04",
+  "decisao": "CORRIGIDO",
+  "motivo": "O item alterava dois pontos ao mesmo tempo (\"anterior\" e \"século XVII\"), contra a regra do ponto único. Mantida a ordem correta (\"posterior\") e alterada só a data (passa a F4).",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4",
+  "novo_enunciado": "Julgue o item seguinte, a respeito de \"Formação do Estado Moderno\" na teoria do Estado. A mudança do Estado liberal de direito para o Estado social representou uma fase posterior, por volta do século XVII, quando o Estado passou a gerenciar diretamente a ordem social e econômica.",
+  "novo_comentario": "Gabarito E. A aula diz: \"a mudança do Estado como Estado social representou uma fase posterior, por volta do início do século XX, quando o Estado passou a gerenciar diretamente a ordem social e econômica\" (p. 21). O item altera um único ponto: traz \"por volta do século XVII\" onde a aula traz \"por volta do início do século XX\". Mecanismo F4 (detalhe alterado: data). Versão correta: \"A mudança do Estado liberal de direito para o Estado social representou uma fase posterior, por volta do início do século XX, quando o Estado passou a gerenciar diretamente a ordem social e econômica.\""
+ },
+ {
+  "id": "cp-e01-q05",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q06",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q07",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2"
+ },
+ {
+  "id": "cp-e01-q08",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F3 difere da registrada F4; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q09",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e01-q10",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q11",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q12",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q13",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q14",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F3 difere da registrada F4; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q15",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F1"
+ },
+ {
+  "id": "cp-e01-q16",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q17",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q18",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q19",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V1 difere da registrada V2; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q20",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q21",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e01-q22",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q23",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F5"
+ },
+ {
+  "id": "cp-e01-q24",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q25",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q26",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q27",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q28",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q29",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q30",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q31",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q32",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q33",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q34",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V3"
+ },
+ {
+  "id": "cp-e01-q35",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q36",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F3 difere da registrada F4; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q37",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F5 difere da registrada F2; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F5"
+ },
+ {
+  "id": "cp-e01-q38",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q39",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q40",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V3 difere da registrada V1; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V3"
+ },
+ {
+  "id": "cp-e01-q41",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e01-q42",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q43",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q44",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q45",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e01-q46",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V2 difere da registrada V1; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V2"
+ },
+ {
+  "id": "cp-e01-q47",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q48",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q49",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q50",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q51",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F6 difere da registrada F4; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F6"
+ },
+ {
+  "id": "cp-e01-q52",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F4 difere da registrada F3; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q53",
+  "decisao": "CORRIGIDO",
+  "motivo": "O acréscimo \"e não apenas o Estado capitalista em sentido estrito\" não está na fonte e introduz expressão vaga (\"em sentido estrito\") que torna o C discutível. Reduzido ao trecho literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item seguinte, a respeito de \"Democracia liberal burguesa\" na teoria do Estado. Na perspectiva de Marx, a democracia liberal burguesa também estaria a serviço da dominação de uma classe social sobre a outra.",
+  "novo_comentario": "Gabarito C. A aula diz: \"Para Marx a democracia liberal burguesa também estaria a serviço da dominação de uma classe social sobre a outra\" (p. 40). O item reproduz o trecho com fidelidade (V1)."
+ },
+ {
+  "id": "cp-e01-q54",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q55",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q56",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q57",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q58",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V1 difere da registrada V2; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q59",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q60",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q61",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q62",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q63",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q64",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F4"
+ },
+ {
+  "id": "cp-e01-q65",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q66",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q67",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q68",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q69",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F2 difere da registrada F1; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ },
+ {
+  "id": "cp-e01-q70",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q71",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q72",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q73",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q74",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q75",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q76",
+  "decisao": "CORRIGIDO",
+  "motivo": "\"desses modelos\" não tem antecedente na assertiva (remete ao texto da aula, não ao item). Explicitados os modelos; ponto único (F2 \"exclusivamente um único\") mantido.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2",
+  "novo_enunciado": "Julgue o item seguinte, a respeito de \"Modelos de Estado\" na teoria do Estado. Atualmente, muitos países buscam adotar exclusivamente um único dos modelos de Estado — centralizador, liberal, interventor, regulador, planificador ou neoliberal — para atender às necessidades e demandas da sociedade de forma equilibrada.",
+  "novo_comentario": "Gabarito E. A aula diz: \"Atualmente, muitos países buscam uma abordagem que combine elementos desses modelos para atender às necessidades e demandas da sociedade de forma equilibrada\" (p. 54). O item altera um único ponto: traz \"adotar exclusivamente um único dos modelos\" onde a aula traz \"uma abordagem que combine elementos desses modelos\" (F2, restrição indevida). Versão correta: \"Atualmente, muitos países buscam uma abordagem que combine elementos dos modelos de Estado para atender às necessidades e demandas da sociedade de forma equilibrada.\""
+ },
+ {
+  "id": "cp-e01-q77",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q78",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q79",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q80",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q81",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q82",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q83",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q84",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q85",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q86",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q87",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q88",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q89",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega V1 difere da registrada V2; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q90",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal. Classificação cega F5 difere da registrada F4; diferença de rótulo, sem efeito no gabarito.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F5"
+ },
+ {
+  "id": "cp-e01-q91",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q92",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q93",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q94",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F3"
+ },
+ {
+  "id": "cp-e01-q95",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q96",
+  "decisao": "CORRIGIDO",
+  "motivo": "DIVERGÊNCIA DE GABARITO: o item, registrado como E, classifica corretamente presidencialismo/parlamentarismo como sistemas e monarquia/república como formas, exatamente como a p. 56; só trocou os verbos (\"assumir\"/\"ser estruturado\"), o que não altera o conteúdo. Como estava, o gabarito seria C. Reescrito para que a troca recaia sobre a classificação (F3), mantendo o gabarito E.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1",
+  "novo_enunciado": "Julgue o item seguinte, a respeito de \"Governo\" na teoria do Estado. O governo, autoridade política que controla e administra o Estado, pode assumir diferentes formas, como o presidencialismo e o parlamentarismo, e ser estruturado por meio de diferentes sistemas, como a monarquia e a república.",
+  "novo_comentario": "Gabarito E. A aula diz: \"O governo pode assumir diferentes formas, como monarquia e república; e pode ser estruturado por meio de diferentes sistemas presidencialista, semipresidencialista e parlamentarista\" (p. 56). O item troca a classificação: chama de \"formas\" o presidencialismo e o parlamentarismo, que a aula chama de \"sistemas\", e de \"sistemas\" a monarquia e a república, que a aula chama de \"formas\" (F3, troca de conceito). Versão correta: \"O governo pode assumir diferentes formas, como monarquia e república, e ser estruturado por meio de diferentes sistemas, como o presidencialista e o parlamentarista.\""
+ },
+ {
+  "id": "cp-e01-q97",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "C",
+  "mecanismo_cego": "V1"
+ },
+ {
+  "id": "cp-e01-q98",
+  "decisao": "APROVADO",
+  "motivo": "Gabarito e mecanismo conferidos com a fonte; ponto único e evidência literal.",
+  "gabarito_cego": "E",
+  "mecanismo_cego": "F2"
+ }
+]

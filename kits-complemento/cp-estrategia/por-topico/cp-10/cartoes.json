@@ -1,0 +1,444 @@
+[
+ {
+  "id": "cp-e05-c01",
+  "no": "est-a05-r1",
+  "topico": "cp-10",
+  "tema": "Marco inicial do Estado brasileiro",
+  "pergunta": "Em que ano começa oficialmente o Estado brasileiro?",
+  "resposta": [
+   "1822 (Independência)"
+  ],
+  "explicacao": "O texto fixa a Independência como início oficial do Estado; a primeira Constituição vem em 1824.",
+  "fonte": "Aula 05, p. 5",
+  "citacao": "Ocialmente, o Estado brasileiro inicia-se com a Independência em 1822 e tem a primeira Constituição em 1824.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c02",
+  "no": "est-a05-r1",
+  "topico": "cp-10",
+  "tema": "Forma de Estado na Carta de 1824",
+  "pergunta": "Que forma de Estado a primeira Constituição brasileira adotou?",
+  "resposta": [
+   "Estado Unitário"
+  ],
+  "explicacao": "A Carta de 1824 organizou o sistema político como Estado Unitário e Monarquia Constitucional; o federalismo só vem em 1891.",
+  "fonte": "Aula 05, p. 12",
+  "citacao": "A primeira Constituição brasileira denia que o sistema político seria organizado a partir de um Estado Unitário e de uma Monarquia Constitucional.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c03",
+  "no": "est-a05-r1",
+  "topico": "cp-10",
+  "tema": "Duração da Constituição de 1824",
+  "pergunta": "Por quantos anos a Constituição de 1824 permaneceu em vigor?",
+  "resposta": [
+   "Sessenta e cinco anos"
+  ],
+  "explicacao": "Vigorou de 1824 até a República; o texto liga sua natureza centralizadora à instabilidade do Império.",
+  "fonte": "Aula 05, p. 20",
+  "citacao": "A Constituição de 1824 permaneceu em vigor por sessenta e cinco anos",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c04",
+  "no": "est-a05-r1.1",
+  "topico": "cp-10",
+  "tema": "Caráter da Independência",
+  "pergunta": "Quem conduziu o processo de Independência, em aliança com o príncipe regente?",
+  "resposta": [
+   "A elite econômica brasileira"
+  ],
+  "explicacao": "Processo \"de cima para baixo\", sem participação popular e sem alterar as estruturas desiguais da colônia.",
+  "fonte": "Aula 05, p. 10",
+  "citacao": "todo este processo foi realizado pela elite econômica brasileira em aliança com o príncipe regente e SEM a participação popular.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c05",
+  "no": "est-a05-r1.2",
+  "topico": "cp-10",
+  "tema": "Origem da Carta de 1824",
+  "pergunta": "Por qual modo de instituição a Constituição de 1824 entrou em vigor, já que não houve constituintes eleitos?",
+  "resposta": [
+   "Outorgada (imposta pelo Imperador)"
+  ],
+  "explicacao": "Após dissolver a Constituinte (1823), D. Pedro I nomeou seu Conselho de Estado para redigir a Carta, sem eleição de constituintes.",
+  "fonte": "Aula 05, p. 18",
+  "citacao": "Esta Constituição foi outorgada, ou seja, imposta pelo Imperador, e não houve eleições para escolha dos representantes constituintes.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c06",
+  "no": "est-a05-r1.2.1",
+  "topico": "cp-10",
+  "tema": "Poder Moderador",
+  "pergunta": "Qual era o \"quarto poder\", acima dos outros três, previsto na Carta de 1824?",
+  "resposta": [
+   "Poder Moderador"
+  ],
+  "explicacao": "Exercido pelo Imperador, permitia-lhe controlar na prática Executivo, Legislativo e Judiciário.",
+  "fonte": "Aula 05, p. 18",
+  "citacao": "o Imperador tinha um poder extra, acima dos 3 poderes, o chamado PODER MODERADOR.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c07",
+  "no": "est-a05-r1.2.2",
+  "topico": "cp-10",
+  "tema": "Atribuições do Poder Moderador",
+  "pergunta": "Que Casa legislativa o Imperador podia dissolver pelo Poder Moderador?",
+  "resposta": [
+   "Câmara dos Deputados"
+  ],
+  "explicacao": "Além de dissolver a Câmara, nomeava e destituía ministros e adiava a escolha de senadores indicados pelas províncias.",
+  "fonte": "Aula 05, p. 20",
+  "citacao": "O Poder Moderador conferia ao Imperador a prerrogativa de destituir e nomear ministros, dissolver a Câmara dos Deputados",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c08",
+  "no": "est-a05-r1.3",
+  "topico": "cp-10",
+  "tema": "Ato Adicional de 1834",
+  "pergunta": "Em que órgãos o Ato Adicional de 1834 transformou os Conselhos Provinciais?",
+  "resposta": [
+   "Assembleias Legislativas Provinciais"
+  ],
+  "explicacao": "Emenda de cunho liberal que deu autonomia às províncias para legislar sobre despesas e impostos.",
+  "fonte": "Aula 05, p. 27",
+  "citacao": "transformando os Conselhos Provinciais em Assembleias Legislativas Provinciais",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c09",
+  "no": "est-a05-r1.3.1",
+  "topico": "cp-10",
+  "tema": "Golpe da Maioridade",
+  "pergunta": "Que episódio de 1840 encerrou o período das Regências?",
+  "resposta": [
+   "Golpe da Maioridade"
+  ],
+  "explicacao": "D. Pedro II assumiu o trono ainda menor de idade, pondo fim às Regências.",
+  "fonte": "Aula 05, p. 28",
+  "citacao": "A situação política foi parcialmente amenizada em 1840, com o chamado Golpe da Maioridade. Nesse momento, Dom Pedro II assumiu o trono, encerrando o período das Regências.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c10",
+  "no": "est-a05-r1.3.2",
+  "topico": "cp-10",
+  "tema": "Parlamentarismo de 1847",
+  "pergunta": "No parlamentarismo de 1847, quem escolhia o Presidente do Conselho de Ministros?",
+  "resposta": [
+   "O Imperador"
+  ],
+  "explicacao": "Em tese caberia ao partido majoritário; como havia o Poder Moderador, o Imperador escolhia. Daí \"parlamentarismo às avessas\".",
+  "fonte": "Aula 05, p. 31",
+  "citacao": "como existia o Poder Moderador do Imperador, acabou sendo ele, o próprio Imperador, quem escolhia o Presidente do Conselho.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c20",
+  "no": "est-a05-r3",
+  "topico": "cp-10",
+  "tema": "Autor da Carta de 1891",
+  "pergunta": "Quem foi o principal elaborador da Constituição de 1891?",
+  "resposta": [
+   "Rui Barbosa"
+  ],
+  "explicacao": "A Carta transformou as províncias em estados autônomos e adotou República presidencialista e federativa.",
+  "fonte": "Aula 05, p. 40",
+  "citacao": "A Constituição de 1891, elaborada principalmente por Rui Barbosa",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c21",
+  "no": "est-a05-r3",
+  "topico": "cp-10",
+  "tema": "Modelo da Carta de 1891",
+  "pergunta": "Que modelo constitucional estrangeiro inspirou o desenho federal de 1891?",
+  "resposta": [
+   "O federalismo norte-americano (Constituição dos EUA de 1787)"
+  ],
+  "explicacao": "Por isso o país passou a se chamar \"Estados Unidos do Brasil\".",
+  "fonte": "Aula 05, p. 40",
+  "citacao": "Seguiu o desenho institucional do federalismo americano e da Constituição dos Estados Unidos (1787).",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c22",
+  "no": "est-a05-r3",
+  "topico": "cp-10",
+  "tema": "Voto na Primeira República",
+  "pergunta": "Quanto ao sigilo, qual era a característica do voto na Constituição de 1891?",
+  "resposta": [
+   "Aberto"
+  ],
+  "explicacao": "Voto universal masculino, maiores de 21 anos, exceto analfabetos, mendigos, praças e clérigos; aberto, o que permitia o controle dos coronéis.",
+  "fonte": "Aula 05, p. 44",
+  "citacao": "Os coronéis exploraram o voto aberto, que lhes permitia controlar totalmente os eleitores durante as eleições",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c23",
+  "no": "est-a05-r3",
+  "topico": "cp-10",
+  "tema": "Origem dos partidos na Primeira República",
+  "pergunta": "Como se classificam, quanto à origem, os partidos da Primeira República formados dentro do parlamento?",
+  "resposta": [
+   "Endógenos (de quadros)"
+  ],
+  "explicacao": "Exemplos do texto: Partido Republicano Federal (1893) e Partido Republicano Conservador (1910), fundados em sessões do Congresso.",
+  "fonte": "Aula 05, p. 41",
+  "citacao": "Que os partidos eram de quadros e seu processo de formação se deu dentro do parlamento, então, são endógenos.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c24",
+  "no": "est-a05-r3.1",
+  "topico": "cp-10",
+  "tema": "Mandato presidencial de 1891",
+  "pergunta": "Qual era a duração do mandato do presidente na Constituição de 1891?",
+  "resposta": [
+   "Quatro anos"
+  ],
+  "explicacao": "Presidente eleito por sufrágio direto, em ruptura com o Poder Moderador.",
+  "fonte": "Aula 05, p. 41",
+  "citacao": "O presidente, eleito por sufrágio direto, tinha um mandato de quatro anos",
+  "topicoOriginal": "cp-7",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c25",
+  "no": "est-a05-r3.2",
+  "topico": "cp-10",
+  "tema": "Alistamento na Primeira República",
+  "pergunta": "Quantos membros locais compunham a comissão de alistamento eleitoral na Primeira República?",
+  "resposta": [
+   "Cinco"
+  ],
+  "explicacao": "Com isso as facções majoritárias locais controlavam quem se alistava.",
+  "fonte": "Aula 05, p. 45",
+  "citacao": "Alistamento era responsabilidade de uma comissão de 5 membros locais.",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c26",
+  "no": "est-a05-r3.2.1",
+  "topico": "cp-10",
+  "tema": "Degola",
+  "pergunta": "Como se chamava a recusa de diplomas de opositores eleitos pela Comissão de Verificação de Poderes?",
+  "resposta": [
+   "Degola"
+  ],
+  "explicacao": "Mesmo vencendo, o candidato de oposição podia ter a eleição invalidada pela Comissão.",
+  "fonte": "Aula 05, p. 46",
+  "citacao": "Comissão de Vericação de Poderes acabou sendo utilizada como um instrumento para anular as candidaturas da oposição (\"degolar\" os opositores), recusando seus diplomas por qualquer motivo.",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c27",
+  "no": "est-a05-r3.3",
+  "topico": "cp-10",
+  "tema": "Política dos Governadores",
+  "pergunta": "Que presidente promoveu o arranjo conhecido como Política dos Governadores?",
+  "resposta": [
+   "Campos Sales"
+  ],
+  "explicacao": "Governo 1898-1902: não intervir nos conflitos regionais em troca de controle do Executivo sobre o Congresso.",
+  "fonte": "Aula 05, p. 42",
+  "citacao": "arranjo político promovido pelo presidente Campos Sales (1898-1902) e os governadores e presidentes estaduais",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c28",
+  "no": "est-a05-r3.3.1",
+  "topico": "cp-10",
+  "tema": "Autor do conceito de coronelismo",
+  "pergunta": "Quem introduziu o termo \"coronelismo\", na obra \"Coronelismo, enxada e voto\" (1948)?",
+  "resposta": [
+   "Vítor Nunes Leal"
+  ],
+  "explicacao": "Para o autor, o coronelismo é um sistema que liga o poder local ao governo estadual.",
+  "fonte": "Aula 05, p. 43",
+  "citacao": "O termo \"coronelismo\" foi introduzido pelo autor Vítor Nunes Leal",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c29",
+  "no": "est-a05-r3.3.2",
+  "topico": "cp-10",
+  "tema": "Clientelismo",
+  "pergunta": "Como se chama a prática de distribuir favores ou recursos públicos em troca de apoio político?",
+  "resposta": [
+   "Clientelismo"
+  ],
+  "explicacao": "Distinto do mandonismo, que é o mando pessoal do coronel sobre uma área.",
+  "fonte": "Aula 05, p. 44",
+  "citacao": "O clientelismo, por outro lado, envolve a prática de políticos, incluindo os coronéis, distribuírem favores ou recursos públicos em troca de apoio político ou lealdade pessoal.",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c30",
+  "no": "est-a05-r3.4",
+  "topico": "cp-10",
+  "tema": "Partidos regionais",
+  "pergunta": "Que expressão o texto usa para o conjunto de partidos regionalizados do início da República?",
+  "resposta": [
+   "\"Federação de partidos\""
+  ],
+  "explicacao": "Partidos estaduais com comportamento anticentrista; partidos nacionais só surgem mais tarde.",
+  "fonte": "Aula 05, p. 42",
+  "citacao": "Que no início da República existia uma \"federação de partidos\". Ou seja, partidos regionalizados",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c31",
+  "no": "est-a05-r3.4.1",
+  "topico": "cp-10",
+  "tema": "Revolução de 1930",
+  "pergunta": "Em que data Getúlio Vargas assumiu como presidente provisório?",
+  "resposta": [
+   "3 de novembro de 1930"
+  ],
+  "explicacao": "Vargas havia perdido a eleição de março de 1930 para Júlio Prestes; o assassinato de João Pessoa foi o estopim.",
+  "fonte": "Aula 05, p. 50",
+  "citacao": "Em 3 de novembro de 1930, Getúlio Vargas assumiu o cargo de presidente provisório",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c39",
+  "no": "est-a05-r5",
+  "topico": "cp-10",
+  "tema": "Ato Adicional de 1961",
+  "pergunta": "Que sistema de governo o Ato Adicional de 2 de setembro de 1961 instituiu?",
+  "resposta": [
+   "Parlamentarismo"
+  ],
+  "explicacao": "Solução do Congresso para dar posse a Jango com poderes reduzidos.",
+  "fonte": "Aula 05, p. 64",
+  "citacao": "Esse Ato instituiu o Parlamentarismo no Brasil.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c40",
+  "no": "est-a05-r5",
+  "topico": "cp-10",
+  "tema": "Primeiro-Ministro de 1961",
+  "pergunta": "Quem foi o Primeiro-Ministro no parlamentarismo de 1961?",
+  "resposta": [
+   "Tancredo Neves (PSD)"
+  ],
+  "explicacao": "Jango assumiu a Presidência em 7/9/1961, mas sem a chefia de governo.",
+  "fonte": "Aula 05, p. 65",
+  "citacao": "Tancredo Neves, do PSD mineiro, assumiu o papel de Primeiro Ministro",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c41",
+  "no": "est-a05-r5",
+  "topico": "cp-10",
+  "tema": "Lançamento das Reformas de Base",
+  "pergunta": "Em que local foi o comício de 13 de março de 1964 que lançou as Reformas de Base?",
+  "resposta": [
+   "Central do Brasil (Rio de Janeiro)"
+  ],
+  "explicacao": "Comício para mais de 300 mil pessoas, que aprofundou o descontentamento do bloco conservador.",
+  "fonte": "Aula 05, p. 66",
+  "citacao": "as Reformas de Base foram lançadas em um comício/manifestação para mais de 300 mil pessoas na Central do Brasil (Rio de Janeiro), no dia 13 de março de 1964",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c42",
+  "no": "est-a05-r5.1",
+  "topico": "cp-10",
+  "tema": "Posse de Jango",
+  "pergunta": "Que solução o Congresso apresentou para garantir a posse de Jango e reduzir os poderes presidenciais?",
+  "resposta": [
+   "O parlamentarismo"
+  ],
+  "explicacao": "Ministros militares se opunham à posse; Brizola e militares legalistas a defendiam.",
+  "fonte": "Aula 05, p. 63",
+  "citacao": "garantir a posse de Jango e diminuir os poderes do Presidente da República: o parlamentarismo!",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c43",
+  "no": "est-a05-r5.1.1",
+  "topico": "cp-10",
+  "tema": "Plebiscito de 1963",
+  "pergunta": "Quantos eleitores, aproximadamente, votaram contra o parlamentarismo no plebiscito de 1963?",
+  "resposta": [
+   "Quase 10 milhões"
+  ],
+  "explicacao": "De mais de 11,5 milhões de votantes; o presidencialismo voltou e Jango ganhou plenos poderes.",
+  "fonte": "Aula 05, p. 65",
+  "citacao": "mais de 11,5 milhões de pessoas votaram, sendo que quase 10 milhões se manifestaram contra o parlamentarismo e pela volta do presidencialismo.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c44",
+  "no": "est-a05-r5.2",
+  "topico": "cp-10",
+  "tema": "Reformas de Base e propriedade",
+  "pergunta": "Por que, para muitos estudiosos, as Reformas de Base não tinham caráter comunista?",
+  "resposta": [
+   "Não alteravam a propriedade privada"
+  ],
+  "explicacao": "Mantinham o princípio liberal da garantia da propriedade privada; a elite, porém, as via como ameaça comunista.",
+  "fonte": "Aula 05, p. 67",
+  "citacao": "não alteravam o princípio liberal da garantia da propriedade privada",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c45",
+  "no": "est-a05-r5.2.1",
+  "topico": "cp-10",
+  "tema": "Reforma eleitoral de Jango",
+  "pergunta": "Que parcela da população adulta seria incorporada ao eleitorado pelo voto dos analfabetos na reforma de Jango?",
+  "resposta": [
+   "Cerca de 60%"
+  ],
+  "explicacao": "A reforma eleitoral também previa voto aos soldados e legalização do Partido Comunista.",
+  "fonte": "Aula 05, p. 66",
+  "citacao": "Concessão do direito de voto aos analfabetos, representando aproximadamente 60% da população adulta.",
+  "topicoOriginal": "cp-11",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c46",
+  "no": "est-a05-r5.3",
+  "topico": "cp-10",
+  "tema": "Eleição de Castelo Branco",
+  "pergunta": "Quem o Congresso elegeu indiretamente presidente em 11 de abril de 1964?",
+  "resposta": [
+   "General Castello Branco"
+  ],
+  "explicacao": "Único candidato, eleito sem oposição em votação nominal.",
+  "fonte": "Aula 05, p. 74",
+  "citacao": "em 11 de abril de 1964, o Congresso Nacional elegeu, via eleições indiretas, o único candidato à Presidência, o General Alencar Castello Branco.",
+  "aulaOrigem": "05"
+ },
+ {
+  "id": "cp-e05-c47",
+  "no": "est-a05-r5.3.1",
+  "topico": "cp-10",
+  "tema": "Golpe civil-militar",
+  "pergunta": "Que denominação historiadores como Daniel Aarão Reis dão à deposição de Jango, pelo apoio de setores civis?",
+  "resposta": [
+   "Golpe Civil-Militar"
+  ],
+  "explicacao": "Apoio de líderes políticos, governadores, Congresso e imprensa, além das Forças Armadas.",
+  "fonte": "Aula 05, p. 74",
+  "citacao": "arma que a deposição de Jango foi um Golpe Civil-Miliar, pois contou com o apoio de setores civis da sociedade",
+  "aulaOrigem": "05"
+ }
+]

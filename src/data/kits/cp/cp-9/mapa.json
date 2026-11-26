@@ -1,0 +1,976 @@
+{
+ "topico": "cp-9",
+ "materia": "cp",
+ "centro": "Teoria do Estado e formação dos Estados nacionais",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "01"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a01-r1",
+   "t": "Formação do Estado Moderno",
+   "n": "Estado Moderno: ordem política europeia, centralizada e territorial, de origem histórica.",
+   "x": {
+    "e": "Estado Moderno é a forma de organização política surgida na Europa entre os séculos XIII e XVIII ou XIX, marcada pela centralização do poder e pela territorialidade.",
+    "src": "Aula 01, p. 11",
+    "cit": "O Estado Moderno, como uma forma de organização política, é um conceito que se originou na Europa entre os séculos XIII e XVIII ou inícios do XIX"
+   },
+   "f": [
+    {
+     "id": "est-a01-r1.1",
+     "t": "Conceito histórico do Estado",
+     "n": "O Estado é conceito histórico e europeu, não universal (Bobbio).",
+     "x": {
+      "e": "Bobbio afirma que 'Estado' indica uma forma de ordenamento político surgida na Europa e depois estendida ao mundo civilizado; não é conceito universal.",
+      "src": "Aula 01, p. 4",
+      "cit": "o conceito de 'Estado' não é um conceito universal, mas serve apenas para indicar e descrever uma forma de ordenamento político surgida na Europa",
+      "trap": "Tratar 'Estado' como conceito universal. A aula diz que ele é histórico e europeu, e que a discussão teórica trata do Estado Moderno.",
+      "nota": "p. 11 atribui a Max Weber a definição de centralização como 'monopólio da força legítima'; p. 45 apresenta a mesma expressão como traço do Estado. Enquadramento registrado como está no texto, sem correção."
+     }
+    },
+    {
+     "id": "est-a01-r1.2",
+     "t": "Marco da Paz de Westfália",
+     "n": "Os tratados de 1648 encerram a Guerra dos Trinta Anos e dão início à soberania e ao Direito Internacional.",
+     "x": {
+      "e": "A Paz de Westfália (1648) é o marco comumente ressaltado para a formação do Estado-nação; dela surgem o respeito à soberania das nações e o início do Direito Internacional.",
+      "src": "Aula 01, p. 12",
+      "cit": "tratados da Paz de Westfália (região da Alemanha), assinados em 1648, colocando fim à Guerra dos Trinta Anos (1618 – 1648)",
+      "trap": "Tomar Westfália como data de origem de todos os Estados. A aula a apresenta como marco comumente ressaltado."
+     }
+    },
+    {
+     "id": "est-a01-r1.3",
+     "t": "Centralização em dois níveis",
+     "n": "A centralização do poder ocorreu no espaço e na transformação dos senhorios em soberanias territoriais.",
+     "x": {
+      "e": "A centralização que formou o Estado Moderno teve dois níveis: a extensão física do território e a transformação dos senhorios feudais em soberanias territoriais.",
+      "src": "Aula 01, p. 18",
+      "cit": "A centralização ocorreu em dois níveis"
+     },
+     "f": [
+      {
+       "id": "est-a01-r1.3.1",
+       "t": "Nível espacial",
+       "n": "A extensão física do território integra interesses de grupos vizinhos.",
+       "x": {
+        "e": "O primeiro nível foi espacial, ligado à extensão física do território, que permitiu a integração de interesses e relações entre grupos vizinhos.",
+        "src": "Aula 01, p. 18",
+        "cit": "O primeiro foi espacial, relacionado à extensão física do território que permitiu a integração"
+       }
+      },
+      {
+       "id": "est-a01-r1.3.2",
+       "t": "Soberanias territoriais",
+       "n": "Senhorios viram soberanias territoriais: poder deixa de ser pessoal e passa a ser político.",
+       "x": {
+        "e": "O segundo nível transformou os senhorios em soberanias territoriais, representadas pelos príncipes, com mudança de poder pessoal para político.",
+        "src": "Aula 01, p. 18",
+        "cit": "O segundo nível envolveu a transformação dos senhorios em soberanias territoriais",
+        "trap": "Confundir o nível espacial com o das soberanias: são dois níveis distintos da mesma centralização."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r1.4",
+     "t": "Separação entre social e político",
+     "n": "Com o Estado Moderno, o social se separa do político e o poder se concentra no príncipe.",
+     "x": {
+      "e": "O Estado Moderno separou o social do político: as categorias sociais perderam o poder político em favor do príncipe, e a sociedade passou a distinguir sociedade política e sociedade civil.",
+      "src": "Aula 01, p. 19",
+      "cit": "O Estado Moderno marcou a separação entre o social e o político.",
+      "trap": "Achar que os grupos sociais tradicionais mantiveram poder político. A centralização eliminou esse poder em favor do príncipe.",
+      "nota": "p. 21 diz que o Estado 'passou a incorporar' e 'Estado de Liberal de Direito' (ordem invertida no texto-fonte); o mapa usa a expressão corrente Estado Liberal de Direito."
+     },
+     "f": [
+      {
+       "id": "est-a01-r1.4.1",
+       "t": "Sociedade política",
+       "n": "Órgãos do Estado que detêm o poder político.",
+       "x": {
+        "e": "A sociedade política é formada pelas estruturas de governo soberano, isto é, pelos órgãos do Estado que detêm o poder político.",
+        "src": "Aula 01, p. 20",
+        "cit": "A sociedade política é composta pelas estruturas de governo soberano, ou seja, pelos órgãos do Estado que detêm o poder político"
+       }
+      },
+      {
+       "id": "est-a01-r1.4.2",
+       "t": "Sociedade civil",
+       "n": "Fundamento da vida social, distinto do aparato estatal.",
+       "x": {
+        "e": "A sociedade civil representa o fundamento da vida social e se diferencia do Estado com a especialização da política estatal.",
+        "src": "Aula 01, p. 20",
+        "cit": "enquanto a sociedade civil representa o fundamento da vida social"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r2",
+   "t": "Maquiavel, Bodin e a soberania",
+   "n": "Realismo de Maquiavel e soberania de Bodin: as duas bases teóricas do Estado Moderno.",
+   "x": {
+    "e": "Maquiavel dá a dimensão prática e estratégica do poder; Bodin dá a fundamentação teórica e jurídica da soberania. Juntos lançam as bases do Estado moderno.",
+    "src": "Aula 01, p. 33",
+    "cit": "Maquiavel fornece a dimensão prática e estratégica do poder, enquanto Bodin oferece a fundamentação teórica e jurídica da soberania",
+    "trap": "Atribuir a Maquiavel a máxima 'os fins justificam os meios'. A aula diz que essa máxima não foi a sua lição (p. 15)."
+   },
+   "f": [
+    {
+     "id": "est-a01-r2.1",
+     "t": "Maquiavel e o realismo",
+     "n": "Política analisada como é, não como deveria ser; teoria realista ou utilitarista.",
+     "x": {
+      "e": "Maquiavel parte do que é o Estado e da realidade concreta, sem governo ideal; sua teoria da política é realista ou utilitarista.",
+      "src": "Aula 01, p. 15",
+      "cit": "Sua teoria da política é conhecida como realista ou utilitarista.",
+      "trap": "Associar realismo a imoralidade e tomar 'maquiavélico' como sinônimo de manipulador. O texto critica essa leitura pejorativa (p. 15-16)."
+     },
+     "f": [
+      {
+       "id": "est-a01-r2.1.1",
+       "t": "Força e virtù",
+       "n": "A força fundamenta o poder; a virtù é a chave para mantê-lo e ter sucesso.",
+       "x": {
+        "e": "Maquiavel afirma que o poder se funda na força, mas que a posse de virtù é a chave do sucesso do príncipe.",
+        "src": "Aula 01, p. 16",
+        "cit": "A força explica o fundamento do poder, porém é a posse de virtù a chave por excelência do sucesso do príncipe",
+        "trap": "Tratar força e virtù como sinônimos. O texto separa o fundamento do poder (força) da chave de sucesso (virtù)."
+       }
+      },
+      {
+       "id": "est-a01-r2.1.2",
+       "t": "Razão de Estado",
+       "n": "Os interesses do Estado estão acima dos individuais; o governante pode desagradar súditos.",
+       "x": {
+        "e": "O governante deve, às vezes, desagradar os súditos para garantir a existência do Estado, pois os interesses do Estado estão acima dos interesses individuais.",
+        "src": "Aula 01, p. 16",
+        "cit": "pois os interesses do Estado estão acima dos interesses individuais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r2.2",
+     "t": "Principado ou República",
+     "n": "Duas respostas ao caos: Principado ou República, escolhidas conforme a situação concreta.",
+     "x": {
+      "e": "Maquiavel identifica duas respostas ao caos e às disputas de interesses, o Principado e a República; a escolha entre elas depende da situação concreta, não de vontade ou idealismo.",
+      "src": "Aula 01, p. 17",
+      "cit": "A escolha de uma ou outra forma institucional, contudo, não depende de um mero ato de vontade ou idealismo sobre o regime, mas da situação concreta",
+      "trap": "Tratar a escolha entre Principado e República como ato de vontade. O texto diz que depende da situação concreta."
+     }
+    },
+    {
+     "id": "est-a01-r2.3",
+     "t": "Bodin e a soberania",
+     "n": "Soberania é poder supremo e indivisível; o Estado é entidade jurídica distinta do governante.",
+     "x": {
+      "e": "Bodin sistematiza a soberania como poder supremo e incontestável dentro do território, que não pode ser dividido nem subordinado a outra autoridade.",
+      "src": "Aula 01, p. 25",
+      "cit": "é amplamente reconhecido como um dos primeiros pensadores a desenvolver e sistematizar a teoria da soberania absoluta",
+      "trap": "Concluir que a soberania de Bodin é ilimitada. Ele a submete às leis divinas e naturais (p. 26)."
+     },
+     "f": [
+      {
+       "id": "est-a01-r2.3.1",
+       "t": "Una e indivisível",
+       "n": "A soberania não pode ser fragmentada entre instituições ou poderes.",
+       "x": {
+        "e": "Para Bodin, a soberania é una e indivisível, pois não pode ser fragmentada entre instituições ou poderes.",
+        "src": "Aula 01, p. 27",
+        "cit": "1. una e indivisível, pois não pode ser fragmentada entre instituições ou poderes"
+       }
+      },
+      {
+       "id": "est-a01-r2.3.2",
+       "t": "Permanente",
+       "n": "A soberania subsiste independentemente das pessoas que exercem o governo.",
+       "x": {
+        "e": "Para Bodin, a soberania é permanente, pois subsiste independentemente das pessoas que exercem o governo.",
+        "src": "Aula 01, p. 27",
+        "cit": "2- permanente, pois subsiste independentemente das pessoas que exercem o governo"
+       }
+      },
+      {
+       "id": "est-a01-r2.3.3",
+       "t": "Limite das leis divinas e naturais",
+       "n": "O soberano está submetido às leis divinas e naturais.",
+       "x": {
+        "e": "Bodin reconhece que a soberania está sujeita às leis divinas e naturais, às quais todos os príncipes da terra estão submetidos.",
+        "src": "Aula 01, p. 26",
+        "cit": "Quanto, porém, às leis naturais e divinas, todos os príncipes da terra estão sujeitos a elas",
+        "trap": "Ler a soberania de Bodin como ilimitada. O próprio texto a sujeita às leis divinas e naturais."
+       }
+      },
+      {
+       "id": "est-a01-r2.3.4",
+       "t": "Estado distinto do governante",
+       "n": "O Estado é entidade jurídica e política permanente, distinta do governante.",
+       "x": {
+        "e": "Bodin entende que o Estado é uma entidade jurídica e política permanente, distinta do governante, e que o rei representa o poder soberano.",
+        "src": "Aula 01, p. 27",
+        "cit": "O Estado é uma entidade jurídica e política permanente, distinta do governante"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r3",
+   "t": "Poder absoluto: Hobbes e Bossuet",
+   "n": "Teorias do poder absoluto e indivisível, que justificam a concentração do poder no soberano.",
+   "x": {
+    "e": "Teorias do poder absoluto, com ênfase na soberania indivisível, sustentam que o Estado é entidade única, centralizada, e que o poder supremo não pode ser compartilhado.",
+    "src": "Aula 01, p. 24",
+    "cit": "aquela que defende o poder absoluto do Estado, com ênfase na soberania indivisível",
+    "trap": "Ler as teorias contratualistas como explicação da divisão de poderes entre instituições. A aula diz que elas explicam a fundação da ordem social (p. 24)."
+   },
+   "f": [
+    {
+     "id": "est-a01-r3.1",
+     "t": "Hobbes e o estado de natureza",
+     "n": "Estado de natureza é guerra de todos contra todos; o contrato cria o Leviatã.",
+     "x": {
+      "e": "Hobbes concebe o estado de natureza como condição pré-política, anterior a qualquer governo, de competição, insegurança e conflito; o contrato social cria o soberano absoluto.",
+      "src": "Aula 01, p. 27",
+      "cit": "concebe o estado de natureza como uma condição pré-política que existe antes da formação de um governo ou autoridade central",
+      "trap": "Confundir estado de natureza com Estado. O soberano só passa a existir após o pacto (p. 31).",
+      "nota": "A aula descreve a vida no estado de natureza como 'solitária, pobre, sórdida, bestial e curta' (p. 9) e como 'solitária, pobre, sórdida, brutal e curta' (p. 29). Divergência de adjetivo no texto-fonte, registrada sem correção. p. 28 anuncia 'as 3 principais causas de discórdia', mas a lista não aparece no texto extraído (lacuna da fonte)."
+     },
+     "f": [
+      {
+       "id": "est-a01-r3.1.1",
+       "t": "Guerra de todos contra todos",
+       "n": "No estado de natureza, a vida é insegura e os homens vivem em guerra permanente.",
+       "x": {
+        "e": "No estado de natureza hobbesiano, a condição humana é de guerra de todos contra todos, em que cada um teme ser prejudicado pelos outros.",
+        "src": "Aula 01, p. 29",
+        "cit": "o estado de natureza hobbesiano é caracterizado pela \"guerra de todos contra todos\""
+       }
+      },
+      {
+       "id": "est-a01-r3.1.2",
+       "t": "Contrato social e Leviatã",
+       "n": "As pessoas transferem poder e autoridade a um soberano absoluto em troca de segurança e ordem.",
+       "x": {
+        "e": "No contrato social hobbesiano, as pessoas renunciam a parte da liberdade para obter segurança e ordem, transferindo o poder ao Leviatã.",
+        "src": "Aula 01, p. 29",
+        "cit": "as pessoas concordam em transferir seu poder e autoridade para um soberano absoluto",
+        "trap": "Aproximar a concepção de homem de Hobbes do animal político de Aristóteles. A aula diz que ela é distinta (p. 29)."
+       }
+      },
+      {
+       "id": "est-a01-r3.1.3",
+       "t": "Legitimidade do soberano",
+       "n": "Para Hobbes, o poder soberano é legítimo por ter sido estabelecido pelo contrato.",
+       "x": {
+        "e": "Hobbes não distingue legalidade de legitimidade: o poder soberano é legítimo porque foi estabelecido por contrato e recebe autoridade absoluta dos cidadãos.",
+        "src": "Aula 01, p. 9",
+        "cit": "Para Hobbes, a legitimidade do Estado soberano reside",
+        "trap": "Achar que Hobbes separa legalidade e legitimidade. O texto diz que ele não faz essa distinção (p. 9)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r3.2",
+     "t": "Bossuet e o direito divino dos reis",
+     "n": "Reis governam por autoridade divina e respondem a Deus, não ao povo.",
+     "x": {
+      "e": "Bossuet defende o Direito Divino dos Reis: os monarcas detêm poder absoluto, não sujeito à vontade do povo, o que justifica o absolutismo.",
+      "src": "Aula 01, p. 29",
+      "cit": "Bossuet argumentava que os reis governavam com base em uma autoridade divina, sendo responsáveis perante Deus",
+      "trap": "Atribuir a Bossuet base na vontade do povo. Ele afirma que o poder não está sujeito a essa vontade (p. 29-30)."
+     }
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r4",
+   "t": "Contratualismo liberal: Locke, Montesquieu e Rousseau",
+   "n": "Virada liberal: o poder deixa de ser absoluto e passa a ser limitado e dividido.",
+   "x": {
+    "e": "A virada liberal na tradição contratualista ocorre quando o poder político deixa de ser concebido como absoluto (Hobbes) e passa a ser limitado pelo consentimento e pelo direito natural (Locke), dando origem ao Estado Liberal de Direito.",
+    "src": "Aula 01, p. 33",
+    "cit": "o poder político deixa de ser concebido como absoluto (Hobbes) e passa a ser limitado, em particular, pelo consentimento dos governados e pelo direito natural (Locke)",
+    "trap": "Tratar Locke como defensor do absolutismo. A aula, com base em questão do CESPE comentada, diz que ele se opõe ao absolutismo (p. 37-38)."
+   },
+   "f": [
+    {
+     "id": "est-a01-r4.1",
+     "t": "Locke: governo limitado",
+     "n": "O governo é agente do povo, limitado pela lei e pelo consentimento; resistência à tirania.",
+     "x": {
+      "e": "Locke sustenta que o governo não é soberano absoluto, mas um agente do povo, que existe para proteger os direitos naturais dos cidadãos.",
+      "src": "Aula 01, p. 35",
+      "cit": "O autor sustenta que o governo não é soberano absoluto, mas sim um agente do povo",
+      "trap": "Confundir Locke com Hobbes. Locke limita o governo; Hobbes concentra o poder no soberano."
+     },
+     "f": [
+      {
+       "id": "est-a01-r4.1.1",
+       "t": "Direitos naturais e contrato",
+       "n": "Os seres humanos são livres e iguais e têm direitos naturais de vida, liberdade e propriedade.",
+       "x": {
+        "e": "Locke defende que os seres humanos são livres e iguais e têm direitos naturais inalienáveis, como vida, liberdade e propriedade.",
+        "src": "Aula 01, p. 34",
+        "cit": "Locke defende que os seres humanos são inerentemente livres e iguais"
+       }
+      },
+      {
+       "id": "est-a01-r4.1.2",
+       "t": "Consentimento e resistência",
+       "n": "Governo legítimo depende do consentimento; os cidadãos podem resistir ao governo que não proteja seus direitos.",
+       "x": {
+        "e": "Para Locke, os cidadãos têm o direito de resistir a um governo que não cumpra sua função de proteger os direitos naturais.",
+        "src": "Aula 01, p. 35",
+        "cit": "os cidadãos têm o direito de resistir a um governo que não cumpra sua função de proteger os direitos naturais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r4.2",
+     "t": "Montesquieu: separação de poderes",
+     "n": "O poder é dividido em Legislativo, Executivo e Judiciário, que se controlam mutuamente.",
+     "x": {
+      "e": "Montesquieu propõe dividir o poder político em três funções distintas, de modo que um poder limite o outro, evitando o despotismo.",
+      "src": "Aula 01, p. 36",
+      "cit": "Essa estrutura, segundo Montesquieu, deve funcionar como uma espécie de sistema de freios e contrapesos",
+      "trap": "Atribuir os freios e contrapesos aos federalistas como origem. A aula diz que os federalistas nos EUA os aperfeiçoaram depois de Montesquieu."
+     },
+     "f": [
+      {
+       "id": "est-a01-r4.2.1",
+       "t": "Três funções",
+       "n": "Legislativo faz as leis; Executivo as aplica; Judiciário as interpreta e garante o cumprimento.",
+       "x": {
+        "e": "Montesquieu divide o poder em Legislativo, que faz as leis, Executivo, que as aplica, e Judiciário, que as interpreta.",
+        "src": "Aula 01, p. 35",
+        "cit": "Poder Legislativo, responsável por fazer as leis"
+       }
+      },
+      {
+       "id": "est-a01-r4.2.2",
+       "t": "Poder limita poder",
+       "n": "Quem tem poder tende a abusar dele; por isso um poder deve limitar o outro.",
+       "x": {
+        "e": "Para Montesquieu, é uma experiência eterna que todo homem que tem poder é levado a abusar dele, por isso um poder deve limitar o outro.",
+        "src": "Aula 01, p. 36",
+        "cit": "É uma experiência eterna que todo homem que tem poder é levado a abusar dele"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r4.3",
+     "t": "Rousseau: vontade geral",
+     "n": "A soberania popular se exerce pela vontade geral e pela participação direta, não por representação.",
+     "x": {
+      "e": "Rousseau vê no contrato a criação de uma vontade geral, expressão da soberania do povo, exercida pela participação direta na formulação das leis.",
+      "src": "Aula 01, p. 36",
+      "cit": "a soberania popular não se baseava em eleições representativas, como na democracia moderna, mas na participação direta de todos os cidadãos na formulação das leis",
+      "trap": "Atribuir a Rousseau a limitação do governo, como em Locke. A aula contrapõe os dois autores (p. 36)."
+     },
+     "f": [
+      {
+       "id": "est-a01-r4.3.1",
+       "t": "Locke x Rousseau",
+       "n": "Locke limita o governo; Rousseau baseia a autoridade do Estado na vontade geral, vista como infalível.",
+       "x": {
+        "e": "Locke enfatiza a limitação do poder governamental, enquanto Rousseau entende que a autoridade do Estado deve ser exercida com base na vontade geral.",
+        "src": "Aula 01, p. 36",
+        "cit": "Locke enfatizou a limitação do poder governamental, enquanto Rousseau acreditava que a autoridade do Estado deveria ser exercida com base na vontade geral"
+       }
+      },
+      {
+       "id": "est-a01-r4.3.2",
+       "t": "Estado de natureza virtuoso",
+       "n": "Para Rousseau, o estado de natureza é de virtude e harmonia; a propriedade privada gera desigualdade.",
+       "x": {
+        "e": "Para Rousseau, o estado de natureza é um estado de virtude e harmonia, em que os homens vivem em paz e igualdade, até a propriedade privada gerar desigualdade.",
+        "src": "Aula 01, p. 36",
+        "cit": "Para Rousseau, o estado de natureza era um estado de virtude e harmonia"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r5",
+   "t": "Marx: o Estado como instrumento de classe",
+   "n": "Para Marx, o Estado capitalista é instrumento coercitivo da burguesia, e tende a se extinguir no comunismo.",
+   "x": {
+    "e": "Marx via o Estado como um instrumento da classe dominante, a burguesia, em uma sociedade capitalista, por meio do qual a classe capitalista protege seus interesses.",
+    "src": "Aula 01, p. 39",
+    "cit": "Marx via o Estado como um instrumento da classe dominante, a burguesia, em uma sociedade capitalista",
+    "trap": "Dizer que Marx via o Estado como neutro ou como representante da classe trabalhadora. A aula diz que ele é instrumento da burguesia (comentário da questão, p. 41)."
+   },
+   "f": [
+    {
+     "id": "est-a01-r5.1",
+     "t": "Instrumento da classe dominante",
+     "n": "O Estado é instrumento coercitivo da burguesia para explorar a classe trabalhadora.",
+     "x": {
+      "e": "Para Marx, o Estado capitalista é um instrumento coercitivo comandado pela burguesia, que explora a classe trabalhadora e protege os interesses econômicos capitalistas.",
+      "src": "Aula 01, p. 39",
+      "cit": "o Estado é um instrumento coercitivo comandado pela burguesia para a exploração da classe trabalhadora"
+     },
+     "f": [
+      {
+       "id": "est-a01-r5.1.1",
+       "t": "Ideologia",
+       "n": "A ideologia dominante legitima a exploração e cria a falsa consciência dos trabalhadores.",
+       "x": {
+        "e": "Marx entende que a ideologia, formada na superestrutura, legitima a exploração capitalista e mantém a classe trabalhadora submissa.",
+        "src": "Aula 01, p. 39",
+        "cit": "Ele via o Estado como promotor da ideologia dominante, que servia para legitimar a exploração capitalista"
+       }
+      },
+      {
+       "id": "est-a01-r5.1.2",
+       "t": "Acumulação de capital",
+       "n": "A função do Estado capitalista é garantir a acumulação do capital para a burguesia.",
+       "x": {
+        "e": "Consenso marxista: a função do Estado capitalista é garantir a acumulação do capital para a burguesia.",
+        "src": "Aula 01, p. 40",
+        "cit": "A função do Estado capitalista é garantir a acumulação do capital para a burguesia"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r5.2",
+     "t": "Ditadura do proletariado e extinção do Estado",
+     "n": "A revolução proletária leva à ditadura do proletariado; no comunismo o Estado se extingue.",
+     "x": {
+      "e": "Marx prevê que a luta de classes leva à revolução proletária, ao fim do Estado burguês e à transição, com o Estado perdendo sua razão de existir no comunismo.",
+      "src": "Aula 01, p. 40",
+      "cit": "o Estado perderia sua razão de existir e gradualmente se extinguiria",
+      "trap": "Ler 'ditadura do proletariado' como ditadura da minoria. O texto diz que é 'ditadura da maioria', em contraste com o Estado burguês."
+     },
+     "f": [
+      {
+       "id": "est-a01-r5.2.1",
+       "t": "Ditadura do proletariado",
+       "n": "Transição em que o Estado representa a classe trabalhadora, até o comunismo.",
+       "x": {
+        "e": "Marx prevê a revolução proletária, na qual a classe trabalhadora derrubaria o Estado burguês e estabeleceria a ditadura do proletariado.",
+        "src": "Aula 01, p. 40",
+        "cit": "a classe trabalhadora derrubaria o Estado burguês e estabeleceria a ditadura do proletariado"
+       }
+      },
+      {
+       "id": "est-a01-r5.2.2",
+       "t": "Democracia liberal burguesa",
+       "n": "Para Marx, a democracia liberal burguesa também serve à dominação de uma classe sobre a outra.",
+       "x": {
+        "e": "Para Marx, a democracia liberal burguesa também estaria a serviço da dominação de uma classe social sobre a outra.",
+        "src": "Aula 01, p. 40",
+        "cit": "Para Marx a democracia liberal burguesa também estaria a serviço da dominação de uma classe social sobre a outra"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r5.3",
+     "t": "Gramsci e Althusser",
+     "n": "Gramsci: dominação hegemônica e consenso; Althusser: aparelhos repressivo e ideológico do Estado.",
+     "x": {
+      "e": "Gramsci vê o Estado como aparato ideológico da classe dominante, que domina pela hegemonia; Althusser distingue aparelhos repressivos e ideológicos do Estado.",
+      "src": "Aula 01, p. 42",
+      "cit": "Para este autor italiano, o Estado é um aparato ideológico da classe dominante"
+     },
+     "f": [
+      {
+       "id": "est-a01-r5.3.1",
+       "t": "Hegemonia (Gramsci)",
+       "n": "A dominação se dá por valores tratados como universais; o Estado busca o consenso das classes subalternas.",
+       "x": {
+        "e": "Para Gramsci, a dominação de classe é, na verdade, dominação hegemônica, exercida por valores e normas tratados como universais.",
+        "src": "Aula 01, p. 42",
+        "cit": "A dominação de classe é, na verdade, dominação hegemônica"
+       }
+      },
+      {
+       "id": "est-a01-r5.3.2",
+       "t": "Aparelhos de Estado (Althusser)",
+       "n": "O ARE usa a força física; o AIE molda ideias, valores e crenças.",
+       "x": {
+        "e": "Althusser define o Aparelho Repressivo do Estado, que usa a força física para manter a ordem, e os Aparelhos Ideológicos do Estado, que moldam a consciência.",
+        "src": "Aula 01, p. 42",
+        "cit": "O Aparelho Repressivo do Estado (ARE): Este inclui as instituições que têm o poder de usar a força física para manter a ordem"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r5.4",
+     "t": "Poulantzas, Offe e derivacionismo",
+     "n": "Estados com autonomia relativa, arenas de luta de classes e de crises do capitalismo.",
+     "x": {
+      "e": "Poulantzas e Offe ressaltam a autonomia relativa do Estado; os derivacionistas tomam a acumulação de capital e as crises como ponto de partida para entender o Estado.",
+      "src": "Aula 01, p. 43",
+      "cit": "o Estado possui uma certa autonomia relativa em relação à classe dominante"
+     },
+     "f": [
+      {
+       "id": "est-a01-r5.4.1",
+       "t": "Poulantzas",
+       "n": "O Estado é condensador de poder e arena da luta de classes; tem autonomia relativa.",
+       "x": {
+        "e": "Para Poulantzas, o Estado é um condensador de poder, que concentra o poder da classe dominante e também é lugar onde se travam as lutas de classe.",
+        "src": "Aula 01, p. 43",
+        "cit": "Para Poulantzas, o Estado é um \"condensador de poder\", que concentra o poder da classe dominante"
+       }
+      },
+      {
+       "id": "est-a01-r5.4.2",
+       "t": "Derivacionismo",
+       "n": "O Estado administra crises do capitalismo, contrapõe-se à queda da taxa de lucro e distribui o excedente.",
+       "x": {
+        "e": "Para os derivacionistas, o Estado desempenha papel crucial na contraposição à tendência de queda da taxa de lucro no sistema capitalista.",
+        "src": "Aula 01, p. 45",
+        "cit": "Eles veem o Estado desempenhando um papel crucial na contraposição à tendência de queda da taxa de lucro no sistema capitalista",
+        "trap": "Confundir derivacionismo com Gramsci ou Althusser. Os derivacionistas enfatizam a economia, não a ideologia nem a coerção (p. 45)."
+       }
+      },
+      {
+       "id": "est-a01-r5.4.3",
+       "t": "Offe: crises e legitimação",
+       "n": "O Estado é a principal arena de crises, sobretudo a de legitimação; a burocracia tem autonomia relativa.",
+       "x": {
+        "e": "Para Claus Offe, o Estado é a principal arena de crises, especialmente a crise de legitimação, e a burocracia atua como mediadora independente.",
+        "src": "Aula 01, p. 47",
+        "cit": "Ele considera o Estado como a principal arena de crises",
+        "nota": "p. 45 traz frase truncada ('esse é um debate de Joachim Hirsch estabelece com Claus Offe'); a aula não explica o debate. Registrado sem correção."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r6",
+   "t": "Weber: monopólio, autoridade e burocracia",
+   "n": "Weber vê o Estado como instituição racionalizada, com monopólio legítimo da coerção.",
+   "x": {
+    "e": "Weber desenvolveu a ideia de Estado como instituição, por meio da sua teoria do poder e da dominação, com o monopólio da coerção legítima em um território.",
+    "src": "Aula 01, p. 45",
+    "cit": "o monopólio da coerção legítima em um território específico",
+    "trap": "Confundir Weber com Marx. Para Weber, o Estado é instituição racionalizada, não instrumento de classe (comparação, p. 49)."
+   },
+   "f": [
+    {
+     "id": "est-a01-r6.1",
+     "t": "Monopólio da coerção legítima",
+     "n": "O Estado é a única instituição com direito exclusivo de usar a força física no território.",
+     "x": {
+      "e": "Weber considera que o Estado detém o monopólio da coerção legítima, sendo a única instituição com direito exclusivo de usar a força física dentro de suas fronteiras.",
+      "src": "Aula 01, p. 45",
+      "cit": "Isso significa que o Estado é a única instituição que tem o direito exclusivo de usar a força física dentro de suas fronteiras",
+      "trap": "Achar que o monopólio dispensa legitimidade. Weber diz que ele deve ser legitimado para ser eficaz (p. 45)."
+     }
+    },
+    {
+     "id": "est-a01-r6.2",
+     "t": "Tipos de autoridade legítima",
+     "n": "Três tipos ideais: tradicional, carismática e legal-racional, cada um com sua legitimidade.",
+     "x": {
+      "e": "Weber identifica três tipos de autoridade legítima, cada um com seu tipo de legitimidade: tradicional, carismática e legal-racional.",
+      "src": "Aula 01, p. 46",
+      "cit": "a legitimidade é baseada em tradições e práticas históricas"
+     },
+     "f": [
+      {
+       "id": "est-a01-r6.2.1",
+       "t": "Tradicional",
+       "n": "Legitimidade pela tradição e práticas históricas, como nas monarquias hereditárias.",
+       "x": {
+        "e": "A autoridade tradicional tem legitimidade baseada em tradições e práticas históricas, com exemplos como monarquias hereditárias.",
+        "src": "Aula 01, p. 46",
+        "cit": "Exemplos incluem monarquias hereditárias e sistemas de liderança"
+       }
+      },
+      {
+       "id": "est-a01-r6.2.2",
+       "t": "Carismática",
+       "n": "Legitimidade pela devoção pessoal ao líder.",
+       "x": {
+        "e": "A autoridade carismática é baseada na devoção pessoal a um líder carismático, cujo carisma é o fator central de legitimidade.",
+        "src": "Aula 01, p. 46",
+        "cit": "Essa autoridade é baseada na devoção pessoal a um líder carismático"
+       }
+      },
+      {
+       "id": "est-a01-r6.2.3",
+       "t": "Legal-racional",
+       "n": "Legitimidade por leis e regulamentos racionais; é o tipo mais relevante nas sociedades modernas.",
+       "x": {
+        "e": "Weber considera a autoridade legal-racional o tipo mais relevante nas sociedades modernas, e o Estado moderno é exemplo dela.",
+        "src": "Aula 01, p. 46",
+        "cit": "Weber considerava este o tipo de autoridade mais relevante nas sociedades modernas",
+        "trap": "Tratar a autoridade legal-racional como a tradicional. O Estado moderno é exemplo do tipo legal-racional."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r6.3",
+     "t": "Burocracia",
+     "n": "Organização racional e eficiente, com regras claras, hierarquia e mérito; risco de formalismo.",
+     "x": {
+      "e": "Weber descreve a burocracia como forma eficiente e racional de organização, com hierarquia, impessoalidade, especialização e carreira.",
+      "src": "Aula 01, p. 46",
+      "cit": "descreveu a burocracia como uma forma eficiente e racional de organização"
+     },
+     "f": [
+      {
+       "id": "est-a01-r6.3.1",
+       "t": "Hierarquia e impessoalidade",
+       "n": "Níveis de autoridade definidos; as decisões seguem regras, não preferências pessoais.",
+       "x": {
+        "e": "Na burocracia weberiana, as decisões são baseadas em regras e procedimentos impessoais, em vez de preferências pessoais, e há hierarquia clara.",
+        "src": "Aula 01, p. 46",
+        "cit": "As decisões são baseadas em regras e procedimentos impessoais, em vez de preferências pessoais"
+       }
+      },
+      {
+       "id": "est-a01-r6.3.2",
+       "t": "Especialização e carreira",
+       "n": "Funções especializadas; a promoção se faz por mérito e desempenho.",
+       "x": {
+        "e": "Na burocracia de Weber, cada funcionário tem funções especializadas, e a promoção se baseia no mérito e no desempenho.",
+        "src": "Aula 01, p. 46",
+        "cit": "A promoção e o avanço na burocracia são baseados no mérito e no desempenho"
+       }
+      },
+      {
+       "id": "est-a01-r6.3.3",
+       "t": "Risco de formalismo",
+       "n": "Burocracia pode tornar-se excessivamente formalista e alienada dos interesses sociais.",
+       "x": {
+        "e": "Weber alerta que a burocracia pode se tornar excessivamente formalista e alienada dos interesses da sociedade.",
+        "src": "Aula 01, p. 46",
+        "cit": "ele alertou para o risco de a burocracia se tornar excessivamente formalista e alienada dos interesses da sociedade"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r6.4",
+     "t": "Estado patrimonialista e burocrático",
+     "n": "Legado weberiano: Estado patrimonialista (poder tradicional) e Estado burocrático (poder racional-legal).",
+     "x": {
+      "e": "Weber deixou como legado a noção de Estado patrimonialista, baseado no poder tradicional, e de Estado burocrático, baseado no poder racional-legal.",
+      "src": "Aula 01, p. 38",
+      "cit": "Nos deixou como legado a noção de Estado Patrimonialista, baseado no poder tradicional, e de Estado Burocrático, baseado no poder racional-legal",
+      "trap": "Trocar Estado patrimonialista (tradicional) por burocrático (racional-legal)."
+     }
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r7",
+   "t": "Modelos de Estado",
+   "n": "Modelos (tipos) de Estado mudam com o contexto histórico e com as funções assumidas pelo Estado.",
+   "x": {
+    "e": "Considerando a perspectiva histórica, podemos estabelecer a relação entre contexto histórico e modelos de Estado, ou tipos de Estado.",
+    "src": "Aula 01, p. 49",
+    "cit": "Considerando a perspectiva histórica, podemos estabelecer a relação entre contexto histórico"
+   },
+   "f": [
+    {
+     "id": "est-a01-r7.1",
+     "t": "Centralizador e liberal",
+     "n": "Centralizador: poder concentrado no governo central; liberal: mínima intervenção e livre concorrência.",
+     "x": {
+      "e": "O Estado centralizador concentra poder e autoridade no governo central; o Estado liberal surge como resposta a esse centralismo, com mínima intervenção na economia.",
+      "src": "Aula 01, p. 49",
+      "cit": "O Estado centralizador é caracterizado pela concentração de poder e autoridade no governo"
+     },
+     "f": [
+      {
+       "id": "est-a01-r7.1.1",
+       "t": "Estado centralizador",
+       "n": "Poder concentrado no governo central, como no absolutismo.",
+       "x": {
+        "e": "O exemplo histórico do Estado centralizador é o absolutismo monárquico, em que os monarcas detinham poder absoluto sobre o território e a população.",
+        "src": "Aula 01, p. 49",
+        "cit": "Um exemplo histórico é o período do absolutismo monárquico, em que os monarcas detinham poder absoluto sobre o território e a população"
+       }
+      },
+      {
+       "id": "est-a01-r7.1.2",
+       "t": "Estado liberal",
+       "n": "Mínima intervenção; liberdade individual, propriedade privada e livre concorrência (laissez-faire).",
+       "x": {
+        "e": "O Estado liberal surge como uma resposta ao centralismo do Estado e se baseia na mínima intervenção, na liberdade individual e na propriedade privada.",
+        "src": "Aula 01, p. 50",
+        "cit": "O Estado liberal surge como uma resposta ao centralismo do Estado",
+        "trap": "Tratar o liberalismo clássico como neoliberal. O neoliberal é posterior e marcado por privatização e desregulamentação (p. 52-53)."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r7.2",
+     "t": "Interventor e planificador",
+     "n": "Interventor: regula e promove políticas públicas; planificador: planos econômicos centralizados.",
+     "x": {
+      "e": "O Estado intervencionista regulamenta setores econômicos, controla empresas estatais e promove políticas públicas; o planificador dirige o desenvolvimento por metas predefinidas.",
+      "src": "Aula 01, p. 50",
+      "cit": "O Estado intervencionista regulamenta setores econômicos, controla empresas estatais e promove políticas públicas"
+     },
+     "f": [
+      {
+       "id": "est-a01-r7.2.1",
+       "t": "Interventor",
+       "n": "Intervenção para combater crises e desigualdades, como o New Deal.",
+       "x": {
+        "e": "O modelo intervencionista responde a crises e desigualdades do liberalismo; exemplo notório é o New Deal nos Estados Unidos.",
+        "src": "Aula 01, p. 50",
+        "cit": "Um exemplo notório desse modelo é o New Deal nos Estados Unidos durante a Grande Depressão"
+       }
+      },
+      {
+       "id": "est-a01-r7.2.2",
+       "t": "Planificador",
+       "n": "O Estado define planos econômicos e sociais com metas predefinidas; exemplo: a União Soviética.",
+       "x": {
+        "e": "O Estado planificador assume papel central na formulação e implementação de planos econômicos e sociais, com metas predefinidas.",
+        "src": "Aula 01, p. 52",
+        "cit": "o Estado planificador assume um papel central na formulação e implementação de planos econômicos e sociais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r7.3",
+     "t": "Regulador e neoliberal",
+     "n": "Regulador: regulação indireta por agências; neoliberal: desregulamentação e privatização.",
+     "x": {
+      "e": "O Estado regulador atua de forma indireta na economia; o Estado neoliberal enfatiza a mínima intervenção, a liberalização, a desregulamentação e a privatização.",
+      "src": "Aula 01, p. 51",
+      "cit": "Esse modelo atua de forma indireta na economia e na sociedade"
+     },
+     "f": [
+      {
+       "id": "est-a01-r7.3.1",
+       "t": "Estado regulador",
+       "n": "Regulação e fiscalização da economia e dos serviços públicos, por agências reguladoras.",
+       "x": {
+        "e": "O Estado regulador concentra-se na regulação e fiscalização da economia e dos serviços públicos, para garantir o funcionamento eficiente do mercado.",
+        "src": "Aula 01, p. 51",
+        "cit": "Ele se concentra na regulação e fiscalização da economia e dos serviços públicos",
+        "nota": "p. 51 cita a 'Comissão de Valores Mobiliários (SEC) nos Estados Unidos'. A CVM é a autarquia brasileira; a SEC é a norte-americana. Divergência do texto-fonte, registrada sem correção."
+       }
+      },
+      {
+       "id": "est-a01-r7.3.2",
+       "t": "Estado neoliberal",
+       "n": "Mínima intervenção; liberalização, desregulamentação, privatização e flexibilização trabalhista.",
+       "x": {
+        "e": "O Estado neoliberal é caracterizado por uma ênfase na mínima intervenção do Estado na economia, com liberalização, desregulamentação e privatização.",
+        "src": "Aula 01, p. 52",
+        "cit": "O Estado neoliberal é caracterizado por uma ênfase na mínima intervenção do Estado na economia",
+        "trap": "Dizer que o Estado neoliberal substitui o governo mínimo por intervencionismo. A questão de 2020 comentada (p. 54-55) diz que ele flexibiliza leis trabalhistas e reduz impostos.",
+        "nota": "p. 51 escreve 'O Caminho da Servidão' e p. 53 escreve 'Os Caminhos da Servidão' (título de Hayek). Divergência de título, registrada sem correção."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  },
+  {
+   "id": "est-a01-r8",
+   "t": "Elementos constitutivos do Estado",
+   "n": "Território, povo e governo são os três elementos básicos; soberania e legitimidade completam o conceito.",
+   "x": {
+    "e": "Em geral, são três os elementos constitutivos do Estado: território, povo e governo, que formam a base do Estado e são essenciais para sua existência e funcionamento.",
+    "src": "Aula 01, p. 55",
+    "cit": "em geral, são três os elementos constitutivos do Estado: território, povo e governo",
+    "trap": "Tomar a lista de elementos como fixa. A aula diz que ela varia conforme o contexto e a teoria."
+   },
+   "f": [
+    {
+     "id": "est-a01-r8.1",
+     "t": "Território",
+     "n": "Área geográfica sobre a qual o Estado exerce soberania, incluindo águas, espaço aéreo e, em alguns casos, plataforma e zona econômica.",
+     "x": {
+      "e": "O território é a área geográfica sobre a qual um Estado exerce sua soberania e autoridade, incluindo águas territoriais e espaço aéreo.",
+      "src": "Aula 01, p. 56",
+      "cit": "O território refere-se à área geográfica sobre a qual um Estado exerce sua soberania e autoridade",
+      "trap": "Restringir o território à terra. Ele inclui águas territoriais, espaço aéreo e, em alguns casos, plataforma continental e zona econômica exclusiva."
+     }
+    },
+    {
+     "id": "est-a01-r8.2",
+     "t": "Povo",
+     "n": "População residente no território, sujeita à autoridade estatal; conceituada como político, jurídico e sociológico.",
+     "x": {
+      "e": "Paulo Bonavides conceitua o elemento povo a partir de três vertentes: política, jurídica e sociológica.",
+      "src": "Aula 01, p. 56",
+      "cit": "conceitua o elemento povo a partir de 3 vertentes: política, jurídica e sociológica"
+     },
+     "f": [
+      {
+       "id": "est-a01-r8.2.1",
+       "t": "Povo político",
+       "n": "Reunião da multidão associada pelo consenso do direito e pela comunhão da utilidade; sujeito do poder na Revolução Francesa.",
+       "x": {
+        "e": "No conceito político, o povo é a reunião da multidão associada pelo consenso do direito e pela comunhão da utilidade.",
+        "src": "Aula 01, p. 56",
+        "cit": "Definido como a reunião da multidão associada pelo consenso do direito e pela comunhão da utilidade"
+       }
+      },
+      {
+       "id": "est-a01-r8.2.2",
+       "t": "Povo jurídico",
+       "n": "Cidadania: capacidade pública que confere direitos políticos e deveres perante o Estado.",
+       "x": {
+        "e": "No conceito jurídico, o povo está relacionado à cidadania, capacidade pública que concede direitos políticos e deveres perante o Estado.",
+        "src": "Aula 01, p. 57",
+        "cit": "A cidadania é uma capacidade pública do indivíduo que o torna parte do \"povo\" e concede direitos políticos e deveres perante o Estado"
+       }
+      },
+      {
+       "id": "est-a01-r8.2.3",
+       "t": "Povo sociológico",
+       "n": "Equiparado à nação; continuidade do elemento humano ao longo de gerações, com valores comuns.",
+       "x": {
+        "e": "No conceito sociológico, o povo é equiparado à nação e é uma continuidade do elemento humano ao longo de gerações, com valores e aspirações comuns.",
+        "src": "Aula 01, p. 57",
+        "cit": "Considerado uma continuidade do elemento humano ao longo de gerações, com valores e aspirações comuns"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a01-r8.3",
+     "t": "Governo, soberania e legitimidade",
+     "n": "Governo exerce a autoridade política; soberania é o poder supremo; legitimidade vem do reconhecimento da população.",
+     "x": {
+      "e": "Governo é a autoridade que toma decisões e faz cumprir as leis; soberania e legitimidade são acrescentadas por Bobbio à noção de Estado.",
+      "src": "Aula 01, p. 57",
+      "cit": "Norberto Bobbio foi um renomado filósofo político italiano"
+     },
+     "f": [
+      {
+       "id": "est-a01-r8.3.1",
+       "t": "Governo",
+       "n": "Autoridade que decide, cria e faz cumprir leis; pode ser monarquia ou república.",
+       "x": {
+        "e": "O governo é a autoridade política que exerce o controle e a administração do Estado, podendo assumir a forma de monarquia ou república.",
+        "src": "Aula 01, p. 56",
+        "cit": "O governo pode assumir diferentes formas, como monarquia e república",
+        "trap": "Confundir o elemento governo com o sistema de governo. A aula diz que presidencialismo, semipresidencialismo e parlamentarismo são formas de estruturá-lo."
+       }
+      },
+      {
+       "id": "est-a01-r8.3.2",
+       "t": "Soberania",
+       "n": "Poder supremo e final dentro do território, sem interferência externa significativa; igualdade entre Estados.",
+       "x": {
+        "e": "Soberania é a qualidade do poder político do Estado de exercê-lo sem depender de nenhum outro poder.",
+        "src": "Aula 01, p. 58",
+        "cit": "Na prática, a soberania representa uma qualidade do poder político do Estado que é exercer seu poder sem depender de nenhum outro poder",
+        "trap": "Tratar a soberania como absoluta. A aula diz que ela é desafiada pela interdependência global e pela intervenção humanitária (p. 59)."
+       }
+      },
+      {
+       "id": "est-a01-r8.3.3",
+       "t": "Legitimidade",
+       "n": "Reconhecimento e apoio da população; obtida por eleições, respeito aos direitos humanos e Estado de Direito.",
+       "x": {
+        "e": "O Estado busca legitimidade para governar, ou seja, o reconhecimento e o apoio da população, que pode ser obtida por eleições e pelo respeito aos direitos humanos.",
+        "src": "Aula 01, p. 57",
+        "cit": "A legitimidade pode ser obtida através de eleições",
+        "trap": "Reduzir legitimidade a legalidade. Weber distingue três tipos de legitimidade: tradicional, carismática e legal-racional (p. 61)."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "01"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "Centralização prepara a teoria da soberania",
+   "de": "est-a01-r1.3",
+   "para": "est-a01-r2"
+  },
+  {
+   "rotulo": "Westfália inaugura a soberania dos Estados",
+   "de": "est-a01-r1.2",
+   "para": "est-a01-r8.3.2"
+  },
+  {
+   "rotulo": "Soberania indivisível de Bodin sustenta o absolutismo de Hobbes",
+   "de": "est-a01-r2.3",
+   "para": "est-a01-r3.1"
+  },
+  {
+   "rotulo": "Contrato: poder absoluto (Hobbes) x poder limitado (Locke)",
+   "de": "est-a01-r3.1.2",
+   "para": "est-a01-r4.1"
+  },
+  {
+   "rotulo": "Estado de natureza: guerra (Hobbes) x virtude (Rousseau)",
+   "de": "est-a01-r4.3.2",
+   "para": "est-a01-r3.1.1"
+  },
+  {
+   "rotulo": "Limitação do poder leva ao Estado liberal",
+   "de": "est-a01-r4.1",
+   "para": "est-a01-r7.1.2"
+  },
+  {
+   "rotulo": "Marx x Weber: instrumento de classe x monopólio legítimo",
+   "de": "est-a01-r5.1",
+   "para": "est-a01-r6.1"
+  },
+  {
+   "rotulo": "Offe contrasta com visões ideológicas e repressivas",
+   "de": "est-a01-r5.3",
+   "para": "est-a01-r5.4.3"
+  },
+  {
+   "rotulo": "Planificação associada à ditadura do proletariado",
+   "de": "est-a01-r7.2.2",
+   "para": "est-a01-r5.2"
+  },
+  {
+   "rotulo": "Neoliberal contrasta com regulador",
+   "de": "est-a01-r7.3",
+   "para": "est-a01-r7.3.2"
+  },
+  {
+   "rotulo": "Monopólio da força é exercido pelo governo",
+   "de": "est-a01-r6.1",
+   "para": "est-a01-r8.3.1"
+  },
+  {
+   "rotulo": "Soberania é elemento e base de Bodin",
+   "de": "est-a01-r8.3.2",
+   "para": "est-a01-r2.3"
+  }
+ ],
+ "fontesCentral": {}
+}
