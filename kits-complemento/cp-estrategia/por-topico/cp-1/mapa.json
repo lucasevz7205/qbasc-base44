@@ -1,0 +1,558 @@
+{
+ "topico": "cp-1",
+ "materia": "cp",
+ "centro": "Regimes políticos",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "02"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a02-r6",
+   "t": "Regime político",
+   "n": "Regime político é a estrutura global da realidade política, com instituições e ideologia",
+   "x": {
+    "e": "Regime político diz respeito à estrutura global da realidade política, com todo o seu complexo institucional e ideológico, segundo Maurice Duverger. Trata da forma como o poder é exercido.",
+    "src": "Aula 02, p. 35",
+    "cit": "Regime político diz respeito à estrutura global da realidade política, com todo o seu complexo institucional e ideológico, segundo Maurice Duverger."
+   },
+   "f": [
+    {
+     "id": "est-a02-r6.1",
+     "t": "Regime político e os demais aspectos do Estado",
+     "n": "Regime político se distingue de forma e sistema de governo",
+     "x": {
+      "e": "A fonte diz que alguns autores incluem o regime político dentro do sistema de governo. Para o caso brasileiro, o quadro separa Estado federado, forma de governo, sistema de governo e regime político.",
+      "src": "Aula 02, p. 36",
+      "cit": "Alguns autores afirmam que o regime político está dentro do sistema e governo.",
+      "trap": "Regime político não é forma de governo nem sistema de governo; são camadas diferentes.",
+      "nota": "Texto-fonte da p. 36 traz 'sistema e governo' (provável 'sistema de governo'). A classificação do Brasil está na p. 37."
+     }
+    },
+    {
+     "id": "est-a02-r6.2",
+     "t": "Regime democrático e autocrático",
+     "n": "Democracia tem partidos, eleições e liberdade de imprensa e associação",
+     "x": {
+      "e": "Nos regimes democráticos há partidos, eleições, liberdade de imprensa e de associação e a soberania se funda na participação popular. Nos regimes autocráticos, as liberdades políticas são negadas. O Brasil é classificado como regime político democrático.",
+      "src": "Aula 02, p. 37",
+      "cit": "Nos Regimes Democráticos, há partidos, há eleições, liberdade de imprensa e de associação."
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.2.1",
+       "t": "Democracia direta e indireta",
+       "n": "Na indireta, os representantes escolhem o presidente",
+       "x": {
+        "e": "Na democracia direta o povo participa diretamente do processo político, em particular na escolha do presidente. Na indireta o povo não participa, e os representantes ou um colégio eleitoral é que escolhem.",
+        "src": "Aula 02, p. 37",
+        "cit": "Já na Indireta o povo não participa, mas sim os representantes é que escolhem o Presidente",
+        "trap": "Na democracia indireta quem escolhe é o representante, não o povo.",
+        "nota": "Definição pela escolha do presidente (p. 37). A p. 44 define direta/indireta pelo exercício do poder (direta = povo; indireta = representantes; semidireta = mistura), outro critério. Não são a mesma definição; ligado a r7.4."
+       }
+      },
+      {
+       "id": "est-a02-r6.2.2",
+       "t": "Mecanismos de participação semidireta",
+       "n": "Plebiscito, referendo e projeto de lei de iniciativa popular",
+       "x": {
+        "e": "Dentro dos regimes democráticos há mecanismos de participação popular além das eleições, como plebiscito, referendo e a possibilidade de o povo apresentar projetos de lei. O Brasil adota a democracia semidireta.",
+        "src": "Aula 02, p. 37",
+        "cit": "Esses mecanismos são o plebiscito, o referendo e a possibilidade de o povo apresentar projetos de lei.",
+        "trap": "Na democracia semidireta, a maior parte das decisões é tomada por representantes eleitos."
+       }
+      },
+      {
+       "id": "est-a02-r6.2.3",
+       "t": "Autocracia (regime autocrático)",
+       "n": "Autocracia nega liberdades e restringe o pluralismo",
+       "x": {
+        "e": "O regime autocrático ou ditatorial se caracteriza, do ponto de vista político, por negar as liberdades individuais e políticas, restringir o pluripartidarismo e impor censura ou licença prévia.",
+        "src": "Aula 02, p. 38",
+        "cit": "O Regime Autocrático (ou ditatorial) se caracteriza, pelo menos do ponto de vista político, por negar"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r6.3",
+     "t": "Autocracia e transição de regime",
+     "n": "Transição: teorias da transitologia analisam a passagem para a democracia",
+     "x": {
+      "e": "A transitologia estuda a passagem de regimes autoritários para democráticos, a partir de experiências desde 1974 no sul da Europa e na América Latina. A fonte lista onze elementos a analisar, como estrutura econômica e social, acordos entre forças políticas, cultura política e liderança da transição.",
+      "src": "Aula 02, p. 38",
+      "cit": "A partir das experiências de mudança de regime político acontecidas, desde 1974, no sul da Europa e na América Latina"
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.3.1",
+       "t": "Democracia com defeitos de nascença",
+       "n": "Avaliar se a transição evita falta de institucionalização",
+       "x": {
+        "e": "Na transição é preciso avaliar se a nova democracia não nasce com 'defeitos de nascença', como falta de institucionalização ou características personalistas.",
+        "src": "Aula 02, p. 39",
+        "cit": "É crucial avaliar se a transição está ocorrendo de forma a evitar que a nova democracia tenha"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r6.4",
+     "t": "Tipos de democracia (sistematização)",
+     "n": "Cinco tipos: deliberativa, igualitária, eleitoral, liberal e participativa",
+     "x": {
+      "e": "A fonte sistematiza cinco tipos de democracia, criados a partir do debate teórico: deliberativa, igualitária, eleitoral, liberal e participativa. Cada um tem um eixo próprio (processo, igualdade, competição, limites ao governo, participação).",
+      "src": "Aula 02, p. 58",
+      "cit": "vamos trazer a sistematização dos tipos de democracia criados a partir de todo o debate teórico"
+     },
+     "f": [
+      {
+       "id": "est-a02-r6.4.1",
+       "t": "Democracia deliberativa",
+       "n": "Decisão pela razão pública, com diálogo",
+       "x": {
+        "e": "A democracia deliberativa concentra-se no processo pelo qual as decisões são tomadas: a razão pública, focada no bem comum, motiva as decisões, em contraste com apelos emocionais, vínculos solidários, interesses paroquiais ou coerção. Autor associado (p. 59): Habermas.",
+        "src": "Aula 02, p. 58",
+        "cit": "Democracia Deliberativa: A democracia deliberativa concentra-se no processo pelo qual as decisões são tomadas em um corpo político",
+        "trap": "Democracia deliberativa não é só agregar preferências existentes: exige diálogo respeitoso."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.2",
+       "t": "Democracia igualitária",
+       "n": "Igualdade material e de acesso ao poder",
+       "x": {
+        "e": "A democracia igualitária sustenta que as desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais. É alcançada quando direitos são protegidos igualmente, recursos são distribuídos igualmente e grupos têm igual acesso ao poder. Autor associado (p. 60): Rawls.",
+        "src": "Aula 02, p. 59",
+        "cit": "A democracia igualitária sustenta que as desigualdades materiais e imateriais inibem o exercício de direitos e liberdades formais",
+        "trap": "O eixo é a igualdade material e de acesso ao poder, não só o voto igual."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.3",
+       "t": "Democracia eleitoral",
+       "n": "Governantes responsivos por competição eleitoral",
+       "x": {
+        "e": "A democracia eleitoral busca tornar os governantes responsivos aos cidadãos pela competição eleitoral, com sufrágio amplo, eleições limpas e eleição do chefe do Executivo. Autor associado (p. 61): Schumpeter, que define a democracia como método de competição para a conquista do poder.",
+        "src": "Aula 02, p. 60",
+        "cit": "A democracia eleitoral busca incorporar o valor central de tornar os governantes responsivos aos cidadãos",
+        "trap": "Na eleitoral o foco é a competição eleitoral; não é a participação ativa de todos os processos (isso é a participativa)."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.4",
+       "t": "Democracia liberal",
+       "n": "Limites ao governo e proteção de minorias",
+       "x": {
+        "e": "A democracia liberal protege direitos individuais e de grupos minoritários contra a tirania do Estado e a tirania da maioria. Adota visão negativa do poder: julga a qualidade da democracia pelos limites impostos ao governo. Autor associado (p. 62): Mill.",
+        "src": "Aula 02, p. 61",
+        "cit": "A democracia liberal enfatiza a importância de proteger os direitos individuais e dos grupos minoritários contra a tirania do estado e a tirania da maioria",
+        "trap": "Democracia liberal julga pelos limites ao governo (visão negativa), não pela participação."
+       }
+      },
+      {
+       "id": "est-a02-r6.4.5",
+       "t": "Democracia participativa",
+       "n": "Participação ativa em todos os processos, eleitorais e não eleitorais",
+       "x": {
+        "e": "A democracia participativa enfatiza a participação ativa dos cidadãos em todos os processos políticos, eleitorais e não eleitorais, e prefere o governo direto pelos cidadãos sempre que possível. Autora associada (p. 62): Carole Pateman.",
+        "src": "Aula 02, p. 62",
+        "cit": "A democracia participativa enfatiza a participação ativa dos cidadãos em todos os processos políticos, eleitorais e não eleitorais",
+        "trap": "Participativa é oposta à delegação exclusiva a representantes; não é o mesmo que a democracia eleitoral.",
+        "nota": "Na fonte, o 'Autor Associado' vem logo após a definição de cada tipo (pp. 59-62), por isso a atribuição de Habermas, Rawls, Schumpeter, Mill e Pateman segue essa ordem."
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r7",
+   "t": "Democracia na história",
+   "n": "Democracia evoluiu de Atenas à era moderna com ampliação da participação",
+   "x": {
+    "e": "A democracia se relaciona ao reconhecimento e à salvaguarda dos direitos de liberdade, igualdade e participação política; a fonte a percorre historicamente.",
+    "src": "Aula 02, p. 40",
+    "cit": "a democracia está intrinsecamente relacionada ao reconhecimento e à salvaguarda dos direitos fundamentais do ser humano, ou seja, dos direitos de liberdade, igualdade e participação política"
+   },
+   "f": [
+    {
+     "id": "est-a02-r7.1",
+     "t": "Democracia na Grécia Antiga",
+     "n": "Atenas: democracia direta, com exclusões",
+     "x": {
+      "e": "Em Atenas, o povo reunido na Ágora exercia diretamente o poder político. Mulheres, escravos e estrangeiros estavam excluídos, e a fonte cita críticos que dizem que a democracia grega era elitista e restrita.",
+      "src": "Aula 02, p. 41",
+      "cit": "Assim, a Grécia, especificamente Atenas, é considerada o berço da democracia, onde o povo, reunido na Ágora, praticava o exercício direto e imediato do poder político"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.1.1",
+       "t": "Críticas à democracia grega",
+       "n": "Democracia grega seria elitista e restrita",
+       "x": {
+        "e": "Críticos argumentam que a democracia grega não era verdadeiramente democrática, mas elitista e restrita; mesmo assim é um marco na história política.",
+        "src": "Aula 02, p. 42",
+        "cit": "Alguns críticos rigorosos argumentam que a democracia grega não era verdadeiramente democrática, mas sim elitista e restrita.",
+        "trap": "A democracia ateniense excluía mulheres, escravos e estrangeiros."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r7.2",
+     "t": "Democracia na Roma Antiga",
+     "n": "Roma: predomínio da forma representativa",
+     "x": {
+      "e": "Em Roma, na República, prevaleceu a forma representativa de exercício político, em razão da extensão territorial e da inserção da plebe na política.",
+      "src": "Aula 02, p. 42",
+      "cit": "enquanto na Grécia Antiga prevaleceu a democracia direta, em Roma predominou a forma representativa de exercício político",
+      "trap": "Não confunda Roma (representativa) com Atenas (direta)."
+     }
+    },
+    {
+     "id": "est-a02-r7.3",
+     "t": "Era moderna e revoluções liberais",
+     "n": "Revoluções liberais ampliaram a cidadania por meio de Constituições",
+     "x": {
+      "e": "As revoluções liberais, como a Independência dos Estados Unidos (1776) e a Revolução Francesa (1789), buscavam ampliar a cidadania, limitar o poder e estabelecer sistemas formais de justiça por meio de Constituições.",
+      "src": "Aula 02, p. 43",
+      "cit": "As revoluções liberais burguesas, como a Independência dos Estados Unidos em 1776 e a Revolução Francesa em 1789, compartilhavam o objetivo de ampliar a cidadania"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.3.1",
+       "t": "Sufrágio universal como luta social (Lefort)",
+       "n": "O sufrágio universal foi conquistado por luta social",
+       "x": {
+        "e": "Para Claude Lefort, a democracia não é exclusivamente burguesa: foi preciso luta social dos oprimidos para o estabelecimento do sufrágio universal, e a ampliação de direitos continua.",
+        "src": "Aula 02, p. 44",
+        "cit": "Foi preciso uma luta social para o estabelecimento do sufrágio universal",
+        "nota": "A frase do texto-fonte diz 'sufrágio universal - sem a participação feminina' e não fecha o sentido; a fonte não detalha a data do voto feminino."
+       }
+      },
+      {
+       "id": "est-a02-r7.3.2",
+       "t": "Tocqueville e Mill: igualdade x liberdade",
+       "n": "Dilema entre liberdade e igualdade; risco da tirania da maioria",
+       "x": {
+        "e": "Tocqueville e Mill são clássicos do dilema entre liberdade e igualdade: a ameaça à liberdade vem também da maioria. Tocqueville viu o risco do despotismo majoritário no igualitarismo; Mill, a tirania da maioria e as liberdades individuais.",
+        "src": "Aula 02, p. 12",
+        "cit": "Alexis de Tocqueville e Stuart Mill e o dilema da igualdade X liberdade"
+       },
+       "f": [
+        {
+         "id": "est-a02-r7.3.2.1",
+         "t": "Tocqueville: igualdade e despotismo majoritário",
+         "n": "Igualdade pode levar à tirania da maioria e ao conformismo",
+         "x": {
+          "e": "Tocqueville considerava que a igualdade de condições nas democracias modernas pode levar à conformidade e ao despotismo majoritário. Para conciliar liberdade e igualdade, propunha espírito de cidadania, solidariedade, participação política e sociedade civil fortalecida.",
+          "src": "Aula 02, p. 13",
+          "cit": "previu que o crescente igualitarismo poderia limitar a liberdade e levar a uma forma de despotismo majoritário",
+          "trap": "Tocqueville não defendia o socialismo; a fonte o descreve criticando o partido único."
+         }
+        },
+        {
+         "id": "est-a02-r7.3.2.2",
+         "t": "Mill: tirania da maioria e três liberdades",
+         "n": "Governo legítimo pode oprimir a minoria; liberdade de consciência, de ser diferente e de associação",
+         "x": {
+          "e": "Para Mill, um governo legitimamente eleito pode se tornar tirânico ao representar a maioria; a tirania da maioria se refere à opressão da minoria. Ele sistematiza três liberdades: consciência, ser diferente e associação, e admite intervenção do Estado apenas para evitar danos a outros.",
+          "src": "Aula 02, p. 14",
+          "cit": "A liberdade do indivíduo deve ser, portanto, limitada; ele não pode fazer de si mesmo",
+          "trap": "Para Mill o governo só deve interferir na liberdade para evitar danos a outros; não é intervenção livre."
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r7.4",
+     "t": "Democracia contemporânea: soberania popular, representação e voto",
+     "n": "Democracia atual: livre escolha de governantes pela maioria, por votação",
+     "x": {
+      "e": "Na democracia contemporânea, a soberania popular se efetiva por meio da representação e do voto. A democracia é, em regra, indireta ou semidireta, e o Brasil está na classificação semidireta.",
+      "src": "Aula 02, p. 45",
+      "cit": "podemos pensar a definição da democracia atual como um sistema governamental formado pela livre escolha de governantes (os representantes) pela maioria da população, por meio de votações"
+     },
+     "f": [
+      {
+       "id": "est-a02-r7.4.1",
+       "t": "Três tradições do pensamento político (Bobbio)",
+       "n": "Aristóteles, medieval e Maquiavel fundamentam a democracia",
+       "x": {
+        "e": "Bobbio lista três tradições: a teoria clássica aristotélica das três formas de governo, a teoria medieval da soberania popular e a teoria moderna de Maquiavel, em que a democracia é uma forma de república.",
+        "src": "Aula 02, p. 45",
+        "cit": "a teoria clássica, divulgada como teoria aristotélica, das três formas de Governo",
+        "trap": "Na teoria moderna de Maquiavel, a democracia é apenas uma forma de república."
+       }
+      },
+      {
+       "id": "est-a02-r7.4.2",
+       "t": "Partidos políticos nas democracias atuais",
+       "n": "Partidos atuam no governo e na competição pelos votos",
+       "x": {
+        "e": "Além do voto e da representação, as democracias atuais têm partidos políticos, que atuam tanto no sistema de governo quanto na competição pelos votos.",
+        "src": "Aula 02, p. 45",
+        "cit": "Além do voto e da representação, outra característica das democracias atuais é a existência de Partidos Políticos que atuam no sistema de governos e no sistema de competição pelos votos."
+       }
+      },
+      {
+       "id": "est-a02-r7.4.3",
+       "t": "Schumpeter: abordagem elitista",
+       "n": "Democracia como disputa de elites por votos, método de escolha de líderes",
+       "x": {
+        "e": "Para Schumpeter, a vontade popular não é unificada e o eleitor pode decidir de forma emocional. A democracia é um método de escolha de líderes por eleições, em disputa entre elites pelo controle do Estado.",
+        "src": "Aula 02, p. 47",
+        "cit": "Assim, temos que a democracia é um sistema de disputa entre elites políticas pela conquista dos votos do eleitorado a fim de controlarem o Estado."
+       },
+       "f": [
+        {
+         "id": "est-a02-r7.4.3.1",
+         "t": "Democracia como método",
+         "n": "Democracia é procedimento de escolha de líderes, não decisão racional do povo",
+         "x": {
+          "e": "Schumpeter vê a democracia como método ou procedimento de escolha de líderes políticos por meio de eleições, e não como um sistema em que os cidadãos tomam decisões racionais e informadas.",
+          "src": "Aula 02, p. 47",
+          "cit": "ele vê a democracia como um método ou procedimento de escolha de líderes políticos por meio de eleições",
+          "trap": "Para Schumpeter, a democracia não é um sistema de decisões racionais e informadas dos cidadãos."
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "02"
+  },
+  {
+   "id": "est-a02-r8",
+   "t": "Teorias e crise da democracia",
+   "n": "Teorias da democracia e a crise atual de regimes democráticos",
+   "x": {
+    "e": "Características da democracia contemporânea (Bobbio e Bonavides), teorias de Dahl, Pateman e Habermas, e a crise atual dos regimes democráticos, tratada como autocratização gradual.",
+    "src": "Aula 02, p. 57",
+    "cit": "Com o italiano Bobbio, podemos fixar um conjunto de características que ajudam a definir o Regime Democrático Contemporâneo"
+   },
+   "f": [
+    {
+     "id": "est-a02-r8.1",
+     "t": "Características da democracia contemporânea (Bobbio e Bonavides)",
+     "n": "Nove características (Bobbio) e oito traços (Bonavides) definem a democracia contemporânea",
+     "x": {
+      "e": "Bobbio lista nove características do regime democrático contemporâneo, sem as quais não há legitimidade democrática. Bonavides lista oito traços que a democracia atual reúne: soberania popular como fonte de legitimação, sufrágio com pluralidade de candidatos e partidos, separação de poderes, igualdade perante a lei, representação, limitação do poder, Estado de Direito e presença das minorias.",
+      "src": "Aula 02, p. 57",
+      "cit": "1) o órgão político máximo, responsável pela função legislativa, deve ser composto de membros direta ou indiretamente eleitos pelo povo"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.1.1",
+       "t": "Bobbio: nove características",
+       "n": "Eleitos, voto igual, confiança do Parlamento e direito das minorias",
+       "x": {
+        "e": "Entre as nove características de Bobbio: o órgão legislativo supremo é composto por eleitos (1); todos os eleitores têm voto igual (4); a maioria não pode limitar os direitos da minoria (8); e o Governo deve gozar de confiança do Parlamento ou de chefe do Executivo eleito pelo povo (9).",
+        "src": "Aula 02, p. 57",
+        "cit": "9) o órgão do Governo deve gozar de confiança do Parlamento ou do chefe do poder executivo",
+        "trap": "A característica 9 exige confiança do Parlamento; não diz que o Governo é eleito diretamente pelo povo."
+       }
+      },
+      {
+       "id": "est-a02-r8.1.2",
+       "t": "Bonavides: oito traços da democracia atual",
+       "n": "Soberania popular, pluralismo, separação de poderes e presença das minorias",
+       "x": {
+        "e": "Bonavides diz que a democracia atual reúne, de forma conjunta, oito traços. Entre eles: a soberania popular como fonte de legitimação do poder; o sufrágio universal com pluralidade de candidatos e de partidos; a separação de poderes; e a presença das minorias políticas.",
+        "src": "Aula 02, p. 57",
+        "cit": "1) a soberania popular como fonte de legitimação do poder",
+        "trap": "A lista de Bonavides tem oito pontos; não confunda com os nove de Bobbio."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.2",
+     "t": "Dahl: contestação pública e participação",
+     "n": "Regimes variam em contestação pública e direito de participação",
+     "x": {
+      "e": "Robert Dahl define contestação pública como a capacidade de oposição se organizar de forma aberta e legal, e direito de participação como a inclusão igualitária. Os regimes se movem nessas duas dimensões.",
+      "src": "Aula 02, p. 49",
+      "cit": "refere-se à capacidade de grupos políticos ou opositores ao governo se organizarem de maneira aberta e legal"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.2.1",
+       "t": "Poliarquia e graus de regime",
+       "n": "Poliarquia: regimes relativamente democráticos, mas não plenamente",
+       "x": {
+        "e": "Dahl usa o conceito de poliarquia para descrever regimes relativamente democráticos, com altos níveis de contestação e de participação, mas que não atingem o ideal democrático.",
+        "src": "Aula 02, p. 51",
+        "cit": "para descrever regimes que são relativamente democráticos, mas não plenamente",
+        "trap": "Poliarquia não é a democracia ideal, que fica no canto superior direito do gráfico."
+       },
+       "f": [
+        {
+         "id": "est-a02-r8.2.1.1",
+         "t": "Poliarquia",
+         "n": "Alta contestação e alta participação",
+         "x": {
+          "e": "Poliarquia é o regime com alta contestação pública e alta participação, relativamente democrático, mas que não atinge o ideal democrático.",
+          "src": "Aula 02, p. 52",
+          "cit": "Alta Alta Poliarquia",
+          "trap": "Poliarquia não é o ideal democrático pleno (canto superior direito)."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.2",
+         "t": "Oligarquia competitiva",
+         "n": "Alta contestação e baixa participação",
+         "x": {
+          "e": "Oligarquia competitiva tem contestação pública ampla e participação baixa. Movimento de hegemonia fechada para oligarquia competitiva é liberalização do regime.",
+          "src": "Aula 02, p. 52",
+          "cit": "Alta Baixa Oligarquia Competitiva",
+          "trap": "A oligarquia competitiva tem contestação, mas não participação ampla; por isso não é poliarquia."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.3",
+         "t": "Hegemonia fechada",
+         "n": "Baixa contestação e baixa participação",
+         "x": {
+          "e": "Hegemonia fechada é o regime em que a contestação pública é limitada e a participação é baixa.",
+          "src": "Aula 02, p. 50",
+          "cit": "onde a contestação pública é limitada, para uma oligarquia competitiva",
+          "trap": "Hegemonia fechada tem baixa contestação e baixa participação (canto inferior esquerdo)."
+         }
+        },
+        {
+         "id": "est-a02-r8.2.1.4",
+         "t": "Hegemonia inclusiva",
+         "n": "Baixa contestação e alta participação",
+         "x": {
+          "e": "Hegemonia inclusiva tem alta participação e baixa contestação pública, como o exemplo da URSS que a fonte usa.",
+          "src": "Aula 02, p. 53",
+          "cit": "A URSS tinha alta inclusividade e baixa contestação, por isso é hegemonia inclusiva",
+          "trap": "Hegemonia inclusiva é alta participação com baixa contestação; não é o mesmo que poliarquia."
+         }
+        }
+       ]
+      },
+      {
+       "id": "est-a02-r8.2.2",
+       "t": "Garantias institucionais de Dahl",
+       "n": "Oito garantias institucionais",
+       "x": {
+        "e": "Dahl identifica oito garantias institucionais, entre elas liberdade de formar organizações, liberdade de expressão, direito de voto e eleições livres e justas, que permitem contestação e participação.",
+        "src": "Aula 02, p. 49",
+        "cit": "Liberdade de formar e aderir a organizações."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.3",
+     "t": "Pateman e Habermas: participação e deliberação",
+     "n": "Participação e deliberação vão além das instituições representativas",
+     "x": {
+      "e": "Pateman defende a participação como função educativa, e Habermas, a deliberação pública com regras de inclusão, participação e comunicação livre de violência.",
+      "src": "Aula 02, p. 54",
+      "cit": "Mas, nessa teoria, a existência de instituições representativas e livres não é suficiente para garantir a democracia"
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.3.1",
+       "t": "Pateman: função educativa da participação",
+       "n": "Participação forma cidadãos participativos",
+       "x": {
+        "e": "Para Carole Pateman, a participação tem função educativa, no sentido psicológico e de aquisição de práticas e procedimentos democráticos. Na teoria contemporânea (p. 53), a função da participação é apenas de proteção do indivíduo.",
+        "src": "Aula 02, p. 53-54",
+        "cit": "é educativa; educativa no mais amplo sentido da palavra",
+        "trap": "Na teoria contemporânea (Schumpeter, Dahl) a função da participação é só de proteção."
+       }
+      },
+      {
+       "id": "est-a02-r8.3.2",
+       "t": "Habermas: ética do agir comunicativo",
+       "n": "Três regras: inclusão, participação e comunicação livre de violência",
+       "x": {
+        "e": "Habermas propõe a ética do agir comunicativo com três regras: inclusão de todos que podem agir e falar, direito de participação e de questionar, e comunicação livre de violência e coação.",
+        "src": "Aula 02, p. 55",
+        "cit": "enfatiza a importância de garantir que nenhum interlocutor seja impedido",
+        "trap": "Entre as regras de Habermas não há 'regra da coerção'; a regra é de comunicação livre de coação."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a02-r8.4",
+     "t": "Crise da democracia e autocratização",
+     "n": "Democracias recuam por autocratização gradual, com redes sociais e polarização",
+     "x": {
+      "e": "A fonte fala em onda de autocratização: líderes eleitos minam a democracia por dentro, com crises de representação e econômicas, polarização, desinformação e ataques às instituições.",
+      "src": "Aula 02, p. 63",
+      "cit": "Assim, vivemos uma onda de autocratização."
+     },
+     "f": [
+      {
+       "id": "est-a02-r8.4.1",
+       "t": "Classificação de regimes pelo V-Dem",
+       "n": "Quatro categorias: autocracias fechadas, autocracias eleitorais, democracias eleitorais e democracias liberais",
+       "x": {
+        "e": "O V-Dem classifica regimes em autocracias fechadas, autocracias eleitorais, democracias eleitorais e democracias liberais. Nas autocracias eleitorais há eleições, mas restrições a liberdades comprometem a legitimidade dos pleitos.",
+        "src": "Aula 02, p. 64",
+        "cit": "Autocracias eleitorais: há eleições, mas restrições a liberdades como a de associação ou a de expressão comprometem a legitimidade dos pleitos",
+        "trap": "Autocracia eleitoral tem eleições; autocracia fechada não tem sequer eleições livres e multipartidárias."
+       }
+      },
+      {
+       "id": "est-a02-r8.4.2",
+       "t": "Causas da autocratização",
+       "n": "Crise de representação, crises econômicas, redes sociais e polarização",
+       "x": {
+        "e": "A fonte sistematiza as causas: crise de representação, crises econômicas, espetacularização da política, redes sociais e desinformação, polarização tóxica, naturalização da violência política e ataques às instituições.",
+        "src": "Aula 02, p. 65",
+        "cit": "Crise de Representação: há uma histórica crise de representação em vários países"
+       }
+      },
+      {
+       "id": "est-a02-r8.4.3",
+       "t": "Democracia digital",
+       "n": "A democracia digital complementa, sem substituir, a representação",
+       "x": {
+        "e": "A democracia digital não substitui as formas tradicionais de representação, mas as complementa, fortalecendo transparência, deliberação e participação. Traz também desafios, como desinformação e manipulação algorítmica.",
+        "src": "Aula 02, p. 66",
+        "cit": "Trata-se de um modelo que não substitui as formas tradicionais de representação, mas que as complementa"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "02"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "história que leva ao conceito contemporâneo",
+   "de": "est-a02-r7",
+   "para": "est-a02-r8"
+  },
+  {
+   "rotulo": "crise da democracia afeta o regime político",
+   "de": "est-a02-r8.4",
+   "para": "est-a02-r6"
+  },
+  {
+   "rotulo": "direta/indireta: p. 37 (escolha do presidente) e p. 44 (exercício do poder)",
+   "de": "est-a02-r7.4",
+   "para": "est-a02-r6.2.1"
+  },
+  {
+   "rotulo": "tipos de democracia (pp. 58-62) são a face conceitual da democracia contemporânea",
+   "de": "est-a02-r6.4",
+   "para": "est-a02-r8.1"
+  }
+ ],
+ "fontesCentral": {}
+}

@@ -1,0 +1,499 @@
+{
+ "topico": "cp-6",
+ "materia": "cp",
+ "centro": "Teoria dos partidos políticos",
+ "tipo": "complemento-estrategia",
+ "aulas": [
+  "04"
+ ],
+ "fonte": "Estratégia Concursos, Ciência Política para a Câmara dos Deputados (ARR), Prof. Ale Lopes",
+ "ramos": [
+  {
+   "id": "est-a04-r2",
+   "t": "Definição de partido político",
+   "n": "Organização que busca conquistar e manter o poder político.",
+   "x": {
+    "e": "Partido é definido pelo objetivo central de controlar ou influenciar o governo por meio da conquista do poder; a definição varia conforme o autor.",
+    "src": "Aula 04, p. 8",
+    "cit": "Como em quase tudo na Ciência Política a definição de \"partido\" é ampla e depende do autor",
+    "trap": "Tomar uma única definição como universal; a aula recomenda ver a definição por autor e pelo objetivo central."
+   },
+   "f": [
+    {
+     "id": "est-a04-r2.1",
+     "t": "Definições de autores",
+     "n": "Partido: associação com objetivo de conquistar e manter o poder.",
+     "x": {
+      "e": "Diversos autores definem o partido pelo objetivo de conquistar ou manter o poder.",
+      "src": "Aula 04, p. 10",
+      "cit": "o partido pode ser definido pelo seu objetivo central de controlar ou influenciar o governo por meio da conquista do poder"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.1.1",
+       "t": "Lapalombara: organização durável",
+       "n": "Organização cuja vida supera a de seus dirigentes.",
+       "x": {
+        "e": "Para Lapalombara, o partido é uma organização durável, cuja esperança de vida política supera a de seus dirigentes no poder.",
+        "src": "Aula 04, p. 10",
+        "cit": "O Partido é uma organização durável, ou seja, uma organização cuja esperança de vida política seja superior à de seus dirigentes no poder"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.2",
+       "t": "Guarnieri: arena eleitoral e decisória",
+       "n": "Conquista do poder nas arenas eleitoral e decisória.",
+       "x": {
+        "e": "Para Guarnieri, o partido é associação de pessoas que busca o poder atuando na arena eleitoral e na arena decisória.",
+        "src": "Aula 04, p. 10",
+        "cit": "Um partido político é uma associação de pessoas que tem como fim a conquista do poder atuando na arena eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r2.1.3",
+       "t": "Bonavides: elementos da definição",
+       "n": "Grupo social, princípio de organização, ideias e interesse de tomar o poder.",
+       "x": {
+        "e": "Bonavides lista elementos do partido, entre eles um grupo social, um princípio de organização, um acervo de ideias e o interesse básico na tomada do poder.",
+        "src": "Aula 04, p. 9",
+        "cit": "(d) um interesse básico em vista: a tomada do poder"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.2",
+     "t": "Partido x associações da sociedade civil",
+     "n": "Partidos disputam o controle do Estado; sindicatos e ONGs apenas influenciam.",
+     "x": {
+      "e": "Associações da sociedade civil influenciam decisões de governo, mas não disputam diretamente o controle do aparelho do Estado.",
+      "src": "Aula 04, p. 11",
+      "cit": "Já as associações da sociedade civil (sindicatos, movimentos sociais, ONGs.) buscam influenciar as decisões políticas dos governos, mas não disputam diretamente o controle do aparelho do estado",
+      "trap": "Classificar sindicato ou ONG como partido: a diferença central é a disputa direta pelo controle do Estado."
+     }
+    },
+    {
+     "id": "est-a04-r2.3",
+     "t": "Abordagens de Nicolau",
+     "n": "Ideológica, sociológica e institucionalista explicam o número de partidos.",
+     "x": {
+      "e": "Segundo Jairo Nicolau, as diferentes definições decorrem de três abordagens: ideológica, sociológica e institucionalista.",
+      "src": "Aula 04, p. 11",
+      "cit": "essas diferentes definições se dão devido a diferentes abordagens que o professor classifica como: a ideológica, a sociológica e a institucionalista"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.3.1",
+       "t": "Abordagem ideológica",
+       "n": "Diversidade de opiniões determina o número de partidos.",
+       "x": {
+        "e": "Na abordagem ideológica, a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos.",
+        "src": "Aula 04, p. 11",
+        "cit": "a diversidade de opiniões e visões na sociedade é o principal determinante do número de partidos em uma democracia"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.2",
+       "t": "Abordagem sociológica",
+       "n": "Divisões sociais determinam o número de partidos.",
+       "x": {
+        "e": "Na abordagem sociológica, o número de partidos reflete as divisões sociais e as demandas dos segmentos da sociedade.",
+        "src": "Aula 04, p. 11",
+        "cit": "Portanto, o número de partidos é visto como um reflexo das divisões sociais e das demandas de diferentes segmentos da sociedade"
+       }
+      },
+      {
+       "id": "est-a04-r2.3.3",
+       "t": "Abordagem institucionalista",
+       "n": "Regras institucionais moldam o sistema partidário.",
+       "x": {
+        "e": "A abordagem institucionalista destaca a influência do sistema eleitoral, do sistema de governo e da organização do Estado sobre o sistema partidário.",
+        "src": "Aula 04, p. 11",
+        "cit": "A abordagem institucionalista destaca a influência das estruturas institucionais, como o sistema eleitoral, o sistema de governo e a organização do Estado, sobre o sistema partidário",
+        "trap": "Tratar o sistema eleitoral como efeito, e não como causa, do sistema partidário: na abordagem institucionalista ele molda os partidos."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r2.4",
+     "t": "Institucionalização partidária",
+     "n": "Partido institucionalizado perdura, tem continuidade e compete em várias eleições.",
+     "x": {
+      "e": "A institucionalização partidária indica qualidade da democracia; envolve estabilidade eleitoral, enraizamento social, autonomia organizacional e legitimidade.",
+      "src": "Aula 04, p. 12",
+      "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+     },
+     "f": [
+      {
+       "id": "est-a04-r2.4.1",
+       "t": "Dimensões (Mainwaring)",
+       "n": "Estabilidade eleitoral, enraizamento social, autonomia e legitimidade.",
+       "x": {
+        "e": "Mainwaring destaca quatro dimensões da institucionalização partidária.",
+        "src": "Aula 04, p. 12",
+        "cit": "a institucionalização envolve quatro dimensões principais: estabilidade eleitoral; enraizamento social; autonomia organizacional; legitimidade dos partidos diante dos cidadãos"
+       }
+      },
+      {
+       "id": "est-a04-r2.4.2",
+       "t": "Critério de Rose e Mackie",
+       "n": "Partido que perdura de eleição em eleição e compete em pelo menos três pleitos nacionais.",
+       "x": {
+        "e": "Para Rose e Mackie, um partido institucionalizado perdura de eleição em eleição, com continuidade organizacional.",
+        "src": "Aula 04, p. 12",
+        "cit": "um partido institucionalizado é aquele que perdura de eleição em eleição, já que demonstra continuidade organizacional e capacidade de competir em pelo menos três pleitos nacionais",
+        "trap": "Confundir partido institucionalizado com partido grande: o critério é a permanência ao longo de eleições."
+       }
+      },
+      {
+       "id": "est-a04-r2.4.3",
+       "t": "Cláusula de desempenho",
+       "n": "Norma constitucional que se liga à institucionalização.",
+       "x": {
+        "e": "A cláusula de desempenho está prevista no § 3º do art. 17 da Constituição Federal.",
+        "src": "Aula 04, p. 12",
+        "cit": "a atual norma prevista no dispositivo do § 3o do art. 17 da nossa Constituição Federal, a chamada cláusula de desempenho"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r3",
+   "t": "Origem e tipologias dos partidos",
+   "n": "Tipologia de Duverger: origem parlamentar ou externa e a evolução dos modelos.",
+   "x": {
+    "e": "Duverger é o principal referencial da aula; as tipologias tratam da origem dos partidos e dos modelos partidários.",
+    "src": "Aula 04, p. 13",
+    "cit": "Esse é o método de Maurice Duverger - autor que mais cai em provas de concurso e é, nesta aula, nosso principal referencial",
+    "trap": "Usar a história (origem) e as tipologias (modelos) como se fossem a mesma coisa: são dois subcampos que se tocam."
+   },
+   "f": [
+    {
+     "id": "est-a04-r3.1",
+     "t": "Origem parlamentar e externa",
+     "n": "Partido parlamentar nasce no parlamento; partido externo nasce na sociedade civil.",
+     "x": {
+      "e": "Partidos de criação parlamentar nascem de iniciativa de legisladores; partidos de organização externa nascem de organizações da sociedade civil.",
+      "src": "Aula 04, p. 15",
+      "cit": "Um partido de criação parlamentar é uma organização política que se origina e evolui principalmente dentro do contexto das instituições parlamentares"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.1.1",
+       "t": "Criação externa",
+       "n": "Organização externa ao sistema parlamentar e eleitoral.",
+       "x": {
+        "e": "O partido de organização externa é criado por meio de organizações externas ao sistema parlamentar e eleitoral.",
+        "src": "Aula 04, p. 15",
+        "cit": "Um partido de organização externa, como o próprio nome sugere, é criado por meio de organizações externas ao sistema parlamentar e eleitoral"
+       }
+      },
+      {
+       "id": "est-a04-r3.1.2",
+       "t": "Sequência histórica",
+       "n": "Primeiro surgiram os partidos parlamentares, depois os externos.",
+       "x": {
+        "e": "Em uma linha do tempo, existiram primeiro os partidos parlamentares e depois os partidos exteriores.",
+        "src": "Aula 04, p. 16",
+        "cit": "podemos afirmar que existiram primeiros os partidos parlamentares e depois os partidos exteriores",
+        "nota": "Texto-fonte: 'primeiros' no lugar de 'primeiro' (erro de concordância); sentido preservado."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.2",
+     "t": "Partido de quadros",
+     "n": "Clubes parlamentares de notáveis, com pouca base social, primeira metade do século XIX.",
+     "x": {
+      "e": "Partidos de quadros surgem na primeira metade do século XIX, dominados por notáveis, com pouca penetração social.",
+      "src": "Aula 04, p. 16",
+      "cit": "Em um primeiro momento, na primeira metade do século XIX, tivemos os partidos de quadros",
+      "trap": "Confundir partido de quadros (notáveis, financiados por poucos ricos) com partido de massas (filiados e contribuições)."
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.2.1",
+       "t": "Objetivo dos partidos de quadros",
+       "n": "Ganhar eleições, fazer acordos e controlar o orçamento.",
+       "x": {
+        "e": "O principal objetivo dos partidos de quadros é ganhar eleições, fazer acordos, conseguir cargos e controlar o orçamento público.",
+        "src": "Aula 04, p. 17",
+        "cit": "Desse modo, seu principal objetivo é ganhar eleições, fazer acordos, conseguir cargos e controlar parcela significativa do orçamento público"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r3.3",
+     "t": "Partido de massas",
+     "n": "Surge com a ampliação do sufrágio e busca filiados e ideologia marcada.",
+     "x": {
+      "e": "Partidos de massas não buscam apenas resultados eleitorais, mas também maior contato com filiados.",
+      "src": "Aula 04, p. 17",
+      "cit": "Uma das características centrais é que esses partidos não buscam apenas resultados eleitorais, mas também um maior contato com filiados"
+     },
+     "f": [
+      {
+       "id": "est-a04-r3.3.1",
+       "t": "Figura do filiado",
+       "n": "O filiado, que financia por pequenas contribuições, substitui os notáveis.",
+       "x": {
+        "e": "É no partido de massas que aparece a figura do filiado partidário.",
+        "src": "Aula 04, p. 17",
+        "cit": "Na verdade, é aí que aparece a figura do filiado partidário"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r4",
+   "t": "Partidos nas democracias contemporâneas: catch-all e cartel",
+   "n": "Do partido de massas ao catch-all e ao partido cartel.",
+   "x": {
+    "e": "O partido catch-all concentra-se na disputa eleitoral imediata; o partido cartel opera a partir do Estado.",
+    "src": "Aula 04, p. 20",
+    "cit": "O Partido Catch-all é caracterizado por sua concentração na disputa eleitoral imediata",
+    "trap": "Confundir catch-all (eleitorado amplo, pouca ideologia) com partido de massas (base de militantes e ideologia marcada)."
+   },
+   "f": [
+    {
+     "id": "est-a04-r4.1",
+     "t": "Partido pega-tudo (catch-all)",
+     "n": "Busca eleitor médio, com discurso difuso e menos ideologia.",
+     "x": {
+      "e": "O partido catch-all procura construir consenso amplo para atrair o eleitor médio, em vez de focar em membros e ativistas.",
+      "src": "Aula 04, p. 20",
+      "cit": "Os partidos que adotam essa abordagem buscam dialogar com um eleitorado que ultrapassa as fronteiras de suas bases sociais originais"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.1.1",
+       "t": "Eleitor como consumidor",
+       "n": "Eleitores são mais consumidores do que participantes ativos.",
+       "x": {
+        "e": "A ideia do partido catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos.",
+        "src": "Aula 04, p. 21",
+        "cit": "A ideia do Partido Catch-all é semelhante ao consumo de massa, em que os eleitores são mais consumidores do que participantes ativos"
+       }
+      },
+      {
+       "id": "est-a04-r4.1.2",
+       "t": "Reformas graduais",
+       "n": "Não buscam transformação radical, e sim reformas graduais.",
+       "x": {
+        "e": "Os partidos catch-all não buscam transformações radicais, mas reformas e melhorias graduais.",
+        "src": "Aula 04, p. 21",
+        "cit": "os partidos não buscam transformações radicais, mas sim reformas e melhorias graduais"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.2",
+     "t": "Partido cartel (Katz e Mair)",
+     "n": "Três faces do partido: no governo, na base e na central; o cartel fecha o sistema.",
+     "x": {
+      "e": "Katz e Mair observam o enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office.",
+      "src": "Aula 04, p. 22",
+      "cit": "Segundo Katz e Mair, nas últimas décadas observa-se um progressivo enfraquecimento do party on the ground e o fortalecimento do party in public office e do party in central office"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.2.1",
+       "t": "Partido cartel",
+       "n": "Legendas estabelecidas cooperam para controlar o sistema e reduzir a concorrência.",
+       "x": {
+        "e": "No partido cartel, as legendas estabelecidas cooperam entre si para controlar o sistema político e dificultar a entrada de novos atores.",
+        "src": "Aula 04, p. 22",
+        "cit": "Esse processo culmina no que os autores denominam partido cartel, modelo no qual as legendas estabelecidas cooperam entre si para controlar o sistema político, reduzir a competição efetiva e dificultar a entrada de novos atores",
+        "trap": "Inverter a relação: no cartel os partidos operam a partir do Estado em direção à sociedade, e não o contrário."
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r4.3",
+     "t": "Partidos institucionalizados e papel de representação",
+     "n": "Institucionalização traz previsibilidade; partidos captam a opinião pública.",
+     "x": {
+      "e": "Partidos institucionalizados oferecem previsibilidade às disputas, fortalecem vínculos representativos e reduzem a personalização.",
+      "src": "Aula 04, p. 22",
+      "cit": "Partidos institucionalizados tendem a oferecer maior previsibilidade às disputas eleitorais, fortalecer os vínculos representativos e reduzir a personalização excessiva da política"
+     },
+     "f": [
+      {
+       "id": "est-a04-r4.3.1",
+       "t": "Canais legítimos de atuação",
+       "n": "Partidos captam, organizam e transformam em bandeiras as aspirações sociais.",
+       "x": {
+        "e": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública.",
+        "src": "Aula 04, p. 23",
+        "cit": "Como canais legítimos de atuação política e social, os partidos captam e assimilam rapidamente a opinião pública"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  },
+  {
+   "id": "est-a04-r5",
+   "t": "Sistemas partidários: Duverger e Sartori",
+   "n": "Classificações de sistemas partidários por número de partidos (Duverger) e relevância ideológica (Sartori).",
+   "x": {
+    "e": "Duverger classifica pelo número de partidos; Sartori acrescenta a profundidade das diferenças ideológicas e a relevância dos partidos.",
+    "src": "Aula 04, p. 37",
+    "cit": "Maurice Duverger e Giovanni Sartori são dois estudiosos da teoria dos partidos políticos que contribuíram para a classificação dos sistemas partidários",
+    "trap": "Achar que Sartori descartou a contagem de partidos: ele a complementa com o critério ideológico."
+   },
+   "f": [
+    {
+     "id": "est-a04-r5.1",
+     "t": "Duverger: unipartidarismo, bipartidarismo e multipartidarismo",
+     "n": "Classificação pelo número de partidos em sistemas contemporâneos.",
+     "x": {
+      "e": "Duverger classifica os sistemas partidários em unipartidarismo, bipartidarismo e multipartidarismo.",
+      "src": "Aula 04, p. 38",
+      "cit": "O unipartidarismo é característico de regimes totalitários",
+      "nota": "Texto-fonte p. 38 traz 'como o e comunismo' (exemplos omitidos na extração); a citação usa só a frase íntegra."
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.1.1",
+       "t": "Unipartidarismo",
+       "n": "Partido único, típico de regimes totalitários, incompatível com a democracia.",
+       "x": {
+        "e": "O sistema unipartidário é incompatível com os princípios democráticos, pois não permite a alternância no poder.",
+        "src": "Aula 04, p. 39",
+        "cit": "O sistema unipartidário é incompatível com os princípios democráticos, uma vez que não permite a alternância no poder"
+       }
+      },
+      {
+       "id": "est-a04-r5.1.2",
+       "t": "Bipartidarismo",
+       "n": "Dois partidos dominantes; elogiado pela estabilidade, criticado pela exclusão de minorias.",
+       "x": {
+        "e": "O bipartidarismo é frequentemente elogiado por sua estabilidade política.",
+        "src": "Aula 04, p. 39",
+        "cit": "Esse sistema é frequentemente elogiado por sua estabilidade política",
+        "trap": "Tratar o bipartidarismo só como virtude: a aula lista críticas (exclusão de minorias, menos escolhas, rigidez)."
+       }
+      },
+      {
+       "id": "est-a04-r5.1.3",
+       "t": "Multipartidarismo",
+       "n": "Três ou mais partidos; risco de pulverização e de governos de coalizão.",
+       "x": {
+        "e": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política.",
+        "src": "Aula 04, p. 40",
+        "cit": "No sistema multipartidário, três ou mais partidos políticos estão envolvidos na competição política"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.2",
+     "t": "Sartori: relevância, coalizão e chantagem",
+     "n": "Partido relevante é o que pode formar maioria ou alterar a competição.",
+     "x": {
+      "e": "Sartori propõe que o sistema seja avaliado também pela profundidade das diferenças ideológicas entre os partidos.",
+      "src": "Aula 04, p. 38",
+      "cit": "Sartori argumentou que um sistema partidário não deveria ser avaliado apenas pela quantidade de partidos, mas também pela profundidade das diferenças ideológicas entre eles"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.2.1",
+       "t": "Potencial de coalizão",
+       "n": "Partido relevante é o que pode integrar ou determinar maioria.",
+       "x": {
+        "e": "Um partido é relevante se tiver a capacidade de determinar uma maioria parlamentar; o menor é irrelevante se nunca integra coalizão possível.",
+        "src": "Aula 04, p. 42",
+        "cit": "Potencial de Coalizão: um partido menor é considerado irrelevante se nunca é necessário ou integrado em qualquer coalizão majoritária possível ao longo do tempo"
+       }
+      },
+      {
+       "id": "est-a04-r5.2.2",
+       "t": "Força do partido e tipologias de Sartori",
+       "n": "Força eleitoral (cadeiras) e potencial de coalizão; tipos incluem pluralismo moderado e polarizado.",
+       "x": {
+        "e": "Sartori classificou os sistemas em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados.",
+        "src": "Aula 04, p. 42",
+        "cit": "Sartori classificou os sistemas partidários em vários tipos, incluindo partido único, partido hegemônico, partido predominante, dois partidos, pluralismo moderado, pluralismo polarizado e sistema de partidos atomizados",
+        "nota": "Resumos (p. 60) dizem que o potencial de chantagem é 'alterar a tática ou vetar decisões'; o texto didático (p. 42) fala em 'modificar o rumo da competição'. 'Vetar decisões' não consta do texto didático."
+       }
+      },
+      {
+       "id": "est-a04-r5.2.3",
+       "t": "Critério ideológico como complemento",
+       "n": "A contagem de partidos continua relevante, mas precisa de análise ideológica.",
+       "x": {
+        "e": "O posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado.",
+        "src": "Aula 04, p. 38",
+        "cit": "Cuidadoooo: esse posicionamento de Sartori não significa que o critério numérico deva ser completamente descartado"
+       }
+      }
+     ]
+    },
+    {
+     "id": "est-a04-r5.3",
+     "t": "Presidencialismo de coalizão (Abranches)",
+     "n": "Modelo brasileiro: presidencialismo, multipartidarismo e representação proporcional.",
+     "x": {
+      "e": "O Brasil combina presidencialismo, multipartidarismo e representação proporcional, e organiza o Executivo com grandes coalizões.",
+      "src": "Aula 04, p. 43",
+      "cit": "o Brasil é o único país que, além de combinar a proporcionalidade, o multipartidarismo e o"
+     },
+     "f": [
+      {
+       "id": "est-a04-r5.3.1",
+       "t": "Fórmula brasileira",
+       "n": "Combinação de multipartidarismo, presidencialismo e RP de listas abertas.",
+       "x": {
+        "e": "O Brasil adotou uma fórmula que combina multipartidarismo, presidencialismo e representação proporcional de listas abertas.",
+        "src": "Aula 04, p. 41",
+        "cit": "o Brasil, por exemplo, adotou uma fórmula política que combina multipartidarismo, presidencialismo e sistema de representação proporcional de listas abertas"
+       }
+      },
+      {
+       "id": "est-a04-r5.3.2",
+       "t": "Governabilidade e coalizões",
+       "n": "Sem maioria, o governo depende de negociações para formar coalizões.",
+       "x": {
+        "e": "Quando o partido vitorioso não detém a maioria das cadeiras, inicia-se um complexo jogo de negociações para criar coalizões.",
+        "src": "Aula 04, p. 41",
+        "cit": "Quando o partido vitorioso nas eleições não detém a maioria das cadeiras no legislativo, inicia-se um complexo jogo de negociações para criar coalizões capazes de sustentar o governo"
+       }
+      }
+     ]
+    }
+   ],
+   "aulaOrigem": "04"
+  }
+ ],
+ "ligacoes": [
+  {
+   "rotulo": "definição de partido leva às tipologias",
+   "de": "est-a04-r2",
+   "para": "est-a04-r3"
+  },
+  {
+   "rotulo": "origem e evolução explicam catch-all e cartel",
+   "de": "est-a04-r3",
+   "para": "est-a04-r4"
+  },
+  {
+   "rotulo": "número e relevância dos partidos (sistemas partidários)",
+   "de": "est-a04-r4",
+   "para": "est-a04-r5"
+  }
+ ],
+ "fontesCentral": {}
+}

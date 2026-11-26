@@ -27,3 +27,10 @@ Os revisores ficaram em `_revisao/`.
 - Páginas com texto embaralhado na extração (colunas): só usei trechos contíguos. Se quiser conferência visual, os PDFs são os da pasta material.
 - Mecanismo (F1 a F6, V1 a V4): o revisor registrou em `mecanismo_cego` onde discordou do rótulo; os gabaritos coincidem em todos.
 - Nada foi gravado em `respostas` nem em `status` do edital.
+
+## Distribuição por tópico (decisão de 26/11)
+`por-topico/` reorganiza o complemento pelo edital do Cargo 11, **sem alterar nenhum kit existente**:
+- `cp-0` Base de Ciência Política: Aula 00 inteira. `edital-cp-0.json` traz o registro de tópico sugerido (o edital mora no Controle de Estudo/Base44, não no repositório; falta criar o tópico lá por patch).
+- `cp-1` (Aula 02, regime e democracia), `cp-2` (Aulas 02 e 03), `cp-3` (Aula 04, representação), `cp-4` (Aula 03), `cp-5` (Aula 04, sistemas eleitorais), `cp-6` (Aula 04, partidos), `cp-7` (Aula 05, Constituição de 1988 e crises), `cp-9` (Aula 01), `cp-10` e `cp-11` (Aula 05).
+- Ramos mistos foram atribuídos ao tópico predominante; `topicoOriginal` marca item ou cartão que mudou de tópico. `aulaOrigem` indica a aula.
+- Kits existentes confrontados: cp-1, cp-3, cp-6 e cp-7 (da branch shadow `claude/nexo-correcao-06-8-1`). Os relatórios estão em `por-topico/cp-N/divergencias.md`. cp-8 não recebeu complemento; cp-2, cp-4, cp-5, cp-9, cp-10 e cp-11 ainda não têm kit.
