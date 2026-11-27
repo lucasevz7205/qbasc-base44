@@ -17,6 +17,7 @@ const ABAS = [
   { id: 'resumo', label: 'Resumo', icon: 'compass' },
   { id: 'materias', label: 'Matérias', icon: 'library' },
   { id: 'assuntos', label: 'Assuntos', icon: 'list' },
+  { id: 'cartoes', label: 'Cartões', icon: 'layers' },
   { id: 'historico', label: 'Histórico', icon: 'activity' },
 ];
 const FILTROS = ['todos', 'fraco', 'sem-sinal', 'forte', 'insuficiente'];
@@ -185,7 +186,6 @@ export default function NavegadorPanel() {
             ? <div className="nv-acoes">{prioridades.map(t => <NavCartaoAcao key={t.topico} stats={t} titulo={titles.get(t.topico) || t.topico} subtitulo={subject ? undefined : nomeMateria(t.topico)} />)}</div>
             : <EmptyState compact tone="empty" icon="circle-check" title="Nada urgente" description="Nenhum assunto com ponto fraco ou erro com certeza na janela." />}
         </section>}
-        {!subject && <NavegadorCartoes cartoes={cartoes} titles={titles} />}
         {!subject && !!analise.geral.n && <details className="nv-janela">
           <summary><Icon name="calendar-days" size={16} />Detalhes da janela: semanas e confiança<Icon name="chevron-down" size={16} className="nv-janela__seta" style={{ marginLeft: 'auto' }} /></summary>
           <div className="nv-janela__corpo">
@@ -194,6 +194,8 @@ export default function NavegadorPanel() {
           </div>
         </details>}
       </>}
+
+      {aba === 'cartoes' && <NavegadorCartoes cartoes={cartoes} titles={titles} nomeMateria={nomeMateria} />}
 
       {aba === 'materias' && <>
         {!materiasShown.length && <EmptyState compact title="Sem matérias com primeiras tentativas na janela" description="Resolva questões novas para ver a chance de acerto por matéria." />}
