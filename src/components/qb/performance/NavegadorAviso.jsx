@@ -3,7 +3,7 @@ import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { NavCartaoAcao } from '@/components/qb/navegador';
-import { NavResumoNumeros, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
+import { NavResumoNumeros, periodoNumeros, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
 import { lerVistos, marcarVisto, useNavegadorRelatorios } from '@/components/qb/performance/useNavegadorRelatorios';
 
 // Um relatório só aparece ao abrir o app enquanto é recente: 6 dias para o semanal, 31 para o mensal.
@@ -21,7 +21,7 @@ export function NavegadorAvisoConteudo({ relatorio, titles, onClose, onOpen, clo
         <h2 id="qb-navegador-aviso" className="nv-title" style={{ fontSize: 21 }}>{tituloRelatorio(relatorio)}</h2>
       </div>
     </div>
-    <NavResumoNumeros stats={relatorio.geral} placar={relatorio.placar} comparacao={relatorio.comparacao} compacto />
+    <NavResumoNumeros stats={relatorio.geral} placar={relatorio.placar} comparacao={relatorio.comparacao} janelaNumeros={periodoNumeros(relatorio)} compacto />
     <section className="nv-stack" aria-label="Faça agora">
       <h3 className="nv-title nv-title--sm">{prioridades.length ? 'Faça agora' : 'Nada urgente'}</h3>
       {prioridades.length

@@ -10,7 +10,9 @@ import {
 export const pct = value => (value === null || value === undefined ? '—' : Math.round(value * 100) + '%');
 const sinalNum = v => (v > 0 ? '+' + v : v < 0 ? '−' + Math.abs(v) : '0');
 const periodo = r => dataBR(r.periodo.de) + ' a ' + dataBR(r.periodo.ate);
-export const tituloRelatorio = r => (r.tipo === 'mensal' ? 'Relatório mensal' : 'Relatório semanal') + ' · ' + periodo(r);
+/** Período a que nota líquida e volume se referem (a semana ou o mês do relatório), diferente da janela de 14 dias do medidor. */
+export const periodoNumeros = r => dataBR(r.placar.atual.de) + ' a ' + dataBR(r.placar.atual.ate);
+export const tituloRelatorio = r => (r.tipo === 'mensal' ? 'Relatório mensal' : 'Relatório semanal') + ' · ' + periodoNumeros(r);
 
 /** Assuntos que pedem ação agora: ponto fraco ou erro com certeza, na ordem de risco. */
 export const prioridadesDe = (topicos, n = 3) => topicos.filter(t => t.sinal === 'fraco' || t.certezaErros > 0).slice(0, n);
@@ -19,7 +21,7 @@ export const prioridadesDe = (topicos, n = 3) => topicos.filter(t => t.sinal ===
  * Medidor da chance geral e os três números (nota líquida, erros com certeza, volume).
  * Com `placar` compara as duas janelas; sem ele (escopo de matéria) mostra os totais de `stats`.
  */
-export function NavResumoNumeros({ stats, placar, comparacao, rotuloMedidor = 'Chance geral de acerto', legendaMedidor, compacto = false }) {
+export function NavResumoNumeros({ stats, placar, comparacao, rotuloMedidor = 'Chance geral de acerto', legendaMedidor, janelaNumeros, compacto = false }) {
   const atual = placar ? placar.atual : { liquida: stats.C - stats.E, n: stats.n, C: stats.C, E: stats.E, B: stats.B, certezaN: stats.certezaN, certezaErros: stats.certezaErros };
   const ok = placar && comparacao?.conclusivo;
   const sem = !placar ? 'Janela de 14 dias' : ok ? undefined : 'Sem comparação';
@@ -41,6 +43,7 @@ export function NavResumoNumeros({ stats, placar, comparacao, rotuloMedidor = 'C
         <NavNumero rotulo="Volume" icone="list-checks" valor={atual.n} unidade="resp."
           variacao={ok ? variacao(atual.n, placar.anterior.n, 'neutro') : null} semComparacao={sem}
           legenda={compacto ? 'Primeiras tentativas.' : 'Primeiras tentativas, treino e simulado.'} />
+        {janelaNumeros && <p className="nv-note">Nota líquida e volume: <span className="nv-mono">{janelaNumeros}</span>.</p>}
       </div>
     </div>
   );
@@ -95,7 +98,8 @@ export function NavegadorRelatorio({ relatorio, titles, compacto = false }) {
   return (
     <div className="nv-stack" style={{ gap: 16 }}>
       <NavResumoNumeros stats={geral} placar={placar} comparacao={comparacao} compacto={compacto}
-        legendaMedidor={compacto ? undefined : `Primeiras tentativas de ${periodo(relatorio)}.`} />
+        janelaNumeros={periodoNumeros(relatorio)}
+        legendaMedidor={compacto ? undefined : `Medidor: primeiras tentativas de ${periodo(relatorio)} (14 dias).`} />
       <section className="nv-stack" aria-label="Faça agora">
         <h3 className="nv-title nv-title--sm">{prioridades.length ? 'Faça agora' : 'Assuntos'}</h3>
         {!topicos.length && <EmptyState compact tone="empty" title="Sem primeiras tentativas com tópico neste período" />}
