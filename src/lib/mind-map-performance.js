@@ -1,3 +1,7 @@
+import {
+  classifyNodes, cappedChildContribution, requiredQuestionsFor, requiredFlashcardsFor, enoughChildCoverage,
+} from './mind-map-quota.js';
+
 const cardPass = new Set(['b', 'f', 's', 'bom', 'facil', 'fácil', 'lembrei']);
 const cardPartial = new Set(['d', 'p', 'dificil', 'difícil', 'parcial']);
 const cardFail = new Set(['n', 'errei', 'novamente', 'não lembrei', 'nao lembrei']);
@@ -85,7 +89,8 @@ function summarize(stats) {
 }
 
 export function mapNodePerformance({ nodes, rootId, topicId, questions, flashcards, reviews }) {
-  const keys = new Map(nodes.map(node => [node.id, { questions: bucket(), flashcards: bucket(), children: [] }]));
+  const keys = new Map(nodes.map(node => [node.id, { questions: bucket(), flashcards: bucket(), children: [], counted: 0, own: 0 }]));
+  const structure = classifyNodes(nodes, rootId);
   for (const node of nodes) keys.get(node.parent)?.children.push(node.id);
   const scopedNode = item => keys.has(item.node) ? keys.get(item.node) : item.topicId === topicId ? keys.get(rootId) : undefined;
 
@@ -104,25 +109,35 @@ export function mapNodePerformance({ nodes, rootId, topicId, questions, flashcar
     const node = keys.get(id);
     if (!node || visited.has(id)) return;
     visited.add(id);
+    node.own = node.questions.evaluated + node.flashcards.evaluated;
+    const shape = structure.get(id);
+    let counted = node.own, covered = 0;
     for (const childId of node.children) {
       rollup(childId);
       const child = keys.get(childId);
       merge(node.questions, child.questions);
       merge(node.flashcards, child.flashcards);
+      const childEvaluated = child.questions.evaluated + child.flashcards.evaluated;
+      if (childEvaluated) covered++;
+      counted += cappedChildContribution(childEvaluated, shape?.quota || 0, node.children.length);
     }
+    node.counted = counted;
+    node.covered = covered;
   }
   rollup(rootId);
   return new Map([...keys].map(([id, node]) => {
     const questions = summarize(node.questions);
     const flashcards = summarize(node.flashcards);
     const evidence = [questions, flashcards].filter(item => item.total);
-    const requiredQuestions = questions.evaluated ? 0 : 1;
-    const requiredFlashcards = flashcards.evaluated ? 0 : 1;
-    const remaining = Math.max(5 - questions.evaluated - flashcards.evaluated, requiredQuestions + requiredFlashcards);
+    const shape = structure.get(id) || { kind: 'subramo', quota: 1, leaves: 1, children: [] };
+    const requiredQuestions = Math.max(0, requiredQuestionsFor(shape.kind, shape.quota) - questions.evaluated);
+    const requiredFlashcards = Math.max(0, requiredFlashcardsFor(shape.kind) - flashcards.evaluated);
+    const coverageOk = enoughChildCoverage(shape.children.length, node.covered || 0);
+    const remaining = Math.max(shape.quota - node.counted, requiredQuestions + requiredFlashcards, coverageOk ? 0 : 1);
     const status = remaining ? 'insufficient'
       : !evidence.length ? 'no-evidence'
       : evidence.some(item => item.latest?.outcome === 'wrong') ? 'incorrect'
         : evidence.every(item => item.rate >= 85) ? 'correct' : 'progress';
-    return [id, { questions, flashcards, status, remaining, requiredQuestions, requiredFlashcards, includesChildren: node.children.length > 0 }];
+    return [id, { questions, flashcards, status, remaining, requiredQuestions, requiredFlashcards, quota: shape.quota, kind: shape.kind, coverageOk, includesChildren: node.children.length > 0 }];
   }));
 }
