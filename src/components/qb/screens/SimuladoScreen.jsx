@@ -103,7 +103,7 @@ export default function SimuladoScreen({ toast }) {
     const subjects = [...new Set(S.items.map(i => i.s))];
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <PageHeader overline="Resultado · simulado" title="Resultado do simulado" description="Separado das estatísticas de treino." actions={<><Button variant="secondary" icon="rotate-ccw" onClick={start}>Refazer</Button><Button icon="history" onClick={() => { setStage('prep'); setTab('hist'); }}>Histórico</Button></>} />
+        <PageHeader emblema="graduation-cap" overline="Resultado · simulado" title="Resultado do simulado" description="Separado das estatísticas de treino." actions={<><Button variant="secondary" icon="rotate-ccw" onClick={start}>Refazer</Button><Button icon="history" onClick={() => { setStage('prep'); setTab('hist'); }}>Histórico</Button></>} />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 10 }}>
           <StatCard compact label="Acertos" tone="correct" value={last.c} /><StatCard compact label="Erros" tone="incorrect" value={last.w} /><StatCard compact label="Em branco" value={last.b} />
           <StatCard compact label="Nota líquida" tone="gold" value={(last.net > 0 ? '+' : '') + last.net} detail={last.rule} /><StatCard compact label="Tempo" value={fmt(last.time)} detail={'de ' + fmt(total)} />
@@ -125,7 +125,7 @@ export default function SimuladoScreen({ toast }) {
   const tp = S.blocks.reduce((a, b) => a + b.subjects.reduce((x, s) => x + s.planned, 0), 0);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <PageHeader overline="Simulados · Câmara dos Deputados" title="Simulado" description={S.profile + '. Valores são do perfil, não regras fixas.'} actions={<Tabs label="Simulados" value={tab} onChange={setTab} items={[{ id: 'prep', label: 'Preparação', icon: 'graduation-cap' }, { id: 'hist', label: 'Histórico', icon: 'history', count: history.length }]} />} />
+      <PageHeader emblema="graduation-cap" overline="Simulados · Câmara dos Deputados" title="Simulado" description={S.profile + '. Valores são do perfil, não regras fixas.'} actions={<Tabs label="Simulados" value={tab} onChange={setTab} items={[{ id: 'prep', label: 'Preparação', icon: 'graduation-cap' }, { id: 'hist', label: 'Histórico', icon: 'history', count: history.length }]} />} />
       {tab === 'hist' ? (
         <Panel>
           <table className="qb-table"><thead><tr><th>Data</th><th>Modalidade</th><th className="num">Itens</th><th className="num">C</th><th className="num">E</th><th className="num">B</th><th className="num">Nota líquida</th><th className="num">Tempo</th></tr></thead>
@@ -135,14 +135,14 @@ export default function SimuladoScreen({ toast }) {
       ) : (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 14 }}>
-            <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Próximo simulado</span><span style={{ font: '400 26px/1.2 var(--font-heading)' }}>{S.next.label}</span><span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Agendado no planejamento.</span></Panel>
+            <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Próximo simulado</span><span className="nv-title">{S.next.label}</span><span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Agendado no planejamento.</span></Panel>
             <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <span className="qb-overline">Objetiva</span><span style={{ font: '600 20px/1.2 var(--font-body)' }}>{S.objective.items} itens · {S.objective.minutes} min</span>
+              <span className="qb-overline">Objetiva</span><span className="nv-numero__valor" style={{ fontSize: 26 }}>{S.objective.items}<span className="nv-numero__unidade">itens · {S.objective.minutes} min</span></span>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Regra de pontuação<select className="qb-select" value={rule} onChange={e => setRule(e.target.value)}>{Object.entries(RULES).map(([k, r]) => <option key={k} value={k}>{r.label}</option>)}</select></label>
               <Button icon="play" onClick={start} disabled={!S.items.length}>Iniciar objetiva · {S.items.length} itens</Button>
             </Panel>
             <Panel style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <span className="qb-overline">Discursiva</span><span style={{ font: '600 20px/1.2 var(--font-body)' }}>{S.discursive.minutes} min</span>
+              <span className="qb-overline">Discursiva</span><span className="nv-numero__valor" style={{ fontSize: 26 }}>{S.discursive.minutes}<span className="nv-numero__unidade">min</span></span>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6, font: '500 13px/1 var(--font-body)', color: 'var(--text-secondary)' }}>Limite de linhas<select className="qb-select" value={lines} onChange={e => setLines(+e.target.value)}>{[20, 30, 45, 60].map(n => <option key={n} value={n}>{n} linhas</option>)}</select></label>
               <Button variant="secondary" icon="square-pen" onClick={() => { setText(''); setStartedAt(new Date().toISOString()); setLeft(S.discursive.minutes * 60); setStage('disc'); }}>Iniciar discursiva</Button>
             </Panel>

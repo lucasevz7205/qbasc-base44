@@ -37,7 +37,7 @@ export default function DashboardView({ go, openArchitect }) {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,460px),1fr))', gap: 20, alignItems: 'start' }}>
         <Panel padding="20px 16px 24px" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-          <h2 style={{ font: 'var(--type-h2)', alignSelf: 'flex-start', padding: '0 8px' }}>Atalhos</h2>
+          <h2 className="nv-title" style={{ alignSelf: 'flex-start', padding: '0 8px' }}>Atalhos</h2>
           <RadialNavigation size={480} onSelect={id => id === 'architect' ? openArchitect() : go(id)}
             center={{ value: tot.coverage / 100, overline: 'Cobertura', label: tot.studied + ' de ' + tot.total + ' tópicos' }}
             items={[
@@ -51,14 +51,14 @@ export default function DashboardView({ go, openArchitect }) {
         </Panel>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <Panel style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}><h2 style={{ font: 'var(--type-h2)' }}>Hoje</h2><button className="qb-linkbtn" onClick={() => go('plan', 'hoje')}>Planejamento completo</button></div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}><h2 className="nv-title">Hoje</h2><button className="qb-linkbtn" onClick={() => go('plan', 'hoje')}>Planejamento completo</button></div>
             {usingCycle ? <Button variant="secondary" onClick={() => go('plan', 'hoje')}>{currentBlock ? currentBlock.name + ' · ' + currentBlock.minutes + ' min' : 'Configurar ciclo'}</Button> : <>
               {todayTasks.slice(0, 4).map(t => <TaskCard key={t.id} task={t} onClick={() => go('plan', 'hoje')} />)}
               {todayTasks.length > 4 && <span style={{ font: '400 13px/1 var(--font-body)', color: 'var(--text-muted)' }}>+ {todayTasks.length - 4} tarefas</span>}
             </>}
           </Panel>
           <Panel variant="ornate" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <h2 style={{ font: '600 14px/1.2 var(--font-display)', letterSpacing: '.12em', color: 'var(--qb-gold)' }}>MARCOS</h2>
+            <h2 className="nv-selo-marca">Marcos</h2>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
               <AchievementEmblem variant="soldado" state={isAdmin ? 'earned' : 'in-progress'} size={76} rule="7 dias seguidos" style={{ width: 110 }} />
               <AchievementEmblem variant="sabio" state="in-progress" progress={Math.min(Object.keys(QB_DATA.reviews).length / 200,1)} size={76} rule="200 flashcards" style={{ width: 110 }} />
