@@ -5,7 +5,7 @@ import { Tabs } from '@/components/qb/navigation/Tabs';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { useQBStudy } from '@/lib/QBStudyContext';
-import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplinas, compararJanelas, MIN_RESPOSTAS_CONFIANCA } from '@/lib/navegador';
+import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplinas, compararJanelas, analiseErros, MIN_RESPOSTAS_CONFIANCA } from '@/lib/navegador';
 import { contarSinais, dataBR, diaMes, pontosTendencia, tomDoIntervalo } from '@/lib/navegador-visual';
 import { NavCartaoAcao, NavCartaoMateria, NavForma, NavTendencia, SELOS } from '@/components/qb/navegador';
 import { NavegadorRelatorio, NavListaAssuntos, NavResumoNumeros, pct, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
@@ -70,6 +70,7 @@ export default function NavegadorPanel() {
   const semanal = React.useMemo(() => navegadorSemanal(payload.respostas, today), [payload, today]);
   const analise = React.useMemo(() => navegadorTopicos(payload.respostas, today), [payload, today]);
   const materias = React.useMemo(() => navegadorDisciplinas(analise, subjects), [analise, subjects]);
+  const erros = React.useMemo(() => analiseErros(payload.respostas, today), [payload, today]);
   const titles = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, t.title]))), [subjects]);
   const donoDe = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, s]))), [subjects]);
   const pontos = React.useMemo(() => pontosTendencia(relatorios), [relatorios]);
@@ -152,6 +153,17 @@ export default function NavegadorPanel() {
 
     <div role="tabpanel" aria-label={ABAS.find(a => a.id === aba).label} className="nv-stack" style={{ gap: 16 }}>
       {aba === 'resumo' && <>
+        {!!erros.pareto.length && !subject && <section className="nv-stack" aria-label="Erros e recuperação" style={{ gap: 10 }}>
+          <h3 className="nv-title nv-title--sm">Erros da semana (Pareto)</h3>
+          <p className="nv-note">Todas as tentativas da semana recente. {erros.foco.length} de {erros.pareto.length} assuntos concentram 80% dos {erros.totalErros} erros.</p>
+          <ol className="nv-lista" style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 6 }}>{erros.pareto.slice(0, 6).map(g => {
+            const m = erros.mitigacao.find(x => x.topico === g.topico);
+            return <li key={g.topico}><span>{titles.get(g.topico) || g.topico}</span> <span className="nv-mono">{g.erros} {g.erros === 1 ? 'erro' : 'erros'} · {Math.round(g.acumulada * 100)}% acumulado</span>
+              {m && m.taxaAntes !== null && m.taxaAgora !== null && <span className="nv-muted"> · taxa de erro {Math.round(m.taxaAntes * 100)}% → {Math.round(m.taxaAgora * 100)}%</span>}</li>;
+          })}</ol>
+          <p className="nv-note"><strong>Recuperação</strong> (indicador separado): {erros.recuperacao.recuperados} de {erros.recuperacao.errosComRetorno} erros foram acertados depois, com pelo menos {erros.recuperacao.diasMinimos} dias de intervalo.</p>
+          <p className="nv-note"><strong>Meta de {pct(erros.meta.alvo)}</strong> em questões novas nos assuntos do Pareto: {erros.meta.acertoFoco === null ? 'sem respostas suficientes' : pct(erros.meta.acertoFoco) + ' (' + erros.meta.nFoco + ' respostas)'}.</p>
+        </section>}
         {!analise.geral.n && <EmptyState compact title="Sem atividade nova com dados suficientes" description="Resolva questões novas para o Navegador ter o que analisar. O dia de hoje entra a partir de amanhã." />}
         {!!analise.geral.n && <NavResumoNumeros stats={statsResumo} placar={subject ? null : semanal} comparacao={compararJanelas(semanal)}
           rotuloMedidor={subject ? 'Chance de acerto na matéria' : 'Chance geral de acerto'}
