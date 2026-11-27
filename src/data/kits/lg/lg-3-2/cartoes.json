@@ -1,0 +1,258 @@
+[
+  {
+    "id": "lg-3-2-c01",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r1",
+    "tema": "Ideia principal × ideias de apoio",
+    "tipo": "factual",
+    "pergunta": "Segundo a aula, o que é a ideia central na introdução e na conclusão de um texto dissertativo, e o que ela é no desenvolvimento?",
+    "resposta": [
+      "Na introdução e na conclusão, a ideia central é a tese.",
+      "No desenvolvimento, é o tópico frasal."
+    ],
+    "fonte": "Aula 3, p. 67"
+  },
+  {
+    "id": "lg-3-2-c02",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r1",
+    "tema": "Ideia principal × ideias de apoio",
+    "tipo": "factual",
+    "pergunta": "Qual é o papel do desenvolvimento em relação à ideia principal apresentada na introdução?",
+    "resposta": [
+      "Trazer os argumentos de apoio ao convencimento, isto é, fundamentar a opinião levantada na introdução."
+    ],
+    "fonte": "Aula 11, p. 36 e 40"
+  },
+  {
+    "id": "lg-3-2-c03",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r1",
+    "tema": "Ideia principal × ideias de apoio",
+    "tipo": "contraste",
+    "pergunta": "Na leitura, o que distingue a ideia principal das ideias secundárias do texto?",
+    "resposta": [
+      "Ideia principal: a tese (ou, no parágrafo, o tópico frasal).",
+      "Ideias secundárias: o que sustenta a principal, como argumentos, exemplos e dados."
+    ],
+    "fonte": "Aula 3, p. 65 e 67; Aula 11, p. 36",
+    "explicacao": "Inferência do kit: a aula usa a expressão “ideias secundárias” (p. 65), mas não a define de forma literal; a definição acima decorre de “argumentos de apoio” (Aula 11, p. 36)."
+  },
+  {
+    "id": "lg-3-2-c04",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2",
+    "tema": "Estrutura: onde mora a tese",
+    "tipo": "factual",
+    "pergunta": "Onde deve constar a tese do texto dissertativo e como a opinião do autor aparece ali, em comparação com a conclusão?",
+    "resposta": [
+      "Na introdução.",
+      "Ali a opinião aparece de modo brando e é reiterada de modo forte na conclusão."
+    ],
+    "fonte": "Aula 3, p. 38; Aula 11, p. 37"
+  },
+  {
+    "id": "lg-3-2-c05",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2",
+    "tema": "Estrutura: onde mora a tese",
+    "tipo": "factual",
+    "pergunta": "Segundo a aula, como identificar qual é a tese de um texto?",
+    "resposta": [
+      "É a sentença em que o autor sintetizaria todo o seu texto, se pudesse fazê-lo em uma só."
+    ],
+    "fonte": "Aula 11, p. 37"
+  },
+  {
+    "id": "lg-3-2-c06",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2",
+    "tema": "Estrutura: onde mora a tese",
+    "tipo": "aplicacao",
+    "pergunta": "A tese de um texto dissertativo deve sempre aparecer na introdução?",
+    "resposta": [
+      "Não: a estrutura introdução–desenvolvimento–conclusão é a tradicional, mas há liberdade.",
+      "Alguns autores concluem logo no início e depois justificam; outros trazem a tese só no final."
+    ],
+    "fonte": "Aula 3, p. 38; Aula 11, p. 36"
+  },
+  {
+    "id": "lg-3-2-c07",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3",
+    "tema": "Tópico frasal",
+    "tipo": "factual",
+    "pergunta": "O que é o tópico frasal e qual é a sua função?",
+    "resposta": [
+      "É a ideia central de um parágrafo de desenvolvimento.",
+      "Sua função é explicitar o tema central a ser tratado no parágrafo."
+    ],
+    "fonte": "Aula 3, p. 39; Aula 11, p. 40"
+  },
+  {
+    "id": "lg-3-2-c08",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3",
+    "tema": "Tópico frasal",
+    "tipo": "factual",
+    "pergunta": "Em que posição o tópico frasal costuma aparecer, e essa posição é obrigatória?",
+    "resposta": [
+      "Em geral no início do parágrafo (o primeiro período).",
+      "Não é obrigatório: pode vir depois de dados que o sustentam."
+    ],
+    "fonte": "Aula 3, p. 39; Aula 11, p. 40 e 48",
+    "explicacao": "Divergência de redação (não resolvida): a Aula 3 diz “em geral, é o primeiro período” sem ressalva; a Aula 11 diz “geralmente vem no início (não necessariamente)” e traz exemplo em que o tópico frasal vem após a estatística."
+  },
+  {
+    "id": "lg-3-2-c09",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3",
+    "tema": "Tópico frasal",
+    "tipo": "factual",
+    "pergunta": "Quantos argumentos cada parágrafo de desenvolvimento deve conter e o que as bancas fazem com parágrafos que trazem mais de uma ideia?",
+    "resposta": [
+      "Um argumento por parágrafo.",
+      "As bancas geralmente descontam pontos por parágrafos com mais de uma ideia."
+    ],
+    "fonte": "Aula 3, p. 39; Aula 11, p. 41",
+    "explicacao": "A regra de desconto de pontos vem da orientação para a prova discursiva; serve aqui para entender a unidade de ideia por parágrafo."
+  },
+  {
+    "id": "lg-3-2-c10",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4",
+    "tema": "Detalhes de apoio",
+    "tipo": "factual",
+    "pergunta": "Por quais meios o período que segue o tópico frasal o amplia e o sustenta?",
+    "resposta": [
+      "Argumentos e contra-argumentos, raciocínios lógicos, exemplos, comparações, narrativas, citações de autoridades, dados estatísticos ou outra forma de desenvolvimento."
+    ],
+    "fonte": "Aula 3, p. 39; Aula 11, p. 41"
+  },
+  {
+    "id": "lg-3-2-c11",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4",
+    "tema": "Detalhes de apoio",
+    "tipo": "factual",
+    "pergunta": "O que a banca espera que o candidato identifique em exemplos, dados estatísticos e testemunhos de autoridade?",
+    "resposta": [
+      "Que foram usados para fortalecer uma tese, e qual tese é essa.",
+      "Entender o exemplo importa mais do que saber o nome da estratégia."
+    ],
+    "fonte": "Aula 11, p. 47"
+  },
+  {
+    "id": "lg-3-2-c12",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4",
+    "tema": "Detalhes de apoio",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre exemplificação e enumeração (ou detalhamento)?",
+    "resposta": [
+      "Exemplificação: destacar alguns casos dentre um universo de fenômenos, para ratificar uma tese.",
+      "Enumeração ou detalhamento: listar sistematicamente tópicos ou aspectos, ou subdividir um aspecto amplo em aspectos menores."
+    ],
+    "fonte": "Aula 11, p. 47 e 48"
+  },
+  {
+    "id": "lg-3-2-c13",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r5",
+    "tema": "Introdução",
+    "tipo": "factual",
+    "pergunta": "Quais são as fórmulas de introdução apresentadas na aula?",
+    "resposta": [
+      "Divisão, definição, citação, indagação, frases nominais, alusão histórica ou literária, narração e declaração.",
+      "Podem ser mescladas e adaptadas aos argumentos."
+    ],
+    "fonte": "Aula 11, p. 37 a 40"
+  },
+  {
+    "id": "lg-3-2-c14",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r5",
+    "tema": "Introdução",
+    "tipo": "contraste",
+    "pergunta": "Qual é a diferença entre frase nominal e declaração como fórmulas de introdução?",
+    "resposta": [
+      "Frase nominal: uma frase seguida de uma explicação.",
+      "Declaração: semelhante, mas com uma oração desenvolvida; uma declaração forte no início surpreende o leitor."
+    ],
+    "fonte": "Aula 11, p. 38 e 39"
+  },
+  {
+    "id": "lg-3-2-c15",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r5",
+    "tema": "Introdução",
+    "tipo": "factual",
+    "pergunta": "Como a fórmula de divisão organiza o texto?",
+    "resposta": [
+      "Enumera explicitamente os aspectos que serão tratados.",
+      "Deixa o texto mais organizado e facilita elementos de coesão como “em relação ao primeiro item” e “já quanto ao segundo”."
+    ],
+    "fonte": "Aula 11, p. 37"
+  },
+  {
+    "id": "lg-3-2-c16",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r6",
+    "tema": "Leitura em etapas",
+    "tipo": "factual",
+    "pergunta": "Quais são os cinco passos sugeridos pela aula para ler e interpretar um texto?",
+    "resposta": [
+      "1) Ler lentamente o texto todo (sentido global e objetivo).",
+      "2) Reler para identificar as ideias principais de cada parágrafo e a sequência lógica.",
+      "3) Sublinhar as ideias mais importantes.",
+      "4) Separar fatos de opiniões.",
+      "5) Retornar ao texto sempre que necessário."
+    ],
+    "fonte": "Aula 3, p. 63 a 66",
+    "explicacao": "A aula frisa que não há fórmula fechada e estática: é uma sugestão."
+  },
+  {
+    "id": "lg-3-2-c17",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r6",
+    "tema": "Leitura em etapas",
+    "tipo": "contraste",
+    "pergunta": "Segundo a aula, qual é a diferença entre interpretar e compreender?",
+    "resposta": [
+      "Interpretar: depreender informações, deduzir com base em pistas, inferir um subtexto que não está explícito, mas pressuposto.",
+      "Compreender: localizar uma informação explícita, que não depende de nenhuma inferência."
+    ],
+    "fonte": "Aula 3, p. 62"
+  },
+  {
+    "id": "lg-3-2-c18",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r6",
+    "tema": "Leitura em etapas",
+    "tipo": "factual",
+    "pergunta": "Quando sublinhar as ideias mais importantes e por quê?",
+    "resposta": [
+      "Só quando já se tiver boa noção da ideia principal e das ideias secundárias.",
+      "Isso evita o excesso de marcações, que dificulta ainda mais a leitura."
+    ],
+    "fonte": "Aula 3, p. 65"
+  },
+  {
+    "id": "lg-3-2-c19",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r7",
+    "tema": "Armadilhas de prova",
+    "tipo": "contraste",
+    "pergunta": "Como se resolvem as questões de recorrência e as de inferência?",
+    "resposta": [
+      "Recorrência: encontrando uma paráfrase no texto.",
+      "Inferência: exigem uma dedução baseada em pressupostos."
+    ],
+    "fonte": "Aula 3, p. 67"
+  },
+  {
+    "id": "lg-3-2-c20",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r7",
+    "tema": "Armadilhas de prova",
+    "tipo": "aplicacao",
+    "pergunta": "Quando um texto apresenta duas ideias centrais lado a lado, a segunda é consequência da primeira?",
+    "resposta": [
+      "Não necessariamente: no item comentado da aula, eram ideias separadas e uma não era consequência da outra.",
+      "Relação de consequência só vale se o texto a estabelecer."
+    ],
+    "fonte": "Aula 11, p. 68 e 69"
+  },
+  {
+    "id": "lg-3-2-c21",
+    "no": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r7",
+    "tema": "Armadilhas de prova",
+    "tipo": "aplicacao",
+    "pergunta": "Num texto que expõe antíteses sem solução, é correto dizer que o autor defende que um conceito vem substituindo o outro?",
+    "resposta": [
+      "Não: antítese sem solução clara é uma problemática, não a substituição de um conceito pelo outro.",
+      "Não atribua ao autor uma tese que o texto não afirma."
+    ],
+    "fonte": "Aula 11, p. 46"
+  }
+]
