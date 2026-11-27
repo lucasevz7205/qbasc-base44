@@ -57,6 +57,7 @@ const TASK_TIERS = {
   "flashcard-correction": { tier: "flash", reason: "task:correcao" },
   "cornell-assessment": { tier: "flash", reason: "task:parecer-estruturado" },
   "cornell-cues": { tier: "lite", reason: "task:pistas-simples" },
+  "navegador-planner": { tier: "flash", reason: "task:planejamento" },
 };
 // Só a fronteira inicial: \b do JavaScript não reconhece letras acentuadas.
 const LEGAL_REASONING = /§|\bart\.?\s*\d|\b(?:artigo|par[aá]grafo|inciso|al[ií]nea|s[uú]mula|stf|stj|tcu|jurisprud|constitucional|inconstitucional|compet[eê]ncia|qu[oó]rum|prazo|julgue|gabarito|fundament|exce[cç][aã]o|diferen[cç]a|distin[gç]|compar|corrij|corrig|avali|analis|por que|est[aá] (?:certo|correto|errado)|certo ou errado)/i;
@@ -214,7 +215,7 @@ export async function invokeArchitectGemini({
     throw new Error("Chave Gemini ausente. Confira o segredo Arquiteto (ou ARQUITETO/GEMINI_API_KEY) na Base44.");
   }
   const safePreference = MODEL_PREFERENCES.includes(preference) ? preference : "auto";
-  const structured = Boolean(jsonReply || responseJsonSchema || task === "cornell-cues");
+  const structured = Boolean(jsonReply || responseJsonSchema || task === "cornell-cues" || task === "navegador-planner");
   const { tier, reason } = classifyArchitectTask({ task, mode, userMessage, historyLength });
   const base = { task, mode: typeof mode === "string" ? mode : undefined, preference: safePreference, reason };
 

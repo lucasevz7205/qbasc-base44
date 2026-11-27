@@ -10,6 +10,7 @@ import { GAN_MAP_EXERCISE_PREFIX, ganMapExercisePassages } from "@/lib/gan-groun
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
+import { plannerPrompt, lerRespostaPlanner, PLANNER_SCHEMA } from "@/lib/navegador-planner";
 import { CORNELL_ASSESSMENT_SCHEMA, cornellAssessmentPrompt, normalizeCornellAssessment, notebookBody, notebookNotes } from "@/lib/cornell-assessment";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
 import { FLASHCARD_RULES } from "@/lib/flashcard-rules";
@@ -157,6 +158,30 @@ export const askArchitectTutor = createServerFn({ method: "POST" })
     const res = await invokeBase44StudyAI(context, prompt);
     const reply = typeof res === "string" ? res.trim() : JSON.stringify(res);
     return { reply: continueTutorConversation(reply, Boolean(historyBlock)), provider: "base44" };
+  });
+
+const PlannerInputSchema = z.object({
+  resumo: z.record(z.string(), z.any()).refine(v => JSON.stringify(v).length <= 24000, "Resumo grande demais."),
+  userMessage: z.string().trim().min(1).max(1500),
+  history: z.array(z.object({ role: z.enum(["user", "tutor"]), text: z.string().max(3000) })).max(16).optional(),
+});
+
+/**
+ * Assistente de planejamento do Navegador. Só devolve texto e propostas; não escreve em nenhuma coleção.
+ * Gemini sem fallback para créditos Base44, restrito à conta administradora (como o Arquiteto com Gemini).
+ */
+export const askNavegadorPlanner = createServerFn({ method: "POST" })
+  .middleware([requireUser])
+  .validator(PlannerInputSchema)
+  .handler(async ({ data, context }) => {
+    if (context.user?.role !== "admin") throw new Error("O assistente de planejamento ainda não está liberado para esta conta.");
+    const result = await invokeArchitectGemini({
+      apiKey: architectKey(), models: architectModels(), task: "navegador-planner",
+      prompt: plannerPrompt({ resumo: data.resumo, history: data.history, userMessage: data.userMessage }),
+      responseJsonSchema: PLANNER_SCHEMA, maxOutputTokens: 2500, timeoutMs: 60000,
+      userMessage: data.userMessage, historyLength: (data.history || []).length,
+    });
+    return { ...lerRespostaPlanner(result.reply), provider: "gemini" };
   });
 
 /**
