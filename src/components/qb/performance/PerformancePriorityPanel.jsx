@@ -3,18 +3,21 @@ import { Panel } from '../core/Panel.jsx';
 import { Badge } from '../core/Badge.jsx';
 import { Button } from '../core/Button.jsx';
 import { EmptyState } from '../data/EmptyState.jsx';
+import '../navegador/navegador.css';
+
+const TOM = { correct: 'correct', incorrect: 'incorrect', attention: 'attention', 'no-evidence': 'no-evidence' };
 
 export function PerformancePriorityPanel({ items = [], onAction, title = 'Prioridades de estudo', basis, emptyTitle = 'Nenhuma prioridade no escopo', emptyDescription = 'Os registros do período não indicam erros recorrentes, baixa precisão com amostra suficiente, pendências vencidas nem revisões agendadas.', style }) {
   return (
     <Panel style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0, ...style }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <h2 className="qb-overline" style={{ color: 'var(--qb-gold)', margin: 0 }}>{title}</h2>
+        <h2 className="nv-title nv-title--sm">{title}</h2>
         {basis && <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-secondary)' }}>{basis}</span>}
       </div>
       {!items.length ? <EmptyState tone="empty" compact title={emptyTitle} description={emptyDescription} /> : (
         <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
           {items.map((it, i) => (
-            <li key={it.id} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '12px 0', borderTop: i ? '1px solid var(--divider)' : 0 }}>
+            <li key={it.id} className={'nv-prioridade' + (TOM[it.tone] ? ` nv-tone-${TOM[it.tone]}` : '')} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '12px 0 12px 12px', borderTop: i ? '1px solid var(--divider)' : 0 }}>
               <span aria-hidden="true" style={{ font: '600 13px/24px var(--font-mono)', color: 'var(--qb-gold)', width: 22, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 12px', alignItems: 'center', flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: '1 1 200px', minWidth: 0 }}>

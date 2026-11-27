@@ -332,10 +332,9 @@ const METHOD = [
 export default function PerformanceScreen({ tab = 'diaria', setTab, go }) {
   return (
     <div className="qb-performance" style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
-      <div className="qb-performance-v4-hero">
-      <PageHeader overline="Análise do estudo" title="Desempenho" description={tab === 'metodo' ? 'Fórmulas e regras de cálculo de cada indicador.' : 'Respostas de treino registradas no período analisado.'}
+      <PageHeader emblema="chart-column" overline="Análise do estudo" title="Desempenho" description={tab === 'metodo' ? 'Fórmulas e regras de cálculo de cada indicador.' : 'Respostas de treino registradas no período analisado.'}
         actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'navegador', label: 'Navegador', icon: 'compass' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
-      </div>
+      
       {tab === 'diaria' && <Daily go={go} />}
       {tab === 'historica' && <Historic go={go} />}
       {tab === 'navegador' && <NavegadorPanel />}

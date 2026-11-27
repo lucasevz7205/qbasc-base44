@@ -1,6 +1,7 @@
 import React from 'react';
 import { Panel } from '../core/Panel.jsx';
 import { EmptyState } from '../data/EmptyState.jsx';
+import '../navegador/navegador.css';
 
 const enrich = d => { const valid = d.correct + d.wrong; return { ...d, valid, pct: valid ? (d.correct / valid) * 100 : null }; };
 const srOnly = { position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap' };
@@ -45,7 +46,7 @@ export function PerformanceTrendChart({ data = [], previous = null, currentLabel
     <Panel style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0, ...style }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
-          <h2 id={id + 't'} className="qb-overline" style={{ color: 'var(--qb-gold)', margin: 0 }}>{title}</h2>
+          <h2 id={id + 't'} className="nv-title nv-title--sm">{title}</h2>
           {subtitle && <span style={{ font: '400 13px/1.4 var(--font-body)', color: 'var(--text-secondary)' }}>{subtitle}</span>}
         </div>
         {granularities.length > 0 && (

@@ -253,3 +253,6 @@ button.nv-pill:focus-visible, .nv-btnlink:focus-visible { outline: none; box-sha
 .nv-stat--compacto .nv-stat__valor { font-size: 24px; }
 .nv-stat__estado { display: inline-flex; align-self: center; color: var(--nv-tone); }
 .nv-stat .nv-numero__legenda { overflow-wrap: anywhere; }
+
+/* Item de prioridade: borda lateral de estado */
+.nv-prioridade { --nv-tone: var(--divider); border-left: 3px solid var(--nv-tone); }
