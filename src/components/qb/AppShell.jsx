@@ -7,6 +7,7 @@ import { ArchitectLauncher } from '@/components/qb/architect/ArchitectLauncher';
 import { ArchitectStudio } from '@/components/qb/architect/ArchitectStudio';
 import { ToastStack } from '@/components/qb/feedback/ToastStack';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { NavegadorAviso } from '@/components/qb/performance/NavegadorAviso';
 
 export const NAV = (late = 0) => [
   { id: 'dashboard', label: 'Menu principal', icon: 'house' },
@@ -110,6 +111,7 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
           </Button>}
         </div>
       </div>
+      <NavegadorAviso go={go} />
       <main style={{ flex: 1, width: '100%', maxWidth: isWide ? 1360 : 1280, margin: '0 auto', padding: '20px 16px 96px' }}>{children}</main>
     </div>
   );

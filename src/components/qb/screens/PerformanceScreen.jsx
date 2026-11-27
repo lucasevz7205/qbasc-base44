@@ -1,4 +1,5 @@
 import React from 'react';
+import NavegadorPanel from '@/components/qb/performance/NavegadorPanel';
 import { PageHeader } from '@/components/qb/navigation/PageHeader';
 import { Tabs } from '@/components/qb/navigation/Tabs';
 import { Panel } from '@/components/qb/core/Panel';
@@ -333,10 +334,11 @@ export default function PerformanceScreen({ tab = 'diaria', setTab, go }) {
     <div className="qb-performance" style={{ display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
       <div className="qb-performance-v4-hero">
       <PageHeader overline="Análise do estudo" title="Desempenho" description={tab === 'metodo' ? 'Fórmulas e regras de cálculo de cada indicador.' : 'Respostas de treino registradas no período analisado.'}
-        actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
+        actions={<Tabs label="Análises" value={tab} onChange={setTab} items={[{ id: 'diaria', label: 'Análise diária', icon: 'calendar' }, { id: 'historica', label: 'Análise histórica', icon: 'activity' }, { id: 'navegador', label: 'Navegador', icon: 'compass' }, { id: 'metodo', label: 'Método', icon: 'scale' }]} />} />
       </div>
       {tab === 'diaria' && <Daily go={go} />}
       {tab === 'historica' && <Historic go={go} />}
+      {tab === 'navegador' && <NavegadorPanel />}
       {tab === 'metodo' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,340px),1fr))', gap: 12 }}>
           {METHOD.map(([i, t, d]) => <Panel key={t} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}><span style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(208,179,134,.55)', color: 'var(--qb-gold)' }}><Icon name={i} size={18} /></span><span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}><span style={{ font: '600 15px/1.3 var(--font-body)', color: 'var(--text-primary)' }}>{t}</span><span style={{ font: '400 14px/1.55 var(--font-body)', color: 'var(--text-secondary)' }}>{d}</span></span></Panel>)}

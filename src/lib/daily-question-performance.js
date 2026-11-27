@@ -13,14 +13,21 @@ function outcome(answer, key, recorded) {
   return key === 'C' || key === 'E' ? (answer === key ? 'correct' : 'wrong') : null;
 }
 
-export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
+export function dailyQuestionPerformance({ answers, questions, rounds, day, includeTimeline = false }) {
   const days = Object.create(null);
   const attemptsByDay = Object.create(null);
   const roundsByDay = Object.create(null);
   const review = empty();
   const candidates = new Map();
+  const attemptTimeline = [];
+  const aggregateOnly = Object.create(null);
+  const exactTime = value => typeof value === 'string' && /T.*(?:Z|[+-]\d{2}:\d{2})$/i.test(value) ? time(value) : NaN;
   const stat = date => days[date] ??= { date, n: 0, ...empty() };
-  const add = (date, result, qid, amount = 1, confidence) => {
+  const add = (date, result, qid, amount = 1, confidence, timestamp = NaN) => {
+    if (includeTimeline) {
+      if (qid) attemptTimeline.push({ qid, result, date, confidence, timestamp });
+      else aggregateOnly[date] = (aggregateOnly[date] || 0) + amount;
+    }
     const row = stat(date);
     row[result] += amount;
     row.n += amount;
@@ -44,7 +51,7 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
       pool.push({ answer, result, date, timestamp: time(entry.em), sessionId: entry.sessionId, matched: false });
       candidates.set(qid, pool);
       const latestConfidence = entry.em === response.atualizadoEm && answer === current ? response.conf : undefined;
-      add(date, result, qid, 1, confidenceLevel(entry.c ?? latestConfidence));
+      add(date, result, qid, 1, confidenceLevel(entry.c ?? latestConfidence), exactTime(entry.em));
     }
   }
 
@@ -80,7 +87,7 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
         .sort((a, b) => a.timestamp - b.timestamp)[0];
       const match = exact || sameSession || legacy;
       if (match) match.matched = true;
-      else add(day(item.em) || date, result, qid, 1, confidenceLevel(item.c ?? item.conf));
+      else add(day(item.em) || date, result, qid, 1, confidenceLevel(item.c ?? item.conf), exactTime(item.em));
     }
     // Some imported rounds contain totals only. Match attempts inside their
     // recorded interval, without consuming attempts from newer identified sessions.
@@ -96,7 +103,7 @@ export function dailyQuestionPerformance({ answers, questions, rounds, day }) {
     for (const key of outcomes) if (remaining[key]) add(date, key, null, remaining[key]);
   }
 
-  return { days, attemptsByDay, roundsByDay, review };
+  return { days, attemptsByDay, roundsByDay, review, ...(includeTimeline ? { attemptTimeline, aggregateOnly } : {}) };
 }
 
 
