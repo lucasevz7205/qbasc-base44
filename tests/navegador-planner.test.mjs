@@ -107,3 +107,25 @@ test('salvar horas preserva modo e ciclo e limita a 0–24 h', () => {
   assert.equal(novo.cycle.length, 1);
   assert.deepEqual(novo.hours, [0, 2, 24, 0, 2, 2, 1]);
 });
+
+import { chamarComBackup, MODELO_BACKUP_PADRAO } from '../src/lib/navegador-planner.js';
+
+test('Base44 é a chamada principal e o backup não roda quando ela funciona', async () => {
+  let backup = 0;
+  const r = await chamarComBackup({ principal: async () => 'base', backup: async () => { backup++; return 'gem'; } });
+  assert.deepEqual(r, { reply: 'base', provider: 'base44', usouBackup: false });
+  assert.equal(backup, 0);
+});
+
+test('o backup no Gemini é acionado quando a Base44 falha', async () => {
+  const r = await chamarComBackup({ principal: async () => { throw new Error('créditos esgotados'); }, backup: async () => 'gem' });
+  assert.deepEqual(r, { reply: 'gem', provider: 'gemini', usouBackup: true });
+});
+
+test('se os dois falham, o erro descreve ambos', async () => {
+  await assert.rejects(
+    chamarComBackup({ principal: async () => { throw new Error('A'); }, backup: async () => { throw new Error('B'); } }),
+    /Base44 falhou \(A\).*Gemini também \(B\)/,
+  );
+  assert.equal(MODELO_BACKUP_PADRAO, 'gemini-flash-latest');
+});

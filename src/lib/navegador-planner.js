@@ -133,3 +133,23 @@ export const pedidoDeAtrasadas = texto => /atrasad/i.test(texto || '') && /(reti
 
 /** Marca como concluída (nunca apaga). Só roda depois do clique do estudante no cartão. */
 export const registroConcluida = (task, timestamp) => ({ ...task.raw, status: 'concluida', concluidaEm: timestamp, atualizadoEm: timestamp });
+
+// Modelo Flash que a chave do Arquiteto lista; é só o backup, e QB_GEMINI_MODEL pode substituí-lo.
+export const MODELO_BACKUP_PADRAO = 'gemini-flash-latest';
+
+/**
+ * Chamada principal na Base44; se ela falhar por qualquer motivo, tenta o backup no Gemini.
+ * Se os dois falharem, o erro diz o que aconteceu em cada um. `principal` e `backup` são funções assíncronas.
+ */
+export async function chamarComBackup({ principal, backup }) {
+  let falhaPrincipal;
+  try {
+    return { reply: await principal(), provider: 'base44', usouBackup: false };
+  } catch (error) { falhaPrincipal = error; }
+  try {
+    return { reply: await backup(), provider: 'gemini', usouBackup: true };
+  } catch (falhaBackup) {
+    const msg = e => String(e?.message || e || 'erro desconhecido').slice(0, 300);
+    throw new Error('A Base44 falhou (' + msg(falhaPrincipal) + ') e o backup no Gemini também (' + msg(falhaBackup) + ').');
+  }
+}
