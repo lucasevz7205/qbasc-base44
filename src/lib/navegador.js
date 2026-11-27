@@ -371,3 +371,5 @@ export function analiseErros(respostas, today, janela = janelaDe(today)) {
     mitigacao,
   };
 }
+
+export { sinalDe, day as diaBrasilia };
