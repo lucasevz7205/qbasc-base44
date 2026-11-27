@@ -97,3 +97,13 @@ test('pedido de retirar atrasadas é reconhecido e a conclusão preserva o regis
   assert.equal(rec.titulo, 'T');
   assert.equal(rec.status, 'concluida');
 });
+
+import { planSettings } from '../src/lib/plan-settings.js';
+
+test('salvar horas preserva modo e ciclo e limita a 0–24 h', () => {
+  const atual = planSettings({ mode: 'cycle', cycle: [{ subjectId: 'da', name: 'DA', minutes: 60 }], hours: [0, 1, 1, 1, 1, 1, 0] });
+  const novo = planSettings({ ...atual, hours: [0, 2, 99, -3, 2, 2, 1] });
+  assert.equal(novo.mode, 'cycle');
+  assert.equal(novo.cycle.length, 1);
+  assert.deepEqual(novo.hours, [0, 2, 24, 0, 2, 2, 1]);
+});

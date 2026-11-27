@@ -8,6 +8,7 @@ import { WeekCalendar } from '@/components/qb/planning/WeekCalendar';
 import { TaskCard } from '@/components/qb/planning/TaskCard';
 import { RescheduleActions } from '@/components/qb/planning/RescheduleActions';
 import { CycleConfigurator } from '@/components/qb/planning/CycleConfigurator';
+import { HorasPorDia } from '@/components/qb/planning/HorasPorDia';
 import { WeeklyPlanEditor } from '@/components/qb/planning/WeeklyPlanEditor';
 import { PLAN_SETTINGS_ID, advanceCycle, planSettings, taskRecord } from '@/lib/plan-settings';
 import { Button } from '@/components/qb/core/Button';
@@ -159,6 +160,8 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
             archived={P.archivedTasks.filter(task => task.date === editorDate)}
             subjects={[...new Set(QB_EDITAL.subjects.map(subject => subject.name))]}
             busy={saving} onSave={saveActivity} onArchive={archiveActivity} />
+          <HorasPorDia hours={draft.hours} onChange={hours => setDraft(value => ({ ...value, hours }))} />
+          <Button variant="secondary" icon="check" disabled={saving} onClick={async () => { if (await saveSettings({ ...savedSettings, hours: draft.hours })) toast?.({ tone: 'success', title: 'Horas salvas' }); }}>Salvar horas</Button>
           {P.mode !== 'weekly' && <Button variant="secondary" disabled={saving} onClick={() => changeMode('weekly')}>Usar cronograma semanal</Button>}
         </> : <>
           <CycleConfigurator hours={draft.hours} onHoursChange={hours => setDraft(value => ({ ...value, hours }))}
