@@ -83,6 +83,7 @@ export default function StudyScreen({ tab = 'mapa', setTab, go, mapProps, lastDe
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <PageHeader
+        emblema="book-open"
         overline="Estudo · teoria, mapas e revisão"
         title="Estudo"
         actions={

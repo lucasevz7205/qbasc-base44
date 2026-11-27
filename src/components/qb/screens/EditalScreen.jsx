@@ -55,7 +55,7 @@ export default function EditalScreen({ tab = 'lista', setTab, go, openArchitect,
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <PageHeader overline="Edital verticalizado" title="Edital" description="Bloco → matéria → assunto → tópico, com status de estudo e taxa de acertos separados."
+      <PageHeader emblema="scroll-text" overline="Edital verticalizado" title="Edital" description="Bloco → matéria → assunto → tópico, com status de estudo e taxa de acertos separados."
         actions={<Tabs label="Visualização do edital" value={tab} onChange={setTab} items={[{ id: 'lista', label: 'Lista', icon: 'list' }, { id: 'calor', label: 'Mapa de calor', icon: 'grid-3x3' }, { id: 'radial', label: 'Radial', icon: 'target' }]} />} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 10 }}>
         <StatCard compact label="Taxa de acertos" tone="correct" value={M.pct(tot.accuracy)} detail={tot.correct + ' de ' + tot.valid + ' respostas válidas'} note="acertos ÷ (acertos + erros)" />
