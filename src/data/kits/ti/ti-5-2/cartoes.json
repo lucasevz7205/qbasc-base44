@@ -1,0 +1,319 @@
+[
+  {
+    "id": "ti-5-2-c01",
+    "no": "r1",
+    "tema": "Conceito de Aprendizado de Máquina",
+    "pergunta": "A partir de que os modelos de aprendizado de máquina extraem padrões?",
+    "resposta": ["A partir de dados"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c02",
+    "no": "r1",
+    "tema": "Conceito de Aprendizado de Máquina",
+    "pergunta": "Com base em que os modelos de machine learning tomam decisões ou fazem previsões?",
+    "resposta": ["Regularidades estatísticas presentes em grandes volumes de dados"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c03",
+    "no": "r1",
+    "tema": "Conceito de Aprendizado de Máquina",
+    "pergunta": "De que tipo de sistema a aula diferencia os modelos de machine learning?",
+    "resposta": ["Sistemas programados com regras fixas"],
+    "fonte": "Aula 02, p. 40",
+    "explicacao": "Pegadinha: dizer que o aprendizado de máquina segue regras fixas programadas pelo humano inverte a definição."
+  },
+  {
+    "id": "ti-5-2-c04",
+    "no": "r1.1",
+    "tema": "Conceito de aprendizado de máquina e as três categorias",
+    "pergunta": "Em quantas categorias, essencialmente, se divide o campo do aprendizado de máquina?",
+    "resposta": ["Três"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c05",
+    "no": "r1.1",
+    "tema": "Conceito de aprendizado de máquina e as três categorias",
+    "pergunta": "Quais são as categorias em que se divide o aprendizado de máquina?",
+    "resposta": ["Supervisionado", "Não supervisionado", "Por reforço"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c06",
+    "no": "r1.1",
+    "tema": "Conceito de aprendizado de máquina e as três categorias",
+    "pergunta": "O que o modelo de aprendizado de máquina dispensa para extrair padrões dos dados?",
+    "resposta": ["Instruções explícitas"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c07",
+    "no": "r2",
+    "tema": "Aprendizado Supervisionado",
+    "pergunta": "Com que tipo de conjunto de dados o modelo é treinado no aprendizado supervisionado?",
+    "resposta": ["Dados rotulados"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c08",
+    "no": "r2",
+    "tema": "Aprendizado Supervisionado",
+    "pergunta": "O que caracteriza cada entrada de um conjunto de dados rotulado?",
+    "resposta": ["Está associada a uma saída conhecida"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c09",
+    "no": "r2",
+    "tema": "Aprendizado Supervisionado",
+    "pergunta": "Qual é o objetivo do treinamento no aprendizado supervisionado?",
+    "resposta": ["Aprender a mapear corretamente os pares entrada-saída"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c10",
+    "no": "r2.1",
+    "tema": "Rótulos, erro de previsão e tarefas (classificação e regressão)",
+    "pergunta": "Com base em que o modelo supervisionado ajusta seus parâmetros?",
+    "resposta": ["No erro entre a previsão gerada e o valor real"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c11",
+    "no": "r2.1",
+    "tema": "Rótulos, erro de previsão e tarefas (classificação e regressão)",
+    "pergunta": "Identificar e-mails como spam ou não spam é que tipo de tarefa do aprendizado supervisionado?",
+    "resposta": ["Classificação"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c12",
+    "no": "r2.1",
+    "tema": "Rótulos, erro de previsão e tarefas (classificação e regressão)",
+    "pergunta": "Prever o preço de um imóvel é que tipo de tarefa do aprendizado supervisionado?",
+    "resposta": ["Regressão (previsão de valores numéricos)"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c13",
+    "no": "r3",
+    "tema": "Aprendizado Não Supervisionado",
+    "pergunta": "Sobre que tipo de dado opera o aprendizado não supervisionado?",
+    "resposta": ["Dados não rotulados"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c14",
+    "no": "r3",
+    "tema": "Aprendizado Não Supervisionado",
+    "pergunta": "Que indicação o modelo deixa de receber no aprendizado não supervisionado?",
+    "resposta": ["Qual seria a saída correta"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c15",
+    "no": "r3",
+    "tema": "Aprendizado Não Supervisionado",
+    "pergunta": "Qual vantagem do aprendizado não supervisionado a aula destaca para bases de dados extensas?",
+    "resposta": ["Dispensa a rotulagem manual"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c16",
+    "no": "r3.1",
+    "tema": "Dados não rotulados e padrões ocultos",
+    "pergunta": "O que o modelo não supervisionado é orientado a descobrir autonomamente nos dados?",
+    "resposta": ["Padrões", "Agrupamentos", "Estruturas latentes"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c17",
+    "no": "r3.1",
+    "tema": "Dados não rotulados e padrões ocultos",
+    "pergunta": "Em relação à percepção humana, o que muitas vezes ocorre com os padrões que o modelo não supervisionado identifica?",
+    "resposta": ["Escapam a ela"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c18",
+    "no": "r3.1",
+    "tema": "Dados não rotulados e padrões ocultos",
+    "pergunta": "Qual paradigma identifica padrões ou estruturas em dados sem rótulo, sem orientação prévia?",
+    "resposta": ["Aprendizado não supervisionado"],
+    "fonte": "Aula 02, p. 41 (FAFIPA/Paranavaí 2025, letra A)",
+    "explicacao": "Distratores da questão: recompensas e penalidades é o reforço; dados rotulados é o supervisionado."
+  },
+  {
+    "id": "ti-5-2-c19",
+    "no": "r3.2",
+    "tema": "Tarefas e pré-treino de modelos de linguagem",
+    "pergunta": "Em que tarefas a aula aplica o aprendizado não supervisionado?",
+    "resposta": ["Detecção de anomalias", "Redução de dimensionalidade", "Análise de agrupamentos (clustering)"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c20",
+    "no": "r3.2",
+    "tema": "Tarefas e pré-treino de modelos de linguagem",
+    "pergunta": "Em que etapa da IA generativa o aprendizado não supervisionado é central?",
+    "resposta": ["Pré-treinamento de modelos de linguagem"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c21",
+    "no": "r3.2",
+    "tema": "Tarefas e pré-treino de modelos de linguagem",
+    "pergunta": "No pré-treinamento, o que os modelos de linguagem reconhecem em grandes corpora para aprender a gerar texto?",
+    "resposta": ["Regularidades sintáticas e semânticas"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c22",
+    "no": "r4",
+    "tema": "Aprendizado por Reforço",
+    "pergunta": "Por meio de que o modelo aprende no aprendizado por reforço?",
+    "resposta": ["Interação com um ambiente"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c23",
+    "no": "r4",
+    "tema": "Aprendizado por Reforço",
+    "pergunta": "No aprendizado por reforço, o que o sistema recebe depois de executar ações e observar os efeitos, em vez de pares entrada-saída?",
+    "resposta": ["Recompensa ou penalização conforme os resultados"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c24",
+    "no": "r4",
+    "tema": "Aprendizado por Reforço",
+    "pergunta": "Qual é o objetivo do aprendizado por reforço?",
+    "resposta": ["Desenvolver uma política de ação que maximize recompensas acumuladas ao longo do tempo"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c25",
+    "no": "r4.1",
+    "tema": "Agente, recompensa e política",
+    "pergunta": "No aprendizado por reforço, quem interage com o ambiente e recebe recompensas ou penalidades?",
+    "resposta": ["Um agente"],
+    "fonte": "Aula 02, questões comentadas (Cebraspe/Embrapa 2025, q. 20, Certo)"
+  },
+  {
+    "id": "ti-5-2-c26",
+    "no": "r4.1",
+    "tema": "Agente, recompensa e política",
+    "pergunta": "O que o agente ajusta conforme as recompensas e penalidades que recebe?",
+    "resposta": ["Sua política (modo de escolher ações)"],
+    "fonte": "Aula 02, questões comentadas (Cebraspe/Embrapa 2025, q. 20, Certo)"
+  },
+  {
+    "id": "ti-5-2-c27",
+    "no": "r4.1",
+    "tema": "Agente, recompensa e política",
+    "pergunta": "O que o agente busca maximizar ao longo do tempo?",
+    "resposta": ["O retorno cumulativo"],
+    "fonte": "Aula 02, questões comentadas (Cebraspe/Embrapa 2025, q. 20, Certo)"
+  },
+  {
+    "id": "ti-5-2-c28",
+    "no": "r4.2",
+    "tema": "Aplicações e alinhamento humano",
+    "pergunta": "Em que áreas, fora dos modelos generativos, a aula cita o emprego do aprendizado por reforço?",
+    "resposta": ["Jogos", "Robótica", "Controle de sistemas"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c29",
+    "no": "r4.2",
+    "tema": "Aplicações e alinhamento humano",
+    "pergunta": "Em que etapa de modelos generativos o aprendizado por reforço é empregado?",
+    "resposta": ["Ajuste fino, especialmente no alinhamento ao comportamento humano"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c30",
+    "no": "r4.2",
+    "tema": "Aplicações e alinhamento humano",
+    "pergunta": "Em que tipo de decisão o aprendizado por reforço tem foco?",
+    "resposta": ["Decisões sequenciais"],
+    "fonte": "Aula 02, questões comentadas (Cebraspe/TJ-PA 2025, q. 27, Errado)",
+    "explicacao": "O comentário da questão 27 diz que o reforço foca em decisões sequenciais com recompensas e punições, sem rótulos prévios; o item errado afirmava que o reforço é usado principalmente em classificação supervisionada com dados rotulados."
+  },
+  {
+    "id": "ti-5-2-c31",
+    "no": "r5",
+    "tema": "Comparação e Memorização",
+    "pergunta": "Pela regra de memória da aula, com que aprende o aprendizado supervisionado?",
+    "resposta": ["Com respostas certas"],
+    "fonte": "Aula 02, p. 41"
+  },
+  {
+    "id": "ti-5-2-c32",
+    "no": "r5",
+    "tema": "Comparação e Memorização",
+    "pergunta": "Pela regra de memória da aula, com que aprende o aprendizado por reforço?",
+    "resposta": ["Com tentativa, erro e recompensa"],
+    "fonte": "Aula 02, p. 41"
+  },
+  {
+    "id": "ti-5-2-c33",
+    "no": "r5",
+    "tema": "Comparação e Memorização",
+    "pergunta": "Como a aula caracteriza a relação entre os três paradigmas de aprendizado?",
+    "resposta": ["Complementares, cada um apropriado a contextos e objetivos diferentes"],
+    "fonte": "Aula 02, p. 41",
+    "explicacao": "Pegadinha: tratá-los como excludentes ou hierárquicos."
+  },
+  {
+    "id": "ti-5-2-c34",
+    "no": "r5.1",
+    "tema": "Quadro comparativo dos três paradigmas",
+    "pergunta": "Qual paradigma usa como sinal de aprendizado o erro entre a previsão e o valor real?",
+    "resposta": ["Supervisionado"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c35",
+    "no": "r5.1",
+    "tema": "Quadro comparativo dos três paradigmas",
+    "pergunta": "Qual paradigma aprende apenas com padrões e estruturas dos próprios dados, sem resposta externa?",
+    "resposta": ["Não supervisionado"],
+    "fonte": "Aula 02, p. 40"
+  },
+  {
+    "id": "ti-5-2-c36",
+    "no": "r5.1",
+    "tema": "Quadro comparativo dos três paradigmas",
+    "pergunta": "Qual paradigma usa recompensas e penalidades para otimizar decisões?",
+    "resposta": ["Por reforço"],
+    "fonte": "Aula 02, p. 41 (FAFIPA/Paranavaí 2025, comentário da letra B)",
+    "explicacao": "Na FAFIPA 2025, essa descrição era o distrator (b) da pergunta sobre o não supervisionado."
+  },
+  {
+    "id": "ti-5-2-c37",
+    "no": "r5.2",
+    "tema": "Analogia da cozinha",
+    "pergunta": "Na analogia da cozinha, qual paradigma corresponde a cozinhar com receita completa e um prato de referência ao lado?",
+    "resposta": ["Supervisionado"],
+    "fonte": "Aula 02, p. 40–41"
+  },
+  {
+    "id": "ti-5-2-c38",
+    "no": "r5.2",
+    "tema": "Analogia da cozinha",
+    "pergunta": "Na analogia da cozinha, qual paradigma corresponde a experimentar ingredientes desconhecidos e formar grupos por conta própria?",
+    "resposta": ["Não supervisionado"],
+    "fonte": "Aula 02, p. 41"
+  },
+  {
+    "id": "ti-5-2-c39",
+    "no": "r5.2",
+    "tema": "Analogia da cozinha",
+    "pergunta": "Na analogia da cozinha, o que o aluno que cozinha para clientes reais busca maximizar?",
+    "resposta": ["A satisfação dos clientes ao longo do tempo"],
+    "fonte": "Aula 02, p. 41"
+  }
+]

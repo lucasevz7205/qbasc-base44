@@ -1,0 +1,210 @@
+{
+  "topico": "ti-5-2",
+  "materia": "ti",
+  "centro": "🤖 5.2 Aprendizado Supervisionado, Não Supervisionado e por Reforço",
+  "ramos": [
+    {
+      "id": "r1",
+      "cor": "azul",
+      "t": "Conceito de Aprendizado de Máquina",
+      "n": "Modelos extraem padrões dos dados, sem regras fixas",
+      "x": {
+        "e": "Aprendizado de máquina (machine learning) é o processo pelo qual modelos computacionais extraem padrões a partir de dados, sem instruções explícitas para cada caso. Diferem de sistemas programados com regras fixas, porque decidem ou preveem com base em regularidades estatísticas presentes em grandes volumes de dados. O campo se divide, essencialmente, em três categorias.",
+        "ex": "Exemplo ilustrativo: um sistema que aprende a separar e-mails de spam a partir de exemplos, em vez de seguir uma lista de regras escrita à mão.",
+        "trap": "Afirmar que o aprendizado de máquina segue sempre regras fixas programadas pelo humano, contrário à definição da aula, que o diferencia dos sistemas programados com regras fixas.",
+        "src": "Aula 02, p. 40; Caderno 15, seção 5.2"
+      },
+      "f": [
+        {
+          "id": "r1.1",
+          "t": "Conceito de aprendizado de máquina e as três categorias",
+          "n": "Padrões estatísticos sem instruções explícitas · supervisionado, não supervisionado e por reforço",
+          "x": {
+            "e": "O modelo ajusta seu comportamento a partir de dados, sem instrução explícita para cada situação, ao contrário de sistemas com regras fixas. Ele decide ou prevê com base em regularidades estatísticas presentes em grandes volumes de dados. O campo se divide, essencialmente, em três categorias: supervisionado (dados rotulados), não supervisionado (dados não rotulados) e por reforço (interação com um ambiente, com recompensas ou penalizações). Cada uma é apropriada a contextos e objetivos diferentes.",
+            "ex": "Exemplo ilustrativo: ao classificar um problema, a primeira pergunta é se há rótulos; se não houver, se existe um ambiente que devolve recompensas ou penalidades.",
+            "trap": "Dizer que o modelo aprende porque recebe regras fixas detalhadas (inverte a definição) ou confundir as três categorias com tarefas como classificação, regressão e clustering.",
+            "src": "Aula 02, p. 40-41; Caderno 15, seção 5.2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "cor": "verde",
+      "t": "Aprendizado Supervisionado",
+      "n": "Dados rotulados: cada entrada tem saída conhecida",
+      "x": {
+        "e": "No aprendizado supervisionado, o modelo é treinado com conjuntos de dados rotulados, ou seja, cada entrada vem associada a uma saída conhecida. O objetivo é aprender a mapear corretamente os pares entrada-saída, ajustando parâmetros conforme o erro entre a previsão gerada e o valor real. Serve às tarefas de classificação e de regressão.",
+        "ex": "Exemplo da própria aula: identificar e-mails como spam ou não spam é uma tarefa de classificação do supervisionado.",
+        "trap": "Trocar o critério do supervisionado: ele se define por dados rotulados (cada entrada com saída conhecida); na FAFIPA/Paranavaí 2025, o distrator (e) trazia essa definição para enganar quem procurava o não supervisionado.",
+        "src": "Aula 02, p. 40; FAFIPA/Paranavaí 2025, p. 41; Caderno 15, seção 5.2"
+      },
+      "f": [
+        {
+          "id": "r2.1",
+          "t": "Rótulos, erro de previsão e tarefas (classificação e regressão)",
+          "n": "Saída conhecida; ajuste pelo erro · spam ou não spam (categoria) · preço de imóvel (número)",
+          "x": {
+            "e": "Dados rotulados são exemplos em que a saída correta (rótulo) já está associada à entrada. O modelo compara a previsão gerada com o valor real e ajusta seus parâmetros conforme o erro, até mapear bem os pares entrada-saída. As tarefas citadas são classificação (identificar e-mails como spam ou não spam) e regressão (prever valores numéricos, como o preço de um imóvel).",
+            "ex": "Da aula: identificar e-mails como spam ou não spam é classificação; prever o preço de um imóvel é regressão.",
+            "trap": "Trocar as tarefas (chamar de regressão a identificação de spam, que resulta em categoria) ou dizer que o supervisionado aprende sem comparar a previsão com o valor real.",
+            "src": "Aula 02, p. 40; Caderno 15, seção 5.2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "cor": "roxo",
+      "t": "Aprendizado Não Supervisionado",
+      "n": "Dados sem rótulos: o modelo descobre padrões sozinho",
+      "x": {
+        "e": "No aprendizado não supervisionado, o modelo opera sobre dados não rotulados e não recebe indicação de qual seria a saída correta. Ele é orientado a descobrir por conta própria padrões, agrupamentos ou estruturas latentes (ocultas) nos dados. A abordagem dispensa a rotulagem manual, o que é vantajoso em bases extensas.",
+        "ex": "Exemplo ilustrativo: agrupar clientes com comportamentos parecidos sem que alguém tenha definido previamente os grupos (clustering).",
+        "trap": "Afirmar que o não supervisionado precisa de rótulos ou de uma resposta certa; na FAFIPA/Paranavaí 2025, os distratores traziam a definição do reforço (recompensas e penalidades) e a do supervisionado (dados rotulados).",
+        "src": "Aula 02, p. 40; FAFIPA/Paranavaí 2025, p. 41"
+      },
+      "f": [
+        {
+          "id": "r3.1",
+          "t": "Dados não rotulados e padrões ocultos",
+          "n": "Sem resposta certa indicada; agrupamentos e estruturas latentes",
+          "x": {
+            "e": "Dados não rotulados são registros sem a saída correta associada. Estruturas latentes são organizações internas que não aparecem à primeira vista e que o modelo identifica por conta própria. Mesmo sem uma resposta certa, o modelo pode encontrar padrões que muitas vezes escapam à percepção humana.",
+            "ex": "Exemplo ilustrativo: um conjunto de textos sem rótulos organizado pelo modelo em grupos de tema semelhante.",
+            "trap": "Dizer que o não supervisionado recebe indicações explícitas da saída correta; a aula afirma que o modelo não as recebe e descobre autonomamente padrões, agrupamentos ou estruturas latentes.",
+            "src": "Aula 02, p. 40"
+          }
+        },
+        {
+          "id": "r3.2",
+          "t": "Tarefas e pré-treino de modelos de linguagem",
+          "n": "Anomalias · redução de dimensionalidade · clustering · pré-treino de LLMs",
+          "x": {
+            "e": "A aula cita três tarefas típicas: detecção de anomalias (achar o que foge do padrão), redução de dimensionalidade (representar os dados com menos variáveis) e análise de agrupamentos, ou clustering (formar grupos de itens semelhantes). Na IA generativa, o não supervisionado é central no pré-treinamento de modelos de linguagem, que aprendem a gerar texto reconhecendo regularidades sintáticas e semânticas em grandes corpora (conjuntos de textos).",
+            "ex": "Da aula: tarefas de detecção de anomalias, redução de dimensionalidade e clustering; no pré-treinamento, modelos de linguagem reconhecem regularidades sintáticas e semânticas em grandes corpora.",
+            "trap": "Enquadrar o pré-treinamento de modelos de linguagem como supervisionado; a aula o classifica como não supervisionado, e a vantagem citada é dispensar a rotulagem manual.",
+            "src": "Aula 02, p. 40"
+          }
+        }
+      ]
+    },
+    {
+      "id": "r4",
+      "cor": "laranja",
+      "t": "Aprendizado por Reforço",
+      "n": "Agente age, observa e recebe recompensa ou penalidade",
+      "x": {
+        "e": "No aprendizado por reforço, o modelo aprende pela interação com um ambiente. Em vez de receber pares de entrada e saída, o sistema executa ações, observa os efeitos e é recompensado ou penalizado conforme os resultados. O objetivo é desenvolver uma política de ação, isto é, um modo de escolher ações, que maximize a recompensa acumulada ao longo do tempo.",
+        "ex": "Exemplo ilustrativo: um agente que joga um jogo ajusta suas jogadas conforme as recompensas e penalidades que recebe.",
+        "trap": "Descrever o reforço como aprendizado a partir de dados rotulados: ele não recebe pares entrada-saída, e sim recompensas ou penalizações pelos resultados (questão 27, TJ-PA 2025).",
+        "src": "Aula 02, p. 40"
+      },
+      "f": [
+        {
+          "id": "r4.1",
+          "t": "Agente, recompensa e política",
+          "n": "Recompensa ou penalidade · política que maximiza retorno cumulativo",
+          "x": {
+            "e": "Segundo a questão 20 (Cebraspe/Embrapa 2025, gabarito Certo), o reforço baseia-se em um agente que interage com um ambiente, recebe recompensas ou penalidades conforme suas ações e ajusta sua política, buscando maximizar um retorno cumulativo ao longo do tempo. Política é o modo de escolher ações; retorno cumulativo é a recompensa acumulada ao longo do tempo.",
+            "ex": "Da analogia da aula: o aluno que cozinha para clientes ajusta suas escolhas buscando maximizar a satisfação ao longo do tempo, mesmo errando algumas vezes.",
+            "trap": "Dizer que o reforço se baseia em rótulos, como o supervisionado, ou em padrões, como o não supervisionado; a questão 20 o diferencia de ambos.",
+            "src": "Aula 02, p. 40; questão 20 Cebraspe/Embrapa 2025 (A2)"
+          }
+        },
+        {
+          "id": "r4.2",
+          "t": "Aplicações e alinhamento humano",
+          "n": "Jogos · robótica · controle de sistemas · ajuste fino de modelos generativos",
+          "x": {
+            "e": "A aula cita aplicações em jogos, robótica e controle de sistemas, além do ajuste fino de modelos generativos, especialmente nas etapas de alinhamento ao comportamento humano. Ajuste fino (fine-tuning) é a adaptação posterior de um modelo de base, treinado de forma ampla, a tarefas específicas, sem reconstruí-lo por completo. Na questão 27 (Cebraspe/TJ-PA 2025, Errado), afirmar que o reforço é usado principalmente em classificação supervisionada com dados rotulados está errado: o reforço foca em decisões sequenciais com recompensas e punições, sem rótulos prévios, e classificação supervisionada é típica do supervisionado.",
+            "ex": "Da aula: ajuste fino de modelos generativos em etapas de alinhamento ao comportamento humano.",
+            "trap": "Questão 27 (TJ-PA 2025): dizer que o reforço é usado principalmente em classificação supervisionada com rótulos prévios; o gabarito é Errado.",
+            "src": "Aula 02, p. 40; questão 27 Cebraspe/TJ-PA 2025 (A2); modelos de base, p. 42"
+          }
+        }
+      ]
+    },
+    {
+      "id": "r5",
+      "cor": "vermelho",
+      "t": "Comparação e Memorização",
+      "n": "Supervisionado: respostas certas · Não supervisionado: padrões · Reforço: tentativa e recompensa",
+      "x": {
+        "e": "Este ramo reúne os três paradigmas lado a lado e a analogia de cozinha que a aula usa para fixá-los. A regra de memória é: o supervisionado aprende com respostas certas, o não supervisionado com padrões escondidos e o reforço com tentativa, erro e recompensa. A aula os apresenta como formas complementares, não excludentes.",
+        "ex": "Da aula: o supervisionado aprende com respostas certas, o não supervisionado com padrões escondidos e o reforço com tentativa, erro e recompensa.",
+        "trap": "Tratar os três paradigmas como excludentes ou hierárquicos; a aula os apresenta como complementares. Pegadinha real (TRF6 2025, Errado): dizer que a IA generativa se baseia prioritariamente em aprendizado supervisionado; ela aprende em geral de forma auto/semissupervisionada. A aula marca a incidência em prova como baixa.",
+        "src": "Aula 02, p. 40–41; questão 14 Cebraspe/TRF6 2025 (A2); Caderno 15, seção 5.2"
+      },
+      "f": [
+        {
+          "id": "r5.1",
+          "t": "Quadro comparativo dos três paradigmas",
+          "n": "O que muda: dado de treino, sinal de aprendizado e tarefas",
+          "tabela": {
+            "cab": [
+              "Paradigma",
+              "Dado de treino",
+              "Sinal de aprendizado",
+              "Tarefas citadas"
+            ],
+            "linhas": [
+              [
+                "Supervisionado",
+                "Rotulado (entrada com saída conhecida)",
+                "Erro entre a previsão e o valor real",
+                "Classificação e regressão"
+              ],
+              [
+                "Não supervisionado",
+                "Não rotulado",
+                "Padrões e estruturas nos próprios dados",
+                "Detecção de anomalias, redução de dimensionalidade, clustering"
+              ],
+              [
+                "Por reforço",
+                "Interação com um ambiente (sem pares entrada-saída)",
+                "Recompensas ou penalidades; política que maximiza o retorno cumulativo",
+                "Jogos, robótica, controle, alinhamento de modelos generativos"
+              ]
+            ]
+          },
+          "x": {
+            "e": "A tabela compara os três paradigmas pelo dado de treino, pelo sinal que orienta o ajuste e pelas tarefas típicas. O sinal de aprendizado é a informação que diz ao modelo se ele acertou ou errou: no supervisionado é o erro frente ao rótulo, no não supervisionado não há resposta externa, e no reforço é a recompensa ou a penalidade recebida.",
+            "ex": "Da aula: se o enunciado menciona dados rotulados e erro frente ao valor real, o paradigma é o supervisionado.",
+            "trap": "Trocar o sinal do supervisionado (erro frente ao rótulo) pelo do reforço (recompensas ou penalidades); na FAFIPA 2025, o distrator (b) atribuía ao não supervisionado o método de recompensas e penalidades, que é o reforço.",
+            "src": "Aula 02, p. 40–41 (FAFIPA/Paranavaí 2025, p. 41); Caderno 15, seção 5.2"
+          }
+        },
+        {
+          "id": "r5.2",
+          "t": "Analogia da cozinha",
+          "n": "Receita com prato de referência · ingredientes sem receita · clientes que reagem",
+          "x": {
+            "e": "A aula compara os três tipos a formas de aprender a cozinhar. No supervisionado, o aluno segue uma receita completa e um prato de referência o orienta; no não supervisionado, ele experimenta com ingredientes desconhecidos e cria grupos sozinho; no reforço, aprende cozinhando para clientes reais e ajusta o prato conforme as reações (elogios, reclamações ou gorjetas).",
+            "ex": "Da aula: elogios, reclamações ou gorjetas dos clientes correspondem ao feedback do reforço.",
+            "trap": "Inverter a analogia, atribuindo ao não supervisionado a receita com prato de referência, que é o supervisionado.",
+            "src": "Aula 02, p. 40–41; Caderno 15, seção 5.2"
+          }
+        }
+      ]
+    }
+  ],
+  "ligacoes": [
+    {
+      "de": "r2.1",
+      "para": "r3.1",
+      "rotulo": "Sem rótulos, não há saída correta contra a qual medir o erro; o não supervisionado trabalha só com a estrutura dos dados."
+    },
+    {
+      "de": "r4.1",
+      "para": "r2.1",
+      "rotulo": "O reforço não tem pares entrada-saída; o sinal de ajuste é recompensa ou penalidade, e não o rótulo."
+    },
+    {
+      "de": "r3.2",
+      "para": "r4.2",
+      "rotulo": "Pré-treino não supervisionado e alinhamento por reforço são etapas centrais da IA generativa, conforme a aula."
+    }
+  ]
+}
