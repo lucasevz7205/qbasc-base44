@@ -91,7 +91,28 @@ function CartaoProposta({ grupo, onConfirmar, onIgnorar, onDesfazer, busy }) {
   );
 }
 
+/** Borda de baixo da navegação principal (que fica fixa no topo), para o painel nunca cobrir as abas. */
+function useTopoLivre() {
+  const [top, setTop] = React.useState(8);
+  React.useEffect(() => {
+    let frame = 0;
+    const medir = () => {
+      frame = 0;
+      const nav = document.querySelector('nav[aria-label="Navegação principal"]');
+      const base = nav ? Math.ceil(nav.getBoundingClientRect().bottom) : 0;
+      setTop(Math.min(Math.max(8, base + 8), Math.round(window.innerHeight * 0.4)));
+    };
+    const agendar = () => { if (!frame) frame = window.requestAnimationFrame(medir); };
+    medir();
+    window.addEventListener('resize', agendar);
+    window.addEventListener('scroll', agendar, { passive: true });
+    return () => { window.removeEventListener('resize', agendar); window.removeEventListener('scroll', agendar); if (frame) window.cancelAnimationFrame(frame); };
+  }, []);
+  return top;
+}
+
 function Painel({ onClose }) {
+  const top = useTopoLivre();
   const { records, QB_DATA, QB_PLAN, QB_EDITAL, accountId, save } = useRealStudy();
   const ask = useServerFn(askNavegadorPlanner);
   const [msgs, setMsgs] = React.useState(() => lerHistorico(accountId));
@@ -165,7 +186,7 @@ function Painel({ onClose }) {
 
   return (
     <div role="dialog" aria-label="O Navegador — planejamento em conversa" data-qb-navegador-planner className="qb-panel qb-panel--ornate"
-      style={{ position: 'fixed', top: 8, left: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+      style={{ position: 'fixed', top, left: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 12, borderBottom: '1px solid var(--divider)' }}>
         <Icon name="compass" size={24} color="var(--qb-gold)" />
         <div style={{ flex: 1, minWidth: 0 }}>
