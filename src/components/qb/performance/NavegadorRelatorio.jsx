@@ -69,7 +69,7 @@ export function NavListaAssuntos({ topicos, titles, materiaDe, abertoInicial = n
             </span>
             <NavBarraIntervalo stats={t} rotulo={'Chance de acerto em ' + nome} />
             <span className="nv-linha__num">
-              <strong>{t.validas ? Math.round(t.acerto * 100) + '%' : '—'}</strong>
+              <strong>{t.validas && t.sinal !== 'insuficiente' ? Math.round(t.acerto * 100) + '%' : '—'}</strong>
               <span>{t.validas ? Math.round(t.intervaloAcerto.low * 100) + '–' + Math.round(t.intervaloAcerto.high * 100) + '% · ' : ''}{t.validas} resp.</span>
             </span>
           </button>

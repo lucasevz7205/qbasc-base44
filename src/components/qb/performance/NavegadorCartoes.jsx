@@ -58,7 +58,7 @@ export default function NavegadorCartoes({ cartoes, titles, nomeMateria, topicos
               </span>
             </span>
             <span className="nv-linha__num">
-              <strong>{pct(t.taxa)}</strong>
+              <strong>{t.sinal === 'insuficiente' ? '—' : pct(t.taxa)}</strong>
               <span>{t.intervalo ? Math.round(t.intervalo.low * 100) + '–' + Math.round(t.intervalo.high * 100) + '% · ' : ''}{t.n} rev.</span>
             </span>
           </div>
