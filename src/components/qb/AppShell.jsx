@@ -23,7 +23,6 @@ export const TOOLS = [
   { id: 'socratico', label: 'O Arquiteto', icon: 'astrolabe' },
   { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
-  { id: 'cards', label: 'Scanner de material', icon: 'scan-line' },
   { id: 'keys', label: 'Atalhos de teclado', icon: 'monitor' },
 ];
 
@@ -117,16 +116,16 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
   );
 }
 
-export function ArchitectLayer({ ui, setUi }) {
+export function ArchitectLayer({ ui, setUi, studioPage }) {
   const { QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
-  const mode = ui.studio.mode === 'modal' ? 'modal' : 'dock';
+  const mode = !architectAccess && ui.studio.mode !== 'modal' ? 'dock' : 'modal';
   return (
     <>
       {architectAccess && <ArchitectLauncher
-        hidden={ui.studio.open}
-        onOpen={() => setUi({ studio: { open: true, mode: 'dock', tool: 'socratico' } })}
+        hidden={ui.studio.open || studioPage}
+        onOpen={() => setUi({ studio: { open: true, mode: 'modal', tool: 'socratico' } })}
       />}
       {(architectAccess || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}

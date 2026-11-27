@@ -8,7 +8,6 @@ import { Tabs } from '@/components/qb/navigation/Tabs';
 import { SocraticChat } from '@/components/qb/architect/SocraticChat';
 import { FeynmanLab } from '@/components/qb/architect/FeynmanLab';
 import { CornellNotebook } from '@/components/qb/architect/CornellNotebook';
-import { ScannerFlashcards } from '@/components/qb/architect/ScannerFlashcards';
 import StudyClock from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { useAuth } from '@/lib/AuthContext';
@@ -18,7 +17,6 @@ const TOOLS = [
   { id: 'socratico', label: 'Tutor Socrático', icon: 'message-circle' },
   { id: 'feynman', label: 'Laboratório Feynman', icon: 'lightbulb' },
   { id: 'cornell', label: 'Caderno Cornell', icon: 'notebook-pen' },
-  { id: 'cards', label: 'Flashcards 3D e Scanner', icon: 'layers' },
   { id: 'study-clock', label: 'Sessão de estudo', icon: 'timer' },
 ];
 
@@ -26,8 +24,7 @@ const COMPACT_TOOLS = [
   { ...TOOLS[0], label: 'Perguntar' },
   { ...TOOLS[1], label: 'Feynman' },
   { ...TOOLS[2], label: 'Cornell' },
-  { ...TOOLS[3], label: 'Flashcards' },
-  { ...TOOLS[4], label: 'Sessão' },
+  { ...TOOLS[3], label: 'Sessão' },
 ];
 
 export default function ArchitectStudio({ open = true, mode = 'modal', onClose, onExpand, subjects = [], context = {}, onContextChange, tool: toolProp, onToolChange, clockOnly = false, personal = false, style }) {
@@ -56,7 +53,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   const baseTools = dock ? COMPACT_TOOLS : TOOLS;
   const pilotAllowed = user?.role === 'admin' && access.data === true;
   const available = pilotAllowed ? [...baseTools.slice(0, -1), { id: 'visual-lab', label: 'Laboratório Visual', icon: 'network' }, baseTools.at(-1)] : baseTools;
-  const tools = personal ? available.filter(item => item.id !== 'cornell' && item.id !== 'cards') : available;
+  const tools = personal ? available.filter(item => item.id !== 'cornell') : available;
   const requestedTool = toolProp || toolState;
   const tool = clockOnly ? 'study-clock' : tools.some(item => item.id === requestedTool) ? requestedTool : 'socratico';
   useStudyActivity('tutor', open && !['study-clock','visual-lab'].includes(tool) ? mode : null);
@@ -79,7 +76,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   };
   const panel = (
     <div data-qb-architect role={modal ? 'dialog' : 'region'} aria-modal={modal || undefined} aria-label={clockOnly ? 'Sessão de estudo' : dock ? 'O Arquiteto — chat lateral' : 'O Arquiteto — estúdio de aprendizagem ativa'} className="qb-panel qb-panel--ornate"
-      style={{ position: 'relative', width: modal ? 'min(1180px, 100%)' : '100%', height: dock ? '100%' : undefined, maxHeight: modal ? 'calc(100dvh - 48px)' : undefined, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
+      style={{ position: 'relative', width: '100%', height: '100%', minWidth: 0, minHeight: 0, display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', ...style }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: dock ? 8 : 12, padding: dock ? 12 : '14px 16px 14px 20px', borderBottom: '1px solid var(--divider)', flexWrap: 'wrap' }}>
         {!clockOnly && <Icon name="astrolabe" size={24} color="var(--qb-gold)" />}
         {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" style={{ letterSpacing: '.12em', fontWeight: 600 }}>O ARQUITETO</span>}
@@ -88,7 +85,7 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           {!dock && !clockOnly && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{context.origin ? 'Aberto a partir de ' + context.origin + ' · ' : ''}Contexto: {tLabel}</span>}
         </div>
         {dock && onExpand && <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onExpand}><Icon name="maximize" size={14} />Abrir estúdio completo</button>}
-        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Base44' : 'Tutoria socrática, avaliação Feynman, pistas Cornell e geração de flashcards'}><Icon name="sparkles" size={13} />IA Ativa</span>}
+        {!dock && !clockOnly && <span className="qb-badge qb-badge--gold" title={personal ? 'Tutoria socrática e avaliação Feynman com Base44' : 'Tutoria socrática, avaliação Feynman, pistas Cornell'}><Icon name="sparkles" size={13} />IA Ativa</span>}
         {onClose && (dock
           ? <button type="button" className="qb-iconbtn" aria-label="Fechar chat do Arquiteto" onClick={onClose}><Icon name="x" size={16} /></button>
           : <button type="button" className="qb-btn qb-btn--secondary qb-btn--sm" onClick={onClose}><Icon name="x" size={16} />Fechar{modal ? ' (Esc)' : ''}</button>)}
@@ -102,7 +99,6 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
           onNodeChange={nodeId => onContextChange?.({ ...context, subjectId: subj?.id, topicId: topic?.id, nodeId })} />}
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={changeTopic} />}
-        {tool === 'cards' && <ScannerFlashcards key={topic?.id} topicId={topic?.id} topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} />}
         {pilotAllowed && tool === 'visual-lab' && <React.Suspense fallback={<p>Carregando o laboratório…</p>}>
           <AccountPilot accountId={accountId} subjects={subjects} onBack={()=>setTool('socratico')} />
         </React.Suspense>}
@@ -112,9 +108,9 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   );
   if (mode === 'inline') return panel;
   return (
-    <div style={dock
+    <div className={modal ? 'qb-studio-frame' : undefined} style={dock
       ? { position: 'fixed', top: 8, right: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))' }
-      : { position: 'fixed', inset: 0, zIndex: 70, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      : { position: 'fixed', inset: 0, zIndex: 70, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {modal && <div onClick={onClose} aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(8,10,15,.72)', backdropFilter: 'blur(6px)' }} />}
       {panel}
     </div>

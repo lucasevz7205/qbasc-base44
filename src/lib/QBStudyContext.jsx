@@ -550,7 +550,7 @@ export function QBStudyProvider({ children }) {
     <QBStudyContext.Provider value={value}>
       <StudyClockProvider key={accountId} accountId={accountId} onOpen={openClock}>
         {children}
-        {activeView !== 'welcome' && <ArchitectLayer ui={layerUi} setUi={setUi} />}
+        {activeView !== 'welcome' && <ArchitectLayer studioPage={activeView === 'tutor'} ui={layerUi} setUi={setUi} />}
         {activeView !== 'welcome' && <NavegadorPlannerLayer view={activeView} />}
       </StudyClockProvider>
     </QBStudyContext.Provider>

@@ -105,13 +105,14 @@ try {
   await isVisible(button('Entrar'));
   assert.equal(await page.getByRole('tab', { name: 'Laboratório Visual' }).count(), 0);
   await page.goto(origin + '/tutor', { waitUntil: 'domcontentloaded' });
-  await isVisible(page.getByRole('tab', { name: 'Flashcards 3D e Scanner' }));
-  await press(page.getByRole('tab', { name: 'Flashcards 3D e Scanner' }));
-  await isVisible(page.getByRole('button', { name: /Flashcards 3D \(/ }));
-  await press(button('Scanner IA'));
-  await isVisible(page.getByRole('button', { name: 'Scanner IA' }));
-  const cards = page.getByRole('tab', { name: 'Flashcards 3D e Scanner' });
-  await cards.focus();
+  await isVisible(page.getByRole('tab', { name: 'Laboratório Visual' }));
+  assert.equal(await page.getByRole('tab', { name: /Flashcards|Scanner/ }).count(), 0);
+  const bounds = await page.locator('[data-qb-architect]').boundingBox();
+  const inset = viewport.width >= 800 ? 96 / 2.54 : viewport.width * 0.03;
+  for (const gap of [bounds.x, bounds.y, viewport.width - bounds.x - bounds.width, viewport.height - bounds.y - bounds.height]) {
+    assert.ok(Math.abs(gap - inset) <= 1, 'Margem do estúdio: ' + gap);
+  }
+  await page.getByRole('tab', { name: 'Caderno Cornell' }).focus();
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.getByRole('tab', { name: 'Laboratório Visual' }).getAttribute('aria-selected'), 'true');
   await openPilot();
@@ -255,6 +256,18 @@ try {
   assert.equal(await button('Ver a tentativa inicial').isDisabled(), true);
   assert.equal(await button('Ver a tentativa D+7').isDisabled(), true);
   delete rows.revisao;
+  await press(button('Fechar'));
+  await isVisible(button('Expandir atalho do Arquiteto'));
+  await press(button('Expandir atalho do Arquiteto'));
+  await press(page.locator('.qb-architect-launcher').getByRole('button', { name: 'O Arquiteto', exact: true }));
+  const dialog = page.getByRole('dialog', { name: /estúdio de aprendizagem ativa/ });
+  await isVisible(dialog);
+  const modalBounds = await dialog.boundingBox();
+  for (const dimension of ['x', 'y', 'width', 'height']) {
+    assert.ok(Math.abs(bounds[dimension] - modalBounds[dimension]) <= 1);
+  }
+  await page.keyboard.press('Escape');
+  await dialog.waitFor({ state: 'hidden' });
   fixtureUser = personal;
   const personalPage = await context.newPage();
   await personalPage.goto(origin + '/tutor');

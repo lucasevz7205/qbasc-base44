@@ -978,3 +978,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .qb-train__link:focus-visible{outline:none;box-shadow:var(--ring-focus)}
 .qb-train__linktext{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media (max-width:900px){.qb-train__stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.qb-studio-frame {
+  box-sizing: border-box;
+  height: 100dvh;
+  padding: clamp(8px, 3vmin, 1cm);
+}
+@media (min-width: 800px) and (min-height: 600px) {
+  .qb-studio-frame { padding: 1cm; }
+}
