@@ -160,10 +160,21 @@ export default function NavegadorPanel() {
         {!!erros.pareto.length && !subject && <section className="nv-stack" aria-label="Erros e recuperação" style={{ gap: 10 }}>
           <h3 className="nv-title nv-title--sm">Erros da semana (Pareto)</h3>
           <p className="nv-note">Todas as tentativas da semana recente. {erros.foco.length} de {erros.pareto.length} assuntos concentram 80% dos {erros.totalErros} erros.</p>
-          <ol className="nv-lista" style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 6 }}>{erros.pareto.slice(0, 6).map(g => {
+          <ol className="nv-pareto">{erros.pareto.slice(0, 6).map((g, i) => {
             const m = erros.mitigacao.find(x => x.topico === g.topico);
-            return <li key={g.topico}><span>{titles.get(g.topico) || g.topico}</span> <span className="nv-mono">{g.erros} {g.erros === 1 ? 'erro' : 'erros'} · {Math.round(g.acumulada * 100)}% acumulado</span>
-              {m && m.taxaAntes !== null && m.taxaAgora !== null && <span className="nv-muted"> · taxa de erro {Math.round(m.taxaAntes * 100)}% → {Math.round(m.taxaAgora * 100)}%</span>}</li>;
+            const acum = Math.round(g.acumulada * 100);
+            return <li key={g.topico} className="nv-cartao nv-pareto__item">
+              <span className="nv-pareto__pos nv-mono" aria-hidden="true">{i + 1}</span>
+              <span className="nv-pareto__nome">
+                <span className="nv-pareto__titulo">{titles.get(g.topico) || g.topico}</span>
+                {m && m.taxaAntes !== null && m.taxaAgora !== null && <span className="nv-muted">taxa de erro {Math.round(m.taxaAntes * 100)}% → {Math.round(m.taxaAgora * 100)}%</span>}
+              </span>
+              <span className="nv-pareto__erros"><strong className="nv-mono">{g.erros}</strong><span>{g.erros === 1 ? 'erro' : 'erros'}</span></span>
+              <span className="nv-pareto__acum" title={acum + '% dos erros acumulados até este assunto'}>
+                <span className="nv-pareto__barra" aria-hidden="true"><i style={{ width: acum + '%' }} /></span>
+                <span className="nv-mono">{acum}% acumulado</span>
+              </span>
+            </li>;
           })}</ol>
           <p className="nv-note"><strong>Recuperação</strong> (indicador separado): {erros.recuperacao.recuperados} de {erros.recuperacao.errosComRetorno} erros foram acertados depois, com pelo menos {erros.recuperacao.diasMinimos} dias de intervalo.</p>
           <p className="nv-note"><strong>Meta de {pct(erros.meta.alvo)}</strong> em questões novas nos assuntos do Pareto: {erros.meta.acertoFoco === null ? 'sem respostas suficientes' : pct(erros.meta.acertoFoco) + ' (' + erros.meta.nFoco + ' respostas)'}.</p>

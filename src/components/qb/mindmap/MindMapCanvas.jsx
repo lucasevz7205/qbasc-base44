@@ -22,19 +22,8 @@ function NodeRates({ performance }) {
       </span>
     );
   }
-  const entries = [['Q', 'Questões', performance.questions], ['FC', 'Flashcards', performance.flashcards]];
-  const shown = entries.filter(([, , value]) => value.rate !== null);
-  if (!shown.length) return null;
-  return (
-    <span className="qb-mm__rates">
-      {shown.map(([short, label, stats]) => (
-        <span key={short} className="qb-mm__badge qb-mm__badge--rate" title={label + ' · ' + stats.correct + '/' + stats.total}
-          aria-label={label + ': ' + Math.round(stats.rate) + '%'} style={{ color: MASTERY[stats.status][1] }}>
-          {short} {Math.round(stats.rate)}%
-        </span>
-      ))}
-    </span>
-  );
+  // Sem pendência: o nó fica só com título e ícone de estado; Q e FC vivem no painel do conceito.
+  return null;
 }
 
 const BASE_RADII = [0, 300, 600, 900, 1200];
