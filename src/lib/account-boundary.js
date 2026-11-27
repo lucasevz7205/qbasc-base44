@@ -1,6 +1,6 @@
 export const ACCOUNT_COLLECTION = 'qbasc-contas';
 export const IMPORTABLE = ['edital', 'questoes', 'revisao', 'planejamento', 'materiais', 'pontos', 'pegadinhas'];
-export const PERSONAL_WRITE = ['respostas', 'justificativas', 'cartoes_aval', 'planejamento', 'rodadas', 'simulados', 'diario'];
+export const PERSONAL_WRITE = ['respostas', 'justificativas', 'cartoes_aval', 'planejamento', 'rodadas', 'simulados', 'diario', 'navegador'];
 export const READABLE = [...new Set([...IMPORTABLE, ...PERSONAL_WRITE, 'config', 'curadoria'])];
 
 export function canUseArchitect(user, profile) {

@@ -9,7 +9,7 @@ export const TRAINING_ACTIONS = [
   { id: 'mindmap', label: 'Mapa Mental', icon: 'network', hint: 'Mapa do assunto' },
   { id: 'review', label: 'Revisão Ativa', icon: 'calendar-days', hint: 'Revisão deste assunto' },
   { id: 'flashcards', label: 'Flashcards', icon: 'layers', hint: 'Baralho deste assunto' },
-  { id: 'architect', label: 'O Arquiteto', icon: 'astrolabe', hint: 'Tutor com este contexto' },
+  { id: 'navegador', label: 'Navegador', icon: 'compass', hint: 'Análise de desempenho deste assunto' },
 ];
 const rate = (c, w) => (c + w ? (c / (c + w)) * 100 : null);
 const subjRate = s => {

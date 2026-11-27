@@ -85,6 +85,7 @@ export function QBStudyProvider({ children }) {
   const location = useLocation();
 
   const [subs, setSubs] = React.useState(SUBS);
+  const [navegadorScope, setNavegadorScope] = React.useState(null);
   const [ui, setUiState] = React.useState({
     bg: 'dynamic',
     theme: 'dark',
@@ -245,6 +246,7 @@ export function QBStudyProvider({ children }) {
       const { s, t } = findTopic(i.subjectId, i.topicId);
       if (!s || !t) return { ok: false, reason: 'topic-not-found' };
       if (i.action === 'architect') return { ok: true, view: 'architect', note: 'Tutor contextualizado' };
+      if (i.action === 'navegador') return { ok: true, view: 'performance', note: 'Análise deste assunto' };
       if (i.action === 'train') {
         const n = QB_DATA.questionBank.filter(q => q.topicId === t.id || q.relatedTopicIds?.includes(t.id)).length;
         return n
@@ -366,6 +368,7 @@ export function QBStudyProvider({ children }) {
         navigate({ to: '/edital', hash: arg.topicId, hashScrollIntoView: false });
         return;
       }
+      if (nextView === 'performance') setNavegadorScope(null);
       if (typeof arg === 'string' && SUBS[nextView]) {
         setSubs(s => ({ ...s, [nextView]: arg }));
       }
@@ -391,6 +394,12 @@ export function QBStudyProvider({ children }) {
         return;
       }
       setMissing(null);
+      if (intent.action === 'navegador') {
+        setNavegadorScope({ subjectId: intent.subjectId, topicId: intent.topicId });
+        setSubs(s => ({ ...s, performance: 'navegador' }));
+        navigate({ to: '/desempenho' });
+        return;
+      }
       if (intent.action === 'architect') {
         openArchitect({ subjectId: intent.subjectId, topicId: intent.topicId, origin: QB_VIEW_LABEL[from] });
         return;
@@ -482,6 +491,8 @@ export function QBStudyProvider({ children }) {
       activeView,
       subs,
       setSub,
+      navegadorScope,
+      setNavegadorScope,
       ui,
       setUi,
       toast,
@@ -511,6 +522,7 @@ export function QBStudyProvider({ children }) {
       activeView,
       subs,
       setSub,
+      navegadorScope,
       ui,
       setUi,
       toast,

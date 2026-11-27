@@ -10,7 +10,7 @@ import { importPersonalMap, approvePersonalQuestionEditorial, loadPersonalStudy,
 import { Button } from '@/components/qb/core/Button';
 
 const RealStudyContext = React.createContext(null);
-const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise','justificativas'];
+const collections = ['edital','questoes','respostas','revisao','cartoes_aval','planejamento','rodadas','simulados','config','diario','navegador','pegadinhas','materiais','pontos','curadoria','questoes_excluidas','analise','justificativas'];
 async function loadRealData() {
   const results = {};
   // Apenas leituras podem ser repetidas; falhas temporárias não devem parecer perda de progresso.
