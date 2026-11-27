@@ -1,0 +1,784 @@
+[
+  {
+    "id": "rf-1-2-c01",
+    "no": "r1",
+    "tema": "Definição e Fronteiras do End-to-End",
+    "pergunta": "O que o modelo end-to-end aprende em conjunto, ao contrário do sistema clássico e do híbrido?",
+    "resposta": [
+      "Todos os componentes do reconhecedor"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 39",
+    "explicacao": "No clássico e no híbrido, modelo acústico, léxico de pronúncia e modelo de linguagem eram treinados em separado, cada um com seu objetivo."
+  },
+  {
+    "id": "rf-1-2-c02",
+    "no": "r1",
+    "tema": "Definição e Fronteiras do End-to-End",
+    "pergunta": "O que o modelo end-to-end prevê diretamente a partir da fala?",
+    "resposta": [
+      "A sequência de caracteres"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 39"
+  },
+  {
+    "id": "rf-1-2-c03",
+    "no": "r1",
+    "tema": "Definição e Fronteiras do End-to-End",
+    "pergunta": "Como se classifica um sistema que usa rede neural só na peça acústica e mantém léxico e modelo de linguagem separados?",
+    "resposta": [
+      "Híbrido (não é end-to-end)"
+    ],
+    "fonte": "Etapa 03 — 1.2.9, p. 44",
+    "explicacao": "Usar rede neural não basta: o end-to-end é uma rede única, treinada em conjunto."
+  },
+  {
+    "id": "rf-1-2-c04",
+    "no": "r1.1",
+    "tema": "As Três Marcas do E2E",
+    "pergunta": "Quais são as três marcas que definem um modelo end-to-end?",
+    "resposta": [
+      "Uma rede só",
+      "Treino conjunto",
+      "Sem léxico de pronúncia feito à mão"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 39"
+  },
+  {
+    "id": "rf-1-2-c05",
+    "no": "r1.1",
+    "tema": "As Três Marcas do E2E",
+    "pergunta": "Que unidades compõem a saída de um modelo end-to-end?",
+    "resposta": [
+      "Caracteres ou pedaços de palavra (subpalavras)"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 39",
+    "explicacao": "Não são palavras de uma lista fechada; por isso o modelo pode compor palavras novas."
+  },
+  {
+    "id": "rf-1-2-c06",
+    "no": "r1.1",
+    "tema": "As Três Marcas do E2E",
+    "pergunta": "Desde que ano a área migrou dos sistemas híbridos para os modelos end-to-end?",
+    "resposta": [
+      "2015"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 39"
+  },
+  {
+    "id": "rf-1-2-c07",
+    "no": "r1.2",
+    "tema": "O Que o E2E Não Significa",
+    "pergunta": "Em que representação o Whisper converte o áudio antes de passá-lo à rede?",
+    "resposta": [
+      "Espectrograma log-Mel"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40",
+    "explicacao": "Mostra que end-to-end não significa ausência de pré-processamento."
+  },
+  {
+    "id": "rf-1-2-c08",
+    "no": "r1.2",
+    "tema": "O Que o E2E Não Significa",
+    "pergunta": "Qual WER o modelo de Chan et al. obteve com reavaliação por modelo de linguagem externo?",
+    "resposta": [
+      "10,3%"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40",
+    "explicacao": "Sem dicionário nem modelo de linguagem, o WER foi de 14,1%. O modelo de linguagem externo é opcional e pode ajudar."
+  },
+  {
+    "id": "rf-1-2-c09",
+    "no": "r1.2",
+    "tema": "O Que o E2E Não Significa",
+    "pergunta": "Que procedimento a geração do texto end-to-end ainda usa para escolher entre hipóteses?",
+    "resposta": [
+      "Busca em feixe"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40"
+  },
+  {
+    "id": "rf-1-2-c10",
+    "no": "r1.3",
+    "tema": "Alinhamento: Muitos Quadros, Poucos Símbolos",
+    "pergunta": "Quantos quadros um segundo de fala gera, aproximadamente?",
+    "resposta": [
+      "Cem quadros (para talvez quinze letras)"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40"
+  },
+  {
+    "id": "rf-1-2-c11",
+    "no": "r1.3",
+    "tema": "Alinhamento: Muitos Quadros, Poucos Símbolos",
+    "pergunta": "No sistema clássico, que componente cuidava do alinhamento entre quadros e símbolos?",
+    "resposta": [
+      "O HMM"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40"
+  },
+  {
+    "id": "rf-1-2-c12",
+    "no": "r1.3",
+    "tema": "Alinhamento: Muitos Quadros, Poucos Símbolos",
+    "pergunta": "Que recurso cada família end-to-end usa para resolver o alinhamento?",
+    "resposta": [
+      "CTC: branco",
+      "Transdutor: branco com memória",
+      "Codificador-decodificador: atenção"
+    ],
+    "fonte": "Etapa 03 — 1.2.1, p. 40; Mnemônicos, p. 46"
+  },
+  {
+    "id": "rf-1-2-c13",
+    "no": "r2",
+    "tema": "CTC: Classificação Temporal Conexionista",
+    "pergunta": "O que significa a sigla CTC?",
+    "resposta": [
+      "Connectionist temporal classification (classificação temporal conexionista)"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c14",
+    "no": "r2",
+    "tema": "CTC: Classificação Temporal Conexionista",
+    "pergunta": "Qual é a vocação da CTC para tempo real, em comparação com as outras duas famílias?",
+    "resposta": [
+      "Boa: abaixo do transdutor e acima do codificador-decodificador com atenção"
+    ],
+    "fonte": "Etapa 03 — 1.2.9, p. 44"
+  },
+  {
+    "id": "rf-1-2-c15",
+    "no": "r2",
+    "tema": "CTC: Classificação Temporal Conexionista",
+    "pergunta": "Que modelo é o exemplo típico de uso da CTC, na etapa de ajuste fino?",
+    "resposta": [
+      "wav2vec 2.0"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40; 1.2.9, p. 44"
+  },
+  {
+    "id": "rf-1-2-c16",
+    "no": "r2.1",
+    "tema": "Origem: Treino Sem Segmentação",
+    "pergunta": "Antes da CTC, que tipo de dado de treino as redes recorrentes exigiam?",
+    "resposta": [
+      "Dados já segmentados, com cada trecho de áudio marcado"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c17",
+    "no": "r2.1",
+    "tema": "Origem: Treino Sem Segmentação",
+    "pergunta": "Em que ano Graves et al. apresentaram a CTC?",
+    "resposta": [
+      "2006"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c18",
+    "no": "r2.1",
+    "tema": "Origem: Treino Sem Segmentação",
+    "pergunta": "O que a CTC soma durante o treino?",
+    "resposta": [
+      "A probabilidade de todos os caminhos que, após a redução, resultam na transcrição correta"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c19",
+    "no": "r2.2",
+    "tema": "Símbolo ou Branco a Cada Quadro",
+    "pergunta": "O que significa o branco (blank) emitido pela CTC em um quadro?",
+    "resposta": [
+      "\"Nenhum rótulo agora\""
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c20",
+    "no": "r2.2",
+    "tema": "Símbolo ou Branco a Cada Quadro",
+    "pergunta": "Que segunda função o branco da CTC cumpre na saída?",
+    "resposta": [
+      "Separador que permite letras dobradas"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c21",
+    "no": "r2.2",
+    "tema": "Símbolo ou Branco a Cada Quadro",
+    "pergunta": "Com que fenômeno do áudio o branco da CTC costuma ser confundido?",
+    "resposta": [
+      "Silêncio (ausência de fala)"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40; 1.2.9, p. 44",
+    "explicacao": "O branco é um símbolo técnico de nenhum rótulo, não uma pausa real."
+  },
+  {
+    "id": "rf-1-2-c22",
+    "no": "r2.3",
+    "tema": "Fusão de Repetições e Remoção de Brancos",
+    "pergunta": "Qual é o primeiro passo da redução da saída da CTC ao texto?",
+    "resposta": [
+      "Fundir os símbolos repetidos"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c23",
+    "no": "r2.3",
+    "tema": "Fusão de Repetições e Remoção de Brancos",
+    "pergunta": "Qual passo encerra a redução da saída da CTC ao texto?",
+    "resposta": [
+      "Remover os brancos"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40"
+  },
+  {
+    "id": "rf-1-2-c24",
+    "no": "r2.3",
+    "tema": "Fusão de Repetições e Remoção de Brancos",
+    "pergunta": "Na saída \"s s – e – s – s – ã – o\", o que mantém os dois \"s\" do meio como duas letras em \"sessão\"?",
+    "resposta": [
+      "O branco entre eles"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40",
+    "explicacao": "Sem o branco, os dois \"s\" seriam fundidos em um só na etapa de fusão."
+  },
+  {
+    "id": "rf-1-2-c25",
+    "no": "r2.4",
+    "tema": "Independência Condicional e Consequências",
+    "pergunta": "Que hipótese a CTC faz sobre os rótulos de saída, dado o áudio?",
+    "resposta": [
+      "São condicionalmente independentes entre si"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40",
+    "explicacao": "Ao decidir o símbolo de um quadro, o modelo não consulta os símbolos que já emitiu."
+  },
+  {
+    "id": "rf-1-2-c26",
+    "no": "r2.4",
+    "tema": "Independência Condicional e Consequências",
+    "pergunta": "A que fica preso cada símbolo emitido pela CTC?",
+    "resposta": [
+      "A um quadro de áudio"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40",
+    "explicacao": "Não há um redator livre que continue escrevendo por conta própria."
+  },
+  {
+    "id": "rf-1-2-c27",
+    "no": "r2.4",
+    "tema": "Independência Condicional e Consequências",
+    "pergunta": "Que componente à parte costuma ser combinado com a CTC pura?",
+    "resposta": [
+      "Um modelo de linguagem externo"
+    ],
+    "fonte": "Etapa 03 — 1.2.2, p. 40",
+    "explicacao": "A CTC pura não tem modelo de linguagem interno."
+  },
+  {
+    "id": "rf-1-2-c28",
+    "no": "r3",
+    "tema": "Transdutor (RNN-T)",
+    "pergunta": "O que significa a sigla RNN-T?",
+    "resposta": [
+      "Recurrent neural network transducer"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 40"
+  },
+  {
+    "id": "rf-1-2-c29",
+    "no": "r3",
+    "tema": "Transdutor (RNN-T)",
+    "pergunta": "Por que hoje é comum chamar o RNN-T apenas de transdutor?",
+    "resposta": [
+      "O codificador pode ser de outro tipo, não só recorrente"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c30",
+    "no": "r3",
+    "tema": "Transdutor (RNN-T)",
+    "pergunta": "Qual é o principal ponto de atenção do transdutor em relação às outras famílias?",
+    "resposta": [
+      "Treino mais complexo"
+    ],
+    "fonte": "Etapa 03 — 1.2.9, p. 44"
+  },
+  {
+    "id": "rf-1-2-c31",
+    "no": "r3.1",
+    "tema": "As Três Peças e a Analogia Clássica",
+    "pergunta": "Que peça do transdutor recebe como entrada o símbolo emitido anteriormente?",
+    "resposta": [
+      "A rede de predição"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 40"
+  },
+  {
+    "id": "rf-1-2-c32",
+    "no": "r3.1",
+    "tema": "As Três Peças e a Analogia Clássica",
+    "pergunta": "Que peça do transdutor combina áudio e contexto linguístico para prever o próximo símbolo?",
+    "resposta": [
+      "A rede conjunta"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 40"
+  },
+  {
+    "id": "rf-1-2-c33",
+    "no": "r3.1",
+    "tema": "As Três Peças e a Analogia Clássica",
+    "pergunta": "Na analogia com o sistema clássico, a que componente corresponde a rede de predição?",
+    "resposta": [
+      "Modelo de linguagem"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41",
+    "explicacao": "É analogia, não equivalência: no transdutor as três peças são treinadas juntas."
+  },
+  {
+    "id": "rf-1-2-c34",
+    "no": "r3.2",
+    "tema": "Herança da CTC: Ritmo Quadro a Quadro",
+    "pergunta": "Como o transdutor percorre o áudio?",
+    "resposta": [
+      "Quadro a quadro"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c35",
+    "no": "r3.2",
+    "tema": "Herança da CTC: Ritmo Quadro a Quadro",
+    "pergunta": "Que símbolo especial da CTC o transdutor também pode emitir?",
+    "resposta": [
+      "O branco"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c36",
+    "no": "r3.2",
+    "tema": "Herança da CTC: Ritmo Quadro a Quadro",
+    "pergunta": "O que o ritmo herdado da CTC permite ao transdutor fazer?",
+    "resposta": [
+      "Produzir texto enquanto o áudio ainda está chegando"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c37",
+    "no": "r3.3",
+    "tema": "Vocação para Streaming",
+    "pergunta": "Para que tipo de reconhecimento o transdutor é a família adequada?",
+    "resposta": [
+      "Reconhecimento contínuo, em streaming"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c38",
+    "no": "r3.3",
+    "tema": "Vocação para Streaming",
+    "pergunta": "Na avaliação de He et al., em que quesitos o transdutor superou um modelo convencional baseado em CTC?",
+    "resposta": [
+      "Latência",
+      "Precisão"
+    ],
+    "fonte": "Etapa 03 — 1.2.3, p. 41"
+  },
+  {
+    "id": "rf-1-2-c39",
+    "no": "r3.3",
+    "tema": "Vocação para Streaming",
+    "pergunta": "Que tipo de reconhecedor é o exemplo típico de uso do transdutor?",
+    "resposta": [
+      "Reconhecedores embarcados em celulares"
+    ],
+    "fonte": "Etapa 03 — 1.2.9, p. 44"
+  },
+  {
+    "id": "rf-1-2-c40",
+    "no": "r4",
+    "tema": "Codificador-Decodificador com Atenção e Whisper",
+    "pergunta": "O que significa a sigla AED?",
+    "resposta": [
+      "Attention-based encoder-decoder (codificador-decodificador com atenção)"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c41",
+    "no": "r4",
+    "tema": "Codificador-Decodificador com Atenção e Whisper",
+    "pergunta": "Sobre que sequência opera a rede de atenção que liga o codificador acústico ao decodificador?",
+    "resposta": [
+      "A sequência inteira de representações do enunciado"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c42",
+    "no": "r4",
+    "tema": "Codificador-Decodificador com Atenção e Whisper",
+    "pergunta": "Que arquitetura o Whisper usa no codificador e no decodificador?",
+    "resposta": [
+      "Transformer"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c43",
+    "no": "r4.1",
+    "tema": "Atenção e Listen, Attend and Spell",
+    "pergunta": "No Listen, Attend and Spell, que papel cumpre o \"ouvinte\"?",
+    "resposta": [
+      "É o codificador"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c44",
+    "no": "r4.1",
+    "tema": "Atenção e Listen, Attend and Spell",
+    "pergunta": "No Listen, Attend and Spell, o que é o \"soletrador\"?",
+    "resposta": [
+      "Um decodificador com atenção que emite caracteres"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c45",
+    "no": "r4.1",
+    "tema": "Atenção e Listen, Attend and Spell",
+    "pergunta": "Qual foi o avanço do Listen, Attend and Spell sobre a CTC?",
+    "resposta": [
+      "Produzir o texto sem supor independência entre os caracteres"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c46",
+    "no": "r4.2",
+    "tema": "Whisper: Autorregressivo, Token a Token",
+    "pergunta": "O que caracteriza um decodificador autorregressivo?",
+    "resposta": [
+      "Cada token é escrito com base nos anteriores"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c47",
+    "no": "r4.2",
+    "tema": "Whisper: Autorregressivo, Token a Token",
+    "pergunta": "Qual é a duração das janelas de áudio que o Whisper processa?",
+    "resposta": [
+      "30 segundos"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c48",
+    "no": "r4.2",
+    "tema": "Whisper: Autorregressivo, Token a Token",
+    "pergunta": "Que recurso o Whisper usa para avançar de uma janela de áudio para a seguinte?",
+    "resposta": [
+      "Marcas de tempo previstas pelo próprio modelo"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c49",
+    "no": "r4.3",
+    "tema": "Três Consequências: Fluência, Tempo Real e Risco",
+    "pergunta": "Por que o texto do codificador-decodificador com atenção sai bem formado, inclusive com pontuação?",
+    "resposta": [
+      "O decodificador age como um modelo de linguagem embutido"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41",
+    "explicacao": "A pontuação sai quando o treino a contém."
+  },
+  {
+    "id": "rf-1-2-c50",
+    "no": "r4.3",
+    "tema": "Três Consequências: Fluência, Tempo Real e Risco",
+    "pergunta": "Por que o tempo real é menos natural no codificador-decodificador com atenção?",
+    "resposta": [
+      "O modelo precisa de um trecho inteiro para trabalhar"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c51",
+    "no": "r4.3",
+    "tema": "Três Consequências: Fluência, Tempo Real e Risco",
+    "pergunta": "Que falhas entram pela liberdade de a atenção não obrigar o texto a acompanhar o áudio passo a passo?",
+    "resposta": [
+      "Alucinação",
+      "Laços de repetição"
+    ],
+    "fonte": "Etapa 03 — 1.2.4, p. 41"
+  },
+  {
+    "id": "rf-1-2-c52",
+    "no": "r5",
+    "tema": "Conformer e Estratégias de Dados",
+    "pergunta": "Que tipo de componente é o Conformer, se não é uma família de saída?",
+    "resposta": [
+      "Um tipo de codificador"
+    ],
+    "fonte": "Etapa 03 — 1.2.5, p. 41"
+  },
+  {
+    "id": "rf-1-2-c53",
+    "no": "r5",
+    "tema": "Conformer e Estratégias de Dados",
+    "pergunta": "A que problema comum o wav2vec 2.0 e o Whisper respondem de modos opostos?",
+    "resposta": [
+      "Transcrever áudio com cuidado é caro"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c54",
+    "no": "r5",
+    "tema": "Conformer e Estratégias de Dados",
+    "pergunta": "Que estratégia de dados o Whisper adota?",
+    "resposta": [
+      "Aproveitar transcrições imperfeitas em massa"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42",
+    "explicacao": "O wav2vec 2.0 faz o oposto: aproveita áudio sem transcrição."
+  },
+  {
+    "id": "rf-1-2-c55",
+    "no": "r5.1",
+    "tema": "Conformer: Convolução + Autoatenção",
+    "pergunta": "Que tipo de padrão do áudio as redes convolucionais exploram bem?",
+    "resposta": [
+      "Padrões locais"
+    ],
+    "fonte": "Etapa 03 — 1.2.5, p. 41",
+    "explicacao": "Exemplo local: o som de uma consoante depende dos milissegundos vizinhos."
+  },
+  {
+    "id": "rf-1-2-c56",
+    "no": "r5.1",
+    "tema": "Conformer: Convolução + Autoatenção",
+    "pergunta": "Que tipo de relação os Transformers captam bem?",
+    "resposta": [
+      "Relações globais de conteúdo"
+    ],
+    "fonte": "Etapa 03 — 1.2.5, p. 41",
+    "explicacao": "Exemplo global: a escolha entre \"sessão\" e \"cessão\" depende da frase."
+  },
+  {
+    "id": "rf-1-2-c57",
+    "no": "r5.1",
+    "tema": "Conformer: Convolução + Autoatenção",
+    "pergunta": "Além de modelar dependências locais e globais, que ganho o Conformer oferece?",
+    "resposta": [
+      "Economia de parâmetros"
+    ],
+    "fonte": "Etapa 03 — 1.2.5, p. 41"
+  },
+  {
+    "id": "rf-1-2-c58",
+    "no": "r5.2",
+    "tema": "wav2vec 2.0 × Whisper: Dois Modelos, Dois Rótulos",
+    "pergunta": "Que tipo de aprendizado caracteriza o wav2vec 2.0?",
+    "resposta": [
+      "Autossupervisionado, seguido de ajuste fino"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c59",
+    "no": "r5.2",
+    "tema": "wav2vec 2.0 × Whisper: Dois Modelos, Dois Rótulos",
+    "pergunta": "Que tipo de aprendizado caracteriza o Whisper?",
+    "resposta": [
+      "Fracamente supervisionado"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c60",
+    "no": "r5.2",
+    "tema": "wav2vec 2.0 × Whisper: Dois Modelos, Dois Rótulos",
+    "pergunta": "Que entrada o wav2vec 2.0 recebe?",
+    "resposta": [
+      "A forma de onda bruta"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42",
+    "explicacao": "O Whisper recebe espectrograma log-Mel."
+  },
+  {
+    "id": "rf-1-2-c61",
+    "no": "r5.3",
+    "tema": "Detalhes: Mascaramento e Escala de Dados",
+    "pergunta": "Com quanto tempo de fala transcrita o wav2vec 2.0 obteve bons resultados?",
+    "resposta": [
+      "Dez minutos"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c62",
+    "no": "r5.3",
+    "tema": "Detalhes: Mascaramento e Escala de Dados",
+    "pergunta": "Com quantas horas de áudio pareado com transcrições da internet o Whisper foi treinado?",
+    "resposta": [
+      "680.000 horas"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c63",
+    "no": "r5.3",
+    "tema": "Detalhes: Mascaramento e Escala de Dados",
+    "pergunta": "Por que os autores do Whisper escolheram uma arquitetura já conhecida, sem inovações?",
+    "resposta": [
+      "Para que os resultados refletissem o efeito dos dados, e não do modelo"
+    ],
+    "fonte": "Etapa 03 — 1.2.6, p. 42"
+  },
+  {
+    "id": "rf-1-2-c64",
+    "no": "r6",
+    "tema": "Vantagens, Limites e Alucinação",
+    "pergunta": "Em que tipo de modelo end-to-end a alucinação é típica?",
+    "resposta": [
+      "Modelos com decodificador autorregressivo"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43"
+  },
+  {
+    "id": "rf-1-2-c65",
+    "no": "r6",
+    "tema": "Vantagens, Limites e Alucinação",
+    "pergunta": "Por que o texto alucinado tende a passar despercebido pelo revisor?",
+    "resposta": [
+      "O texto inventado é fluente"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 44"
+  },
+  {
+    "id": "rf-1-2-c66",
+    "no": "r6",
+    "tema": "Vantagens, Limites e Alucinação",
+    "pergunta": "No parlamento, que situações a fonte nomeia como gatilhos típicos de alucinação?",
+    "resposta": [
+      "Sessão suspensa",
+      "Espera por quórum",
+      "Aplausos",
+      "Microfone aberto sem orador",
+      "Fim de reunião"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43",
+    "explicacao": "São trechos sem fala ou com pouca evidência acústica, o gatilho da alucinação."
+  },
+  {
+    "id": "rf-1-2-c67",
+    "no": "r6.1",
+    "tema": "Vantagens × Limites",
+    "pergunta": "De onde vem a qualidade dos modelos end-to-end, o que constitui um de seus limites?",
+    "resposta": [
+      "De enormes volumes de dados de treino"
+    ],
+    "fonte": "Etapa 03 — 1.2.7, p. 42"
+  },
+  {
+    "id": "rf-1-2-c68",
+    "no": "r6.1",
+    "tema": "Vantagens × Limites",
+    "pergunta": "Por que adaptar um modelo end-to-end é mais difícil?",
+    "resposta": [
+      "Não há léxico nem modelo de linguagem avulsos para trocar"
+    ],
+    "fonte": "Etapa 03 — 1.2.7, p. 42–43"
+  },
+  {
+    "id": "rf-1-2-c69",
+    "no": "r6.1",
+    "tema": "Vantagens × Limites",
+    "pergunta": "Que tipo de palavra continua sendo ponto fraco dos modelos end-to-end?",
+    "resposta": [
+      "Palavras raras: nomes próprios e termos específicos"
+    ],
+    "fonte": "Etapa 03 — 1.2.7, p. 42"
+  },
+  {
+    "id": "rf-1-2-c70",
+    "no": "r6.2",
+    "tema": "Alucinação: Mecanismo e Gatilhos",
+    "pergunta": "Em que duas fontes o decodificador autorregressivo se apoia para escrever cada token?",
+    "resposta": [
+      "O áudio, consultado por atenção",
+      "O texto que ele mesmo já produziu"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43",
+    "explicacao": "Quando o áudio traz pouca evidência, a segunda fonte domina e o texto provável vence."
+  },
+  {
+    "id": "rf-1-2-c71",
+    "no": "r6.2",
+    "tema": "Alucinação: Mecanismo e Gatilhos",
+    "pergunta": "Quais são as duas falhas típicas dos modelos autorregressivos?",
+    "resposta": [
+      "Laço de repetição",
+      "Texto sem fala correspondente"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43"
+  },
+  {
+    "id": "rf-1-2-c72",
+    "no": "r6.2",
+    "tema": "Alucinação: Mecanismo e Gatilhos",
+    "pergunta": "Em que tipo de decodificação o laço de repetição é mais frequente?",
+    "resposta": [
+      "Decodificação gulosa (sempre escolhe o token mais provável)"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43"
+  },
+  {
+    "id": "rf-1-2-c73",
+    "no": "r6.3",
+    "tema": "Defesas: Nenhuma é Completa",
+    "pergunta": "Que defesa reduz os laços de repetição em relação à decodificação gulosa?",
+    "resposta": [
+      "Busca em feixe"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43",
+    "explicacao": "Reduz, mas não elimina a alucinação."
+  },
+  {
+    "id": "rf-1-2-c74",
+    "no": "r6.3",
+    "tema": "Defesas: Nenhuma é Completa",
+    "pergunta": "Como age o recuo de temperatura contra a alucinação?",
+    "resposta": [
+      "Refaz o trecho quando a saída parece degenerada"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43",
+    "explicacao": "A degeneração é medida pela probabilidade média ou pela taxa de compressão do texto."
+  },
+  {
+    "id": "rf-1-2-c75",
+    "no": "r6.3",
+    "tema": "Defesas: Nenhuma é Completa",
+    "pergunta": "Que redução das alucinações em áudio sem fala o ajuste fino voltado ao problema (Calm-Whisper) obteve?",
+    "resposta": [
+      "Mais de 80%, com perda mínima de precisão"
+    ],
+    "fonte": "Etapa 03 — 1.2.8, p. 43"
+  }
+]

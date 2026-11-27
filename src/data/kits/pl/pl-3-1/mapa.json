@@ -1,0 +1,182 @@
+{
+ "topico": "pl-3-1",
+ "materia": "pl",
+ "centro": "📜 RCCN: Arts. 22º ao 71º (Sessões conjuntas)",
+ "ramos": [
+  {
+   "id": "r1",
+   "cor": "azul",
+   "t": "Sessões em Geral (arts. 22 a 52)",
+   "n": "Duração, quórum, ordem do dia, votação e redação final das sessões conjuntas comuns",
+   "x": {
+    "e": "O Capítulo I do Título IV do Regimento Comum disciplina as sessões conjuntas comuns: duração de 4 horas, prorrogação, quórum mínimo de 1/6 de cada Casa e o caminho da matéria até os autógrafos. Ele vai da abertura (arts. 22 a 31) à Ordem do Dia (arts. 32 a 35), à apreciação e à votação (arts. 36 a 50), e termina na redação final (arts. 51 e 52). Cada Seção corresponde a uma etapa da tramitação conjunta.",
+    "ex": "Um projeto que chega à sessão conjunta passa pela Ordem do Dia, pela discussão em turno único, pela votação na modalidade cabível e, por fim, pela redação final, quando for o caso.",
+    "trap": "Confundir a sessão conjunta comum deste capítulo com a sessão solene do Capítulo II, que tem outro quórum e não admite questões de ordem.",
+    "src": "RCCN, arts. 22 a 52"
+   },
+   "f": [
+    {
+     "id": "r1.1",
+     "t": "Disposições Preliminares (arts. 22 a 31)",
+     "n": "Duração de 4 h · prorrogação com o Plenário · quórum de 1/6 · sessão secreta · expediente",
+     "x": {
+      "e": "A sessão conjunta dura 4 horas, e a votação iniciada antes do término é concluída sem pedido de prorrogação (art. 22). A prorrogação, sempre por prazo fixo, depende de consulta ao Plenário e pode ser proposta pelo Presidente ou requerida por qualquer Congressista, sem discussão nem encaminhamento de votação (art. 23). A sessão só se abre com a presença de, no mínimo, 1/6 de cada Casa, pode ser suspensa por conveniência da ordem e é levantada, a qualquer momento, por falecimento de Congressista ou de Chefe de um dos Poderes (arts. 24, 25 e 28). As sessões são públicas, salvo deliberação do Plenário sobre proposta da Presidência ou de Líder, e o 1º Secretário lê o expediente após a abertura (arts. 27 e 30).",
+      "ex": "Se faltar número às 14h30, o Presidente aguarda até 30 minutos pela complementação do quórum; persistindo a falta, a sessão não se realiza (art. 29 §1º).",
+      "trap": "Trocar o quórum de abertura (1/6 de cada Casa) por maioria absoluta, ou dizer que a prorrogação pode ser decidida pelo Presidente sem ouvir o Plenário.",
+      "src": "RCCN, arts. 22 a 31"
+     }
+    },
+    {
+     "id": "r1.2",
+     "t": "Da Ordem do Dia (arts. 32 a 35)",
+     "n": "Expediente → Ordem do Dia · avulsos com 24 h · votação antes da discussão · falta de quórum",
+     "x": {
+      "e": "Terminado o expediente, a sessão passa à Ordem do Dia, e os avulsos das matérias são distribuídos aos Congressistas com antecedência mínima de 24 horas (arts. 32 e 33). Na organização da pauta, as proposições em votação precedem as em discussão, e a inversão depende de autorização do Plenário, por proposta da Presidência ou requerimento de Líder (art. 34). Se faltar quórum na votação, passa-se à matéria seguinte em discussão; persistindo a falta, a Presidência pode suspender a sessão por até 30 minutos ou conceder a palavra a Congressista, salvo o art. 29 §2º, e, havendo número novamente, volta-se à matéria em votação, interrompendo-se o orador na tribuna (art. 35).",
+      "ex": "Um projeto em votação que perde o quórum às 16h cede lugar a outra matéria em discussão; quando o quórum se refaz, a votação retorna ao projeto e o orador na tribuna é interrompido.",
+      "trap": "Afirmar que a inversão da Ordem do Dia pode ser pedida por qualquer Congressista, ou que a persistência da falta de quórum de votação, no art. 35, leva ao encerramento imediato, quando o dispositivo prevê suspensão de até 30 minutos.",
+      "src": "RCCN, arts. 32 a 35"
+     }
+    },
+    {
+     "id": "r1.3",
+     "t": "Da Apreciação das Matérias (arts. 36 a 43)",
+     "n": "Turno único · discussão conjunta · 20 min por orador · encerramento · votos separados por Casa",
+     "x": {
+      "e": "A apreciação ocorre em um só turno de discussão e votação, e a proposição principal, as emendas e as subemendas são discutidas em conjunto; a preliminar de inconstitucionalidade arguida pela Comissão Mista é votada antes do mérito (arts. 36 e 37). Os oradores falam na ordem de inscrição, por até 20 minutos, alternando, de preferência, favoráveis e contrários, e a discussão se encerra após o último inscrito ou por requerimento escrito de Líder ou de 10 membros de cada Casa, depois de falarem ao menos 4 Senadores e 6 Deputados (arts. 38 e 39). Não cabe requerimento de adiamento da discussão, mas a votação pode ser adiada por até 48 horas, a requerimento de Líder, desde que não seja prejudicada a apreciação da matéria no prazo constitucional (art. 40). Os votos da Câmara e do Senado são computados separadamente, e o voto contrário de uma das Casas importa rejeição (art. 43 §1º). A votação começa pela Câmara, e pelo Senado no projeto de lei vetado de iniciativa de Senadores (art. 43 §2º).",
+      "ex": "Requerimento apresentado em sessão conjunta não é discutido: sua votação é encaminhada por 2 membros de cada Casa, de preferência um favorável e um contrário, por 5 minutos cada (art. 41). Só o autor pode retirar a proposição, com despacho da Presidência (art. 42).",
+      "trap": "Afirmar que a votação pode ser adiada por 48 horas a pedido de qualquer Congressista (o pedido é de Líder), ou que o requerimento de sessão conjunta admite discussão.",
+      "src": "RCCN, arts. 36 a 43"
+     }
+    },
+    {
+     "id": "r1.4",
+     "t": "Das Modalidades de Votação (arts. 44 a 48)",
+     "n": "Simbólica × nominal × secreta · verificação (1 h) · urna e escrutinadores · impedimento",
+     "x": {
+      "e": "As votações são simbólicas, salvo quórum especial ou deliberação do Plenário pedida por Líder ou por 1/6 de Senadores ou de Deputados; o processo nominal usa o painel eletrônico ou, nos vetos, cédula com apuração eletrônica (arts. 44 e 46). Na votação simbólica, os que aprovam permanecem sentados, e a verificação, requerida por Líder, 5 Senadores ou 20 Deputados, conta os votos por bancada e não pode ser repetida antes de 1 hora, havendo número legal (art. 45 §§ 1º a 3º). Na votação secreta, o Congressista usa sobrecarta opaca na cabina indevassável, e a apuração cabe à Mesa, com um Senador e um Deputado como escrutinadores (art. 47). O Congressista presente só pode deixar de votar em assunto de interesse pessoal, comunicando o impedimento à Mesa, e sua presença conta para o quórum (art. 48).",
+      "ex": "Em votação simbólica da Câmara, 20 Deputados pedem verificação; a contagem sai por bancada, e um novo pedido só é admitido depois de 1 hora.",
+      "trap": "Trocar os requerentes da verificação (5 Senadores ou 20 Deputados, e não o inverso) ou tratar o processo nominal como regra geral; os §§ 1º e 2º do art. 46 estão revogados.",
+      "src": "RCCN, arts. 44 a 48"
+     }
+    },
+    {
+     "id": "r1.5",
+     "t": "Do Processamento da Votação (arts. 49 a 50)",
+     "n": "Encaminhamento de 5 min · projeto antes das emendas · substitutivo · destaques só por Líder",
+     "x": {
+      "e": "Encerrada a discussão, a votação segue de imediato, com encaminhamento por 4 Senadores e 4 Deputados, de 5 minutos cada (art. 49). Vota-se primeiro o projeto, ressalvados destaques e emendas; as emendas são votadas em grupos conforme o parecer, e as destacadas seguem a ordem supressiva, substitutiva, modificativa e aditiva (art. 49 §§ 1º e 2º). Havendo substitutivo, ele tem preferência, salvo deliberação em contrário, se for da Comissão ou tiver parecer favorável dela, e sua aprovação prejudica o projeto e as emendas, salvo o destaque previsto no § 5º (art. 49 §§ 4º a 6º). Os requerimentos de preferência e de destaque só podem ser formulados por Líder, até o anúncio da votação, e não são discutidos nem têm votação encaminhada (art. 50).",
+      "ex": "Se o substitutivo da Comissão é aprovado, o projeto original e suas emendas ficam prejudicados, salvo as partes que tenham sido destacadas (art. 49 §§ 5º e 6º).",
+      "trap": "Dizer que o substitutivo sempre tem preferência sobre o projeto, ou que o destaque pode ser pedido por qualquer Congressista depois de anunciada a votação.",
+      "src": "RCCN, arts. 49 e 50"
+     }
+    },
+    {
+     "id": "r1.6",
+     "t": "Da Redação Final e dos Autógrafos (arts. 51 a 52)",
+     "n": "Comissão Mista com prazo de 24 h · dispensa sem emendas · autógrafos ao Presidente · promulgação pelo Presidente do Senado",
+     "x": {
+      "e": "Concluída a votação, a matéria volta à Comissão Mista para a redação final, e a sessão fica interrompida pelo tempo necessário, podendo ser concedido à Comissão prazo máximo de 24 horas (art. 51). Apresentada à Mesa, a redação final é lida e imediatamente submetida à discussão e à votação, e é dispensada se o projeto foi aprovado sem emendas ou em substitutivo integral, desde que o texto seja considerado em condições de ser definitivamente aceito (art. 51 §§ 1º e 2º). Aprovado definitivamente, o texto segue em autógrafos ao Presidente da República para sanção (art. 52). Para matéria da competência exclusiva do Congresso Nacional, a promulgação cabe ao Presidente do Senado (art. 52 parágrafo único).",
+      "ex": "Projeto aprovado sem emendas dispensa a redação final e vai aos autógrafos; com emenda, a Comissão Mista elabora a redação final pode receber até 24 horas.",
+      "trap": "Dizer que a redação final é obrigatória em todo projeto, ou que a promulgação de matéria exclusiva do Congresso cabe ao Presidente da República.",
+      "src": "RCCN, arts. 51 e 52"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r2",
+   "cor": "verde",
+   "t": "Sessões Solenes (arts. 53 a 71)",
+   "n": "Qualquer número · Mesa com o Presidente da Câmara · sem expediente · sem questões de ordem",
+   "x": {
+    "e": "O Capítulo II trata das sessões solenes, que se realizam com qualquer número e cuja Mesa reúne o Presidente da Câmara e, mediante convite, o Presidente do STF (arts. 53 a 56). Elas têm ritos próprios para a inauguração da sessão legislativa, a posse do Presidente e do Vice-Presidente da República e a recepção de Chefe de Estado estrangeiro (arts. 57 a 71). Nelas não há expediente e não se admitem questões de ordem.",
+    "ex": "Uma solenidade de posse abre com qualquer número de Congressistas presentes, mas não tem expediente, não tem oradores e não admite questões de ordem.",
+    "trap": "Exigir quórum de 1/6 para a sessão solene, regra da sessão conjunta comum (art. 28), ou admitir questão de ordem em solenidade.",
+    "src": "RCCN, arts. 53 a 71"
+   },
+   "f": [
+    {
+     "id": "r2.1",
+     "t": "Normas Gerais (arts. 53 a 56)",
+     "n": "Qualquer número · Presidente da Câmara e, por convite, do STF · um Senador e um Deputado · sem questões de ordem",
+     "x": {
+      "e": "Nas sessões solenes, a Mesa é composta pelo Presidente da Câmara e, mediante convite, pelo Presidente do STF, com lugares reservados a altas autoridades civis, militares, eclesiásticas e diplomáticas (art. 53). A sessão realiza-se com qualquer número, e, composta a Mesa, o Presidente declara aberta a sessão e o fim para o qual foi convocada (arts. 53 parágrafo único e 54). Não há expediente, e só podem usar a palavra um Senador e um Deputado, de preferência de partidos diferentes, previamente designados pelas respectivas Casas (arts. 54 parágrafo único e 55). Não se admitem questões de ordem (art. 56).",
+      "ex": "Na inauguração da sessão legislativa e na posse do Presidente e do Vice-Presidente da República não há oradores (art. 55 parágrafo único).",
+      "trap": "Afirmar que a Mesa da sessão solene é formada pelo Presidente do STF e pelo Presidente da República, ou que a sessão só abre com o quórum de 1/6 de cada Casa.",
+      "src": "RCCN, arts. 53 a 56"
+     }
+    },
+    {
+     "id": "r2.2",
+     "t": "Inauguração de Sessão Legislativa (arts. 57 a 59)",
+     "n": "Mensagem do Presidente da República · lida pelo 1º Secretário · sessão encerrada após a leitura",
+     "x": {
+      "e": "Composta a Mesa e aberta a sessão, o Presidente proclama inaugurados os trabalhos do Congresso Nacional e anuncia a presença do enviado do Presidente da República, portador da Mensagem, que é conduzido à Mesa pelos Diretores das Secretarias do Senado e da Câmara sem atravessar o plenário (art. 57). Entregue a Mensagem, o enviado se retira, acompanhado até a porta, ou, se quiser assistir à sessão, é conduzido a lugar previamente reservado (art. 57 parágrafo único). De posse da Mensagem, o Presidente manda o 1º Secretário lê-la e distribuir exemplares impressos aos Congressistas, se houver (art. 58). Finda a leitura, a sessão é encerrada (art. 59).",
+      "ex": "O enviado que entrega a Mensagem e deseja assistir à sessão é conduzido a lugar previamente reservado, enquanto o texto é lido pelo 1º Secretário.",
+      "trap": "Dizer que o enviado atravessa o plenário até a Mesa, ou que a leitura da Mensagem cabe ao Presidente da República ou ao Presidente da Câmara; o art. 58 atribui a leitura ao 1º Secretário.",
+      "src": "RCCN, arts. 57 a 59"
+     }
+    },
+    {
+     "id": "r2.3",
+     "t": "Posse do Presidente e do Vice-Presidente da República (arts. 60 a 67)",
+     "n": "Comissão de 5 Senadores e 5 Deputados · compromisso do art. 78 da CF · termo lido pelo 1º Secretário",
+     "x": {
+      "e": "Aberta a sessão, o Presidente designa 5 Senadores e 5 Deputados para receber os empossandos na entrada principal e conduzi-los ao Salão de Honra; reaberta a sessão, o Presidente e o Vice-Presidente eleitos ocupam os lugares à direita e à esquerda do Presidente da Mesa (arts. 60 e 61). O Presidente da Mesa pede que os presentes permaneçam de pé, anuncia o compromisso do art. 78 da Constituição e proclama empossado o Presidente da República, e em seguida o Vice-Presidente (arts. 62 a 64). Após os compromissos, o 1º Secretário lê o termo de posse, que é assinado pelos empossados e pelos membros da Mesa (art. 65). Depois do discurso eventual do Presidente da República (art. 66), a comissão conduz o Presidente e o Vice-Presidente a local previamente designado e a sessão se encerra (art. 67).",
+      "ex": "Durante o compromisso, os espectadores e os membros da Mesa permanecem de pé (arts. 61 parágrafo único e 62); depois da posse, o Presidente da República pode falar ao Congresso e à Nação (art. 66).",
+      "trap": "Trocar a comissão de posse (5 Senadores e 5 Deputados) pela de recepção de visitante (3 e 3), ou dizer que o termo de posse é lido pelo Presidente da Mesa.",
+      "src": "RCCN, arts. 60 a 67"
+     }
+    },
+    {
+     "id": "r2.4",
+     "t": "Recepção a Chefe de Estado Estrangeiro (arts. 68 a 71)",
+     "n": "Comissão de 3 Senadores e 3 Deputados · visitante à direita do Presidente · palavra depois dos oradores",
+     "x": {
+      "e": "Aberta a sessão, o Presidente designa 3 Senadores e 3 Deputados para receber o visitante na entrada principal e conduzi-lo ao Salão de Honra, com suspensão da sessão (art. 68). Reaberta a sessão, o Chefe de Estado é introduzido no plenário e ocupa na Mesa o lugar à direita do Presidente, e apenas o Presidente permanece sentado, pois os demais membros da Mesa e os espectadores ficam de pé (art. 69 e §1º). Em seguida, a palavra é dada aos oradores, e o visitante, se quiser falar, deve fazê-lo depois deles (arts. 69 §2º e 70). Finda a solenidade, a Comissão de Recepção leva o visitante a lugar previamente designado, e a sessão se encerra (art. 71).",
+      "ex": "Um Chefe de Estado estrangeiro recebido em sessão solene só usa a palavra depois dos oradores designados para a sessão.",
+      "trap": "Afirmar que o visitante fala antes dos oradores da sessão, ou que ele ocupa o lugar à esquerda do Presidente da Mesa (é o da direita).",
+      "src": "RCCN, arts. 68 a 71"
+     }
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "de": "r1.1",
+   "para": "r1.2",
+   "rotulo": "A abertura com quórum mínimo de 1/6 (art. 28) é pré-condição para o expediente e para a passagem à Ordem do Dia."
+  },
+  {
+   "de": "r1.2",
+   "para": "r1.3",
+   "rotulo": "A matéria da Ordem do Dia é apreciada em um só turno de discussão e votação (art. 36)."
+  },
+  {
+   "de": "r1.3",
+   "para": "r1.5",
+   "rotulo": "Encerrada a discussão (art. 39), a votação segue de imediato, com encaminhamento (art. 49)."
+  },
+  {
+   "de": "r1.4",
+   "para": "r1.5",
+   "rotulo": "A votação do art. 49 se faz pelas modalidades do art. 44, e a verificação da votação simbólica (art. 45) pode ser pedida após o resultado de cada Casa."
+  },
+  {
+   "de": "r1.5",
+   "para": "r1.6",
+   "rotulo": "Concluída a votação (art. 51), a matéria volta à Comissão Mista para a redação final."
+  },
+  {
+   "de": "r2.1",
+   "para": "r1.1",
+   "rotulo": "A sessão solene se realiza com qualquer número (art. 53 parágrafo único), em contraste com o quórum mínimo de 1/6 da sessão conjunta comum (art. 28)."
+  },
+  {
+   "de": "r2.1",
+   "para": "r2.3",
+   "rotulo": "Só um Senador e um Deputado discursam em solenidades (art. 55), e na posse não há oradores (art. 55 parágrafo único)."
+  }
+ ]
+}

@@ -1,0 +1,471 @@
+{
+ "topico": "rf-1-2",
+ "materia": "rf",
+ "centro": "🎙️ 1.2 Modelos de Fala End-to-End",
+ "ramos": [
+  {
+   "id": "r1",
+   "cor": "azul",
+   "t": "Definição e Fronteiras do End-to-End",
+   "n": "Rede única, treino conjunto e alinhamento quadros × símbolos",
+   "x": {
+    "e": "O modelo end-to-end (E2E) aprende em conjunto todos os componentes do reconhecedor e prevê diretamente a sequência de caracteres a partir da fala, sem as peças estatísticas intermediárias do sistema clássico e do híbrido. Três marcas o definem: rede única, treino conjunto e ausência de léxico de pronúncia feito à mão. Para entender a categoria é preciso saber o que ela não significa e qual problema de alinhamento todas as famílias resolvem.",
+    "ex": "Um sistema que usa rede neural só na parte acústica, mantendo léxico e modelo de linguagem separados, ainda não é end-to-end.",
+    "trap": "Chamar de end-to-end qualquer sistema que use rede neural profunda.",
+    "src": "Etapa 03 — 1.2.1, p. 39–40; 1.2.9, p. 44"
+   },
+   "f": [
+    {
+     "id": "r1.1",
+     "t": "As Três Marcas do E2E",
+     "n": "Uma rede só · treino conjunto · sem léxico feito à mão",
+     "x": {
+      "e": "Uma rede só significa ir do áudio ao texto sem peças estatísticas intermediárias. Treino conjunto quer dizer um único objetivo, aprendido com pares de áudio e texto. Sem léxico feito à mão quer dizer que a saída são caracteres ou pedaços de palavra, e não palavras de uma lista fechada. Desde 2015, a área migrou dos híbridos para os modelos E2E.",
+      "ex": "Por produzir caracteres ou subpalavras, o modelo pode compor palavras que não estavam em uma lista fechada.",
+      "trap": "Confundir a ausência de léxico feito à mão com a ausência de qualquer pré-processamento do áudio.",
+      "src": "Etapa 03 — 1.2.1, p. 39; 1.2.7, p. 42"
+     }
+    },
+    {
+     "id": "r1.2",
+     "t": "O Que o E2E Não Significa",
+     "n": "Mantém pré-processamento, aceita LM externo e usa busca em feixe",
+     "x": {
+      "e": "Três afirmações parecem decorrer do E2E, mas são falsas. Não há ausência de pré-processamento: o Whisper ainda converte o áudio em espectrograma log-Mel antes da rede. Não proíbe modelo de linguagem externo, que é opcional: o modelo de Chan et al. obteve WER de 14,1% sem dicionário nem modelo de linguagem e de 10,3% com reavaliação por modelo de linguagem. E não dispensa busca, pois a geração ainda usa busca em feixe para escolher entre hipóteses.",
+      "ex": "Com reavaliação por modelo de linguagem, o modelo de Chan et al. caiu de 14,1% para 10,3% de WER.",
+      "trap": "Concluir que, por ser E2E, o sistema dispensa busca e pré-processamento do áudio.",
+      "src": "Etapa 03 — 1.2.1, p. 39–40"
+     }
+    },
+    {
+     "id": "r1.3",
+     "t": "Alinhamento: Muitos Quadros, Poucos Símbolos",
+     "n": "1 s ≈ 100 quadros para talvez 15 letras",
+     "x": {
+      "e": "O áudio tem muito mais quadros do que o texto tem símbolos: a sequência de rótulos é bem mais curta que a de entrada. Um quadro é uma fatia curta do sinal; cada família precisa decidir qual quadro corresponde a qual símbolo. No sistema clássico, o HMM cuidava desse alinhamento. Sem HMM, cada família dá sua própria resposta, e é por ela que as famílias se distinguem. As três famílias dão três respostas ao alinhamento: branco (CTC), branco com memória (transdutor) e atenção.",
+      "ex": "Um segundo de fala gera cem quadros e talvez quinze letras, e o modelo precisa decidir qual quadro corresponde a qual letra.",
+      "trap": "Imaginar que o problema do alinhamento deixa de existir nos modelos end-to-end.",
+      "src": "Etapa 03 — 1.2.1, p. 39–40"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r2",
+   "cor": "verde",
+   "t": "CTC: Classificação Temporal Conexionista",
+   "n": "Um símbolo ou branco por quadro; sem segmentação prévia",
+   "x": {
+    "e": "A CTC (connectionist temporal classification, classificação temporal conexionista) foi a primeira resposta ao problema do alinhamento. Emite, a cada quadro, um símbolo ou um branco, e dispensa dados de treino já segmentados: basta o áudio e a transcrição. Supõe que as saídas são condicionalmente independentes entre si, dado o áudio, o que limita o modelo.",
+    "ex": "Com CTC, a rede aprende sozinha onde cada letra cai, sem que alguém marque cada trecho do áudio.",
+    "trap": "Afirmar que a CTC exige áudio segmentado e rotulado quadro a quadro, quando foi criada justamente para dispensar isso.",
+    "src": "Etapa 03 — 1.2.2, p. 40"
+   },
+   "f": [
+    {
+     "id": "r2.1",
+     "t": "Origem: Treino Sem Segmentação",
+     "n": "Graves et al., 2006 · antes, dados já segmentados",
+     "x": {
+      "e": "Antes da CTC, as redes recorrentes exigiam dados de treino já segmentados, com cada trecho de áudio marcado. A CTC permitiu treinar com sequências não segmentadas, bastando o par áudio e transcrição. Na fase de treino, ela soma a probabilidade de todos os caminhos que, depois da redução, resultam na transcrição correta. A CTC foi a primeira resposta ao alinhamento: a rede descobre sozinha onde cada letra cai.",
+      "ex": "Para treinar com CTC, basta um áudio com sua transcrição, sem marcar onde começa cada trecho.",
+      "trap": "Atribuir à CTC a exigência de dados segmentados, que é justamente o problema que ela resolveu.",
+      "src": "Etapa 03 — 1.2.2, p. 40"
+     }
+    },
+    {
+     "id": "r2.2",
+     "t": "Símbolo ou Branco a Cada Quadro",
+     "n": "Branco = 'nenhum rótulo agora'; não é silêncio",
+     "x": {
+      "e": "A cada quadro, a rede escolhe um símbolo do alfabeto ou um símbolo especial, o branco (blank), que significa nenhum rótulo agora. O branco é um símbolo técnico, não silêncio. Ele também funciona como separador, o que permite letras dobradas. O branco é um símbolo técnico, não uma pausa real, e aparece na saída por quadro junto dos símbolos do alfabeto.",
+      "ex": "Nos dois 's' do meio de 'sessão', o branco entre eles é o que os mantém como duas letras.",
+      "trap": "Confundir o branco da CTC com a ausência de fala no áudio.",
+      "src": "Etapa 03 — 1.2.2, p. 40"
+     }
+    },
+    {
+     "id": "r2.3",
+     "t": "Fusão de Repetições e Remoção de Brancos",
+     "n": "Duas etapas, nesta ordem: 's s – e – s – s – ã – o' → 'sessão'",
+     "x": {
+      "e": "A sequência de quadros é reduzida ao texto em dois passos, nesta ordem: primeiro se fundem os símbolos repetidos; depois se removem os brancos. Os brancos que separam letras iguais consecutivas são o que impede que elas sejam fundidas em uma só. Sem o branco, os dois \"s\" de \"sessão\" seriam fundidos em um só.",
+      "ex": "A saída 's s – e – s – s – ã – o' vira 's – e – s – s – ã – o' após a fusão e 'sessão' após a remoção dos brancos.",
+      "trap": "Inverter as etapas, removendo os brancos antes de fundir as repetições.",
+      "src": "Etapa 03 — 1.2.2, p. 40"
+     }
+    },
+    {
+     "id": "r2.4",
+     "t": "Independência Condicional e Consequências",
+     "n": "Saídas independentes dado o áudio → sem LM interno; símbolo preso ao quadro",
+     "x": {
+      "e": "A CTC supõe que os rótulos de saída são condicionalmente independentes entre si, dado o áudio: ao decidir o símbolo de um quadro, o modelo não consulta os símbolos já emitidos. Por isso a CTC pura não tem modelo de linguagem interno e costuma ser combinada com um externo. Cada símbolo fica preso a um quadro de áudio, sem um redator livre que continue a escrita.",
+      "ex": "O wav2vec 2.0 usa CTC na etapa de ajuste fino com fala transcrita.",
+      "trap": "Afirmar que a probabilidade de cada símbolo da CTC depende explicitamente de todos os símbolos anteriores, como em um decodificador autorregressivo.",
+      "src": "Etapa 03 — 1.2.2, p. 40; 1.2.9, p. 44"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r3",
+   "cor": "laranja",
+   "t": "Transdutor (RNN-T)",
+   "n": "CTC + rede de predição + rede conjunta · vocação para streaming",
+   "x": {
+    "e": "O transdutor (RNN-T, recurrent neural network transducer) corrige a principal limitação da CTC ao acrescentar uma rede de predição, que recebe o símbolo emitido anteriormente, e uma rede conjunta, que combina áudio e contexto para prever o próximo símbolo. Herda da CTC o ritmo quadro a quadro, o que permite produzir texto enquanto o áudio ainda chega.",
+    "ex": "Em reconhecimento contínuo, o transdutor escreve texto à medida que o áudio chega, sem esperar a fala inteira.",
+    "trap": "Afirmar que o transdutor só emite texto depois de receber o áudio inteiro.",
+    "src": "Etapa 03 — 1.2.3, p. 40–41"
+   },
+   "f": [
+    {
+     "id": "r3.1",
+     "t": "As Três Peças e a Analogia Clássica",
+     "n": "Codificador acústico · rede de predição · rede conjunta",
+     "tabela": {
+      "cab": [
+       "Peça",
+       "Papel",
+       "Parente no sistema clássico"
+      ],
+      "linhas": [
+       [
+        "Codificador acústico",
+        "Representa o áudio",
+        "Modelo acústico"
+       ],
+       [
+        "Rede de predição",
+        "Lembra o que já foi emitido",
+        "Modelo de linguagem"
+       ],
+       [
+        "Rede conjunta",
+        "Decide o próximo símbolo",
+        "Decodificador"
+       ]
+      ]
+     },
+     "x": {
+      "e": "O transdutor tem três peças. O codificador acústico representa o áudio; a rede de predição lembra o que já foi emitido, recebendo o símbolo anterior; a rede conjunta decide o próximo símbolo a partir do áudio e desse contexto. A tabela é uma analogia, não uma equivalência: no transdutor, as três peças são treinadas juntas.",
+      "ex": "A rede de predição recebe o símbolo emitido antes, e a rede conjunta decide o próximo com base nele e no áudio.",
+      "trap": "Tomar a analogia com o sistema clássico como equivalência e supor que as três peças são treinadas separadamente.",
+      "src": "Etapa 03 — 1.2.3, p. 40"
+     }
+    },
+    {
+     "id": "r3.2",
+     "t": "Herança da CTC: Ritmo Quadro a Quadro",
+     "n": "Percorre o áudio quadro a quadro e pode emitir branco",
+     "x": {
+      "e": "O transdutor mantém da CTC o ritmo: também percorre o áudio quadro a quadro e pode emitir um branco. Essa característica permite produzir texto enquanto o áudio ainda está chegando. O que ele acrescenta à CTC é a memória do que já foi emitido, dada pela rede de predição. Diferente da CTC, a saída do transdutor depende do que já foi emitido, por meio da rede de predição.",
+      "ex": "Enquanto novos quadros de áudio chegam, o transdutor emite símbolos ou brancos, sem aguardar o fim da fala.",
+      "trap": "Atribuir ao transdutor a independência condicional entre as saídas, que é a hipótese da CTC.",
+      "src": "Etapa 03 — 1.2.3, p. 41"
+     }
+    },
+    {
+     "id": "r3.3",
+     "t": "Vocação para Streaming",
+     "n": "Melhor das três para tempo real · superou CTC em celulares",
+     "x": {
+      "e": "A vocação do transdutor é o reconhecimento contínuo, em streaming. A maior parte da pesquisa em E2E tratou de sistemas que processam a fala inteira antes de produzir a hipótese, e o transdutor é a família adequada quando se deseja reconhecimento contínuo. Em avaliação feita para uso em celulares, superou um modelo convencional baseado em CTC em latência e em precisão (He et al.). Seu nome guarda a origem em redes recorrentes; hoje o codificador pode ser de outro tipo.",
+      "ex": "Reconhecedores embarcados em celulares são o exemplo de uso típico do transdutor.",
+      "trap": "Atribuir a vocação de streaming aos modelos com atenção sobre o trecho inteiro, que não nasceram para isso.",
+      "src": "Etapa 03 — 1.2.3, p. 41; 1.2.9, p. 44; 1.2.7, p. 42"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r4",
+   "cor": "roxo",
+   "t": "Codificador-Decodificador com Atenção e Whisper",
+   "n": "Gera texto token a token; atenção sobre o enunciado inteiro",
+   "x": {
+    "e": "No codificador-decodificador com atenção (attention-based encoder-decoder, AED), o alinhamento não segue o áudio quadro a quadro: uma rede de atenção faz a ponte entre o codificador acústico e o decodificador sobre a sequência inteira de representações do enunciado. O Whisper pertence a esta família, com Transformer no codificador e no decodificador, e é autorregressivo: escreve um token por vez.",
+    "ex": "O decodificador do Whisper consulta o áudio por atenção e leva em conta o que já escreveu para escolher o próximo token.",
+    "trap": "Dizer que, na família com atenção, o alinhamento segue o áudio quadro a quadro, como na CTC e no transdutor.",
+    "src": "Etapa 03 — 1.2.4, p. 41"
+   },
+   "f": [
+    {
+     "id": "r4.1",
+     "t": "Atenção e Listen, Attend and Spell",
+     "n": "Ouvinte (codificador) + soletrador (decodificador) · sem independência",
+     "x": {
+      "e": "O modelo de referência, Listen, Attend and Spell, tem duas partes. O ouvinte é o codificador; o soletrador é um decodificador com atenção que emite caracteres. A rede produz o texto sem supor independência entre os caracteres, e esse foi o avanço sobre a CTC.",
+      "ex": "O soletrador emite caracteres um a um, consultando o áudio pela atenção.",
+      "trap": "Dizer que o Listen, Attend and Spell supõe independência condicional entre os caracteres, que é a hipótese da CTC.",
+      "src": "Etapa 03 — 1.2.4, p. 41; 1.2.2, p. 40"
+     }
+    },
+    {
+     "id": "r4.2",
+     "t": "Whisper: Autorregressivo, Token a Token",
+     "n": "Transformer no codificador e no decodificador · janelas de 30 s",
+     "x": {
+      "e": "Autorregressivo significa que cada token é escrito com base nos anteriores. No Whisper, o decodificador escreve um token por vez, consulta o áudio por atenção e leva em conta o que já escreveu. O modelo processa janelas de 30 segundos e usa marcas de tempo previstas por ele mesmo para avançar a janela.",
+      "ex": "Ao concluir uma janela de 30 segundos, o Whisper usa a marca de tempo que ele mesmo previu para começar a próxima.",
+      "trap": "Afirmar que o Whisper alinha o texto quadro a quadro, como a CTC.",
+      "src": "Etapa 03 — 1.2.4, p. 41"
+     }
+    },
+    {
+     "id": "r4.3",
+     "t": "Três Consequências: Fluência, Tempo Real e Risco",
+     "n": "Texto fluente · tempo real menos natural · liberdade com risco",
+     "x": {
+      "e": "Primeiro, o decodificador age como um modelo de linguagem embutido, e o texto sai bem formado, com pontuação, quando o treino a contém. Segundo, o modelo precisa de um trecho inteiro para trabalhar, o que torna o tempo real menos natural. Terceiro, a atenção não obriga o texto a acompanhar o áudio passo a passo; essa liberdade é a porta de entrada da alucinação e dos laços de repetição.",
+      "ex": "Uma frase bem formada, com pontuação, pode ter sido escrita pelo decodificador sem correspondência no áudio.",
+      "trap": "Dizer que a fluência do texto garante que ele corresponde ao áudio.",
+      "src": "Etapa 03 — 1.2.4, p. 41; 1.2.8, p. 43"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r5",
+   "cor": "vermelho",
+   "t": "Conformer e Estratégias de Dados",
+   "n": "Conformer é codificador · wav2vec 2.0 × Whisper",
+   "x": {
+    "e": "O Conformer não é uma quarta família, e sim um tipo de codificador. Os dois modelos mais citados da geração E2E, wav2vec 2.0 e Whisper, respondem ao mesmo problema (transcrever com cuidado é caro) de modos opostos. O primeiro aproveita áudio sem transcrição; o segundo aproveita transcrições imperfeitas em massa.",
+    "ex": "A escolha entre 'sessão' e 'cessão' depende da frase, por isso exige o alcance global da atenção.",
+    "trap": "Tratar o Conformer como uma família de saída, ou descrevê-lo como só convolução ou só atenção.",
+    "src": "Etapa 03 — 1.2.5, p. 41; 1.2.6, p. 42"
+   },
+   "f": [
+    {
+     "id": "r5.1",
+     "t": "Conformer: Convolução + Autoatenção",
+     "n": "Local (convolução) + global (atenção) · economia de parâmetros",
+     "x": {
+      "e": "Transformers captam bem as relações globais de conteúdo, e redes convolucionais exploram bem os padrões locais. O Conformer combina convolução e autoatenção para modelar dependências locais e globais do áudio, com economia de parâmetros. Como é um codificador, pode alimentar qualquer uma das três famílias de saída.",
+      "ex": "Em estudo com português brasileiro em domínio técnico, um Conformer adaptado obteve o melhor resultado, com o Whisper como referência de comparação.",
+      "trap": "Dizer que o Conformer substitui a atenção por convolução e capta apenas dependências locais.",
+      "src": "Etapa 03 — 1.2.5, p. 41"
+     }
+    },
+    {
+     "id": "r5.2",
+     "t": "wav2vec 2.0 × Whisper: Dois Modelos, Dois Rótulos",
+     "n": "Autossupervisão (wav2vec) × fraca supervisão em massa (Whisper)",
+     "tabela": {
+      "cab": [
+       "Aspecto",
+       "wav2vec 2.0",
+       "Whisper"
+      ],
+      "linhas": [
+       [
+        "Estratégia",
+        "Aproveitar áudio sem transcrição",
+        "Aproveitar transcrições imperfeitas em massa"
+       ],
+       [
+        "Tipo de aprendizado",
+        "Autossupervisionado, seguido de ajuste fino",
+        "Fracamente supervisionado"
+       ],
+       [
+        "Entrada",
+        "Forma de onda bruta",
+        "Espectrograma log-Mel"
+       ],
+       [
+        "Arquitetura",
+        "Extrator convolucional e codificador Transformer",
+        "Codificador e decodificador Transformer"
+       ],
+       [
+        "Como chega ao texto",
+        "Ajuste fino com fala transcrita, usando CTC",
+        "Decodificador autorregressivo, token a token"
+       ],
+       [
+        "Ponto forte",
+        "Funciona com pouquíssimo dado transcrito",
+        "Robustez e alcance obtidos pela escala dos dados"
+       ],
+       [
+        "Limite",
+        "Precisa de ajuste fino para produzir texto",
+        "Sujeito a alucinação e repetição"
+       ]
+      ]
+     },
+     "x": {
+      "e": "O wav2vec 2.0 aproveita áudio sem transcrição: pré-treina de forma autossupervisionada com áudio não rotulado e depois faz ajuste fino com fala transcrita, usando CTC, para produzir texto. O Whisper aproveita transcrições imperfeitas em massa, com supervisão fraca. Cada um tem ponto forte e limite próprios. A pegadinha típica é trocar os rótulos dos dois.",
+      "ex": "Um reconhecedor de português construído com wav2vec 2.0 precisa de fala transcrita apenas na etapa de ajuste fino.",
+      "trap": "Dizer que a autossupervisão é do Whisper e a supervisão fraca em larga escala é do wav2vec 2.0.",
+      "src": "Etapa 03 — 1.2.6, p. 42"
+     }
+    },
+    {
+     "id": "r5.3",
+     "t": "Detalhes: Mascaramento e Escala de Dados",
+     "n": "wav2vec: 10 min de fala transcrita · Whisper: 680.000 h",
+     "x": {
+      "e": "No pré-treino, o wav2vec 2.0 mascara trechos das representações da fala e aprende a identificar o trecho correto entre alternativas; com isso obteve bons resultados com apenas dez minutos de fala transcrita. O Whisper usou uma arquitetura já conhecida, sem inovações, para que os resultados refletissem o efeito dos dados, e não do modelo. A lição do artigo do Whisper é sobre escala de dados.",
+      "ex": "O Whisper foi treinado com cerca de 680.000 horas de áudio pareado com transcrições da internet.",
+      "trap": "Atribuir ao Whisper uma inovação arquitetural, quando ele usou uma arquitetura já conhecida.",
+      "src": "Etapa 03 — 1.2.6, p. 42"
+     }
+    }
+   ]
+  },
+  {
+   "id": "r6",
+   "cor": "teal",
+   "t": "Vantagens, Limites e Alucinação",
+   "n": "Simplicidade × fome de dados · alucinação em pausas e silêncio",
+   "x": {
+    "e": "O balanço do E2E tem vantagens (simplicidade, otimização conjunta, ausência de léxico feito à mão) e limites (fome de dados, adaptação mais difícil, palavras raras e tempo real nos modelos com atenção). Nos modelos autorregressivos, a alucinação tem uma perversidade: o texto inventado é fluente e costuma surgir em pausas e silêncio.",
+    "ex": "No parlamento, pausas longas, silêncio e microfone aberto sem orador são gatilhos típicos de alucinação.",
+    "trap": "Dizer que, por não haver léxico, basta acrescentar um sobrenome a um arquivo para o modelo E2E aprendê-lo.",
+    "src": "Etapa 03 — 1.2.7, p. 42–43; 1.2.8, p. 43"
+   },
+   "f": [
+    {
+     "id": "r6.1",
+     "t": "Vantagens × Limites",
+     "n": "Um modelo no lugar de vários · fome de dados · alucinação e repetição",
+     "tabela": {
+      "cab": [
+       "Vantagens",
+       "Limites"
+      ],
+      "linhas": [
+       [
+        "Simplicidade: um modelo no lugar de vários componentes",
+        "Fome de dados: a qualidade vem de enormes volumes de treino"
+       ],
+       [
+        "Otimização conjunta: todas as partes aprendem para o mesmo objetivo",
+        "Adaptação mais difícil: não há léxico nem modelo de linguagem avulsos para trocar"
+       ],
+       [
+        "Sem léxico feito à mão: a saída em caracteres ou subpalavras permite compor palavras novas",
+        "Palavras raras: nomes próprios e termos específicos continuam sendo ponto fraco"
+       ],
+       [
+        "Vários idiomas e tarefas em um só modelo, como no Whisper",
+        "Tempo real: os modelos com atenção sobre o trecho inteiro não nasceram para streaming"
+       ],
+       [
+        "Texto mais legível, nos modelos com decodificador autorregressivo",
+        "Alucinação e repetição, nos mesmos modelos"
+       ]
+      ]
+     },
+     "x": {
+      "e": "As vantagens são: um modelo no lugar de vários componentes, otimização conjunta, saída sem léxico feito à mão e vários idiomas em um só modelo. Os limites são: dependência de volumes enormes de treino, adaptação mais difícil, palavras raras, dificuldade com tempo real nos modelos com atenção e alucinação com repetição nos modelos autorregressivos. A tabela cruza os dois lados para mostrar que cada vantagem tem seu custo.",
+      "ex": "Sem léxico para editar, a correção de nomes e termos de um E2E acontece depois da transcrição, como na Câmara.",
+      "trap": "Afirmar que o E2E é mais fácil de adaptar porque concentra tudo em uma única rede.",
+      "src": "Etapa 03 — 1.2.7, p. 42–43; Na prática da Câmara, p. 45"
+     }
+    },
+    {
+     "id": "r6.2",
+     "t": "Alucinação: Mecanismo e Gatilhos",
+     "n": "Texto provável vence sem evidência acústica · gatilho: silêncio e pausas",
+     "x": {
+      "e": "O decodificador autorregressivo escreve cada token com base no áudio, consultado por atenção, e no texto que ele mesmo já produziu. Quando o áudio traz pouca evidência, essa segunda fonte domina e o modelo escreve o que é provável como texto. As duas falhas típicas são o laço de repetição, mais frequente na decodificação gulosa, e o texto sem fala correspondente, transcrito a partir de silêncio, ruído ou música.",
+      "ex": "Um arquivo em silêncio foi transcrito como uma frase de agradecimento, segundo relato da Universidade Cornell.",
+      "trap": "Atribuir a alucinação a ruído no microfone, quando ela decorre do modo de gerar texto e o silêncio e as pausas são os gatilhos.",
+      "src": "Etapa 03 — 1.2.8, p. 43"
+     }
+    },
+    {
+     "id": "r6.3",
+     "t": "Defesas: Nenhuma é Completa",
+     "n": "Feixe · temperatura · VAD · ajuste fino · revisão humana",
+     "tabela": {
+      "cab": [
+       "Defesa",
+       "Como age"
+      ],
+      "linhas": [
+       [
+        "Busca em feixe",
+        "Reduz os laços de repetição em relação à decodificação gulosa"
+       ],
+       [
+        "Recuo de temperatura",
+        "Refaz o trecho quando a saída parece degenerada, medida pela probabilidade média ou pela taxa de compressão do texto"
+       ],
+       [
+        "Detecção de atividade de voz",
+        "Corta os trechos sem fala antes da transcrição"
+       ],
+       [
+        "Ajuste fino voltado ao problema",
+        "Reduziu mais de 80% das alucinações em áudio sem fala, com perda mínima de precisão (Calm-Whisper)"
+       ],
+       [
+        "Revisão humana",
+        "Confere o texto contra o áudio"
+       ]
+      ]
+     },
+     "x": {
+      "e": "As defesas contra a alucinação são: busca em feixe, que reduz os laços de repetição; recuo de temperatura, que refaz trechos degenerados; detecção de atividade de voz, que corta os trechos sem fala antes da transcrição; ajuste fino voltado ao problema; e revisão humana, que confere o texto contra o áudio. Nenhuma defesa automática é completa, e o texto inventado é fluente, por isso passa despercebido.",
+      "ex": "Um trecho sem sentido chama a atenção do revisor; uma frase inventada, bem formada, não.",
+      "trap": "Afirmar que a busca em feixe elimina a alucinação; ela apenas reduz os laços de repetição.",
+      "src": "Etapa 03 — 1.2.8, p. 43–44"
+     }
+    }
+   ]
+  }
+ ],
+ "ligacoes": [
+  {
+   "de": "r1.3",
+   "para": "r2.1",
+   "rotulo": "O alinhamento sem HMM é a questão que a CTC resolve primeiro, ao treinar com sequências não segmentadas."
+  },
+  {
+   "de": "r2.4",
+   "para": "r3.2",
+   "rotulo": "O transdutor mantém o ritmo da CTC, mas a rede de predição quebra a independência condicional das saídas."
+  },
+  {
+   "de": "r2.4",
+   "para": "r4.1",
+   "rotulo": "O Listen, Attend and Spell produz o texto sem supor independência entre os caracteres, avanço sobre a CTC."
+  },
+  {
+   "de": "r5.2",
+   "para": "r2.4",
+   "rotulo": "O wav2vec 2.0 usa CTC na etapa de ajuste fino para produzir texto a partir de fala transcrita."
+  },
+  {
+   "de": "r5.2",
+   "para": "r4.2",
+   "rotulo": "O Whisper, com decodificador autorregressivo token a token, é o caso típico da família com atenção."
+  },
+  {
+   "de": "r5.1",
+   "para": "r4.1",
+   "rotulo": "O Conformer é um codificador: pode alimentar qualquer família de saída, inclusive a com atenção."
+  },
+  {
+   "de": "r4.3",
+   "para": "r6.2",
+   "rotulo": "A liberdade da atenção, que não obriga o texto a acompanhar o áudio, é a porta de entrada da alucinação."
+  },
+  {
+   "de": "r3.3",
+   "para": "r6.1",
+   "rotulo": "O transdutor é a família de streaming; os modelos com atenção sobre o trecho inteiro são o limite de tempo real."
+  },
+  {
+   "de": "r6.3",
+   "para": "r6.2",
+   "rotulo": "As defesas respondem diretamente aos gatilhos e ao mecanismo descritos na alucinação."
+  }
+ ]
+}
