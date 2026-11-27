@@ -112,28 +112,29 @@ function CartaoAtrasadas({ grupo, busy, onConfirmar, onCancelar, onDesfazer }) {
   );
 }
 
-/** Distância do topo até o fim da barra de navegação visível, para o painel não cobrir as abas. */
-function useAbaixoDaNavegacao() {
+
+/** Borda de baixo da navegação principal (que fica fixa no topo), para o painel nunca cobrir as abas. */
+function useTopoLivre() {
   const [top, setTop] = React.useState(8);
   React.useEffect(() => {
+    let frame = 0;
     const medir = () => {
-      const nav = document.querySelector('.qb-mainnav');
-      const fim = nav ? nav.getBoundingClientRect().bottom : 0;
-      setTop(Math.round(Math.min(Math.max(8, fim + 8), window.innerHeight * 0.4)));
+      frame = 0;
+      const nav = document.querySelector('nav[aria-label="Navegação principal"]');
+      const base = nav ? Math.ceil(nav.getBoundingClientRect().bottom) : 0;
+      setTop(Math.min(Math.max(8, base + 8), Math.round(window.innerHeight * 0.4)));
     };
+    const agendar = () => { if (!frame) frame = window.requestAnimationFrame(medir); };
     medir();
-    window.addEventListener('scroll', medir, { passive: true });
-    window.addEventListener('resize', medir);
-    const nav = document.querySelector('.qb-mainnav');
-    const ro = typeof ResizeObserver === 'undefined' || !nav ? null : new ResizeObserver(medir);
-    ro?.observe(nav);
-    return () => { window.removeEventListener('scroll', medir); window.removeEventListener('resize', medir); ro?.disconnect(); };
+    window.addEventListener('resize', agendar);
+    window.addEventListener('scroll', agendar, { passive: true });
+    return () => { window.removeEventListener('resize', agendar); window.removeEventListener('scroll', agendar); if (frame) window.cancelAnimationFrame(frame); };
   }, []);
   return top;
 }
 
 function Painel({ onClose }) {
-  const topo = useAbaixoDaNavegacao();
+  const top = useTopoLivre();
   const { records, QB_DATA, QB_PLAN, QB_EDITAL, accountId, save } = useRealStudy();
   const ask = useServerFn(askNavegadorPlanner);
   const [msgs, setMsgs] = React.useState(() => lerHistorico(accountId));
@@ -238,7 +239,7 @@ function Painel({ onClose }) {
 
   return (
     <div role="dialog" aria-label="O Navegador — planejamento em conversa" data-qb-navegador-planner className="qb-panel qb-panel--ornate"
-      style={{ position: 'fixed', top: topo, left: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+      style={{ position: 'fixed', top, left: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 12, borderBottom: '1px solid var(--divider)' }}>
         <Icon name="compass" size={24} color="var(--qb-gold)" />
         <div style={{ flex: 1, minWidth: 0 }}>
