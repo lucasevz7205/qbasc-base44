@@ -75,3 +75,25 @@ test('o prompt carrega regras de amostra e proibições, e só os dados fornecid
   assert.match(t, /8 respostas/);
   assert.match(t, /"hoje":"2026-11-27"/);
 });
+
+import { atrasadasParaConfirmar, pedidoDeAtrasadas, registroConcluida } from '../src/lib/navegador-planner.js';
+
+test('metas atrasadas: lista só as do estudante, ignora automáticas e arquivadas', () => {
+  const tasks = [
+    { id: 'a', status: 'late', auto: false, date: '2026-11-20', title: 'A', raw: {} },
+    { id: 'b', status: 'late', auto: true, date: '2026-11-21', title: 'B', raw: {} },
+    { id: 'c', status: 'late', auto: false, date: '2026-11-19', title: 'C', raw: { arquivadaEm: 'x' } },
+    { id: 'd', status: 'pending', auto: false, date: '2026-12-01', title: 'D', raw: {} },
+  ];
+  const r = atrasadasParaConfirmar(tasks);
+  assert.deepEqual(r.itens.map(i => i.id), ['a']);
+  assert.equal(r.automaticasIgnoradas, 1);
+});
+
+test('pedido de retirar atrasadas é reconhecido e a conclusão preserva o registro', () => {
+  assert.equal(pedidoDeAtrasadas('retire as metas atrasadas, porque elas ja foram cumpridas'), true);
+  assert.equal(pedidoDeAtrasadas('o que está atrasado?'), false);
+  const rec = registroConcluida({ raw: { titulo: 'T', status: 'planejada' } }, '2026-11-27T10:00:00Z');
+  assert.equal(rec.titulo, 'T');
+  assert.equal(rec.status, 'concluida');
+});

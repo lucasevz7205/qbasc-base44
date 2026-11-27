@@ -10,6 +10,7 @@ import { GAN_MAP_EXERCISE_PREFIX, ganMapExercisePassages } from "@/lib/gan-groun
 import { CEBRASPE_METHODOLOGY_RULES, normalizeGanConfrontation } from "@/lib/mindmap-gan";
 import { parseEditorialSuggestion } from "@/lib/editorial-overrides";
 import { parseCornellGemini } from "@/lib/cornell-gemini";
+import { invokeGeminiTutor, DEFAULT_TUTOR_GEMINI_MODEL } from "@/lib/gemini-tutor";
 import { plannerPrompt, lerRespostaPlanner, PLANNER_SCHEMA } from "@/lib/navegador-planner";
 import { CORNELL_ASSESSMENT_SCHEMA, cornellAssessmentPrompt, normalizeCornellAssessment, notebookBody, notebookNotes } from "@/lib/cornell-assessment";
 import { CEBRASPE_V1_TUTOR_RULES, CEBRASPE_V1_GENERATION_RULES } from "@/lib/cebraspe-v1-taxonomy";
@@ -175,11 +176,11 @@ export const askNavegadorPlanner = createServerFn({ method: "POST" })
   .validator(PlannerInputSchema)
   .handler(async ({ data, context }) => {
     if (context.user?.role !== "admin") throw new Error("O assistente de planejamento ainda não está liberado para esta conta.");
-    const result = await invokeArchitectGemini({
-      apiKey: architectKey(), models: architectModels(), task: "navegador-planner",
+    // Mesmo modelo dos demais recursos do Arquiteto que funcionam com esta chave (QB_GEMINI_MODEL ou o padrão). Sem fallback Base44.
+    const result = await invokeGeminiTutor({
+      apiKey: architectKey(), model: secrets.get("QB_GEMINI_MODEL")?.trim() || DEFAULT_TUTOR_GEMINI_MODEL,
       prompt: plannerPrompt({ resumo: data.resumo, history: data.history, userMessage: data.userMessage }),
       responseJsonSchema: PLANNER_SCHEMA, maxOutputTokens: 2500, timeoutMs: 60000,
-      userMessage: data.userMessage, historyLength: (data.history || []).length,
     });
     return { ...lerRespostaPlanner(result.reply), provider: "gemini" };
   });
