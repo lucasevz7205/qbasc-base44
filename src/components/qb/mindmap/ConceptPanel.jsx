@@ -3,6 +3,7 @@ import { Icon } from '@/components/qb/core/Icon';
 import { IconButton } from '@/components/qb/core/IconButton';
 import { Badge } from '@/components/qb/core/Badge';
 import { Button } from '@/components/qb/core/Button';
+import { describePending } from '@/lib/mind-map-pending';
 
 const H = ({ children }) => (
   <h3 className="qb-overline" style={{ color: 'var(--qb-gold)' }}>
@@ -224,6 +225,9 @@ export default function ConceptPanel({
                 </div>
               ))}
             </div>
+            {performance.remaining > 0 && (
+              <small style={{ color: 'var(--text-secondary)', font: '500 12px/1.4 var(--font-mono)' }}>{describePending(performance)}</small>
+            )}
             <small style={{ color: 'var(--text-muted)' }}>Questões em branco ficam fora do cálculo. Em flashcards, Bom e Fácil contam como acerto.</small>
           </section>
         )}

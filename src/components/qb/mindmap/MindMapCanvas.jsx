@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { IconButton } from '@/components/qb/core/IconButton';
+import { describePending } from '@/lib/mind-map-pending';
 
 const MASTERY = {
   correct: ['circle-check', 'var(--state-correct)', 'Domínio demonstrado'],
@@ -10,19 +11,14 @@ const MASTERY = {
   progress: ['loader-circle', 'var(--state-progress)', 'Em estudo'],
 };
 
+// Selo compacto: o detalhe da cota fica no title e no painel do conceito, não no nó.
 function NodeRates({ performance }) {
   if (!performance) return null;
   if (performance.remaining) {
-    const { remaining, requiredQuestions, requiredFlashcards } = performance;
-    const missing = [
-      requiredQuestions && (requiredQuestions === 1 ? '1 questão' : requiredQuestions + ' questões'),
-      requiredFlashcards && (requiredFlashcards === 1 ? '1 flashcard' : requiredFlashcards + ' flashcards'),
-    ].filter(Boolean);
-    const flexible = Math.max(0, remaining - requiredQuestions - requiredFlashcards);
-    if (flexible) missing.push(flexible === 1 ? '1 questão ou flashcard' : flexible + ' entre questões e flashcards');
+    const full = describePending(performance);
     return (
-      <span style={{ font: '600 11px/1.3 var(--font-mono)', color: 'var(--state-progress)', whiteSpace: 'normal' }}>
-        Para avaliar: {missing.join(' + ')}
+      <span className="qb-mm__badge" title={full} aria-label={full}>
+        faltam {performance.remaining}
       </span>
     );
   }
@@ -30,10 +26,12 @@ function NodeRates({ performance }) {
   const shown = entries.filter(([, , value]) => value.rate !== null);
   if (!shown.length) return null;
   return (
-    <span style={{ display: 'flex', flexWrap: 'wrap', gap: 6, font: '600 11px/1.2 var(--font-mono)' }}>
+    <span className="qb-mm__rates">
       {shown.map(([short, label, stats]) => (
-        <span key={short} title={label + ' · ' + stats.correct + '/' + stats.total} aria-label={label + ': ' + Math.round(stats.rate) + '%'}
-          style={{ color: MASTERY[stats.status][1], whiteSpace: 'nowrap' }}>{short} {Math.round(stats.rate)}%</span>
+        <span key={short} className="qb-mm__badge qb-mm__badge--rate" title={label + ' · ' + stats.correct + '/' + stats.total}
+          aria-label={label + ': ' + Math.round(stats.rate) + '%'} style={{ color: MASTERY[stats.status][1] }}>
+          {short} {Math.round(stats.rate)}%
+        </span>
       ))}
     </span>
   );
@@ -92,7 +90,7 @@ function layout(tree, expanded, zoomSpread = 1) {
     if (depth === 0) return 0;
     const base = BASE_RADII[Math.min(depth, 4)] + Math.max(0, depth - 4) * 300;
     const count = depthCounts[depth] || 1;
-    const minByCircumference = (count * 210) / (2 * Math.PI);
+    const minByCircumference = (count * 190) / (2 * Math.PI);
     return Math.max(base, minByCircumference) * zoomSpread;
   };
 
@@ -544,14 +542,15 @@ export default function MindMapCanvas({
             <button
               key={n.id}
               className={cls}
+              title={n.label}
               aria-selected={n.id === selectedId}
               aria-expanded={tree.kids[n.id].length ? expanded.has(n.id) : undefined}
               style={{
                 left: p.x,
                 top: p.y,
                 width: 'max-content',
-                maxWidth: p.depth === 0 ? 240 : 210,
-                padding: p.depth === 0 ? '14px 22px' : '10px 16px',
+                maxWidth: p.depth === 0 ? 220 : 176,
+                padding: p.depth === 0 ? '12px 18px' : '8px 12px',
               }}
               onClick={() => click(n)}
             >
