@@ -165,7 +165,7 @@ function Painel({ onClose }) {
 
   return (
     <div role="dialog" aria-label="O Navegador — planejamento em conversa" data-qb-navegador-planner className="qb-panel qb-panel--ornate"
-      style={{ position: 'fixed', top: 8, right: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+      style={{ position: 'fixed', top: 8, left: 8, bottom: 8, zIndex: 70, width: 'min(440px, calc(100% - 16px))', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 12, borderBottom: '1px solid var(--divider)' }}>
         <Icon name="compass" size={24} color="var(--qb-gold)" />
         <div style={{ flex: 1, minWidth: 0 }}>
