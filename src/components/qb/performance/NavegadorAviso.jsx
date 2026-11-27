@@ -2,12 +2,38 @@ import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { Button } from '@/components/qb/core/Button';
 import { useRealStudy } from '@/lib/qb-real-data';
-import { NavegadorRelatorio, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
+import { NavCartaoAcao } from '@/components/qb/navegador';
+import { NavResumoNumeros, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
 import { lerVistos, marcarVisto, useNavegadorRelatorios } from '@/components/qb/performance/useNavegadorRelatorios';
 
 // Um relatório só aparece ao abrir o app enquanto é recente: 6 dias para o semanal, 31 para o mensal.
 const DIAS = { semanal: 6, mensal: 31 };
 const days = (a, b) => Math.round((Date.parse(a + 'T12:00:00Z') - Date.parse(b + 'T12:00:00Z')) / 86400000);
+
+/** Janela do relatório: medidor, três números e as duas ações mais urgentes. */
+export function NavegadorAvisoConteudo({ relatorio, titles, onClose, onOpen, closeRef }) {
+  const prioridades = prioridadesDe(relatorio.topicos, 2);
+  return <>
+    <div className="nv-aviso__cab">
+      <span className="nv-emblema" aria-hidden="true" style={{ width: 44, height: 44 }}><Icon name="compass" size={22} /></span>
+      <div style={{ display: 'grid', gap: 4, minWidth: 0 }}>
+        <span className="nv-selo-marca" style={{ fontSize: 12 }}>Navegador</span>
+        <h2 id="qb-navegador-aviso" className="nv-title" style={{ fontSize: 21 }}>{tituloRelatorio(relatorio)}</h2>
+      </div>
+    </div>
+    <NavResumoNumeros stats={relatorio.geral} placar={relatorio.placar} comparacao={relatorio.comparacao} compacto />
+    <section className="nv-stack" aria-label="Faça agora">
+      <h3 className="nv-title nv-title--sm">{prioridades.length ? 'Faça agora' : 'Nada urgente'}</h3>
+      {prioridades.length
+        ? <div className="nv-acoes">{prioridades.map(t => <NavCartaoAcao key={t.topico} stats={t} titulo={titles.get(t.topico) || t.topico} />)}</div>
+        : <p className="nv-note">Nenhum assunto com ponto fraco ou erro com certeza neste período.</p>}
+    </section>
+    <div className="nv-aviso__botoes">
+      <button ref={closeRef} type="button" className="qb-btn qb-btn--secondary" onClick={onClose}>Fechar</button>
+      <Button variant="primary" icon="compass" onClick={onOpen}>Ver análise completa</Button>
+    </div>
+  </>;
+}
 
 /** Apresenta o relatório salvo do Navegador na abertura do app. Fechar apenas marca como visto neste navegador. */
 export function NavegadorAviso({ go }) {
@@ -32,22 +58,11 @@ export function NavegadorAviso({ go }) {
   }, [pendente, close]);
   if (!pendente) return null;
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-      <div onClick={close} aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(8,10,15,.65)' }} />
-      <div role="dialog" aria-modal="true" aria-labelledby="qb-navegador-aviso" className="qb-panel qb-panel--ornate"
-        style={{ position: 'relative', width: 'min(760px,100%)', maxHeight: 'calc(100vh - 32px)', overflowY: 'auto', padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-          <span style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--qb-gold)', color: 'var(--qb-gold-bright)' }}><Icon name="compass" size={18} /></span>
-          <div style={{ display: 'grid', gap: 4 }}>
-            <span className="qb-overline">Navegador</span>
-            <h2 id="qb-navegador-aviso" style={{ font: '400 22px/1.25 var(--font-heading)', color: 'var(--text-primary)', margin: 0 }}>{tituloRelatorio(pendente)}</h2>
-          </div>
-        </div>
-        <NavegadorRelatorio relatorio={pendente} titles={titles} compacto />
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, flexWrap: 'wrap' }}>
-          <button ref={closeRef} type="button" className="qb-btn qb-btn--secondary" onClick={close}>Fechar</button>
-          <Button variant="primary" icon="compass" onClick={() => { close(); go && go('performance', 'navegador'); }}>Ver análise completa</Button>
-        </div>
+    <div className="nv" style={{ position: 'fixed', inset: 0, zIndex: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+      <div onClick={close} aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(8,10,15,.7)' }} />
+      <div role="dialog" aria-modal="true" aria-labelledby="qb-navegador-aviso" className="qb-panel qb-panel--ornate nv-aviso">
+        <NavegadorAvisoConteudo relatorio={pendente} titles={titles} closeRef={closeRef} onClose={close}
+          onOpen={() => { close(); go && go('performance', 'navegador'); }} />
       </div>
     </div>
   );
