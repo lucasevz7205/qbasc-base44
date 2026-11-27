@@ -136,6 +136,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
       <PageHeader
+        emblema="target"
         overline="Treinar · questões CEBRASPE (Certo/Errado)"
         title="Treinar"
         description="Escolha uma matéria e um assunto para treinar."
@@ -221,7 +222,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
           <details className="qb-panel qb-train-fold">
             <summary>Pendências do planejamento <small>{late.length} atrasadas</small></summary>
             <div className="qb-train-fold__body">
-            <span style={{ font: '600 32px/1 var(--font-body)', color: 'var(--text-primary)' }}>{late.length}</span>
+            <span className="nv-numero__valor">{late.length}</span>
             <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
               atividades atrasadas no planejamento ({late.filter(t => t.auto).length} revisões automáticas).
             </span>

@@ -239,3 +239,17 @@ button.nv-pill:focus-visible, .nv-btnlink:focus-visible { outline: none; box-sha
 }
 @media (max-width: 480px) { .nv-tabs .qb-tab > svg { display: none !important; } .nv-tabs .qb-tab { padding: 0 8px; } }
 .nv-medidor .nv-veredito { margin-top: 6px; }
+
+/* Cartão de número compartilhado (StatCard): mesma linguagem do NavNumero */
+.nv-stat { --nv-tone: var(--text-muted); display: grid; gap: 6px; align-content: start; min-width: 0; padding: 14px 16px; border-radius: 14px; border: var(--border-hairline); background: var(--surface-sunken);
+  color: var(--text-primary); text-align: left; font: inherit; box-sizing: border-box; }
+.nv-stat--tom { border-left: 3px solid var(--nv-tone); }
+.nv-stat--compacto { padding: 10px 12px; gap: 4px; }
+.nv-stat--ação { cursor: pointer; transition: border-color var(--dur-base) var(--ease-standard), background-color var(--dur-base) var(--ease-standard); }
+.nv-stat--ação:hover { background: var(--surface-hover); border-color: rgba(208, 179, 134, .6); }
+.nv-stat--ação:focus-visible { outline: none; box-shadow: var(--ring-focus); }
+.nv-stat__rotulo { display: flex; align-items: center; gap: 6px; }
+.nv-stat__valor { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font: 500 34px/1 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.nv-stat--compacto .nv-stat__valor { font-size: 24px; }
+.nv-stat__estado { display: inline-flex; align-self: center; color: var(--nv-tone); }
+.nv-stat .nv-numero__legenda { overflow-wrap: anywhere; }

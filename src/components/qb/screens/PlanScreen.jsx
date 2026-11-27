@@ -141,7 +141,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-      <PageHeader overline="Planejamento de estudos" title="Planejamento" description="Tarefas do dia, calendário da semana e sequência do ciclo de matérias."
+      <PageHeader emblema="calendar-days" overline="Planejamento de estudos" title="Planejamento" description="Tarefas do dia, calendário da semana e sequência do ciclo de matérias."
         actions={<div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           <Tabs label="Visualização do planejamento" value={tab} onChange={setTab} items={[{ id: 'hoje', label: 'Hoje', icon: 'calendar' }, { id: 'semana', label: 'Semana', icon: 'calendar-days' }, { id: 'ciclos', label: 'Ciclos', icon: 'repeat' }]} />
           <Button variant="secondary" icon="pencil" disabled={saving} aria-expanded={!!editor} aria-controls={editor ? 'qb-plan-editor' : undefined} onClick={() => editor ? closeEditor() : openEditor(tab === 'semana' ? 'weekly' : tab === 'ciclos' ? 'cycle' : P.mode)}>Editar cronograma</Button>
@@ -179,7 +179,7 @@ export default function PlanScreen({ tab = 'hoje', setTab, go, openArchitect, to
       <Panel padding={16} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))', gap: 16, alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <span className="qb-overline" style={{ color: 'var(--qb-gold)' }}>Panorama de {dl(P.today)}</span>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 8 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,132px),1fr))', gap: 8 }}>
             <StatCard compact label="Respostas C/E" value={td.valid} detail={td.blank + ' em branco à parte'} />
             <StatCard compact label="Taxa de acertos" tone="correct" value={M.pct(td.accuracy)} detail={td.correct + '/' + td.valid} />
             <StatCard compact label="Tarefas" value={tDone + '/' + todayTasks.length} detail={P.mode === 'cycle' ? 'do cronograma semanal' : 'concluídas hoje'} />
