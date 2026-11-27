@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '@/components/qb/navigation/PageHeader';
-import { ProgressBar } from '@/components/qb/core/ProgressBar';
 import { Panel } from '@/components/qb/core/Panel';
+import { StatCard } from '@/components/qb/data/StatCard';
 import { Button } from '@/components/qb/core/Button';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { QuestionFilters } from '@/components/qb/questions/QuestionFilters';
@@ -83,7 +83,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const openAndScroll = ref => {
     const target = ref.current;
     if (!target) return;
-    if (target.tagName === 'DETAILS') target.open = true;
+    for (let el = target; el; el = el.parentElement) if (el.tagName === 'DETAILS') el.open = true;
     target.scrollIntoView({ block: 'start' });
   };
   const selectTopic = (subjectId, topicId) => {
@@ -120,7 +120,7 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
   const linkInfo = (subjectId, topicId, action) => {
     if (action === 'errors') {
       const count = errorTrainingPool(QB_DATA.questionBank, { subjectId, topicId }).length;
-      return { available: count > 0, note: count ? `${Math.min(count, ERROR_TRAINING_LIMIT)} de ${count} questões com erro` : 'Nenhum erro registrado neste assunto' };
+      return { available: count > 0, note: count ? `${Math.min(count, ERROR_TRAINING_LIMIT)} de ${count} com erro` : 'Sem erros' };
     }
     if (action === 'review' && topicId === topic?.id && (reviews.questions.due || reviews.flashcards.due)) {
       return { available: true, note: reviews.questions.due + ' questões · ' + reviews.flashcards.due + ' flashcards a revisar' };
@@ -129,61 +129,30 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
     return {
       available: r.ok,
       nodeId: r.nodeId,
-      note: r.ok ? r.note : 'Sem vínculo na base atual',
+      note: r.ok ? r.note : 'Indisponível',
     };
   };
 
+  const dueTotal = reviews.questions.ids.length + reviews.flashcards.ids.length;
+  const weakTop = weak.slice(0, 3);
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-      <PageHeader
-        emblema="target"
-        overline="Treinar · questões CEBRASPE (Certo/Errado)"
-        title="Treinar"
-        description="Escolha uma matéria e um assunto para treinar."
-      />
-      <details ref={reviewRef} id="qb-scheduled-review" className="qb-panel qb-train-fold">
-        <summary>Revisão espaçada <small>{reviews.questions.ids.length + reviews.flashcards.ids.length} disponíveis · {scopeLabel}</small></summary>
-        <div className="qb-train-fold__body">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 245px), 1fr))', gap: 12 }}>
-            {[
-              ['Questões', 'target', reviews.questions, () => go('questions', { filter: 'all', questionIds: reviews.questions.ids, scheduledReview: true })],
-              ['Flashcards', 'layers', reviews.flashcards, () => go('flashcards', { topicId: topic?.id, cardIds: reviews.flashcards.ids, scheduledReview: true })],
-            ].map(([label, icon, queue, start]) => (
-              <Panel key={label} variant="sunken" padding={12} style={{ display: 'grid', gap: 8 }}>
-                <strong style={{ font: 'var(--type-label)' }}>{label} · {queue.ids.length} para revisar</strong>
-                {queue.postponed > 0 && <small style={{ color: 'var(--text-muted)' }}>{queue.postponed} aguardando vaga no limite diário</small>}
-                <Button size="sm" variant="secondary" icon={icon} disabled={!queue.ids.length} onClick={start}>Revisar {label.toLowerCase()}</Button>
-              </Panel>
-            ))}
-          </div>
-        </div>
-      </details>
-      <details className="qb-panel qb-train-fold">
-        <summary>Treino de erros <small>{errorTopicId ? `${Math.min(errorPool.length, ERROR_TRAINING_LIMIT)} de ${errorPool.length} com erro` : 'Caderno de erros · até 20 questões'}</small></summary>
-        <div className="qb-train-fold__body">
-        <p style={{ font: 'var(--type-caption)', color: 'var(--text-muted)', margin: 0 }}>Escolha matéria e assunto para refazer até 20 questões já erradas. A revisão espaçada permanece independente.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
-          <SelectField label="Matéria" value={errorSubjectId} options={[{ value: '', label: 'Selecione uma matéria' }, ...availableErrorSubjects.map(s => ({ value: s.id, label: s.name }))]}
-            onChange={value => { setErrorSubjectId(value); setErrorTopicId(''); }} />
-          <SelectField label="Assunto" value={errorTopicId} options={[{ value: '', label: 'Selecione um assunto' }, ...availableErrorTopics.map(t => ({ value: t.id, label: [t.num, t.title].filter(Boolean).join(' · ') || t.id }))]}
-            onChange={setErrorTopicId} />
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'space-between' }}>
-          <span style={{ font: 'var(--type-caption)', color: 'var(--text-secondary)' }} aria-live="polite">
-            {errorTopicId ? `${Math.min(errorPool.length, ERROR_TRAINING_LIMIT)} de ${errorPool.length} questões com erro nesta rodada` : 'Escolha um assunto para consultar a disponibilidade'}
-          </span>
-          <Button icon="rotate-ccw" disabled={!errorSubjectId || !errorTopicId || !errorPool.length} onClick={() => startErrorTraining()}>
-            Iniciar treino de erros
-          </Button>
-        </div>
-        </div>
-      </details>
-      <details className="qb-panel qb-train-fold">
-        <summary>Filtros da rodada</summary>
-        <div className="qb-train-fold__body"><QuestionFilters value={filter} onChange={setFilter} /></div>
-      </details>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' }}>
-        <div ref={radialRef} className="qb-panel qb-panel--ornate" style={{ flex: '1 1 600px', minWidth: 0, padding: 'clamp(12px, 3vw, 24px)', scrollMarginTop: 100 }}>
+    <div className="qb-train">
+      <PageHeader emblema="target" overline="CEBRASPE · Certo/Errado" title="Treinar" />
+
+      <section className="qb-train__stats" aria-label={'Resumo · ' + scopeLabel}>
+        <StatCard icon="calendar-days" label="A revisar" value={dueTotal} unit={dueTotal === 1 ? 'item' : 'itens'}
+          detail={reviews.questions.ids.length + ' questões · ' + reviews.flashcards.ids.length + ' flashcards'} />
+        <StatCard icon="target" label="Acertos" value={accuracy === null ? '—' : Math.round(100 * accuracy)} unit={accuracy === null ? undefined : '%'}
+          detail={accuracy === null ? 'Sem respostas válidas' : correct + ' de ' + stats.valid + ' válidas'} />
+        <StatCard icon="list-checks" label="Concluídas" value={stats.completed} unit={'de ' + stats.total} detail={scopeLabel} />
+        <StatCard icon="calendar-clock" label="Atrasadas" value={late.length} tone={late.length ? 'incorrect' : undefined}
+          detail={late.length ? late.filter(t => t.auto).length + ' revisões automáticas' : 'Nada atrasado'}
+          onClick={() => go('plan', 'hoje')} />
+      </section>
+
+      <div className="qb-train__main">
+        <div ref={radialRef} className="qb-panel qb-panel--ornate qb-train__radial">
           <TrainingRadial
             subjects={E.subjects}
             value={sel}
@@ -199,118 +168,95 @@ export default function TrainScreen({ go, openArchitect, dispatch: dispatchProp,
             }}
           />
         </div>
-        <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <details className="qb-panel qb-train-fold">
-            <summary>Progresso das questões <small>{scopeLabel}</small></summary>
-            <div className="qb-train-fold__body">
-            <ProgressBar tone="gold" size="lg" label="Questões concluídas"
-              value={stats.total ? stats.completed / stats.total : 0}
-              valueText={`${stats.completed} de ${stats.total}`} />
-            <ProgressBar tone="correct" size="lg" label="Taxa de acertos"
-              trackTone={accuracy === null ? undefined : 'incorrect'}
-              value={accuracy ?? 0}
-              valueText={accuracy === null ? 'Sem respostas válidas' : `${Math.round(100 * accuracy)}%`} />
-            {stats.valid > 0 && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px', font: 'var(--type-caption)' }}>
-                <span style={{ color: 'var(--state-correct)' }}>{correct} {correct === 1 ? 'acerto' : 'acertos'}</span>
-                <span style={{ color: 'var(--state-incorrect)' }}>{stats.errors} {stats.errors === 1 ? 'erro' : 'erros'}</span>
-                <span style={{ color: 'var(--text-muted)' }}>{stats.valid} respostas válidas</span>
+
+        <aside className="qb-train__side">
+          <Panel ref={reviewRef} id="qb-scheduled-review" className="qb-train__card">
+            <h2 className="nv-title qb-train__h">Revisão espaçada</h2>
+            {[
+              ['Questões', 'target', reviews.questions, () => go('questions', { filter: 'all', questionIds: reviews.questions.ids, scheduledReview: true })],
+              ['Flashcards', 'layers', reviews.flashcards, () => go('flashcards', { topicId: topic?.id, cardIds: reviews.flashcards.ids, scheduledReview: true })],
+            ].map(([label, icon, queue, start]) => (
+              <div key={label} className="qb-train__row">
+                <span className="qb-train__rowtext">
+                  <span className="qb-train__num">{queue.ids.length}</span>
+                  <span>{label}</span>
+                  {queue.postponed > 0 && <small>{queue.postponed} no limite diário</small>}
+                </span>
+                <Button size="sm" variant="secondary" icon={icon} disabled={!queue.ids.length} onClick={start}>Revisar</Button>
               </div>
-            )}
+            ))}
+          </Panel>
+
+          <Panel className="qb-train__card">
+            <h2 className="nv-title qb-train__h">Treino de erros</h2>
+            <div className="qb-train__fields">
+              <SelectField label="Matéria" value={errorSubjectId} options={[{ value: '', label: 'Selecione' }, ...availableErrorSubjects.map(s => ({ value: s.id, label: s.name }))]}
+                onChange={value => { setErrorSubjectId(value); setErrorTopicId(''); }} />
+              <SelectField label="Assunto" value={errorTopicId} options={[{ value: '', label: 'Selecione' }, ...availableErrorTopics.map(t => ({ value: t.id, label: [t.num, t.title].filter(Boolean).join(' · ') || t.id }))]}
+                onChange={setErrorTopicId} />
             </div>
-          </details>
-          <details className="qb-panel qb-train-fold">
-            <summary>Pendências do planejamento <small>{late.length} atrasadas</small></summary>
-            <div className="qb-train-fold__body">
-            <span className="nv-numero__valor">{late.length}</span>
-            <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
-              atividades atrasadas no planejamento ({late.filter(t => t.auto).length} revisões automáticas).
-            </span>
-            <Button variant="secondary" icon="calendar-days" onClick={() => go('plan', 'hoje')}>
-              Ver no planejamento
-            </Button>
+            <div className="qb-train__row">
+              <span className="qb-train__rowtext" aria-live="polite">
+                <span className="qb-train__num">{errorTopicId ? Math.min(errorPool.length, ERROR_TRAINING_LIMIT) : '—'}</span>
+                <span>{errorTopicId ? 'de ' + errorPool.length + ' com erro' : 'Escolha um assunto'}</span>
+              </span>
+              <Button size="sm" icon="rotate-ccw" disabled={!errorSubjectId || !errorTopicId || !errorPool.length} onClick={() => startErrorTraining()}>Treinar</Button>
             </div>
+          </Panel>
+
+          {weakTop.length > 0 && (
+            <Panel className="qb-train__card">
+              <h2 className="nv-title qb-train__h">Para reforçar</h2>
+              <ul className="qb-train__list">
+                {weakTop.map(({ s, t, acc }) => (
+                  <li key={s.id + t.id}>
+                    <button type="button" className="qb-train__link" onClick={() => selectTopic(s.id, t.id)}>
+                      <span className="qb-train__linktext">{s.short || s.name} {t.num}{t.title ? ' · ' + t.title : ''}</span>
+                      <span className="qb-train__num">{Math.round(acc)}%</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </Panel>
+          )}
+        </aside>
+      </div>
+
+      <details className="qb-panel qb-train-fold">
+        <summary>Mais ferramentas</summary>
+        <div className="qb-train-fold__body">
+          <details className="qb-train-fold qb-train-fold--nested">
+            <summary>Filtros da rodada</summary>
+            <div className="qb-train-fold__body"><QuestionFilters value={filter} onChange={setFilter} /></div>
           </details>
-          <details className="qb-panel qb-train-fold">
-            <summary>Armadilhas da banca</summary>
-            <div className="qb-train-fold__body">
-            <span style={{ font: '400 14px/1.5 var(--font-body)', color: 'var(--text-secondary)' }}>
-              Treine padrões frequentes de pegadinha com O Arquiteto no modo Banca CEBRASPE.
-            </span>
-            <Button
-              variant="secondary"
-              icon="astrolabe"
-              onClick={() => openArchitect && openArchitect({ subjectId: subject?.id || 'dc', topicId: topic?.id, origin: 'Treinar · armadilhas' })}
-            >
-              Abrir O Arquiteto
-            </Button>
-            <Button variant="secondary" onClick={() => openAndScroll(labRef)}>Explorar os 14 mecanismos</Button>
-            </div>
-          </details>
-          <details className="qb-panel qb-train-fold">
+          <details className="qb-train-fold qb-train-fold--nested">
             <summary>
               Caderno de erros{' '}
-              <small>
-                {errorNotebook.totalQuestions
-                  ? `${errorNotebook.totalQuestions} ${errorNotebook.totalQuestions === 1 ? 'questão' : 'questões'} · ${errorNotebook.totalErrors} ${errorNotebook.totalErrors === 1 ? 'erro' : 'erros'}`
-                  : 'Sem erros registrados'}
-              </small>
+              <small>{errorNotebook.totalQuestions ? errorNotebook.totalQuestions + ' questões · ' + errorNotebook.totalErrors + ' erros' : 'Vazio'}</small>
             </summary>
+            <div className="qb-train-fold__body"><ErrorNotebook notebook={errorNotebook} go={go} /></div>
+          </details>
+          <details className="qb-train-fold qb-train-fold--nested">
+            <summary>Armadilhas da banca</summary>
             <div className="qb-train-fold__body">
-              <ErrorNotebook notebook={errorNotebook} go={go} />
+              <Button size="sm" variant="secondary" icon="astrolabe"
+                onClick={() => openArchitect && openArchitect({ subjectId: subject?.id || 'dc', topicId: topic?.id, origin: 'Treinar · armadilhas' })}>
+                Abrir O Arquiteto
+              </Button>
             </div>
           </details>
-        </div>
-      </div>
-      <details className="qb-panel qb-train-fold">
-        <summary>Matérias e assuntos <small>{E.subjects.length} matérias</small></summary>
-        <div className="qb-train-fold__body">
-          {E.subjects.map(matter => (
-            <details key={matter.id} className="qb-train-fold qb-train-fold--nested">
-              <summary>{matter.name} <small>{matter.topics.length} assuntos</small></summary>
-              <div className="qb-train-fold__body">
-                {matter.topics.map(item => (
-                  <details key={item.id} className="qb-train-fold qb-train-fold--nested">
-                    <summary>{[item.num, item.title].filter(Boolean).join(' · ') || item.id}</summary>
-                    <div className="qb-train-fold__body">
-                      <Button size="sm" variant="secondary" icon="locate-fixed" onClick={() => selectTopic(matter.id, item.id)}>Ver ações do assunto</Button>
-                    </div>
-                  </details>
-                ))}
-              </div>
+          <details ref={labRef} className="qb-train-fold qb-train-fold--nested">
+            <summary>Laboratório de mecanismos</summary>
+            <div className="qb-train-fold__body"><PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
+          </details>
+          {isAdmin && (
+            <details className="qb-train-fold qb-train-fold--nested">
+              <summary>Acervo de pegadinhas</summary>
+              <div className="qb-train-fold__body"><AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
             </details>
-          ))}
+          )}
         </div>
       </details>
-      <details className="qb-panel qb-train-fold">
-        <summary>Assuntos com menor taxa de acertos <small>{weak.length} assuntos</small></summary>
-        <div className="qb-train-fold__body">
-          <small>Somente assuntos com pelo menos 10 respostas válidas.</small>
-          {Array.from(new Set(weak.map(row => row.s.id))).map(id => (
-            <details key={id} className="qb-train-fold qb-train-fold--nested">
-              <summary>{weak.find(row => row.s.id === id).s.name}</summary>
-              <div className="qb-train-fold__body">
-                {weak.filter(row => row.s.id === id).map(({ s, t, acc, n }) => (
-                  <details key={t.id} className="qb-train-fold qb-train-fold--nested">
-                    <summary>{[t.num, t.title].filter(Boolean).join(' · ') || t.id} <small>{Math.round(acc)}% · {t.correct}/{n}</small></summary>
-                    <div className="qb-train-fold__body">
-                      <Button size="sm" variant="secondary" icon="locate-fixed" onClick={() => selectTopic(s.id, t.id)}>Ver ações do assunto</Button>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </details>
-          ))}
-        </div>
-      </details>
-      <details ref={labRef} className="qb-panel qb-train-fold">
-        <summary>Laboratório de mecanismos e pegadinhas</summary>
-        <div className="qb-train-fold__body"><PegadinhasLab questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
-      </details>
-      {isAdmin && <details className="qb-panel qb-train-fold">
-        <summary>Acervo de pegadinhas</summary>
-        <div className="qb-train-fold__body"><AcervoPegadinhasV1 questions={QB_DATA.questionBank} subjects={E.subjects} go={go} /></div>
-      </details>}
     </div>
   );
 }

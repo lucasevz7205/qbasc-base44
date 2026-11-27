@@ -957,3 +957,24 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .qb-gan-review__item { padding: var(--space-3); }
   .qb-gan-review__pair { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Treinar: página em zonas (resumo, radial + ações, ferramentas). */
+.qb-train{display:flex;flex-direction:column;gap:16px}
+.qb-train__stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.qb-train__main{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.qb-train__radial{flex:1 1 600px;min-width:0;padding:clamp(12px,3vw,24px);scroll-margin-top:100px}
+.qb-train__side{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.qb-train__card{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;scroll-margin-top:100px}
+.qb-train__h{font-size:18px;margin:0}
+.qb-train__row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.qb-train__rowtext{display:inline-flex;align-items:baseline;gap:8px;min-width:0;font:400 14px/1.4 var(--font-body);color:var(--text-secondary)}
+.qb-train__rowtext small{color:var(--text-muted);font-size:12px}
+.qb-train__num{font:500 18px/1 var(--font-mono);color:var(--text-primary)}
+.qb-train__fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.qb-train__list{list-style:none;margin:0;padding:0;display:grid;gap:4px;grid-template-columns:minmax(0,1fr)}
+.qb-train__list li{min-width:0}
+.qb-train__link{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:8px 10px;border:0;border-radius:var(--radius-control);background:transparent;color:var(--text-secondary);text-align:left;cursor:pointer;font:400 14px/1.4 var(--font-body)}
+.qb-train__link:hover{background:var(--surface-sunken);color:var(--text-primary)}
+.qb-train__link:focus-visible{outline:none;box-shadow:var(--ring-focus)}
+.qb-train__linktext{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:900px){.qb-train__stats{grid-template-columns:repeat(2,minmax(0,1fr))}}

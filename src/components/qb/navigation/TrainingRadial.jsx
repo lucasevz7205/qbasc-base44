@@ -246,6 +246,7 @@ export default function TrainingRadial({
       </div>
       <span aria-live="polite" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>
         {level === 1 ? 'Matérias' : level === 2 ? 'Assuntos de ' + subj.name : 'Ações para o assunto ' + topic.num}
+        {level > 1 ? '. Esc volta um nível.' : ''}
       </span>
       {radial ? (
         <>
@@ -315,11 +316,6 @@ export default function TrainingRadial({
             ))}
           </ul>
         </>
-      )}
-      {level > 1 && (
-        <span style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)', textAlign: 'center' }}>
-          Esc volta um nível. A seleção é mantida ao retornar de uma atividade.
-        </span>
       )}
     </div>
   );
