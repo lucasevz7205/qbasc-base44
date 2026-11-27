@@ -168,3 +168,22 @@ test('relatório mensal usa o mês anterior completo', () => {
  assert.equal(doc.id,'mensal-2026-12-01'); assert.equal(doc.placar.atual.E,1); assert.equal(doc.placar.anterior.C,1);
  assert.equal(doc.periodo.de,'2026-10-01'); assert.equal(doc.periodo.ate,'2026-11-30');
 });
+
+// Erros e recuperação: todas as tentativas contam para o Pareto; recuperação exige 2 dias de intervalo.
+import { analiseErros } from '../src/lib/navegador.js';
+test('Pareto usa todas as tentativas, recuperação exige 2 dias e meta mede o foco', () => {
+ const r = (itemId, topico, data, resultado, confianca = 3) => ({ itemId, topico, data: data + 'T12:00:00.000Z', resultado, confianca });
+ const respostas = [
+  r('1','A','2026-11-20','E'), r('1','A','2026-11-22','C'),
+  r('2','A','2026-11-25','E'), r('2','A','2026-11-25','E'),
+  r('3','B','2026-11-21','E'), r('3','B','2026-11-21','C'),
+  r('4','C','2026-11-23','C'),
+ ];
+ const a = analiseErros(respostas, today);
+ assert.equal(a.totalErros, 4);
+ assert.equal(a.pareto[0].topico, 'A');
+ assert.equal(a.pareto[0].erros, 3);
+ assert.equal(a.recuperacao.errosComRetorno, 1);
+ assert.equal(a.recuperacao.recuperados, 1);
+ assert.ok(a.foco.includes('A'));
+});

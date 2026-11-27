@@ -6,7 +6,7 @@ import { Icon } from '@/components/qb/core/Icon';
 import { EmptyState } from '@/components/qb/data/EmptyState';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { useQBStudy } from '@/lib/QBStudyContext';
-import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplinas, MIN_RESPOSTAS_CONFIANCA } from '@/lib/navegador';
+import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplinas, analiseErros, MIN_RESPOSTAS_CONFIANCA } from '@/lib/navegador';
 import { NavegadorRelatorio, Orientacao, TabelaAssuntos, TabelaMaterias, pct, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
 import { marcarVisto, useNavegadorRelatorios } from '@/components/qb/performance/useNavegadorRelatorios';
 
@@ -30,6 +30,7 @@ export default function NavegadorPanel() {
   const semanal = React.useMemo(() => navegadorSemanal(payload.respostas, today), [payload, today]);
   const analise = React.useMemo(() => navegadorTopicos(payload.respostas, today), [payload, today]);
   const materias = React.useMemo(() => navegadorDisciplinas(analise, subjects), [analise, subjects]);
+  const erros = React.useMemo(() => analiseErros(payload.respostas, today), [payload, today]);
   const titles = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, t.title]))), [subjects]);
 
   const subject = subjects.find(s => s.id === navegadorScope?.subjectId);
@@ -90,6 +91,17 @@ export default function NavegadorPanel() {
 
     {!!materiasShown.length && !subject && <Panel as="section" style={{ display: 'grid', gap: 10 }}><h3 style={{ font: 'var(--type-h3)', margin: 0 }}>Por matéria</h3><TabelaMaterias materias={materiasShown} /></Panel>}
     {!!subject && !!materiasShown.length && <Panel as="section" style={{ display: 'grid', gap: 10 }}><h3 style={{ font: 'var(--type-h3)', margin: 0 }}>Resumo da matéria</h3><TabelaMaterias materias={materiasShown} /></Panel>}
+
+    {!!erros.pareto.length && <Panel as="section" style={{ display: 'grid', gap: 12 }}>
+      <h3 style={{ font: 'var(--type-h3)', margin: 0 }}>Erros da semana (Pareto)</h3>
+      <p style={{ margin: 0 }}>Todas as tentativas da semana recente. {erros.foco.length} de {erros.pareto.length} assuntos concentram 80% dos {erros.totalErros} erros.</p>
+      <ol style={{ margin: 0, paddingLeft: 20 }}>{erros.pareto.slice(0, 6).map(g => <li key={g.topico}>
+        <strong>{titles.get(g.topico) || g.topico}</strong>: {g.erros} {g.erros === 1 ? 'erro' : 'erros'} ({Math.round(g.acumulada * 100)}% acumulado)
+        {erros.mitigacao.find(m => m.topico === g.topico)?.variacao != null && <> · taxa de erro {Math.round(erros.mitigacao.find(m => m.topico === g.topico).taxaAntes * 100)}% → {Math.round(erros.mitigacao.find(m => m.topico === g.topico).taxaAgora * 100)}%</>}
+      </li>)}</ol>
+      <p style={{ margin: 0 }}><strong>Recuperação</strong> (indicador separado): {erros.recuperacao.recuperados} de {erros.recuperacao.errosComRetorno} erros foram acertados depois, com pelo menos {erros.recuperacao.diasMinimos} dias de intervalo.</p>
+      <p style={{ margin: 0 }}><strong>Meta de {pct(erros.meta.alvo)}</strong> em questões novas nos assuntos do Pareto: {erros.meta.acertoFoco === null ? 'sem respostas suficientes' : pct(erros.meta.acertoFoco) + ' (' + erros.meta.nFoco + ' respostas)'}.</p>
+    </Panel>}
 
     {!!prioridades.length && <Panel as="section" style={{ display: 'grid', gap: 12 }}>
       <h3 style={{ font: 'var(--type-h3)', margin: 0 }}>O que fazer agora</h3>

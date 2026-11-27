@@ -291,3 +291,83 @@ export function expandirRelatorio(doc, subjects = []) {
   return { ...doc, geral, topicos: lista, disciplinas: navegadorDisciplinas({ topicos: lista, geral }, subjects),
     comparacao: compararJanelas({ atual, anterior }) };
 }
+
+// Erros e recuperação: todas as tentativas da janela atual, não só a primeira.
+// Recuperação só conta acerto posterior ao erro em pelo menos 2 dias; repetir no mesmo dia gera memória, não aprendizado.
+export const DIAS_RECUPERACAO = 2;
+export const META_ACERTO = 0.8;
+
+export function analiseErros(respostas, today, janela = janelaDe(today)) {
+  const { start, cut, end } = janela;
+  const inWindow = respostas.filter(r => { const d = day(r.data); return d && d >= start && d < end && d < today; });
+  const current = inWindow.filter(r => day(r.data) >= cut);
+  // Pareto: erros de todas as tentativas da janela atual, por assunto, com fração acumulada.
+  const porTopico = new Map();
+  for (const r of current) {
+    if (r.resultado !== 'E' || r.topico === 'sem-tópico') continue;
+    const g = porTopico.get(r.topico) || { topico: r.topico, erros: 0, certeza: 0 };
+    g.erros++;
+    if (r.confianca === 3) g.certeza++;
+    porTopico.set(r.topico, g);
+  }
+  const totalErros = [...porTopico.values()].reduce((a, g) => a + g.erros, 0);
+  let acumulado = 0;
+  const pareto = [...porTopico.values()].sort((a, b) => b.erros - a.erros || b.certeza - a.certeza || a.topico.localeCompare(b.topico))
+    .map(g => { acumulado += g.erros; return { ...g, fracao: g.erros / totalErros, acumulada: acumulado / totalErros }; });
+  // Conjunto que cobre 80% dos erros: é onde a meta de acerto é medida.
+  const foco = new Set();
+  for (const g of pareto) { foco.add(g.topico); if (g.acumulada >= META_ACERTO) break; }
+  // Recuperação: cada erro da janela atual, e se o mesmo item foi acertado depois, com pelo menos 2 dias de intervalo.
+  const porItem = new Map();
+  for (const r of inWindow) { const b = porItem.get(r.itemId) || []; b.push(r); porItem.set(r.itemId, b); }
+  let errosComRetorno = 0, recuperados = 0;
+  for (const r of current) {
+    if (r.resultado !== 'E') continue;
+    const minDay = delta(day(r.data), DIAS_RECUPERACAO);
+    const later = (porItem.get(r.itemId) || []).filter(x => day(x.data) >= minDay && x.resultado !== 'B');
+    if (!later.length) continue;
+    errosComRetorno++;
+    if (later.some(x => x.resultado === 'C')) recuperados++;
+  }
+  // Meta: acerto em primeiras tentativas da janela atual, só nos assuntos do foco.
+  const seen = new Set();
+  const primeirasAtuais = [];
+  for (const r of [...inWindow].sort((a, b) => Date.parse(a.data) - Date.parse(b.data))) {
+    if (seen.has(r.itemId)) continue;
+    seen.add(r.itemId);
+    if (day(r.data) >= cut) primeirasAtuais.push(r);
+  }
+  const focoRows = primeirasAtuais.filter(r => foco.has(r.topico) && r.resultado !== 'B');
+  const acertoFoco = focoRows.length ? focoRows.filter(r => r.resultado === 'C').length / focoRows.length : null;
+  // Mitigação: taxa de erro em primeiras tentativas por assunto, comparando as duas janelas.
+  const primeirasAnteriores = [];
+  seen.clear();
+  for (const r of [...inWindow].sort((a, b) => Date.parse(a.data) - Date.parse(b.data))) {
+    if (seen.has(r.itemId)) continue;
+    seen.add(r.itemId);
+    if (day(r.data) < cut) primeirasAnteriores.push(r);
+  }
+  const taxaPorTopico = rows => {
+    const m = new Map();
+    for (const r of rows) {
+      if (r.resultado === 'B' || r.topico === 'sem-tópico') continue;
+      const g = m.get(r.topico) || { validas: 0, E: 0 };
+      g.validas++; if (r.resultado === 'E') g.E++;
+      m.set(r.topico, g);
+    }
+    return m;
+  };
+  const antes = taxaPorTopico(primeirasAnteriores), agora = taxaPorTopico(primeirasAtuais);
+  const mitigacao = pareto.map(g => {
+    const a = antes.get(g.topico), b = agora.get(g.topico);
+    const taxaAntes = a && a.validas >= MIN_RESPOSTAS_TOPICO ? a.E / a.validas : null;
+    const taxaAgora = b && b.validas >= MIN_RESPOSTAS_TOPICO ? b.E / b.validas : null;
+    return { topico: g.topico, taxaAntes, taxaAgora, variacao: taxaAntes !== null && taxaAgora !== null ? taxaAgora - taxaAntes : null };
+  });
+  return {
+    de: cut, ate: delta(end, -1), totalErros, pareto, foco: [...foco],
+    recuperacao: { diasMinimos: DIAS_RECUPERACAO, errosComRetorno, recuperados, taxa: errosComRetorno ? recuperados / errosComRetorno : null },
+    meta: { alvo: META_ACERTO, acertoFoco, nFoco: focoRows.length, atingiu: acertoFoco === null ? null : acertoFoco >= META_ACERTO },
+    mitigacao,
+  };
+}
