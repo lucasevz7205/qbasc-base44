@@ -261,3 +261,12 @@ button.nv-pill:focus-visible, .nv-btnlink:focus-visible { outline: none; box-sha
 .nv-faixa__acoes { min-width: 0; max-width: 100%; }
 .nv-faixa__acoes > * { max-width: 100%; }
 .nv-faixa__acoes .qb-seg { overflow-x: auto; scrollbar-width: none; }
+
+/* Aba Cartões */
+.nv-numeros--tres { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.nv-estados { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)); gap: 8px; }
+.nv-estados li { display: grid; gap: 4px; padding: 10px 12px; border-radius: 12px; border: var(--border-hairline); background: var(--surface-sunken); font: 400 12.5px/1.3 var(--font-body); color: var(--text-muted); }
+.nv-estados .nv-mono { font-size: 22px; line-height: 1; color: var(--text-primary); }
+.nv-linha--estatica { cursor: default; min-height: 0; }
+.nv-linha--estatica:hover { background: transparent; }
+.nv-linha--cartoes { grid-template-columns: minmax(0, 1fr) auto; }

@@ -17,6 +17,7 @@ const ABAS = [
   { id: 'resumo', label: 'Resumo', icon: 'compass' },
   { id: 'materias', label: 'Matérias', icon: 'library' },
   { id: 'assuntos', label: 'Assuntos', icon: 'list' },
+  { id: 'cartoes', label: 'Cartões', icon: 'layers' },
   { id: 'historico', label: 'Histórico', icon: 'activity' },
 ];
 const FILTROS = ['todos', 'fraco', 'sem-sinal', 'forte', 'insuficiente'];
@@ -185,7 +186,6 @@ export default function NavegadorPanel() {
             ? <div className="nv-acoes">{prioridades.map(t => <NavCartaoAcao key={t.topico} stats={t} titulo={titles.get(t.topico) || t.topico} subtitulo={subject ? undefined : nomeMateria(t.topico)} />)}</div>
             : <EmptyState compact tone="empty" icon="circle-check" title="Nada urgente" description="Nenhum assunto com ponto fraco ou erro com certeza na janela." />}
         </section>}
-        {!subject && <NavegadorCartoes cartoes={cartoes} titles={titles} />}
         {!subject && !!analise.geral.n && <details className="nv-janela">
           <summary><Icon name="calendar-days" size={16} />Detalhes da janela: semanas e confiança<Icon name="chevron-down" size={16} className="nv-janela__seta" style={{ marginLeft: 'auto' }} /></summary>
           <div className="nv-janela__corpo">
@@ -230,6 +230,8 @@ export default function NavegadorPanel() {
         {!assuntosFiltrados.length && <EmptyState compact title="Nenhum assunto com este filtro" description={porMateria.length ? 'Troque o sinal ou a matéria.' : 'Resolva questões novas para ver os assuntos.'} />}
         <NavListaAssuntos topicos={assuntosFiltrados} titles={titles} materiaDe={filtroMateria ? undefined : nomeMateria} abertoInicial={navegadorScope?.topicId || null} />
       </>}
+
+      {aba === 'cartoes' && <NavegadorCartoes cartoes={cartoes} titles={titles} nomeMateria={nomeMateria} topicosEscopo={subject ? topicIds : null} />}
 
       {aba === 'historico' && <>
         <p className="nv-note">O Navegador gera o relatório semanal no sábado e o mensal no dia 1, e apresenta quando você abre o app.</p>
