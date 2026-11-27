@@ -256,3 +256,8 @@ button.nv-pill:focus-visible, .nv-btnlink:focus-visible { outline: none; box-sha
 
 /* Item de prioridade: borda lateral de estado */
 .nv-prioridade { --nv-tone: var(--divider); border-left: 3px solid var(--nv-tone); }
+
+/* Ações da faixa de topo não estouram em telas estreitas (abas rolam na horizontal) */
+.nv-faixa__acoes { min-width: 0; max-width: 100%; }
+.nv-faixa__acoes > * { max-width: 100%; }
+.nv-faixa__acoes .qb-seg { overflow-x: auto; scrollbar-width: none; }
