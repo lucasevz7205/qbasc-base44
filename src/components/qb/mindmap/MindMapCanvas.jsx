@@ -15,10 +15,10 @@ function NodeRates({ performance }) {
   if (performance.remaining) {
     const { remaining, requiredQuestions, requiredFlashcards } = performance;
     const missing = [
-      requiredQuestions && '1 questão',
-      requiredFlashcards && '1 flashcard',
+      requiredQuestions && (requiredQuestions === 1 ? '1 questão' : requiredQuestions + ' questões'),
+      requiredFlashcards && (requiredFlashcards === 1 ? '1 flashcard' : requiredFlashcards + ' flashcards'),
     ].filter(Boolean);
-    const flexible = remaining - requiredQuestions - requiredFlashcards;
+    const flexible = Math.max(0, remaining - requiredQuestions - requiredFlashcards);
     if (flexible) missing.push(flexible === 1 ? '1 questão ou flashcard' : flexible + ' entre questões e flashcards');
     return (
       <span style={{ font: '600 11px/1.3 var(--font-mono)', color: 'var(--state-progress)', whiteSpace: 'normal' }}>
