@@ -256,8 +256,3 @@ button.nv-pill:focus-visible, .nv-btnlink:focus-visible { outline: none; box-sha
 
 /* Item de prioridade: borda lateral de estado */
 .nv-prioridade { --nv-tone: var(--divider); border-left: 3px solid var(--nv-tone); }
-.nv-linha--cartoes { grid-template-columns: minmax(0, 1.25fr) minmax(140px, 1fr) auto; }
-@media (max-width: 640px) { .nv-linha--cartoes { grid-template-columns: minmax(0, 1fr) auto; } }
-.nv-faixa__acoes { min-width: 0; max-width: 100%; }
-.nv-faixa__acoes > * { max-width: 100%; }
-.nv-faixa__acoes .qb-seg { overflow-x: auto; scrollbar-width: none; }

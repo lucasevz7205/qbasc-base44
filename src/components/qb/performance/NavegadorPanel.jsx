@@ -9,15 +9,12 @@ import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplin
 import { contarSinais, dataBR, diaMes, pontosTendencia, tomDoIntervalo } from '@/lib/navegador-visual';
 import { NavCartaoAcao, NavCartaoMateria, NavForma, NavTendencia, SELOS } from '@/components/qb/navegador';
 import { NavegadorRelatorio, NavListaAssuntos, NavResumoNumeros, pct, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
-import NavegadorCartoes from '@/components/qb/performance/NavegadorCartoes';
-import { navegadorCartoes } from '@/lib/navegador-flashcards';
 import { marcarVisto, useNavegadorRelatorios } from '@/components/qb/performance/useNavegadorRelatorios';
 
 const ABAS = [
   { id: 'resumo', label: 'Resumo', icon: 'compass' },
   { id: 'materias', label: 'Matérias', icon: 'library' },
   { id: 'assuntos', label: 'Assuntos', icon: 'list' },
-  { id: 'cartoes', label: 'Cartões', icon: 'layers' },
   { id: 'historico', label: 'Histórico', icon: 'activity' },
 ];
 const FILTROS = ['todos', 'fraco', 'sem-sinal', 'forte', 'insuficiente'];
@@ -73,7 +70,6 @@ export default function NavegadorPanel() {
   const semanal = React.useMemo(() => navegadorSemanal(payload.respostas, today), [payload, today]);
   const analise = React.useMemo(() => navegadorTopicos(payload.respostas, today), [payload, today]);
   const materias = React.useMemo(() => navegadorDisciplinas(analise, subjects), [analise, subjects]);
-  const cartoes = React.useMemo(() => navegadorCartoes({ avaliacoes: records?.cartoes_aval, cartoes: QB_DATA.flashcards, today }), [records?.cartoes_aval, QB_DATA.flashcards, today]);
   const erros = React.useMemo(() => analiseErros(payload.respostas, today), [payload, today]);
   const titles = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, t.title]))), [subjects]);
   const donoDe = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, s]))), [subjects]);
@@ -152,7 +148,7 @@ export default function NavegadorPanel() {
 
     <div className="nv-tabs">
       <Tabs label="Seções do Navegador" variant="underline" value={aba} onChange={setAba} style={{ minWidth: 0 }}
-      items={ABAS.map(a => ({ ...a, count: a.id === 'materias' ? materiasShown.length || undefined : a.id === 'assuntos' ? porMateria.length || undefined : a.id === 'historico' ? relatorios.length || undefined : a.id === 'cartoes' ? cartoes.geral.n || undefined : undefined }))} />
+      items={ABAS.map(a => ({ ...a, count: a.id === 'materias' ? materiasShown.length || undefined : a.id === 'assuntos' ? porMateria.length || undefined : a.id === 'historico' ? relatorios.length || undefined : undefined }))} />
     </div>
 
     <div role="tabpanel" aria-label={ABAS.find(a => a.id === aba).label} className="nv-stack" style={{ gap: 16 }}>
@@ -194,8 +190,6 @@ export default function NavegadorPanel() {
           </div>
         </details>}
       </>}
-
-      {aba === 'cartoes' && <NavegadorCartoes analise={cartoes} titles={titles} nomeMateria={nomeMateria} />}
 
       {aba === 'materias' && <>
         {!materiasShown.length && <EmptyState compact title="Sem matérias com primeiras tentativas na janela" description="Resolva questões novas para ver a chance de acerto por matéria." />}
