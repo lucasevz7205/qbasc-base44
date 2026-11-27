@@ -6,6 +6,8 @@ import { EmptyState } from '@/components/qb/data/EmptyState';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { useQBStudy } from '@/lib/QBStudyContext';
 import { navegadorExport, navegadorSemanal, navegadorTopicos, navegadorDisciplinas, compararJanelas, analiseErros, MIN_RESPOSTAS_CONFIANCA } from '@/lib/navegador';
+import { navegadorCartoes } from '@/lib/navegador-cartoes';
+import NavegadorCartoes from '@/components/qb/performance/NavegadorCartoes';
 import { contarSinais, dataBR, diaMes, pontosTendencia, tomDoIntervalo } from '@/lib/navegador-visual';
 import { NavCartaoAcao, NavCartaoMateria, NavForma, NavTendencia, SELOS } from '@/components/qb/navegador';
 import { NavegadorRelatorio, NavListaAssuntos, NavResumoNumeros, pct, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
@@ -71,6 +73,7 @@ export default function NavegadorPanel() {
   const analise = React.useMemo(() => navegadorTopicos(payload.respostas, today), [payload, today]);
   const materias = React.useMemo(() => navegadorDisciplinas(analise, subjects), [analise, subjects]);
   const erros = React.useMemo(() => analiseErros(payload.respostas, today), [payload, today]);
+  const cartoes = React.useMemo(() => navegadorCartoes(records?.cartoes_aval, QB_DATA.flashcards, today), [records, QB_DATA.flashcards, today]);
   const titles = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, t.title]))), [subjects]);
   const donoDe = React.useMemo(() => new Map(subjects.flatMap(s => s.topics.map(t => [t.id, s]))), [subjects]);
   const pontos = React.useMemo(() => pontosTendencia(relatorios), [relatorios]);
@@ -182,6 +185,7 @@ export default function NavegadorPanel() {
             ? <div className="nv-acoes">{prioridades.map(t => <NavCartaoAcao key={t.topico} stats={t} titulo={titles.get(t.topico) || t.topico} subtitulo={subject ? undefined : nomeMateria(t.topico)} />)}</div>
             : <EmptyState compact tone="empty" icon="circle-check" title="Nada urgente" description="Nenhum assunto com ponto fraco ou erro com certeza na janela." />}
         </section>}
+        {!subject && <NavegadorCartoes cartoes={cartoes} titles={titles} />}
         {!subject && !!analise.geral.n && <details className="nv-janela">
           <summary><Icon name="calendar-days" size={16} />Detalhes da janela: semanas e confiança<Icon name="chevron-down" size={16} className="nv-janela__seta" style={{ marginLeft: 'auto' }} /></summary>
           <div className="nv-janela__corpo">
