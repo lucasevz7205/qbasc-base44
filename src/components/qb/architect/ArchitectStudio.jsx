@@ -1,4 +1,8 @@
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { canOpenAccountPilot } from '@/lib/account-pilot-access';
+
+const AccountPilot = React.lazy(() => import('./AccountPilot'));
 import { Icon } from '@/components/qb/core/Icon';
 import { Tabs } from '@/components/qb/navigation/Tabs';
 import { SocraticChat } from '@/components/qb/architect/SocraticChat';
@@ -42,11 +46,20 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
   }, [open, mode]);
 
   const [toolState, setToolState] = React.useState(toolProp || 'socratico');
-  const available = dock ? COMPACT_TOOLS : TOOLS;
+  const access = useQuery({
+    queryKey: ['account-pilot-access', accountId],
+    queryFn: () => canOpenAccountPilot(),
+    enabled: open && user?.role === 'admin' && !clockOnly,
+    retry: false,
+    staleTime: 60_000,
+  });
+  const baseTools = dock ? COMPACT_TOOLS : TOOLS;
+  const pilotAllowed = user?.role === 'admin' && access.data === true;
+  const available = pilotAllowed ? [...baseTools.slice(0, -1), { id: 'visual-lab', label: 'Laboratório Visual', icon: 'network' }, baseTools.at(-1)] : baseTools;
   const tools = personal ? available.filter(item => item.id !== 'cornell' && item.id !== 'cards') : available;
   const requestedTool = toolProp || toolState;
   const tool = clockOnly ? 'study-clock' : tools.some(item => item.id === requestedTool) ? requestedTool : 'socratico';
-  useStudyActivity('tutor', open && tool !== 'study-clock' ? mode : null);
+  useStudyActivity('tutor', open && !['study-clock','visual-lab'].includes(tool) ? mode : null);
   const setTool = t => { setToolState(t); onToolChange && onToolChange(t); };
   React.useEffect(() => {
     if (!open || mode === 'inline') return;
@@ -90,6 +103,9 @@ export default function ArchitectStudio({ open = true, mode = 'modal', onClose, 
         {tool === 'cornell' && <CornellNotebook topicId={topic?.id || ''} topicLabel={tLabel} subjects={subjects}
           onTopicChange={changeTopic} />}
         {tool === 'cards' && <ScannerFlashcards key={topic?.id} topicId={topic?.id} topicLabel={tLabel} subjectName={subj?.name} topicName={topic?.title} />}
+        {pilotAllowed && tool === 'visual-lab' && <React.Suspense fallback={<p>Carregando o laboratório…</p>}>
+          <AccountPilot accountId={accountId} subjects={subjects} onBack={()=>setTool('socratico')} />
+        </React.Suspense>}
         {tool === 'study-clock' && <StudyClock />}
       </div>
     </div>
