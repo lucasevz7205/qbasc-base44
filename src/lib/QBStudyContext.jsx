@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { ArchitectLayer } from '@/components/qb/AppShell';
+import { NavegadorPlannerLayer } from '@/components/qb/navegador/NavegadorPlanner';
 import { useRealStudy } from '@/lib/qb-real-data';
 import { distinctRoundQuestions, pickQuestionRound } from '@/lib/study-session-rules';
 import { filterFlashcardDeck } from '@/lib/flashcard-review';
@@ -550,6 +551,7 @@ export function QBStudyProvider({ children }) {
       <StudyClockProvider key={accountId} accountId={accountId} onOpen={openClock}>
         {children}
         {activeView !== 'welcome' && <ArchitectLayer ui={layerUi} setUi={setUi} />}
+        {activeView !== 'welcome' && <NavegadorPlannerLayer view={activeView} />}
       </StudyClockProvider>
     </QBStudyContext.Provider>
   );
