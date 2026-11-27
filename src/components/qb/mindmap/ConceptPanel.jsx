@@ -27,6 +27,9 @@ export default function ConceptPanel({
   questionCount = 0,
   flashcardCount = 0,
   reviewIncludesChildren = false,
+  assessmentQuota,
+  onAssessQuestions,
+  onAssessCards,
   onGenerateGan,
   onGenerateFlashcards,
   hasPendingFlashcards = false,
@@ -168,6 +171,17 @@ export default function ConceptPanel({
                     <Button variant="secondary" icon="list-checks" disabled={!questionCount} onClick={onReviewQuestions} fullWidth>
                       Questões ({questionCount})
                     </Button>
+                    {assessmentQuota > 1 && (onAssessQuestions || onAssessCards) && (
+                      <>
+                        <small style={{ color: 'var(--text-muted)' }}>Amostra de avaliação ({assessmentQuota} itens, 1 por parte antes de repetir):</small>
+                        <Button variant="secondary" icon="list-checks" disabled={!questionCount} onClick={onAssessQuestions} fullWidth>
+                          Avaliar com questões
+                        </Button>
+                        <Button variant="secondary" icon="layers" disabled={!flashcardCount} onClick={onAssessCards} fullWidth>
+                          Avaliar com flashcards
+                        </Button>
+                      </>
+                    )}
                     {!flashcardCount && !questionCount && <small style={{ color: 'var(--text-muted)' }}>Este conceito ainda não tem itens vinculados.</small>}
                   </div>
                 </div>

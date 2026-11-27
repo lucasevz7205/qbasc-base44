@@ -68,13 +68,13 @@ export function enoughChildCoverage(children, coveredChildren) {
 // Sorteio estratificado para avaliar um nó: itens da subárvore, 1 por filho antes de repetir,
 // resto por peso (nº de subramos), prioridade para errados e não vistos, teto de 40% por filho (3+ filhos).
 // items: [{ id, node, kind: 'questao'|'cartao', priority }] — priority menor = mais urgente (0 errado, 1 não visto, 2 visto).
-export function drawNodeAssessment(nodes, nodeId, items, { random = Math.random } = {}) {
+export function drawNodeAssessment(nodes, nodeId, items, { random = Math.random, limit } = {}) {
   const ids = new Set(nodes.map(node => node.id));
   const mapRoot = nodes.find(node => !ids.has(node.parent))?.id;
   const info = classifyNodes(nodes, mapRoot);
   const root = info.get(nodeId);
   if (!root) return [];
-  const quota = root.quota;
+  const quota = Math.min(root.quota, limit ?? root.quota);
   const owner = new Map(); // node -> filho direto de nodeId que o contém
   (function mark(id, branch) {
     owner.set(id, branch);
@@ -116,4 +116,23 @@ export function drawNodeAssessment(nodes, nodeId, items, { random = Math.random 
     take(open[0]);
   }
   return picked;
+}
+
+// Amostra de avaliação de um nó: divide a cota entre questões (metade, no mínimo o exigido pelo nível)
+// e flashcards; se um dos lados não tem itens, o outro completa.
+export function buildNodeAssessment(nodes, nodeId, { questions = [], flashcards = [], random = Math.random } = {}) {
+  const ids = new Set(nodes.map(node => node.id));
+  const mapRoot = nodes.find(node => !ids.has(node.parent))?.id;
+  const shape = classifyNodes(nodes, mapRoot).get(nodeId);
+  if (!shape) return { quota: 0, questionIds: [], cardIds: [] };
+  const quota = shape.quota;
+  const wantQuestions = Math.min(quota, Math.max(requiredQuestionsFor(shape.kind, quota), Math.ceil(quota / 2)));
+  const asItems = (list, kind) => list.map(item => ({ id: item.id, node: item.node, kind, priority: item.priority }));
+  let questionPick = drawNodeAssessment(nodes, nodeId, asItems(questions, 'questao'), { random, limit: wantQuestions });
+  const cardPick = drawNodeAssessment(nodes, nodeId, asItems(flashcards, 'cartao'), { random, limit: quota - questionPick.length });
+  if (questionPick.length + cardPick.length < quota) {
+    const extra = drawNodeAssessment(nodes, nodeId, asItems(questions, 'questao').filter(item => !questionPick.some(p => p.id === item.id)), { random, limit: quota - questionPick.length - cardPick.length });
+    questionPick = [...questionPick, ...extra];
+  }
+  return { quota, questionIds: questionPick.map(item => item.id), cardIds: cardPick.map(item => item.id) };
 }

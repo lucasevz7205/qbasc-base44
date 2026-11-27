@@ -20,6 +20,7 @@ import { StudyClockControls } from '@/components/qb/study/StudyClock';
 import { useStudyActivity } from '@/lib/StudyClockContext';
 import { conceptReviewItems } from '@/lib/concept-review';
 import { mapNodePerformance } from '@/lib/mind-map-performance';
+import { buildNodeAssessment } from '@/lib/mind-map-quota';
 import { generateMindMapFlashcards, generateMindMapGanQuestions } from '@/lib/server-fns';
 import { approvePersonalMapGan } from '@/lib/study-accounts';
 import { buildNodeFlashcardRecord, canPersistFlashcardCandidate } from '@/lib/node-flashcards';
@@ -307,6 +308,26 @@ export default function MindMapView({
   const reviewQuestions = () => go('questions', { topicId: chosen.topicId, questionIds: review.questionIds, filter: 'all', concept });
   const reviewCards = () => go('flashcards', { topicId: chosen.topicId, cardIds: review.cardIds, concept });
   const qn = review.questionIds.length;
+  const assessmentSample = () => {
+    const byId = (list, ids) => list.filter(item => ids.has(item.id));
+    const questionPool = byId(D.questionBank, new Set(review.questionIds)).map(q => ({
+      id: q.id, node: q.node,
+      priority: !q.response ? 1 : (Number(q.response.erros) || 0) > (Number(q.response.acertos) || 0) ? 0 : 2,
+    }));
+    const cardPool = byId(D.flashcards, new Set(review.cardIds)).map(card => {
+      const last = String(D.reviews?.[card.id]?.ult || '').toLowerCase();
+      return { id: card.id, node: card.node, priority: !D.reviews?.[card.id] ? 1 : ['errei', 'novamente', 'n'].includes(last) ? 0 : 2 };
+    });
+    return buildNodeAssessment(chosen.nodes, node.id, { questions: questionPool, flashcards: cardPool });
+  };
+  const assessQuestions = () => {
+    const { questionIds } = assessmentSample();
+    if (questionIds.length) go('questions', { topicId: chosen.topicId, questionIds, filter: 'all', concept });
+  };
+  const assessCards = () => {
+    const { cardIds } = assessmentSample();
+    if (cardIds.length) go('flashcards', { topicId: chosen.topicId, cardIds, concept });
+  };
 
   const setReviewEntry = (entry, update) => {
     setGanReviews(current => {
@@ -660,6 +681,9 @@ export default function MindMapView({
               reviewIncludesChildren={review.includesChildren}
               onReviewQuestions={reviewQuestions}
               onReviewCards={reviewCards}
+              assessmentQuota={node.performance?.quota}
+              onAssessQuestions={assessQuestions}
+              onAssessCards={assessCards}
               onGenerateGan={openGanPackage}
               onGenerateFlashcards={handleGenerateFlashcards}
               hasPendingFlashcards={hasPendingFlashcards}

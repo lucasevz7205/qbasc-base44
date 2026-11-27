@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { nodeQuota, classifyNodes, cappedChildContribution, drawNodeAssessment } from '../src/lib/mind-map-quota.js';
+import { nodeQuota, classifyNodes, cappedChildContribution, drawNodeAssessment, buildNodeAssessment } from '../src/lib/mind-map-quota.js';
 import { mapNodePerformance } from '../src/lib/mind-map-performance.js';
 
 test('cotas com piso e teto por nível', () => {
@@ -82,4 +82,17 @@ test('sorteio estratificado cobre cada filho, respeita cota e teto de 40%', () =
   assert.equal(top.length, 6);
   assert.ok(top.filter(i => i.node === 's1').length <= 3 || new Set(top.map(i => i.node)).size >= 2);
   assert.equal(new Set(top.map(i => i.id)).size, top.length);
+});
+
+test('amostra do nó divide a cota entre questões e flashcards e não repete ids', () => {
+  const qs = ['s1', 's2', 's3'].flatMap(node => [0, 1, 2].map(i => ({ id: 'q' + node + i, node, priority: i })));
+  const cs = ['s1', 's2', 's3'].flatMap(node => [0, 1, 2].map(i => ({ id: 'c' + node + i, node, priority: i })));
+  const sample = buildNodeAssessment(nodes, 't1', { questions: qs, flashcards: cs, random: () => 0.5 });
+  assert.equal(sample.quota, 6);
+  assert.equal(sample.questionIds.length + sample.cardIds.length, 6);
+  assert.ok(sample.questionIds.length >= 3);
+  assert.equal(new Set([...sample.questionIds, ...sample.cardIds]).size, 6);
+  const onlyCards = buildNodeAssessment(nodes, 't1', { flashcards: cs, random: () => 0.5 });
+  assert.equal(onlyCards.cardIds.length, 6);
+  assert.deepEqual(buildNodeAssessment(nodes, 'inexistente', {}).questionIds, []);
 });
