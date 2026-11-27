@@ -32,18 +32,30 @@ function TransferItem({ item, attempt, source, topicId, onSubmit, onBack }) {
       lock.current = false;
     }
   };
+  const parts = /^([\s\S]*?)(\u201c[\s\S]*?\u201d)\s*Julgue o item\.\s*([\s\S]+)$/.exec(item.enunciado);
+  const alt = !parts && /^([\s\S]*?)\s*Julgue o item\.\s*([\s\S]+)$/.exec(item.enunciado);
   return <section className="nexo-exp nexo-pilot" aria-label="Item de transferência">
     <h2 tabIndex={-1} ref={heading}>Item de transferência</h2>
     <form onSubmit={submit} className="nexo-instrument nexo-transfer-form">
-      <p>{item.enunciado}</p>
+      {parts?<>
+        <p className="nexo-transfer-instruction">{parts[1].trim()}</p>
+        <blockquote className="nexo-transfer-text">{parts[2]}</blockquote>
+        <p className="nexo-transfer-claim">{parts[3]}</p>
+      </>:alt?<>
+        <blockquote className="nexo-transfer-text">{alt[1]}</blockquote>
+        <p className="nexo-transfer-claim">{alt[2]}</p>
+      </>:<p className="nexo-transfer-claim">{item.enunciado}</p>}
       <fieldset disabled={Boolean(attempt)||saving}>
         <legend>Julgue o item</legend>
-        {[['C','Certo'],['E','Errado']].map(([value,label])=><label key={value}>
+        {[['C','Certo'],['E','Errado']].map(([value,label])=><label key={value} className="nexo-choice">
           <input type="radio" name="julgamento" value={value}
-            checked={(attempt?.marked || marked)===value} onChange={()=>setMarked(value)} /> {label}
+            checked={(attempt?.marked || marked)===value} onChange={()=>setMarked(value)} /><span>{label}</span>
         </label>)}
       </fieldset>
-      {!attempt&&<button type="submit" className="qb-btn qb-btn--primary" disabled={!marked||saving}>Confirmar julgamento</button>}
+      {!attempt&&<div className="nexo-transfer-actions">
+        <button type="submit" className="qb-btn qb-btn--primary" disabled={!marked||saving}>Confirmar julgamento</button>
+        {!marked&&<span className="nexo-transfer-hint">Escolha Certo ou Errado.</span>}
+      </div>}
       {error&&<p role="alert">{error}</p>}
       {evaluation&&<div role="status" className="nexo-training-result">
         <strong>{evaluation.ok?'Você acertou.':'Você errou.'} Gabarito {item.gabarito==='C'?'Certo':'Errado'}.</strong>

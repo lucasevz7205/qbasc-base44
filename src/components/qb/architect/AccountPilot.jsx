@@ -24,12 +24,17 @@ const fmt=(v,d=0)=>v.toLocaleString('pt-BR',{maximumFractionDigits:d});
 const X=t=>48+584*t, Y=y=>120-82*y;
 function WaveGrid(){return <g aria-hidden="true">
   {Array.from({length:9},(_,i)=><line key={'x'+i} x1={X(i/8)} y1="32" x2={X(i/8)} y2="208" stroke="var(--qb-steel-blue)" strokeOpacity=".4"/>)}
-  {[-1,-.5,0,.5,1].map(y=><g key={y}><line x1="48" y1={Y(y)} x2="632" y2={Y(y)} stroke="var(--qb-steel-blue)" strokeOpacity={y===0?.9:.4}/><text x="36" y={Y(y)+4} textAnchor="end" fill="var(--qb-ivory-muted)" fontSize="11">{fmt(y,1)}</text></g>)}
-  {[0,.25,.5,.75,1].map(t=><text key={t} x={X(t)} y="229" textAnchor="middle" fill="var(--qb-ivory-muted)" fontSize="11">{fmt(t,2)}</text>)}
-  <text x="340" y="249" fill="var(--qb-ivory-muted)" textAnchor="middle" fontSize="11">Tempo (ms)</text>
+  {[-1,-.5,0,.5,1].map(y=><g key={y}><line x1="48" y1={Y(y)} x2="632" y2={Y(y)} stroke="var(--qb-steel-blue)" strokeOpacity={y===0?.9:.4}/><text x="36" y={Y(y)+4} textAnchor="end" fill="var(--qb-ivory-muted)" fontSize="13">{fmt(y,1)}</text></g>)}
+  {[0,.25,.5,.75,1].map(t=><text key={t} x={X(t)} y="229" textAnchor="middle" fill="var(--qb-ivory-muted)" fontSize="13">{fmt(t,2)}</text>)}
+  <text x="340" y="249" fill="var(--qb-ivory-muted)" textAnchor="middle" fontSize="13">Tempo (ms)</text>
 </g>;}
 function wave(f){return Array.from({length:301},(_,i)=>[X(i/300),Y(signal(f,i/300))].map(v=>v.toFixed(2)).join(',')).join(' ');}
-function Choice({label,values,value,onChange,format=v=>v}){return <div className="nexo-control"><span>{label}</span><div className="qb-seg" role="group" aria-label={label}>{values.map(v=><button type="button" key={v} className="qb-seg__opt" aria-pressed={value===v} onClick={()=>onChange(v)}>{format(v)}</button>)}</div></div>;}
+function arrowKeys(event){
+  const k=event.key;if(!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp'].includes(k))return;
+  const opts=[...event.currentTarget.querySelectorAll('button')],i=opts.indexOf(document.activeElement);if(i<0)return;
+  event.preventDefault();opts[(i+(k==='ArrowRight'||k==='ArrowDown'?1:opts.length-1))%opts.length].focus();
+}
+function Choice({label,values,value,onChange,format=v=>v}){return <div className="nexo-control"><span>{label}</span><div className="qb-seg" role="group" aria-label={label} onKeyDown={arrowKeys}>{values.map(v=><button type="button" key={v} className="qb-seg__opt" aria-pressed={value===v} onClick={()=>onChange(v)}>{format(v)}</button>)}</div></div>;}
 function Sampling({onPredictionMode,onPracticeComplete,guided}){
   const [localFrequency,setFrequency]=React.useState(5000),[localRate,setRate]=React.useState(8000);
   const {frequency,rate}=guided?.parameters||{frequency:localFrequency,rate:localRate};
@@ -38,9 +43,9 @@ function Sampling({onPredictionMode,onPracticeComplete,guided}){
     <div className="nexo-controls"><Choice label="Frequência da onda" values={[1000,3000,4000,5000,7000]} value={frequency} onChange={setFrequency} format={v=>fmt(v/1000)+' kHz'}/><Choice label="Taxa de amostragem" values={[8000,16000,44100]} value={rate} onChange={setRate} format={v=>fmt(v/1000,1)+' kHz'}/></div>
     <div className="nexo-instrument"><div className="nexo-instrument-head"><span>OSCILOSCÓPIO · SINAL MATEMÁTICO</span><span>{reveal?data.classification==='boundary'?'NO LIMITE':data.undersampled?'ALIASING':'ABAIXO DE NYQUIST':'OBSERVAÇÃO ATIVA'}</span></div>
       <svg viewBox="0 0 680 260" role="img" aria-label={'Sinal de '+frequency+' Hz; taxa '+rate+' Hz'}>
-        <WaveGrid/><polyline points={wave(frequency)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="2"/>
-        {reveal&&data.classification==='above'&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="1.8" strokeDasharray="5 4"/>}
-        {data.samples.map((s,i)=><g key={i}><line x1={X(s.t)} y1={Y(0)} x2={X(s.t)} y2={Y(s.y)} stroke="var(--qb-gold)" strokeOpacity=".6"/><circle cx={X(s.t)} cy={Y(s.y)} r="4" fill="var(--qb-gold-bright)"/></g>)}
+        <WaveGrid/><polyline points={wave(frequency)} fill="none" stroke="var(--qb-moonlight)" strokeWidth="3"/>
+        {reveal&&data.classification==='above'&&<polyline points={wave(data.signedAlias)} fill="none" stroke="var(--qb-ember)" strokeWidth="2.6" strokeDasharray="6 5"/>}
+        {data.samples.map((s,i)=><g key={i}><line x1={X(s.t)} y1={Y(0)} x2={X(s.t)} y2={Y(s.y)} stroke="var(--qb-gold)" strokeOpacity=".6"/><circle cx={X(s.t)} cy={Y(s.y)} r="6" fill="var(--qb-gold-bright)"/></g>)}
       </svg><div className="nexo-legend"><span>— Onda original</span><span className="nexo-gold">● Amostras</span>{reveal&&data.classification==='above'&&<span className="nexo-ember">– – Senoide equivalente</span>}</div>
       {reveal&&<div className="nexo-plot-feedback">Limite: {fmt(data.nyquist/1000,2)} kHz · frequência dobrada teórica: {fmt(data.alias/1000,2)} kHz{data.classification==='boundary'?' · amostras nulas nesta fase; frequência não recuperável':''}</div>}
     </div>
