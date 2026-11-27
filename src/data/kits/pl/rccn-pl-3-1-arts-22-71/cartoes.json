@@ -1,0 +1,409 @@
+[
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c01",
+    "no": "r1",
+    "tema": "Sessões em Geral (arts. 22 a 52)",
+    "pergunta": "Em quantos turnos de discussão e votação as matérias são apreciadas em sessão conjunta?",
+    "resposta": ["Um só turno"],
+    "fonte": "RCCN, art. 36"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c02",
+    "no": "r1",
+    "tema": "Sessões em Geral (arts. 22 a 52)",
+    "pergunta": "Nas deliberações da sessão conjunta, como são computados os votos da Câmara dos Deputados e do Senado Federal?",
+    "resposta": ["Sempre separadamente, por Casa"],
+    "fonte": "RCCN, art. 43, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c03",
+    "no": "r1",
+    "tema": "Sessões em Geral (arts. 22 a 52)",
+    "pergunta": "Qual é o efeito, na sessão conjunta, do voto contrário de uma das Casas?",
+    "resposta": ["Rejeição da matéria"],
+    "fonte": "RCCN, art. 43, § 1º"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c04",
+    "no": "r1",
+    "tema": "Sessões em Geral (arts. 22 a 52)",
+    "pergunta": "Quem decide as questões de ordem e os pedidos de retificação sobre a ata da sessão conjunta?",
+    "resposta": ["O Presidente"],
+    "fonte": "RCCN, art. 30, § 2º"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c05",
+    "no": "r1.1",
+    "tema": "Disposições Preliminares (arts. 22 a 31)",
+    "pergunta": "Qual é a duração da sessão conjunta?",
+    "resposta": ["4 horas"],
+    "fonte": "RCCN, art. 22, caput",
+    "explicacao": "Se o tempo terminar com uma votação já iniciada, ela é concluída sem pedido de prorrogação (art. 22, parágrafo único)."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c06",
+    "no": "r1.1",
+    "tema": "Disposições Preliminares (arts. 22 a 31)",
+    "pergunta": "Qual é a presença mínima exigida para a abertura da sessão conjunta?",
+    "resposta": ["1/6 da composição de cada Casa"],
+    "fonte": "RCCN, art. 28"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c07",
+    "no": "r1.1",
+    "tema": "Disposições Preliminares (arts. 22 a 31)",
+    "pergunta": "Não havendo número à hora do início da sessão conjunta, por quanto tempo, no máximo, o Presidente aguarda a complementação do quórum?",
+    "resposta": ["30 minutos"],
+    "fonte": "RCCN, art. 29, § 1º",
+    "explicacao": "Decorrido o prazo e persistindo a falta de número, a sessão não se realiza."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c08",
+    "no": "r1.1",
+    "tema": "Disposições Preliminares (arts. 22 a 31)",
+    "pergunta": "Quem redige a ata da sessão secreta?",
+    "resposta": ["O 2º Secretário"],
+    "fonte": "RCCN, art. 27, § 5º",
+    "explicacao": "A ata é submetida ao Plenário, com qualquer número, antes de levantada a sessão, e recolhida ao arquivo em invólucro lacrado."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c09",
+    "no": "r1.2",
+    "tema": "Da Ordem do Dia (arts. 32 a 35)",
+    "pergunta": "Com que antecedência mínima os avulsos das matérias da Ordem do Dia são distribuídos aos Congressistas?",
+    "resposta": ["24 horas"],
+    "fonte": "RCCN, art. 33"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c10",
+    "no": "r1.2",
+    "tema": "Da Ordem do Dia (arts. 32 a 35)",
+    "pergunta": "Na organização da Ordem do Dia da sessão conjunta, quais proposições vêm primeiro?",
+    "resposta": ["As que estão em fase de votação"],
+    "fonte": "RCCN, art. 34, caput",
+    "explicacao": "As proposições em votação precedem as que estão em discussão."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c11",
+    "no": "r1.2",
+    "tema": "Da Ordem do Dia (arts. 32 a 35)",
+    "pergunta": "Quem pode requerer a inversão da Ordem do Dia da sessão conjunta?",
+    "resposta": ["Líder"],
+    "fonte": "RCCN, art. 34, parágrafo único",
+    "explicacao": "A inversão também pode ser proposta pela Presidência; em ambos os casos, depende de autorização do Plenário."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c12",
+    "no": "r1.2",
+    "tema": "Da Ordem do Dia (arts. 32 a 35)",
+    "pergunta": "Na Ordem do Dia, o que ocorre quando o projeto está em fase de votação e não há número para deliberar?",
+    "resposta": ["Passa-se à matéria seguinte em discussão"],
+    "fonte": "RCCN, art. 35, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c13",
+    "no": "r1.3",
+    "tema": "Da Apreciação das Matérias (arts. 36 a 43)",
+    "pergunta": "Por quanto tempo, no máximo, cada orador inscrito fala na discussão de matéria em sessão conjunta?",
+    "resposta": ["20 minutos"],
+    "fonte": "RCCN, art. 38"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c14",
+    "no": "r1.3",
+    "tema": "Da Apreciação das Matérias (arts. 36 a 43)",
+    "pergunta": "Quantos parlamentares de cada Casa precisam ter falado, no mínimo, para que a discussão possa ser encerrada por requerimento?",
+    "resposta": ["4 Senadores e 6 Deputados"],
+    "fonte": "RCCN, art. 39, § 1º",
+    "explicacao": "O requerimento de encerramento é escrito e pode ser de Líder ou de 10 membros de cada Casa."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c15",
+    "no": "r1.3",
+    "tema": "Da Apreciação das Matérias (arts. 36 a 43)",
+    "pergunta": "Por quanto tempo, no máximo, a votação pode ser adiada em sessão conjunta?",
+    "resposta": ["48 horas"],
+    "fonte": "RCCN, art. 40",
+    "explicacao": "O adiamento é a requerimento de Líder e não pode prejudicar a apreciação no prazo constitucional; o adiamento da discussão não é admitido."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c16",
+    "no": "r1.3",
+    "tema": "Da Apreciação das Matérias (arts. 36 a 43)",
+    "pergunta": "Por qual Casa começa a votação de projeto de lei vetado de iniciativa de Senadores?",
+    "resposta": ["Senado Federal"],
+    "fonte": "RCCN, art. 43, § 2º",
+    "explicacao": "Nos demais casos, a votação começa pela Câmara dos Deputados."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c17",
+    "no": "r1.4",
+    "tema": "Das Modalidades de Votação (arts. 44 a 48)",
+    "pergunta": "Qual processo de votação é a regra nas sessões conjuntas?",
+    "resposta": ["Simbólico"],
+    "fonte": "RCCN, art. 44, parágrafo único",
+    "explicacao": "Exceções: quórum especial ou deliberação do Plenário, a requerimento de Líder ou de 1/6 de Senadores ou de Deputados."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c18",
+    "no": "r1.4",
+    "tema": "Das Modalidades de Votação (arts. 44 a 48)",
+    "pergunta": "Quem pode requerer a verificação da votação simbólica, proclamado o resultado de cada Casa?",
+    "resposta": ["Líder", "5 Senadores", "20 Deputados"],
+    "fonte": "RCCN, art. 45, § 1º"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c19",
+    "no": "r1.4",
+    "tema": "Das Modalidades de Votação (arts. 44 a 48)",
+    "pergunta": "Feita a verificação e havendo número legal, quanto tempo deve passar antes de nova verificação?",
+    "resposta": ["1 hora"],
+    "fonte": "RCCN, art. 45, § 3º"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c20",
+    "no": "r1.4",
+    "tema": "Das Modalidades de Votação (arts. 44 a 48)",
+    "pergunta": "Em que hipótese o Congressista presente à sessão pode deixar de votar?",
+    "resposta": ["Assunto de interesse pessoal"],
+    "fonte": "RCCN, art. 48",
+    "explicacao": "Ele comunica o impedimento à Mesa, e seu comparecimento conta para efeito de quórum."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c21",
+    "no": "r1.5",
+    "tema": "Do Processamento da Votação (arts. 49 a 50)",
+    "pergunta": "Encerrada a discussão, quantos parlamentares de cada Casa podem encaminhar a votação da matéria?",
+    "resposta": ["4 Senadores e 4 Deputados"],
+    "fonte": "RCCN, art. 49, caput",
+    "explicacao": "De preferência de partidos diferentes, por 5 minutos cada um."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c22",
+    "no": "r1.5",
+    "tema": "Do Processamento da Votação (arts. 49 a 50)",
+    "pergunta": "Entre as emendas destacadas, qual espécie é votada primeiro?",
+    "resposta": ["As supressivas"],
+    "fonte": "RCCN, art. 49, § 2º",
+    "explicacao": "Seguem-se as substitutivas, as modificativas e as aditivas."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c23",
+    "no": "r1.5",
+    "tema": "Do Processamento da Votação (arts. 49 a 50)",
+    "pergunta": "Qual é o efeito da aprovação do substitutivo sobre o projeto e as emendas?",
+    "resposta": ["Ficam prejudicados (salvo as partes destacadas)"],
+    "fonte": "RCCN, art. 49, §§ 5º e 6º"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c24",
+    "no": "r1.5",
+    "tema": "Do Processamento da Votação (arts. 49 a 50)",
+    "pergunta": "Quem pode formular requerimentos de preferência e de destaque na sessão conjunta?",
+    "resposta": ["Somente Líder"],
+    "fonte": "RCCN, art. 50",
+    "explicacao": "Devem ser apresentados até ser anunciada a votação; não são discutidos nem têm votação encaminhada."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c25",
+    "no": "r1.6",
+    "tema": "Da Redação Final e dos Autógrafos (arts. 51 a 52)",
+    "pergunta": "Concluída a votação, para qual órgão a matéria volta, para a redação final?",
+    "resposta": ["Comissão Mista"],
+    "fonte": "RCCN, art. 51, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c26",
+    "no": "r1.6",
+    "tema": "Da Redação Final e dos Autógrafos (arts. 51 a 52)",
+    "pergunta": "Qual é o prazo máximo que pode ser concedido à Comissão para elaborar a redação final?",
+    "resposta": ["24 horas"],
+    "fonte": "RCCN, art. 51, caput",
+    "explicacao": "Enquanto isso, a sessão fica interrompida pelo tempo necessário à lavratura."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c27",
+    "no": "r1.6",
+    "tema": "Da Redação Final e dos Autógrafos (arts. 51 a 52)",
+    "pergunta": "Em que hipóteses a redação final é dispensada?",
+    "resposta": ["Projeto aprovado sem emendas", "Projeto aprovado em substitutivo integral"],
+    "fonte": "RCCN, art. 51, § 2º",
+    "explicacao": "Em ambos os casos, o texto deve ser considerado em condições de ser definitivamente aceito."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c28",
+    "no": "r1.6",
+    "tema": "Da Redação Final e dos Autógrafos (arts. 51 a 52)",
+    "pergunta": "Quem promulga a matéria da competência exclusiva do Congresso Nacional aprovada em definitivo?",
+    "resposta": ["Presidente do Senado"],
+    "fonte": "RCCN, art. 52, parágrafo único",
+    "explicacao": "Nos demais casos, o texto vai em autógrafos ao Presidente da República para sanção (art. 52, caput)."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c29",
+    "no": "r2",
+    "tema": "Sessões Solenes (arts. 53 a 71)",
+    "pergunta": "Em quais sessões solenes não há oradores?",
+    "resposta": ["Inauguração de sessão legislativa", "Posse do Presidente e do Vice-Presidente da República"],
+    "fonte": "RCCN, art. 55, parágrafo único"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c30",
+    "no": "r2",
+    "tema": "Sessões Solenes (arts. 53 a 71)",
+    "pergunta": "Qual membro da Mesa lê a Mensagem presidencial na inauguração da sessão legislativa e o termo de posse na posse presidencial?",
+    "resposta": ["O 1º Secretário"],
+    "fonte": "RCCN, arts. 58 e 65"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c31",
+    "no": "r2",
+    "tema": "Sessões Solenes (arts. 53 a 71)",
+    "pergunta": "Para onde a comissão de recepção conduz os empossandos e o Chefe de Estado estrangeiro depois de recebê-los à entrada principal?",
+    "resposta": ["Salão de Honra"],
+    "fonte": "RCCN, arts. 60 e 68"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c32",
+    "no": "r2",
+    "tema": "Sessões Solenes (arts. 53 a 71)",
+    "pergunta": "Na posse presidencial e na recepção de Chefe de Estado, o que acontece com a sessão logo depois de designada a comissão de recepção?",
+    "resposta": ["É suspensa"],
+    "fonte": "RCCN, arts. 60 e 68",
+    "explicacao": "É reaberta quando os homenageados são introduzidos no plenário (arts. 61 e 69)."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c33",
+    "no": "r2.1",
+    "tema": "Normas Gerais (arts. 53 a 56)",
+    "pergunta": "Qual é o quórum para a realização de sessão solene?",
+    "resposta": ["Qualquer número"],
+    "fonte": "RCCN, art. 53, parágrafo único"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c34",
+    "no": "r2.1",
+    "tema": "Normas Gerais (arts. 53 a 56)",
+    "pergunta": "Que autoridade externa ao Congresso integra a Mesa da sessão solene, mediante convite?",
+    "resposta": ["Presidente do Supremo Tribunal Federal"],
+    "fonte": "RCCN, art. 53, caput",
+    "explicacao": "Também integra a Mesa o Presidente da Câmara."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c35",
+    "no": "r2.1",
+    "tema": "Normas Gerais (arts. 53 a 56)",
+    "pergunta": "Quantos parlamentares, e de quais Casas, podem usar da palavra em sessão solene?",
+    "resposta": ["Um Senador e um Deputado"],
+    "fonte": "RCCN, art. 55, caput",
+    "explicacao": "De preferência de partidos diferentes e previamente designados pelas respectivas Casas."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c36",
+    "no": "r2.1",
+    "tema": "Normas Gerais (arts. 53 a 56)",
+    "pergunta": "Qual é o tratamento das questões de ordem nas sessões solenes?",
+    "resposta": ["Não são admitidas"],
+    "fonte": "RCCN, art. 56",
+    "explicacao": "Nas sessões solenes também não há expediente (art. 54, parágrafo único)."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c37",
+    "no": "r2.2",
+    "tema": "Inauguração de Sessão Legislativa (arts. 57 a 59)",
+    "pergunta": "Quem conduz o enviado do Presidente da República, portador da Mensagem, até a Mesa?",
+    "resposta": ["Os Diretores das Secretarias do Senado e da Câmara"],
+    "fonte": "RCCN, art. 57, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c38",
+    "no": "r2.2",
+    "tema": "Inauguração de Sessão Legislativa (arts. 57 a 59)",
+    "pergunta": "Que restrição de trajeto vale para o enviado do Presidente da República a caminho da Mesa?",
+    "resposta": ["Não atravessar o plenário"],
+    "fonte": "RCCN, art. 57, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c39",
+    "no": "r2.2",
+    "tema": "Inauguração de Sessão Legislativa (arts. 57 a 59)",
+    "pergunta": "Entregue a Mensagem, para onde é conduzido o enviado que pretende assistir à sessão?",
+    "resposta": ["Lugar previamente reservado"],
+    "fonte": "RCCN, art. 57, parágrafo único",
+    "explicacao": "Entregue a Mensagem, o enviado se retira, acompanhado até a porta pelos Diretores das Secretarias; se pretender assistir à sessão, é conduzido a lugar previamente reservado."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c40",
+    "no": "r2.2",
+    "tema": "Inauguração de Sessão Legislativa (arts. 57 a 59)",
+    "pergunta": "Em que momento é encerrada a sessão de inauguração da sessão legislativa?",
+    "resposta": ["Finda a leitura da Mensagem"],
+    "fonte": "RCCN, art. 59"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c41",
+    "no": "r2.3",
+    "tema": "Posse do Presidente e do Vice-Presidente da República (arts. 60 a 67)",
+    "pergunta": "Qual é a composição da comissão que recebe os empossandos à entrada principal?",
+    "resposta": ["5 Senadores e 5 Deputados"],
+    "fonte": "RCCN, art. 60"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c42",
+    "no": "r2.3",
+    "tema": "Posse do Presidente e do Vice-Presidente da República (arts. 60 a 67)",
+    "pergunta": "Reaberta a sessão de posse, onde se sentam o Presidente e o Vice-Presidente eleitos em relação ao Presidente da Mesa?",
+    "resposta": ["Presidente eleito: à direita", "Vice-Presidente eleito: à esquerda"],
+    "fonte": "RCCN, art. 61, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c43",
+    "no": "r2.3",
+    "tema": "Posse do Presidente e do Vice-Presidente da República (arts. 60 a 67)",
+    "pergunta": "Na sessão de posse, quem é empossado primeiro?",
+    "resposta": ["O Presidente da República"],
+    "fonte": "RCCN, arts. 63 e 64",
+    "explicacao": "Em seguida, com as mesmas formalidades, é empossado o Vice-Presidente."
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c44",
+    "no": "r2.3",
+    "tema": "Posse do Presidente e do Vice-Presidente da República (arts. 60 a 67)",
+    "pergunta": "Quem assina o termo de posse?",
+    "resposta": ["Os empossados", "Os membros da Mesa"],
+    "fonte": "RCCN, art. 65"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c45",
+    "no": "r2.4",
+    "tema": "Recepção a Chefe de Estado Estrangeiro (arts. 68 a 71)",
+    "pergunta": "Qual é a composição da comissão que recebe o Chefe de Estado estrangeiro à entrada principal?",
+    "resposta": ["3 Senadores e 3 Deputados"],
+    "fonte": "RCCN, art. 68"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c46",
+    "no": "r2.4",
+    "tema": "Recepção a Chefe de Estado Estrangeiro (arts. 68 a 71)",
+    "pergunta": "Que lugar o Chefe de Estado estrangeiro ocupa na Mesa?",
+    "resposta": ["À direita do Presidente"],
+    "fonte": "RCCN, art. 69, caput"
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c47",
+    "no": "r2.4",
+    "tema": "Recepção a Chefe de Estado Estrangeiro (arts. 68 a 71)",
+    "pergunta": "Reaberta a sessão de recepção a Chefe de Estado estrangeiro, quem, entre os espectadores e os membros da Mesa, não precisa conservar-se de pé?",
+    "resposta": ["O Presidente"],
+    "fonte": "RCCN, art. 69, § 1º",
+    "explicacao": "\"Os espectadores, inclusive os membros da Mesa, com exceção do Presidente, conservar-se-ão de pé.\""
+  },
+  {
+    "id": "rccn-pl-3-1-arts-22-71-c48",
+    "no": "r2.4",
+    "tema": "Recepção a Chefe de Estado Estrangeiro (arts. 68 a 71)",
+    "pergunta": "Em que momento o Chefe de Estado visitante pode usar da palavra?",
+    "resposta": ["Depois dos oradores da sessão"],
+    "fonte": "RCCN, art. 70"
+  }
+]
