@@ -122,3 +122,14 @@ export function revisaoRecord(proposta, today, timestamp) {
 
 /** Só tarefas criadas pelo Navegador podem ser alteradas por ele (e nunca as já concluídas). */
 export const podeAlterarTarefa = task => task?.raw?.origem === ORIGEM_NAVEGADOR && task.status !== 'done';
+
+/** Tarefas do estudante em atraso que podem ir a um cartão de confirmação. Revisões automáticas ficam de fora. */
+export function atrasadasParaConfirmar(tasks = []) {
+  const list = tasks.filter(t => t.status === 'late' && !t.auto && !t.raw?.arquivadaEm).sort((a, b) => a.date.localeCompare(b.date));
+  return { itens: list.map(t => ({ id: t.id, data: t.date, titulo: t.title || '', materia: t.subject || '', minutos: t.minutes || 0 })),
+    automaticasIgnoradas: tasks.filter(t => t.status === 'late' && t.auto).length };
+}
+export const pedidoDeAtrasadas = texto => /atrasad/i.test(texto || '') && /(retir|remov|tir[ae]|limp|conclu|cumpr|apag|arquiv)/i.test(texto || '');
+
+/** Marca como concluída (nunca apaga). Só roda depois do clique do estudante no cartão. */
+export const registroConcluida = (task, timestamp) => ({ ...task.raw, status: 'concluida', concluidaEm: timestamp, atualizadoEm: timestamp });

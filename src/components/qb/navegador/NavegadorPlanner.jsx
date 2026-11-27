@@ -6,19 +6,21 @@ import { useRealStudy } from '@/lib/qb-real-data';
 import { askNavegadorPlanner } from '@/lib/server-fns';
 import { analiseErros, navegadorExport, navegadorTopicos } from '@/lib/navegador';
 import {
-  MAX_REVISOES_SEMANA, podeAlterarTarefa, prefixoSemana, resumoParaPlanner, revisaoRecord, validarPropostas,
+  MAX_REVISOES_SEMANA, atrasadasParaConfirmar, pedidoDeAtrasadas, podeAlterarTarefa, registroConcluida, prefixoSemana, resumoParaPlanner, revisaoRecord, validarPropostas,
 } from '@/lib/navegador-planner';
+import { HorasPorDia } from '@/components/qb/planning/HorasPorDia';
+import { PLAN_SETTINGS_ID, planSettings } from '@/lib/plan-settings';
 import { clampLauncherPosition } from '@/lib/architect-launcher-position';
 
 const POS_KEY = 'qbasc-navegador-planner-position-v1';
 const HIST_KEY = 'qbasc-navegador-planner-history:v1:';
-const SUGESTOES = ['Analisar minha semana', 'Onde estou errando mais?', 'Quais revisões pontuais você agendaria?'];
+const SUGESTOES = ['Definir minhas horas de estudo', 'Ver metas atrasadas', 'Analisar minha semana', 'Onde estou errando mais?', 'Quais revisões pontuais você agendaria?'];
 const SIZE = 56;
 const viewport = () => ({ width: window.innerWidth, height: window.innerHeight });
 const dataBR = iso => iso.split('-').reverse().join('/');
 
 function lerHistorico(account) {
-  try { const v = JSON.parse(localStorage.getItem(HIST_KEY + account) || '[]'); return Array.isArray(v) ? v.slice(-30).map(m => (m?.grupo?.estado === 'pendente' ? { ...m, grupo: { ...m.grupo, estado: 'ignorada' } } : m)) : []; } catch { return []; }
+  try { const v = JSON.parse(localStorage.getItem(HIST_KEY + account) || '[]'); return Array.isArray(v) ? v.slice(-30).map(m => (m?.grupo?.estado === 'pendente' ? { ...m, grupo: { ...m.grupo, estado: 'ignorada' } } : m?.atrasadas?.estado === 'pendente' ? { ...m, atrasadas: { ...m.atrasadas, estado: 'cancelada' } } : m?.horas?.estado === 'pendente' ? { ...m, horas: { ...m.horas, estado: 'cancelada' } } : m)) : []; } catch { return []; }
 }
 function gravarHistorico(account, msgs) {
   try { localStorage.setItem(HIST_KEY + account, JSON.stringify(msgs.slice(-30))); } catch { /* sem armazenamento local */ }
@@ -91,6 +93,28 @@ function CartaoProposta({ grupo, onConfirmar, onIgnorar, onDesfazer, busy }) {
   );
 }
 
+function CartaoAtrasadas({ grupo, busy, onConfirmar, onCancelar, onDesfazer }) {
+  const { itens, estado, automaticasIgnoradas } = grupo;
+  return (
+    <div style={{ border: '1px solid var(--divider)', borderRadius: 12, padding: 12, display: 'grid', gap: 8 }}>
+      <strong style={{ font: '600 13px/1.3 var(--font-body)' }}>{itens.length ? 'Metas atrasadas (' + itens.length + ')' : 'Nenhuma meta atrasada'}</strong>
+      {itens.map(t => <div key={t.id} style={{ font: '400 13px/1.4 var(--font-body)' }}>
+        <strong>{dataBR(t.data)}</strong> · {t.titulo}{t.materia ? ' · ' + t.materia : ''}{t.minutos ? ' · ' + t.minutos + ' min' : ''}</div>)}
+      {automaticasIgnoradas > 0 && <div style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>{automaticasIgnoradas} revisões automáticas atrasadas ficam como estão.</div>}
+      {estado === 'pendente' && itens.length > 0 && <>
+        <div style={{ font: '400 12px/1.4 var(--font-body)', color: 'var(--text-muted)' }}>Confirmar marca estas metas como concluídas. Nada é apagado e dá para desfazer.</div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <Button size="sm" icon="check" disabled={busy} onClick={onConfirmar}>Já cumpri: marcar como concluídas</Button>
+          <Button size="sm" variant="secondary" disabled={busy} onClick={onCancelar}>Cancelar</Button>
+        </div></>}
+      {estado === 'confirmada' && <Button size="sm" variant="secondary" icon="undo-2" disabled={busy} onClick={onDesfazer}>Desfazer</Button>}
+      {estado === 'cancelada' && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Cancelado. Nada foi alterado.</span>}
+      {estado === 'desfeita' && <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Desfeito: as metas voltaram a ficar como estavam.</span>}
+    </div>
+  );
+}
+
+
 /** Borda de baixo da navegação principal (que fica fixa no topo), para o painel nunca cobrir as abas. */
 function useTopoLivre() {
   const [top, setTop] = React.useState(8);
@@ -111,6 +135,20 @@ function useTopoLivre() {
   return top;
 }
 
+function CartaoHoras({ grupo, busy, onSalvar, onCancelar }) {
+  const [hours, setHours] = React.useState(grupo.hours);
+  if (grupo.estado !== 'pendente') return <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>{grupo.estado === 'salva' ? 'Horas salvas no planejamento.' : 'Horas não alteradas.'}</span>;
+  return (
+    <div style={{ border: '1px solid var(--divider)', borderRadius: 12, padding: 12, display: 'grid', gap: 10 }}>
+      <HorasPorDia hours={hours} onChange={setHours} />
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <Button size="sm" icon="check" disabled={busy || !hours.some(h => h > 0)} onClick={() => onSalvar(hours)}>Salvar horas</Button>
+        <Button size="sm" variant="secondary" disabled={busy} onClick={onCancelar}>Cancelar</Button>
+      </div>
+    </div>
+  );
+}
+
 function Painel({ onClose }) {
   const top = useTopoLivre();
   const { records, QB_DATA, QB_PLAN, QB_EDITAL, accountId, save } = useRealStudy();
@@ -124,7 +162,7 @@ function Painel({ onClose }) {
   const existentes = React.useMemo(() => new Set((records?.planejamento || []).map(r => r.id)), [records]);
   const jaNaSemana = React.useMemo(() => QB_PLAN.tasks.filter(t => t.id.startsWith(prefixoSemana(today))).length, [QB_PLAN.tasks, today]);
 
-  React.useEffect(() => { gravarHistorico(accountId, msgs.map(({ role, text, grupo }) => ({ role, text, grupo }))); fim.current?.scrollIntoView?.({ block: 'end' }); }, [msgs, accountId]);
+  React.useEffect(() => { gravarHistorico(accountId, msgs.map(({ role, text, grupo, atrasadas, horas }) => ({ role, text, grupo, atrasadas, horas }))); fim.current?.scrollIntoView?.({ block: 'end' }); }, [msgs, accountId]);
   React.useEffect(() => {
     const k = e => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', k);
@@ -145,18 +183,64 @@ function Painel({ onClose }) {
     setErro(''); setBusy(true); setTexto('');
     const anteriores = msgs;
     setMsgs([...anteriores, { role: 'user', text: t }]);
+    const semHoras = !(QB_PLAN.hours || []).some(h => h > 0);
+    if (/\bhoras?\b/i.test(t) && /(defin|configur|escolh|mud|ajust|alter|quant|dispon)/i.test(t)) {
+      setMsgs(m => [...m, { role: 'tutor', text: 'Escolha as horas de estudo de cada dia. Só salvo quando você clicar em Salvar horas.', horas: { hours: Array.from({ length: 7 }, (_, i) => Number(QB_PLAN.hours?.[i]) || 0), estado: 'pendente' } }]);
+      setBusy(false);
+      return;
+    }
+    if (pedidoDeAtrasadas(t) || t === 'Ver metas atrasadas') {
+      const a = atrasadasParaConfirmar(QB_PLAN.tasks);
+      setMsgs(m => [...m, { role: 'tutor', text: a.itens.length ? 'Estas são as metas atrasadas. Confirme abaixo se já foram cumpridas; eu não altero nada antes disso.' : 'Não há metas atrasadas no momento.', atrasadas: { ...a, estado: 'pendente' } }]);
+      setBusy(false);
+      return;
+    }
     try {
       const resumo = contexto();
       const r = await ask({ data: { resumo, userMessage: t, history: anteriores.slice(-10).map(m => ({ role: m.role, text: m.text })) } });
       const { validas, descartadas } = validarPropostas(r.propostas, { today, subjects: QB_EDITAL.subjects, horas: QB_PLAN.hours, tasks: QB_PLAN.tasks, existentes, jaNaSemana });
       const grupo = r.propostas.length ? { validas, descartadas, estado: 'pendente' } : undefined;
-      setMsgs(m => [...m, { role: 'tutor', text: r.resposta || 'Sem resposta.', grupo }]);
+      setMsgs(m => [...m, { role: 'tutor', text: r.resposta || 'Sem resposta.', grupo },
+        ...(semHoras && r.propostas.length ? [{ role: 'tutor', text: 'Seu plano não tem horas de estudo definidas, então nenhuma revisão cabe em nenhum dia. Defina abaixo.', horas: { hours: [0, 0, 0, 0, 0, 0, 0], estado: 'pendente' } }] : [])]);
     } catch (e) {
       setErro(e?.message || 'Não foi possível falar com o Navegador agora.');
     } finally { setBusy(false); }
   };
 
   const mudar = (i, estado) => setMsgs(m => m.map((x, j) => (j === i ? { ...x, grupo: { ...x.grupo, estado } } : x)));
+  const salvarHoras = async (i, hours) => {
+    setBusy(true); setErro('');
+    try {
+      await save('planejamento', PLAN_SETTINGS_ID, planSettings({ ...QB_PLAN, hours }));
+      setMsgs(m => m.map((x, j) => (j === i ? { ...x, horas: { ...x.horas, hours, estado: 'salva' } } : x)));
+    } catch { setErro('Não foi possível salvar as horas no Base44. Tente novamente.'); }
+    finally { setBusy(false); }
+  };
+  const mudarAtrasadas = (i, estado, extra = {}) => setMsgs(m => m.map((x, j) => (j === i ? { ...x, atrasadas: { ...x.atrasadas, estado, ...extra } } : x)));
+  const concluirAtrasadas = async i => {
+    setBusy(true); setErro('');
+    try {
+      const ts = new Date().toISOString();
+      const anteriores = {};
+      for (const it of msgs[i].atrasadas.itens) {
+        const task = QB_PLAN.tasks.find(t => t.id === it.id);
+        if (!task || task.status !== 'late') continue; // só o que ainda está atrasado
+        anteriores[task.id] = task.raw;
+        await save('planejamento', task.id, registroConcluida(task, ts));
+      }
+      mudarAtrasadas(i, 'confirmada', { anteriores });
+    } catch { setErro('Não foi possível salvar no Base44. Nada foi marcado como concluído; tente novamente.'); }
+    finally { setBusy(false); }
+  };
+  const desfazerAtrasadas = async i => {
+    setBusy(true); setErro('');
+    try {
+      const ts = new Date().toISOString();
+      for (const [id, raw] of Object.entries(msgs[i].atrasadas.anteriores || {})) await save('planejamento', id, { ...raw, atualizadoEm: ts });
+      mudarAtrasadas(i, 'desfeita');
+    } catch { setErro('Não foi possível desfazer agora.'); }
+    finally { setBusy(false); }
+  };
   const confirmar = async i => {
     const grupo = msgs[i].grupo;
     setBusy(true); setErro('');
@@ -204,6 +288,8 @@ function Painel({ onClose }) {
             <div style={{ maxWidth: '92%', whiteSpace: 'pre-wrap', padding: '8px 12px', borderRadius: 12, font: '400 14px/1.5 var(--font-body)',
               background: m.role === 'user' ? 'var(--qb-navy)' : 'transparent', color: m.role === 'user' ? 'var(--qb-ivory)' : 'var(--text-primary)',
               border: m.role === 'user' ? 'none' : '1px solid var(--divider)' }}>{m.text}</div>
+            {m.horas && <CartaoHoras grupo={m.horas} busy={busy} onSalvar={h => salvarHoras(i, h)} onCancelar={() => setMsgs(x => x.map((y, j) => (j === i ? { ...y, horas: { ...y.horas, estado: 'cancelada' } } : y)))} />}
+            {m.atrasadas && <CartaoAtrasadas grupo={m.atrasadas} busy={busy} onConfirmar={() => concluirAtrasadas(i)} onCancelar={() => mudarAtrasadas(i, 'cancelada')} onDesfazer={() => desfazerAtrasadas(i)} />}
             {m.grupo && <CartaoProposta grupo={m.grupo} busy={busy} onConfirmar={() => confirmar(i)} onIgnorar={() => mudar(i, 'ignorada')} onDesfazer={() => desfazer(i)} />}
           </div>
         ))}
