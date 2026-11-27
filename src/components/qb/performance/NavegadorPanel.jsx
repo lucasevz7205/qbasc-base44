@@ -10,7 +10,8 @@ import { navegadorCartoes } from '@/lib/navegador-cartoes';
 import NavegadorCartoes from '@/components/qb/performance/NavegadorCartoes';
 import { contarSinais, dataBR, diaMes, pontosTendencia, tomDoIntervalo } from '@/lib/navegador-visual';
 import { NavCartaoAcao, NavCartaoMateria, NavForma, NavTendencia, SELOS } from '@/components/qb/navegador';
-import { NavegadorRelatorio, NavListaAssuntos, NavResumoNumeros, pct, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
+import NavegadorConferencia from '@/components/qb/performance/NavegadorConferencia';
+import { NavegadorRelatorio, NavListaAssuntos, NavResumoNumeros, pct, periodoNumeros, prioridadesDe, tituloRelatorio } from '@/components/qb/performance/NavegadorRelatorio';
 import { marcarVisto, useNavegadorRelatorios } from '@/components/qb/performance/useNavegadorRelatorios';
 
 const ABAS = [
@@ -134,7 +135,7 @@ export default function NavegadorPanel() {
         <h2 className="nv-title" style={{ fontSize: 24 }}>{subject ? 'Análise da matéria' : 'Análise global'}</h2>
         <div className="nv-faixa__meta">
           <span><Icon name="calendar" size={13} style={{ display: 'inline', verticalAlign: '-2px', marginRight: 4 }} />Janela <span className="nv-mono">{dataBR(analise.de)} a {dataBR(analise.ate)}</span></span>
-          <span><span className="nv-mono">{analise.geral.n}</span> primeiras tentativas</span>
+          <span><span className="nv-mono">{analise.geral.n}</span> primeiras tentativas em 14 dias</span>
           {totalFora > 0 && <button type="button" className="nv-pill" aria-expanded={verFora} aria-controls="nv-fora" onClick={() => setVerFora(v => !v)}>
             <Icon name="filter" size={13} /><span className="nv-mono">{totalFora}</span> fora da análise<Icon name="chevron-down" size={13} style={{ transform: verFora ? 'rotate(180deg)' : undefined }} />
           </button>}
@@ -182,7 +183,9 @@ export default function NavegadorPanel() {
         {!analise.geral.n && <EmptyState compact title="Sem atividade nova com dados suficientes" description="Resolva questões novas para o Navegador ter o que analisar. O dia de hoje entra a partir de amanhã." />}
         {!!analise.geral.n && <NavResumoNumeros stats={statsResumo} placar={subject ? null : semanal} comparacao={compararJanelas(semanal)}
           rotuloMedidor={subject ? 'Chance de acerto na matéria' : 'Chance geral de acerto'}
+          janelaNumeros={subject ? undefined : dataBR(semanal.atual.de) + ' a ' + dataBR(semanal.atual.ate)}
           legendaMedidor={`Faixa = intervalo de 95% · ${statsResumo.validas || 0} respostas válidas em 14 dias.`} />}
+        {!!analise.geral.n && <p className="nv-note"><Icon name="info" size={13} style={{ display: 'inline', verticalAlign: '-2px' }} /> O Desempenho conta todas as tentativas, inclusive repetições e o dia de hoje. O Navegador conta só a primeira tentativa de cada item, até ontem; por isso os totais diferem.</p>}
         {navegadorScope?.topicId && subject && <section className="nv-stack" aria-label="Assunto escolhido">
           {focoTopico
             ? <div className="nv-acoes"><NavCartaoAcao stats={focoTopico} titulo={titles.get(focoTopico.topico) || focoTopico.topico} destaque="Assunto escolhido" /></div>
@@ -261,7 +264,7 @@ export default function NavegadorPanel() {
             {relatorios.slice(0, todosRelatorios ? 24 : 4).map(r => <li key={r.id}>
               <button type="button" className="nv-relatorio-item" aria-pressed={r.id === aberto.id} onClick={() => { setRelatorioId(r.id); marcarVisto(r.id); }}>
                 <span className="nv-relatorio-item__tipo">{r.tipo === 'mensal' ? 'Mensal' : 'Semanal'}</span>
-                <span className="nv-relatorio-item__periodo">{dataBR(r.periodo.de)} a {dataBR(r.periodo.ate)}</span>
+                <span className="nv-relatorio-item__periodo">{periodoNumeros(r)}</span>
                 <span className="nv-relatorio-item__nums" aria-label={'Nota líquida ' + r.placar.atual.liquida + ', chance ' + pct(r.geral.acerto)}>
                   <span title="Nota líquida">{r.placar.atual.liquida > 0 ? '+' : ''}{r.placar.atual.liquida}</span><span title="Chance de acerto">{pct(r.geral.acerto)}</span>
                 </span>
@@ -274,6 +277,7 @@ export default function NavegadorPanel() {
         {aberto && <section className="nv-cartao nv-cartao--sunken nv-stack" aria-label={tituloRelatorio(aberto)} style={{ gap: 14 }}>
           <h3 className="nv-title nv-title--sm">{tituloRelatorio(aberto)}</h3>
           <NavegadorRelatorio relatorio={aberto} titles={titles} />
+          <NavegadorConferencia key={aberto.id} relatorio={aberto} records={records} questions={QB_DATA.questions} />
         </section>}
       </>}
     </div>
