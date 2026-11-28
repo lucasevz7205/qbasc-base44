@@ -46,8 +46,6 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
   const [telemetry, setTelemetry] = React.useState(null);
   const [integrationStatus, setIntegrationStatus] = React.useState(null);
   const [text, setText] = React.useState('');
-  const [transcriptExpanded, setTranscriptExpanded] = React.useState(false);
-  const transcriptId = React.useId();
   const [listening, setListening] = React.useState(false);
   const [voiceNotice, setVoiceNotice] = React.useState(null);
   const [ask, setAsk] = React.useState(false);
@@ -222,15 +220,8 @@ export default function SocraticChat({ accountId, subjects = [], subjectId, topi
           <span style={{ font: '400 12px/1.3 var(--font-body)', color: 'var(--text-muted)' }}>Histórico separado por tópico{origin ? ' · aberto a partir de ' + origin : ''}</span>
         </div>
       </div>
-      <div className="qb-arch-transcript" data-compact={compact} data-expanded={transcriptExpanded}>
-        <div className="qb-arch-transcript__tools">
-          <Button size="sm" variant="ghost" icon={transcriptExpanded ? 'chevron-up' : 'maximize'}
-            aria-expanded={transcriptExpanded} aria-controls={transcriptId}
-            onClick={() => setTranscriptExpanded(value => !value)}>
-            {transcriptExpanded ? 'Recolher conversa' : 'Expandir conversa'}
-          </Button>
-        </div>
-        <div id={transcriptId} ref={listRef} role="log" aria-live="polite" aria-label="Conversa"
+      <div className="qb-arch-transcript" data-compact={compact} data-expanded="true">
+        <div ref={listRef} role="log" aria-live="polite" aria-label="Conversa"
           className="qb-panel qb-panel--sunken qb-arch-transcript__messages">
           {!msgs.length && !busy && <EmptyState icon="message-circle" title={'Nenhuma conversa em ' + (topic ? topic.num : 'este tópico')} description={compact ? "Digite sua dúvida ou escolha uma ação abaixo." : "Escolha um modo pedagógico e escreva sua dúvida para a IA, ou acione uma ferramenta rápida abaixo."} />}
           {msgs.map((m, i) => m.role === 'user'
