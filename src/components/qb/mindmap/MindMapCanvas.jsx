@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@/components/qb/core/Icon';
 import { IconButton } from '@/components/qb/core/IconButton';
+import { startDrag, moveDrag } from './pan-drag.js';
 import { describePending } from '@/lib/mind-map-pending';
 
 const MASTERY = {
@@ -159,6 +160,9 @@ export default function MindMapCanvas({
   const [pan, setPan] = React.useState({ x: 0, y: 0 });
   const [box, setBox] = React.useState({ w: 860, h: height });
   const drag = React.useRef(null);
+  const endDrag = () => {
+    drag.current = null;
+  };
   const wrapRef = React.useRef(null);
   const prevRootRef = React.useRef(tree.root);
 
@@ -440,15 +444,20 @@ export default function MindMapCanvas({
       }}
       onPointerDown={(e) => {
         if (e.target.closest('button')) return;
-        drag.current = { x: e.clientX - pan.x, y: e.clientY - pan.y };
+        const d = startDrag(e, pan);
+        if (!d) return;
+        drag.current = d;
         e.currentTarget.setPointerCapture(e.pointerId);
       }}
       onPointerMove={(e) => {
-        if (drag.current) setPan({ x: e.clientX - drag.current.x, y: e.clientY - drag.current.y });
+        const r = moveDrag(drag.current, e);
+        drag.current = r.drag;
+        if (r.pan) setPan(r.pan);
       }}
-      onPointerUp={() => {
-        drag.current = null;
-      }}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onLostPointerCapture={endDrag}
+      onContextMenu={endDrag}
     >
       {toolbar}
       <div style={{ position: 'absolute', bottom: 12, right: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, zIndex: 2 }}>
