@@ -7,6 +7,7 @@ import { ArchitectLauncher } from '@/components/qb/architect/ArchitectLauncher';
 import { ArchitectStudio } from '@/components/qb/architect/ArchitectStudio';
 import { ToastStack } from '@/components/qb/feedback/ToastStack';
 import { useRealStudy } from '@/lib/qb-real-data';
+import { studioResume } from '@/lib/studio-resume';
 import { NavegadorAviso } from '@/components/qb/performance/NavegadorAviso';
 
 export const NAV = (late = 0) => [
@@ -35,8 +36,26 @@ function Backdrop() {
   );
 }
 
+const RESUMABLE_TOOLS = ['socratico', 'feynman', 'cornell', 'visual-lab', 'study-clock'];
+
+// Abre o estúdio no ponto em que foi deixado (aba e tópico), guardado só neste navegador.
+function useOpenStudio(ui, setUi) {
+  const { QB_EDITAL, accountId } = useRealStudy();
+  return React.useCallback(() => {
+    const saved = studioResume.read(accountId);
+    const tool = RESUMABLE_TOOLS.includes(saved.tool) ? saved.tool : 'socratico';
+    const ctxUsed = ui.ctx?.topicId || ui.ctx?.subjectId;
+    const subject = QB_EDITAL.subjects.find(s => s.id === saved.subjectId);
+    const topic = subject?.topics.find(t => t.id === saved.topicId);
+    const patch = { studio: { open: true, mode: 'modal', tool } };
+    if (!ctxUsed && topic) patch.ctx = { subjectId: subject.id, topicId: topic.id, nodeId: saved.nodeId || undefined };
+    setUi(patch);
+  }, [accountId, QB_EDITAL, ui.ctx, setUi]);
+}
+
 export default function AppShell({ ui, setUi, view, quick, go, mapReturn, children, wide }) {
   const { QB_DATA, QB_PLAN, refresh, logout, isAdmin, architectAccess } = useRealStudy();
+  const openStudio = useOpenStudio(ui, setUi);
   const compact = !!ui.focus;
   const scene = ui.bg === 'dynamic' && !ui.focus;
   const isWide = wide ?? (view === 'study' || view === 'plan' || view === 'train');
@@ -80,7 +99,7 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
                 }
                 collapsed={ui.collapsed}
                 onCollapse={() => setUi({ collapsed: !ui.collapsed })}
-                onArchitect={architectAccess ? () => setUi({ studio: { open: true, mode: 'modal', tool: 'socratico' } }) : undefined}
+                onArchitect={architectAccess ? openStudio : undefined}
               />
             </div>
           )}
@@ -117,7 +136,8 @@ export default function AppShell({ ui, setUi, view, quick, go, mapReturn, childr
 }
 
 export function ArchitectLayer({ ui, setUi, studioPage }) {
-  const { QB_EDITAL, isAdmin, architectAccess } = useRealStudy();
+  const { QB_EDITAL, isAdmin, architectAccess, accountId } = useRealStudy();
+  const openStudio = useOpenStudio(ui, setUi);
   const E = QB_EDITAL;
   const ctx = ui.ctx || {};
   const mode = !architectAccess && ui.studio.mode !== 'modal' ? 'dock' : 'modal';
@@ -125,7 +145,7 @@ export function ArchitectLayer({ ui, setUi, studioPage }) {
     <>
       {architectAccess && <ArchitectLauncher
         hidden={ui.studio.open || studioPage}
-        onOpen={() => setUi({ studio: { open: true, mode: 'modal', tool: 'socratico' } })}
+        onOpen={openStudio}
       />}
       {(architectAccess || ui.studio.tool === 'study-clock') && <ArchitectStudio
         open={ui.studio.open}
@@ -133,12 +153,12 @@ export function ArchitectLayer({ ui, setUi, studioPage }) {
         clockOnly={!architectAccess}
         personal={!isAdmin}
         tool={ui.studio.tool || 'socratico'}
-        onToolChange={tool => setUi({ studio: { open: true, mode, tool } })}
+        onToolChange={tool => { studioResume.write(accountId, { tool }); setUi({ studio: { open: true, mode, tool } }); }}
         onExpand={() => setUi({ studio: { open: true, mode: 'modal', tool: ui.studio.tool || 'socratico' } })}
         onClose={() => setUi({ studio: { open: false } })}
         subjects={E.subjects}
         context={ctx}
-        onContextChange={c => setUi({ ctx: c })}
+        onContextChange={c => { studioResume.write(accountId, { subjectId: c?.subjectId, topicId: c?.topicId, nodeId: c?.nodeId }); setUi({ ctx: c }); }}
       />}
       <ToastStack toasts={ui.toasts} onDismiss={id => setUi({ toasts: ui.toasts.filter(x => x.id !== id) })} />
     </>

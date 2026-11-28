@@ -2,6 +2,7 @@ import React from 'react';
 import { mechanismDetail } from '@/lib/cebraspe-v1-taxonomy';
 import { reviewDay } from '@/lib/spaced-review';
 import { buildAnswerRecord } from '@/lib/study-store';
+import { studioResume } from '@/lib/studio-resume';
 import { PILOT_TASKS } from '@/lib/nexo/pilot-recommendation';
 import { PILOT_ACTIVITIES, PILOT_VERSION, dueDay, pilotNavigator, readPilotAttempts, submitPilotAttempt } from '@/lib/nexo/controlled-pilot';
 
@@ -72,11 +73,17 @@ function TransferItem({ item, attempt, source, topicId, onSubmit, onBack }) {
 
 export default function NexoControlledPilot({ accountId, recommend, renderers, sources, onBack }) {
   const key = 'qbasc:' + PILOT_VERSION + ':' + accountId;
-  const [selected, setSelected] = React.useState(PILOT_TASKS[0].id);
+  const saved = React.useMemo(()=>studioResume.read(accountId),[accountId]);
+  const [selected, setSelectedState] = React.useState(()=>PILOT_TASKS.some(t=>t.id===saved.pilotTask)?saved.pilotTask:PILOT_TASKS[0].id);
+  const setSelected = id => { setSelectedState(id); studioResume.write(accountId,{pilotTask:id,pilotItem:null}); };
   const [attempts, setAttempts] = React.useState(null);
   const [today, setToday] = React.useState(null);
   const [storageError, setStorageError] = React.useState('');
-  const [activeItem, setActiveItem] = React.useState(null);
+  const [activeItem, setActiveItemState] = React.useState(()=>{
+    const t = PILOT_TASKS.find(e=>e.id===(PILOT_TASKS.some(x=>x.id===saved.pilotTask)?saved.pilotTask:PILOT_TASKS[0].id));
+    return PILOT_ACTIVITIES.find(e=>e.modelId===t.modelId)?.items.find(i=>i.id===saved.pilotItem)||null;
+  });
+  const setActiveItem = item => { setActiveItemState(item); studioResume.write(accountId,{pilotItem:item?.id||null}); };
   const [practiced, setPracticed] = React.useState(false);
   const [prediction, setPrediction] = React.useState(false);
   const heading = React.useRef(null);
