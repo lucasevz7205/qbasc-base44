@@ -9,7 +9,6 @@ const columnStyle = { display: 'flex', flexDirection: 'column', gap: 8, minWidth
 export function CornellLinkedBoard({ pairs, onChange, disabled, notesHidden }) {
   const [selectedId, setSelectedId] = React.useState(null);
   const [editingCue, setEditingCue] = React.useState(false);
-  const [expanded, setExpanded] = React.useState(false);
   const editorView = React.useRef(null);
   const editorId = React.useId();
   const titleInput = React.useRef(null);
@@ -25,10 +24,6 @@ export function CornellLinkedBoard({ pairs, onChange, disabled, notesHidden }) {
     onChange([...pairs, { id, title: '', cue: '', note: '' }]);
     select(id);
     requestAnimationFrame(() => titleInput.current?.focus({ preventScroll: true }));
-  };
-  const toggleNoteSize = () => {
-    editorView.current?.remember();
-    setExpanded(value => !value);
   };
   const edit = updates => onChange(pairs.map(pair => pair.id === selected.id ? { ...pair, ...updates } : pair));
 
@@ -65,19 +60,13 @@ export function CornellLinkedBoard({ pairs, onChange, disabled, notesHidden }) {
               <Button size="sm" variant="ghost" aria-pressed={editingCue} disabled={disabled} onClick={() => setEditingCue(value => !value)}>
                 {editingCue ? 'Voltar à nota' : 'Editar texto da pista'}
               </Button>
-              {!editingCue && !notesHidden && <Button size="sm" variant="ghost"
-                icon={expanded ? 'chevron-up' : 'maximize'} aria-expanded={expanded} aria-controls={editorId}
-                disabled={disabled} onClick={toggleNoteSize}
-                onPointerDown={event => { if (editorView.current?.focused()) event.preventDefault(); }}>
-                {expanded ? 'Recolher nota' : 'Expandir nota'}
-              </Button>}
             </div>
           </div>
           {notesHidden && !editingCue ? (
             <div className="qb-textarea" style={{ minHeight: 148, color: 'var(--text-muted)' }}>Nota oculta. Responda à pista de memória.</div>
           ) : (
             <CornellRichEditor key={selected.id + (editingCue ? ':cue' : ':note')} id={editorId} viewRef={editorView}
-              label={editingCue ? 'Texto da pista' : 'Nota'} height={!editingCue && expanded ? 'clamp(220px, 55dvh, 560px)' : 148}
+              label={editingCue ? 'Texto da pista' : 'Nota'} height={editingCue ? 148 : 'clamp(220px, 55dvh, 560px)'}
               value={editingCue ? selected.cue : selected.note} disabled={disabled}
               onChange={value => edit(editingCue ? { cue: value } : { note: value })}
               placeholder={editingCue ? 'Escreva uma pergunta para esta pista.' : 'Escreva a nota vinculada.'} />
