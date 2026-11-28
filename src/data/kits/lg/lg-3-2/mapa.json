@@ -1,0 +1,121 @@
+{
+  "topico": "lg-3-2",
+  "materia": "lg",
+  "centro": "🧭 3.2 Ideia Principal e Detalhes de Apoio",
+  "ramos": [
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r1",
+      "cor": 1,
+      "t": "Ideia principal × ideias de apoio",
+      "n": "tese (intro/conclusão) · tópico frasal (desenvolvimento) · argumentos de apoio",
+      "x": {
+        "e": "A ideia principal é a ideia central do texto: na introdução e na conclusão ela é a tese; no desenvolvimento, cada parágrafo tem a sua ideia central, o tópico frasal. O que sustenta essa ideia (argumentos, exemplos, dados) é apoio. A própria aula orienta marcar as ideias centrais de cada parágrafo, que frequentemente vêm no início.",
+        "ex": "Texto sobre polidez: tese (ser educado é um hábito e traz benefícios); depois, a polidez no passado; depois, exemplos de polidez na atualidade.",
+        "trap": "Tomar um exemplo ou dado de apoio como se fosse a ideia principal, ou tomar o tópico frasal de um parágrafo como se fosse a tese do texto inteiro.",
+        "src": "Aula 3, p. 65 e 67; Aula 11, p. 36 e 40"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2",
+      "cor": 2,
+      "t": "Estrutura: onde mora a tese",
+      "n": "introdução (tese branda) · desenvolvimento (apoio) · conclusão (retomada forte)",
+      "x": {
+        "e": "A progressão do texto dissertativo toma a forma de introdução, desenvolvimento e conclusão. A tese consta da introdução, onde a opinião aparece de modo brando, e é reiterada de modo forte na conclusão. A estrutura é tradicional, mas os autores têm liberdade: alguns concluem logo no início e depois justificam; outros trazem a tese só no final.",
+        "ex": "Se o autor pudesse sintetizar todo o texto numa sentença, essa seria a tese.",
+        "trap": "Dizer que a tese está sempre na introdução (a aula admite tese no final) ou inverter brando e forte entre introdução e conclusão.",
+        "src": "Aula 3, p. 38 a 40; Aula 11, p. 36 e 37"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3",
+      "cor": 3,
+      "t": "Tópico frasal",
+      "n": "ideia central do parágrafo · geralmente no início · um argumento por parágrafo",
+      "x": {
+        "e": "O tópico frasal é a ideia central de um parágrafo de desenvolvimento: sintetiza o argumento e explicita o tema central a ser tratado. Em geral está no início do parágrafo, mas não necessariamente. O período seguinte o amplia e o sustenta. Cada argumento deve vir num parágrafo próprio, e as bancas geralmente descontam pontos por parágrafo com mais de uma ideia.",
+        "ex": "“Os investimentos têm aumentado.” (tópico frasal) seguido de “Confirmação: Por exemplo, em 2011 cresceram em 7,4%.”",
+        "trap": "Achar que o tópico frasal é sempre o primeiro período. No exemplo dos dados do IBGE, o tópico frasal veio depois da estatística, sustentado por ela.",
+        "src": "Aula 3, p. 39; Aula 11, p. 40, 41 e 48"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4",
+      "cor": 4,
+      "t": "Detalhes de apoio: técnicas de desenvolvimento",
+      "n": "exemplo · dado · enumeração · autoridade · causa-efeito · contraste",
+      "x": {
+        "e": "O período que segue o tópico frasal o amplia por meio de argumentos e contra-argumentos, raciocínios lógicos, exemplos, comparações, narrativas, citações de autoridades, dados estatísticos ou outra forma de desenvolvimento. A aula cataloga técnicas (exemplificação, citação de fato histórico, enumeração ou detalhamento, contraste e paralelo, dados estatísticos, explicação, testemunho de autoridade, causa-efeito). A banca espera que se identifique que o apoio fortalece uma tese e qual tese é essa; entender o exemplo importa mais do que o nome da técnica.",
+        "ex": "Alfabetos que não começam por a e b: os exemplos (Ogham, rúnico, etíope) comprovam a afirmação anterior.",
+        "trap": "Confundir a função do exemplo: ele comprova a afirmação anterior; não abre nova discussão nem é a ideia principal.",
+        "src": "Aula 11, p. 41, 43, 47 a 49"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r5",
+      "cor": 5,
+      "t": "Como a introdução anuncia a ideia principal",
+      "n": "fórmulas: divisão, definição, citação, indagação, frase nominal, alusão, narração, declaração",
+      "x": {
+        "e": "A introdução é onde a tese é anunciada, e a aula lista fórmulas comuns para isso: divisão, definição, citação, indagação, frases nominais, alusão histórica ou literária, narração e declaração. As fórmulas podem ser mescladas e adaptadas aos argumentos. Reconhecer a fórmula ajuda a localizar onde está a ideia principal.",
+        "ex": "Introdução de prova com declaração inicial, divisão e indagação: “Tem saído nos jornais: chuvas deixam São Paulo no caos. [...] Três fatores criam a confusão [...] Então, tudo culpa da chuva, certo? Errado.”",
+        "trap": "Tratar as fórmulas como excludentes, ou achar que toda indagação inicial tem de ser respondida na conclusão.",
+        "src": "Aula 11, p. 37 a 40"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r6",
+      "cor": 6,
+      "t": "Leitura em etapas para achar a ideia principal",
+      "n": "1 ler tudo · 2 reler · 3 sublinhar · 4 fato × opinião · 5 voltar ao texto",
+      "x": {
+        "e": "A aula sugere um passo a passo (sem fórmula fechada): 1) ler o texto todo, lentamente, atentando ao sentido global e ao objetivo; 2) reler quantas vezes for preciso, para identificar as ideias principais de cada parágrafo e a sequência lógica; 3) sublinhar as ideias mais importantes, só quando já houver boa noção da ideia principal e das secundárias; 4) separar fatos de opiniões; 5) retornar ao texto sempre que necessário. Compreender é localizar informação explícita; interpretar é inferir o que está pressuposto.",
+        "ex": "Parágrafo sobre polidez: fatos (as placas citadas) × opinião do autor (“Será que adianta?”).",
+        "trap": "Querer entender tudo na primeira leitura, ou sublinhar demais cedo demais (o excesso de marcações dificulta a leitura).",
+        "src": "Aula 3, p. 62 a 67"
+      }
+    },
+    {
+      "id": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r7",
+      "cor": 7,
+      "t": "Armadilhas de prova sobre ideia central",
+      "n": "ideias separadas ≠ causa e efeito · não extrapolar · recorrência × inferência",
+      "x": {
+        "e": "Questões de recorrência são resolvidas encontrando uma paráfrase; questões de inferência exigem dedução. Nos itens comentados da aula, duas ideias centrais apresentadas lado a lado não formam, por isso, relação de consequência (“Uma não é consequência da outra”), e antíteses sem solução não equivalem a um conceito substituir o outro.",
+        "ex": "Texto com duas ideias centrais (risco fiscal justifica juros altos; inflação vem de excesso de demanda): a segunda não é consequência da primeira.",
+        "trap": "Atribuir ao autor uma relação ou uma tese (consequência, substituição) que o texto não afirma: extrapolação.",
+        "src": "Aula 3, p. 67; Aula 11, p. 46, 68 e 69"
+      }
+    }
+  ],
+  "ligacoes": [
+    {
+      "rotulo": "A tese (ideia principal do texto) vive na introdução e é retomada na conclusão; o tópico frasal é a versão da tese em escala de parágrafo.",
+      "de": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2",
+      "para": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3"
+    },
+    {
+      "rotulo": "O tópico frasal é sustentado pelos detalhes de apoio (exemplos, dados, autoridade, causa-efeito).",
+      "de": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r3",
+      "para": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4"
+    },
+    {
+      "rotulo": "A fórmula de introdução é o veículo pelo qual a tese é anunciada ao leitor.",
+      "de": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r5",
+      "para": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r2"
+    },
+    {
+      "rotulo": "O passo a passo de leitura (reler, sublinhar só depois) serve para separar ideia principal de apoio antes de julgar o item.",
+      "de": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r6",
+      "para": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r1"
+    },
+    {
+      "rotulo": "A armadilha típica é tratar apoio ou ideias paralelas como se fossem a ideia principal ou uma consequência dela.",
+      "de": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r7",
+      "para": "kit-arr-lg-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27-r4"
+    }
+  ],
+  "fontesCentral": {
+    "KIT-ARR-LG-3.2-ideia-principal-e-detalhes-de-apoio-2026-11-27": {}
+  }
+}
